@@ -1165,3 +1165,443 @@ details.selfcheck[open] > summary::after { content: "▾ ocultar"; }
     }
 }
 
+/* ==========================================================================
+   PORTAL PRINCIPAL (index.html) & NAVEGACIÓN DEDICADA DE CARGOS
+   ========================================================================== */
+
+/* Botón de regreso al portal en curso.html */
+.btn-back-portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.btn-back-portal:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateX(-2px);
+}
+.btn-back-portal .back-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.current-cargo-header-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.cargo-opec-pill {
+    background: linear-gradient(135deg, #059669, #0284c7);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.cargo-title-active {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Portal Landing Layout */
+.portal-wrapper {
+    min-height: 100vh;
+    overflow-y: auto;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.portal-header {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+}
+
+.portal-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.portal-brand-text h1 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--text-primary);
+}
+.portal-brand-text p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.portal-hero {
+    max-width: 1180px;
+    margin: 36px auto 20px;
+    padding: 0 24px;
+    text-align: center;
+}
+.portal-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.portal-hero-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+.portal-hero-title span {
+    background: linear-gradient(135deg, #059669, #0284c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.portal-hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 820px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+}
+
+/* Banner de Ponderaciones */
+.weights-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    max-width: 1180px;
+    margin: 0 auto 36px;
+    padding: 0 24px;
+}
+.weight-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow);
+}
+.weight-icon {
+    font-size: 1.8rem;
+    background: var(--bg-card);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+.weight-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+.weight-info p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.weight-badge {
+    margin-left: auto;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+/* Grid de Tarjetas de Empleo */
+.portal-courses-section {
+    max-width: 1180px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+    width: 100%;
+}
+.portal-section-head {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.portal-section-head h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.portal-section-head p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.portal-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 28px;
+}
+
+.course-portal-card {
+    background: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+.course-portal-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.15);
+}
+.course-portal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+}
+.card-top-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+.card-opec-tag {
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+.card-level-tag {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+.card-progress-tag {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    background: rgba(217, 119, 6, 0.12);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.course-portal-card h3 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+.card-dependencia {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    min-height: 38px;
+}
+.card-description {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    line-height: 1.55;
+    margin-bottom: 20px;
+}
+
+.card-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+.stat-box strong {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--accent);
+    font-weight: 800;
+}
+.stat-box span {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.card-topics-list {
+    margin-bottom: 26px;
+    flex-grow: 1;
+}
+.card-topics-list h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.card-topics-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.card-topics-list li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card-topics-list li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.btn-portal-enter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #059669, #047857);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+.btn-portal-enter:hover {
+    background: linear-gradient(135deg, #047857, #065f46);
+    box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
+    transform: translateY(-2px);
+}
+.btn-inspector {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+.btn-inspector:hover {
+    background: linear-gradient(135deg, #0369a1, #075985);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+}
+
+/* Metodología Informativa */
+.portal-methodology {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 48px 24px;
+    margin-bottom: 40px;
+}
+.methodology-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.methodology-inner h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+}
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.method-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+}
+.method-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.method-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.portal-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .portal-courses-grid {
+        grid-template-columns: 1fr;
+    }
+    .portal-hero-title {
+        font-size: 1.8rem;
+    }
+    .card-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+

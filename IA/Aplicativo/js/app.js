@@ -3,7 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initApp();
 });
 
-let currentCourseId = localStorage.getItem('dian2676_active_course') || 'gestor2';
+function getActiveCourseFromUrlOrStorage() {
+    try {
+        if (typeof window !== 'undefined' && window.location && window.location.search) {
+            const params = new URLSearchParams(window.location.search);
+            const cargoParam = params.get('cargo');
+            if (cargoParam && window.COURSES_DATA && window.COURSES_DATA[cargoParam]) {
+                return cargoParam;
+            }
+        }
+    } catch (e) {}
+    try {
+        if (typeof localStorage !== 'undefined') {
+            const stored = localStorage.getItem('dian2676_active_course');
+            if (stored && window.COURSES_DATA && window.COURSES_DATA[stored]) {
+                return stored;
+            }
+        }
+    } catch (e) {}
+    return 'gestor2';
+}
+
+let currentCourseId = getActiveCourseFromUrlOrStorage();
 window.currentCourseId = currentCourseId;
 
 let APP_DATA = (window.COURSES_DATA && window.COURSES_DATA[currentCourseId]) || (window.COURSES_DATA ? (window.COURSES_DATA['gestor2'] || window.COURSES_DATA['inspector1']) : null);
@@ -12,7 +33,8 @@ window.APP_DATA = APP_DATA;
 let currentLessonId = (APP_DATA && APP_DATA.modules && APP_DATA.modules[0] && APP_DATA.modules[0].lessons && APP_DATA.modules[0].lessons[0]) ? APP_DATA.modules[0].lessons[0].id : 'les-1';
 let currentModuleId = (APP_DATA && APP_DATA.modules && APP_DATA.modules[0]) ? APP_DATA.modules[0].id : 'mod-1';
 let currentTrack = 'funcionales'; // 'funcionales' | 'comportamentales' | 'integridad'
-let completedLessons = JSON.parse(localStorage.getItem('dian2676_completed_' + currentCourseId) || (currentCourseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null) || '[]');
+let completedLessons = JSON.parse((typeof localStorage !== 'undefined' ? (localStorage.getItem('dian2676_completed_' + currentCourseId) || (currentCourseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null)) : null) || '[]');
+
 
 const EXAM_MIN = 15;   // minutos estimados por examen de módulo (10 preguntas)
 const FLASH_MIN = 5;   // minutos estimados de repaso con flashcards por módulo
@@ -137,22 +159,23 @@ function switchCourse(courseId) {
 }
 
 function initApp() {
-    // Si no hay curso explícito en localStorage pero el usuario ya tenía progreso en Inspector I, respetarlo
-    const legacyCompleted = JSON.parse(localStorage.getItem('dian2676_completed') || '[]');
-    if (!localStorage.getItem('dian2676_active_course') && legacyCompleted.length > 0) {
-        currentCourseId = 'inspector1';
-        window.currentCourseId = currentCourseId;
-    }
+    currentCourseId = getActiveCourseFromUrlOrStorage();
+    window.currentCourseId = currentCourseId;
+    try {
+        localStorage.setItem('dian2676_active_course', currentCourseId);
+    } catch (e) {}
 
     APP_DATA = (window.COURSES_DATA && window.COURSES_DATA[currentCourseId]) || (window.COURSES_DATA ? (window.COURSES_DATA['gestor2'] || window.COURSES_DATA['inspector1']) : null);
     window.APP_DATA = APP_DATA;
 
     augmentData();
 
+    completedLessons = JSON.parse((typeof localStorage !== 'undefined' ? (localStorage.getItem('dian2676_completed_' + currentCourseId) || (currentCourseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null)) : null) || '[]');
+
     // Inicializar Quiz Engine
     window.quizInstance = new QuizEngine();
 
-    // Configurar Selector de Curso en Header
+    // Configurar Selector de Curso en Header si existe
     const courseSelector = document.getElementById('course-selector');
     if (courseSelector) {
         courseSelector.value = currentCourseId;
@@ -163,15 +186,19 @@ function initApp() {
 
     // Cargar información de cabecera
     const titleEl = document.getElementById('cargo-title');
-    if (titleEl) titleEl.textContent = APP_DATA.courseInfo.cargo;
+    if (titleEl && APP_DATA && APP_DATA.courseInfo) titleEl.textContent = APP_DATA.courseInfo.cargo;
     const depEl = document.getElementById('dependencia-info');
-    if (depEl) depEl.textContent = APP_DATA.courseInfo.dependencia;
+    if (depEl && APP_DATA && APP_DATA.courseInfo) depEl.textContent = APP_DATA.courseInfo.dependencia;
+    const opecBadgeEl = document.getElementById('cargo-opec-badge');
+    if (opecBadgeEl) {
+        opecBadgeEl.textContent = currentCourseId === 'gestor2' ? 'OPEC 236916' : 'OPEC 236670';
+    }
 
     // Renderizar Sidebar inicial
     renderSidebar();
 
     // Cargar Lección Inicial
-    if (APP_DATA.modules.length > 0 && APP_DATA.modules[0].lessons.length > 0) {
+    if (APP_DATA && APP_DATA.modules && APP_DATA.modules.length > 0 && APP_DATA.modules[0].lessons && APP_DATA.modules[0].lessons.length > 0) {
         currentLessonId = APP_DATA.modules[0].lessons[0].id;
         currentModuleId = APP_DATA.modules[0].id;
     }

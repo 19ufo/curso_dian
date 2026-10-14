@@ -3,219 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Estudio DIAN 2676 | CNSC</title>
+    <title>Portal de Preparación DIAN 2676 de 2026 | CNSC</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/extra.css">
 </head>
-<body class="light-theme">
-    <!-- Encabezado Principal -->
-    <header class="app-header">
-        <div class="header-left">
-            <button class="btn-icon mobile-menu-btn" id="mobile-sidebar-toggle" aria-label="Abrir Temario" title="Temario">
-                <span class="menu-icon">☰</span>
-                <span class="menu-text">Temas</span>
-            </button>
+<body class="light-theme portal-wrapper">
+
+    <!-- Encabezado del Portal -->
+    <header class="portal-header">
+        <div class="portal-brand">
             <span class="logo-badge">DIAN 2676</span>
-            <div class="cargo-info">
-                <div class="course-selector-wrapper">
-                    <span class="course-label">🎯 Cargo:</span>
-                    <select id="course-selector" class="course-dropdown" aria-label="Seleccionar cargo de estudio">
-                        <option value="gestor2">Gestor II (OPEC 236916 - Nivel Profesional)</option>
-                        <option value="inspector1">Inspector I (OPEC 236670 - Nivel Profesional)</option>
-                    </select>
-                </div>
-                <p id="dependencia-info">Áreas de Planeación, Gestión Pública, Control Interno y Misionales</p>
+            <div class="portal-brand-text">
+                <h1>Convocatoria DIAN 2676 - 2026</h1>
+                <p>Comisión Nacional del Servicio Civil (CNSC) & Universidad Areandina</p>
             </div>
         </div>
-
-        <div class="header-center">
-            <span class="progress-label" id="global-progress-text">0% del curso</span>
-            <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="global-progress-fill"></div>
-            </div>
-        </div>
-
         <div class="header-right">
-            <button class="btn-icon backup-header-btn" id="backup-btn" title="Guardar / Cargar Avance (Descargar o Subir archivo JSON)">
-                <span class="btn-icon-emoji">💾</span>
-                <span class="backup-header-label">Avance</span>
-            </button>
             <button class="btn-icon" id="theme-toggle-btn" title="Cambiar tema">🌙</button>
         </div>
     </header>
 
-    <!-- Barra de Pestañas de Navegación por Componente de Evaluación CNSC -->
-    <nav class="nav-tabs-bar">
-        <button class="nav-tab-btn" data-tab="tab-plan">🗓️ Plan de Estudio (1 mes)</button>
-        <button class="nav-tab-btn active" data-tab="tab-lesson" data-track="funcionales">📘 Pruebas Funcionales (60%)</button>
-        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="comportamentales">🤝 Pruebas Comportamentales (15%)</button>
-        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="integridad">⚖️ Pruebas de Integridad (10%)</button>
-        <button class="nav-tab-btn" data-tab="tab-quiz">📝 Simulador de Exámenes (PJS)</button>
-        <button class="nav-tab-btn" data-tab="tab-flashcards">⚡ Flashcards Rápidas</button>
-        <button class="nav-tab-btn" data-tab="tab-tips">💡 Tips & Estrategia PJS</button>
-    </nav>
+    <!-- Hero / Presentación Principal -->
+    <section class="portal-hero">
+        <div class="portal-hero-badge">
+            <span>🏛️ Concurso de Méritos Oficial</span>
+        </div>
+        <h1 class="portal-hero-title">
+            Plataforma Integral de Preparación para <span>Pruebas Escritas</span>
+        </h1>
+        <p class="portal-hero-subtitle">
+            Selecciona tu empleo / OPEC para ingresar a tu ambiente de estudio personalizado. Cada aula cuenta con marco conceptual exhaustivo, lecciones temáticas en profundidad, simuladores de Juicio Situacional (PJS) y evaluación de integridad adaptada al rol que te exigen.
+        </p>
 
-    <!-- Contenedor Principal (Sidebar + Viewport) -->
-    <div class="app-container">
-        <!-- Backdrop para cerrar menú en móviles al hacer clic fuera -->
-        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+        <!-- Barra de Continuar Estudio si ya tiene avance -->
+        <div id="resume-banner-container" style="display: none; max-width: 650px; margin: 0 auto 20px;">
+            <a href="#" id="resume-banner-link" class="btn-portal-enter" style="background: var(--bg-card); color: var(--text-primary); border: 2px solid var(--accent); box-shadow: var(--shadow);">
+                <span id="resume-banner-text">⏱️ Continuar tu preparación reciente →</span>
+            </a>
+        </div>
+    </section>
 
-        <!-- Barra Lateral de Módulos y Lecciones -->
-        <aside class="app-sidebar" id="app-sidebar">
-            <div class="sidebar-mobile-header">
-                <span class="sidebar-mobile-title">📚 Temario de Estudio</span>
-                <button class="btn-icon sidebar-close-btn" id="mobile-sidebar-close" aria-label="Cerrar Temario">✕</button>
+    <!-- Banner de Ponderaciones Oficiales CNSC -->
+    <section class="weights-banner">
+        <div class="weight-card">
+            <div class="weight-icon">📘</div>
+            <div class="weight-info">
+                <h4>Pruebas Funcionales</h4>
+                <p>Carácter Eliminatorio · Mínimo 70/100</p>
             </div>
-            <div class="sidebar-search">
-                <input type="text" id="search-input" placeholder="🔍 Buscar tema o norma..." autocomplete="off">
+            <span class="weight-badge">60%</span>
+        </div>
+        <div class="weight-card">
+            <div class="weight-icon">🤝</div>
+            <div class="weight-info">
+                <h4>Pruebas Comportamentales</h4>
+                <p>Carácter Clasificatorio · Según nivel jerárquico</p>
             </div>
-            <div class="modules-list" id="modules-list">
-                <!-- Se llena dinámicamente con JavaScript según el track activo -->
+            <span class="weight-badge">15%</span>
+        </div>
+        <div class="weight-card">
+            <div class="weight-icon">⚖️</div>
+            <div class="weight-info">
+                <h4>Pruebas de Integridad</h4>
+                <p>Carácter Clasificatorio · 5 Valores Código DIAN</p>
             </div>
-        </aside>
+            <span class="weight-badge">10%</span>
+        </div>
+    </section>
 
-        <!-- Área de Contenido Principal -->
-        <main class="main-viewport">
-            <!-- Pestaña 1: Vista de Lección -->
-            <section class="tab-view active" id="tab-lesson">
-                <div class="lesson-meta-bar">
-                    <span class="breadcrumb" id="lesson-breadcrumb">Módulo > Lección</span>
-                    <span class="read-time" id="lesson-readtime">⏱️ 25 min</span>
+    <!-- Sección de Selección de Cargos / Aulas de Estudio -->
+    <main class="portal-courses-section">
+        <div class="portal-section-head">
+            <h2>Selecciona tu Cargo para Iniciar el Estudio</h2>
+            <p>Todo el contenido, el simulador de exámenes y los criterios de respuesta se calibrarán específicamente para tu OPEC:</p>
+        </div>
+
+        <div class="portal-courses-grid">
+            <!-- TARJETA 1: GESTOR II (OPEC 236916) -->
+            <article class="course-portal-card" onclick="window.location.href='curso.html?cargo=gestor2'">
+                <div class="card-top-badges">
+                    <span class="card-opec-tag">OPEC 236916</span>
+                    <span class="card-level-tag">Nivel Profesional</span>
+                    <span class="card-progress-tag" id="progress-tag-gestor2">0% completado</span>
                 </div>
+                <h3>Gestor II</h3>
+                <p class="card-dependencia">🏛️ Áreas de Planeación, Gestión Pública, Control Interno y Misionales</p>
+                <p class="card-description">
+                    Enfocado en la articulación administrativa del Estado, implementación del Modelo Integrado de Planeación y Gestión (MIPG), control interno bajo esquema de líneas de defensa, rendición de cuentas e indicadores de desempeño institucional.
+                </p>
 
-                <div class="module-timeline" id="module-timeline"></div>
-
-                <div class="lesson-header-box">
-                    <h2 class="lesson-title" id="lesson-title">Cargando temática...</h2>
-                    <div class="lesson-tags">
-                        <span class="badge badge-primary" id="lesson-badge">Eje Funcional</span>
+                <div class="card-stats-row">
+                    <div class="stat-box">
+                        <strong>19</strong>
+                        <span>Temas</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>195</strong>
+                        <span>PJS / Likert</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>95</strong>
+                        <span>Flashcards</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>30 Días</strong>
+                        <span>Plan Guiado</span>
                     </div>
                 </div>
 
-                <article class="lesson-body" id="lesson-body">
-                    <!-- Contenido en profundidad renderizado dinámicamente -->
-                </article>
-
-                <div class="lesson-biblio-box" id="lesson-biblio-box">
-                    <!-- Bibliografía oficial y libros reconocidos renderizados dinámicamente -->
+                <div class="card-topics-list">
+                    <h4>Componentes Clave Evaluados:</h4>
+                    <ul>
+                        <li>Principios de Función Pública (Ley 489/1998 & C.P. Art. 209)</li>
+                        <li>MIPG Operativo, 7 Dimensiones y Políticas de Gestión (Dec. 1499/2017)</li>
+                        <li>Sistema de Control Interno (MECI / Ley 87/1993) & Líneas de Defensa</li>
+                        <li>Rendición de Cuentas, Indicadores y Medición de Desempeño</li>
+                        <li>Competencias Nivel 1 y 3 (Adaptabilidad, Orientación al Logro y Usuario)</li>
+                        <li>Código de Integridad DIAN (Compromiso, Diligencia, Honestidad, Justicia, Respeto)</li>
+                    </ul>
                 </div>
 
-                <section class="lesson-links" id="lesson-links">
-                    <!-- Enlaces oficiales externos -->
-                </section>
+                <a href="curso.html?cargo=gestor2" class="btn-portal-enter" onclick="event.stopPropagation();">
+                    🚀 Ingresar al Aula de Gestor II (OPEC 236916) →
+                </a>
+            </article>
 
-                <div class="lesson-actions-bar" id="lesson-actions-bar">
-                    <!-- Botones dinámicos generados por app.js -->
+            <!-- TARJETA 2: INSPECTOR I (OPEC 236670) -->
+            <article class="course-portal-card" onclick="window.location.href='curso.html?cargo=inspector1'">
+                <div class="card-top-badges">
+                    <span class="card-opec-tag" style="background: var(--accent-cyan);">OPEC 236670</span>
+                    <span class="card-level-tag">Nivel Profesional</span>
+                    <span class="card-progress-tag" id="progress-tag-inspector1">0% completado</span>
                 </div>
-            </section>
+                <h3>Inspector I</h3>
+                <p class="card-dependencia">💻 Dirección de Gestión de Innovación y Tecnología / Procesamiento de Datos (Nivel Central)</p>
+                <p class="card-description">
+                    Enfocado en la arquitectura tecnológica empresarial, plataformas Big Data, pipelines de integración ETL/ELT, modelos relacionales y NoSQL, gobierno de datos DAMA-DMBOK y analítica predictiva para la fiscalización y recaudo tributario y aduanero.
+                </p>
 
-            <!-- Pestaña Dedicada: Marco y Guía Oficial del Componente de Evaluación -->
-            <section class="tab-view" id="tab-track-intro">
-                <div id="track-intro-content" class="track-intro-space">
-                    <!-- Renderizado dinámicamente con diseño editorial limpio y espacioso -->
-                </div>
-            </section>
-
-            <!-- Pestaña 2: Simulador de Exámenes PJS -->
-            <section class="tab-view" id="tab-quiz">
-                <div id="quiz-container">
-                    <!-- Renderizado por QuizEngine con selector de módulo y preguntas -->
-                </div>
-            </section>
-
-            <!-- Pestaña 3: Tarjetas de Memoria Flashcards -->
-            <section class="tab-view" id="tab-flashcards">
-                <div class="flashcards-header" style="margin-bottom: 24px;">
-                    <h2>⚡ Flashcards de Repaso Rápido</h2>
-                    <p style="color: var(--text-secondary); margin-top: 6px;">Memoriza conceptos clave, artículos del Estatuto Tributario y definiciones de arquitectura. Haz clic en cada tarjeta para voltearla.</p>
-                </div>
-                <div class="flash-filter" id="flashcards-filter"></div>
-                <div class="flashcards-grid" id="flashcards-container">
-                    <!-- Renderizado por app.js -->
-                </div>
-            </section>
-
-            <!-- Pestaña: Plan de Estudio -->
-            <section class="tab-view" id="tab-plan">
-                <div id="plan-container"></div>
-            </section>
-
-            <!-- Pestaña 4: Tips y Estrategia Psicométrica PJS -->
-            <section class="tab-view" id="tab-tips">
-                <div id="tips-container">
-                    <!-- Renderizado dinámicamente desde js/tips.js -->
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Modal de Respaldo y Restauración de Avances -->
-    <div class="modal-overlay" id="backup-modal" role="dialog" aria-modal="true" aria-labelledby="backup-modal-title">
-        <div class="modal-card">
-            <div class="modal-card-header">
-                <div class="modal-title-wrap">
-                    <span class="modal-icon">💾</span>
-                    <div>
-                        <h3 id="backup-modal-title">Guardar y Cargar Avance</h3>
-                        <p class="modal-subtitle">Descarga o restaura tu progreso en un archivo JSON</p>
+                <div class="card-stats-row">
+                    <div class="stat-box">
+                        <strong style="color: var(--accent-cyan);">20</strong>
+                        <span>Temas</span>
                     </div>
-                </div>
-                <button class="btn-icon modal-close-btn" id="backup-modal-close" aria-label="Cerrar modal">✕</button>
-            </div>
-
-            <div class="modal-card-body">
-                <div class="backup-status-box">
-                    <div class="backup-status-title">📊 Tu progreso actual en este navegador:</div>
-                    <div class="backup-stats-chips" id="backup-stats-info">
-                        <!-- Generado dinámicamente -->
+                    <div class="stat-box">
+                        <strong style="color: var(--accent-cyan);">195</strong>
+                        <span>PJS / Likert</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong style="color: var(--accent-cyan);">160</strong>
+                        <span>Flashcards</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong style="color: var(--accent-cyan);">30 Días</strong>
+                        <span>Plan Guiado</span>
                     </div>
                 </div>
 
-                <div id="backup-alert" class="backup-alert" style="display: none;"></div>
+                <div class="card-topics-list">
+                    <h4>Componentes Clave Evaluados:</h4>
+                    <ul>
+                        <li>Arquitectura Big Data (Hadoop HDFS, Spark, Kafka, Data Lakes)</li>
+                        <li>Arquitectura de Datos Empresarial, TOGAF & Zachman</li>
+                        <li>Integración de Datos, Microservicios, APIs y Data Warehousing</li>
+                        <li>Capacidades Analíticas, Machine Learning y BI Estratégico</li>
+                        <li>Gobierno de Datos, Calidad y Seguridad de la Información (ISO 27001)</li>
+                        <li>Competencias Nivel 4 (Innovación, Comunicación Efectiva, Ética, Equipo)</li>
+                    </ul>
+                </div>
 
-                <div class="backup-action-card">
-                    <div class="backup-action-header">
-                        <span class="action-badge badge-download">📥 1. Descargar Avance</span>
-                        <h4>Guardar en tu computador o celular</h4>
-                    </div>
-                    <p class="backup-action-desc">
-                        Genera un archivo <code>avance_dian2676.json</code> con tus lecciones completadas, tareas del plan y resultados de simulacros para respaldar o transferir a otro dispositivo.
+                <a href="curso.html?cargo=inspector1" class="btn-portal-enter btn-inspector" onclick="event.stopPropagation();">
+                    🚀 Ingresar al Aula de Inspector I (OPEC 236670) →
+                </a>
+            </article>
+        </div>
+    </main>
+
+    <!-- Metodología de la Prueba Oficial CNSC / Areandina -->
+    <section class="portal-methodology">
+        <div class="methodology-inner">
+            <h3>Metodología Pedagógica Basada en la Guía de Orientación al Aspirante</h3>
+            <div class="method-grid">
+                <div class="method-card">
+                    <h4>🎯 1. Pruebas de Juicio Situacional (PJS)</h4>
+                    <p>
+                        La Universidad Areandina evalúa mediante casos hipotéticos del contexto real de la DIAN. Cada caso plantea 3 alternativas de respuesta donde se califica la <strong>conducta más efectiva y ajustada al nivel del empleo</strong>, premiando la proactividad legal sobre la pasividad o la extralimitación.
                     </p>
-                    <button class="btn btn-primary btn-block" id="btn-export-backup">
-                        📥 Descargar Archivo de Avance (.json)
-                    </button>
                 </div>
-
-                <div class="backup-action-card">
-                    <div class="backup-action-header">
-                        <span class="action-badge badge-upload">📤 2. Cargar Avance</span>
-                        <h4>Restaurar desde un archivo previo</h4>
-                    </div>
-                    <p class="backup-action-desc">
-                        Selecciona un archivo <code>.json</code> que hayas descargado antes para recuperar exactamente tu avance en este navegador.
+                <div class="method-card">
+                    <h4>⚖️ 2. Pruebas de Integridad (Escala Likert)</h4>
+                    <p>
+                        Se califican sobre los 5 valores del Código de Integridad DIAN (CG-TAH-0002 v3). La prueba mide coherencia conductual y rechazo categórico a prácticas corruptas, tráfico de influencias, omisión de reservas tributarias o conflicto de interés no declarado.
                     </p>
-                    <input type="file" id="backup-file-input" accept=".json,application/json" style="display: none;">
-                    <button class="btn btn-secondary btn-block" id="btn-trigger-import">
-                        📤 Seleccionar Archivo para Cargar (.json)
-                    </button>
                 </div>
-            </div>
-
-            <div class="modal-card-footer">
-                <span class="backup-footer-tip">💡 <em>Tus datos son 100% privados; se procesan de forma local en tu navegador sin subirse a ningún servidor externo.</em></span>
+                <div class="method-card">
+                    <h4>💾 3. Privacidad y Guardado 100% Local</h4>
+                    <p>
+                        Tu avance se guarda de manera segura en tu navegador sin enviar datos a servidores externos. Además, cuentas con un motor de respaldo que te permite descargar tu progreso en un archivo liviano <code>.json</code> para llevar tu avance a cualquier computador o dispositivo.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Scripts de la Aplicación -->
-    <script src="js/data.js"></script>
-    <script src="js/data_extra.js"></script>
-    <script src="js/data_gestor2.js"></script>
-    <script src="js/track_intros.js"></script>
-    <script src="js/plan.js"></script>
-    <script src="js/tips.js"></script>
-    <script src="js/quiz.js"></script>
-    <script src="js/backup.js"></script>
-    <script src="js/app.js"></script>
+    <!-- Pie de Página -->
+    <footer class="portal-footer">
+        <p>Convocatoria DIAN 2676 de 2026 — Plataforma Integral de Autoformación y Preparación para el Empleo Público en Colombia.</p>
+    </footer>
+
+    <script>
+        // Inicialización del Portal (Tema, Avance por Cargo y Reanudar)
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Tema Oscuro / Claro
+            const themeBtn = document.getElementById('theme-toggle-btn');
+            const savedTheme = localStorage.getItem('dian2676_theme') || 'light-theme';
+            document.body.className = `${savedTheme} portal-wrapper`;
+            if (themeBtn) {
+                themeBtn.textContent = savedTheme === 'dark-theme' ? '☀️' : '🌙';
+                themeBtn.addEventListener('click', () => {
+                    const isDark = document.body.classList.contains('dark-theme');
+                    const nextTheme = isDark ? 'light-theme' : 'dark-theme';
+                    document.body.className = `${nextTheme} portal-wrapper`;
+                    localStorage.setItem('dian2676_theme', nextTheme);
+                    themeBtn.textContent = nextTheme === 'dark-theme' ? '☀️' : '🌙';
+                });
+            }
+
+            // 2. Calcular y reflejar progreso real por cargo
+            function getCourseProgress(courseId, totalLessons) {
+                try {
+                    let completed = JSON.parse(localStorage.getItem('dian2676_completed_' + courseId) || '[]');
+                    if (courseId === 'inspector1' && completed.length === 0) {
+                        completed = JSON.parse(localStorage.getItem('dian2676_completed') || '[]');
+                    }
+                    const pct = Math.min(100, Math.round((completed.length / totalLessons) * 100));
+                    return { completedCount: completed.length, percentage: pct };
+                } catch (e) {
+                    return { completedCount: 0, percentage: 0 };
+                }
+            }
+
+            const gestorProg = getCourseProgress('gestor2', 38);
+            const tagGestor = document.getElementById('progress-tag-gestor2');
+            if (tagGestor && gestorProg.percentage > 0) {
+                tagGestor.textContent = `${gestorProg.percentage}% completado`;
+                tagGestor.style.background = 'rgba(16, 185, 129, 0.2)';
+                tagGestor.style.color = 'var(--accent)';
+            }
+
+            const inspProg = getCourseProgress('inspector1', 40);
+            const tagInsp = document.getElementById('progress-tag-inspector1');
+            if (tagInsp && inspProg.percentage > 0) {
+                tagInsp.textContent = `${inspProg.percentage}% completado`;
+                tagInsp.style.background = 'rgba(2, 132, 199, 0.2)';
+                tagInsp.style.color = 'var(--accent-cyan)';
+            }
+
+            // 3. Banner para reanudar el último curso activo
+            const lastActive = localStorage.getItem('dian2676_active_course');
+            const resumeContainer = document.getElementById('resume-banner-container');
+            const resumeLink = document.getElementById('resume-banner-link');
+            const resumeText = document.getElementById('resume-banner-text');
+
+            if (lastActive && resumeContainer && resumeLink && resumeText) {
+                const isGestor = lastActive === 'gestor2';
+                const prog = isGestor ? gestorProg.percentage : inspProg.percentage;
+                resumeContainer.style.display = 'block';
+                resumeLink.href = `curso.html?cargo=${lastActive}`;
+                resumeText.textContent = `⏱️ Continuar tu preparación en ${isGestor ? 'Gestor II (OPEC 236916)' : 'Inspector I (OPEC 236670)'} (${prog}% completado) →`;
+            }
+        });
+    </script>
 </body>
 </html>

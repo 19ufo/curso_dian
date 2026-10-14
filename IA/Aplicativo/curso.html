@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de Estudio DIAN 2676 | CNSC</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/extra.css">
+</head>
+<body class="light-theme">
+    <!-- Encabezado Principal del Aula de Estudio -->
+    <header class="app-header">
+        <div class="header-left">
+            <a href="index.html" class="btn-back-portal" title="Regresar al Portal Principal de Cargos">
+                <span class="back-icon">←</span>
+                <span class="back-text">Inicio / Cambiar Cargo</span>
+            </a>
+            <button class="btn-icon mobile-menu-btn" id="mobile-sidebar-toggle" aria-label="Abrir Temario" title="Temario">
+                <span class="menu-icon">☰</span>
+                <span class="menu-text">Temas</span>
+            </button>
+            <div class="cargo-info">
+                <div class="current-cargo-header-wrap">
+                    <span class="cargo-opec-pill" id="cargo-opec-badge">OPEC</span>
+                    <h1 class="cargo-title-active" id="cargo-title">Cargando Empleo...</h1>
+                </div>
+                <p id="dependencia-info">Cargando dependencia institucional...</p>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <span class="progress-label" id="global-progress-text">0% del curso</span>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="global-progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <button class="btn-icon backup-header-btn" id="backup-btn" title="Guardar / Cargar Avance (Descargar o Subir archivo JSON)">
+                <span class="btn-icon-emoji">💾</span>
+                <span class="backup-header-label">Avance</span>
+            </button>
+            <button class="btn-icon" id="theme-toggle-btn" title="Cambiar tema">🌙</button>
+        </div>
+    </header>
+
+    <!-- Barra de Pestañas de Navegación por Componente de Evaluación CNSC -->
+    <nav class="nav-tabs-bar">
+        <button class="nav-tab-btn" data-tab="tab-plan">🗓️ Plan de Estudio (1 mes)</button>
+        <button class="nav-tab-btn active" data-tab="tab-lesson" data-track="funcionales">📘 Pruebas Funcionales (60%)</button>
+        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="comportamentales">🤝 Pruebas Comportamentales (15%)</button>
+        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="integridad">⚖️ Pruebas de Integridad (10%)</button>
+        <button class="nav-tab-btn" data-tab="tab-quiz">📝 Simulador de Exámenes (PJS)</button>
+        <button class="nav-tab-btn" data-tab="tab-flashcards">⚡ Flashcards Rápidas</button>
+        <button class="nav-tab-btn" data-tab="tab-tips">💡 Tips & Estrategia PJS</button>
+    </nav>
+
+    <!-- Contenedor Principal (Sidebar + Viewport) -->
+    <div class="app-container">
+        <!-- Backdrop para cerrar menú en móviles al hacer clic fuera -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+        <!-- Barra Lateral de Módulos y Temas -->
+        <aside class="sidebar-nav" id="sidebar-nav">
+            <!-- Cabecera del sidebar (solo visible en pantallas táctiles / móviles) -->
+            <div class="sidebar-mobile-header">
+                <span class="sm-title">📑 Temario del Curso</span>
+                <button class="btn-icon sm-close-btn" id="mobile-sidebar-close" aria-label="Cerrar Temario">✕</button>
+            </div>
+
+            <div class="sidebar-search">
+                <input type="text" id="search-input" placeholder="🔍 Buscar tema o norma..." autocomplete="off">
+            </div>
+            <div class="modules-list" id="modules-list">
+                <!-- Se inyecta dinámicamente con app.js -->
+            </div>
+        </aside>
+
+        <!-- Área de Contenido Principal -->
+        <main class="main-viewport">
+            <!-- Pestaña 1: Vista de Lección -->
+            <section class="tab-view active" id="tab-lesson">
+                <div class="lesson-meta-bar">
+                    <span class="breadcrumb" id="lesson-breadcrumb">Módulo > Lección</span>
+                    <span class="read-time" id="lesson-readtime">⏱️ 25 min</span>
+                </div>
+
+                <div class="module-timeline" id="module-timeline"></div>
+
+                <div class="lesson-header-box">
+                    <h2 class="lesson-title" id="lesson-title">Cargando temática...</h2>
+                    <div class="lesson-tags">
+                        <span class="badge badge-primary" id="lesson-badge">Eje Funcional</span>
+                    </div>
+                </div>
+
+                <article class="lesson-body" id="lesson-body">
+                    <!-- Contenido en profundidad renderizado dinámicamente -->
+                </article>
+
+                <div class="lesson-biblio-box" id="lesson-biblio-box">
+                    <!-- Bibliografía oficial y libros reconocidos renderizados dinámicamente -->
+                </div>
+
+                <section class="lesson-links" id="lesson-links">
+                    <!-- Enlaces oficiales externos -->
+                </section>
+
+                <div class="lesson-actions-bar" id="lesson-actions-bar">
+                    <!-- Botones dinámicos generados por app.js -->
+                </div>
+            </section>
+
+            <!-- Pestaña Dedicada: Marco y Guía Oficial del Componente de Evaluación -->
+            <section class="tab-view" id="tab-track-intro">
+                <div id="track-intro-content" class="track-intro-space">
+                    <!-- Renderizado dinámicamente con diseño editorial limpio y espacioso -->
+                </div>
+            </section>
+
+            <!-- Pestaña 2: Simulador de Exámenes (PJS) -->
+            <section class="tab-view" id="tab-quiz">
+                <div class="quiz-container" id="quiz-container">
+                    <!-- Renderizado dinámicamente por quiz.js -->
+                </div>
+            </section>
+
+            <!-- Pestaña 3: Flashcards de Repaso -->
+            <section class="tab-view" id="tab-flashcards">
+                <div class="flashcards-container">
+                    <div class="flashcards-header">
+                        <h2>⚡ Flashcards de Repaso Activo</h2>
+                        <p>Memorización espaciada de normatividad, plazos, definiciones y principios del cargo.</p>
+                        <div class="flashcards-filter" id="flashcards-filter">
+                            <!-- Filtros por módulo renderizados por JS -->
+                        </div>
+                    </div>
+                    <div class="flashcard-deck" id="flashcard-deck">
+                        <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
+                            <div class="flashcard-front">
+                                <span class="flashcard-tag" id="flashcard-tag">Tema</span>
+                                <div class="flashcard-content" id="flashcard-question">Haz clic en "Siguiente" para comenzar</div>
+                                <span class="flashcard-hint">Toca la tarjeta para voltear ↻</span>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="flashcard-tag">Respuesta Oficial</span>
+                                <div class="flashcard-content" id="flashcard-answer">...</div>
+                            </div>
+                        </div>
+                        <div class="flashcard-controls">
+                            <button class="btn btn-secondary" onclick="prevFlashcard()">← Anterior</button>
+                            <span class="flashcard-counter" id="flashcard-counter">0 / 0</span>
+                            <button class="btn btn-primary" onclick="nextFlashcard()">Siguiente →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pestaña 4: Tips y Estrategia de Prueba -->
+            <section class="tab-view" id="tab-tips">
+                <div class="tips-container" id="tips-container">
+                    <!-- Renderizado dinámicamente por tips.js -->
+                </div>
+            </section>
+
+            <!-- Pestaña 5: Plan de Estudio Guiado (1 Mes) -->
+            <section class="tab-view" id="tab-plan">
+                <div class="plan-container" id="plan-container">
+                    <!-- Renderizado dinámicamente por plan.js -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de Guardar / Cargar Avance (Backup Local) -->
+    <div class="modal-backdrop" id="backup-modal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-card-header">
+                <div class="modal-card-title-group">
+                    <span class="modal-card-icon">💾</span>
+                    <h3>Guardar / Cargar tu Avance</h3>
+                </div>
+                <button class="btn-icon modal-close-btn" id="backup-modal-close" aria-label="Cerrar modal">✕</button>
+            </div>
+
+            <div class="modal-card-body">
+                <p class="backup-intro-text">
+                    Tu avance se guarda automáticamente en este navegador. Para asegurarte de nunca perderlo o continuar estudiando desde otro computador o celular, puedes <strong>descargar tu archivo de respaldo</strong> o <strong>cargar uno previo</strong>.
+                </p>
+
+                <!-- Tarjeta: Exportar -->
+                <div class="backup-action-card">
+                    <div class="backup-action-info">
+                        <span class="backup-action-icon">📥</span>
+                        <div>
+                            <h4>Descargar Copia de Seguridad</h4>
+                            <p>Descarga un archivo liviano <code>.json</code> con todas tus lecciones completadas, respuestas y estadísticas.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="btn-export-backup">
+                        ⬇️ Descargar mi Avance (.json)
+                    </button>
+                </div>
+
+                <!-- Tarjeta: Importar -->
+                <div class="backup-action-card">
+                    <div class="backup-action-info">
+                        <span class="backup-action-icon">📤</span>
+                        <div>
+                            <h4>Restaurar Copia de Seguridad</h4>
+                            <p>Carga un archivo <code>.json</code> previamente guardado para restaurar tu progreso en este dispositivo.</p>
+                        </div>
+                    </div>
+                    <p class="backup-note">
+                        Selecciona un archivo <code>.json</code> que hayas descargado antes para recuperar exactamente tu avance en este navegador.
+                    </p>
+                    <input type="file" id="backup-file-input" accept=".json,application/json" style="display: none;">
+                    <button class="btn btn-secondary btn-block" id="btn-trigger-import">
+                        📤 Seleccionar Archivo para Cargar (.json)
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-card-footer">
+                <span class="backup-footer-tip">💡 <em>Tus datos son 100% privados; se procesan de forma local en tu navegador sin subirse a ningún servidor externo.</em></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="js/data.js"></script>
+    <script src="js/data_extra.js"></script>
+    <script src="js/data_gestor2.js"></script>
+    <script src="js/track_intros.js"></script>
+    <script src="js/plan.js"></script>
+    <script src="js/tips.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/backup.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

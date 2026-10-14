@@ -1,6 +1,7 @@
 // Base de datos integral de preparación DIAN 2676 (Inspector I - Datos)
 // Cobertura profunda: Teoría universal, estándares de arquitectura, perspectiva DIAN y 200 preguntas
-const APP_DATA = {
+window.COURSES_DATA = window.COURSES_DATA || {};
+window.COURSES_DATA['inspector1'] = {
     "courseInfo": {
         "title": "Preparación Concurso DIAN 2676 (20 Indicadores Oficiales)",
         "cargo": "Inspector I (OPEC 236670 - Nivel Profesional)",
@@ -7690,7 +7691,4 @@ const APP_DATA = {
         }
     ]
 };
-
-window.COURSES_DATA = window.COURSES_DATA || {};
-window.COURSES_DATA['inspector1'] = APP_DATA;
 
