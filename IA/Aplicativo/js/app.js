@@ -3,10 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initApp();
 });
 
-let currentLessonId = 'les-1';
-let currentModuleId = 'mod-1';
+let currentCourseId = localStorage.getItem('dian2676_active_course') || 'gestor2';
+window.currentCourseId = currentCourseId;
+
+let APP_DATA = (window.COURSES_DATA && window.COURSES_DATA[currentCourseId]) || (window.COURSES_DATA ? (window.COURSES_DATA['gestor2'] || window.COURSES_DATA['inspector1']) : null);
+window.APP_DATA = APP_DATA;
+
+let currentLessonId = (APP_DATA && APP_DATA.modules && APP_DATA.modules[0] && APP_DATA.modules[0].lessons && APP_DATA.modules[0].lessons[0]) ? APP_DATA.modules[0].lessons[0].id : 'les-1';
+let currentModuleId = (APP_DATA && APP_DATA.modules && APP_DATA.modules[0]) ? APP_DATA.modules[0].id : 'mod-1';
 let currentTrack = 'funcionales'; // 'funcionales' | 'comportamentales' | 'integridad'
-let completedLessons = JSON.parse(localStorage.getItem('dian2676_completed') || '[]');
+let completedLessons = JSON.parse(localStorage.getItem('dian2676_completed_' + currentCourseId) || (currentCourseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null) || '[]');
 
 const EXAM_MIN = 15;   // minutos estimados por examen de módulo (10 preguntas)
 const FLASH_MIN = 5;   // minutos estimados de repaso con flashcards por módulo
@@ -15,42 +21,55 @@ function countWordsHtml(html) {
     return (html.replace(/<[^>]+>/g, ' ').match(/[\p{L}\p{N}]+/gu) || []).length;
 }
 
-// Fusiona las lecciones ampliadas (js/data_extra.js) con APP_DATA
-// y asegura que los minutos del módulo sean exactamente la suma de sus lecciones.
+// Fusiona lecciones y calcula tiempos exactos según el curso activo
 function augmentData() {
-    if (APP_DATA._augmented) return;
+    if (!APP_DATA || APP_DATA._augmented) return;
     APP_DATA._augmented = true;
-    const extra = window.EXTRA_LESSONS || {};
-    APP_DATA.modules.forEach(m => {
-        const n = parseInt(m.id.split('-')[1], 10);
-        // Quitar numeración del título del módulo (ej. '16. COMPROMISO' -> 'COMPROMISO')
-        m.title = m.title.replace(/^\d+\.\s*/, '').trim();
 
-        const first = m.lessons[0];
-        first.title = 'Fundamentos y marco del tema';
-        first.minutes = Math.max(10, Math.round(countWordsHtml(first.content) / 160));
+    if (currentCourseId === 'inspector1') {
+        const extra = window.EXTRA_LESSONS || {};
+        APP_DATA.modules.forEach(m => {
+            const n = parseInt(m.id.split('-')[1], 10);
+            m.title = m.title.replace(/^\d+\.\s*/, '').trim();
 
-        (extra[n] || []).forEach((l, i) => {
-            const cleanTitle = l.title.replace(/^\d+(\.\d+)?\s*/, '').trim();
-            m.lessons.push({
-                id: l.id,
-                title: cleanTitle,
-                badge: first.badge,
-                content: l.html,
-                links: [],
-                minutes: l.minutes || Math.max(8, Math.round(countWordsHtml(l.html) / 160))
+            const first = m.lessons[0];
+            first.title = 'Fundamentos y marco del tema';
+            first.minutes = Math.max(10, Math.round(countWordsHtml(first.content) / 160));
+
+            (extra[n] || []).forEach((l, i) => {
+                const cleanTitle = l.title.replace(/^\d+(\.\d+)?\s*/, '').trim();
+                m.lessons.push({
+                    id: l.id,
+                    title: cleanTitle,
+                    badge: first.badge,
+                    content: l.html,
+                    links: [],
+                    minutes: l.minutes || Math.max(8, Math.round(countWordsHtml(l.html) / 160))
+                });
             });
-        });
 
-        m.lessons.forEach(l => {
-            l.readTime = `${l.minutes} min`;
-        });
+            m.lessons.forEach(l => {
+                l.readTime = `${l.minutes} min`;
+            });
 
-        // Minutos del módulo: EXACTA suma de sus lecciones (sin discrepancias)
-        m.lessonMinutes = m.lessons.reduce((a, l) => a + l.minutes, 0);
-        m.studyMinutes = m.lessonMinutes;
-    });
-    (window.EXTRA_FLASHCARDS || []).forEach(f => APP_DATA.flashcards.push(f));
+            m.lessonMinutes = m.lessons.reduce((a, l) => a + l.minutes, 0);
+            m.studyMinutes = m.lessonMinutes;
+        });
+        (window.EXTRA_FLASHCARDS || []).forEach(f => APP_DATA.flashcards.push(f));
+    } else {
+        // Gestor II u otros cursos oficiales estructurados
+        APP_DATA.modules.forEach(m => {
+            m.title = m.title.replace(/^\d+\.\s*/, '').trim();
+            m.lessons.forEach(l => {
+                if (!l.minutes) {
+                    l.minutes = Math.max(12, Math.round(countWordsHtml(l.content || '') / 150));
+                }
+                l.readTime = `${l.minutes} min`;
+            });
+            m.lessonMinutes = m.lessons.reduce((a, l) => a + l.minutes, 0);
+            m.studyMinutes = m.lessonMinutes;
+        });
+    }
 }
 
 function fmtMin(min) {
@@ -58,22 +77,104 @@ function fmtMin(min) {
     return h ? `${h} h ${r ? r + ' min' : ''}`.trim() : `${r} min`;
 }
 
-function getModule(n) { return APP_DATA.modules.find(m => m.id === `mod-${n}`); }
+function getModule(n) {
+    if (!APP_DATA || !APP_DATA.modules) return null;
+    return APP_DATA.modules.find(m => m.id === `mod-${n}`);
+}
+
+function switchCourse(courseId) {
+    if (!window.COURSES_DATA || !window.COURSES_DATA[courseId]) return;
+    currentCourseId = courseId;
+    window.currentCourseId = courseId;
+    localStorage.setItem('dian2676_active_course', courseId);
+
+    const selector = document.getElementById('course-selector');
+    if (selector && selector.value !== courseId) {
+        selector.value = courseId;
+    }
+
+    APP_DATA = window.COURSES_DATA[courseId];
+    window.APP_DATA = APP_DATA;
+
+    augmentData();
+
+    completedLessons = JSON.parse(localStorage.getItem('dian2676_completed_' + courseId) || (courseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null) || '[]');
+
+    const depEl = document.getElementById('dependencia-info');
+    if (depEl) depEl.textContent = APP_DATA.courseInfo.dependencia;
+    const titleEl = document.getElementById('cargo-title');
+    if (titleEl) titleEl.textContent = APP_DATA.courseInfo.cargo;
+
+    currentTrack = 'funcionales';
+    if (APP_DATA.modules.length > 0 && APP_DATA.modules[0].lessons.length > 0) {
+        currentLessonId = APP_DATA.modules[0].lessons[0].id;
+        currentModuleId = APP_DATA.modules[0].id;
+    }
+
+    // Resetear filtro de flashcards para que recargue los temas del nuevo curso
+    const filterBox = document.getElementById('flashcards-filter');
+    if (filterBox) {
+        delete filterBox.dataset.ready;
+        filterBox.innerHTML = '';
+    }
+    flashFilter = 'all';
+
+    // Reinicializar Quiz Engine para el nuevo curso
+    if (window.quizInstance) {
+        window.quizInstance.resetForCurrentCourse();
+    }
+
+    // Actualizar pestañas superiores de tracks
+    updateActiveTopTab(currentTrack);
+
+    // Re-renderizar componentes
+    renderSidebar();
+    loadLesson(currentLessonId);
+    renderFlashcards();
+    updateGlobalProgress();
+    renderPlan();
+    renderTips();
+}
 
 function initApp() {
+    // Si no hay curso explícito en localStorage pero el usuario ya tenía progreso en Inspector I, respetarlo
+    const legacyCompleted = JSON.parse(localStorage.getItem('dian2676_completed') || '[]');
+    if (!localStorage.getItem('dian2676_active_course') && legacyCompleted.length > 0) {
+        currentCourseId = 'inspector1';
+        window.currentCourseId = currentCourseId;
+    }
+
+    APP_DATA = (window.COURSES_DATA && window.COURSES_DATA[currentCourseId]) || (window.COURSES_DATA ? (window.COURSES_DATA['gestor2'] || window.COURSES_DATA['inspector1']) : null);
+    window.APP_DATA = APP_DATA;
+
     augmentData();
 
     // Inicializar Quiz Engine
     window.quizInstance = new QuizEngine();
 
+    // Configurar Selector de Curso en Header
+    const courseSelector = document.getElementById('course-selector');
+    if (courseSelector) {
+        courseSelector.value = currentCourseId;
+        courseSelector.addEventListener('change', (e) => {
+            switchCourse(e.target.value);
+        });
+    }
+
     // Cargar información de cabecera
-    document.getElementById('cargo-title').textContent = APP_DATA.courseInfo.cargo;
-    document.getElementById('dependencia-info').textContent = APP_DATA.courseInfo.dependencia;
+    const titleEl = document.getElementById('cargo-title');
+    if (titleEl) titleEl.textContent = APP_DATA.courseInfo.cargo;
+    const depEl = document.getElementById('dependencia-info');
+    if (depEl) depEl.textContent = APP_DATA.courseInfo.dependencia;
 
     // Renderizar Sidebar inicial
     renderSidebar();
 
-    // Cargar Lección Inicial directamente limpia
+    // Cargar Lección Inicial
+    if (APP_DATA.modules.length > 0 && APP_DATA.modules[0].lessons.length > 0) {
+        currentLessonId = APP_DATA.modules[0].lessons[0].id;
+        currentModuleId = APP_DATA.modules[0].id;
+    }
     loadLesson(currentLessonId);
 
     // Inicializar Flashcards
@@ -471,7 +572,11 @@ function toggleCurrentLessonComplete() {
     } else {
         completedLessons.push(currentLessonId);
     }
-    localStorage.setItem('dian2676_completed', JSON.stringify(completedLessons));
+    const storageKey = 'dian2676_completed_' + currentCourseId;
+    localStorage.setItem(storageKey, JSON.stringify(completedLessons));
+    if (currentCourseId === 'inspector1') {
+        localStorage.setItem('dian2676_completed', JSON.stringify(completedLessons));
+    }
     updateLessonDoneButton();
     renderSidebar();
     updateGlobalProgress();
@@ -607,10 +712,11 @@ function renderFlashcards() {
     const container = document.getElementById('flashcards-container');
     if (!container) return;
 
-    // Filtro por módulo
+    // Filtro por módulo dinámico por curso
     const filterBox = document.getElementById('flashcards-filter');
-    if (filterBox && !filterBox.dataset.ready) {
+    if (filterBox && (!filterBox.dataset.ready || filterBox.dataset.readyCourse !== currentCourseId)) {
         filterBox.dataset.ready = '1';
+        filterBox.dataset.readyCourse = currentCourseId;
         filterBox.innerHTML = `
             <label for="flash-select">Tema:</label>
             <select id="flash-select" onchange="flashFilter=this.value; renderFlashcards();">
@@ -647,6 +753,11 @@ function renderTips() {
     const data = window.TIPS_DATA || (typeof TIPS_DATA !== 'undefined' ? TIPS_DATA : null);
     if (!container || !data) return;
 
+    const cargoName = (APP_DATA && APP_DATA.courseInfo && APP_DATA.courseInfo.cargo) ? APP_DATA.courseInfo.cargo : 'Nivel Profesional';
+    const marcoNorm = currentCourseId === 'gestor2' 
+        ? 'Ley 489/98, Ley 87/93, Decreto 1499/17 (MIPG), Decreto 1742/2020 y Guía DAFP v4'
+        : 'Estatuto Tributario, DAMA-DMBOK, Decreto 1742/2020 e ISO 27001';
+
     let html = `
         <div class="tips-hero" style="margin-bottom: 28px; padding: 24px; background: var(--bg-surface); border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow);">
             <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
@@ -657,7 +768,7 @@ function renderTips() {
                 </div>
             </div>
             <div style="margin-top: 14px; padding: 14px 18px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent); border-radius: 6px; font-size: 0.92rem; color: var(--text-primary); line-height: 1.5;">
-                <strong>🎯 Enfoque para Inspector I (Nivel Profesional):</strong> En las pruebas de la DIAN construidas por Areandina, no se evalúa memoria de definiciones aisladas. Cada pregunta te sitúa en un caso verosímil y evalúa tu capacidad para tomar decisiones y argumentar con base en el marco legal (Estatuto Tributario, DAMA-DMBOK, Decreto 1742/2020) y los verbos propios de tu nivel profesional.
+                <strong>🎯 Enfoque Psicométrico para ${cargoName}:</strong> En las pruebas de la DIAN construidas por Areandina, no se evalúa memoria de definiciones aisladas. Cada pregunta te sitúa en un caso verosímil y evalúa tu capacidad para tomar decisiones y argumentar con base en el marco normativo específico (${marcoNorm}) y los verbos rectores propios de tu nivel profesional.
             </div>
         </div>
         <div class="tips-sections-list">

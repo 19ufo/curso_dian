@@ -7690,3 +7690,7 @@ const APP_DATA = {
         }
     ]
 };
+
+window.COURSES_DATA = window.COURSES_DATA || {};
+window.COURSES_DATA['inspector1'] = APP_DATA;
+

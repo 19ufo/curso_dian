@@ -17,8 +17,14 @@
             </button>
             <span class="logo-badge">DIAN 2676</span>
             <div class="cargo-info">
-                <h1 id="cargo-title">Inspector I (OPEC 236670)</h1>
-                <p id="dependencia-info">Dirección de Gestión de Innovación y Tecnología (Nivel Central)</p>
+                <div class="course-selector-wrapper">
+                    <span class="course-label">🎯 Cargo:</span>
+                    <select id="course-selector" class="course-dropdown" aria-label="Seleccionar cargo de estudio">
+                        <option value="gestor2">Gestor II (OPEC 236916 - Nivel Profesional)</option>
+                        <option value="inspector1">Inspector I (OPEC 236670 - Nivel Profesional)</option>
+                    </select>
+                </div>
+                <p id="dependencia-info">Áreas de Planeación, Gestión Pública, Control Interno y Misionales</p>
             </div>
         </div>
 
@@ -204,6 +210,7 @@
     <!-- Scripts de la Aplicación -->
     <script src="js/data.js"></script>
     <script src="js/data_extra.js"></script>
+    <script src="js/data_gestor2.js"></script>
     <script src="js/track_intros.js"></script>
     <script src="js/plan.js"></script>
     <script src="js/tips.js"></script>

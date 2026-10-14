@@ -1,9 +1,15 @@
 // Motor del Simulador de Examen Modular de Juicio Situacional (PJS)
 class QuizEngine {
     constructor() {
-        const firstKey = Object.keys(APP_DATA.exams)[0] || 'exam-mod-func-1';
+        this.resetForCurrentCourse();
+    }
+
+    resetForCurrentCourse() {
+        if (this.timer) clearInterval(this.timer);
+        const exams = (window.APP_DATA && window.APP_DATA.exams) ? window.APP_DATA.exams : {};
+        const firstKey = Object.keys(exams)[0] || 'exam-1';
         this.currentExamKey = firstKey;
-        this.currentExam = APP_DATA.exams[firstKey] || { title: '', questions: [] };
+        this.currentExam = exams[firstKey] || { title: '', questions: [] };
         this.questions = this.currentExam.questions || [];
         this.currentIndex = 0;
         this.userAnswers = {}; // { questionId: selectedOptionId }
@@ -14,10 +20,14 @@ class QuizEngine {
     }
 
     loadExam(examKey, mode = 'practice') {
-        if (!APP_DATA.exams[examKey]) return;
+        const exams = (window.APP_DATA && window.APP_DATA.exams) ? window.APP_DATA.exams : {};
+        if (!exams[examKey]) {
+            examKey = Object.keys(exams)[0];
+            if (!exams[examKey]) return;
+        }
         this.currentExamKey = examKey;
-        this.currentExam = APP_DATA.exams[examKey];
-        this.questions = this.currentExam.questions;
+        this.currentExam = exams[examKey];
+        this.questions = this.currentExam.questions || [];
         this.currentIndex = 0;
         this.userAnswers = {};
         this.isFinished = false;
@@ -87,7 +97,9 @@ class QuizEngine {
         this.isFinished = true;
         const results = this.calculateScore();
         try {
-            const history = JSON.parse(localStorage.getItem('dian2676_quiz_history') || '{}');
+            const courseId = window.currentCourseId || 'gestor2';
+            const storageKey = 'dian2676_quiz_history_' + courseId;
+            const history = JSON.parse(localStorage.getItem(storageKey) || (courseId === 'inspector1' ? localStorage.getItem('dian2676_quiz_history') : null) || '{}');
             history[this.currentExamKey] = {
                 score: results.score,
                 passed: results.passed,
@@ -95,7 +107,7 @@ class QuizEngine {
                 total: results.total,
                 date: new Date().toISOString()
             };
-            localStorage.setItem('dian2676_quiz_history', JSON.stringify(history));
+            localStorage.setItem(storageKey, JSON.stringify(history));
         } catch(e) {
             console.warn("No se pudo guardar el historial de examen:", e);
         }
@@ -304,3 +316,6 @@ class QuizEngine {
         `;
     }
 }
+
+window.QuizEngine = QuizEngine;
+
