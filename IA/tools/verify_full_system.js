@@ -33,7 +33,8 @@ const modulesToTest = [
     { id: 'mod-5', examId: 'exam-5', name: 'Estándares y Políticas en Gobierno de Datos', modNum: 5, units: 6 },
     { id: 'mod-6', examId: 'exam-6', name: 'Estructura Organizacional de la DIAN', modNum: 6, units: 5 },
     { id: 'mod-7', examId: 'exam-7', name: 'Gobierno y Gestión de los Servicios de Datos', modNum: 7, units: 6 },
-    { id: 'mod-8', examId: 'exam-8', name: 'Misionalidad de la DIAN', modNum: 8, units: 5 }
+    { id: 'mod-8', examId: 'exam-8', name: 'Misionalidad de la DIAN', modNum: 8, units: 5 },
+    { id: 'mod-9', examId: 'exam-9', name: 'Modelado y Repositorios de Datos', modNum: 9, units: 6 }
 ];
 
 modulesToTest.forEach(({ id, examId, name, modNum, units }) => {

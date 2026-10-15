@@ -777,29 +777,92 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-9",
       "track": "funcionales",
-      "title": "MODELADO Y REPOSITORIOS DE DATOS",
+      "title": "09. Modelado y Repositorios de Datos",
       "badge": "Funcional - Kimball Dimensional & Data Vault",
       "examId": "exam-9",
       "lessons": [
         {
-          "id": "les-9",
+          "id": "les-9-1",
           "moduleId": "mod-9",
-          "title": "MODELADO Y REPOSITORIOS DE DATOS",
-          "badge": "Funcional - Kimball Dimensional & Data Vault",
-          "readTime": "30 min",
-          "content": "<h2>Guía Maestra de Estudio: Modelado y Repositorios de Datos</h2>\n<p class=\"lead\">Esta guía profundiza en la teoría relacional (Formas Normales), modelado dimensional de Ralph Kimball para analítica, el patrón Data Vault 2.0 y el diseño de esquemas orientados a auditoría fiscal.</p>\n\n<h3>Módulo 1: Normalización Relacional para Sistemas OLTP</h3>\n<p>En bases de datos transaccionales (OLTP), el objetivo principal es eliminar la redundancia y asegurar la integridad referencial ante operaciones concurrentes de escritura:</p>\n<ul>\n    <li><strong>Primera Forma Normal (1NF):</strong> Todos los atributos contienen valores atómicos (indivisibles); no se permiten listas ni grupos repetitivos.</li>\n    <li><strong>Segunda Forma Normal (2NF):</strong> Cumple 1NF y todos los atributos no clave tienen dependencia funcional completa respecto a la clave primaria (elimina dependencias parciales en claves compuestas).</li>\n    <li><strong>Tercera Forma Normal (3NF):</strong> Cumple 2NF y ningún atributo no clave depende transitivamente de la clave primaria (elimina dependencias transitivas: si $A \\to B$ y $B \\to C$, entonces $C$ debe moverse a otra tabla).</li>\n</ul>\n\n<h3>Módulo 2: Modelado Dimensional de Ralph Kimball (OLAP)</h3>\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>1. La Regla de Oro del Grano Atómico</h4>\n        <p>El paso inicial y más crítico del diseño dimensional es <strong>declarar el grano</strong>. Debe elegirse el nivel más atómico disponible en el negocio (ej. cada ítem o línea individual de una factura electrónica, no el encabezado consolidado).</p>\n        <p><em>Justificación:</em> El grano atómico permite drill-down infinito y agregaciones en cualquier dimensión futura sin pérdida de información.</p>\n    </div>\n    <div class=\"arch-card\">\n        <h4>2. Tablas de Hechos (Fact Tables)</h4>\n        <ul>\n            <li><strong>Hechos Transaccionales:</strong> Un registro por evento ocurrido (ej. emisión de una factura).</li>\n            <li><strong>Snapshots Periódicos:</strong> Una fila por intervalo temporal fijo (ej. saldo de cuenta de un contribuyente al final de cada mes).</li>\n            <li><strong>Snapshots Acumulados:</strong> Una fila por todo el ciclo de vida de un proceso con fechas variables (ej. expediente de cobro coactivo desde inicio hasta remate).</li>\n            <li><strong>Tablas de Hechos Sin Hechos (Factless):</strong> Registran eventos sin métricas numéricas (ej. asistencia de contribuyentes a una jornada de orientación).</li>\n        </ul>\n    </div>\n    <div class=\"arch-card\">\n        <h4>3. Tipos de Dimensiones Especiales</h4>\n        <ul>\n            <li><strong>Dimensiones Conformadas:</strong> Dimensiones idénticas compartidas a través de múltiples Data Marts (ej. la Dimensión Contribuyente o Dimensión Tiempo). Permiten cruces (Drill-Across) entre ventas y compras.</li>\n            <li><strong>Dimensiones Degeneradas:</strong> Claves transaccionales almacenadas directamente en la tabla de hechos sin una tabla de dimensión separada (ej. número de factura electrónica).</li>\n            <li><strong>Dimensiones Basura (Junk Dimensions):</strong> Tabla que agrupa códigos y banderas booleanas misceláneas para evitar proliferación de claves foráneas.</li>\n            <li><strong>Dimensiones que Juegan Roles (Role-Playing):</strong> Una única dimensión física que se une a la tabla de hechos bajo múltiples roles lógicos (ej. Dimensión Tiempo usada como <code>FechaEmision</code>, <code>FechaVencimiento</code> y <code>FechaPago</code>).</li>\n        </ul>\n    </div>\n</div>\n\n<h3>Módulo 3: Dimensiones de Cambio Lento (Slowly Changing Dimensions - SCD)</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Tipo de SCD</th>\n            <th>Comportamiento Técnico</th>\n            <th>Impacto en Auditoría</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>SCD Tipo 0</strong></td>\n            <td>El atributo nunca cambia (es fijo por definición, ej. fecha de nacimiento).</td>\n            <td>Inmutable.</td>\n        </tr>\n        <tr>\n            <td><strong>SCD Tipo 1</strong></td>\n            <td>Sobrescritura directa del valor en la fila existente.</td>\n            <td><span class=\"badge badge-danger\">PELIGRO EN AUDITORÍA:</span> Destruye el historial. Si un contribuyente cambia de régimen tributario en junio, las consultas del año pasado reflejarán el régimen nuevo.</td>\n        </tr>\n        <tr>\n            <td><strong>SCD Tipo 2</strong></td>\n            <td>Inserta una nueva fila en la dimensión con una nueva clave subrogada, manteniendo campos: <code>fecha_inicio</code>, <code>fecha_fin</code> y <code>es_actual</code>.</td>\n            <td><span class=\"badge badge-success\">ESTÁNDAR EN EXÁMENES:</span> Preserva el historial perfecto. Permite asociar transacciones históricas con la versión exacta de la dimensión vigente al momento del evento.</td>\n        </tr>\n        <tr>\n            <td><strong>SCD Tipo 3</strong></td>\n            <td>Agrega una columna adicional en la misma fila (<code>valor_actual</code> y <code>valor_previo</code>).</td>\n            <td>Solo conserva dos estados temporales inmediatos; no escala para múltiples cambios.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 4: Arquitectura Data Vault 2.0</h3>\n<p>Especialmente útil en integración masiva de fuentes heterogéneas que cambian con frecuencia:</p>\n<ul>\n    <li><strong>Hubs:</strong> Contienen únicamente la clave de negocio (Business Key, ej. NIT), un hash MD5/SHA-256 de la clave y metadatos de carga (timestamp y fuente). Son inmutables.</li>\n    <li><strong>Links:</strong> Almacenan las relaciones y transacciones entre múltiples Hubs. Representan relaciones muchos a muchos.</li>\n    <li><strong>Satellites:</strong> Tablas descriptivas asociadas a un Hub o Link. Contienen los atributos descriptivos históricos. Todo cambio en un atributo genera una nueva fila en el Satellite (Append-Only), garantizando trazabilidad forense del 100%.</li>\n</ul>\n\n<h3>Checklist Rápido de Estudio Previo al Examen</h3>\n<ul>\n    <li>[ ] Explicar por qué los sistemas analíticos usan modelos dimensionales desnormalizados en lugar de 3NF.</li>\n    <li>[ ] Definir la regla del Grano Atómico de Ralph Kimball.</li>\n    <li>[ ] Identificar los tipos de tablas de hechos (Transaccional, Snapshot Periódico, Snapshot Acumulado, Factless).</li>\n    <li>[ ] Comprender la mecánica y campos requeridos para implementar SCD Tipo 2.</li>\n    <li>[ ] Conocer la función de Hubs, Links y Satellites en Data Vault 2.0.</li>\n</ul>",
-          "links": [
-            {
-              "name": "Kimball Dimensional Modeling Techniques",
-              "url": "https://www.kimballgroup.com/"
-            },
-            {
-              "name": "Data Vault Alliance Standards",
-              "url": "https://datavaultalliance.com/"
-            }
-          ]
+          "unitNumber": 1,
+          "title": "Unidad 1: Modelado Relacional vs. Dimensional (Kimball frente a Inmon y Data Vault 2.0)",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 1163,
+          "content": "<p># Guía de Estudio e Inmersión Técnica: Modelado y Repositorios de Datos</p>\n<p><strong>Concurso de Méritos:</strong> DIAN 2676 de 2026 — Comisión Nacional del Servicio Civil (CNSC)   <strong>Operador Académico:</strong> Universidad de San Buenaventura / Areandina   <strong>Cargo Objetivo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia Asignada:</strong> Subdirección de Procesamiento de Datos (Dirección de Gestión de Innovación y Tecnología - Nivel Central)   <strong>Eje Temático Funcional:</strong> 09. Modelado y Repositorios de Datos   <strong>Ponderación en Prueba de Competencias Funcionales:</strong> 60%   <strong>Corte Normativo y Técnico Oficial:</strong> 19 de junio de 2026  </p>\n<hr>\n<hr>\n<h3>1.1 La Evolución de los Paradigmas de Modelado en la DIAN</h3>\n<p>El diseño de repositorios de datos en una administración tributaria y aduanera de escala nacional como la DIAN enfrenta un dilema arquitectónico clásico: <strong>optimizar para transacciones atómicas de escritura en tiempo real (OLTP)</strong> o <strong>optimizar para consultas analíticas complejas y agregaciones masivas sobre miles de millones de registros (OLAP)</strong>.</p>\n<p>Durante la vigencia de la plataforma transaccional monolítica (MUISCA), la DIAN operó predominantemente bajo esquemas relacionales fuertemente normalizados (Tercera Forma Normal - 3NF). Sin embargo, cuando la Subdirección de Procesamiento de Datos debió responder a las exigencias de fiscalización masiva, detección de fraudes en facturación electrónica y analítica predictiva del riesgo, los modelos puramente relacionales colapsaron bajo el peso de consultas con docenas de <code>JOIN</code> entre tablas gigantescas.</p>\n<p>Para resolver este desafío, la ingeniería de datos internacional consolidó tres grandes paradigmas de modelado analítico:</p>\n<ol><li><strong>La Escuela de Ralph Kimball (Modelado Dimensional / Bus Architecture):</strong> Enfoque ascendente (<em>Bottom-Up</em>). Los datos se organizan directamente en torno a procesos de negocio atómicos (ej. emisión de factura electrónica, pago de retención, declaración de importación) representados en **Tablas de Hechos (<em>Fact Tables</em>)<strong> rodeadas de </strong>Tablas de Dimensión (<em>Dimension Tables</em>)**, estructurando esquemas en Estrella (<em>Star Schema</em>) o Copo de Nieve (<em>Snowflake Schema</em>). Prioriza la simplicidad, la velocidad de consulta analítica y la intuición para los usuarios de negocio y auditores.</li><li><strong>La Escuela de Bill Inmon (Corporate Information Factory - CIF):</strong> Enfoque descendente (<em>Top-Down</em>). Propone construir primero un <strong>Data Warehouse Empresarial (EDW)</strong> centralizado en Tercera Forma Normal (3NF), que actúa como la única fuente de verdad atómica e integrada de la corporación. A partir de este EDW, se desprenden posteriormente <em>Data Marts</em> departamentales desnormalizados (dimensionales) para el consumo de áreas específicas (Fiscalización, Aduanas, Recaudo). Es robusto pero su implementación histórica en el sector público resultó excesivamente lenta y costosa.</li><li><strong>Data Vault 2.0 (Dan Linstedt):</strong> Paradigma híbrido de modelado ágil diseñado específicamente para Data Warehouses masivos y Lakehouses empresariales. Desacopla la identidad del negocio, las relaciones y el contexto descriptivo en tres entidades formales: <strong>Hubs</strong> (llaves de negocio e identidad única), <strong>Links</strong> (asociaciones y transacciones entre Hubs) y <strong>Satellites</strong> (atributos descriptivos con historial temporal completo y auditoría).</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>COMPARATIVA ARQUITECTÓNICA DE LOS TRES PARADIGMAS DE MODELADO\n\nENFOQUE KIMBALL (Bottom-Up)\n[Fuentes: Facturas / RUT] ---&gt; [ETL/ELT Dimensional] ---&gt; [Esquemas en Estrella (Data Marts)]\n                                                             (Consumo Directo BI y Analítica)\n\nENFOQUE INMON (Top-Down)\n[Fuentes: Facturas / RUT] ---&gt; [ETL Corporativo] ---&gt; [EDW Central en 3NF] ---&gt; [Data Marts Dep.]\n\nENFOQUE DATA VAULT 2.0 (Ágil / Híbrido)\n[Fuentes Heterogéneas] ---&gt; [Raw Data Vault (Hubs, Links, Satellites)] ---&gt; [Business Vault] ---&gt; [Vistas Kimball]</code></pre></div>\n<h3>1.2 Matriz Comparativa Multi-Criterio: Kimball, Inmon y Data Vault 2.0</h3>\n<p>La siguiente tabla sintetiza los criterios de selección para el diseño de repositorios en el ecosistema <strong>DataR</strong>:</p>\n<table class=\"data-table\"><thead><tr><th>Criterio de Selección</th><th>Ralph Kimball (Dimensional)</th><th>Bill Inmon (Relacional EDW)</th><th>Data Vault 2.0 (Hubs/Links/Sats)</th></tr></thead><tbody><tr><td><strong>Objetivo Primario</strong></td><td>Rendimiento óptimo en lectura y simplicidad para el usuario analítico.</td><td>Integridad referencial estricta y visión corporativa unificada en 3NF.</td><td>Trazabilidad histórica total, adaptabilidad ágil al cambio y carga en paralelo.</td></tr><tr><td><strong>Estructura Lógica</strong></td><td>Esquemas en Estrella (<em>Star</em>) y Copo de Nieve (<em>Snowflake</em>).</td><td>Modelos Entidad-Relación altamente normalizados (3NF).</td><td>Hubs (Llaves), Links (Relaciones) y Satélites (Atributos históricos).</td></tr><tr><td><strong>Velocidad de Consulta (OLAP)</strong></td><td><strong>Muy Alta:</strong> Menor cantidad de <code>JOIN</code>, optimizado para agregaciones <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>.</td><td><strong>Baja-Media:</strong> Requiere múltiples <code>JOIN</code> complejos y costosos entre tablas normalizadas.</td><td><strong>Media:</strong> Requiere proyectar vistas o Data Marts dimensionales para el consumo final.</td></tr><tr><td><strong>Trazabilidad y Auditoría Forense</strong></td><td>Media (a través de Dimensiones Lentamente Cambiantes - SCD).</td><td>Media (depende de campos de auditoría estándar en tablas).</td><td><strong>Máxima:</strong> Cada satélite registra <em>Hash Key</em>, <em>Load Date</em> y <em>Record Source</em> inmutables.</td></tr><tr><td><strong>Resiliencia ante Cambios en Fuentes</strong></td><td>Media: Modificar una dimensión puede exigir reprocesar hechos históricos.</td><td>Baja: Cambios de esquema en sistemas de origen exigen rediseño del EDW central.</td><td><strong>Extrema:</strong> Se agregan nuevos Satélites o Links sin alterar ni bloquear las estructuras existentes.</td></tr><tr><td><strong>Aplicación en la DIAN (DataR)</strong></td><td>Capa Oro de DataR para tableros de control y analítica de fiscalización.</td><td>Modelo de datos lógico del antiguo repositorio operacional MUISCA.</td><td>Capa Plata/Consolidación de DataR para persistencia histórica cruda inmutable.</td></tr></tbody></table>\n<h3>1.3 Anatomía de Data Vault 2.0: Hubs, Links y Satellites</h3>\n<p>En la capa de almacenamiento intermedio de DataR, Data Vault 2.0 permite integrar información de fuentes tan dispares como Facturación Electrónica (JSON/XML), MUISCA (Relacional) y SYGA (Aduanas) sin fricción:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA CANÓNICA DE UN MODELO DATA VAULT 2.0 EN LA DIAN\n\n           +---------------------------------------+\n           |       HUB_CONTRIBUYENTE (Hub)         |\n           |  * HASH_KEY_NIT (PK - SHA-256)        |\n           |  * NUMERO_NIT (Business Key)          |\n           |  * LOAD_TIMESTAMP                     |\n           |  * RECORD_SOURCE ('RUT_MUISCA')       |\n           +---------------------------------------+\n                              |\n                              +--------------------+\n                              |                    |\n                              v                    v\n+---------------------------------------+   +---------------------------------------+\n|      SAT_DATOS_RUT (Satellite)        |   |    LINK_EMISION_FACTURA (Link)        |\n|  * HASH_KEY_NIT (FK)                  |   |  * HASH_KEY_LINK (PK)                 |\n|  * LOAD_TIMESTAMP (PK)                |   |  * HASH_KEY_NIT_EMISOR (FK)           |\n|  * RAZON_SOCIAL                       |   |  * HASH_KEY_NIT_ADQUIRENTE (FK)       |\n|  * ESTADO_RUT ('ACTIVO')              |   |  * LOAD_TIMESTAMP                     |\n|  * HASH_DIFF (Control de Cambios)     |   |  * RECORD_SOURCE ('FACT_ELEC_UBL21')  |\n+---------------------------------------+   +---------------------------------------+\n                                                           |\n                                                           v\n                                            +---------------------------------------+\n                                            |       SAT_DETALLE_FACTURA (Satellite) |\n                                            |  * HASH_KEY_LINK (FK)                 |\n                                            |  * LOAD_TIMESTAMP (PK)                |\n                                            |  * NUMERO_FACTURA                     |\n                                            |  * VALOR_TOTAL_COP                    |\n                                            |  * TOTAL_IVA_COP                      |\n                                            +---------------------------------------+</code></pre></div>\n<ul><li><strong>Hubs (Centros de Negocio):</strong> Contienen únicamente la clave de negocio única (<em>Business Key</em>, ej. el NIT del contribuyente o el CUFE de la factura), un <em>Hash Key</em> criptográfico subrogado (SHA-256), la fecha de carga (<em>Load Timestamp</em>) y la fuente de origen (<em>Record Source</em>). Nunca almacenan atributos descriptivos ni datos mutables.</li><li><strong>Links (Enlaces de Relación):</strong> Representan transacciones, dependencias o asociaciones entre dos o más Hubs (ej. la relación comercial entre el Hub Emisor y el Hub Adquirente en una factura). Contienen sus propias llaves de enlace y las llaves foráneas a los Hubs vinculados.</li><li><strong>Satellites (Satélites Descriptivos):</strong> Almacenan todos los atributos descriptivos y cualitativos contextuales (razón social, actividad económica CIIU, montos, tarifas). Operan como estructuras de inserción exclusiva (<em>Append-Only</em>): ante cualquier cambio en los datos del contribuyente en el RUT, no se actualiza el registro existente, sino que se inserta una nueva fila con un nuevo <em>Load Timestamp</em>, garantizando una trazabilidad forense inmutable perfecta exigida para auditorías fiscales.</li></ul>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>Alerta de Examen CNSC / Areandina:</strong>   Si una pregunta de juicio situacional para la Subdirección de Procesamiento de Datos plantea la necesidad de construir un repositorio analítico que garantice **auditoría forense inmutable, rastreo de procedencia del dato (<em>Record Source</em>) y resistencia a cambios frecuentes en los sistemas de origen sin rediseñar el modelo<strong>, la solución arquitectónica correcta es </strong>Data Vault 2.0<strong>. Si la necesidad se centra en entregar consultas de alto rendimiento con mínimas uniones (<code>JOIN</code>) para tableros de Power BI o modelos predictivos de fiscalización, la respuesta correcta es el </strong>Modelado Dimensional de Ralph Kimball (Esquema en Estrella)**.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-9-2",
+          "moduleId": "mod-9",
+          "unitNumber": 2,
+          "title": "Unidad 2: Normalización (1FN a 3FN/BCNF) frente a Desnormalización Analítica",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 872,
+          "content": "<h3>2.1 La Teoría de la Normalización Relacional (Codd)</h3>\n<p>La <strong>Normalización</strong> es el proceso formal basado en el álgebra relacional introducido por Edgar F. Codd, cuyo objetivo es organizar las tablas y columnas de una base de datos relacional para <strong>minimizar la redundancia de datos</strong> y <strong>eliminar las anomalías de inserción, actualización y borrado</strong>.</p>\n<p>En los sistemas transaccionales de la DIAN (como la base de datos operacional de registro de pagos y declaraciones), la normalización es mandatoria para evitar que una modificación en la dirección de un contribuyente deje registros huérfanos o contradictorios.</p>\n<h4>A. Primera Forma Normal (1FN - Atomicidad)</h4>\n<p>Una tabla se encuentra en 1FN si y solo si:</p>\n<ul><li>Todos los atributos contienen <strong>valores atómicos</strong> (indivisibles en el dominio del negocio).</li><li>No existen grupos repetitivos ni atributos multivaluados (ej. no se permite almacenar una lista separada por comas de teléfonos o establecimientos de comercio en un solo campo).</li><li>Cada columna tiene un tipo de datos homogéneo y cada fila es identificable de forma única mediante una clave primaria (<em>Primary Key</em>).</li></ul>\n<h4>B. Segunda Forma Normal (2FN - Dependencia Funcional Completa)</h4>\n<p>Una tabla se encuentra en 2FN si:</p>\n<ul><li>Cumple estrictamente con la <strong>1FN</strong>.</li><li>Todos los atributos no clave tienen una <strong>dependencia funcional completa</strong> respecto a la clave primaria. Esto significa que ningún atributo no clave depende únicamente de una parte de una clave primaria compuesta.</li><li><em>Ejemplo DIAN:</em> En una tabla <code>Detalle_Factura</code> con clave primaria compuesta <code>(Numero_Factura, Numero_Item)</code>, el atributo <code>Precio_Unitario_Item</code> depende de toda la clave compuesta (2FN), pero si se incluyera el atributo <code>Nombre_Cliente_Factura</code>, este solo dependería de <code>Numero_Factura</code> (dependencia parcial), lo cual violaría la 2FN y exigiría trasladar dicho dato a la tabla de cabecera.</li></ul>\n<h4>C. Tercera Forma Normal (3FN - No Dependencia Transitiva)</h4>\n<p>Una tabla se encuentra en 3FN si:</p>\n<ul><li>Cumple con la <strong>2FN</strong>.</li><li>No contiene <strong>dependencias funcionales transitivas</strong> entre atributos no clave. Es decir, ningún atributo que no forme parte de la clave primaria puede depender funcionalmente de otro atributo no clave ($A \\to B$ y $B \\to C$, por lo que $A \\to C$).</li><li><em>Ejemplo DIAN:</em> En la tabla de contribuyentes con clave <code>NIT</code>, si se tiene <code>Codigo_Municipio</code> y <code>Nombre_Departamento</code>, existe una dependencia transitiva (<code>NIT</code> $\\to$ <code>Codigo_Municipio</code> $\\to$ <code>Nombre_Departamento</code>). Para cumplir 3FN, la información geográfica debe escindirse en una tabla independiente de municipios y departamentos.</li></ul>\n<h4>D. Forma Normal de Boyce-Codd (BCNF / FNBC)</h4>\n<p>Es una versión más estricta de la 3FN aplicable a tablas que poseen múltiples claves candidatas compuestas superpuestas. Establece que <strong>para toda dependencia funcional no trivial $X \\to Y$, el determinante $X$ debe ser una superclave</strong>.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>EL PROCESO DE NORMALIZACIÓN RELACIONAL (1FN -&gt; 3FN)\n\n[TABLA NO NORMALIZADA]\n* Campos multivaluados, listas, arrays repetitivos.\n                 |\n                 v (Eliminar grupos repetitivos y forzar valores atómicos)\n[PRIMERA FORMA NORMAL - 1FN]\n* Todos los atributos son atómicos. Existe clave primaria (PK).\n                 |\n                 v (Eliminar dependencias parciales sobre claves compuestas)\n[SEGUNDA FORMA NORMAL - 2FN]\n* Dependencia funcional completa respecto a la PK.\n                 |\n                 v (Eliminar dependencias transitivas entre atributos no clave)\n[TERCERA FORMA NORMAL - 3FN]\n* Cero redundancia en OLTP. Toda columna depende de la clave, de toda la clave\n  y de nada más que de la clave (\"So help me Codd\").</code></pre></div>\n<h3>2.2 Desnormalización Controlada en Repositorios Analíticos (OLAP)</h3>\n<p>Si bien la 3FN es ideal para transacciones OLTP, en el procesamiento analítico masivo de DataR la normalización estricta resulta contraproducente:</p>\n<ul><li>Una consulta para determinar el perfil tributario de un contribuyente requeriría unir 15 tablas normalizadas (<code>Contribuyente</code>, <code>Régimen</code>, <code>Actividad_CIIU</code>, <code>Municipio</code>, <code>Departamento</code>, <code>Factura_Cabecera</code>, <code>Factura_Detalle</code>, <code>Retenciones</code>, etc.).</li><li>En motores distribuidos como Apache Spark o Trino, cada <code>JOIN</code> entre tablas grandes distribuidas por red desencadena una costosa operación de <strong>Shuffle</strong> (redistribución de datos entre nodos a través de la red física), saturando el ancho de banda y degradando los tiempos de respuesta de minutos a horas.</li></ul>\n<p>La <strong>Desnormalización Controlada</strong> consiste en introducir deliberadamente redundancia calculada en el esquema dimensional analítico para **colapsar relaciones jerárquicas en una sola tabla ancha (<em>Wide Table</em>)**, eliminando la necesidad de <code>JOIN</code> en tiempo de consulta:</p>\n<ul><li>Se fusionan atributos geográficos (<code>Municipio</code>, <code>Departamento</code>, <code>Región</code>) directamente dentro de la tabla <code>Dim_Contribuyente</code>.</li><li>Se embeben descripciones de catálogos y códigos directamente en las tablas de hechos o dimensiones.</li><li>Se tolera el costo marginal de almacenamiento adicional (mitigado por compresión en formatos columnares como Parquet) a cambio de obtener consultas analíticas ultra-rápidas con escaneo lineal secuencial.</li></ul>\n<table class=\"data-table\"><thead><tr><th>Dimensión de Análisis</th><th>Esquema Normalizado (3NF / OLTP)</th><th>Esquema Desnormalizado (Estrella / OLAP)</th></tr></thead><tbody><tr><td><strong>Operación Primaria</strong></td><td>Escrituras rápidas, seguras y concurrentes (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</td><td>Lecturas masivas, agregaciones complejas y escaneos de rango (<code>SELECT</code>).</td></tr><tr><td><strong>Redundancia de Datos</strong></td><td>Mínima o nula (los datos se almacenan en un único lugar físico).</td><td>Controlada y tolerada en favor de la velocidad computacional.</td></tr><tr><td><strong>Complejidad de Consultas</strong></td><td>Alta (consultas SQL con múltiples <code>JOIN</code> y anidaciones complejas).</td><td>Muy Baja (consultas simples, intuitivas y directas con pocos <code>JOIN</code>).</td></tr><tr><td><strong>Uso en la DIAN</strong></td><td>Motores relacionales de MUISCA (liquidación y radicación en ventanilla).</td><td>Capas analíticas y Marts de datos en DataR para fiscalización tributaria.</td></tr></tbody></table>\n<div class=\"callout note\"><strong class=\"callout-title\">📌 Micro-verificación / Recuerda</strong><p><strong>Regla Mnemotécnica de Edgar F. Codd para 3FN:</strong>   <em>\"Cada atributo no clave debe proporcionar un dato sobre la clave (1FN), sobre toda la clave (2FN) y nada más que sobre la clave (3FN)\"</em> — <em>\"Each non-key attribute must provide a fact about the key, the whole key, and nothing but the key\"</em>.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-9-3",
+          "moduleId": "mod-9",
+          "unitNumber": 3,
+          "title": "Unidad 3: Modelado Dimensional Avanzado: Hechos, SCDs, Jerarquías y Métricas",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 950,
+          "content": "<h3>3.1 Anatomía y Tipología de Tablas de Hechos (<em>Fact Tables</em>)</h3>\n<p>Una <strong>Tabla de Hechos</strong> representa un evento cuantitativo medible que ocurre en un instante determinado en los procesos misionales de la DIAN. Se compone de dos elementos fundamentales:</p>\n<ol><li>**Claves Foráneas Subrogadas (<em>Surrogate Foreign Keys</em>):** Identificadores numéricos enteros que conectan el hecho con las tablas de dimensión asociadas (tiempo, contribuyente, aduana, concepto tributario).</li><li><strong>Medidas o Métricas Numéricas:</strong> Valores cuantitativos sobre los cuales se ejecutan operaciones matemáticas de agregación (<code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>).</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>TIPOLOGÍA DE TABLAS DE HECHOS EN EL ENTORNO DIAN\n\n1. HECHOS TRANSACCIONALES (Transaction Fact Tables)\n   * Grano: Una fila por cada evento individual en el tiempo.\n   * Ejemplo: Cada factura electrónica validada por el API de la DIAN.\n   * Naturaleza: Append-Only, volumen masivo, máxima granularidad.\n\n2. HECHOS DE INSTANTÁNEA PERIÓDICA (Periodic Snapshot Fact Tables)\n   * Grano: Una fila por cada entidad al cierre de un intervalo temporal (día/mes/año).\n   * Ejemplo: Saldo acumulado de cartera morosa de un contribuyente al último día del mes.\n   * Naturaleza: Permite evaluar tendencias históricas sin reprocesar transacciones.\n\n3. HECHOS DE INSTANTÁNEA ACUMULADA (Accumulating Snapshot Fact Tables)\n   * Grano: Una fila por cada ciclo de vida completo de un proceso administrativo.\n   * Ejemplo: Trámite aduanero de importación (llegada, inspección, pago, levante).\n   * Naturaleza: Múltiples claves de fecha actualizables a medida que avanza el trámite.\n\n4. HECHOS SIN HECHOS (Factless Fact Tables)\n   * Grano: Registra la ocurrencia o coexistencia de eventos sin métricas numéricas.\n   * Ejemplo: Registro de asistencia de funcionarios a capacitaciones de fiscalización.</code></pre></div>\n<h3>3.2 Clasificación de las Métricas según su Capacidad de Agregación</h3>\n<p>En el diseño dimensional para la fiscalización tributaria, las métricas cuantitativas se clasifican rigurosamente en tres categorías aditivas:</p>\n<ul><li>**Métricas Totalmente Aditivas (<em>Fully Additive</em>):<strong> Pueden sumarse válidamente a través de </strong>todas las dimensiones** del modelo.</li><li><em>Ejemplo:</em> El <code>Valor_Total_IVA_Facturado</code> o el <code>Monto_Retencion_Fuente</code> pueden sumarse válidamente por día, por mes, por municipio, por actividad económica o por tipo de contribuyente.</li><li>**Métricas Semi-Aditivas (<em>Semi-Additive</em>):<strong> Pueden sumarse válidamente a través de algunas dimensiones, pero </strong>NUNCA a través de la dimensión tiempo**.</li><li><em>Ejemplo:</em> El <code>Saldo_Cuenta_Corriente</code> o el <code>Monto_Deuda_Morosa_Exigible</code>. Si un contribuyente debe $10 millones al final de enero y $10 millones al final de febrero, la deuda acumulada no es la suma ($20 millones); en la dimensión tiempo debe aplicarse promedio (<code>AVG</code>) o valor al cierre (<em>Ending Balance</em>).</li><li>**Métricas No Aditivas (<em>Non-Additive</em>):** No pueden sumarse válidamente a través de ninguna dimensión bajo el operador suma; deben calcularse como ratios o proporciones.</li><li><em>Ejemplo:</em> El <code>Porcentaje_Margen_Utilidad_Neta</code>, la <code>Tarifa_Efectiva_Tributaria</code> o el <code>Indice_Riesgo_Evasion</code>. Sumar porcentajes produce aberraciones matemáticas.</li></ul>\n<h3>3.3 Dimensiones Lentamente Cambiantes (Slowly Changing Dimensions - SCD)</h3>\n<p>En la DIAN, los contribuyentes mutan sus características a lo largo del tiempo: cambian de razón social, modifican su domicilio fiscal de una Dirección Seccional a otra, actualizan su actividad económica principal CIIU o adquieren la condición de Grandes Contribuyentes. La técnica de <strong>Dimensiones Lentamente Cambiantes (SCD)</strong> define cómo el repositorio histórico gestiona estas mutaciones:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>GESTIÓN DE DIMENSIONES LENTAMENTE CAMBIANTES (SCD TIPOS 1, 2 Y 3)\n\nSCD TIPO 1: Sobrescritura Destructiva\n[Registro Inicial: NIT 900.123 - Seccional 'Medellín']\n                | (Contribuyente se traslada a Bogotá)\n                v\n[Registro Sobrescrito: NIT 900.123 - Seccional 'Bogotá']\n* Impacto: Se destruye el historial. Las declaraciones de 2023 aparecerán erróneamente en Bogotá.\n\n----------------------------------------------------------------------------------\n\nSCD TIPO 2: Versionamiento Histórico Completo con Fechas de Vigencia (GOLD STANDARD)\n[Fila 1: Key 101 | NIT 900.123 | Seccional 'Medellín' | Start: 2020-01-01 | End: 2024-05-31 | Current: FALSE]\n[Fila 2: Key 102 | NIT 900.123 | Seccional 'Bogotá'   | Start: 2024-06-01 | End: 9999-12-31 | Current: TRUE ]\n* Impacto: Preserva la verdad histórica inalterada. Las declaraciones pasadas apuntan a Key 101.\n\n----------------------------------------------------------------------------------\n\nSCD TIPO 3: Atributos Previos en Columnas Dedicadas\n[Fila: Key 101 | NIT 900.123 | Seccional_Actual 'Bogotá' | Seccional_Anterior 'Medellín']\n* Impacto: Historial limitado a una sola transición pasada.</code></pre></div>\n<ul><li><strong>SCD Tipo 1 (Sobrescritura Destructiva):</strong> El nuevo valor sobrescribe directamente el atributo anterior en la fila existente. No se preserva historia. Solo es admisible para corregir errores ortográficos (ej. corregir una letra en la razón social).</li><li><strong>SCD Tipo 2 (Versionamiento Histórico por Filas - Estándar DIAN):</strong> Cada cambio genera una <strong>nueva fila completa en la tabla de dimensión</strong>, asignando una nueva clave subrogada (<em>Surrogate Key</em>), marcando la fecha de inicio de vigencia (<code>Effective_Date</code>), la fecha de fin de vigencia (<code>Expiry_Date</code>) y una bandera booleana de vigencia actual (<code>Is_Current</code>). <strong>Es el método obligatorio en DataR para asegurar que una auditoría fiscal sobre el año 2022 evalúe al contribuyente bajo las condiciones jurídicas y geográficas exactas que tenía en 2022</strong>.</li><li><strong>SCD Tipo 3 (Columnas Históricas):</strong> Se añade una columna adicional en la misma fila para guardar el valor inmediatamente anterior (<code>Seccional_Actual</code>, <code>Seccional_Anterior</code>). Solo conserva un nivel de historia.</li><li><strong>SCD Tipo 4 (Tablas Históricas Separadas):</strong> La tabla de dimensión principal solo mantiene el registro actual (Tipo 1), y todos los cambios se expulsan hacia una tabla satélite de auditoría histórica independiente.</li><li><strong>SCD Tipo 6 (Híbrido 1 + 2 + 3):</strong> Combina versionamiento por filas (Tipo 2) con columnas que preservan el valor actual en todas las versiones pasadas (Tipo 1), permitiendo agrupar la historia completa tanto bajo la condición histórica como bajo la condición actual.</li></ul>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p><strong>Relevancia Jurídica de SCD Tipo 2 en Procesos de Fiscalización:</strong>   En virtud del principio del Debido Proceso (Art. 29 C.P.) y las facultades de determinación oficial de tributos (Art. 684 E.T.), la DIAN no puede expedir un Requerimiento Especial imputando responsabilidades tributarias a un contribuyente basándose en una jurisdicción territorial o clasificación fiscal adquirida con posterioridad al periodo gravable investigado. El modelado <strong>SCD Tipo 2</strong> es el sustento técnico que garantiza la validez probatoria de los cruces de información ante la jurisdicción contencioso-administrativa.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-9-4",
+          "moduleId": "mod-9",
+          "unitNumber": 4,
+          "title": "Unidad 4: Repositorios Especializados: RDBMS, Data Warehouses, Data Lakes y Lakehouses",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 708,
+          "content": "<h3>4.1 La Evolución Tecnológica de los Repositorios de Datos</h3>\n<p>A lo largo de las últimas décadas, la infraestructura de almacenamiento de la DIAN ha transitado por cuatro generaciones tecnológicas de repositorios:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>EVOLUCIÓN DE REPOSITORIOS DE DATOS EN LA GESTIÓN PÚBLICA\n\n1. RDBMS TRADICIONAL (Años 90 - 2000)\n   * Tecnología: Oracle, SQL Server, PostgreSQL relacional.\n   * Almacenamiento: Fila por fila (Row-Oriented), discos locales SAN/NAS.\n   * Uso: Sistemas transaccionales OLTP (MUISCA).\n\n2. DATA WAREHOUSE EMPRESARIAL (Años 2000 - 2010)\n   * Tecnología: Teradata, Oracle Exadata, Netezza, Snowflake/BigQuery (Cloud).\n   * Almacenamiento: Procesamiento Masivamente Paralelo (MPP), almacenamiento columnar.\n   * Uso: Inteligencia de negocios estructurada y reportería fiscal agregada.\n\n3. DATA LAKE (Años 2010 - 2020)\n   * Tecnología: Apache Hadoop, HDFS, Cloud Object Storage (ADLS, S3, GCS).\n   * Almacenamiento: Archivos en bruto estructurados, semiestructurados y no estructurados.\n   * Problema: \"Pantanos de Datos\" (Data Swamps) por falta de gobierno y transaccionalidad ACID.\n\n4. DATA LAKEHOUSE (2020 - Actualidad: DataR)\n   * Tecnología: Capa de metadatos abierta (Apache Iceberg, Delta Lake) sobre Object Storage.\n   * Almacenamiento: Cómputo desacoplado de almacenamiento, soporte ACID, Time Travel.\n   * Uso: Unificación total de BI, analítica de grafos, streaming y Machine Learning gobernado.</code></pre></div>\n<h3>4.2 Almacenamiento Orientado a Filas (Row-Oriented) frente a Columnar (Column-Oriented)</h3>\n<p>La distinción fundamental entre una base de datos relacional transaccional (como la base de datos de MUISCA) y un Data Warehouse analítico radica en la disposición física de los bytes en los bloques de disco:</p>\n<h4>A. Almacenamiento Orientado a Filas (<em>Row-Store</em> - OLTP)</h4>\n<p>Los datos de una tupla completa se almacenan de manera contigua en el bloque de almacenamiento: <code>[Fila 1: NIT, Nombre, Ciudad, Total_Ingreso] [Fila 2: NIT, Nombre, Ciudad, Total_Ingreso] ...</code></p>\n<ul><li><strong>Ventaja:</strong> Operaciones de escritura de una sola fila (<code>INSERT</code> o <code>UPDATE</code> de una declaración tributaria) son ultrarrápidas, pues se escribe un solo bloque secuencial.</li><li><strong>Desventaja Analítica:</strong> Si se desea calcular el recaudo total del país ejecutando <code>SELECT SUM(Total_Ingreso) FROM Declaraciones;</code>, el motor debe leer desde el disco físico el 100% de las columnas de todas las filas, desperdiciando ancho de banda de E/S en datos irrelevantes para la consulta.</li></ul>\n<h4>B. Almacenamiento Orientado a Columnas (<em>Column-Store</em> - OLAP)</h4>\n<p>Todos los valores de una misma columna se almacenan juntos de forma contigua: <code>[Columna NIT: NIT1, NIT2, NIT3...] [Columna Total_Ingreso: Ingreso1, Ingreso2, Ingreso3...]</code></p>\n<ul><li><strong>Ventaja Analítica:</strong> La consulta <code>SELECT SUM(Total_Ingreso)</code> solo lee del disco los bloques correspondientes a la columna <code>Total_Ingreso</code>, ignorando todas las demás columnas (<em>Column Pruning</em>). Se reduce el I/O en más de un 80-90%.</li><li><strong>Compresión Excepcional:</strong> Al almacenar valores del mismo tipo de datos de forma contigua, algoritmos como <em>Dictionary Encoding</em>, <em>Run-Length Encoding (RLE)</em> y <em>Bit-Packing</em> logran factores de compresión de hasta 10x frente al almacenamiento en filas.</li></ul>\n<h3>4.3 Arquitectura MPP (Massively Parallel Processing)</h3>\n<p>Los motores analíticos modernos (como Trino o almacenes cloud MPP) dividen una consulta analítica compleja en fragmentos de trabajo que se ejecutan simultáneamente en decenas o cientos de nodos de cómputo independientes, donde cada nodo procesa una porción aislada de los datos y devuelve los agregados parciales a un nodo coordinador.</p>\n<h3>4.4 El Paradigma Lakehouse y las Tablas Abiertas en DataR</h3>\n<p>El <strong>Data Lakehouse</strong> implementado en la DIAN sobre el repositorio <strong>DataR</strong> combina lo mejor de dos mundos: el bajo costo y la escalabilidad infinita del almacenamiento de objetos en la nube (Data Lake) con las capacidades de gestión de datos, control de concurrencia y garantías <strong>ACID</strong> (Atomicidad, Consistencia, Aislamiento y Durabilidad) propias de los Data Warehouses.</p>\n<p>Esta unificación es posible gracias al uso de formatos de tabla abierta de última generación, primordialmente <strong>Apache Iceberg</strong>:</p>\n<ul><li><strong>Garantías Transaccionales ACID:</strong> Múltiples pipelines de ingesta (facturación electrónica en streaming y exógena en batch) pueden escribir concurrentemente sobre la misma tabla sin riesgo de corrupción o lecturas sucias.</li><li>**Viaje en el Tiempo (<em>Time Travel</em>) y Rollback:** Capacidad de consultar el estado exacto de una tabla en cualquier instante del pasado mediante snapshots inmutables: ``<code>sql SELECT * FROM data_r.oro.contribuyentes FOR SYSTEM_TIME AS OF '2024-03-31 23:59:59'; </code>`` Esto permite a la DIAN reproducir con certeza probatoria los cálculos de riesgo que sirvieron de base para abrir un pliego de cargos hace dos años.</li><li>**Evolución de Esquema Segura (<em>Full Schema Evolution</em>):** Se pueden renombrar, agregar o reordenar columnas sin necesidad de reescribir físicamente los petabytes de datos históricos almacenados.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-9-5",
+          "moduleId": "mod-9",
+          "unitNumber": 5,
+          "title": "Unidad 5: Formatos de Archivo Modernos y Gobernanza de Almacenamiento (Parquet, ORC, Avro)",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 605,
+          "content": "<h3>5.1 Comparativa de Formatos de Almacenamiento: Parquet, ORC y Avro</h3>\n<p>En los repositorios de Big Data y Lakehouse del Estado, los formatos tradicionales basados en texto plano (<strong>CSV, TSV o JSON</strong>) son considerados anti-patrones para almacenamiento analítico masivo debido a su baja compresión, falta de tipado estricto y alto costo computacional de serialización/deserialización.</p>\n<p>La Subdirección de Procesamiento de Datos estandariza tres formatos binarios abiertos optimizados:</p>\n<table class=\"data-table\"><thead><tr><th>Característica Técnica</th><th>Apache Parquet</th><th>Apache ORC</th><th>Apache Avro</th></tr></thead><tbody><tr><td><strong>Disposición Física</strong></td><td><strong>Columnar</strong> (Row Groups, Column Chunks, Pages).</td><td><strong>Columnar</strong> (Stripes, Column Streams).</td><td><strong>Orientado a Filas (Row-Based)</strong> binario.</td></tr><tr><td><strong>Caso de Uso Primario</strong></td><td>Consultas analíticas pesadas (OLAP), integración universal en Spark/Trino.</td><td>Optimizado históricamente para ecosistemas Hive y Hadoop interactivo.</td><td><strong>Ingesta y Streaming en Tiempo Real</strong> (Apache Kafka, Eventos UBL 2.1).</td></tr><tr><td><strong>Evolución de Esquema</strong></td><td>Excelente (soporte nativo para esquemas anidados complejos).</td><td>Buena.</td><td><strong>Máxima:</strong> Integración con Schema Registry para compatibilidad bidireccional.</td></tr><tr><td><strong>Soporte de Metadatos</strong></td><td>Estadísticas min/max por página y Row Group (<em>Predicate Pushdown</em>).</td><td>Índices de stripe y estadísticas de rango.</td><td>Esquema JSON embebido en el encabezado del archivo.</td></tr><tr><td><strong>Velocidad de Escritura</strong></td><td>Moderada (requiere estructurar columnas y comprimir en memoria).</td><td>Moderada.</td><td><strong>Ultrarrápida:</strong> Serialización directa fila por fila con mínima sobrecarga.</td></tr><tr><td><strong>Uso Canónico en DataR</strong></td><td>Tablas de las capas <strong>Plata</strong> y <strong>Oro</strong> para analítica y cruces de fiscalización.</td><td>Repositorios legados y optimizaciones específicas en motores Hadoop.</td><td><strong>Capa Bronce / Ingesta:</strong> Captura de eventos transaccionales desde Kafka.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA INTERNA DE UN ARCHIVO APACHE PARQUET\n\n+-------------------------------------------------------------------------------+\n|                             ENCABEZADO: MAGIC 'PAR1'                          |\n+-------------------------------------------------------------------------------+\n|  ROW GROUP 1 (Ej. 500.000 filas de Facturas Electrónicas)                     |\n|  +-------------------------------------------------------------------------+  |\n|  | Column Chunk: NIT_EMISOR (Pages con Dictionary Encoding + Snappy)       |  |\n|  | Column Chunk: VALOR_TOTAL (Pages con Bit-Packing + Estadísticas Min/Max)|  |\n|  | Column Chunk: FECHA_EMISION                                             |  |\n|  +-------------------------------------------------------------------------+  |\n+-------------------------------------------------------------------------------+\n|  ROW GROUP 2 ...                                                              |\n+-------------------------------------------------------------------------------+\n|                            FOOTER DEL ARCHIVO PARQUET                         |\n|  * FileMetaData (Definición del Schema)                                       |\n|  * RowGroupMetaData (Ubicación de bloques y offsets en disco)                 |\n|  * ColumnMetaData (Estadísticas globales: min/max, null_count por columna)     |\n+-------------------------------------------------------------------------------+</code></pre></div>\n<h3>5.2 Técnicas de Optimización y Poda de Datos (<em>Data Skipping</em>)</h3>\n<p>Los formatos columnares modernos incorporan metadatos estadísticos en su estructura física que permiten a los motores de consulta acelerar las búsquedas analíticas de la DIAN:</p>\n<ul><li>**Poda de Columnas (<em>Column Pruning</em>):** Si la consulta solo solicita <code>SELECT NIT, SUM(VALOR_TOTAL)</code>, el motor omite físicamente la lectura de las otras 40 columnas presentes en el archivo Parquet.</li><li>**Poda de Predicados (<em>Predicate Pushdown</em>):** Cuando se ejecuta <code>WHERE FECHA_EMISION &gt;= '2024-01-01' AND FECHA_EMISION &lt;= '2024-01-31'</code>, el motor inspecciona las estadísticas <code>min</code> y <code>max</code> almacenadas en el Footer del archivo para cada <em>Row Group</em>. Si un bloque contiene fechas cuyo rango máximo es menor a enero de 2024, el motor descarta la lectura completa del bloque de disco sin descomprimirlo, reduciendo el I/O en órdenes de magnitud.</li></ul>\n<h3>5.3 Algoritmos de Compresión: Snappy, ZSTD y GZIP</h3>\n<p>La compresión de datos es un componente crítico de la estrategia FinOps en la nube de la DIAN. La elección del algoritmo equilibra la tasa de reducción de espacio con el consumo de CPU:</p>\n<ul><li><strong>Snappy (Google):</strong> Diseñado para máxima velocidad de compresión y descompresión con consumo despreciable de CPU. Ofrece una tasa de compresión moderada (alrededor de 2x - 3x). <strong>Es el estándar por defecto en Apache Parquet</strong> para entornos de análisis interactivo donde la latencia de consulta es prioritaria.</li><li><strong>Zstandard (ZSTD - Facebook/Meta):</strong> Algoritmo moderno de compresión en tiempo real que ofrece tasas de compresión cercanas a GZIP (hasta 4x - 6x) con velocidades de descompresión extremadamente rápidas. Es el formato recomendado para la persistencia masiva histórica en DataR.</li><li><strong>GZIP:</strong> Alta tasa de compresión pero muy lento y con alto consumo de CPU. No es divisible (<em>non-splittable</em>) de forma nativa a menos que se encapsule en contenedores específicos, lo que penaliza la paralelización en Spark.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-9-6",
+          "moduleId": "mod-9",
+          "unitNumber": 6,
+          "title": "Unidad 6: Implementación Práctica del Modelo Dimensional sobre DataR (Vistas 360 del Contribuyente)",
+          "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 420,
+          "content": "<h3>6.1 Arquitectura de la Vista 360 del Contribuyente</h3>\n<p>Uno de los mayores logros del modelado dimensional sobre el Repositorio Único <strong>DataR</strong> es la consolidación de la <strong>Vista 360 del Contribuyente</strong>. Este producto analítico unifica los datos tributarios, aduaneros y cambiarios en un esquema en estrella optimizado que alimenta los motores de fiscalización y las declaraciones sugeridas:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>MODELO DIMENSIONAL EN ESTRELLA: VISTA 360 DEL CONTRIBUYENTE EN DataR\n\n                    +------------------------------------+\n                    |       DIM_FECHA (Calendario)       |\n                    |  * ID_FECHA_SK (PK)                |\n                    |  * FECHA, AÑO, MES, BIMESTRE       |\n                    |  * ES_DIA_HABIL, VENCIMIENTO_NIT   |\n                    +------------------------------------+\n                                      |\n                                      v\n+------------------------+  +------------------------------------+  +------------------------+\n|  DIM_CONTRIBUYENTE     |  |       FACT_OPERACIONES_CONSOL      |  |  DIM_CONCEPTO_TRIBUT   |\n|  * ID_CONTRIB_SK (PK)  |  |  * ID_TRANSACCION_SK (PK)          |  |  * ID_CONCEPTO_SK (PK) |\n|  * NUMERO_NIT          |-&gt;|  * ID_CONTRIB_SK (FK - SCD Tipo 2) |&lt;-|  * CODIGO_IMPUESTO     |\n|  * RAZON_SOCIAL        |  |  * ID_CONCEPTO_SK (FK)             |  |  * NOMBRE_IMPUESTO     |\n|  * SECCIONAL_DOMICILIO |  |  * ID_FECHA_SK (FK)                |  |  * TARIFA_NOMINAL      |\n|  * CLASIFICACION_RUT   |  |  * ID_UBICACION_SK (FK)            |  +------------------------+\n|  * FECHA_INICIO_VIG    |  |  * MONTO_BASE_GRAVABLE_COP         |\n|  * FECHA_FIN_VIG       |  |  * MONTO_IMPUESTO_LIQUIDADO_COP    |\n|  * ES_ACTUAL (Boolean) |  |  * MONTO_RETENCION_PRACTICADA_COP  |\n+------------------------+  |  * MONTO_FOB_IMPORTACION_USD       |\n                            |  * VALOR_CANALIZADO_DIVISAS_USD    |\n                            +------------------------------------+\n                                      ^\n                                      |\n                    +------------------------------------+\n                    |       DIM_UBICACION_GEOGRAFICA     |\n                    |  * ID_UBICACION_SK (PK)            |\n                    |  * CODIGO_MUNICIPIO_DANE           |\n                    |  * NOMBRE_MUNICIPIO                |\n                    |  * CODIGO_DEPARTAMENTO             |\n                    |  * DIRECCION_SECCIONAL_DIAN        |\n                    +------------------------------------+</code></pre></div>\n<h3>6.2 Cruces Masivos entre Información Exógena y Facturación Electrónica</h3>\n<p>El modelo dimensional de DataR permite realizar cruces automatizados de fiscalización entre fuentes que tradicionalmente operaban en silos:</p>\n<ol><li><strong>Detección de Costos Ficticios en Impuesto sobre la Renta:</strong></li><li>La tabla de hechos consolidada cruza los costos y deducciones declarados por un contribuyente en el Formulario 110 contra el total de facturas electrónicas de compra (UBL 2.1) donde dicho contribuyente figura como adquirente.</li><li>Si los costos declarados superan en más de un 15% las facturas electrónicas y los documentos soporte validados en la DIAN, el modelo genera una alerta automática de <strong>Sobreestimación de Costos</strong>.</li><li><strong>Control de Evasión en Operaciones Aduaneras y Cambiarias:</strong></li><li>Cruce entre el valor FOB de las declaraciones de importación en la tabla de hechos aduanera contra el monto de divisas canalizadas a través de los Intermediarios del Mercado Cambiario (IMC).</li><li>Si el valor importado es de USD $1.000.000 pero solo se canalizaron USD $200.000 a través del mercado cambiario, el sistema detecta una presunta <strong>Infracción Cambiaria por No Canalización</strong> (Decreto Ley 2245 de 2011) o un posible subregistro de importaciones.</li><li><strong>Identificación de Inconsistencias en Retenciones en la Fuente:</strong></li><li>Cruce en tiempo real entre las retenciones en la fuente que el contribuyente declaró en el Formulario 350 contra las retenciones que sus proveedores reportaron haberle practicado en la Información Exógena (Formato 1001) y en los XML de facturación electrónica.</li></ol>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 6,
+      "lessonMinutes": 72,
+      "studyMinutes": 72,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>Kimball, R., &amp; Ross, M. (2013).</strong> <em>The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling (3rd Edition)</em>. Wiley.</li><li><strong>Por qué leerlo para el examen:</strong> Es la biblia universal del modelado dimensional. Explica detalladamente los esquemas en estrella, las cuatro decisiones del diseño dimensional y los patrones avanzados de SCDs y métricas.</li><li><strong>Linstedt, D., &amp; Olschimke, M. (2015).</strong> <em>Building a Scalable Data Warehouse with Data Vault 2.0</em>. Morgan Kaufmann.</li><li><strong>Por qué leerlo para el examen:</strong> Obra fundacional para comprender la arquitectura de Hubs, Links y Satélites, el uso de Hash Keys y la trazabilidad inmutable en entornos de Big Data.</li><li><strong>Kleppmann, M. (2017).</strong> <em>Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems</em>. O'Reilly Media.</li><li><strong>Por qué leerlo para el examen:</strong> Desarrolla con claridad pedagógica insuperable las diferencias entre almacenamiento en filas y columnas, formatos de serialización (Avro vs. Parquet) y procesamiento analítico masivo.</li></ol>\n<h3>Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)</h3>\n<h4>A. Estándares Internacionales de Ingeniería de Datos</h4>\n<ul><li><strong>DAMA International (2017).</strong> <em>DAMA-DMBOK: Data Management Body of Knowledge (2nd Edition)</em>. Capítulos 5 (Data Architecture) y 8 (Data Warehousing and Business Intelligence).</li><li><strong>Apache Software Foundation.</strong> <em>Apache Iceberg: An Open Table Format for Huge Analytic Datasets</em>. Especificación oficial v2.</li><li><strong>Apache Software Foundation.</strong> <em>Apache Parquet Format Specification</em>. Documentación de tipos de página, metadatos y esquemas anidados.</li><li><strong>Apache Software Foundation.</strong> <em>Apache Avro Specification</em>. Serialización binaria y compatibilidad de esquemas con Schema Registry.</li></ul>\n<h4>B. Normatividad y Lineamientos Institucionales DIAN</h4>\n<ul><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes al 19 de junio de 2026).</strong> Artículo 616-1 (Facturación electrónica y RADIAN), Artículo 631 (Información exógena en medios magnéticos), Artículo 671 (Sanción de declaración de proveedor ficticio) y Artículo 684 (Facultades de investigación y cruces analíticos de información).</li><li><strong>Presidencia de la República de Colombia.</strong> <em>Decreto 1742 de 2020.</em> Competencias de la Dirección de Gestión de Innovación y Tecnología y de la Subdirección de Procesamiento de Datos (Art. 56: administración de DataR y repositorios de datos).</li><li><strong>Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC).</strong> <em>Marco de Referencia de Arquitectura Empresarial (MRAE).</em> Guías del Dominio de Información y Gestión de Activos de Información.</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-10",
@@ -3961,352 +4024,359 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-9": {
-      "title": "Examen: 9. Modelado y Repositorios de Datos (10 Preguntas de Kimball, Data Vault y Casos)",
-      "indicatorNum": 9,
+      "title": "Examen Oficial: 09. Modelado y Repositorios de Datos (10 Preguntas PJS)",
       "questions": [
         {
           "id": 901,
-          "topic": "La Regla del Grano Atómico de Ralph Kimball",
-          "caseText": "Un equipo diseña el modelo dimensional para analizar las facturas electrónicas de todo el país. Un ingeniero propone crear una tabla de hechos consolidada con una fila por día y por municipio, sumando el total de ventas para que la tabla sea pequeña y rápida.",
-          "statement": "¿Por qué esta propuesta viola la regla de oro del modelado dimensional de Kimball?",
+          "topic": "Modelado Relacional vs. Dimensional (Kimball frente a Inmon y Data Vault 2.0)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos de la DIAN está diseñando la capa intermedia de consolidación del repositorio DataR, la cual debe integrar diariamente cientos de millones de registros provenientes de sistemas heterogéneos (Facturación Electrónica UBL 2.1, Registro Único Tributario en MUISCA, Manifiestos de Carga en SYGA y declaraciones aduaneras). El requerimiento técnico no negociable exige: (1) Carga masiva en paralelo sin bloqueos referenciales; (2) Trazabilidad forense inmutable de la fuente original (*Record Source*) y fecha de carga para auditorías fiscales; y (3) Capacidad de incorporar nuevas fuentes y relaciones de negocio en el futuro sin necesidad de rediseñar las tablas preexistentes ni reprocesar la historia.",
+          "statement": "Como Inspector I de la Subdirección de Procesamiento de Datos, ¿cuál es el paradigma de modelado que debe seleccionar y recomendar para estructurar esta capa del repositorio?",
           "options": [
             {
               "id": "A",
-              "text": "Porque el grano atómico debe declararse en el nivel más granular e indivisible posible del proceso de negocio (cada ítem o línea de producto de la factura electrónica), permitiendo cualquier desglose futuro sin pérdida de capacidad analítica."
+              "text": "Implementar el paradigma **Data Vault 2.0**, descomponiendo el dominio en Hubs (identificadores y claves de negocio), Links (relaciones y transacciones) y Satellites (atributos descriptivos históricos con inserción exclusiva *Append-Only*)."
             },
             {
               "id": "B",
-              "text": "Porque las tablas de hechos siempre deben tener al menos 100 columnas de texto libre."
+              "text": "Diseñar un modelo puramente dimensional en Estrella (*Star Schema*) de Ralph Kimball en la capa de ingesta intermedia, forzando a todas las fuentes a encajar inmediatamente en una única tabla de hechos unificada."
             },
             {
               "id": "C",
-              "text": "Porque no se permite sumar números dentro de una base de datos analítica."
+              "text": "Estandarizar toda la capa en Tercera Forma Normal (3NF) sobre un motor relacional tradicional, obligando a los sistemas de origen a detener sus operaciones transaccionales mientras se ejecutan los bloqueos de clave foránea."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Kimball establece que el grano debe ser el más atómico disponible. Si se agrega prematuramente por día/municipio, se destruye la posibilidad de investigar por tipo de producto, tarifa de IVA o contribuyente específico.",
+            "correct": "Es correcta. El paradigma **Data Vault 2.0** fue creado específicamente para resolver los desafíos de grandes repositorios analíticos heterogéneos. Al desacoplar las claves de negocio en Hubs, las relaciones en Links y el contexto en Satélites, permite ingestas masivas altamente paralelizadas mediante llaves subrogadas basadas en funciones hash (SHA-256), garantiza auditoría forense inmutable (campos obligatorios *Load Date* y *Record Source*) y ofrece resiliencia total al cambio, pues nuevas fuentes o entidades se agregan como nuevos satélites o links sin alterar las estructuras previas.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las tablas de hechos contienen métricas numéricas y claves foráneas, no texto descriptivo libre."
+                "reason": "Es incorrecta. El modelado dimensional en estrella es óptimo para la capa final de presentación analítica (Capa Oro), pero implementarlo prematuramente en la capa intermedia de consolidación genera rigidez extrema y obliga a reprocesar históricos ante cualquier cambio en los sistemas de origen."
               },
               {
                 "id": "C",
-                "reason": "Los motores OLAP están diseñados precisamente para ejecutar sumas y agregaciones distribuidas."
+                "reason": "Es incorrecta. La 3NF en motores relacionales colapsa ante la heterogeneidad de Big Data y la verificación síncrona de integridad referencial frena la ingesta paralela, arriesgando la estabilidad de los sistemas misionales."
               }
             ]
           }
         },
         {
           "id": 902,
-          "topic": "Dimensiones Conformadas (Conformed Dimensions)",
-          "caseText": "En la DIAN se tienen dos Data Marts independientes: uno para analizar la 'Facturación Electrónica de Ventas' y otro para analizar las 'Declaraciones Aduaneras de Importación'. Se necesita cruzar ambos procesos para detectar discrepancias entre ventas y compras.",
-          "statement": "¿Qué componente de modelado dimensional permite realizar este cruce (Drill-Across) sin duplicar datos?",
+          "topic": "Normalización (1FN a 3FN/BCNF) frente a Desnormalización Analítica",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el proceso de modernización del subsistema transaccional de radicación de declaraciones tributarias, un equipo de desarrollo propone la creación de una tabla denominada `Declaracion_Contribuyente` que contiene las siguientes columnas: `Numero_Formulario` (Clave Primaria), `Fecha_Presentacion`, `NIT_Contribuyente`, `Razon_Social`, `Codigo_Municipio_Domicilio`, `Nombre_Municipio` y `Nombre_Departamento`. El arquitecto advierte que la estructura contiene anomalías de actualización que violan las reglas de normalización formal de Codd.",
+          "statement": "¿Qué forma normal está siendo violada en esta tabla y cuál es la refactorización relacional obligatoria?",
           "options": [
             {
               "id": "A",
-              "text": "Dimensiones Conformadas (ej. la Dimensión Contribuyente y la Dimensión Tiempo), compartidas con idéntica estructura y significado semántico a través de múltiples tablas de hechos en el Enterprise Data Warehouse Bus Architecture."
+              "text": "Viola la **Tercera Forma Normal (3FN)** por la presencia de una dependencia funcional transitiva (`Numero_Formulario` $\\to$ `Codigo_Municipio_Domicilio` $\\to$ `Nombre_Municipio` / `Nombre_Departamento`); se debe escindir la información geográfica en una tabla independiente de municipios y departamentos referenciada por clave foránea."
             },
             {
               "id": "B",
-              "text": "Crear copias desincronizadas con nombres de columnas diferentes en cada Data Mart."
+              "text": "Viola la **Primera Forma Normal (1FN)** debido a que los nombres de los municipios son textos alfanuméricos y la 1FN exige que todas las columnas contengan exclusivamente valores numéricos enteros."
             },
             {
               "id": "C",
-              "text": "Hacer un JOIN manual en Excel exportando 50 millones de filas."
+              "text": "Viola la **Segunda Forma Normal (2FN)** porque el `NIT_Contribuyente` tiene una dependencia parcial respecto al número de formulario en una clave primaria simple."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las dimensiones conformadas son la columna vertebral de la arquitectura Kimball Bus: al compartir las mismas dimensiones maestras (ej. Contribuyente con su NIT), se pueden correlacionar hechos de ventas e importaciones de forma transparente.",
+            "correct": "Es correcta. Una tabla con clave primaria simple se encuentra automáticamente en 2FN si cumple 1FN. Sin embargo, para cumplir la **Tercera Forma Normal (3FN)**, no pueden existir dependencias transitivas entre atributos no clave. En este diseño, el nombre del municipio y del departamento no dependen de la clave primaria (`Numero_Formulario`), sino que dependen funcionalmente del atributo no clave `Codigo_Municipio_Domicilio`. Si el municipio cambia de nombre o categoría, se tendrían que actualizar miles de filas de formularios, generando riesgo de anomalías de inconsistencia. La solución normalizada en 3NF exige mover la geografía a una tabla normalizada `Municipios`.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Copias desincronizadas rompen la consistencia y recrean el problema histórico de silos de datos."
+                "reason": "Es incorrecta. La 1FN exige atomicidad en los valores (no listas ni arrays), no que los datos sean numéricos; una cadena de texto es perfectamente atómica si representa una sola entidad conceptual."
               },
               {
                 "id": "C",
-                "reason": "Excel colapsa con más de 1 millón de filas y carece de capacidad para procesamiento distribuido."
+                "reason": "Es incorrecta. La 2FN solo se evalúa respecto a dependencias parciales sobre **claves primarias compuestas**; al tener una clave simple (`Numero_Formulario`), la 2FN se satisface de forma trivial."
               }
             ]
           }
         },
         {
           "id": 903,
-          "topic": "Slowly Changing Dimensions (SCD Tipo 2) en Producción",
-          "caseText": "La tabla `dim_contribuyente` necesita registrar cuando un contribuyente cambia su dirección fiscal de Cali a Bogotá el 15 de marzo de 2026, asegurando que las facturas emitidas en enero de 2026 aparezcan asociadas a Cali y las facturas de abril de 2026 aparezcan asociadas a Bogotá.",
-          "statement": "¿Cómo se implementa esta actualización técnica bajo el estándar SCD Tipo 2?",
+          "topic": "Modelado Dimensional Avanzado: Dimensiones Lentamente Cambiantes (SCD)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La empresa \"Logística del Caribe S.A.S.\" tuvo su domicilio fiscal en la ciudad de Barranquilla (Dirección Seccional Barranquilla) durante los años 2021, 2022 y 2023. El 1 de marzo de 2024, la sociedad trasladó formalmente su domicilio a Bogotá (Dirección Seccional de Impuestos de Bogotá) y actualizó su RUT. En julio de 2024, la Subdirección de Fiscalización ejecuta en DataR un programa analítico para fiscalizar las declaraciones del IVA presentadas durante el año gravable 2022. Si la dimensión de contribuyentes estuviese modelada bajo **SCD Tipo 1**, la consulta asociaría automáticamente a la empresa con la seccional de Bogotá, enviando una orden de fiscalización a inspectores que carecen de competencia territorial para el periodo 2022.",
+          "statement": "Para garantizar la validez jurídica de la fiscalización y la correcta competencia territorial, ¿cómo debe estar diseñada la tabla `Dim_Contribuyente` bajo el estándar dimensional de Ralph Kimball?",
           "options": [
             {
               "id": "A",
-              "text": "Actualizando la fila anterior estableciendo `fecha_fin = '2026-03-14'` y `es_actual = FALSE`, e insertando una nueva fila con una nueva clave subrogada, `direccion = 'Bogotá'`, `fecha_inicio = '2026-03-15'`, `fecha_fin = NULL` y `es_actual = TRUE`."
+              "text": "Modelar la tabla como **SCD Tipo 2**, generando una nueva fila para el registro de Bogotá con una nueva clave subrogada (*Surrogate Key*), cerrando la vigencia del registro de Barranquilla con su fecha de fin y manteniendo el registro histórico de Barranquilla asociado a las transacciones de 2022."
             },
             {
               "id": "B",
-              "text": "Ejecutando un `UPDATE dim_contribuyente SET direccion = 'Bogotá'` sobrescribiendo la dirección anterior."
+              "text": "Mantener el modelo como **SCD Tipo 1** y programar un script manual en Python que intercepte las consultas de los auditores y reemplace la palabra 'Bogotá' por 'Barranquilla' en tiempo de ejecución mediante expresiones regulares."
             },
             {
               "id": "C",
-              "text": "Borrando todas las facturas anteriores al 15 de marzo para que coincidan con la nueva dirección."
+              "text": "Crear una base de datos física completamente nueva cada vez que un contribuyente cambie de dirección en el RUT, duplicando todo el repositorio institucional."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "SCD Tipo 2 es el método formal para preservar el contexto histórico: cierra la validez temporal del registro previo e inserta un nuevo registro con clave subrogada nueva, manteniendo la integridad temporal de las transacciones históricas.",
+            "correct": "Es correcta. La técnica **SCD Tipo 2 (Slowly Changing Dimension Tipo 2)** es el estándar de oro en inteligencia tributaria para preservar la fidelidad histórica de los datos. Al versionar los cambios mediante nuevas filas con claves subrogadas independientes y rangos de fechas de vigencia (`Fecha_Inicio`, `Fecha_Fin`, `Es_Actual`), las declaraciones de 2022 permanecen unidas a la clave subrogada correspondiente a su estancia en Barranquilla. Esto preserva la competencia territorial del funcionario fiscalizador y blinda el proceso administrativo contra nulidades por falta de competencia territorial.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Eso es SCD Tipo 1: sobrescribiría el historial y asociaría erróneamente las facturas de enero a Bogotá."
+                "reason": "Es incorrecta. Sobrescribir mediante scripts manuales es inmanejable a escala de millones de contribuyentes, introduce opacidad y destruye la reproducibilidad probatoria del dato."
               },
               {
                 "id": "C",
-                "reason": "Borrar facturas probatorias es un delito y una destrucción irreparable de información tributaria."
+                "reason": "Es incorrecta. Duplicar bases de datos físicas enteras por cada cambio de atributo es un absurdo técnico que destruye la escalabilidad, multiplica los costos de almacenamiento y fragmenta la gobernanza."
               }
             ]
           }
         },
         {
           "id": 904,
-          "topic": "Dimensiones Degeneradas (Degenerate Dimensions)",
-          "caseText": "En la tabla de hechos `fact_facturacion_electronica`, el campo `numero_factura` (ej. 'SETP-994821') no tiene ninguna tabla de dimensión propia con atributos adicionales, pero es indispensable para identificar la transacción y agrupar sus líneas.",
-          "statement": "¿Cómo clasifica Ralph Kimball este tipo de atributo dentro del modelo dimensional?",
+          "topic": "Modelado Dimensional Avanzado: Hechos, Jerarquías y Métricas",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un analista de la Dirección de Gestión de Recaudo y Cobranzas construye un tablero en Power BI conectado a la tabla de hechos `Fact_Saldos_Cartera_Morosa` en DataR. La tabla registra diariamente el saldo de la deuda vencida de cada contribuyente moroso. Al estructurar el reporte anual de cartera consolidada, el analista configura la medida en el tablero aplicando la función `SUM(Monto_Saldo_Deuda)` a lo largo de los 365 días del año para presentar el \"saldo total de deuda del año 2024\". El tablero arroja una cifra absurda equivalente a 365 veces la deuda real del país.",
+          "statement": "Como Inspector I comisionado para revisar la calidad del modelo de datos, ¿cuál es el error técnico cometido por el analista y cómo debe definirse la métrica?",
           "options": [
             {
               "id": "A",
-              "text": "Dimensión Degenerada (Degenerate Dimension), almacenada directamente en la tabla de hechos como identificador transaccional sin clave foránea a una tabla de dimensión separada."
+              "text": "El analista trató una métrica **Semi-Aditiva** como si fuera Totalmente Aditiva; los saldos de deuda representan una fotografía (*Snapshot*) que no puede sumarse a través de la dimensión tiempo, debiendo configurarse como el saldo al cierre del periodo (*Last Day / Ending Balance*) o promedio mensual."
             },
             {
               "id": "B",
-              "text": "Dimensión Basura (Junk Dimension) que agrupa banderas booleanas."
+              "text": "El error se debe a que la base de datos de DataR no soporta números mayores a diez dígitos, por lo que debe dividirse el resultado final entre 365 de forma aleatoria."
             },
             {
               "id": "C",
-              "text": "Clave foránea huérfana que debe ser eliminada inmediatamente del esquema."
+              "text": "La métrica es perfectamente aditiva, pero se debió multiplicar por la tasa de inflación acumulada para que la suma matemática cuadrara con el balance contable del Estado."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Una dimensión degenerada es un número de documento operativo (número de factura, orden de compra, guía de transporte) que se conserva en la tabla de hechos sin tener una dimensión asociada porque no posee atributos adicionales.",
+            "correct": "Es correcta. En el modelado dimensional de Ralph Kimball, las métricas de saldo acumulado, inventario o niveles de deuda son **métricas Semi-Aditivas**. Pueden sumarse válidamente a través de dimensiones espaciales o de contribuyentes (la deuda de la Seccional Medellín más la de Cali), pero **nunca a través del tiempo**. Sumar la cartera de 365 días consecutivos es sumar la misma deuda 365 veces. La regla analítica correcta exige calcular el saldo al corte de la fecha final del periodo evaluado (*Ending Balance / Snapshot*) o utilizar promedios ponderados.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Una Junk Dimension combina indicadores discretos (ej. estado de pago, tipo de entrega) en una tabla separada."
+                "reason": "Es incorrecta. Los motores analíticos modernos operan con tipos de datos `DECIMAL(38,2)` o enteros de 64 bits que soportan valores trillonarios sin dificultad; el problema es de lógica dimensional y no de desbordamiento de tipos."
               },
               {
                 "id": "C",
-                "reason": "No es una clave huérfana; es un atributo dimensional legítimo embebido en la tabla de hechos."
+                "reason": "Es incorrecta. Aplicar la inflación no corrige el error conceptual de sumar existencias temporales y distorsiona completamente las cifras de cartera del Estado."
               }
             ]
           }
         },
         {
           "id": 905,
-          "topic": "Tablas de Hechos Sin Hechos (Factless Fact Tables)",
-          "caseText": "La Dirección Seccional de Bogotá implementa un control de acceso físico a sus ventanillas de atención ciudadana y necesita registrar cada visita de un contribuyente a una asesoría presencial, sin que exista ninguna transacción monetaria de por medio.",
-          "statement": "¿Qué tipo de tabla de hechos debe diseñarse para registrar estos eventos no monetarios?",
+          "topic": "Formatos de Archivo Modernos y Gobernanza de Almacenamiento",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos está modernizando la arquitectura de ingesta de la Facturación Electrónica en tiempo real, la cual recibe más de 30 millones de eventos transaccionales al día a través de clústeres de Apache Kafka. Un ingeniero junior propone que cada mensaje de factura individual sea serializado directamente como un archivo independiente en formato **Apache Parquet** dentro del almacenamiento de objetos, argumentando que Parquet es el mejor formato analítico de la industria.",
+          "statement": "Al realizar la evaluación de arquitectura y gobernanza del almacenamiento, ¿qué instrucción debe impartir el Inspector I?",
           "options": [
             {
               "id": "A",
-              "text": "Tabla de Hechos Sin Hechos (Factless Fact Table), que solo contiene claves foráneas que apuntan a dimensiones (Contribuyente, Fecha, Funcionario, TipoTramite) y sirve para contar ocurrencias o eventos de cobertura."
+              "text": "Rechazar la propuesta para la ingesta en streaming; utilizar **Apache Avro** en los topics de Kafka y capa Bronce por ser un formato binario orientado a filas (*Row-Based*) de ultrarrápida serialización y bajo overhead de escritura, reservando **Apache Parquet** para procesos batch posteriores de compactación columnar en capas Plata y Oro."
             },
             {
               "id": "B",
-              "text": "Tabla de Hechos Acumulada con valores nulos forzados en todas las columnas."
+              "text": "Aprobar la propuesta de Parquet individual para streaming, afirmando que escribir millones de pequeños archivos Parquet de 2 KB por segundo no tiene ningún impacto en el rendimiento de los sistemas distribuidos."
             },
             {
               "id": "C",
-              "text": "No se puede modelar en un Data Warehouse porque todo hecho debe contener dinero."
+              "text": "Ordenar que todas las facturas se reciban y persistan exclusivamente en archivos de texto plano CSV sin comprimir, por ser el único formato admitido por la ley tributaria colombiana."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las Factless Fact Tables modelan eventos donde lo que importa es la ocurrencia de la relación entre dimensiones (asistencia a cursos, visitas ciudadanas, cumplimiento de requisitos) y no una métrica monetaria o física.",
+            "correct": "Es correcta. Cada formato de archivo posee un diseño optimizado para un ciclo específico del dato. **Apache Avro** es un formato orientado a filas (*Row-Based*) con esquema embebido o gestionado por Schema Registry, ideal para mensajería en streaming (Kafka) donde se escriben transacciones unitarias a altísima velocidad. Por el contrario, **Apache Parquet** es columnar y requiere acumular miles de filas en memoria (*Row Groups*) para poder calcular diccionarios y comprimir eficientemente. Generar millones de microarchivos Parquet en streaming desata el catastrófico \"Problema de Archivos Pequeños\" (*Small Files Problem*), degradando el almacenamiento y colapsando los motores de consulta.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Llenar de valores nulos una tabla acumulada es una mala práctica de diseño dimensional."
+                "reason": "Es incorrecta. Ignora los principios básicos de Big Data; millones de archivos de 2 KB colapsan el NameNode o los metadatos de almacenamiento de objetos y multiplican los costos por operaciones de listado y lectura."
               },
               {
                 "id": "C",
-                "reason": "Los Data Warehouses analizan múltiples procesos de negocio más allá de transacciones monetarias."
+                "reason": "Es incorrecta. El formato CSV carece de tipado estricto, no ofrece compresión eficiente y su serialización es lenta; la normativa tributaria exige validez técnica y fidelidad de los datos, la cual se garantiza de forma superior mediante formatos binarios gobernados."
               }
             ]
           }
         },
         {
           "id": 906,
-          "topic": "Componentes de Data Vault: Hubs, Links y Satellites",
-          "caseText": "Un modelo Data Vault 2.0 integra los datos de comercio exterior. Se crea la entidad 'Declaracion_Importacion' con su clave de negocio 'NUM_STICKER'.",
-          "statement": "¿Dónde se almacenan la clave de negocio única y sus atributos descriptivos históricos respectivamente?",
+          "topic": "Repositorios Especializados: RDBMS frente a Data Warehouses (Columnar / MPP)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección General de la DIAN solicita con carácter urgente un informe macroeconómico que determine el valor total recaudado por concepto de IVA general del 19% durante los últimos cinco años, analizando una tabla histórica de 4.000 millones de registros de facturación con 60 columnas por registro. En la base de datos relacional orientada a filas (*Row-Store*) del sistema operacional, la consulta tardó más de 8 horas y finalmente falló por agotamiento de memoria temporal. Al trasladar la misma consulta al repositorio analítico columnar de DataR, la consulta respondió en tan solo 14 segundos.",
+          "statement": "¿Cuál es la razón arquitectónica fundamental que explica la reducción dramática en el tiempo de respuesta del repositorio columnar?",
           "options": [
             {
               "id": "A",
-              "text": "El 'NUM_STICKER' y su hash criptográfico se almacenan en un Hub; los atributos descriptivos históricos (valor FOB, peso, país de procedencia) se almacenan en un Satellite vinculado al Hub."
+              "text": "El almacenamiento columnar aplica **Poda de Columnas (*Column Pruning*)**, leyendo físicamente del disco únicamente los bloques correspondientes a las dos columnas requeridas en la consulta (`Tarifa_IVA` y `Monto_IVA`), omitiendo la lectura de las otras 58 columnas irrelevantes y aprovechando una compresión de datos superior."
             },
             {
               "id": "B",
-              "text": "Todo se almacena en un Link y los Hubs quedan vacíos."
+              "text": "El motor analítico columnar inventa los resultados mediante un generador de números pseudoaleatorios para cumplir con la velocidad exigida por la Dirección General."
             },
             {
               "id": "C",
-              "text": "Los atributos descriptivos se guardan en el Hub y la clave de negocio en el Satellite."
+              "text": "El almacenamiento columnar borra de forma permanente del disco las columnas que no fueron mencionadas en la instrucción SQL para ahorrar espacio."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En Data Vault: los Hubs contienen únicamente la clave de negocio (Business Key) inmutable con su hash; los Satellites contienen todos los atributos descriptivos históricos con marcas de tiempo (append-only).",
+            "correct": "Es correcta. En un motor orientado a filas (*Row-Store*), el motor está forzado a leer de disco todas las filas con la totalidad de sus 60 atributos completos, saturando el canal de Entrada/Salida (E/S) de almacenamiento. En contraste, un motor orientado a columnas (*Column-Store*) solo transfiere a memoria los bloques de bytes donde residen las columnas `Tarifa_IVA` y `Monto_IVA` (**Column Pruning**), reduciendo el volumen de datos leídos en más de un 95%. Adicionalmente, la contigüidad de tipos de datos homogéneos en disco maximiza la compresión vectorial, acelerando las agregaciones masivas.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los Links representan relaciones entre hubs, no atributos descriptivos de una sola entidad."
+                "reason": "Es incorrecta. Es un distractor absurdo; los motores analíticos de datos del Estado operan bajo estricto determinismo matemático y no mediante aproximaciones aleatorias sin fundamento."
               },
               {
                 "id": "C",
-                "reason": "Invierte la regla fundamental de arquitectura de Data Vault 2.0."
+                "reason": "Es incorrecta. Confunde la omisión temporal de lectura en una consulta (`SELECT`) con la eliminación física destructiva de datos (`DROP COLUMN`), lo cual destruiría la integridad del repositorio."
               }
             ]
           }
         },
         {
           "id": 907,
-          "topic": "Tercera Forma Normal (3NF) vs. Esquema en Estrella (Star Schema)",
-          "caseText": "Un desarrollador acostumbrado a bases de datos transaccionales (OLTP) insiste en normalizar todas las dimensiones del Data Warehouse en decenas de subtablas (ej. descomponer Cliente en Municipio, Departamento, País, Región, Continente).",
-          "statement": "¿Por qué el arquitecto de datos rechaza esta normalización para el repositorio analítico?",
+          "topic": "Repositorios Especializados: Lakehouses y Formatos de Tabla Abierta",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En un proceso de cobro coactivo contra una empresa de contrabando de hidrocarburos, el apoderado judicial del demandado alega ante el Tribunal Administrativo que la liquidación oficial de revisión emitida por la DIAN en mayo de 2023 se basó en cifras adulteradas que no correspondían a los registros existentes en esa fecha específica. La Subdirección de Procesamiento de Datos es requerida por la Dirección de Gestión Jurídica para reconstruir el estado exacto de la tabla de declaraciones aduaneras tal como existía el 15 de mayo de 2023 a las 11:59:00 PM, sin alterar los datos vigentes en 2026.",
+          "statement": "¿Qué característica técnica de los formatos de tabla abierta modernos (como Apache Iceberg sobre DataR) permite satisfacer el requerimiento judicial con plena validez probatoria?",
           "options": [
             {
               "id": "A",
-              "text": "Porque normalizar dimensiones crea un esquema en 'Copo de Nieve' (Snowflake) que incrementa drásticamente la cantidad de JOINs en consultas analíticas, degradando el rendimiento en motores OLAP masivos; el esquema en estrella desnormalizado es superior para velocidad y simplicidad."
+              "text": "La capacidad de **Viaje en el Tiempo (*Time Travel*)**, que permite ejecutar consultas analíticas sobre instantáneas inmutables históricas (*Snapshots*) preservadas por el registro de metadatos transaccionales del Lakehouse a una fecha y hora exactas."
             },
             {
               "id": "B",
-              "text": "Porque los motores analíticos no permiten hacer JOINs bajo ninguna circunstancia."
+              "text": "La restauración destructiva de una cinta magnética antigua de backup, sobrescribiendo toda la base de datos de producción actual de la DIAN y suspendiendo el servicio aduanero nacional durante dos semanas."
             },
             {
               "id": "C",
-              "text": "Porque las subtablas en normalización relacional están prohibidas por la ley tributaria."
+              "text": "Emitir una certificación firmada manifestando que los sistemas informáticos no guardan historia de más de un mes y que por tanto la justicia debe confiar en la palabra de los inspectores."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En sistemas OLAP, la desnormalización dimensional (Esquema en Estrella) es óptima porque minimiza los JOINs entre tablas, maximiza la compresión columnar y facilita la navegación analítica para herramientas de BI.",
+            "correct": "Es correcta. Los formatos de tabla abierta modernos para Lakehouse (como **Apache Iceberg** o **Delta Lake**) implementan un log de metadatos transaccionales inmutables que registran cada confirmación (*commit*) de escritura con su correspondiente ID de snapshot y marca de tiempo. La funcionalidad de **Time Travel** permite a los ingenieros de datos y auditores ejecutar consultas SQL apuntando a un instante histórico preciso (`FOR SYSTEM_TIME AS OF`), devolviendo la imagen exacta de los datos tal como existían en ese segundo sin afectar las tablas vivas de producción ni requerir restauraciones destructivas de backups.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los motores OLAP realizan JOINs, pero son operaciones costosas de red en sistemas distribuidos."
+                "reason": "Es incorrecta. Sobrescribir la base de datos operacional actual con un backup viejo causaría la pérdida catastrófica de años de transacciones tributarias recientes y violaría la continuidad del servicio público."
               },
               {
                 "id": "C",
-                "reason": "La normalización es una teoría de bases de datos, no un delito penado por la ley."
+                "reason": "Es incorrecta. Desconoce las obligaciones legales de conservación documental del Estatuto Tributario (Art. 632 E.T.) y anula la eficacia probatoria de la administración tributaria ante los jueces."
               }
             ]
           }
         },
         {
           "id": 908,
-          "topic": "Métricas Aditivas, Semi-aditivas y No Aditivas",
-          "caseText": "En la tabla de hechos de cuentas corrientes de contribuyentes se tienen tres columnas numéricas: `saldo_cuenta_fin_mes`, `monto_pago_realizado` y `tasa_interes_moratorio_pct`.",
-          "statement": "¿Cómo se clasifican técnicamente estas métricas respecto a su capacidad de agregación matemática?",
+          "topic": "Modelado Dimensional Avanzado: Hechos, Jerarquías y Métricas",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Fiscalización Aduanera requiere un modelo analítico en DataR para auditar el cumplimiento de los controles de seguridad en las zonas primarias aduaneras de los puertos. Específicamente, se requiere registrar qué funcionarios aduaneros estuvieron asignados y presentes en qué muelles de carga, en qué turnos específicos y con qué facultades de inspección vigentes, independientemente de si en ese turno particular se realizaron o no inspecciones efectivas con decomisos de mercancías. Un modelador afirma que no es posible construir una tabla de hechos dimensional porque no existe ninguna métrica numérica que sumar (no hay montos de dinero ni recuentos de incautaciones obligatorios).",
+          "statement": "Como Inspector I experto en modelado de Ralph Kimball, ¿cuál es la solución técnica que resuelve esta necesidad analítica?",
           "options": [
             {
               "id": "A",
-              "text": "`monto_pago_realizado` es Aditiva (se puede sumar a través de todas las dimensiones, incluyendo el tiempo); `saldo_cuenta_fin_mes` es Semi-aditiva (se puede sumar por clientes pero no a través del tiempo); y `tasa_interes_moratorio_pct` es No Aditiva (no tiene sentido sumarla en ninguna dimensión)."
+              "text": "Diseñar una **Tabla de Hechos sin Hechos (*Factless Fact Table*)**, la cual contiene exclusivamente claves foráneas subrogadas que modelan la intersección o concurrencia de eventos en un espacio multidimensional (Fecha, Funcionario, Muelle, Turno, Permiso), permitiendo cuantificar la cobertura mediante la función `COUNT()`."
             },
             {
               "id": "B",
-              "text": "Todas son métricas aditivas y pueden sumarse libremente a través de todas las dimensiones."
+              "text": "Inventar una métrica numérica falsa asignando el número 1 a cada funcionario y multiplicarlo por el salario devengado para forzar la existencia de un valor cuantitativo de dinero en la tabla."
             },
             {
               "id": "C",
-              "text": "Ninguna métrica puede sumarse porque los saldos son números privados."
+              "text": "Rechazar el requerimiento argumentando que el modelado dimensional está prohibido por la OMA para eventos donde no existan multas aduaneras cobradas en efectivo."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las métricas aditivas se suman en todas las dimensiones; las semi-aditivas (saldos o inventarios de fin de período) no pueden sumarse a través del tiempo (sumar saldos mensuales falsearía la cuenta); y las no aditivas (porcentajes, tasas) requieren promedios ponderados.",
+            "correct": "Es correcta. En la teoría dimensional de Ralph Kimball, una **Tabla de Hechos sin Hechos (*Factless Fact Table*)** es un patrón arquitectónico diseñado precisamente para capturar la ocurrencia de eventos o relaciones entre dimensiones donde no existen medidas numéricas naturales. Está compuesta únicamente por claves foráneas a las dimensiones participantes (`ID_Fecha`, `ID_Funcionario`, `ID_Muelle`, `ID_Turno`). Permite responder preguntas analíticas críticas como: *\"¿Qué muelles operaron sin inspector asignado en el turno nocturno?\"* o *\"¿Cuántos días estuvo presente un funcionario en zona de alto riesgo?\"*, utilizando operaciones de conteo (`COUNT`).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Sumar saldos de 12 meses multiplicaría por 12 el saldo real del contribuyente."
+                "reason": "Es incorrecta. Forzar la inclusión de métricas artificiales carentes de significado de negocio distorsiona el modelo analítico y conduce a interpretaciones erróneas en los análisis de auditoría."
               },
               {
                 "id": "C",
-                "reason": "La agregación matemática es la función central del cálculo analítico en Data Warehousing."
+                "reason": "Es incorrecta. La Organización Mundial de Aduanas (OMA) no prohíbe el modelado multidimensional de eventos y la DIAN tiene plena autonomía técnica para estructurar sus repositorios analíticos."
               }
             ]
           }
         },
         {
           "id": 909,
-          "topic": "Dimensiones que Juegan Roles (Role-Playing Dimensions)",
-          "caseText": "En la tabla de hechos de cobro coactivo existen tres fechas relevantes: `fecha_mandamiento_pago`, `fecha_embargo` y `fecha_remate`. Un modelador propone crear tres tablas físicas de calendario idénticas en la base de datos.",
-          "statement": "¿Qué patrón de modelado dimensional resuelve el problema manteniendo una sola tabla física?",
+          "topic": "Formatos de Archivo Modernos y Gobernanza de Almacenamiento",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El volumen del Repositorio Único DataR supera actualmente los 10 Petabytes de información tributaria y aduanera almacenada en la nube, generando alertas en la Dirección de Gestión Corporativa por los elevados costos mensuales de infraestructura. Al auditar las tablas de la capa Oro destinadas al entrenamiento de redes neuronales y consultas analíticas interactivas frecuentes de fiscalización, el Inspector I observa que los archivos Parquet fueron configurados con compresión **GZIP en nivel máximo**, lo que provoca que cada consulta analítica consuma el 100% de la CPU de los clústeres de cómputo durante la fase de descompresión, elevando la factura de cómputo elástico.",
+          "statement": "¿Cuál es la recomendación técnica y de optimización FinOps para equilibrar el espacio de almacenamiento y la eficiencia computacional en estas capas analíticas de alta concurrencia?",
           "options": [
             {
               "id": "A",
-              "text": "Dimensión que Juega Roles (Role-Playing Dimension): mantener una única tabla física `dim_fecha` y crear tres vistas lógicas o alias en la consulta SQL, vinculando cada fecha de la tabla de hechos al mismo calendario maestro."
+              "text": "Reconfigurar el algoritmo de compresión de las tablas Parquet a **Zstandard (ZSTD)** o **Snappy**, los cuales ofrecen descompresión en tiempo real a velocidades ultrarrápidas con mínimo uso de CPU y una excelente tasa de reducción de tamaño, optimizando el costo total de propiedad (TCO)."
             },
             {
               "id": "B",
-              "text": "Eliminar dos de las fechas para que solo quede una fecha en el sistema."
+              "text": "Desactivar por completo la compresión y almacenar todos los datos en texto plano ASCII sin formato para que la CPU no tenga que descomprimir nada."
             },
             {
               "id": "C",
-              "text": "Crear tres bases de datos separadas en servidores diferentes para cada fecha."
+              "text": "Borrar definitivamente los datos correspondientes a los contribuyentes que hayan presentado sus declaraciones a tiempo para reducir a la mitad el tamaño del disco."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Una Role-Playing Dimension es una única tabla física dimensional (como la Dimensión Fecha) a la que se accede múltiples veces desde la tabla de hechos mediante diferentes roles o claves foráneas, evitando duplicar almacenamiento y mantenimiento.",
+            "correct": "Es correcta. En una estrategia de ingeniería de datos y **FinOps**, el costo total no solo abarca los gigabytes almacenados en disco, sino las horas de CPU consumidas por los motores de consulta (Spark/Trino) para procesar los datos. El algoritmo **GZIP** ofrece buena compresión pero su descompresión es lenta y exige un alto uso de ciclos de CPU. Por el contrario, algoritmos modernos como **Snappy** (optimizado para velocidad extrema) o **ZSTD** (que ofrece un balance perfecto entre alta tasa de compresión y descompresión ultrarrápida con bajo consumo de CPU) son los estándares recomendados por la industria para capas analíticas de uso intensivo.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Eliminar fechas destruiría la cronología legal obligatoria del expediente coactivo."
+                "reason": "Es incorrecta. Almacenar 10 Petabytes sin compresión dispararía los costos de almacenamiento físico en la nube a niveles insostenibles y colapsaría el canal de ancho de banda de red (*I/O network bottleneck*)."
               },
               {
                 "id": "C",
-                "reason": "Crear bases de datos físicas separadas para fechas es una ineficiencia arquitectónica extrema."
+                "reason": "Es incorrecta. Destruir información tributaria de contribuyentes cumplidores es una conducta ilícita contraria a las obligaciones de fiscalización posterior y conservación de pruebas (Arts. 632 y 684 E.T.)."
               }
             ]
           }
         },
         {
           "id": 910,
-          "topic": "Particionamiento Físico y Pruning en Motores Distribuidos",
-          "caseText": "Una tabla de hechos en el Data Lake contiene 2.000 millones de registros de facturación electrónica distribuidos en almacenamiento de objetos. Las consultas de fiscalización siempre filtran por `año_emision` y `mes_emision`.",
-          "statement": "¿Qué técnica de diseño físico de almacenamiento debe implementarse para optimizar la velocidad y el costo de escaneo?",
+          "topic": "Implementación Práctica del Modelo Dimensional sobre DataR",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos ejecuta un algoritmo de detección de fraude sobre la **Vista 360 del Contribuyente** en DataR. El algoritmo cruza la tabla de hechos de facturación electrónica con la dimensión de contribuyentes y la información exógena bancaria. Se detecta una empresa \"Comercializadora Fantasma S.A.S.\" que en su primer año de constitución emitió facturas electrónicas por $40.000 millones de pesos a 15 grandes empresas mineras por supuestos servicios de asesoría geológica. Sin embargo, al consultar la dimensión de nómina electrónica, la empresa registra cero (0) trabajadores contratados; en la dimensión de activos fijos no posee vehículos ni oficinas; y en las declaraciones aduaneras no registra importación de maquinaria especializada.",
+          "statement": "En el marco de la gobernanza de datos y la fiscalización analítica de la DIAN, ¿cuál es el resultado técnico que genera este cruce dimensional sobre DataR?",
           "options": [
             {
               "id": "A",
-              "text": "Particionar físicamente la tabla por `año_emision` y `mes_emision` (creando una estructura jerárquica de carpetas), permitiendo que el motor de ejecución realice Partition Pruning (poda de particiones) y lea solo los archivos relevantes sin escanear los 2.000 millones de filas."
+              "text": "Disparar una alerta prioritaria de **Presunto Proveedor Ficticio (*Simulación de Operaciones*)** con sustento en la asimetría entre la capacidad operativa real (cero nómina, sin activos) y el volumen masivo de facturación electrónica, trasladando el expediente a Fiscalización para aplicar el Artículo 671 del Estatuto Tributario."
             },
             {
               "id": "B",
-              "text": "Particionar la tabla por el nombre del contribuyente creando 50 millones de carpetas diminutas."
+              "text": "Otorgar a la empresa un premio institucional por productividad empresarial al facturar $40.000 millones sin incurrir en gastos de personal ni costos operativos."
             },
             {
               "id": "C",
-              "text": "Desactivar todo particionamiento para que el motor lea siempre el disco completo."
+              "text": "Modificar automáticamente la base de datos de DataR para asignarle 200 empleados ficticios y legalizar sus costos ante los auditores tributarios."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El particionamiento por columnas de alta cardinalidad en filtros frecuentes (como año y mes) permite al optimizador de consultas descartar carpetas enteras de datos no solicitados (Partition Pruning), reduciendo el I/O en más del 90%.",
+            "correct": "Es correcta. La potencia del modelado dimensional sobre DataR radica en la capacidad de cruzar en un único esquema analítico la información de Facturación Electrónica, Nómina Electrónica, Información Exógena e Impuestos. Una asimetría extrema donde un contribuyente factura decenas de miles de millones de pesos en servicios complejos pero no registra nómina, subcontratación ni activos físicos constituye la tipología canónica de un **Proveedor Ficticio / Empresa de Papel**. El resultado técnico del cruce es la apertura formal del procedimiento contemplado en el **Artículo 671 del Estatuto Tributario**, el cual anula la procedencia de los costos para los compradores de las facturas falsas.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Particionar por columnas de cardinalidad masiva (como nombre o NIT) genera el 'Small Files Problem' y degrada el metastore."
+                "reason": "Es incorrecta. Representa una omisión negligente e inadmisible ante indicios flagrantes de fraude tributario organizado."
               },
               {
                 "id": "C",
-                "reason": "Escanear 2.000 millones de registros en cada consulta genera tiempos de espera inaceptables y costos astronómicos en la nube."
+                "reason": "Es incorrecta. Alterar registros públicos informáticos para encubrir evasión constituye delito penal de falsedad material en documento público y fraude procesal."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-9",
-      "track": "funcionales"
+      ]
     },
     "exam-10": {
       "title": "Examen: 10. Razonamiento Analítico (10 Preguntas de Lógica, Estadística y Casos)",
@@ -9153,6 +9223,126 @@ window.COURSES_DATA['inspector1'] = {
       "back": "** Plataforma tecnológica administrada por la DIAN donde se registran las facturas electrónicas de venta como títulos valores que circulan en el territorio nacional mediante operaciones de factoring.",
       "module": 8,
       "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Modelado Dimensional (Ralph Kimball)",
+      "back": "** Enfoque de diseño analítico ascendente estructurado en Tablas de Hechos (métricas) y Tablas de Dimensión (contexto), optimizado para consultas OLAP rápidas y con mínima cantidad de JOINs.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Data Warehouse Empresarial (Bill Inmon)",
+      "back": "** Enfoque corporativo descendente que construye un repositorio central normalizado en Tercera Forma Normal (3NF) como única fuente de verdad, del cual se extraen Data Marts analíticos.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Data Vault 2.0",
+      "back": "** Metodología híbrida y ágil de modelado que separa la identidad de negocio (Hubs), las transacciones y relaciones (Links) y los atributos descriptivos históricos (Satellites) para máxima trazabilidad y carga en paralelo.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Hub (Data Vault)",
+      "back": "** Entidad que almacena únicamente la clave de negocio única (Business Key, ej. el NIT), una clave subrogada hash criptográfica (SHA-256), la fecha de carga y la fuente de origen.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Link (Data Vault)",
+      "back": "** Estructura que asocia y representa relaciones o transacciones entre dos o más Hubs, preservando la trazabilidad de interacciones complejas de negocio.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Satellite (Data Vault)",
+      "back": "** Estructura append-only que almacena todos los atributos descriptivos y variables contextuales de un Hub o Link, registrando el historial completo de cambios en el tiempo.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Primera Forma Normal (1FN)",
+      "back": "** Regla relacional que exige que todos los valores de las columnas sean atómicos (indivisibles), eliminando listas, arrays y grupos repetitivos.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Segunda Forma Normal (2FN)",
+      "back": "** Regla que exige el cumplimiento de 1FN y que todos los atributos no clave dependan funcionalmente de la totalidad de la clave primaria (elimina dependencias parciales sobre claves compuestas).",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Tercera Forma Normal (3FN)",
+      "back": "** Regla que exige el cumplimiento de 2FN y elimina dependencias transitivas entre atributos que no forman parte de la clave primaria.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Desnormalización Analítica",
+      "back": "** Técnica deliberada que introduce redundancia controlada en esquemas dimensionales para colapsar jerarquías en tablas anchas, eliminando costosos JOINs y operaciones de Shuffle en consultas masivas.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Tabla de Hechos (Fact Table)",
+      "back": "** Tabla central de un esquema dimensional que almacena claves foráneas subrogadas y métricas cuantitativas medibles generadas por un evento de negocio.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Métrica Totalmente Aditiva",
+      "back": "** Valor cuantitativo que puede sumarse válidamente a través de todas las dimensiones del modelo (ej. Valor del IVA Facturado).",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Métrica Semi-Aditiva",
+      "back": "** Medida que puede sumarse a través de dimensiones geográficas o conceptuales, pero NUNCA a través de la dimensión tiempo (ej. Saldo de cuenta o cartera morosa).",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "SCD Tipo 1 (Slowly Changing Dimension)",
+      "back": "** Estrategia destructiva que sobrescribe directamente el valor antiguo de un atributo con el nuevo valor, sin conservar memoria histórica de cambios.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "SCD Tipo 2",
+      "back": "** Estrategia canónica que preserva el historial completo insertando una nueva fila con nueva clave subrogada, fechas de vigencia (Effective/Expiry Date) y bandera de registro actual.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Almacenamiento Columnar (Column-Store)",
+      "back": "** Disposición física de datos donde los valores de una misma columna se almacenan contiguos en disco, maximizando la compresión y permitiendo omitir columnas no consultadas (Column Pruning).",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Data Lakehouse",
+      "back": "** Arquitectura moderna que combina la escalabilidad y bajo costo de almacenamiento del Data Lake con el soporte transaccional ACID, Time Travel y gobernanza del Data Warehouse.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Apache Parquet",
+      "back": "** Formato de archivo columnar binario abierto y divisible, que incluye estadísticas min/max por bloque para acelerar la poda de predicados en consultas analíticas masivas.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Apache Avro",
+      "back": "** Formato de archivo binario orientado a filas, altamente optimizado para ingesta rápida y serialización de mensajes en streaming con gestión de esquemas en tiempo real (Schema Registry).",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
+    },
+    {
+      "front": "Predicate Pushdown (Poda de Predicados)",
+      "back": "** Capacidad de los motores de consulta analítica de empujar los filtros WHERE al nivel del archivo físico, omitiendo la lectura de bloques enteros que no cumplen la condición.",
+      "module": 9,
+      "category": "09. Modelado y Repositorios de Datos"
     }
   ]
 };
