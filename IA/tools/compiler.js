@@ -71,9 +71,14 @@ function inline(text) {
     let t = text.replace(/<br\s*\/?>/gi, '\u0001');
     const codes = [];
     t = t.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return '\u0002' + (codes.length - 1) + '\u0002'; });
+    // Proteger fórmulas LaTeX ($$...$$ y $...$) para que KaTeX las procese en el navegador
+    const maths = [];
+    t = t.replace(/\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g, m => { maths.push(m); return '\u0003' + (maths.length - 1) + '\u0003'; });
     t = esc(t);
-    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Negrita (admite cursiva anidada) y luego cursiva
+    t = t.replace(/\*\*(.+?)\*\*(?!\*)/g, '<strong>$1</strong>');
     t = t.replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, '$1<em>$2</em>');
+    t = t.replace(/\u0003(\d+)\u0003/g, (_, i) => esc(maths[+i]));
     t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     t = t.replace(/\u0002(\d+)\u0002/g, (_, i) => '<code>' + esc(codes[+i]) + '</code>');
     return t.replace(/\u0001/g, '<br>');
@@ -292,8 +297,8 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
             const clean = l.replace(/^\s*[-*]\s*/, '');
             const parts = clean.split('::');
             if (parts.length >= 2) {
-                const front = parts[0].replace(/\*\*/g, '').trim();
-                const back = parts.slice(1).join('::').trim();
+                const front = inline(parts[0].replace(/\*\*/g, '').trim());
+                const back = inline(parts.slice(1).join('::').trim());
                 flashcards.push({
                     front,
                     back,
@@ -325,7 +330,7 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
             while ((m = optRegex.exec(block)) !== null) {
                 options.push({
                     id: m[1].toUpperCase(),
-                    text: m[2].trim()
+                    text: inline(m[2].trim())
                 });
             }
 
@@ -335,7 +340,7 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
             const justRegex = /\*\s*\*\*Justificación ([A-D])(?:\s*\([^)]*\))?:\*\*\s*([\s\S]*?)(?=(?:\*\s*\*\*Justificación|\n---|$))/gi;
             const justMap = {};
             while ((m = justRegex.exec(justSec)) !== null) {
-                justMap[m[1].toUpperCase()] = m[2].trim();
+                justMap[m[1].toUpperCase()] = inline(m[2].trim());
             }
 
             const distractorKeys = options.map(o => o.id).filter(id => id !== clave);
@@ -348,8 +353,8 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
                 id: (modNum * 100) + (qIdx + 1),
                 topic: topic.trim(),
                 level: nivel.trim(),
-                caseText: caso.trim(),
-                statement: enunciado.trim(),
+                caseText: inline(caso.trim()),
+                statement: inline(enunciado.trim()),
                 options: options,
                 correctAnswer: clave,
                 justification: {

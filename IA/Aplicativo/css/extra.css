@@ -1,4 +1,4 @@
-/* Estilos de la ampliación: autoevaluación, llamadas, código, plan de estudio, tiempos */
+﻿/* Estilos de la ampliación: autoevaluación, llamadas, código, plan de estudio, tiempos */
 .lesson-body h4 { font-family: var(--font-serif); font-size: 1.15rem; margin: 22px 0 10px; color: var(--accent-gold); }
 .lesson-body ol { margin: 12px 0 20px 24px; }
 .lesson-body hr { border: none; border-top: 1px solid var(--border-color); margin: 28px 0; }
@@ -1226,7 +1226,7 @@ details.selfcheck[open] > summary::after { content: "▾ ocultar"; }
 
 .blueprint-code {
     font-family: "JetBrains Mono", Consolas, "Courier New", monospace !important;
-    font-size: 0.81rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.45 !important;
     color: #e5edea !important;
     background: transparent !important;
