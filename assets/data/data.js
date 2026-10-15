@@ -27,17 +27,17 @@ window.COURSES_DATA['inspector1'] = {
   "tracks": [
     {
       "id": "funcionales",
-      "name": "📘 Pruebas Funcionales (10 Módulos - 60% Eliminatoria)",
+      "name": "📘 Pruebas Funcionales (11 Módulos - 60% Eliminatoria)",
       "icon": "database"
     },
     {
       "id": "comportamentales",
-      "name": "🤝 Pruebas Comportamentales (1 Módulos - 15%)",
+      "name": "🤝 Pruebas Comportamentales (5 Módulos - 15%)",
       "icon": "users"
     },
     {
       "id": "integridad",
-      "name": "⚖️ Pruebas de Integridad (0 Módulos - 10%)",
+      "name": "⚖️ Pruebas de Integridad (3 Módulos - 10%)",
       "icon": "shield"
     }
   ],
@@ -944,7 +944,7 @@ window.COURSES_DATA['inspector1'] = {
     },
     {
       "id": "mod-11",
-      "track": "comportamentales",
+      "track": "funcionales",
       "title": "11. Seguridad, Integridad y Disponibilidad de los Datos",
       "badge": "Funcional - Seguridad de la Información & Ciberseguridad (60%)",
       "examId": "exam-11",
@@ -1016,6 +1016,630 @@ window.COURSES_DATA['inspector1'] = {
       "studyMinutes": 60,
       "bibliografia": {
         "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>NIST (National Institute of Standards and Technology) (2020).</strong> <em>NIST SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations</em>. U.S. Department of Commerce.</li><li><strong>Por qué leerlo para el examen:</strong> Es el catálogo de controles de ciberseguridad más riguroso del mundo. Detalla controles de acceso (AC), auditoría y responsabilidad (AU) y protección de sistemas y comunicaciones (SC) aplicables a entidades tributarias.</li><li><strong>Vacca, J. R. (2017).</strong> <em>Computer and Information Security Handbook (3rd Edition)</em>. Morgan Kaufmann.</li><li><strong>Por qué leerlo para el examen:</strong> Desarrolla con claridad pedagógica e ingenieril los principios de criptografía de envoltura, gestión de incidentes en el SOC y diseño de arquitecturas de alta disponibilidad.</li><li><strong>Casey, E. (2011).</strong> <em>Digital Evidence and Computer Crime: Forensic Science, Computers, and the Internet (3rd Edition)</em>. Academic Press.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra cumbre para entender los protocolos periciales de cadena de custodia digital, toma de imágenes forenses y valoración probatoria ante jueces y tribunales.</li></ol>\n<h3>Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)</h3>\n<h4>A. Marco Legal Colombiano de Seguridad, Privacidad y Delitos Informáticos</h4>\n<ul><li><strong>Constitución Política de Colombia de 1991.</strong> Artículo 15 (Derecho a la intimidad, buen nombre y Habeas Data) y Artículo 74 (Acceso a documentos públicos y reserva legal).</li><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes al 19 de junio de 2026).</strong> Artículos 583 (Reserva tributaria), 584 (Excepciones), 585 (Convenios de intercambio de información), 579-2 (Declaratoria de contingencia tecnológica) y 616-1 (Facturación electrónica con validación previa).</li><li><strong>Ley 1273 de 2009.</strong> Por medio de la cual se modifica el Código Penal y se crea el bien jurídico tutelado de la protección de la información y de los datos (Delitos informáticos: Arts. 269A a 269J).</li><li><strong>Ley 1581 de 2012.</strong> Régimen General de Protección de Datos Personales (Habeas Data).</li><li><strong>Ley 527 de 1999.</strong> Reglamentación del acceso y uso de los mensajes de datos, comercio electrónico y firmas digitales (Equivalencia funcional y no repudio).</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica de la UAE DIAN — Funciones de la Dirección de Gestión de Innovación y Tecnología y de la Subdirección de Procesamiento de Datos.</li><li><strong>Decretos Ley 071 de 2020 y 927 de 2023.</strong> Régimen especial de carrera administrativa y faltas disciplinarias por violación de la reserva y seguridad de los datos en la DIAN.</li></ul>\n<h4>B. Estándares Internacionales de Seguridad y Continuidad</h4>\n<ul><li><strong>ISO/IEC 27001:2022.</strong> <em>Information security, cybersecurity and privacy protection — Information security management systems — Requirements</em>.</li><li><strong>ISO/IEC 27002:2022.</strong> <em>Information security, cybersecurity and privacy protection — Information security controls</em>.</li><li><strong>ISO 22301:2019.</strong> <em>Security and resilience — Business continuity management systems — Requirements</em>.</li><li><strong>Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC).</strong> <em>Modelo de Seguridad y Privacidad de la Información (MSPI).</em> Guías oficiales para entidades del Estado Colombiano.</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-12",
+      "track": "comportamentales",
+      "title": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)",
+      "badge": "Pruebas Comportamentales (15%)",
+      "examId": "exam-12",
+      "lessons": [
+        {
+          "id": "les-12-1",
+          "moduleId": "mod-12",
+          "unitNumber": 1,
+          "title": "Unidad 1: Fundamentos Psicométricos del Modelo Areandina (GOA Numerales 8.3 y 8.4)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 610,
+          "content": "<p># Guía Metodológica Oficial: Evaluación Psicométrica, Escala Likert de 4 Niveles y Subescalas de Control (Inspector I - DIAN 2676)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas Comportamentales (15%) y Pruebas de Integridad (10%)   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: El Cambio de Paradigma Psicométrico en Areandina 2026</h2>\n<p>La evaluación de competencias conductuales e integridad para el cargo de <strong>Inspector I (OPEC 236670)</strong> en el Concurso DIAN 2676 rompe con los esquemas tradicionales de evaluación memorística o de simple elección múltiple neutral. La <strong>Fundación Universitaria del Área Andina (FUAA)</strong>, en estricto cumplimiento de los numerales 8.3 y 8.4 de la Guía de Orientación al Aspirante (GOA), implementa una batería psicométrica forzada de <strong>Escala Likert de 4 Niveles</strong> complementada con casos situacionales de juicio conductual y dos subescalas activas de control psicométrico: <strong>Deseabilidad Social (<em>Faking Good</em>)</strong> y <strong>Falsa Proactividad</strong>.</p>\n<p>Para un profesional de la tecnología, analítica y procesamiento de datos, comprender la arquitectura matemática y conductual de este instrumento es la diferencia entre aprobar con puntaje de excelencia o quedar anulado por reactivos trampa de consistencia interna.</p>\n<hr>\n<hr>\n<h3>1.1. Naturaleza de la Escala Likert Forzada de 4 Niveles</h3>\n<p>A diferencia de las escalas clásicas de 5 o 7 opciones que incluyen categorías intermedias de neutralidad (\"Ni de acuerdo ni en desacuerdo\" o \"Indiferente\"), la Universidad Areandina adopta una <strong>escala de elección forzada (<em>ipsativa/cuasi-ipsativa</em>) de 4 niveles</strong>:</p>\n<table class=\"data-table\"><thead><tr><th>Nivel</th><th>Opción Oficial</th><th>Significado Psicométrico en el Concurso DIAN</th><th>Graduación del Rasgo</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><strong>Totalmente en desacuerdo</strong></td><td>Rechazo absoluto de la conducta formulada; desacuerdo categórico ante prácticas incompatibles o sesgos de deseabilidad.</td><td>1 punto (o 4 puntos en ítems invertidos)</td></tr><tr><td><strong>B</strong></td><td><strong>En desacuerdo</strong></td><td>Distanciamiento moderado de la afirmación; reconocimiento de que la conducta no refleja la práctica laboral habitual.</td><td>2 puntos (o 3 puntos en ítems invertidos)</td></tr><tr><td><strong>C</strong></td><td><strong>De acuerdo</strong></td><td>Identificación con la conducta evaluada, reconociendo su presencia en el repertorio profesional sin llegar al extremo absoluto.</td><td>3 puntos (o 2 puntos en ítems invertidos)</td></tr><tr><td><strong>D</strong></td><td><strong>Totalmente de acuerdo</strong></td><td>Adopción plena, incondicional y activa del comportamiento o valor institucional como directriz de actuación.</td><td>4 puntos (o 1 punto en ítems invertidos)</td></tr></tbody></table>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>Eliminación del Punto Medio Neutro:</strong> La eliminación deliberada de la opción \"Neutro\" busca erradicar el <strong>sesgo de tendencia central</strong>, obligando al aspirante a tomar una postura conductual definida. En el perfil de Inspector I de Innovación y Tecnología, donde se toman decisiones críticas sobre pipelines de datos, seguridad de la información y reserva fiscal, la indefinición o ambigüedad conductual penaliza el perfil de liderazgo técnico.</p></div>\n<h3>1.2. Construcción Sintáctica de los Reactivos: Conducta Observable + Tensión Situacional</h3>\n<p>Un error habitual del aspirante desprevenido es asumir que los reactivos Likert evalúan intenciones o deseos abstractos. En Areandina 2026, cada ítem está redactado bajo la fórmula psicométrica de <strong>[Conducta Observable + Costo Personal / Tensión Situacional]</strong>:</p>\n<pre class=\"code-block\"><code class=\"\">[Conducta Observable Alineada al Nivel 4/3] + [Tensión de Presión Jerárquica / Urgencia / Costo Personal]</code></pre>\n<ul><li><strong>Ejemplo sin tensión (Ítem débil tradicional):</strong> <em>\"Considero importante proteger los datos reservados de los contribuyentes.\"</em> (Cualquiera responde \"Totalmente de acuerdo\").</li><li><strong>Ejemplo con tensión psicométrica Areandina:</strong> <em>\"Cuando un directivo de alto rango me solicita verbalmente adelantar un reporte con datos tributarios no anonimizados saltándome la aprobación del oficial de seguridad para cumplir una meta urgente de prensa, me niego categóricamente y exijo la radicación del trámite formal de desanonimización.\"</em></li></ul>\n<p>En el segundo reactivo, la afirmación evalúa si el aspirante sostiene el estándar técnico y legal del <strong>Nivel 4 de Comportamiento Ético</strong> a pesar de la presión jerárquica y el riesgo de conflicto laboral.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-12-2",
+          "moduleId": "mod-12",
+          "unitNumber": 2,
+          "title": "Unidad 2: Las Dos Subescalas de Control Psicométrico (Deseabilidad Social y Falsa Proactividad)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 415,
+          "content": "<h3>2.1. Subescala de Deseabilidad Social (<em>Faking Good</em> o Escala de Mentira)</h3>\n<p>La <strong>Deseabilidad Social</strong> evalúa la propensión del aspirante a falsear deliberada o inconscientemente sus respuestas para proyectar una imagen intachable, moralmente perfecta y desprovista de las debilidades comunes inherentes a la condición humana.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>       ┌─────────────────────────────────────────────────────────────┐\n       │     SUBESCALA 1: DESEABILIDAD SOCIAL (FAKING GOOD)          │\n       │                                                             │\n       │   Reactivo: \"Jamás en mi carrera he sentido cansancio o     │\n       │              desánimo al enfrentar un proyecto complejo.\"   │\n       │                                                             │\n       │   [D] Totalmente de acuerdo ──► ALERTA: SIMULACIÓN (+1 L)   │\n       │   [A] Totalmente en desacuerdo ──► CALIBRACIÓN: SINCERIDAD  │\n       └─────────────────────────────────────────────────────────────┘</code></pre></div>\n<h4>Características de los Reactivos de Deseabilidad Social:</h4>\n<ol><li><strong>Universalidad de la falta:</strong> Plantean comportamientos o sentimientos que el 99% de los profesionales experimenta ocasionalmente (ej. frustración momentánea ante fallas en producción, deseo de aplazar una tarea monótona, molestia pasajera por críticas técnicas).</li><li><strong>Absolutismo lingüístico:</strong> Utilizan cuantificadores absolutos como <em>\"jamás\"</em>, <em>\"nunca\"</em>, <em>\"siempre\"</em>, <em>\"en ningún momento\"</em>, <em>\"sin excepción alguna\"</em>.</li><li><strong>Calibración Óptima:</strong> La respuesta calibrada para mantener la validez de la prueba es <strong>Totalmente en desacuerdo (A)</strong> o <strong>En desacuerdo (B)</strong>. Quien marca <em>Totalmente de acuerdo (D)</em> activa el contador de la subescala de simulación.</li></ol>\n<div class=\"callout warning\"><strong class=\"callout-title\">⚠️ Cuidado / Distractor Típico</strong><p><strong>El Algoritmo de Consistencia y Anulación:</strong> Si un aspirante supera el umbral crítico de respuestas de Deseabilidad Social (típicamente &gt; 3 reactivos con respuesta simulada), el motor psicométrico de Areandina aplica un factor de corrección por distorsión que invalida o castiga severamente la calificación en las competencias asociadas.</p></div>\n<h3>2.2. Subescala de Falsa Proactividad (Atajos Técnicos y Ruptura de Procedimientos)</h3>\n<p>La subescala de <strong>Falsa Proactividad</strong> está diseñada específicamente para perfiles tecnológicos y analíticos. Evalúa la tendencia a saltarse protocolos de gobernanza, normatividad tributaria, controles de cambios (CI/CD) o la reserva legal bajo el pretexto de <em>\"ser eficiente\"</em>, <em>\"innovar sin burocracia\"</em> o <em>\"apoyar a los compañeros\"</em>.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>       ┌─────────────────────────────────────────────────────────────┐\n       │          SUBESCALA 2: FALSA PROACTIVIDAD                    │\n       │                                                             │\n       │   Reactivo: \"Con tal de entregar a tiempo un pipeline de    │\n       │              analítica urgente para Fiscalización, desactivo│\n       │              temporalmente los filtros de anonimización.\"   │\n       │                                                             │\n       │   [D] Totalmente de acuerdo ──► CONDUCTA GRAVE (DESVÍO)     │\n       │   [A] Totalmente en desacuerdo ──► CALIBRACIÓN: CUMPLIMIENTO│\n       └─────────────────────────────────────────────────────────────┘</code></pre></div>\n<h4>Trampas Frecuentes de Falsa Proactividad en Innovación y Tecnología:</h4>\n<ul><li><strong>Compartir credenciales de servicio:</strong> <em>\"Prestar mi token de acceso a DataR a un ingeniero nuevo para que no se atrase en su inducción.\"</em> (Calibración óptima: <strong>Totalmente en desacuerdo</strong>).</li><li><strong>Probar en producción:</strong> <em>\"Modificar directamente un script de Spark en el clúster de producción durante un incidente para ahorrar tiempo de despliegue.\"</em> (Calibración óptima: <strong>Totalmente en desacuerdo</strong>).</li><li><strong>Flexibilización de la Reserva Tributaria (Art. 583 E.T.):</strong> <em>\"Enviar un extracto de datos sin anonimizar a un investigador universitario porque su estudio beneficiará las políticas públicas del país.\"</em> (Calibración óptima: <strong>Totalmente en desacuerdo</strong>).</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-12-3",
+          "moduleId": "mod-12",
+          "unitNumber": 3,
+          "title": "Unidad 3: El Perfil Psicométrico del Inspector I (OPEC 236670)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 308,
+          "content": "<h3>3.1. Posicionamiento en Niveles de Desarrollo (Resolución DIAN 065 de 2024)</h3>\n<p>El aspirante a <strong>Inspector I</strong> en la Dirección de Gestión de Innovación y Tecnología debe demostrar un perfil conductual diametralmente opuesto al de un técnico operativo o asistencial. El siguiente cuadro sinóptico sintetiza la graduación exigida por la CNSC:</p>\n<table class=\"data-table\"><thead><tr><th>Competencia Comportamental</th><th>Componente</th><th>Nivel Exigido</th><th>Enfoque de la Conducta Esperada en Procesamiento de Datos</th></tr></thead><tbody><tr><td><strong>Comportamiento Ético</strong></td><td>Comportamental (15%)</td><td><strong>Nivel 4</strong></td><td>Referente institucional, modelamiento ético, defensa intransigente de la reserva tributaria (Art. 583 E.T.), cero tolerancia al soborno y presiones indebidas.</td></tr><tr><td><strong>Comunicación Efectiva</strong></td><td>Comportamental (15%)</td><td><strong>Nivel 4</strong></td><td>Traducción de alta complejidad técnica (Lakehouse, grafos, Spark) a lenguaje directivo, construcción de redes interdependencias (Aduanas/Recaudo).</td></tr><tr><td><strong>Innovación</strong></td><td>Comportamental (15%)</td><td><strong>Nivel 4</strong></td><td>Co-construcción de soluciones analíticas pioneras, benchmarking con CIAT/SAT/OCDE, adopción de arquitecturas escalables que generan valor público.</td></tr><tr><td><strong>Trabajo en Equipo</strong></td><td>Comportamental (15%)</td><td><strong>Nivel 3</strong></td><td>Articulación multidisciplinaria, orientación técnica de pares, resolución constructiva de fricciones y cuidado activo del clima laboral.</td></tr><tr><td><strong>Autogestión en Teletrabajo</strong></td><td>Transversal</td><td><strong>Nivel 3</strong></td><td>Disciplina operativa autónoma, cumplimiento al 100% sin supervisión presencial, seguridad estricta en endpoints y VPN institucional.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                 ESCALERA DE MADUREZ CONDUCTUAL (RES. 065/2024)\n                 \n   [NIVEL 4] ──► REFERENTE ESTRATÉGICO &amp; CO-CONSTRUCCIÓN PIONERA\n                 (Comportamiento Ético, Comunicación Efectiva, Innovación)\n                 ▲\n   [NIVEL 3] ──► ORIENTADOR DE EQUIPO, CLIMA LABORAL &amp; AUTONOMÍA\n                 (Trabajo en Equipo, Autogestión en Teletrabajo)\n                 ▲\n   [NIVEL 2] ──► CUMPLIMIENTO CONTEXTUAL &amp; ASESORÍA A PARES\n                 ▲\n   [NIVEL 1] ──► CUMPLIMIENTO BÁSICO / PASIVO (INSUFICIENTE PARA INSPECTOR I)</code></pre></div>\n<div class=\"callout note\"><strong class=\"callout-title\">📌 Micro-verificación / Recuerda</strong><p><strong>Por qué el Nivel 1 anula al Inspector I:</strong> Un aspirante que en sus respuestas refleje una postura de Nivel 1 (<em>\"Me limito a acatar las instrucciones de mi jefe\"</em>, <em>\"Espero a que me asignen tareas para actuar\"</em>, <em>\"Si veo un error en un modelo analítico, no digo nada a menos que me pregunten\"</em>) obtendrá una puntuación muy deficiente en la prueba comportamental, pues el cargo de Inspector I exige liderazgo técnico y propositivo.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-12-4",
+          "moduleId": "mod-12",
+          "unitNumber": 4,
+          "title": "Unidad 4: Estrategias de Decodificación y Resolución en Pruebas Escritas",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 263,
+          "content": "<h3>4.1. Matriz de Decisión para Afirmaciones Likert</h3>\n<p>Al enfrentarse a un reactivo de escala Likert en el cuadernillo de Areandina, aplique el siguiente algoritmo mental de 4 pasos:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>        PASO 1: Identificar el Núcleo Conductual del Ítem\n                ¿Es una competencia positiva, un antivalor o una subescala?\n                                │\n                                ▼\n        PASO 2: Verificar si es Ítem de Deseabilidad Social\n                ¿Usa absolutos (\"nunca he fallado\")?\n                ├── SÍ ──► Marcar \"Totalmente en desacuerdo\" (A) o \"En desacuerdo\" (B)\n                └── NO ──► Continuar al Paso 3\n                                │\n                                ▼\n        PASO 3: Verificar si es Falsa Proactividad / Atajo\n                ¿Propone violar protocolos para \"ser rápido\" o \"ayudar\"?\n                ├── SÍ ──► Marcar \"Totalmente en desacuerdo\" (A)\n                └── NO ──► Continuar al Paso 4\n                                │\n                                ▼\n        PASO 4: Graduar el Nivel de Competencia (Nivel 3/4)\n                ¿Refleja proactividad, modelamiento ético y rigor técnico?\n                └── SÍ ──► Marcar \"Totalmente de acuerdo\" (D)</code></pre></div>\n<h3>4.2. Decodificación de Preguntas de Juicio Situacional (PJS) de 3 Opciones (A, B, C)</h3>\n<p>Para las 5 situaciones problema PJS que cierran cada módulo temático, la Universidad Areandina estructura las opciones bajo un patrón tricategorial rígido:</p>\n<ol><li><strong>La Clave Oficial (Opción de Alto Impacto / Nivel 4 o Nivel 3):</strong></li><li>Resuelve el problema de raíz con fundamentación técnica y legal.</li><li>Protege los intereses institucionales de la DIAN y la reserva fiscal.</li><li>Articula esfuerzos, comunica asertivamente o modela la integridad.</li><li><strong>El Distractor Pasivo / Insuficiente (Nivel 1):</strong></li><li>El profesional se lava las manos, se limita a cumplir órdenes o traslada el problema enteramente al superior sin proponer ninguna alternativa técnica.</li><li><strong>El Distractor Antinormativo / Falsa Eficiencia:</strong></li><li>Plantea una solución rápida pero ilegal, saltándose los procedimientos de auditoría, las firmas de aprobación o las políticas de seguridad de la información.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-12-5",
+          "moduleId": "mod-12",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio de Entrenamiento Psicométrico (Likert y PJS)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "22 min",
+          "minutes": 22,
+          "words": 3328,
+          "content": "<hr>\n<h3>Ítem Likert 1: Liderazgo Técnico y Co-construcción en Datos</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo activamente espacios interdisciplinarios con auditores tributarios y analistas de negocio para co-construir nuevas reglas analíticas de detección de fraude en facturación electrónica, en lugar de esperar a que me entreguen especificaciones cerradas.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Describe la conducta pura del Nivel 4 de Innovación según la Resolución 065 de 2024: <em>\"Fomenta un ambiente de co-construcción de nuevas propuestas, integrando diferentes perspectivas funcionales para generar soluciones de alto impacto\"</em>.</li><li><strong>Justificación A y B:</strong> Reflejan pasividad y aislamiento técnico incompatibles con el rol de Inspector I.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Infalibilidad Humana)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi trayectoria profesional he cometido una equivocación en la parametrización de un script o pipeline de datos, manteniendo siempre una precisión del 100% en todas mis entregas.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Reactivo clásico de escala de mentira. La infalibilidad absoluta no existe en ingeniería de software ni en procesamiento de datos. Reconocer la posibilidad de error humano y la necesidad de mecanismos de control (pruebas unitarias, code review) denota madurez y sinceridad psicométrica.</li><li><strong>Justificación D (Trampa):</strong> Activa la bandera de simulación psicométrica (<em>Faking Good</em>).</li></ul>\n<hr>\n<h3>Ítem Likert 3: Protección Incondicional de la Reserva Tributaria</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Me niego rotundamente a ejecutar consultas exploratorias sobre bases de datos tributarias o aduaneras respecto a personas o empresas conocidas si no cuento con una orden de trabajo formal debidamente motivada dentro de mis funciones.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> El Artículo 583 del Estatuto Tributario y la Ley 1952 de 2019 imponen la reserva tributaria estricta. En el Nivel 4 de Comportamiento Ético, el servidor modela la custodia de la información y no cede a la curiosidad ni a favores personales.</li><li><strong>Justificación A y B:</strong> Configura indicio de riesgo de fuga de datos o acceso abusivo a sistemas informáticos (Art. 269A Código Penal).</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Atajo Operativo en Producción)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Gobierno de TI</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un pipeline de ingesta de datos en tiempo real falla durante el cierre fiscal de medianoche, considero justificado modificar el código directamente en el nodo maestro de producción sin pasar por el repositorio Git ni documentar el commit para restablecer el servicio más rápido.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Las buenas prácticas de ITIL v4, COBIT y los estándares de seguridad de la DIAN exigen trazabilidad y control de cambios aún en emergencias. Los parches clandestinos en producción introducen vulnerabilidades críticas y destruyen la reproducibilidad.</li><li><strong>Justificación C y D (Trampa):</strong> Evidencian falsa proactividad y negligencia metodológica.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Comunicación Asertiva de Complejidad Técnica</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Adapto mi vocabulario técnico al explicar los resultados de algoritmos complejos de aprendizaje automático a los directivos de fiscalización, utilizando metáforas claras e impactos tributarios medibles en lugar de jergas matemáticas inaccesibles.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Conducta del Nivel 4 de Comunicación Efectiva: <em>\"Traduce información técnica especializada a un lenguaje ejecutivo comprensible que facilita la toma de decisiones estratégicas\"</em>.</li><li><strong>Justificación A y B:</strong> Muestran arrogancia técnica o incapacidad de articulación interdisciplinaria.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Orientación Constructiva y Cuidado del Clima Laboral</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando un integrante del equipo técnico comete un error en la configuración de un pipeline que retrasa el cronograma, me enfoco en solucionar el problema conjuntamente y en fortalecer los controles colectivos, evitando descalificaciones o reproches personales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Refleja el Nivel 3 de Trabajo en Equipo: <em>\"Cuida activamente el clima laboral y orienta al equipo hacia la solución constructiva de los problemas\"</em>.</li><li><strong>Justificación A y B:</strong> Fomentan dinámicas punitivas que deterioran la confianza en el equipo.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Irritabilidad Humana Pasajera)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Absolutamente nunca he sentido molestia o frustración cuando un usuario funcional cambia los requerimientos de un reporte analítico a pocas horas de la entrega definitiva.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Es una reacción humana natural experimentar frustración momentánea ante cambios intempestivos de alcance. Lo evaluado como positivo no es la ausencia de emociones humanas, sino la capacidad de modularlas profesionalmente.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de mentira evidente.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Autogestión y Disponibilidad en Teletrabajo</h3>\n<ul><li><strong>Competencia:</strong> Autogestión en Teletrabajo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Organizo mis jornadas de teletrabajo de manera rigurosa, cumpliendo con la totalidad de los entregables y manteniendo canales de comunicación activos y transparentes con mis pares y líderes sin requerir supervisión continua.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 3 de Autogestión: autonomía responsable, uso de herramientas institucionales y compromiso efectivo con los objetivos fijados.</li><li><strong>Justificación A y B:</strong> Revelan falta de autorregulación y necesidad de microgestión presencial.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Denuncia Activa y Rechazo al Soborno</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un tercero o intermediario me insinúa algún beneficio económico a cambio de alterar los parámetros de un cruce de auditoría fiscal en la base de datos, lo rechazo categóricamente y radico la denuncia penal y disciplinaria de inmediato.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Comportamiento Ético: defensa activa de la legalidad y cumplimiento irrestricto del deber de denunciar delitos (Art. 67 CPP y Ley 1952 de 2019).</li><li><strong>Justificación A y B:</strong> Tolerancia inaceptable a la corrupción en la administración tributaria.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Filtración para \"Ayuda Externa\")</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Reserva Tributaria</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero admisible compartir un dataset preliminar con microdatos de contribuyentes a un centro de investigación académica sin pasar por el comité de anonimización, siempre que los investigadores prometan usarlo exclusivamente para fines científicos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La reserva tributaria (Art. 583 E.T.) no contempla excepciones basadas en promesas informales de terceros. El Inspector I debe garantizar la privacidad y el marco legal institucional por encima de cualquier interés científico particular.</li><li><strong>Justificación C y D (Trampa):</strong> Violación gravísima de la reserva legal y del deber de custodia de datos.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Transferencia Activa de Conocimiento Técnico</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Dedico tiempo de forma voluntaria para capacitar a los nuevos ingenieros de la subdirección en la arquitectura del DataR y las directrices de modelado de datos, facilitando su integración efectiva al equipo.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 3 de Trabajo en Equipo: transferencia activa de mejores prácticas y nivelación del conocimiento colectivo.</li><li><strong>Justificación A y B:</strong> Comportamiento individualista y retención celosa del conocimiento.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Rigor y Benchmarking en Soluciones de TI</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Investigo y analizo las mejores prácticas internacionales de administraciones tributarias avanzadas (ej. CIAT, SAT, OCDE) para adaptar arquitecturas analíticas modernas a las necesidades reales de la DIAN.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Descriptor del Nivel 4 de Innovación: aprovechar experiencias exitosas globales para generar valor público tangible en la entidad.</li><li><strong>Justificación A y B:</strong> Falta de visión prospectiva y resistencia al desarrollo tecnológico.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Cansancio Laboral Cotidiano)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido la necesidad de tomar una pausa o descanso mental durante una jornada de trabajo con alta carga de procesamiento de incidentes de bases de datos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El cansancio físico y mental ante jornadas extenuantes es una realidad fisiológica. Las pausas activas son incluso un deber en el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST).</li><li><strong>Justificación D (Trampa):</strong> Reactivo para detectar aspirantes que marcan todo positivamente sin reflexionar.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Gestión Asertiva de Desacuerdos Metodológicos</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando discrepo de la solución arquitectónica propuesta por otro especialista, expongo mis argumentos con base en métricas objetivas de rendimiento y latencia, manteniendo una postura respetuosa que fomente el consenso.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Comunicación: manejo constructivo de divergencias técnicas mediante datos fehacientes y diálogo asertivo.</li><li><strong>Justificación A y B:</strong> Actitud defensiva, intransigencia o descalificación interpersonal.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Uso de Llaves Maestras sin Ticket)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Seguridad Informática</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un colega olvida su contraseña durante un despliegue crítico, considero una muestra de solidaridad prestarle mi usuario de superadministrador para que termine su labor sin esperar a la Mesa de Ayuda.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Las cuentas de acceso privilegiado son personales e intransferibles. Compartir credenciales rompe la cadena de custodia y la no repudiación de eventos de auditoría (ISO 27001).</li><li><strong>Justificación C y D (Trampa):</strong> Falsa solidaridad que vulnera gravemente la seguridad de la información del Estado.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Presión Directiva para Romper la Cadena de Aprobación de Despliegue</h3>\n<ul><li><strong>Caso:</strong> En vísperas del vencimiento del plazo para la declaración de renta de grandes contribuyentes, un Subdirector Misional contacta telefónicamente al Inspector I de la Subdirección de Procesamiento de Datos exigiendo que modifique de inmediato un índice en la base de datos transaccional de MUISCA para mejorar los tiempos de respuesta. El Subdirector advierte que no hay tiempo para radicar un ticket de cambio ni para correr las pruebas de regresión en el ambiente de preproducción (<em>staging</em>), asegurando que asume la responsabilidad si algo sale mal.</li><li><strong>Enunciado:</strong> Frente a esta situación de alta presión jerárquica y operativa, la decisión que refleja el Nivel 4 de Comportamiento Ético y Gobierno de TI es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Acceder verbalmente a la solicitud y aplicar el cambio de inmediato en la base de datos de producción para no entorpecer el recaudo nacional, enviando un correo informativo posterior.</li><li><strong>B.</strong> Explicar respetuosamente al Subdirector que la política institucional de gestión de cambios prohíbe intervenciones directas no testeadas en producción, coordinar una sesión técnica de emergencia con el líder de base de datos para evaluar el impacto en ambiente controlado y proceder mediante la vía formal de cambio de emergencia garantizando trazabilidad.</li><li><strong>C.</strong> Apagar el teléfono institucional y esperar a que el superior jerárquico directo del Inspector I se entere y decida qué hacer al día siguiente.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela la firmeza técnica y ética del Nivel 4. Protege la infraestructura institucional de caídas catastróficas imprevistas y canaliza la urgencia mediante el protocolo de \"Cambio de Emergencia\" legalmente establecido, manteniendo el respeto y la orientación a la solución.</li><li><strong>Justificación A (Incorrecta):</strong> Cede a la presión jerárquica violando las políticas de seguridad y gobierno de TI; en caso de corrupción o bloqueo de base de datos, el operador directo responderá disciplinaria y penalmente.</li><li><strong>Justificación C (Incorrecta):</strong> Evasión pasiva y negligencia funcional.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Detección de Código Malicioso o Fuga de Datos por un Par Técnico</h3>\n<ul><li><strong>Caso:</strong> Durante una revisión cruzada de código (<em>code review</em>) en el repositorio institucional de GitLab, el Inspector I descubre que un ingeniero de datos experimentado ha incluido una rutina oculta que extrae muestras aleatorias de NITs y patrimonios líquidos y las envía a un bucket de almacenamiento personal en la nube pública sin ningún tipo de tokenización ni enmascaramiento. Al ser confrontado en privado, el ingeniero afirma que es para \"entrenar un modelo de predicción en su casa para un trabajo de maestría\".</li><li><strong>Enunciado:</strong> La actuación profesional y ética obligatoria del Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Rechazar el merge request en el repositorio y advertirle al compañero que borre los datos de su cuenta privada, acordando no divulgar el hecho si no vuelve a repetirse.</li><li><strong>B.</strong> Suspender el flujo de integración continua, asegurar la evidencia digital (commits, logs de red) y radicar de inmediato un informe formal ante el Oficial de Seguridad de la Información y la Oficina de Control Interno Disciplinario por presunta violación de la reserva tributaria.</li><li><strong>C.</strong> Exigirle al compañero que comparta los resultados del modelo académico para evaluar si la DIAN puede aprovechar la investigación antes de tomar medidas.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al mandato insoslayable del Artículo 583 del Estatuto Tributario, el principio rector \"Para ser impecable no necesito testigos\" y el deber legal de denunciar delitos informáticos y faltas disciplinarias gravísimas (Art. 67 CPP). La fuga de datos protegidos no admite arreglos entre compañeros.</li><li><strong>Justificación A (Incorrecta):</strong> Encubrimiento y complicidad en un delito contra la administración pública.</li><li><strong>Justificación C (Incorrecta):</strong> Convalidación inmoral de una falta gravísima bajo el pretexto de un beneficio técnico secundario.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Desacuerdo Metodológico entre Analítica y Negocio</h3>\n<ul><li><strong>Caso:</strong> La Subdirección de Fiscalización solicita un modelo analítico predictivo para seleccionar contribuyentes a fiscalizar por presunto contrabando técnico. El equipo de negocio insiste en utilizar un conjunto rígido de 5 variables tradicionales basadas en el monto importado. El Inspector I y su equipo han demostrado empíricamente que un modelo de grafos con árboles de decisión que analiza redes de vínculos y triangulación de precios reduce los falsos positivos en un 40%. Los auditores de negocio se muestran escépticos y afirman que \"no confían en modelos que no entienden\".</li><li><strong>Enunciado:</strong> La estrategia que debe desplegar el Inspector I conforme al Nivel 4 de Comunicación Efectiva e Innovación es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Descartar el modelo avanzado y programar el script con las 5 variables tradicionales solicitadas por negocio para evitar fricciones y cumplir a tiempo con el requerimiento.</li><li><strong>B.</strong> Diseñar un taller interactivo de co-construcción donde presente visualmente casos piloto anonimizados, comparando el rendimiento del modelo tradicional frente al avanzado en términos de recaudo real y precisión, construyendo un glosario ejecutivo claro y acordando un plan piloto conjunto.</li><li><strong>C.</strong> Radicar un memorando formal ante la Dirección General denunciando la falta de conocimientos tecnológicos del área de Fiscalización para que les impongan el uso obligatorio del modelo por resolución.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Representa el Nivel 4 de Comunicación Efectiva e Innovación: construye puentes entre áreas técnicas y de negocio, traduce la analítica compleja a valor público tangible y genera apropiación mediante la co-construcción sin caer en imposiciones autoritarias ni en resignación técnica.</li><li><strong>Justificación A (Incorrecta):</strong> Postura pasiva que priva a la DIAN de capacidades analíticas avanzadas para combatir el fraude fiscal.</li><li><strong>Justificación C (Incorrecta):</strong> Comunicación agresiva y destructiva que daña las relaciones interdependencias y genera resistencia al cambio.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Sobrecarga Laboral y Descoordinación en Cierre de Fase</h3>\n<ul><li><strong>Caso:</strong> En la fase final de despliegue del nuevo módulo de Facturación Electrónica UBL 2.1, dos miembros del equipo técnico se encuentran incapacitados por motivos de salud. Los tres integrantes restantes, incluido el Inspector I, enfrentan jornadas intensas para cumplir con la fecha de lanzamiento. Uno de los compañeros comienza a mostrar señales visibles de agotamiento extremo, comete fallas reiteradas en tareas sencillas y reacciona de forma irritable ante cualquier consulta.</li><li><strong>Enunciado:</strong> La actuación que refleja el Nivel 3 de Trabajo en Equipo y Liderazgo Situacional es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Solicitar una reunión breve y reservada con el compañero para escuchar su situación, redistribuir solidariamente las cargas de trabajo de forma técnica y acordar con el líder del proyecto priorizar las tareas críticas del lanzamiento difiriendo las secundarias.</li><li><strong>B.</strong> Exigirle al compañero en presencia de todo el equipo que mantenga el profesionalismo y cumpla con su cuota de trabajo, advirtiéndole que cualquier retraso afectará la evaluación de todos.</li><li><strong>C.</strong> Asumir en silencio la totalidad del trabajo del compañero sin decirle nada a nadie, trabajando toda la noche para no involucrar al líder.</li><li><strong>Clave Oficial:</strong> <strong>A</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación A (Correcta):</strong> Se alinea con el Nivel 3 de Trabajo en Equipo: cuida activamente el clima laboral, demuestra empatía profesional, gestiona la solución en el equipo y renegocia técnicamente con la coordinación las prioridades sin poner en riesgo la salud humana ni la calidad del entregable.</li><li><strong>Justificación B (Incorrecta):</strong> Insensibilidad que destruye el clima organizacional y agrava el riesgo psicosocial.</li><li><strong>Justificación C (Incorrecta):</strong> Sobrecarga insostenible que propicia errores técnicos graves por fatiga extrema y oculta la realidad operativa al líder del proyecto.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Dilema de Conflicto de Interés en Adjudicación de Nube</h3>\n<ul><li><strong>Caso:</strong> La Dirección de Innovación y Tecnología conforma un comité técnico asesor para evaluar las ofertas de infraestructura de nube pública para el DataR de la DIAN. El Inspector I es designado evaluador técnico. Al revisar la lista de oferentes, descubre que la firma representante de uno de los proveedores globales tiene como Director de Arquitectura a su hermano biológico. El pliego ya se encuentra publicado y la evaluación vence en 48 horas.</li><li><strong>Enunciado:</strong> Conforme al marco de integridad y régimen legal de inhabilidades e incompatibilidades, el Inspector I debe:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Realizar la evaluación técnica aplicando la máxima rigurosidad objetiva para beneficiar a la DIAN, absteniéndose de informar el parentesco para no retrasar el cronograma contractual.</li><li><strong>B.</strong> Manifestar formalmente y por escrito su impedimento de manera inmediata ante su superior jerárquico y el Comité de Contratación, solicitando su separación de la evaluación técnica debido a la causal legal expresa de parentesco dentro del segundo grado de consanguinidad.</li><li><strong>C.</strong> Evaluar a todos los oferentes excepto al de su hermano, solicitando a un compañero del comité que califique a ese proveedor específico de manera informal.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Cumplimiento estricto del Artículo 11 de la Ley 1437 de 2011 (CPACA) y la Ley 1952 de 2019. El parentesco en segundo grado de consanguinidad (hermanos) constituye causal objetiva e insubsanable de impedimento. La transparencia del proceso contractual público prima sobre cualquier consideración de tiempo o amistad.</li><li><strong>Justificación A (Incorrecta):</strong> La ley prohíbe auto-declararse imparcial ante una causal expresa; vicia de nulidad absoluta el proceso licitatorio y configura falta gravísima.</li><li><strong>Justificación C (Incorrecta):</strong> Fraude y triangulación indebida para eludir el trámite legal de impedimento.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 70,
+      "studyMinutes": 70,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante para las Pruebas Escritas del Proceso de Selección DIAN No. 2676 de 2026</em>. Numerales 8.3 (Escala Likert de 4 Niveles) y 8.4 (Subescalas de Control y Consistencia Psicométrica).</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Resolución No. 065 de 2024 (11 de abril de 2024)</em>. Por la cual se adopta el Diccionario de Competencias Comportamentales de la UAE DIAN. Niveles 1 al 4 para cargos profesionales de tecnología.</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2023):</strong> <em>Código de Integridad CG-TAH-0002 Versión 3</em>. Valores éticos, principios rectores y directrices de transparencia en el servicio tributario y aduanero.</li><li><strong>Congreso de la República de Colombia (2019 - 2021):</strong> <em>Ley 1952 de 2019</em> (Código General Disciplinario), modificada por la <em>Ley 2094 de 2021</em>. Régimen de deberes, prohibiciones e incompatibilidades en el manejo de información estatal.</li><li><strong>Congreso de la República de Colombia (1989 - 2026):</strong> <em>Estatuto Tributario Nacional</em>. Artículo 583: Reserva de las declaraciones tributarias y aduaneras.</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2019):</strong> <em>Guía de Integridad y Gestión de Conflictos de Interés en el Empleo Público Colombiano</em>.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-13",
+      "track": "comportamentales",
+      "title": "12. Comportamiento Ético (Nivel 4)",
+      "badge": "Pruebas Comportamentales (15%)",
+      "examId": "exam-13",
+      "lessons": [
+        {
+          "id": "les-13-1",
+          "moduleId": "mod-13",
+          "unitNumber": 1,
+          "title": "Unidad 1: Definición Oficial y Matriz de Progresión (Del Nivel 1 Básico al Nivel 4 de Inspector I)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 772,
+          "content": "<p># Guía Maestra Oficial: 12. Comportamiento Ético (Nivel 4 - Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas Comportamentales (15% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Comportamiento Ético (Nivel 4: Referente Institucional y Defensor de la Legalidad)   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: El Blindaje Ético de la Información Tributaria y Aduanera</h2>\n<p>En el ecosistema tecnológico de la UAE DIAN, el <strong>Inspector I de la Subdirección de Procesamiento de Datos</strong> custodia el activo más sensible de la administración pública colombiana: las declaraciones de renta, el patrimonio, las operaciones cambiarias, los registros de importación/exportación y los billones de eventos de facturación electrónica UBL 2.1 que transitan por los clústeres de cómputo y el DataR Lakehouse.</p>\n<p>Por ello, la Comisión Nacional del Servicio Civil (CNSC) y la Universidad Areandina exigen para este empleo el <strong>Nivel 4 (Máximo Nivel de Desarrollo)</strong> en <strong>Comportamiento Ético</strong>. El profesional evaluado no puede asumir una postura de pasividad u obediencia acrítica; debe actuar como <strong>referente moral, custodio inquebrantable de la reserva tributaria (Art. 583 E.T.) y defensor activo del erario público</strong> frente a cualquier tentativa de corrupción interna o externa.</p>\n<hr>\n<hr>\n<h3>1.1. Definición Oficial Literal (Resolución DIAN No. 065 de 2024)</h3>\n<blockquote><p><strong>Definición Oficial DIAN:</strong>   <em>\"Capacidad para actuar de acuerdo con prácticas laborales correctas, demostrando congruencia entre el discurso y la actuación, enmarcado en el código de integridad de la DIAN.\"</em></p></blockquote>\n<p>La competencia trasciende la honestidad pasiva de \"no robar\" o \"no alterar registros\". Exige una consistencia absoluta entre los postulados éticos institucionales y la práctica cotidiana en el diseño, administración y explotación de sistemas de datos.</p>\n<h3>1.2. Matriz Comparativa de Progresión en Niveles de Desarrollo</h3>\n<p>El Diccionario Oficial de Competencias Comportamentales de la DIAN (Resolución 065 de 2024) estructura cuatro estadios de madurez conductual. Comprender la brecha cualitativa entre el Nivel 1 y el Nivel 4 es esencial para resolver con éxito las pruebas escritas:</p>\n<table class=\"data-table\"><thead><tr><th>Nivel de Desarrollo</th><th>Descriptor General (Res. 065/2024)</th><th>Conductas Observables Oficiales</th><th>Brecha Frente al Rol de Inspector I</th></tr></thead><tbody><tr><td><strong>Nivel 1 (Básico)</strong></td><td>Desarrolla su trabajo a la luz del código de integridad y es consciente del impacto de su actuación.</td><td>• Demuestra integridad en tareas cotidianas.<br>• Conoce y aplica el código de integridad.<br>• Asume como propios los valores institucionales.</td><td><strong>Insuficiente.</strong> Se limita al cumplimiento pasivo de órdenes sin capacidad de cuestionar directrices dudosas ni liderar controles.</td></tr><tr><td><strong>Nivel 2 (Intermedio)</strong></td><td>Actúa en coherencia con el código en su entorno y orienta a sus pares cuando se presentan dilemas éticos.</td><td>• Asume las consecuencias de sus decisiones.<br>• Advierte y previene irregularidades en su entorno inmediato.<br>• Orienta a sus pares ante dudas o dilemas.</td><td><strong>Intermedio.</strong> Apoya a sus compañeros cercanos, pero carece de alcance institucional y de defensa activa ante presiones jerárquicas.</td></tr><tr><td><strong>Nivel 3 (Avanzado)</strong></td><td>Promueve y asegura la observancia del código en sus equipos, gestionando dilemas con transparencia.</td><td>• Resuelve con apego ético conflictos de interés.<br>• Denuncia formalmente actos irregulares detectados.<br>• Fomenta la transparencia en expedientes y datos.</td><td><strong>Avanzado.</strong> Adecuado para roles de coordinación operativa, pero aún focalizado en su célula de trabajo inmediata.</td></tr><tr><td><strong>Nivel 4 (🎯 Exigido en Inspector I)</strong></td><td><strong>Es referente y modelo del Código de Integridad de la DIAN, promueve activamente una cultura de rectitud y defiende con firmeza el interés público ante presiones internas o externas.</strong></td><td><strong>• Actúa con transparencia inquebrantable aún sin supervisión (\"Para ser impecable no necesito testigos\").<br>• Rechaza cualquier dádiva, prebenda o intento de soborno.<br>• Defiende la reserva tributaria (Art. 583 E.T.) y la custodia de datos institucionales.<br>• Modela conductas probas para toda la organización.</strong></td><td><strong>PERFIL EXACTO.</strong> Liderazgo moral inquebrantable, blindaje arquitectónico contra fraudes y denuncia inmediata sin importar jerarquías.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                     ESCALERA EVOLUTIVA DE COMPORTAMIENTO ÉTICO\n                     \n   [NIVEL 4] ──► REFERENTE INSTITUCIONAL, CUSTODIO DE DATOS &amp; DEFENSOR PÚBLICO\n                 (Modela probidad, denuncia presiones, defiende la reserva legal)\n                 ▲\n   [NIVEL 3] ──► GESTOR DE DILEMAS &amp; PROMOTOR EN EL EQUIPO\n                 (Resuelve conflictos de interés, fomenta transparencia)\n                 ▲\n   [NIVEL 2] ──► ORIENTADOR DE PARES EN CASOS CONCRETOS\n                 (Advierte errores éticos en su entorno inmediato)\n                 ▲\n   [NIVEL 1] ──► CUMPLIMIENTO BÁSICO DE NORMAS (PASIVO / OBEDIENTE)</code></pre></div>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>El Distractor Típico del Nivel 1 en el Examen:</strong> Cuando un caso de examen plantee una situación donde un superior jerárquico pide una excepción técnica irregular, la opción de Nivel 1 dirá: <em>\"Obedecer la orden porque emana de la autoridad del jefe y dejar constancia verbal\"</em>. Esta opción es un <strong>distractor penalizado</strong>. En Nivel 4, el Inspector I debe oponerse formalmente, exigir la orden por escrito con soporte legal, rehusarse si implica delito y radicar la denuncia respectiva.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-13-2",
+          "moduleId": "mod-13",
+          "unitNumber": 2,
+          "title": "Unidad 2: Conductas Observables y Catálogo Oficial de Evidencias en Procesamiento de Datos (Abecé DIAN)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 406,
+          "content": "<p>El Capítulo 4 de la Guía Técnica del <strong>Abecé de Evidencias de Competencias Conductuales de la DIAN</strong> traduce la competencia ética a situaciones operativas de la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos.</p>\n<h3>2.1. Las Cuatro Evidencias Críticas del Inspector I</h3>\n<ol><li><strong>Denuncia Formal e Inmediata de Irregularidades:</strong></li><li>Radicación formal ante la Oficina de Control Interno Disciplinario y la Fiscalía General de la Nación al detectar intentos de manipulación de algoritmos de selección de auditoría fiscal, accesos no autorizados a bases de datos o solicitudes de \"borrado\" de obligaciones tributarias.</li><li>Acompañamiento con bitácoras digitales inalterables (logs de base de datos, hashes criptográficos, registros de red).</li></ol>\n<ol><li><strong>Manifestación Oportuna y Espontánea de Impedimentos:</strong></li><li>Declaración escrita de conflicto de intereses ante el superior inmediato tan pronto como se asigne un proyecto, cruce analítico o auditoría de datos que involucre a empresas o personas con vínculos de consanguinidad (hasta cuarto grado), afinidad (hasta segundo grado) o nexos comerciales/financieros directos (Art. 11 Ley 1437/2011 y Art. 40 Ley 1952/2019).</li></ol>\n<ol><li><strong>Custodia Rigurosa y Protección de la Reserva Tributaria (Art. 583 E.T.):</strong></li><li>Aplicación estricta del principio de mínima necesidad de privilegio (<em>Least Privilege</em>) y políticas de anonimización (k-anonimato, privacidad diferencial) en el DataR Lakehouse.</li><li>Cero tolerancia a la consulta por simple curiosidad, favores familiares o amistosos respecto a información financiera de terceros.</li></ol>\n<ol><li><strong>Liderazgo en Cultura de Integridad y Ética en Datos:</strong></li><li>Actuación como facilitador de buenas prácticas en el gobierno del dato, promoviendo el principio ético institucional: <em>\"Para ser impecable no necesito testigos\"</em>.</li></ol>\n<h3>2.2. Tipología de Evidencias Concretas en Datos</h3>\n<table class=\"data-table\"><thead><tr><th>Tipo de Evidencia</th><th>Manifestación Observable en la Subdirección de Procesamiento de Datos</th></tr></thead><tbody><tr><td><strong>Directa / De Desempeño</strong></td><td>• Rechazo frontal y documentado de presiones de áreas de fiscalización o recaudo para alterar pipelines de datos analíticos.<br>• Reporte inmediato de credenciales comprometidas o intentos de escalamiento de privilegios no autorizados.<br>• Participación activa y proba en comités de arquitectura y seguridad de la información.</td></tr><tr><td><strong>Indirecta / De Producto</strong></td><td>• Informes periciales o técnicos de auditoría informática radicados con evidencia probatoria.<br>• Formulario Único de Declaración de Bienes y Rentas (Ley 2013 de 2019) actualizado oportunamente en el SIGEP.<br>• Políticas y scripts de enmascaramiento de datos personales implementados en los ambientes de desarrollo y pruebas.</td></tr><tr><td><strong>Testimonial / De Terceros</strong></td><td>• Concepto favorable de pares y comités de auditoría interna sobre la transparencia técnica del profesional.<br>• Inexistencia de antecedentes disciplinarios, fiscales o penales.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-13-3",
+          "moduleId": "mod-13",
+          "unitNumber": 3,
+          "title": "Unidad 3: Decodificador Psicométrico Areandina (Likert de 4 Niveles y Subescalas de Control en Ética)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 304,
+          "content": "<h3>3.1. Arquitectura de las Afirmaciones Likert en Comportamiento Ético</h3>\n<p>En las pruebas construidas por Areandina, las afirmaciones no preguntan si la persona es honesta en abstracto. Cada ítem evalúa si el aspirante sostiene la rectitud ante <strong>costos personales elevados</strong> (pérdida de privilegios, fricciones con jefes, aislamiento de compañeros corruptos).</p>\n<pre class=\"code-block\"><code class=\"\">[Defensa de la Norma / Reserva Legal] + [Tensión: Afecto Familiar / Presión de Jefes / Beneficio Económico]</code></pre>\n<h3>3.2. Subescala de Deseabilidad Social (<em>Faking Good</em>) en Ética</h3>\n<p>Los reactivos de deseabilidad social en esta competencia buscan atrapar aspirantes que fingen una pureza moral imposible en seres humanos reales:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Jamás en toda mi vida he sentido la tentación de utilizar bienes de mi lugar de trabajo, como una hoja de papel o un bolígrafo, para un asunto estrictamente personal.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong> o <strong>B (En desacuerdo)</strong>.   <em>Quien marca D es catalogado por el algoritmo psicométrico como simulador de virtudes, pues niega infracciones insignificantes de la vida cotidiana para aparentar santidad.</em></p></blockquote>\n<h3>3.3. Subescala de Falsa Proactividad en Ética y TI</h3>\n<p>En innovación y tecnología, los reactivos de falsa proactividad plantean situaciones donde violar la ley o la reserva tributaria parece un acto de \"generosidad\", \"eficiencia\" o \"apoyo institucional\":</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Si un analista de datos de otra entidad estatal me solicita por chat institucional un archivo rápido con información financiera de contribuyentes para salvar una emergencia de política económica nacional, considero oportuno enviárselo sin esperar el convenio interadministrativo formal.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>La reserva tributaria (Art. 583 E.T.) es una norma de orden público constitucional. No existen excepciones informales por \"urgencia\". Violar este mandato acarrea destitución e inhabilidad por falta gravísima.</em></p></blockquote>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-13-4",
+          "moduleId": "mod-13",
+          "unitNumber": 4,
+          "title": "Unidad 4: Dilemas Éticos Situacionales del Inspector I en Innovación y Tecnología",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 123,
+          "content": "<h3>4.1. El Ecosistema de Riesgos Éticos en la DIAN Digital</h3>\n<pre class=\"code-block\"><code class=\"\">   ┌─────────────────────────────────────────────────────────────────┐\n   │         MAPA DE RIESGOS ÉTICOS EN PROCESAMIENTO DE DATOS        │\n   ├─────────────────────────────────────────────────────────────────┤\n   │ 1. Manipulación de Modelos de Riesgo: Alterar ponderaciones de  │\n   │    riesgo para excluir delincuentes fiscales de auditorías.     │\n   │ 2. Fuga y Comercio de Información Reservada: Venta de bases     │\n   │    de datos de facturación electrónica a competidores privados. │\n   │ 3. Uso Abusivo de Accesos Privilegiados: Consultar patrimonios  │\n   │    de personajes públicos, parejas o rivales de negocios.      │\n   │ 4. Cooptación por Proveedores Tecnológicos: Recibir dádivas o   │\n   │    viajes de multinacionales de software en pliegos de TI.      │\n   └─────────────────────────────────────────────────────────────────┘</code></pre>\n<p>El Inspector I opera en la primera línea de defensa técnica. Su deber no es solo abstenerse de delinquir, sino <strong>diseñar sistemas técnicamente inmodificables</strong> mediante firmas criptográficas, inmutabilidad de logs en clústeres distribuidos y separación de ambientes.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-13-5",
+          "moduleId": "mod-13",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Juicio Conductual",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "22 min",
+          "minutes": 22,
+          "words": 3249,
+          "content": "<hr>\n<h3>Ítem Likert 1: Custodia Inflexible de la Reserva Tributaria (Art. 583 E.T.)</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Me abstengo de consultar o descargar información fiscal, aduanera o patrimonial de cualquier contribuyente en las plataformas de la DIAN a menos que medie una orden de trabajo o asignación funcional debidamente motivada y documentada.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Se ajusta al mandato taxativo del Artículo 583 del Estatuto Tributario y tipifica la conducta del Nivel 4 de Comportamiento Ético: actuar con rectitud y estricta legalidad protegiendo la reserva legal sin ceder a la curiosidad.</li><li><strong>Justificación A y B:</strong> Configuran conductas contrarias al régimen disciplinario y perfilan riesgo de acceso abusivo a sistemas informáticos (Art. 269A C.P.).</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Falta Humana Menor)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi vida laboral he sentido la tentación de procrastinar o posponer una tarea tediosa de documentación técnica al finalizar la tarde.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La procrastinación ocasional ante tareas repetitivas es una experiencia universal en trabajadores humanos. Negarla sistemáticamente es el sello del perfil simulador (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Incrementa el puntaje en la escala de simulación, afectando negativamente la validez de la prueba.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Firmeza y Denuncia ante Sobornos o Dádivas</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un intermediario o representante empresarial me ofrece algún regalo, agasajo o beneficio a cambio de agilizar la carga de sus datos de facturación electrónica, rechazo el ofrecimiento y lo denuncio penal y disciplinariamente de manera inmediata.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Comportamiento Ético: rechazo frontal a la corrupción y cumplimiento del deber de denuncia de delitos de cohecho (Art. 67 CPP y Ley 1952 de 2019).</li><li><strong>Justificación A y B:</strong> Muestran tolerancia inadmisible al soborno en la administración tributaria.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Filtración en Favor de Familiares)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Reserva Legal</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un hermano que tiene una pyme me pide revisar confidencialmente si su empresa está en la lista de perfiles de riesgo alto de fiscalización para corregir su declaración a tiempo, considero ético ayudarlo para evitarle una sanción onerosa.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Violación de reserva tributaria, conflicto de interés grave y favorecimiento ilícito. En Nivel 4, el Inspector I no antepone los lazos sanguíneos sobre la moralidad pública y la ley.</li><li><strong>Justificación C y D (Trampa):</strong> Conducta delictiva tipificada en el Código Penal y catalogada como falta gravísima disciplinaria.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Principio 'Para Ser Impecable No Necesito Testigos'</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Mantengo la misma pulcritud y rigor en el manejo de datos reservados cuando trabajo en teletrabajo sin supervisión presencial que cuando estoy en la sede central bajo observación directa de mis superiores.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica textualmente el principio rector del Código de Integridad de la DIAN: actuar con honestidad intrínseca sin requerir vigilancia externa.</li><li><strong>Justificación A y B:</strong> Evidencian una moral heterónoma (solo cumple cuando lo vigilan).</li></ul>\n<hr>\n<h3>Ítem Likert 6: Transparencia y Declaración Oportuna de Conflictos de Interés</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Manifiesto formalmente y por escrito cualquier impedimento o conflicto de interés ante mis superiores de manera inmediata, absteniéndome de intervenir en procesos donde tenga vínculos familiares o societarios.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Cumplimiento del mandato de la Ley 1437 de 2011 (Art. 11) y Ley 1952 de 2019 (Art. 40). El servidor público no juzga su propia neutralidad; manifiesta la causal objetiva.</li><li><strong>Justificación A y B:</strong> Falta disciplinaria grave que vulnera el principio de imparcialidad.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Irritación Humana Pasajera)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi trayectoria profesional he experimentado un momento de enojo o disgusto con un compañero de trabajo por discrepancias técnicas en el desarrollo de un proyecto.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El desacuerdo y la irritación momentánea son emociones naturales en dinámicas de equipo complejas. La competencia evalúa el manejo asertivo, no la anulación de la biología humana.</li><li><strong>Justificación D (Trampa):</strong> Reactivo clásico de escala L.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Resistencia a Presiones Jerárquicas Ilícitas</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un directivo me ordena verbalmente omitir un hallazgo de manipulación de datos en un clúster analítico para evitar un escándalo en medios de comunicación, mantengo el reporte técnico y acudo a las instancias de control disciplinario.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Comportamiento Ético: defensor del interés público ante presiones internas de alta jerarquía.</li><li><strong>Justificación A y B:</strong> Obediencia debida mal entendida que degenera en complicidad penal y prevaricato por omisión.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Uso Exclusivo de Recursos Tecnológicos para Fines Misionales</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Utilizo los servidores de cómputo, almacenamiento de datos y ancho de banda asignados por la DIAN estrictamente para el cumplimiento de las metas misionales, absteniéndome de emplearlos para proyectos privados o minería de datos particular.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Protección del erario público y prevención de peculado por uso (Código Penal y Ley 1952 de 2019).</li><li><strong>Justificación A y B:</strong> Desvío de bienes públicos para beneficio particular.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Saltarse Controles por Urgencia de Cierre)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Gobierno de Datos</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero justificable apagar temporalmente las bitácoras de auditoría de accesos a la base de datos si eso permite duplicar la velocidad de procesamiento durante un cierre fiscal urgente.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Las bitácoras de auditoría (<em>audit logs</em>) garantizan la no repudiación y la trazabilidad forense. Apagarlas crea un punto ciego que permite fraudes indetectables.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa eficiencia técnica que vulnera la seguridad del Estado.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Promoción Activa de Debates Éticos en el Equipo</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo periódicamente en mi célula de trabajo debates sobre dilemas éticos en inteligencia artificial, sesgos algorítmicos y privacidad de datos, sensibilizando a mis compañeros sobre nuestra responsabilidad social.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Descriptor del Nivel 4: promueve activamente una cultura de integridad y rectitud en su entorno institucional.</li><li><strong>Justificación A y B:</strong> Apatía frente a la construcción de cultura ética.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Inalterabilidad y Veracidad en Informes Técnicos</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Consigno con exactitud matemática y objetividad científica las fallas, brechas de seguridad o inconsistencias halladas en los datos, sin matizar o suavizar los resultados para agradar a los directivos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Principio de veracidad y objetividad. Los datos deben reflejar la realidad empírica para la toma de decisiones correcta del Estado.</li><li><strong>Justificación A y B:</strong> Falta de rigor profesional y complacencia indebida.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Perfección de Juicio Moral)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he tenido la más mínima duda sobre cuál es la decisión correcta ante una situación éticamente ambigua en el ámbito profesional.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Los dilemas éticos complejos generan dudas reflexivas en profesionales maduros; consultar la norma y deliberar es sano. Afirmar infalibilidad moral inmediata es un rasgo de simulación psicométrica.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de fingimiento moral.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Confidencialidad en Auditorías Forenses Digitales</h3>\n<ul><li><strong>Competencia:</strong> Comportamiento Ético</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Guardo reserva absoluta sobre las investigaciones disciplinarias o penales en curso en las que participo como perito informático, negándome a comentar detalles incluso con colegas cercanos no autorizados.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Reserva procesal legal y lealtad institucional en peritajes forenses.</li><li><strong>Justificación A y B:</strong> Violación de reserva legal que puede frustrar investigaciones y viciar pruebas judiciales.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Compartir Llaves Criptográficas)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Seguridad Informática</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un colega necesita firmar digitalmente un certificado de base de datos antes de una auditoría externa y no tiene su token a mano, considero correcto prestarle mi firma electrónica personal por hermandad laboral.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La firma digital y el certificado criptográfico tienen equivalencia funcional a la firma manuscrita y son legalmente intransferibles (Ley 527 de 1999). Prestarla configura falsedad y ruptura de no repudiación.</li><li><strong>Justificación C y D (Trampa):</strong> Conducta penalmente sancionable disfrazada de solidaridad.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Intento de Exclusión de Gran Contribuyente en Modelo de Riesgo</h3>\n<ul><li><strong>Caso:</strong> Durante la calibración semestral del algoritmo de grafos para la detección de redes de empresas ficticias de facturación electrónica en el DataR, el Inspector I observa que un gran consorcio empresarial con millonarias devoluciones de IVA presenta una alta probabilidad de fraude tributario. El líder del proyecto le indica en privado que el Director Seccional solicitó \"ajustar los umbrales de ponderación\" del algoritmo para excluir a dicho contribuyente del reporte que irá a Fiscalización, bajo el argumento de que \"se trata de una empresa estratégica para la economía regional que no debe ser molestada\".</li><li><strong>Enunciado:</strong> La actuación profesional y ética que debe asumir el Inspector I conforme al Nivel 4 de Comportamiento Ético es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Modificar los pesos del algoritmo como pide el líder para no generar conflictos, pero guardar en su correo personal una copia del dataset original por si alguna vez la Procuraduría investiga el caso.</li><li><strong>B.</strong> Negarse a manipular los parámetros del algoritmo, emitir el informe técnico íntegro con el soporte matemático del hallazgo y radicar formalmente la situación ante la Oficina de Control Interno Disciplinario y la Dirección de Gestión de Innovación y Tecnología.</li><li><strong>C.</strong> Solicitar el traslado inmediato a otra subdirección técnica para no verse involucrado en decisiones complejas de negocio tributario.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al Nivel 4: referente del Código de Integridad de la DIAN, defiende con firmeza el interés público ante presiones internas de jerarquía, protege la veracidad de los datos y cumple con el deber legal de denunciar conductas de corrupción (Ley 1952 de 2019).</li><li><strong>Justificación A (Incorrecta):</strong> Complicidad activa y manipulación dolosa de herramientas del Estado. Guardar copias personales en correo privado vulnera la reserva tributaria (Art. 583 E.T.).</li><li><strong>Justificación C (Incorrecta):</strong> Evasión pasiva y cobardía moral incompatible con el perfil de un Inspector profesional de la DIAN.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Hallazgo de Credencial Institucional en Foro de Cibercrimen</h3>\n<ul><li><strong>Caso:</strong> En un monitoreo de ciberseguridad sobre fuentes abiertas e inteligencia de amenazas (<em>Threat Intelligence</em>), el Inspector I detecta que las credenciales de acceso de un administrador de base de datos de la DIAN están a la venta en la <em>Dark Web</em>. Al analizar las bitácoras del servidor, identifica que desde esa cuenta se han realizado descargas masivas de registros de importaciones aduaneras a altas horas de la madrugada. El titular de la cuenta es un compañero de universidad y amigo personal muy querido por el Inspector I.</li><li><strong>Enunciado:</strong> Ante esta situación crítica de seguridad nacional y lealtad personal, la conducta ética obligatoria es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Llamar inmediatamente al amigo para alertarlo y pedirle que cambie la contraseña y elimine los registros de descarga antes de que el equipo de seguridad se dé cuenta.</li><li><strong>B.</strong> Revocar preventivamente los accesos de la cuenta según el protocolo de incidentes de seguridad, recolectar la evidencia forense digital preservando la cadena de custodia y radicar el informe de incidente ante el Oficial de Seguridad de la Información y Control Disciplinario.</li><li><strong>C.</strong> Esperar a que el sistema automatizado de ciberseguridad bloquee la cuenta por sí solo para no tener que denunciar directamente a un amigo de toda la vida.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> La lealtad a la Constitución, a la ley y a los ciudadanos de la República de Colombia prima de forma absoluta sobre cualquier vínculo de afecto personal. El deber de custodia y contención del incidente protege a la institución de catástrofes de ciberseguridad.</li><li><strong>Justificación A (Incorrecta):</strong> Traición a la función pública, obstrucción a la justicia y favorecimiento penal.</li><li><strong>Justificación C (Incorrecta):</strong> Omisión grave del deber funcional que permite la continuidad de la fuga de datos del Estado.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Invitación de Empresa de Cloud Computing Participante en Licitación</h3>\n<ul><li><strong>Caso:</strong> La DIAN se encuentra estructurando los pliegos definitivos de la licitación para la adquisición de la plataforma Lakehouse corporativa por un valor superior a los 20 mil millones de pesos. Uno de los mayores fabricantes mundiales de software en la nube envía al Inspector I, quien integra el equipo de especificaciones técnicas, una invitación formal para asistir como expositor invitado con todos los gastos pagos a una cumbre tecnológica en Las Vegas, ofreciéndole honorarios de conferencista.</li><li><strong>Enunciado:</strong> La postura íntegra y transparente que debe asumir el servidor es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar la invitación y viajar solicitando permiso no remunerado para no usar tiempo laboral de la DIAN, comprometiéndose a no hablar de los pliegos de la licitación.</li><li><strong>B.</strong> Rechazar por escrito la invitación de plano, devolver cualquier beneficio material y poner en conocimiento formal de la Dirección de Contratación el hecho para blindar el proceso de posibles recusaciones o vicios de selección objetiva.</li><li><strong>C.</strong> Aceptar únicamente los tiquetes aéreos pero rechazar los honorarios para demostrar que solo le interesa la capacitación técnica.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al Código de Integridad de la DIAN, a la Ley 80 de 1993 y a la Ley 2195 de 2022 (Transparencia y lucha contra la corrupción). Aceptar dádivas u honorarios de potenciales oferentes vicia la imparcialidad del evaluador técnico y configura cohecho impropio o conflicto de interés sancionable con destitución.</li><li><strong>Justificación A (Incorrecta):</strong> Usar licencias no remuneradas no subsana el conflicto de interés ni la prohibición legal de recibir dádivas de oferentes.</li><li><strong>Justificación C (Incorrecta):</strong> Aceptar tiquetes sigue siendo una prebenda económica indebida que compromete la objetividad pública.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Solicitud Informal de Datos por un Asesor de Despacho</h3>\n<ul><li><strong>Caso:</strong> Un asesor del Despacho del Director General llega al puesto de trabajo del Inspector I y le solicita en un disco duro externo un volcado sin anonimizar de las ventas declaradas por los 500 mayores contribuyentes del país, argumentando que \"el Ministro de Hacienda necesita preparar una alocución económica urgente para esta misma noche y no hay tiempo para oficios burocráticos\".</li><li><strong>Enunciado:</strong> La actuación profesional y apegada a la reserva tributaria que debe desplegar el Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Entregar el archivo inmediatamente en el disco duro porque la orden proviene del Despacho del Director General y atiende una urgencia del Ministro de Hacienda.</li><li><strong>B.</strong> Informar cortésmente al asesor que la entrega de microdatos de contribuyentes sin anonimizar está amparada por la reserva tributaria del Artículo 583 del Estatuto Tributario, por lo cual se requiere la solicitud formal a través de los canales institucionales autorizados o, en su defecto, ofrecer entregar en el acto un reporte con datos agregados y estadísticos que no vulneren la reserva legal.</li><li><strong>C.</strong> Entregar el disco duro pero hacer que el asesor firme una servilleta o recibo informal como descargo de responsabilidad.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Aplica la reserva legal tributaria con altura profesional y criterio técnico: no cede a la jerarquía cuando se viola la ley, pero ofrece una alternativa legal viable (datos agregados/estadísticos que sí son públicos y atienden la necesidad de la alocución presidencial).</li><li><strong>Justificación A (Incorrecta):</strong> Violación flagrante del Artículo 583 del E.T. Las alocuciones presidenciales o ministeriales no derogan la reserva legal de los ciudadanos.</li><li><strong>Justificación C (Incorrecta):</strong> Los descargos informales carecen de validez jurídica frente a una violación de la reserva constitucional de datos.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Descubrimiento de Error de Conciliación Ocultado por el Equipo</h3>\n<ul><li><strong>Caso:</strong> En la entrega de un proyecto de migración de datos aduaneros del sistema SYGA hacia el DataR, el Inspector I descubre que durante el proceso ETL hubo una pérdida silenciosa de trazabilidad en más de 200.000 declaraciones de importación de años anteriores. Al plantear el tema en el equipo de desarrollo, los compañeros le dicen que \"el cliente funcional ya firmó el acta de conformidad y que si reportan el error ahora se anularán las bonificaciones por desempeño de todo el grupo\", pidiéndole que lo deje pasar.</li><li><strong>Enunciado:</strong> La decisión íntegra que debe guiar al profesional conforme al Nivel 4 de Comportamiento Ético es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar el silencio del equipo para proteger la armonía laboral y el estímulo económico de sus compañeros, ya que la información corresponde a años pasados.</li><li><strong>B.</strong> Documentar técnica y exhaustivamente la inconsistencia, presentar un plan de contingencia y reprocesamiento de datos ante la jefatura de la Subdirección de Procesamiento de Datos, asumiendo la responsabilidad técnica de sanear la información histórica institucional.</li><li><strong>C.</strong> Filtrar anónimamente la información a un sindicato de la entidad para que ellos presionen públicamente a la administración.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea con el principio de veracidad y el Nivel 4 ético: antepone la calidad e integridad de los datos del Estado por encima de bonificaciones económicas o complicidades de grupo. Acompaña el hallazgo con la solución técnica (plan de remediación y reprocesamiento).</li><li><strong>Justificación A (Incorrecta):</strong> Corrupción administrativa por ocultamiento doloso de fallas para percibir bonificaciones públicas indebidas.</li><li><strong>Justificación C (Incorrecta):</strong> Vía clandestina y desleal que daña a la entidad en lugar de solucionar institucionalmente la brecha técnica.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 70,
+      "studyMinutes": 70,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Resolución No. 065 de 2024 (11 de abril de 2024)</em>. Anexo Técnico: Diccionario de Competencias Comportamentales de la UAE DIAN. Competencia Comportamiento Ético (Nivel 4).</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2023):</strong> <em>Código de Integridad Institucional CG-TAH-0002 Versión 3</em>. Valores de Honestidad, Respeto, Compromiso, Diligencia y Justicia.</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Guía Técnica Abecé de Evidencias de Competencias Conductuales</em>. Capítulo 4: Evidencias en Competencias Específicas para Inspector I.</li><li><strong>Congreso de la República de Colombia (2019 - 2021):</strong> <em>Ley 1952 de 2019</em> (Código General Disciplinario), modificada por la <em>Ley 2094 de 2021</em>. Faltas gravísimas contra el servicio público y deber de denuncia.</li><li><strong>Congreso de la República de Colombia (1989 - 2026):</strong> <em>Estatuto Tributario Nacional</em>. Artículo 583: Reserva de las declaraciones tributarias.</li><li><strong>Congreso de la República de Colombia (2022):</strong> <em>Ley 2195 de 2022</em>. Medidas en materia de transparencia, prevención y lucha contra la corrupción.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert y Subescalas Psicométricas de Control.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-14",
+      "track": "comportamentales",
+      "title": "13. Comunicación Efectiva (Nivel 4)",
+      "badge": "Pruebas Comportamentales (15%)",
+      "examId": "exam-14",
+      "lessons": [
+        {
+          "id": "les-14-1",
+          "moduleId": "mod-14",
+          "unitNumber": 1,
+          "title": "Unidad 1: Definición Oficial y Matriz de Progresión (Del Nivel 1 Básico al Nivel 4 de Inspector I)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 765,
+          "content": "<p># Guía Maestra Oficial: 13. Comunicación Efectiva (Nivel 4 - Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas Comportamentales (15% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Comunicación Efectiva (Nivel 4: Articulador Estratégico y Traductor de Complejidad Técnica)   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: El Inspector I como Puente entre los Datos y las Decisiones de País</h2>\n<p>En una entidad de la envergadura de la UAE DIAN, los mejores modelos predictivos de grafos, las arquitecturas Lakehouse más sofisticadas en Apache Spark y los flujos masivos de streaming en Kafka resultan estériles si el profesional de datos es incapaz de <strong>traducir la alta complejidad técnica a un lenguaje ejecutivo, comprensible y persuasivo para los directivos y las áreas de negocio</strong> (Fiscalización, Aduanas, Recaudo y Policía Fiscal y Aduanera - POLFA).</p>\n<p>Para el cargo de <strong>Inspector I (OPEC 236670)</strong>, la Comisión Nacional del Servicio Civil (CNSC) y la Universidad Areandina han fijado la exigencia en el <strong>Nivel 4 (Máximo Nivel de Desarrollo)</strong>. El Inspector I no se limita a redactar correos correctos o memorandos sin faltas de ortografía (Nivel 1); su rol es <strong>construir redes de comunicación interinstitucionales, liderar mesas de concertación técnica complejas, desescalar crisis operativas por caídas de servicios críticos y movilizar acuerdos estratégicos</strong> en torno a los activos de información del Estado.</p>\n<hr>\n<hr>\n<h3>1.1. Definición Oficial Literal (Resolución DIAN No. 065 de 2024)</h3>\n<blockquote><p><strong>Definición Oficial DIAN:</strong>   <em>\"Capacidad para escuchar activamente, estructurar y transmitir información de manera clara, concisa y oportuna a diferentes audiencias, adaptando el lenguaje según el contexto para lograr los objetivos institucionales y generar relaciones de confianza.\"</em></p></blockquote>\n<p>La competencia integra una doble vía: la <strong>escucha activa</strong> (comprender los dolores del auditor tributario o del administrador aduanero antes de proponer soluciones) y la <strong>transmisión adaptativa</strong> (modular el nivel de abstracción matemática según el interlocutor).</p>\n<h3>1.2. Matriz Comparativa de Progresión en Niveles de Desarrollo</h3>\n<p>El Diccionario Oficial de Competencias Comportamentales de la DIAN clasifica la competencia en cuatro estadios de desarrollo conductual:</p>\n<table class=\"data-table\"><thead><tr><th>Nivel de Desarrollo</th><th>Descriptor General (Res. 065/2024)</th><th>Conductas Observables Oficiales</th><th>Brecha Frente al Rol de Inspector I</th></tr></thead><tbody><tr><td><strong>Nivel 1 (Básico)</strong></td><td>Transmite información clara y oportuna; estructura sus ideas con respeto; usa canales formales.</td><td>• Se comunica con respeto y cortesía.<br>• Redacta documentos con claridad gramatical básica.<br>• Transmite mensajes oportunos a su superior inmediato.</td><td><strong>Insuficiente.</strong> Se queda en la cortesía cotidiana y en el acatamiento de formatos; carece de visión estratégica y persuasión.</td></tr><tr><td><strong>Nivel 2 (Intermedio)</strong></td><td>Adapta su comunicación al receptor; escucha con empatía y argumenta técnicamente sus propuestas.</td><td>• Ajusta su lenguaje al perfil del usuario.<br>• Utiliza datos para respaldar sus puntos de vista.<br>• Mantiene canales abiertos con sus compañeros de equipo.</td><td><strong>Intermedio.</strong> Buen comunicador operativo, pero enfocado en interacciones individuales dentro de su área.</td></tr><tr><td><strong>Nivel 3 (Avanzado)</strong></td><td>Facilita el diálogo en equipos multidisciplinarios, media en discrepancias y comunica decisiones difíciles con asertividad.</td><td>• Media en desacuerdos técnicos del equipo.<br>• Presenta informes ejecutivos estructurados.<br>• Mantiene la serenidad y claridad en situaciones de estrés.</td><td><strong>Avanzado.</strong> Adecuado para líderes de célula técnica, pero con alcance restringido a su entorno operativo directo.</td></tr><tr><td><strong>Nivel 4 (🎯 Exigido en Inspector I)</strong></td><td><strong>Construye redes de comunicación estratégicas, articula el diálogo entre áreas técnicas y operativas, traduce alta complejidad a valor público y genera consensos institucionales en contextos complejos.</strong></td><td><strong>• Traduce algoritmos y arquitecturas complejas a impactos de negocio comprensibles.<br>• Lidera mesas de concertación entre TI y áreas misionales (Fiscalización/Aduanas).<br>• Gestiona crisis comunicacionales durante incidentes críticos de infraestructura.<br>• Genera consensos de alto nivel que movilizan la transformación digital de la DIAN.</strong></td><td><strong>PERFIL EXACTO.</strong> Líder comunicacional capaz de alinear la tecnología con las políticas públicas de recaudo y control aduanero.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                     ESCALERA DE MADUREZ EN COMUNICACIÓN EFECTIVA\n                     \n   [NIVEL 4] ──► CONSTRUCTOR DE REDES ESTRATÉGICAS &amp; TRADUCTOR DE COMPLEJIDAD\n                 (Articula TI con Fiscalización/Aduanas, gestiona crisis de sistemas)\n                 ▲\n   [NIVEL 3] ──► MEDIADOR DE EQUIPO &amp; COMUNICADOR EJECUTIVO\n                 (Facilita acuerdos técnicos, comunica bajo estrés)\n                 ▲\n   [NIVEL 2] ──► ADAPTADOR CONTEXTUAL &amp; ARGUMENTADOR TÉCNICO\n                 (Ajusta el tono al usuario, usa datos de soporte)\n                 ▲\n   [NIVEL 1] ──► COMUNICACIÓN BÁSICA / FORMAL (CORREOS Y MEMORANDOS)</code></pre></div>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>La Trampa de la \"Arrogancia Técnica\" en el Examen:</strong> En los reactivos de juicio situacional, una opción típica dice: <em>\"Elaborar un informe técnico en lenguaje matemático puro y detallar que los auditores fiscales no cuentan con las competencias para entender el algoritmo, exigiendo que se capaciten en estadística antes de opinar\"</em>. Esta opción es un <strong>distractor crítico</strong>. El Nivel 4 exige empatía cognitiva y capacidad pedagógica para tender puentes, no soberbia disciplinaria.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-14-2",
+          "moduleId": "mod-14",
+          "unitNumber": 2,
+          "title": "Unidad 2: Conductas Observables y Catálogo Oficial de Evidencias en Procesamiento de Datos (Abecé DIAN)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 296,
+          "content": "<p>El Capítulo 4 del <strong>Abecé de Evidencias de Competencias Conductuales de la DIAN</strong> define tres líneas operativas obligatorias para el Inspector I en la Dirección de Gestión de Innovación y Tecnología:</p>\n<h3>2.1. Documentación Técnica y Ejecutiva de Alto Nivel</h3>\n<ul><li><strong>Diseño de artefactos arquitectónicos híbridos:</strong> Elaboración de documentos técnicos que incluyen un resumen ejecutivo orientado a la toma de decisiones (con métricas de negocio: billones de pesos en riesgo fiscal identificado, falsos positivos reducidos) y anexos técnicos rigurosos con topologías de datos, flujos de integración y esquemas de metadatos.</li><li><strong>Lineamientos de Gobierno y Modelado:</strong> Redacción clara de directrices y estándares institucionales para que las casas de software y proveedores contratados comprendan los requisitos no funcionales de la DIAN sin ambigüedades.</li></ul>\n<h3>2.2. Mesas de Concertación y Acuerdos Interdependencias</h3>\n<ul><li><strong>Articulación de requerimientos analíticos:</strong> Liderazgo en mesas de trabajo conjuntas entre ingenieros de datos y equipos de Fiscalización Tributaria, Operaciones Aduaneras o Cobranzas, logrando acuerdos firmados sobre las variables de entrada (<em>features</em>), umbrales de alerta y periodicidad de los cruces de información.</li><li><strong>Escucha empática del dolor del usuario:</strong> Capacidad de capturar las necesidades operativas de los inspectores en territorio (ej. en puertos o aeropuertos) que utilizan los aplicativos en condiciones de conectividad limitada.</li></ul>\n<h3>2.3. Gestión Asertiva de Crisis Comunicacionales en Incidentes Críticos</h3>\n<ul><li><strong>Comunicación transparente durante contingencias:</strong> Cuando ocurre una falla catastrófica de infraestructura (ej. latencia extrema en la firma de facturas electrónicas o caída de la base de datos de aduanas durante una festividad), el Inspector I emite reportes periódicos, objetivos y serenos a los directivos, evitando la minimización engañosa del problema o la culpa hacia terceros.</li><li><strong>Foco absoluto en la solución y la mitigación:</strong> Comunicación orientada a las acciones de contingencia inmediata y a los tiempos estimados de recuperación (<em>RTO/RPO</em>), transmitiendo confianza y control institucional.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-14-3",
+          "moduleId": "mod-14",
+          "unitNumber": 3,
+          "title": "Unidad 3: Decodificador Psicométrico Areandina (Escala Likert y Subescalas de Control en Comunicación)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 304,
+          "content": "<h3>3.1. Estructura Sintáctica de los Reactivos de Comunicación</h3>\n<p>En el examen de Areandina, los reactivos Likert de Comunicación Efectiva están estructurados bajo la ecuación psicométrica:</p>\n<pre class=\"code-block\"><code class=\"\">[Conducta de Traducción / Mediación / Redes] + [Tensión de Desacuerdo / Arrogancia / Estrés Operativo]</code></pre>\n<p>El reactivo mide si el profesional cede a la frustración, recurre al aislamiento técnico o, por el contrario, despliega liderazgo comunicacional asertivo para resolver el bloqueo.</p>\n<h3>3.2. Subescala de Deseabilidad Social (<em>Faking Good</em>) en Comunicación</h3>\n<p>La deseabilidad social evalúa aspirantes que fingen una perfección comunicacional irreal, negando cualquier imperfección humana en el diálogo interpersonal:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Jamás en mi carrera he malinterpretado una instrucción verbal o he tenido que pedir a un compañero que me repita una explicación para entenderla plenamente.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>La retroalimentación y la solicitud de aclaraciones son parte intrínseca de la comunicación asertiva. Afirmar comprensión instantánea e infalible al 100% de por vida es síntoma de simulación psicométrica.</em></p></blockquote>\n<h3>3.3. Subescala de Falsa Proactividad en Comunicación y Seguridad</h3>\n<p>En el ámbito tecnológico, la falsa proactividad comunicacional consiste en utilizar canales informales no autorizados (ej. WhatsApp, Telegram, grupos privados en redes) para \"comunicar más rápido\" decisiones o transmitir datos reservados:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Para evitar la lentitud de los memorandos oficiales durante un despliegue de base de datos, considero óptimo crear un grupo de WhatsApp y compartir allí capturas de pantalla de los esquemas y datos para coordinar al equipo.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>Compartir capturas de sistemas internos o datos institucionales por redes de mensajería comercial sin cifrado corporativo vulnera la política de seguridad y la reserva tributaria. La agilidad comunicacional no puede destruir la seguridad de la información.</em></p></blockquote>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-14-4",
+          "moduleId": "mod-14",
+          "unitNumber": 4,
+          "title": "Unidad 4: Situaciones Críticas de Comunicación Técnica e Interdependencias en la DIAN",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 111,
+          "content": "<h3>4.1. El Triángulo de Tensión Comunicacional en Innovación y Tecnología</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                         DIRECCIÓN GENERAL / DESPACHO\n                         (Lenguaje: Impacto Político, Recaudo, Medios)\n                                      ▲\n                                     / \\\n                                    /   \\\n                                   /     \\\n    SUBDIRECCIÓN DE PROCESAMIENTO        DIRECCIÓN DE FISCALIZACIÓN / ADUANAS\n              DE DATOS                   (Lenguaje: Artículos del E.T., Decretos,\n    (Lenguaje: Spark, Particiones,        Expedientes, Medidas Cautelares)\n     Índices, Latencia, RAM)</code></pre></div>\n<p>El Inspector I actúa en el centro de este triángulo. Su valor no reside únicamente en su destreza en código SQL o Python, sino en su <strong>capacidad de orbitar con soltura entre los tres vértices</strong>, traduciendo una caída de latencia en memoria RAM a horas de retraso en el despacho aduanero y justificando inversiones tecnológicas ante el Despacho General en términos de recaudo efectivo para el Estado colombiano.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-14-5",
+          "moduleId": "mod-14",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Juicio Conductual",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "20 min",
+          "minutes": 20,
+          "words": 3061,
+          "content": "<hr>\n<h3>Ítem Likert 1: Traducción de Algoritmos Complejos a Lenguaje de Negocio</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Diseño presentaciones e infografías ejecutivas donde traduzco el funcionamiento de modelos complejos de aprendizaje automático a métricas tributarias tangibles para que los directivos de fiscalización tomen decisiones informadas sin necesidad de conocer código.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Describe con precisión el descriptor del Nivel 4 de Comunicación Efectiva: adaptar el mensaje especializado al contexto directivo para lograr impacto institucional.</li><li><strong>Justificación A y B:</strong> Reflejan aislamiento técnico o incapacidad pedagógica.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Pérdida Momentánea de Concentración)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi vida laboral me he distraído o he desconectado mentalmente durante una reunión de trabajo larga o excesivamente teórica.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Las fluctuaciones de la atención son fenómenos cognitivos universales en cualquier persona. Negarlas evidencia falseamiento de la prueba.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira que penaliza el índice de validez.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Gestión Asertiva y Serena de Incidentes de Caída de Plataformas</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Durante incidentes críticos de indisponibilidad de bases de datos o servicios web, comunico con serenidad y objetividad el estado técnico de la falla a los directivos, evitando tecnicismos que confundan y enfocándome en el plan de mitigación y tiempos de recuperación.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Comunicación: manejo de crisis de alto impacto, contención de la incertidumbre directiva y transparencia técnica sin excusas.</li><li><strong>Justificación A y B:</strong> Revelan comunicación errática o pánico operacional en momentos de crisis.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Filtración Informal de Avances por WhatsApp)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Canales Seguros</li><li><strong>Afirmación:</strong> &gt; <em>\"Para ahorrar trámites y responder rápidamente a un auditor tributario amigo, considero adecuado enviarle por WhatsApp capturas de pantalla de consultas preliminares de bases de datos de contribuyentes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Los canales de comunicación institucional deben preservar la seguridad y la confidencialidad de la reserva tributaria (Art. 583 E.T.). WhatsApp no es un canal autorizado para la fuga de microdatos.</li><li><strong>Justificación C y D (Trampa):</strong> Violación flagrante de políticas de ciberseguridad y confidencialidad.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Escucha Activa de las Necesidades Operativas del Usuario</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Dedico tiempo a escuchar activamente a los funcionarios de las seccionales aduaneras y tributarias para entender sus dificultades reales en territorio antes de definir las especificaciones de un nuevo pipeline de datos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Refleja la escucha activa como pilar del Nivel 4: construir soluciones basadas en las necesidades reales del usuario institucional.</li><li><strong>Justificación A y B:</strong> Muestran arrogancia de diseño centralizado sin validación empírica.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Construcción de Redes Estratégicas Interdependencias</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Establezco y mantengo canales de comunicación fluidos y continuos con los enlaces técnicos de Fiscalización, Recaudo y Aduanas, facilitando la identificación proactiva de necesidades de información antes de que se conviertan en urgencias.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Descriptor textual del Nivel 4: construye redes de comunicación estratégicas que trascienden el área inmediata para articular objetivos organizacionales.</li><li><strong>Justificación A y B:</strong> Limitan la comunicación a respuestas reactivas ante quejas.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Interrupción Verbal Involuntaria)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he interrumpido a otra persona cuando está hablando en una discusión acalorada sobre un tema que domino profundamente.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La interrupción involuntaria en debates apasionados es común; reconocerlo evidencia autenticidad.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de deseabilidad social.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Manejo Asertivo de Desacuerdos Metodológicos</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando un líder de negocio insiste en una solución técnica inviable o riesgosa para los servidores, explico las limitaciones con empatía y sustento técnico, proponiendo inmediatamente dos alternativas viables que satisfagan su necesidad de negocio.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Asertividad propositiva de Nivel 4: no dice simplemente \"no se puede\", sino que guía al interlocutor hacia soluciones factibles.</li><li><strong>Justificación A y B:</strong> Negativa cerrada o sumisión acrítica a propuestas riesgosas.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Claridad en la Documentación Arquitectónica y Manuales</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Redacto los manuales de usuario, especificaciones de arquitectura y diccionarios de datos con tal nivel de claridad pedagógica que cualquier profesional nuevo o auditor externo puede comprenderlos sin depender de explicaciones verbales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Gestión del conocimiento y comunicación escrita de alta calidad técnica (Evidencia de Producto del Abecé de la DIAN).</li><li><strong>Justificación A y B:</strong> Documentación deficiente o críptica que genera dependencia de personas específicas.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Ocultar Incidentes para 'No Alarmar')</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Transparencia</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un proceso de ingesta de datos falla pero el equipo puede resolverlo en 12 horas trabajando de noche, considero prudente no avisar a las áreas usuarias para no generarles preocupación innecesaria.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La comunicación oportuna y transparente de incidentes permite a las áreas de negocio activar sus planes de contingencia. Ocultar fallas deteriora la confianza institucional y agrava el impacto si la solución se retrasa.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa protección que viola los protocolos de gestión de incidentes (ITIL).</li></ul>\n<hr>\n<h3>Ítem Likert 11: Retroalimentación Constructiva a Pares Técnicos</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"En las revisiones de código o diseño de bases de datos, entrego comentarios respetuosos, fundamentados y pedagógicos, señalando no solo las oportunidades de mejora sino también las soluciones concretas para implementarlas.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Comunicación constructiva orientada a elevar las capacidades colectivas del equipo.</li><li><strong>Justificación A y B:</strong> Retroalimentación destructiva, agresiva o silencio pasivo.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Neutralidad y Argumentación en Mesas de Controversia</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando surgen discrepancias agudas entre distintas dependencias sobre la titularidad o custodia de un dato, mantengo la neutralidad institucional y centro el debate en las directrices de la arquitectura de información de la DIAN.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Mediación estratégica institucional basada en marcos de gobierno de datos y no en intereses de feudo burocrático.</li><li><strong>Justificación A y B:</strong> Participación en disputas políticas estériles.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Seguridad Absoluta en Toda Presentación)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Absolutamente nunca he sentido nerviosismo, inseguridad o tensión al exponer un informe crítico ante los altos directivos de una organización.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La respuesta fisiológica ante audiencias de alto nivel es natural. La competencia evalúa el dominio del contenido y la preparación, no la insensibilidad biológica.</li><li><strong>Justificación D (Trampa):</strong> Reactivo clásico de fingimiento psicométrico.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Síntesis Ejecutiva en Correos y Memorandos</h3>\n<ul><li><strong>Competencia:</strong> Comunicación Efectiva</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Estructuro mis comunicaciones escritas utilizando la técnica de pirámide invertida (conclusión y decisión requerida al inicio, seguida de soportes clave), permitiendo a los líderes ocupados entender el asunto en menos de dos minutos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Eficiencia comunicativa de alto nivel que ahorra tiempo administrativo y facilita la toma de decisiones.</li><li><strong>Justificación A y B:</strong> Textos farragosos, desordenados o crípticos.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Compromisos Verbales sin Respaldo)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Formalidad</li><li><strong>Afirmación:</strong> &gt; <em>\"En una reunión con directivos, considero una muestra de liderazgo prometer verbalmente fechas de entrega sumamente ajustadas para complacerlos, confiando en que el equipo resolverá cómo cumplirlas más adelante.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La comunicación responsable exige honestidad técnica y estimaciones fundamentadas en capacidad real de procesamiento. Prometer plazos irreales por complacencia destruye la credibilidad técnica.</li><li><strong>Justificación C y D (Trampa):</strong> Demagogia comunicacional y falsa proactividad que genera crisis operativas seguras.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Negativa de Fiscalización a Usar Nuevo Dashboard Analítico</h3>\n<ul><li><strong>Caso:</strong> La Subdirección de Procesamiento de Datos culminó el desarrollo de un moderno tablero analítico en tiempo real que cruza facturas electrónicas con inventarios aduaneros para detectar subfacturación. Sin embargo, en una reunión de seguimiento, el Director Seccional de Fiscalización manifiesta de forma enérgica que sus auditores no utilizarán la herramienta porque \"es un sistema confuso, lleno de gráficos abstractos que nadie entiende y que solo les quita tiempo para cumplir las metas del mes\".</li><li><strong>Enunciado:</strong> La estrategia comunicacional que debe asumir el Inspector I conforme al Nivel 4 de Comunicación Efectiva es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Defender agresivamente la plataforma señalando que el tablero fue desarrollado con tecnología de punta internacional y que la negativa de los auditores se debe a falta de interés en capacitarse.</li><li><strong>B.</strong> Escuchar atentamente los argumentos de negocio del Director Seccional, concertar de inmediato sesiones de trabajo conjunto para codiseñar los reportes prioritarios adaptando los términos a su flujo de auditoría real y acompañar un caso piloto con resultados medibles de recaudo.</li><li><strong>C.</strong> Aceptar las críticas en silencio, retirar el acceso al tablero y concentrarse en atender únicamente requerimientos por memorando formal escrito.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea con el Nivel 4 de Comunicación Efectiva: escucha activa, empatía con el usuario de negocio, desescalamiento asertivo de la tensión y co-construcción orientada a resultados tangibles de valor público.</li><li><strong>Justificación A (Incorrecta):</strong> Comunicación agresiva y arrogancia técnica que rompe las relaciones interdependencias y bloquea la modernización.</li><li><strong>Justificación C (Incorrecta):</strong> Resignación pasiva que anula la inversión institucional y perpetúa los silos organizacionales.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Falla Masiva de Base de Datos en Pleno Vencimiento Tributario</h3>\n<ul><li><strong>Caso:</strong> A las 4:00 p.m. del día límite para la presentación de la declaración del impuesto sobre las ventas (IVA), el clúster transaccional de recepción de documentos tributarios colapsa por una sobrecarga imprevista de peticiones concurrentes. El Director de Innovación y Tecnología convoca una reunión de crisis urgente con el Inspector I para emitir un comunicado oficial ante el Ministerio de Hacienda y los medios de comunicación. El equipo aún no tiene la causa raíz exacta, pero se estima que la recuperación tomará entre 3 y 5 horas.</li><li><strong>Enunciado:</strong> La forma en que el Inspector I debe estructurar su comunicación técnica en la mesa de crisis es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Asegurar al Director que la plataforma estará lista en 30 minutos para calmar los ánimos, mientras envía mensajes urgentes al equipo de soporte para que reinicien los servidores forzosamente.</li><li><strong>B.</strong> Presentar de manera clara, objetiva y sin jergas incomprensibles la naturaleza de la saturación técnica, el diagnóstico preliminar, las acciones de mitigación en curso y el rango de tiempo estimado de recuperación (3 a 5 horas), recomendando técnicamente declarar la contingencia tributaria legal (Art. 579-2 E.T.) para proteger los derechos de los contribuyentes.</li><li><strong>C.</strong> Explicar detalladamente los volcados de memoria y el código de error hexadecimal de los nodos para demostrar que la falla es atribuible a los servidores de la empresa proveedora de nube y deslindar a la DIAN de responsabilidad.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela la excelencia comunicacional del Nivel 4 en situaciones de crisis: veracidad sin ambigüedades, serenidad, términos ejecutivos claros y orientación inmediata a la solución institucional (declaratoria de contingencia reglamentaria según el Estatuto Tributario).</li><li><strong>Justificación A (Incorrecta):</strong> Comunicación mendaz e irresponsable que agrava la crisis institucional y engaña a las directivas del Estado.</li><li><strong>Justificación C (Incorrecta):</strong> Evasión técnica mediante tecnicismos oscuros para lavarse las manos, sin aportar soluciones ejecutivas.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Conflicto entre Diseñadores de Datos y Abogados Tributarios</h3>\n<ul><li><strong>Caso:</strong> En una mesa técnica interdisciplinaria para definir las reglas de negocio de la analítica de cruce de exógena, surge una discusión acalorada entre los ingenieros de datos y los abogados del área jurídica. Los ingenieros afirman que los abogados \"entorpecen el proyecto con interpretaciones doctrinales excesivas que impiden automatizar los cruces\", mientras que los abogados sostienen que los ingenieros \"pretenden violar el debido proceso sancionatorio tributario con algoritmos ciegos\". La reunión entra en un punto muerto.</li><li><strong>Enunciado:</strong> La intervención que debe realizar el Inspector I para articular el consenso institucional es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Apoyar irrestrictamente al equipo de ingenieros demostrando que la eficiencia algorítmica moderna debe primar sobre formalismos legales obsoletos.</li><li><strong>B.</strong> Tomar la palabra para validar la importancia de ambas perspectivas, estructurar una matriz comparativa donde se identifiquen los puntos normativos no negociables del debido proceso y traducirlos en restricciones matemáticas y reglas explícitas dentro del pipeline de datos, logrando un consenso técnico-jurídico documentado.</li><li><strong>C.</strong> Abandonar la reunión indicando que los ingenieros no deben debatir con abogados y solicitar a la Dirección General que decida por decreto quién tiene la razón.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Representa el Nivel 4 de Comunicación Efectiva: actúa como mediador estratégico, traduce conceptos normativos complejos a especificaciones algorítmicas y construye una solución interdisciplinaria armónica que blinda jurídicamente y potencia tecnológicamente a la entidad.</li><li><strong>Justificación A (Incorrecta):</strong> Polarización técnica que desconoce el ordenamiento jurídico y expone a la DIAN a demandas de nulidad.</li><li><strong>Justificación C (Incorrecta):</strong> Conducta infantil y evasiva que destruye el trabajo en equipo y sobrecarga innecesariamente a la Dirección General.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Solicitud de Información Confusa por un Ente de Control</h3>\n<ul><li><strong>Caso:</strong> La Contraloría General de la República remite un requerimiento formal a la DIAN solicitando \"un consolidado histórico de transacciones comerciales sospechosas procesadas en los últimos 5 años\". El requerimiento utiliza términos jurídicos ambiguos que no coinciden con las estructuras de las tablas del DataR, prestando a múltiples interpretaciones y al riesgo de entregar información errónea o incompleta sujeta a sanciones de desacato.</li><li><strong>Enunciado:</strong> La actuación comunicacional y metodológica adecuada del Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Responder de inmediato con un volcado masivo de billones de filas sin filtrar para que la Contraloría busque lo que necesita y evitar acusaciones de renuencia.</li><li><strong>B.</strong> Elaborar un documento técnico que mapee las definiciones jurídicas de la Contraloría con los diccionarios y entidades de datos existentes en la DIAN, y solicitar una mesa técnica de aclaración bilateral para concertar el alcance exacto del requerimiento y la estructura del entregable final antes de procesar los datos.</li><li><strong>C.</strong> Rechazar el oficio aduciendo que la solicitud está mal formulada y que la Contraloría no tiene competencia para pedir datos que no sabe nombrar.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al Nivel 4: comunicación asertiva interinstitucional que previene errores materiales, protege la seguridad jurídica de la DIAN y colabora armónicamente con los órganos de control del Estado clarificando el objeto técnico.</li><li><strong>Justificación A (Incorrecta):</strong> Irresponsabilidad técnica que satura canales, expone datos sin criterio y puede infringir la reserva legal.</li><li><strong>Justificación C (Incorrecta):</strong> Respuesta hostil y arrogante que genera conflictos institucionales y expone al funcionario a sanciones disciplinarias por obstrucción.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Presentación de Resultados de Fraude ante Medios y Directivos</h3>\n<ul><li><strong>Caso:</strong> La Dirección General solicita al Inspector I que presente en el Comité Directivo Ampliado los resultados de un exitoso cruce analítico que desmanteló una red de contrabando textil valorada en más de 100.000 millones de pesos. El Comité está presidido por el Director General y cuenta con la presencia de directores jurídicos, aduaneros y delegados del Ministerio.</li><li><strong>Enunciado:</strong> Para garantizar el máximo impacto institucional y comprensión ejecutiva, el Inspector I debe:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Centrar la exposición en el código de optimización de los hiperparámetros del algoritmo XGBoost y el tiempo de ejecución en milisegundos de los clústeres de Spark.</li><li><strong>B.</strong> Estructurar la presentación iniciando con el impacto económico y tributario del hallazgo (montos recuperados, modus operandi desarticulado), respaldado visualmente con diagramas de grafos claros e intuitivos, y sintetizar en dos láminas finales las capacidades analíticas institucionales requeridas para escalar el modelo a otros sectores.</li><li><strong>C.</strong> Delegar la presentación en un asesor del Despacho para evitar exponerse al escrutinio del Comité Directivo.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Demuestra dominio del Nivel 4 de Comunicación: adapta la narrativa al perfil de la alta dirección pública, visibiliza el valor público generado para el país y promueve la sostenibilidad de la inversión tecnológica con argumentos estratégicos.</li><li><strong>Justificación A (Incorrecta):</strong> Error clásico de desconexión ejecutiva por exceso de tecnicismos estériles para la toma de decisiones.</li><li><strong>Justificación C (Incorrecta):</strong> Falta de liderazgo y desaprovechamiento de un espacio estratégico de posicionamiento técnico.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 68,
+      "studyMinutes": 68,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Resolución No. 065 de 2024 (11 de abril de 2024)</em>. Diccionario Oficial de Competencias Comportamentales. Competencia Comunicación Efectiva (Nivel 4).</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Guía Técnica Abecé de Evidencias de Competencias Conductuales</em>. Capítulo 4: Catálogo de Evidencias en Comunicación para Inspectores I.</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2021):</strong> <em>Guía de Lenguaje Claro para el Estado Colombiano</em>. Principios de comunicación accesible y efectiva en la gestión pública.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) Concurso DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert de 4 Niveles y Control Psicométrico.</li><li><strong>Axelos (2019 - 2026):</strong> <em>ITIL 4 Foundation: IT Service Management</em>. Gestión de Incidentes Críticos y Comunicación de Crisis en Tecnologías de la Información.</li><li><strong>Harvard Business Review (2022):</strong> <em>Data Storytelling for Leaders: Translating Analytics into Business Decisions</em>. Técnicas de comunicación ejecutiva para científicos y arquitectos de datos.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-15",
+      "track": "comportamentales",
+      "title": "14. Innovación (Nivel 4)",
+      "badge": "Pruebas Comportamentales (15%)",
+      "examId": "exam-15",
+      "lessons": [
+        {
+          "id": "les-15-1",
+          "moduleId": "mod-15",
+          "unitNumber": 1,
+          "title": "Unidad 1: Definición Oficial y Matriz de Progresión (Del Nivel 1 Básico al Nivel 4 de Inspector I)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 781,
+          "content": "<p># Guía Maestra Oficial: 14. Innovación (Nivel 4 - Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas Comportamentales (15% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Innovación (Nivel 4: Co-construcción y Soluciones Analíticas Pioneras)   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: La Innovación Tecnológica como Motor de Transformación en la DIAN</h2>\n<p>La UAE DIAN enfrenta el desafío histórico de combatir esquemas de elusión, evasión y contrabando cada vez más sofisticados, caracterizados por redes multicapa de empresas de papel, operaciones ficticias de facturación electrónica y triangulación de comercio exterior. Frente a este panorama, los métodos tradicionales de procesamiento manual o consultas secuenciales en bases de datos relacionales colapsan.</p>\n<p>Para el cargo de <strong>Inspector I (OPEC 236670)</strong> en la <strong>Subdirección de Procesamiento de Datos</strong>, la Comisión Nacional del Servicio Civil (CNSC) y la Universidad Areandina han fijado la evaluación en el <strong>Nivel 4 (Máximo Nivel de Desarrollo)</strong> de la competencia de <strong>Innovación</strong>. En este nivel, el profesional no es un mero consumidor de software comercial; es un <strong>agente catalizador de co-construcción interdisciplinaria, un investigador de buenas prácticas internacionales (CIAT, SAT, OCDE) y un diseñador de arquitecturas analíticas y de datos pioneras</strong> (DataR Lakehouse, Apache Spark, grafos, analítica en streaming) que maximizan el recaudo y la justicia tributaria en Colombia.</p>\n<hr>\n<hr>\n<h3>1.1. Definición Oficial Literal (Resolución DIAN No. 065 de 2024)</h3>\n<blockquote><p><strong>Definición Oficial DIAN:</strong>   <em>\"Capacidad para generar, proponer y aplicar ideas creativas, soluciones originales y métodos de trabajo novedosos, transformando procesos y servicios para responder a los cambios del entorno y generar valor público en la DIAN.\"</em></p></blockquote>\n<p>La definición recalca dos dimensiones críticas: la <strong>originalidad metodológica</strong> (superar la inercia del \"siempre se ha hecho así\") y la <strong>generación de valor público</strong> (cada innovación debe traducirse en mayor recaudo, reducción de tiempos aduaneros o simplificación tributaria para los ciudadanos).</p>\n<h3>1.2. Matriz Comparativa de Progresión en Niveles de Desarrollo</h3>\n<p>El Diccionario Oficial de Competencias Comportamentales de la DIAN estructura la innovación en cuatro peldaños cualitativos:</p>\n<table class=\"data-table\"><thead><tr><th>Nivel de Desarrollo</th><th>Descriptor General (Res. 065/2024)</th><th>Conductas Observables Oficiales</th><th>Brecha Frente al Rol de Inspector I</th></tr></thead><tbody><tr><td><strong>Nivel 1 (Básico)</strong></td><td>Sugiere mejoras a sus tareas cotidianas y muestra disposición para aplicar nuevas tecnologías.</td><td>• Acepta con disposición herramientas digitales nuevas.<br>• Sugiere ajustes menores a sus formatos o rutinas.<br>• Se adapta a los cambios introducidos por la entidad.</td><td><strong>Insuficiente.</strong> Es una postura receptiva pasiva. El usuario adopta la innovación ajena, pero no la crea ni la lidera.</td></tr><tr><td><strong>Nivel 2 (Intermedio)</strong></td><td>Diseña e implementa soluciones prácticas para optimizar los procesos de su equipo de trabajo.</td><td>• Identifica cuellos de botella en su entorno.<br>• Propone automatizaciones de tareas repetitivas.<br>• Aplica metodologías ágiles en sus entregables.</td><td><strong>Intermedio.</strong> Eficiente en la optimización local (ej. automatizar un script personal), pero sin impacto sistémico.</td></tr><tr><td><strong>Nivel 3 (Avanzado)</strong></td><td>Lidera iniciativas de mejora que impactan a su dependencia y promueve la experimentación controlada.</td><td>• Formula proyectos de modernización de mediana escala.<br>• Ensaya prototipos de soluciones en ambientes de prueba.<br>• Motiva a sus compañeros a explorar nuevas herramientas.</td><td><strong>Avanzado.</strong> Adecuado para líderes de célula técnica, pero aún concentrado en los límites de su subdirección.</td></tr><tr><td><strong>Nivel 4 (🎯 Exigido en Inspector I)</strong></td><td><strong>Presenta, recomienda, aplica y fomenta un ambiente de co-construcción de nuevas propuestas, diseñando soluciones originales y pioneras que superan las expectativas y generan valor organizacional.</strong></td><td><strong>• Fomenta espacios de co-construcción entre ingenieros y áreas misionales.<br>• Diseña soluciones analíticas pioneras de alto impacto institucional.<br>• Adapta experiencias exitosas de administraciones tributarias del mundo (CIAT/SAT).<br>• Transforma paradigmas tecnológicos obsoletos en arquitecturas escalables.</strong></td><td><strong>PERFIL EXACTO.</strong> Visión prospectiva, liderazgo en laboratorios de datos y creación de capacidades analíticas disruptivas para el Estado.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                     ESCALERA DE DESARROLLO EN INNOVACIÓN\n                     \n   [NIVEL 4] ──► CO-CONSTRUCTOR PIONERO &amp; LÍDER DE TRANSFORMACIÓN DIGITAL\n                 (Soluciones pioneras, benchmarking CIAT/SAT, hackatones internas)\n                 ▲\n   [NIVEL 3] ──► PROMOTOR DE EXPERIMENTACIÓN Y MEJORA EN LA DEPENDENCIA\n                 (Prototipado en staging, motivación del equipo técnico)\n                 ▲\n   [NIVEL 2] ──► OPTIMIZADOR OPERATIVO LOCAL\n                 (Automatización de rutinas y scripts de su propio puesto)\n                 ▲\n   [NIVEL 1] ──► RECEPTOR PASIVO DE CAMBIOS Y NUEVAS HERRAMIENTAS</code></pre></div>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>La Diferencia Clave entre Nivel 2 y Nivel 4 en el Examen:</strong> Si un caso pregunta por la actitud de un profesional ante un proceso manual de cruce de datos, el distractor de Nivel 2 dirá: <em>\"Crear una macro en Excel personal para que el aspirante termine sus tareas más rápido\"</em>. La clave correcta de Nivel 4 dirá: <em>\"Identificar el patrón común, convocar a los analistas de negocio para co-diseñar un pipeline de datos distribuido en Apache Spark reutilizable por toda la entidad y documentarlo en el catálogo institucional\"</em>.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-15-2",
+          "moduleId": "mod-15",
+          "unitNumber": 2,
+          "title": "Unidad 2: Conductas Observables y Catálogo Oficial de Evidencias en Procesamiento de Datos (Abecé DIAN)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 276,
+          "content": "<p>El Capítulo 4 del <strong>Abecé de Evidencias de Competencias Conductuales de la DIAN</strong> detalla el catálogo concreto de evidencias que sustentan la competencia en el Inspector I:</p>\n<h3>2.1. Proyectos de Innovación Tecnológica Implementados</h3>\n<ul><li><strong>Arquitectura Lakehouse y Analítica Distribuida:</strong> Diseño, desarrollo e implementación de modelos de procesamiento distribuido en Spark y Lakehouse (Delta Lake / Iceberg) en el DataR de la DIAN, logrando procesar terabytes de facturación electrónica y declaraciones aduaneras en minutos en lugar de semanas.</li><li><strong>Modelos Predictivos y Detección de Fraude Complejo:</strong> Desarrollo de modelos analíticos no supervisados y de teoría de grafos para identificar consorcios fachada que simulan compras masivas para solicitar devoluciones improcedentes de IVA.</li></ul>\n<h3>2.2. Aprovechamiento de Experiencias Exitosas (Benchmarking Internacional)</h3>\n<ul><li><strong>Adaptación de Soluciones del CIAT, SAT y OCDE:</strong> Estudio, documentación y tropicalización a la realidad fiscal colombiana de esquemas tecnológicos implementados con éxito en administraciones como el Servicio de Administración Tributaria (SAT de México - listas negras del Art. 69-B) o la Agencia Tributaria de España (AEAT), acelerando la madurez digital de la DIAN sin reinventar la rueda.</li><li><strong>Adopción de Estándares Tecnológicos Abiertos:</strong> Introducción de marcos de código abierto consolidados que evitan el secuestro tecnológico (<em>vendor lock-in</em>) y reducen los costos de licenciamiento del Estado.</li></ul>\n<h3>2.3. Creación y Liderazgo de Espacios de Co-construcción</h3>\n<ul><li><strong>Laboratorios de Datos y Hackatones Tributarias:</strong> Creación y liderazgo de espacios colaborativos donde ingenieros de datos, analistas de riesgo aduanero, auditores fiscales y expertos jurídicos se reúnen para experimentar y construir prototipos analíticos conjuntos.</li><li><strong>Metodologías Ágiles Centradas en el Usuario:</strong> Implementación de dinámicas de <em>Design Thinking</em> y marcos Scrum/Kanban para asegurar que las innovaciones tecnológicas resuelvan dolores reales de los auditores en territorio.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-15-3",
+          "moduleId": "mod-15",
+          "unitNumber": 3,
+          "title": "Unidad 3: Decodificador Psicométrico Areandina (Escala Likert y Subescalas de Control en Innovación)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 311,
+          "content": "<h3>3.1. Ecuación Psicométrica de los Reactivos de Innovación</h3>\n<p>En la prueba de la Universidad Areandina, los reactivos de Innovación están diseñados para contrastar la audacia propositiva y la co-construcción frente al conformismo burocrático y la aversión al cambio:</p>\n<pre class=\"code-block\"><code class=\"\">[Iniciativa de Co-construcción / Solución Pionera] + [Tensión: Inercia Institucional / Resistencia al Cambio / Riesgo Técnico]</code></pre>\n<h3>3.2. Subescala de Deseabilidad Social (<em>Faking Good</em>) en Innovación</h3>\n<p>Los reactivos de deseabilidad social en innovación buscan candidatos que niegan cualquier fracaso o dificultad metodológica en sus procesos creativos:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Jamás en mi trayectoria profesional he propuesto una idea de mejora o proyecto de innovación que haya resultado inviable o que haya fallado durante la fase de prototipado.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>La experimentación científica y la innovación conllevan inevitablemente hipótesis fallidas en ambientes de prueba. Quien afirma no haber fallado nunca jamás ha innovado realmente o está falseando la prueba con deseabilidad social.</em></p></blockquote>\n<h3>3.3. Subescala de Falsa Proactividad en Innovación (La \"Innovación Pirata\")</h3>\n<p>La falsa proactividad en innovación consiste en implementar tecnologías no autorizadas, saltarse los controles de seguridad de TI o desplegar código experimental en producción sin pruebas bajo la excusa de ser \"disruptivo\":</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Para innovar rápidamente sin los retrasos de los comités de TI, considero una buena práctica subir bases de datos de la DIAN a servicios gratuitos de inteligencia artificial en la nube pública para probar nuevos algoritmos.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>Cargar datos protegidos del Estado en servidores no controlados viola la reserva tributaria (Art. 583 E.T.), la Ley de Protección de Datos Personales (Ley 1581 de 2012) y constituye una brecha de seguridad inadmisible. La innovación pública debe ser responsable, segura y legal.</em></p></blockquote>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-15-4",
+          "moduleId": "mod-15",
+          "unitNumber": 4,
+          "title": "Unidad 4: Escenarios de Innovación Tecnológica Disruptiva en la DIAN",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 110,
+          "content": "<h3>4.1. Del Monolito Tradicional al DataR Lakehouse Distribuido</h3>\n<pre class=\"code-block\"><code class=\"\">  PARADIGMA ANTERIOR (TRADICIONAL)               PARADIGMA DISRUPTIVO (NIVEL 4)\n  ┌───────────────────────────────┐              ┌───────────────────────────────┐\n  │ • Consultas SQL en producción │              │ • Arquitectura DataR Lakehouse │\n  │ • Procesamiento batch mensual │     ───►     │ • Streaming en tiempo real    │\n  │ • Silos de datos aislados     │              │ • Grafos y detección de redes │\n  │ • Solicitudes por memorando   │              │ • Co-construcción con negocio │\n  └───────────────────────────────┘              └───────────────────────────────┘</code></pre>\n<p>El Inspector I lidera esta transición. Entiende que innovar no significa aplicar algoritmos complejos por vanidad técnica, sino resolver interrogantes de país: ¿cómo detectar un carrusel de facturación falsa en los primeros 10 segundos de emitida la factura UBL 2.1 antes de que se cobre el IVA? ¿Cómo correlacionar el manifiesto de carga aduanera con los precios internacionales de transferencia en tiempo real?</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-15-5",
+          "moduleId": "mod-15",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Juicio Conductual",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "22 min",
+          "minutes": 22,
+          "words": 3248,
+          "content": "<hr>\n<h3>Ítem Likert 1: Co-construcción Multidisciplinaria en Datos</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Lidero talleres de diseño participativo con auditores tributarios, analistas aduaneros y abogados jurídicos para co-construir nuevas reglas algorítmicas de detección de contrabando, asegurando que la tecnología responda a sus necesidades operativas reales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Describe literalmente la conducta del Nivel 4 de Innovación: fomenta un ambiente de co-construcción de nuevas propuestas, integrando diferentes perspectivas funcionales.</li><li><strong>Justificación A y B:</strong> Muestran aislamiento y diseño técnico desarticulado de la realidad misional.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Infalibilidad Creativa)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Absolutamente todas las propuestas de mejora técnica o algoritmos que he diseñado en mi vida han funcionado con éxito perfecto desde el primer intento sin necesidad de ajustes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> En ingeniería de software y ciencia de datos, el ciclo de desarrollo implica iteración, depuración y ajustes continuos. Afirmar perfección absoluta al primer intento es una respuesta de simulación psicométrica (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Activa el indicador de deseabilidad social.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Benchmarking y Adopción de Mejores Prácticas Globales</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Investigo permanentemente los modelos tecnológicos exitosos de administraciones tributarias referentes (ej. SAT México, CIAT, OCDE) para adaptar sus mejores prácticas analíticas a la infraestructura del DataR de la DIAN.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Se ajusta al catálogo de evidencias de la DIAN: aprovecha experiencias exitosas de terceros para generar valor organizacional en la entidad.</li><li><strong>Justificación A y B:</strong> Muestran estancamiento técnico y desinterés por la innovación global.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Uso de Herramientas No Autorizadas con Datos Reales)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Seguridad Informática</li><li><strong>Afirmación:</strong> &gt; <em>\"Para acelerar el desarrollo de un modelo analítico pionero, considero admisible conectar la base de datos real de contribuyentes a una herramienta gratuita en la nube sin la autorización del comité de seguridad de la información.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La innovación jamás justifica la violación de la reserva tributaria (Art. 583 E.T.) ni el desvío de directrices de ciberseguridad. Los datos reales solo deben procesarse en ambientes autorizados y controlados.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa proactividad irresponsable que configura falta gravísima.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Prototipado Rápido y Experimentación Controlada</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Desarrollo prototipos rápidos y pruebas de concepto en ambientes de laboratorio (sandbox) con datos sintéticos anonimizados para validar la viabilidad de nuevas tecnologías antes de proponer su despliegue en producción.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Nivel 4 de Innovación: combina audacia creativa con rigor metodológico y mitigación de riesgos de producción.</li><li><strong>Justificación A y B:</strong> Aversión al prototipado o despliegue improvisado sin pruebas.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Superación Activa de la Inercia Burocrática</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando una propuesta de modernización tecnológica enfrenta resistencia basada en la costumbre institucional ('siempre se ha hecho así'), sustento con métricas de costo-beneficio y pilotos demostrativos el valor público de transformar el proceso.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Liderazgo transformador y resiliencia propositiva propios del Nivel 4 de Innovación.</li><li><strong>Justificación A y B:</strong> Resignación inmediata ante la inercia burocrática.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Aceptación Inmediata de Toda Crítica)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido una leve punzada de decepción o resistencia interna cuando un comité directivo rechaza una propuesta tecnológica en la que trabajé intensamente durante meses.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Sentir decepción momentánea ante el rechazo de un proyecto querido es una respuesta humana natural. Lo evaluado es cómo se gestiona profesionalmente la emoción, no su fingida inexistencia.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de mentira.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Automatización Inteligente de Procesos Manuales</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Identifico tareas rutinarias de extracción y validación de datos que consumen cientos de horas a los auditores y propongo pipelines automatizados que liberan tiempo profesional para labores sustantivas de investigación fiscal.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Enfoque en eficiencia y generación de valor público tangible para la administración tributaria.</li><li><strong>Justificación A y B:</strong> Falta de visión optimizadora y tolerancia al desperdicio de recursos humanos.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Uso de Código Abierto para Evitar Dependencia de Proveedores</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo la adopción de estándares y herramientas de código abierto consolidadas en procesamiento de datos (ej. Apache Spark, Delta Lake), protegiendo a la DIAN del gasto excesivo en licencias privativas y del secuestro tecnológico.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Innovación estratégica que optimiza los recursos del tesoro público conforme a los principios de austeridad y soberanía tecnológica del Estado.</li><li><strong>Justificación A y B:</strong> Dependencia pasiva de proveedores comerciales.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Despliegue Experimental en Producción)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Gobierno de TI</li><li><strong>Afirmación:</strong> &gt; <em>\"Si invento un nuevo script de compresión de bases de datos que creo que es genial, considero una muestra de audacia probarlo directamente en los servidores de producción durante el fin de semana sin avisar al equipo de infraestructura.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La innovación requiere ambientes controlados de prueba (<em>sandbox</em>). Experimentar a ciegas en producción es una temeridad que arriesga la continuidad del servicio fiscal del país.</li><li><strong>Justificación C y D (Trampa):</strong> Conducta irresponsable y falsa proactividad sancionable.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Transferencia Pedagógica de Nuevas Tecnologías al Equipo</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando aprendo una nueva técnica de optimización de consultas distribuidas o una nueva biblioteca analítica, organizo sesiones técnicas internas y redacto guías prácticas para que todo el equipo domine la herramienta.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Socialización del conocimiento y escalamiento de la innovación a nivel institucional (Nivel 4).</li><li><strong>Justificación A y B:</strong> Retención mezquina del conocimiento para volverse indispensable.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Rigor Científico y Validación de Sesgos Algorítmicos</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Me aseguro de que cualquier modelo de inteligencia artificial o analítica predictiva que proponga para perfilar riesgo de contribuyentes sea auditado contra sesgos discriminatorios, garantizando el respeto al debido proceso.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Innovación ética y responsable que armoniza la vanguardia tecnológica con las garantías constitucionales del Estado social de derecho.</li><li><strong>Justificación A y B:</strong> Tecnofascismo o ceguera ante el impacto de sesgos algorítmicos en los ciudadanos.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Entusiasmo Inagotable)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido fatiga mental ni he preferido realizar una tarea sencilla y conocida antes que abordar un desafío tecnológico completamente nuevo y complejo.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El cansancio y la preferencia ocasional por lo conocido son respuestas psicológicas habituales; reconocerlo muestra honestidad y autenticidad.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de fingimiento psicométrico.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Enfoque de Innovación Centrado en el Contribuyente</h3>\n<ul><li><strong>Competencia:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Nivel 4</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo que las innovaciones en la arquitectura de datos no solo sirvan para fiscalizar, sino también para facilitar a los ciudadanos el cumplimiento voluntario de sus obligaciones tributarias mediante declaraciones sugeridas precisas.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Visión de valor público integral: la tecnología orientada a la facilitación del servicio al ciudadano y a la justicia distributiva.</li><li><strong>Justificación A y B:</strong> Visión punitiva y reduccionista de la tecnología en el Estado.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Desestimar Procesos de Adquisición Pública)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Contratación Estatal</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero admisible que un ingeniero de datos acepte donaciones de licencias de software privativo directamente de una multinacional sin pasar por el trámite de contratación pública, si eso permite innovar sin gastar presupuesto.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Toda adquisición o donación en el sector público está reglada por el Estatuto General de Contratación de la Administración Pública (Ley 80 de 1993 y Ley 1150 de 2007) para prevenir la cooptación y el direccionamiento contractual.</li><li><strong>Justificación C y D (Trampa):</strong> Violación de las normas de contratación pública disfrazada de ahorro.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Detección de Redes de Facturación Ficticia mediante Grafos</h3>\n<ul><li><strong>Caso:</strong> En la DIAN, las auditorías a empresas que comercializan facturas falsas se venían realizando de forma aislada, revisando manualmente contribuyente por contribuyente, lo que permitía a los cerebros del fraude liquidar las sociedades pantalla antes de que se emitieran los pliegos de cargos. El Inspector I propone desarrollar una prueba de concepto en el DataR utilizando algoritmos de análisis de redes y grafos en Apache Spark para identificar los clústeres de triangulación de manera automática. El líder del proyecto le dice que \"el plan operativo anual no contempla ese proyecto y que no hay presupuesto para contratar consultores externos\".</li><li><strong>Enunciado:</strong> La postura que debe asumir el profesional conforme al Nivel 4 de Innovación es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Acatar la orden del líder, abandonar la idea y limitarse a ejecutar las consultas SQL tradicionales que le sean asignadas en el cronograma ordinario.</li><li><strong>B.</strong> Utilizar librerías de código abierto ya disponibles en el entorno de la DIAN para construir un prototipo a pequeña escala en ambiente de pruebas utilizando datos sintéticos, presentar los resultados preliminares en un taller demostrativo mostrando cómo el modelo identifica redes de fraude en segundos y acordar la formalización del proyecto como una iniciativa de co-construcción interna sin costo adicional.</li><li><strong>C.</strong> Enviar un informe anónimo al Ministerio de Hacienda denunciando que en la DIAN no quieren innovar contra la evasión fiscal para obligar a su líder a aceptar la propuesta.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al Nivel 4 de Innovación: proactividad constructiva, aprovechamiento de recursos existentes de código abierto, prototipado seguro en ambientes de prueba y demostración empírica de valor público sin caer en la resignación ni en la insubordinación destructiva.</li><li><strong>Justificación A (Incorrecta):</strong> Conformismo pasivo de Nivel 1 que priva a la administración de capacidades modernas para salvaguardar el recaudo.</li><li><strong>Justificación C (Incorrecta):</strong> Conducta desleal y conflictiva que daña las relaciones institucionales en lugar de liderar técnicamente.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Resistencia de Auditores a Reemplazar Reportes en Papel</h3>\n<ul><li><strong>Caso:</strong> La Subdirección de Procesamiento de Datos implementa un modelo de datos en tiempo real que consolida las operaciones de comercio exterior en una interfaz analítica accesible desde dispositivos móviles para los inspectores de aduanas en los puertos marítimos de Buenaventura y Cartagena. Sin embargo, los inspectores en territorio continúan imprimiendo extensas sábanas de datos en papel, argumentando que \"las tabletas digitales son difíciles de manipular bajo el sol del muelle y temen que la información se pierda si se corta la señal\".</li><li><strong>Enunciado:</strong> La intervención que refleja la competencia de Innovación en Nivel 4 es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Radicar un memorando exigiendo a la Dirección Seccional de Aduanas sancionar disciplinariamente a los inspectores que continúen utilizando papel en lugar de la aplicación móvil.</li><li><strong>B.</strong> Desplazarse al terreno o coordinar sesiones de escucha activa con los inspectores de muelle para comprender sus condiciones ambientales reales, codiseñar una actualización de la aplicación que incluya modo de alto contraste para exteriores y capacidades de sincronización <em>offline</em> (almacenamiento local seguro mientras no haya señal), y realizar sesiones de acompañamiento en vivo hasta lograr la apropiación efectiva de la solución.</li><li><strong>C.</strong> Suspender el desarrollo de la aplicación móvil y reasignar los servidores a otros proyectos, concluyendo que los funcionarios de puerto no están preparados para la tecnología.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Innovación centrada en el usuario y co-construcción real (Nivel 4). Comprende las restricciones del entorno operativo, adapta la solución tecnológica con empatía y resuelve los problemas de fondo (modo offline y visibilidad) para garantizar el éxito de la transformación digital.</li><li><strong>Justificación A (Incorrecta):</strong> Autoritarismo burocrático que ignora las dificultades físicas reales del usuario y genera mayor rechazo.</li><li><strong>Justificación C (Incorrecta):</strong> Fracaso prematuro y abandono de la innovación pública por falta de resiliencia y adaptabilidad.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Adopción de Modelo de Riesgo del SAT de México en la DIAN</h3>\n<ul><li><strong>Caso:</strong> En un congreso del Centro Interamericano de Administraciones Tributarias (CIAT), el Inspector I conoce a fondo el modelo analítico utilizado por el Servicio de Administración Tributaria (SAT) de México para identificar empresas que deducen operaciones simuladas (EFOS). Al analizar la normativa colombiana, el Inspector I identifica que con adaptaciones menores en las variables de facturación electrónica y retención en la fuente, el modelo mexicano podría replicarse con éxito en el DataR de la DIAN.</li><li><strong>Enunciado:</strong> La actuación metodológica correcta que debe liderar el profesional es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Copiar el código fuente del repositorio del SAT y desplegarlo de inmediato en el servidor de la DIAN sin consultar con el área jurídica ni con los analistas de fiscalización.</li><li><strong>B.</strong> Elaborar un documento técnico de benchmarking internacional que analice los fundamentos matemáticos y la legislación comparada, convocar a una mesa de co-construcción con delegados de Fiscalización y Jurídica para tropicalizar el modelo a la luz del Estatuto Tributario colombiano y desarrollar un piloto en ambiente de pruebas controladas.</li><li><strong>C.</strong> Descartar la idea aduciendo que la DIAN debe ser 100% original y que no es profesional copiar modelos implementados en otros países.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Describe fielmente la evidencia de \"Aprovechamiento de Experiencias Exitosas\" del Abecé de la DIAN: investigación comparada, tropicalización legal y co-construcción interdisciplinaria con validación empírica antes del despliegue.</li><li><strong>Justificación A (Incorrecta):</strong> Imprudencia técnica y legal que puede generar errores sancionatorios al no ajustar el modelo al marco jurídico colombiano.</li><li><strong>Justificación C (Incorrecta):</strong> Falso orgullo y soberbia metodológica que impide aprovechar las mejores prácticas mundiales avaladas por el CIAT y la OCDE.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Propuesta de Uso de Inteligencia Artificial Generativa sin Gobierno</h3>\n<ul><li><strong>Caso:</strong> Durante una hackatón interna de la DIAN, un grupo de jóvenes desarrolladores presenta una herramienta innovadora que utiliza modelos de lenguaje (LLMs) de una API comercial en la nube para responder automáticamente derechos de petición de contribuyentes y sugerir conceptos técnicos tributarios. La herramienta despierta gran entusiasmo en los directivos por su velocidad. Sin embargo, el Inspector I detecta que para generar las respuestas, la herramienta envía fragmentos de los expedientes reales con datos confidenciales a los servidores del proveedor privado de la API en el extranjero.</li><li><strong>Enunciado:</strong> La postura técnica y ética que debe asumir el Inspector I conforme a la Innovación Responsable en Nivel 4 es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Guardar silencio para no aguar la fiesta de la hackatón y felicitar a los desarrolladores por su gran creatividad.</li><li><strong>B.</strong> Reconocer el potencial innovador de la propuesta, pero advertir de manera fundamentada a los directivos y al equipo sobre la brecha crítica de seguridad y violación de la reserva tributaria (Art. 583 E.T.), proponiendo como alternativa técnica el despliegue de un modelo de lenguaje de código abierto alojado en la infraestructura local (<em>on-premise</em>) o en la nube privada de la DIAN, aislado de internet y entrenado con datos debidamente anonimizados.</li><li><strong>C.</strong> Solicitar la descalificación inmediata del equipo y exigir que se prohíba de por vida cualquier iniciativa que mencione inteligencia artificial en la entidad.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela la innovación madura de Nivel 4: no destruye la iniciativa creativa ni se opone al progreso tecnológico, pero corrige de raíz la vulnerabilidad de seguridad y propone la alternativa arquitectónica viable y legal (modelos locales seguros) protegiendo los datos del Estado.</li><li><strong>Justificación A (Incorrecta):</strong> Complicidad pasiva en una violación flagrante de la ley de protección de datos y reserva tributaria.</li><li><strong>Justificación C (Incorrecta):</strong> Ludismo institucional y reacción retrógrada que bloquea el aprendizaje y la innovación en la entidad.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Obsolescencia de Pipelines de Datos y Propuesta de Refactorización</h3>\n<ul><li><strong>Caso:</strong> El Inspector I identifica que el proceso nocturno de consolidación de datos aduaneros y cambiarios en el sistema central tarda más de 14 horas en ejecutarse debido a consultas anidadas construidas hace 15 años. Esta demora ocasiona que cuando los funcionarios de aduanas inician su turno a las 7:00 a.m., los datos no estén actualizados. Al proponer rediseñar el pipeline utilizando procesamiento paralelo en Apache Spark, un ingeniero antiguo le dice que \"eso funciona así desde el año 2010 y que cambiarlo es buscarse problemas innecesarios con la jefatura\".</li><li><strong>Enunciado:</strong> La actuación profesional que refleja el Nivel 4 de Innovación es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar la sugerencia del compañero y resignarse a que el proceso siga tardando 14 horas, ya que la responsabilidad final es de la jefatura.</li><li><strong>B.</strong> Desarrollar una prueba de concepto en ambiente de pruebas refactorizando una muestra representativa del proceso en Spark, medir rigurosamente la reducción del tiempo de ejecución (ej. de 14 horas a 45 minutos) y el ahorro en consumo de memoria, y presentar los resultados al equipo y al líder técnico con un plan de migración por etapas que garantice cero interrupción del servicio.</li><li><strong>C.</strong> Modificar el código en producción a escondidas durante la noche para demostrar que su idea era mejor.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea con el Nivel 4 de Innovación: supera la resistencia mediante la evidencia empírica, la mitigación controlada del riesgo (migración escalonada) y la demostración cuantitativa de eficiencia para el servicio público.</li><li><strong>Justificación A (Incorrecta):</strong> Acomodamiento y mediocridad técnica incompatible con el perfil de Inspector I.</li><li><strong>Justificación C (Incorrecta):</strong> Temeridad inaceptable que viola las políticas de gestión de cambios y pone en peligro las operaciones aduaneras del país.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 70,
+      "studyMinutes": 70,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Resolución No. 065 de 2024 (11 de abril de 2024)</em>. Diccionario de Competencias Comportamentales. Competencia Innovación (Nivel 4).</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Guía Técnica Abecé de Evidencias de Competencias Conductuales</em>. Capítulo 4: Catálogo de Evidencias en Innovación para Inspectores I.</li><li><strong>Centro Interamericano de Administraciones Tributarias (CIAT) (2023):</strong> <em>Gestión de Riesgos de Incumplimiento Tributario y Uso de Analítica Avanzada e Inteligencia Artificial</em>. Buenas prácticas internacionales en administraciones fiscales.</li><li><strong>Organización para la Cooperación y el Desarrollo Económicos (OCDE) (2022):</strong> <em>Tax Administration 3.0: The Digital Transformation of Tax Administration</em>. Hacia la integración natural de los datos tributarios en tiempo real.</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2020):</strong> <em>Guía de Innovación Pública en el Estado Colombiano</em>. Metodologías de diseño centrado en el usuario y laboratorios de co-creación pública.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert y Subescalas de Control Psicométrico.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-16",
+      "track": "comportamentales",
+      "title": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)",
+      "badge": "Pruebas Comportamentales (15%)",
+      "examId": "exam-16",
+      "lessons": [
+        {
+          "id": "les-16-1",
+          "moduleId": "mod-16",
+          "unitNumber": 1,
+          "title": "Unidad 1: Definición Oficial y Matriz de Progresión (Del Nivel 1 Básico al Nivel 3 de Inspector I)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 666,
+          "content": "<p># Guía Maestra Oficial: 15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3 - Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas Comportamentales (15% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Trabajo en Equipo (Nivel 3) y Autogestión del Trabajo en Teletrabajo (Nivel 3)   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: Sinergia Técnica y Autonomía Responsable en la Era Digital de la DIAN</h2>\n<p>La ingeniería de datos y la analítica avanzada en la UAE DIAN son disciplinas de naturaleza colectiva. Ningún profesional, por brillante que sea en algoritmos o modelado, puede procesar en solitario los billones de registros del DataR Lakehouse, mantener en línea los servicios de streaming o construir los modelos de riesgo que sustentan las operaciones aduaneras y tributarias del país.</p>\n<p>Por esta razón, la Comisión Nacional del Servicio Civil (CNSC) y la Universidad Areandina evalúan en el cargo de <strong>Inspector I (OPEC 236670)</strong> la competencia de <strong>Trabajo en Equipo en Nivel 3 (Orientador del Equipo y Custodio del Clima Laboral)</strong>, complementada de manera obligatoria y transversal con la competencia de <strong>Autogestión del Trabajo en Modalidad de Teletrabajo (Nivel 3)</strong>.</p>\n<p>El Inspector I debe destacar por dos cualidades indisociables: su capacidad de <strong>articular esfuerzos interdisciplinarios, transferir conocimiento y cuidar la salud emocional del equipo</strong>, junto con una <strong>disciplina de autorregulación, puntualidad y blindaje de la seguridad de la información en entornos remotos</strong>.</p>\n<hr>\n<hr>\n<h3>1.1. Definición Oficial Literal (Resolución DIAN No. 065 de 2024)</h3>\n<blockquote><p><strong>Definición Oficial DIAN - Trabajo en Equipo:</strong>   <em>\"Capacidad para colaborar de manera activa, coordinada y constructiva con otros en la consecución de metas comunes, integrando esfuerzos, compartiendo conocimientos y recursos, y construyendo relaciones de confianza mutua.\"</em></p></blockquote>\n<p>La competencia trasciende la simple convivencia pacífica o el reparto mecánico de tareas. Exige cohesión metodológica, empatía profesional y corresponsabilidad en los resultados institucionales.</p>\n<h3>1.2. Matriz Comparativa de Progresión en Niveles de Desarrollo</h3>\n<p>El Diccionario Oficial de Competencias Comportamentales de la DIAN estructura la progresión de Trabajo en Equipo en cuatro niveles:</p>\n<table class=\"data-table\"><thead><tr><th>Nivel de Desarrollo</th><th>Descriptor General (Res. 065/2024)</th><th>Conductas Observables Oficiales</th><th>Brecha Frente al Rol de Inspector I</th></tr></thead><tbody><tr><td><strong>Nivel 1 (Básico)</strong></td><td>Participa en actividades del equipo, cumple acuerdos y acepta normas comunes de trabajo.</td><td>• Asiste puntualmente a reuniones.<br>• Cumple las tareas asignadas individualmente.<br>• Mantiene un trato cordial con compañeros.</td><td><strong>Insuficiente.</strong> Ejecuta solo su cuota parte de forma aislada; no apoya a pares rezagados ni gestiona el clima grupal.</td></tr><tr><td><strong>Nivel 2 (Intermedio)</strong></td><td>Coopera activamente, comparte recursos e información y apoya a sus compañeros en contingencias.</td><td>• Comparte materiales e insumos de trabajo.<br>• Ofrece ayuda voluntaria en picos laborales.<br>• Escucha los puntos de vista de otros.</td><td><strong>Intermedio.</strong> Buen colaborador solidario, pero depende de la dirección del líder para coordinar esfuerzos complejos.</td></tr><tr><td><strong>Nivel 3 (🎯 Exigido en Inspector I)</strong></td><td><strong>Fomenta el espíritu de colaboración, orienta el trabajo del equipo, valora positivamente los aportes de cada integrante y cuida activamente el clima laboral.</strong></td><td><strong>• Articula esfuerzos en células multidisciplinarias.<br>• Orienta técnicamente a sus pares y nivela capacidades.<br>• Resuelve fricciones y cuida activamente el clima laboral.<br>• Valora y visibiliza los logros colectivos del grupo.</strong></td><td><strong>PERFIL EXACTO.</strong> Líder colaborativo y orientador técnico que cohesiona el equipo ante situaciones de alta presión.</td></tr><tr><td><strong>Nivel 4 (Estratégico)</strong></td><td>Construye alianzas interinstitucionales de gran escala y consolida redes colaborativas entre entidades.</td><td>• Articula redes con otras entidades del Estado.<br>• Diseña modelos de cooperación transversal.<br>• Modela alianzas interinstitucionales de alto nivel.</td><td><strong>Nivel Superior.</strong> Reservado principalmente para directivos de alto rango y coordinadores de política pública nacional.</td></tr></tbody></table>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                     ESCALERA DE DESARROLLO EN TRABAJO EN EQUIPO\n                     \n   [NIVEL 4] ──► CONSTRUCTOR DE REDES Y ALIANZAS INTERINSTITUCIONALES\n                 (Cooperación interinstitucional de alto nivel con Ministerios y entes)\n                 ▲\n   [NIVEL 3] ──► ORIENTADOR TÉCNICO, INTEGRADOR &amp; CUSTODIO DEL CLIMA\n                 (🎯 Inspector I: Articulación multidisciplinaria, apoyo en crisis, clima laboral)\n                 ▲\n   [NIVEL 2] ──► COLABORADOR SOLIDARIO Y ACTIVO\n                 (Apoyo voluntario a compañeros en picos de trabajo)\n                 ▲\n   [NIVEL 1] ──► PARTICIPANTE PASIVO / CUMPLIDOR DE CUOTA INDIVIDUAL</code></pre></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-16-2",
+          "moduleId": "mod-16",
+          "unitNumber": 2,
+          "title": "Unidad 2: Conductas Observables y Catálogo Oficial de Evidencias en Procesamiento de Datos y Teletrabajo (Abecé DIAN)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 263,
+          "content": "<p>Los Capítulos 4 y 5 del <strong>Abecé de Evidencias de Competencias Conductuales de la DIAN</strong> establecen las evidencias observables para el Inspector I en la Subdirección de Procesamiento de Datos:</p>\n<h3>2.1. Catálogo Oficial en Trabajo en Equipo (Capítulo 4)</h3>\n<ol><li><strong>Articulación de Esfuerzos Multidisciplinarios:</strong></li><li>Coordinación fluida entre ingenieros de datos, arquitectos de software, administradores de bases de datos (DBAs), analistas de riesgo fiscal y abogados tributarios en células ágiles (Scrum/Kanban).</li><li><strong>Cuidado Activo del Clima Laboral:</strong></li><li>Intervenciones asertivas que previenen el síndrome de agotamiento profesional (<em>burnout</em>), promueven pausas activas, reconocen el trabajo bien hecho de los compañeros y desactivan fricciones interpersonales con enfoque no punitivo.</li><li><strong>Transferencia Sistemática de Conocimiento:</strong></li><li>Organización periódica de sesiones de nivelación técnica (<em>Knowledge Sharing Sessions</em>), elaboración de wikis de arquitectura y mentoría a profesionales nuevos para erradicar los silos de información.</li></ol>\n<h3>2.2. Catálogo Oficial en Autogestión en Teletrabajo (Capítulo 5 - Nivel 3)</h3>\n<ol><li><strong>Cumplimiento Autónomo del 100% de Compromisos:</strong></li><li>Entrega puntual y con calidad de los productos concertados en el Acuerdo Individual de Teletrabajo, sin requerir supervisión presencial ni recordatorios reiterados del jefe.</li><li><strong>Uso Riguroso de Canales y Herramientas Colaborativas:</strong></li><li>Conexión continua y disponibilidad activa a través de Microsoft Teams institucional, gestión de versiones en repositorios GitLab corporativos y centralización de documentación en SharePoint/OneDrive oficial.</li><li><strong>Seguridad y Confidencialidad en Puestos Remotos:</strong></li><li>Conexión exclusiva a través de la Red Privada Virtual (VPN) cifrada de la DIAN. Prohibición estricta de manipular información tributaria o aduanera en equipos personales, redes Wi-Fi públicas o permitir la visualización de pantallas por parte de familiares o terceros.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-16-3",
+          "moduleId": "mod-16",
+          "unitNumber": 3,
+          "title": "Unidad 3: Decodificador Psicométrico Areandina (Escala Likert y Subescalas de Control en Trabajo en Equipo)",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 297,
+          "content": "<h3>3.1. Ecuación Psicométrica de los Reactivos</h3>\n<p>En las pruebas de la Universidad Areandina, los reactivos combinan la conducta colaborativa u orientadora con la tensión del individualismo, el cansancio o la urgencia de entrega:</p>\n<pre class=\"code-block\"><code class=\"\">[Conducta de Orientación / Solidaridad / Clima] + [Tensión: Sobrecarga de Trabajo / Falla Ajena / Aislamiento Remoto]</code></pre>\n<h3>3.2. Subescala de Deseabilidad Social (<em>Faking Good</em>) en Trabajo en Equipo</h3>\n<p>Los reactivos trampa de deseabilidad social evalúan aspirantes que fingen no haber tenido jamás una discrepancia o conflicto con un compañero:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Jamás en mi vida profesional he tenido la más mínima diferencia de opinión o discusión sobre la distribución de tareas con un miembro de mi equipo de trabajo.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   *Las diferencias de criterio técnico y de distribución de cargas son connaturales a cualquier equipo de trabajo humano. Negarlo categoriza al aspirante en la subescala de simulación (<em>Faking Good</em>).*</p></blockquote>\n<h3>3.3. Subescala de Falsa Proactividad en Trabajo en Equipo y Teletrabajo</h3>\n<p>En teletrabajo, la falsa proactividad se manifiesta como una solidaridad mal entendida que vulnera la seguridad del Estado o encubre el incumplimiento injustificado de un compañero:</p>\n<blockquote><p><strong>Reactivo Trampa:</strong> <em>\"Si un compañero de teletrabajo se ausenta toda la tarde para atender asuntos personales sin pedir permiso, considero una muestra de lealtad marcar su disponibilidad en el sistema y responder por sus tareas para que el jefe no lo sancione.\"</em>  </p>\n<ul><li><strong>A.</strong> Totalmente en desacuerdo.  </li><li><strong>B.</strong> En desacuerdo.  </li><li><strong>C.</strong> De acuerdo.  </li><li><strong>D.</strong> Totalmente de acuerdo.  </li></ul>\n<p>🎯 <strong>Clave Calibrada:</strong> <strong>A (Totalmente en desacuerdo)</strong>.   <em>Suplantar a un compañero o falsificar registros de asistencia laboral en el sector público constituye una falta disciplinaria gravísima y falsedad en documento público. El trabajo en equipo se basa en la responsabilidad, no en la complicidad ilícita.</em></p></blockquote>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-16-4",
+          "moduleId": "mod-16",
+          "unitNumber": 4,
+          "title": "Unidad 4: Situaciones Reales de Coordinación Técnica y Teletrabajo en la DIAN",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 106,
+          "content": "<h3>4.1. La Célula Ágil de Datos en la DIAN Moderna</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                    CÉLULA ÁGIL DE PROCESAMIENTO DE DATOS\n                    \n                             [LÍDER TÉCNICO]\n                                    │\n       ┌────────────────────────────┼────────────────────────────┐\n       ▼                            ▼                            ▼\n[INSPECTOR I - DATOS]      [INGENIERO PIPELINES]      [ANALISTA FISCALIZACIÓN]\n(Orienta arquitectura,     (Optimiza código Spark,    (Define reglas de negocio,\n cuida clima, apoya pares)  monitorea latencia)        valida fraude en terreno)\n       │                            │                            │\n       └────────────────────────────┼────────────────────────────┘\n                                    │\n                    [PLATAFORMA TEAMS / VPN DIAN]\n                    (Disponibilidad 100%, seguridad,\n                     trazabilidad de entregables)</code></pre></div>\n<p>En este esquema, el Inspector I actúa como el <strong>adhesivo técnico y humano</strong>. Cuando un pipeline falla a las 11:00 p.m., no busca culpables ni apaga su celular institucional; articula la solución serena, distribuye el esfuerzo y reconoce públicamente el aporte de cada integrante una vez superada la contingencia.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-16-5",
+          "moduleId": "mod-16",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Juicio Conductual",
+          "badge": "Pruebas Comportamentales",
+          "readTime": "21 min",
+          "minutes": 21,
+          "words": 3188,
+          "content": "<hr>\n<h3>Ítem Likert 1: Cuidado Activo del Clima Laboral ante Situaciones de Estrés</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando el equipo enfrenta jornadas extenuantes por incidentes en las bases de datos, intervengo activamente para mantener un ambiente de respeto, calma y reconocimiento mutuo, evitando que la presión degenere en reproches interpersonales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Se ajusta al descriptor del Nivel 3 de Trabajo en Equipo según la Resolución 065 de 2024: cuida activamente el clima laboral y orienta al equipo en situaciones de alta tensión.</li><li><strong>Justificación A y B:</strong> Indiferencia ante el deterioro del clima laboral y el riesgo psicosocial del equipo.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Preferencia por el Trabajo Individual)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido el deseo de aislarme en mi puesto de trabajo para resolver un problema técnico por mi propia cuenta sin tener que consultar o debatir con nadie.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El deseo de trabajar en soledad para concentrarse en tareas analíticas profundas es común en profesionales de tecnología. Negarlo denota simulación de hiper-sociabilidad irreal (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Transferencia Proactiva de Conocimiento y Nivelación Técnica</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Comparto de forma espontánea y estructurada mis hallazgos y soluciones técnicas con mis compañeros de equipo, documentando las lecciones aprendidas para que el conocimiento sea patrimonio institucional y no individual.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Evidencia directa del Abecé de la DIAN: transferencia técnica activa y nivelación de capacidades colectivas.</li><li><strong>Justificación A y B:</strong> Celos profesionales y retención de información clave.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Encubrimiento de Inasistencia Remota)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Ética Laboral</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un colega en teletrabajo me pide que conteste por él en las reuniones de Teams porque tiene que hacer un trámite bancario personal sin permiso, considero correcto apoyarlo como buen compañero.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La complicidad para evadir la jornada laboral en teletrabajo constituye fraude administrativo y falta disciplinaria (Ley 1952 de 2019). El verdadero trabajo en equipo promueve la responsabilidad y la transparencia.</li><li><strong>Justificación C y D (Trampa):</strong> Confunden solidaridad con encubrimiento ilícito.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Autonomía y Rigor en Modalidad de Teletrabajo</h3>\n<ul><li><strong>Competencia:</strong> Autogestión en Teletrabajo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Planifico y ejecuto mis labores de procesamiento de datos en teletrabajo cumpliendo con el 100% de los entregables y cronogramas pactados, sin necesidad de recordatorios continuos o vigilancia de mis superiores.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Cumplimiento exacto del Nivel 3 de Autogestión en Teletrabajo según el Capítulo 5 del Abecé de la DIAN.</li><li><strong>Justificación A y B:</strong> Muestran dependencia de microgestión presencial y falta de autorregulación.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Integración y Articulación con Áreas No Técnicas</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Valoro y respeto con la misma importancia los aportes de los auditores tributarios y abogados que los de mis pares ingenieros, reconociendo que el éxito de los modelos de riesgo depende del conocimiento interdisciplinario.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Sinergia multidisciplinaria de Nivel 3: articulación armónica entre tecnología y negocio.</li><li><strong>Justificación A y B:</strong> Soberbia profesional que aísla a la ingeniería del contexto legal y tributario.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Paciencia Ilimitada)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido un instante de impaciencia cuando un compañero de equipo tarda más de lo previsto en aprender a usar un nuevo aplicativo o comando de consola.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La impaciencia pasajera es una emoción humana natural; lo evaluable es cómo se controla mediante la pedagogía y la asertividad.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de fingimiento moral.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Apoyo Voluntario en Contingencias Operativas</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando un compañero del equipo se encuentra sobrecargado durante un cierre de mes, ofrezco voluntariamente mi apoyo técnico para redistribuir las tareas y asegurar el cumplimiento colectivo de la meta institucional.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Solidaridad operativa y compromiso con el resultado colectivo (Nivel 3).</li><li><strong>Justificación A y B:</strong> Individualismo estricto (\"yo cumplo lo mío y me desentiendo\").</li></ul>\n<hr>\n<h3>Ítem Likert 9: Seguridad de la Información en Puesto de Teletrabajo</h3>\n<ul><li><strong>Competencia:</strong> Autogestión en Teletrabajo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Bloqueo mi estación de trabajo y cierro las conexiones VPN seguras cada vez que me aparto de mi escritorio en casa, asegurándome de que ninguna persona de mi entorno familiar tenga acceso visual o físico a datos tributarios reservados.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Cumplimiento estricto de las directrices de seguridad de la información en teletrabajo y custodia de la reserva tributaria (Art. 583 E.T.).</li><li><strong>Justificación A y B:</strong> Negligencia de seguridad que expone información sensible del Estado a miradas de terceros.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Uso de Computador Personal no Autorizado)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Seguridad Informática</li><li><strong>Afirmación:</strong> &gt; <em>\"Si el computador institucional de teletrabajo se bloquea, considero una muestra de diligencia descargar las bases de datos en el computador de mi hijo para no retrasar la entrega del informe.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Descargar datos reservados en dispositivos personales o familiares viola las políticas de seguridad de la DIAN y la reserva fiscal. El camino correcto es reportar el fallo a la Mesa de Ayuda institucional.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa diligencia que pone en riesgo extremo los activos del Estado.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Mediación Asertiva en Conflictos Técnicos</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Cuando dos ingenieros del equipo se enfrentan por diferencias sobre qué herramienta utilizar, intervengo constructivamente proponiendo una matriz objetiva de evaluación técnica para resolver la controversia sin personalismos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Descriptor del Nivel 3: orienta al equipo hacia soluciones constructivas y neutraliza conflictos interpersonales.</li><li><strong>Justificación A y B:</strong> Evasión pasiva o toma de partido destructiva.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Visibilización y Reconocimiento de los Logros del Equipo</h3>\n<ul><li><strong>Competencia:</strong> Trabajo en Equipo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"En las presentaciones de resultados ante las directivas, reconozco y destaco explícitamente el trabajo y esfuerzo de cada uno de los compañeros que integraron el proyecto, evitando asumir el mérito de forma individual.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Liderazgo generoso y fomento de la confianza mutua (Nivel 3).</li><li><strong>Justificación A y B:</strong> Apropiación indebida de logros ajenos que destruye la cohesión del equipo.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Incomodidad ante Desacuerdos)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido la más leve incomodidad cuando un colega critica públicamente un código o reporte técnico elaborado por mí.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Sentir una reacción emocional inicial ante la crítica es normal; lo valioso es procesarla racionalmente para mejorar el entregable.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de mentira.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Disponibilidad y Comunicación Fluida en Teletrabajo</h3>\n<ul><li><strong>Competencia:</strong> Autogestión en Teletrabajo</li><li><strong>Nivel Exigido:</strong> Nivel 3</li><li><strong>Afirmación:</strong> &gt; <em>\"Mantengo los canales de comunicación institucional abiertos y respondo oportunamente a las consultas de mi equipo durante toda la jornada laboral remota, asegurando una interacción tan ágil como en la presencialidad.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Conducta observable de Nivel 3 en teletrabajo según el Abecé de la DIAN.</li><li><strong>Justificación A y B:</strong> Desconexión y aislamiento que entorpece el flujo de trabajo del equipo.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Asumir Todo el Trabajo en Silencio)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Gestión Saludable</li><li><strong>Afirmación:</strong> &gt; <em>\"Si veo que el equipo no alcanza a terminar un informe crítico, considero que mi deber como profesional es quedarme trabajando toda la madrugada en secreto sin avisar al líder, para sorprenderlos al día siguiente con el trabajo hecho.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El heroísmo individualista desarticula la gestión del proyecto, enmascara cuellos de botella reales de capacidad al líder y genera desgaste insostenible (<em>burnout</em>). La conducta correcta es alertar oportunamente al líder para renegociar plazos o redistribuir cargas organizadamente.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa proactividad tóxica que daña la cultura de equipo.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Desgaste Emocional y Retraso en Célula de Procesamiento de Datos</h3>\n<ul><li><strong>Caso:</strong> En la recta final de la migración de datos tributarios históricos al DataR, la célula de trabajo lleva tres semanas bajo jornadas intensas. Un ingeniero de datos experimentado, encargado de las tablas de retención en la fuente, comienza a cometer errores reiterados en los scripts, se muestra retraído en las reuniones diarias de Teams y entrega sus avances con evidente retraso. Dos compañeros sugieren al Inspector I que hablen con el jefe para que lo saquen del proyecto y lo califiquen mal en su evaluación de desempeño.</li><li><strong>Enunciado:</strong> La postura que debe asumir el Inspector I conforme al Nivel 3 de Trabajo en Equipo y Cuidado del Clima Laboral es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Apoyar la petición de los dos compañeros para que el jefe retire al funcionario de inmediato, evitando que el cronograma del equipo se afecte.</li><li><strong>B.</strong> Invitar al compañero a un espacio privado de diálogo empático para escuchar las causas de su dificultad, revisar técnicamente sus bloqueos en los scripts para apoyarlo temporalmente en la depuración y coordinar con el líder del proyecto una redistribución equitativa de las tareas pendientes cuidando la salud mental de todos.</li><li><strong>C.</strong> Ignorar la situación y limitarse a cumplir sus propios entregables, señalando en las reuniones que el retraso es responsabilidad exclusiva del otro ingeniero.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea con el Nivel 3 de Trabajo en Equipo: empatía profesional, orientación técnica a pares, cuidado activo del clima laboral y búsqueda de soluciones colectivas sostenibles sin recurrir a la estigmatización o el aislamiento del compañero.</li><li><strong>Justificación A (Incorrecta):</strong> Dinámica punitiva y caníbal que destruye la confianza y la cohesión del equipo.</li><li><strong>Justificación C (Incorrecta):</strong> Individualismo pasivo de Nivel 1 que desconoce la corresponsabilidad en el resultado del equipo.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Descoordinación y Aislamiento en Modalidad de Teletrabajo</h3>\n<ul><li><strong>Caso:</strong> Durante un proyecto de desarrollo de un modelo analítico en teletrabajo, el Inspector I observa que una colega del equipo técnico no responde los mensajes de Teams durante horas, no asiste a las sincronizaciones matutinas y entrega fragmentos de código sin documentación que generan errores de compilación al integrarse con el resto del pipeline. El líder del proyecto no se ha percatado del problema porque la colega envía correos nocturnos afirmando que \"todo va al día\".</li><li><strong>Enunciado:</strong> La actuación profesional y transparente que debe adelantar el Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Modificar en silencio el código de la compañera durante la noche para que el pipeline funcione y no crear problemas en el equipo.</li><li><strong>B.</strong> Contactar a la colega para manifestarle de manera respetuosa y fundamentada las inconsistencias técnicas detectadas en la integración del código y la necesidad de mantener sincronización continua en Teams, solicitando una sesión técnica conjunta para alinear los estándares; si la conducta persiste y pone en riesgo el proyecto, informar formalmente al líder técnico para acordar un plan de contingencia.</li><li><strong>C.</strong> Publicar en el canal general de Teams capturas de pantalla de los errores cometidos por la colega para evidenciar públicamente su falta de compromiso en teletrabajo.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Combina el Nivel 3 de Trabajo en Equipo y Autogestión en Teletrabajo: abordaje directo, asertivo y pedagógico en primera instancia, buscando la alineación del estándar técnico y la comunicación fluida, acudiendo al canal formal jerárquico solo si se pone en riesgo el objetivo institucional.</li><li><strong>Justificación A (Incorrecta):</strong> Falso compañerismo que encubre la ineficiencia y genera una carga insostenible sobre el Inspector I.</li><li><strong>Justificación C (Incorrecta):</strong> Agresión pública que genera hostilidad y vulnera el respeto institucional.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Discrepancia Arquitectónica entre Ingenieros Senior y Junior</h3>\n<ul><li><strong>Caso:</strong> En el diseño del nuevo repositorio de datos aduaneros, un ingeniero recién vinculado propone utilizar una arquitectura moderna basada en microservicios y contenedores Docker para desacoplar las consultas. Un ingeniero senior con más de 20 años en la DIAN descalifica de plano la propuesta en plena reunión grupal, afirmando con tono burlón que \"las modas de los jóvenes no sirven para una entidad seria como la DIAN y que se debe seguir usando la arquitectura monolítica de siempre\". El ingeniero nuevo luce visiblemente desmotivado y guarda silencio.</li><li><strong>Enunciado:</strong> La intervención que debe realizar el Inspector I como orientador del equipo (Nivel 3) es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Guardar silencio para no entrar en conflicto con la antigüedad del ingeniero senior.</li><li><strong>B.</strong> Intervenir con serenidad para validar la experiencia del ingeniero senior pero solicitando respeto por todas las ideas, destacar los elementos técnicos valiosos de la propuesta del nuevo integrante y proponer que se elabore una matriz de evaluación objetiva (costo, escalabilidad, seguridad) probando un piloto pequeño de microservicios en ambiente de pruebas para tomar una decisión informada.</li><li><strong>C.</strong> Burlarse también de la propuesta del nuevo profesional para mantener la armonía con el grupo más antiguo de la subdirección.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela el Nivel 3 de Trabajo en Equipo: restablece el respeto y la dignidad en la interacción, protege la motivación y el talento joven, integra la experiencia con la innovación y canaliza el debate hacia criterios técnicos objetivos y demostrables.</li><li><strong>Justificación A (Incorrecta):</strong> Cobardía y pasividad que permiten el matoneo profesional y ahogan la innovación.</li><li><strong>Justificación C (Incorrecta):</strong> Conducta reprochable que viola el valor Respeto del Código de Integridad de la DIAN.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Contingencia de Teletrabajo por Falla de Energía en el Hogar</h3>\n<ul><li><strong>Caso:</strong> A las 10:00 a.m. de un día de teletrabajo programado, ocurre un corte imprevisto de energía eléctrica en el sector donde reside el Inspector I, dejando sin funcionamiento su módem de internet y dejando la batería de su computador portátil con menos de dos horas de carga. El Inspector I tiene a su cargo el monitoreo en vivo de un proceso de ingesta de datos fiscales que vence a las 2:00 p.m.</li><li><strong>Enunciado:</strong> Conforme al Nivel 3 de Autogestión en Teletrabajo y Responsabilidad Profesional, el servidor debe:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Apagar el computador, tomar el resto del día como descanso no laboral justificado por fuerza mayor y enviar un correo al día siguiente explicando el corte de luz.</li><li><strong>B.</strong> Comunicarse de inmediato mediante telefonía móvil con su líder de equipo y compañeros para notificar la contingencia, transferir temporalmente la visualización de la consola al compañero designado en el plan de respaldo y desplazarse con su equipo a la sede física de la DIAN o a un lugar con conectividad segura para reanudar sus funciones sin comprometer la meta del día.</li><li><strong>C.</strong> Irse a una cafetería pública cercana, conectarse a la red Wi-Fi gratuita abierta sin contraseña y continuar procesando los datos de los contribuyentes.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al Nivel 3 de Autogestión en Teletrabajo (Abecé DIAN Capítulo 5): proactividad, comunicación inmediata de contingencias, activación de respaldos colaborativos y búsqueda de soluciones seguras (traslado a la sede física) para no interrumpir el servicio público.</li><li><strong>Justificación A (Incorrecta):</strong> Negligencia y abandono de funciones bajo el pretexto de fuerza mayor subsanable.</li><li><strong>Justificación C (Incorrecta):</strong> Violación gravísima de las políticas de ciberseguridad al exponer datos tributarios del Estado en redes Wi-Fi públicas vulnerables a interceptación.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Reconocimiento Colectivo frente a Felicitación Directiva Individual</h3>\n<ul><li><strong>Caso:</strong> La Subdirección de Fiscalización logra desarticular un esquema de elusión tributaria gracias a un modelo de cruce de datos masivo desarrollado por la célula técnica. El Director General cita al Inspector I a su despacho y lo felicita efusivamente, ofreciéndole un reconocimiento honorífico individual por haber diseñado el modelo. El Inspector I sabe que aunque él lideró el diseño, el éxito se debió al arduo trabajo nocturno de otros dos ingenieros y a la depuración de datos que hizo una pasante universitaria.</li><li><strong>Enunciado:</strong> La respuesta íntegra y colaborativa que debe dar el profesional ante el Director General es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar el reconocimiento individual con orgullo, considerando que como líder técnico es justo que reciba el mérito público por el proyecto.</li><li><strong>B.</strong> Agradecer respetuosamente las palabras del Director General y manifestar de inmediato que el logro fue producto del trabajo mancomunado de toda la célula técnica, detallando el aporte clave de los dos ingenieros y la pasante, y solicitando formalmente que el reconocimiento se otorgue a la totalidad del equipo de datos.</li><li><strong>C.</strong> Rechazar la felicitación de forma descortés, diciendo que los directores nunca entienden el esfuerzo de los ingenieros de base.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Refleja la nobleza y madurez del Nivel 3 de Trabajo en Equipo: visibiliza y reconoce el valor del trabajo de todos los integrantes, construye confianza mutua y cohesiona la identidad colectiva del equipo frente a la alta dirección.</li><li><strong>Justificación A (Incorrecta):</strong> Egocentrismo mezquino que desmotiva al equipo y destruye la lealtad grupal.</li><li><strong>Justificación C (Incorrecta):</strong> Falta de asertividad y descortesía institucional.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 69,
+      "studyMinutes": 69,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Resolución No. 065 de 2024 (11 de abril de 2024)</em>. Diccionario de Competencias Comportamentales. Competencia Trabajo en Equipo (Nivel 3).</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2024):</strong> <em>Guía Técnica Abecé de Evidencias de Competencias Conductuales</em>. Capítulo 4 (Trabajo en Equipo) y Capítulo 5 (Autogestión en Teletrabajo).</li><li><strong>Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC) &amp; Ministerio del Trabajo (2022):</strong> <em>Libro Blanco del Teletrabajo en Colombia</em>. Lineamientos de autogestión, seguridad digital y bienestar laboral en el sector público.</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2021):</strong> <em>Guía de Clima y Cultura Organizacional para Entidades Públicas</em>. Estrategias de prevención del riesgo psicosocial y trabajo colaborativo.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert de 4 Niveles y Control Psicométrico de Consistencia.</li><li><strong>Lencioni, Patrick (2018):</strong> <em>Las cinco disfunciones de un equipo: Un modelo para la construcción de equipos cohesionados</em>.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-17",
+      "track": "integridad",
+      "title": "16. Código de Integridad DIAN: Honestidad y Respeto",
+      "badge": "Pruebas de Integridad (10%)",
+      "examId": "exam-17",
+      "lessons": [
+        {
+          "id": "les-17-1",
+          "moduleId": "mod-17",
+          "unitNumber": 1,
+          "title": "Unidad 1: Marco Normativo e Institucional de la Integridad en la DIAN (CG-TAH-0002 v3)",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 480,
+          "content": "<p># Guía Maestra Oficial: 16. Código de Integridad de la DIAN: Honestidad y Respeto (Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas de Integridad (10% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Código de Integridad CG-TAH-0002 v3 — Valores de Honestidad y Respeto   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: La Integridad como Cimiento Innegociable en la Gestión de Datos</h2>\n<p>La Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN) ejerce una de las potestades más delicadas del Estado colombiano: la administración del sistema tributario, aduanero y cambiario. Cada decisión, consulta o algoritmo desplegado por un <strong>Inspector I en la Subdirección de Procesamiento de Datos</strong> tiene incidencia directa sobre los derechos fundamentales de los contribuyentes, el erario público y la justicia económica del país.</p>\n<p>Por mandato de la Guía de Orientación al Aspirante (GOA - Numerales 8.3 y 8.4) y el marco institucional del <strong>Código de Integridad de la DIAN (CG-TAH-0002 Versión 3)</strong>, las <strong>Pruebas de Integridad (10%)</strong> evalúan si el aspirante ha interiorizado de manera inquebrantable los valores éticos rectores.</p>\n<p>Este módulo desarrolla exhaustivamente los dos primeros valores del decálogo ético de la DIAN: <strong>Honestidad</strong> y <strong>Respeto</strong>, contextualizados en los dilemas reales de la arquitectura de datos, la custodia de la reserva tributaria (Art. 583 E.T.) y la interacción profesional en equipos interdisciplinarios.</p>\n<hr>\n<hr>\n<h3>1.1. Origen y Filosofía del Código de Integridad de la DIAN</h3>\n<p>El Código de Integridad de la DIAN (adoptado mediante el procedimiento institucional <strong>CG-TAH-0002 Versión 3</strong>) se fundamenta en las directrices de la Política de Integridad del <strong>Modelo Integrado de Planeación y Gestión (MIPG)</strong> del Departamento Administrativo de la Función Pública (DAFP), complementado con la misión específica de recaudo y control del orden socioeconómico nacional.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>       CONSTITUCIÓN POLÍTICA DE 1991 (ART. 209: MORALIDAD ADMINISTRATIVA)\n                                     │\n                                     ▼\n                CÓDIGO GENERAL DISCIPLINARIO (LEY 1952 DE 2019)\n                                     │\n                                     ▼\n                     POLÍTICA DE INTEGRIDAD MIPG (DAFP)\n                                     │\n                                     ▼\n             CÓDIGO DE INTEGRIDAD DIAN (CG-TAH-0002 VERSIÓN 3)\n           Valores Rectores: Honestidad • Respeto • Compromiso\n                          Diligencia • Justicia</code></pre></div>\n<p>El Código define la integridad no como una lista pasiva de prohibiciones legales, sino como un <strong>compromiso activo de vida laboral</strong>, donde el servidor público elige conscientemente la rectitud, el interés colectivo y el trato digno a las personas por encima de cualquier conveniencia individual.</p>\n<h3>1.2. Principios Rectores y Estructura Conductual del Código</h3>\n<p>Cada valor del Código de Integridad de la DIAN está estructurado bajo tres componentes obligatorios:</p>\n<ol><li><strong>Definición Oficial del Valor:</strong> El significado conceptual y moral adoptado por la UAE DIAN.</li><li><strong>Principio Rector (Lema Ético):</strong> La directriz filosófica que guía la actuación cotidiana del servidor.</li><li><strong>Conductas \"Lo que Hago\" (Afirmativas) vs. \"Lo que No Hago\" (Prohibitivas):</strong> El catálogo empírico observable que determina si un comportamiento es íntegro o sancionable.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-17-2",
+          "moduleId": "mod-17",
+          "unitNumber": 2,
+          "title": "Unidad 2: Valor Honestidad en Procesamiento de Datos (\"Para ser impecable no necesito testigos\")",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 396,
+          "content": "<h3>2.1. Definición Oficial y Principio Rector de la Honestidad</h3>\n<blockquote><p><strong>Definición Oficial DIAN (CG-TAH-0002 v3):</strong>   <em>\"Actúo siempre con fundamento en la verdad, cumpliendo mis deberes con transparencia y rectitud, y favoreciendo el interés general por encima del interés particular.\"</em></p>\n<p><strong>Principio Rector:</strong>   <strong>\"Para ser impecable no necesito testigos.\"</strong></p></blockquote>\n<p>El lema <em>\"Para ser impecable no necesito testigos\"</em> es el pilar axiológico fundamental para un profesional de tecnología de la información. El Inspector I administra consolas de administración, clústeres de bases de datos y scripts donde con frecuencia <strong>nadie está mirando físicamente su pantalla</strong>. La verdadera honestidad se manifiesta cuando el servidor mantiene la pulcritud absoluta en la oscuridad de su terminal o en el aislamiento del teletrabajo.</p>\n<h3>2.2. Conductas Observables: \"Lo que Hago\" vs. \"Lo que No Hago\"</h3>\n<table class=\"data-table\"><thead><tr><th>Dimensión</th><th>✅ Lo que Hago en la DIAN (Conductas Íntegras)</th><th>❌ Lo que No Hago (Conductas Prohibidas)</th></tr></thead><tbody><tr><td><strong>Manejo de la Verdad y Datos</strong></td><td>• Digo siempre la verdad, incluso cuando cometo un error técnico que retrasa un proyecto.<br>• Reporto con exactitud matemática y objetividad científica los hallazgos en bases de datos.<br>• Garantizo la inalterabilidad de los registros y bitácoras de auditoría (<em>audit logs</em>).</td><td>• No maquillo, altero ni suprimo información para beneficiar a terceros o directivos.<br>• No justifico mentiras ni disfrazo fallas técnicas como supuestos problemas de red.<br>• No elimino registros digitales para ocultar negligencias.</td></tr><tr><td><strong>Reserva Tributaria (Art. 583 E.T.)</strong></td><td>• Protejo estrictamente la confidencialidad de los datos patrimoniales y fiscales de los ciudadanos.<br>• Consulto bases de datos tributarias única y exclusivamente cuando media una orden funcional formal.</td><td>• No consulto expedientes o patrimonios por curiosidad personal, chisme o pedidos familiares.<br>• No filtro ni comercializo microdatos de facturación electrónica a entidades o privados.</td></tr><tr><td><strong>Erario y Recursos Públicos</strong></td><td>• Cuido los servidores de cómputo, almacenamiento y licencias de software del Estado como un bien sagrado.<br>• Rechazo tajantemente cualquier dádiva, regalo o invitación de proveedores de TI.</td><td>• No utilizo la capacidad de cómputo de la DIAN para proyectos privados, criptominería o lucro.<br>• No acepto atenciones, viajes o beneficios de oferentes en licitaciones tecnológicas.</td></tr><tr><td><strong>Conflictos de Interés</strong></td><td>• Declaro de inmediato y por escrito cualquier conflicto de interés ante parientes o empresas vinculadas.<br>• Me declaro impedido formalmente ante la primera duda legal de parentesco.</td><td>• No intervengo en auditorías o cruces que involucren a familiares o socios de negocios.<br>• No aprovecho información privilegiada del Estado para beneficio personal.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-17-3",
+          "moduleId": "mod-17",
+          "unitNumber": 3,
+          "title": "Unidad 3: Valor Respeto en Equipos Multidisciplinarios y con el Ciudadano",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 365,
+          "content": "<h3>3.1. Definición Oficial y Principio Rector del Respeto</h3>\n<blockquote><p><strong>Definición Oficial DIAN (CG-TAH-0002 v3):</strong>   <em>\"Reconozco, valoro y trato de manera digna a todas las personas, con sus virtudes y defectos, sin importar su labor, su procedencia, sus títulos o cualquier otra condición.\"</em></p>\n<p><strong>Principio Rector:</strong>   <strong>\"Dignifico a las personas en el trato y reconozco su valor intrínseco.\"</strong></p></blockquote>\n<p>En el entorno de la Subdirección de Procesamiento de Datos, el valor Respeto adquiere una dimensión crucial: erradicar la discriminación por conocimientos técnicos (\"soberbia intelectual\"), garantizar la inclusión y valorar el aporte de las áreas de negocio, así como garantizar la protección de los derechos de los contribuyentes.</p>\n<h3>3.2. Conductas Observables: \"Lo que Hago\" vs. \"Lo que No Hago\"</h3>\n<table class=\"data-table\"><thead><tr><th>Dimensión</th><th>✅ Lo que Hago en la DIAN (Conductas Íntegras)</th><th>❌ Lo que No Hago (Conductas Prohibidas)</th></tr></thead><tbody><tr><td><strong>Trato Interpersonal en el Equipo</strong></td><td>• Escucho con atención y respeto las opiniones de todos los miembros del equipo, sin importar jerarquía.<br>• Me comunico con empatía, asertividad y tono cordial en presencialidad y canales virtuales.<br>• Resuelvo discrepancias técnicas mediante argumentos objetivos sin descalificar a la persona.</td><td>• No utilizo apodos, comentarios desobligantes, ironías o burlas hacia ningún compañero.<br>• No descalifico las dudas o ideas de profesionales junior o personas de áreas no técnicas.<br>• No fomento rumores ni comentarios malintencionados sobre la vida de los colegas.</td></tr><tr><td><strong>Relación con Áreas Usuarias y Ciudadanos</strong></td><td>• Explico con paciencia y lenguaje accesible el funcionamiento de los sistemas a auditores fiscales.<br>• Diseño plataformas de datos accesibles e intuitivas que faciliten los trámites a los ciudadanos.<br>• Respondo con diligencia y cortesía a las peticiones de los contribuyentes.</td><td>• No trato con altanería o desdén a funcionarios que desconocen conceptos tecnológicos.<br>• No justifico demoras o fallas maltratando verbalmente al usuario que reclama sus derechos.<br>• No discrimino a ningún ciudadano por su nivel educativo, estrato o condición social.</td></tr><tr><td><strong>Diversidad e Inclusión</strong></td><td>• Promuevo un ambiente de trabajo libre de acoso laboral, sexual o discriminación de género.<br>• Respeto los tiempos de descanso y desconexión laboral de mis pares en teletrabajo.</td><td>• No incurro en conductas constitutivas de acoso laboral (Ley 1010 de 2006).<br>• No invado los espacios personales de los compañeros fuera de la jornada laboral reglada.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-17-4",
+          "moduleId": "mod-17",
+          "unitNumber": 4,
+          "title": "Unidad 4: Decodificador Psicométrico de Integridad: Escala Likert de 4 Niveles y Subescalas de Areandina",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 204,
+          "content": "<h3>4.1. Calibración de Reactivos de Integridad en Areandina</h3>\n<p>La prueba de integridad de Areandina evalúa la consistencia de los principios morales mediante reactivos de <strong>elección forzada de 4 niveles</strong>:</p>\n<ul><li><strong>Totalmente en desacuerdo (A)</strong></li><li><strong>En desacuerdo (B)</strong></li><li><strong>De acuerdo (C)</strong></li><li><strong>Totalmente de acuerdo (D)</strong></li></ul>\n<p>Los reactivos de integridad enfrentan al aspirante a <strong>dilemas de lealtad dividida</strong>: ¿prevalece la lealtad a un amigo o la lealtad a la ley? ¿prevalece la comodidad personal o la defensa del erario?</p>\n<h3>4.2. Tratamiento de las Subescalas de Control en Integridad</h3>\n<ol><li><strong>Subescala de Deseabilidad Social (<em>Faking Good</em> / Escala de Mentira):</strong></li><li>Evalúa si el aspirante intenta mostrarse como un \"santo moral\" incapaz de cualquier falla menor.</li><li><em>Ejemplo de reactivo:</em> \"Jamás he dicho una mentira piadosa en mi vida personal\". Quien marca <em>Totalmente de acuerdo</em> activa la bandera de simulación. La respuesta calibrada y sincera es <strong>Totalmente en desacuerdo (A)</strong>.</li></ol>\n<ol><li><strong>Subescala de Falsa Proactividad en Integridad:</strong></li><li>Plantea situaciones donde violar la reserva tributaria o mentir en un informe parece un acto de \"solidaridad\" para proteger a un colega enfermo o evitar la pérdida de un bono.</li><li>La respuesta calibrada de integridad es <strong>Totalmente en desacuerdo (A)</strong>, pues la ley y la verdad no se subordinan a conveniencias grupales.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-17-5",
+          "moduleId": "mod-17",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Casos de Integridad",
+          "badge": "Pruebas de Integridad",
+          "readTime": "22 min",
+          "minutes": 22,
+          "words": 3259,
+          "content": "<hr>\n<h3>Ítem Likert 1: Rectitud Intrínseca sin Supervisión Presencial</h3>\n<ul><li><strong>Valor de Integridad:</strong> Honestidad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Cumplo estrictamente con los protocolos de seguridad de la información y custodia de datos en mi puesto de teletrabajo con el mismo rigor que si tuviera a mi supervisor jerárquico sentado al lado observándome todo el día.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica textualmente el principio rector del valor Honestidad en la DIAN: <em>\"Para ser impecable no necesito testigos\"</em>. La ética del servidor público es autónoma y rige en cualquier entorno físico o virtual.</li><li><strong>Justificación A y B:</strong> Reflejan moral dependiente de la vigilancia punitiva externa.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Infalibilidad de Juicio)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi vida profesional he sentido la tentación de ocultar un error involuntario para evitar una llamada de atención de un superior.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El temor instintivo a la llamada de atención y la tentación fugaz de ocultar fallas son impulsos humanos naturales. La integridad radica en sobreponerse al temor y admitir el error con la verdad, no en fingir que el impulso no existe.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira que penaliza la validez psicométrica.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Dignidad en el Trato y Cero Descalificación Intelectual</h3>\n<ul><li><strong>Valor de Integridad:</strong> Respeto</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Trato con profunda deferencia, cortesía y paciencia a los funcionarios de áreas administrativas o de fiscalización que me formulan preguntas tecnológicas básicas, esforzándome por explicarles sin utilizar tonos irónicos o condescendientes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica el principio rector del valor Respeto: <em>\"Dignifico a las personas en el trato y reconozco su valor\"</em>. Erradica la soberbia técnica y promueve la empatía interdisciplinaria en la DIAN.</li><li><strong>Justificación A y B:</strong> Muestran arrogancia y trato desobligante incompatibles con la función pública.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Maquillaje de Cifras por Interés Institucional)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Veracidad</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un directivo me pide ajustar levemente las cifras de un informe analítico para mostrar un balance más favorable de recaudo ante el Congreso de la República, considero admisible hacerlo para respaldar la imagen de la DIAN.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El valor Honestidad exige decir siempre la verdad y reflejar datos exactos. Maquillar informes públicos configura falsedad en documento público y destruye la fe institucional del Estado.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa lealtad corporativa que vulnera el principio de moralidad administrativa.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Rechazo Absoluto a Dádivas o Atenciones de Proveedores</h3>\n<ul><li><strong>Valor de Integridad:</strong> Honestidad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Rechazo con firmeza y cortesía cualquier detalle, regalo, almuerzo de agasajo o patrocinio que ofrezca una empresa proveedora de software que tenga contratos vigentes o aspire a licitar con la DIAN.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Regla expresa del Código de Integridad de la DIAN: no recibir prebendas de contratistas para mantener la imparcialidad y transparencia del erario público.</li><li><strong>Justificación A y B:</strong> Flexibilidad indebida frente al riesgo de cohecho e indebida influencia.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Protección Activa contra el Acoso Laboral en el Equipo</h3>\n<ul><li><strong>Valor de Integridad:</strong> Respeto</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Me abstengo rigurosamente de hacer comentarios sobre el aspecto físico, la orientación política, las creencias o la vida privada de mis compañeros de trabajo, promoviendo un ambiente laboral seguro y libre de discriminación.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Mandato taxativo del valor Respeto y la Ley 1010 de 2006 (Prevención del Acoso Laboral): dignificar al ser humano y garantizar entornos de trabajo psicológicamente seguros.</li><li><strong>Justificación A y B:</strong> Conductas tóxicas que lesionan la dignidad humana y el clima laboral.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Irritación Pasajera ante el Tráfico)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido impaciencia o mal humor al enfrentar un trancón vehicular o un retraso prolongado en el transporte público camino al trabajo.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La impaciencia ante demoras en el transporte es una emoción cotidiana normal en seres humanos. Negarlo sistemáticamente activa la alerta de simulación psicométrica.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira (<em>Faking Good</em>).</li></ul>\n<hr>\n<h3>Ítem Likert 8: Custodia Inviolable de la Reserva Tributaria (Art. 583 E.T.)</h3>\n<ul><li><strong>Valor de Integridad:</strong> Honestidad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero que la información tributaria y aduanera que administro en el DataR es sagrada y me abstengo de divulgarla o usarla para beneficio propio, familiar o de terceros, cumpliendo a cabalidad con la reserva legal.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Fidelidad absoluta al Artículo 583 del Estatuto Tributario y a la honestidad en la administración de datos públicos protegidos.</li><li><strong>Justificación A y B:</strong> Falta gravísima disciplinaria y delito contra la seguridad de la información.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Escucha Asertiva y Reconocimiento de Virtudes en el Disenso</h3>\n<ul><li><strong>Valor de Integridad:</strong> Respeto</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Escucho con respeto genuino las críticas fundamentadas que hacen a mis propuestas técnicas de arquitectura de datos, reconociendo que otras personas pueden tener perspectivas más acertadas para la entidad.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Humildad profesional y respeto a las capacidades ajenas, clave para la co-construcción en el servicio público.</li><li><strong>Justificación A y B:</strong> Terquedad e intolerancia a la retroalimentación constructiva.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Prestar Tokens Criptográficos en Emergencias)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Seguridad Informática</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un colega muy respetado olvida su token de acceso durante una emergencia de base de datos a medianoche, considero correcto prestarle mis credenciales de administrador para solucionar el problema más rápido.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El valor Honestidad en sistemas de información prohíbe prestar credenciales o identidades digitales, pues destruye la trazabilidad y la responsabilidad individual legal.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa solidaridad técnica que viola la seguridad de la información.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Declaración Inmediata de Conflictos de Interés</h3>\n<ul><li><strong>Valor de Integridad:</strong> Honestidad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"En el instante en que detecto que una empresa oferente en un proceso licitatorio donde participo pertenece a un amigo íntimo o familiar, informo por escrito mi impedimento sin esperar a que un tercero me descubra.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Cumplimiento espontáneo y oportuno del régimen de conflicto de intereses (Ley 1437 de 2011 y Código de Integridad DIAN).</li><li><strong>Justificación A y B:</strong> Falta de probidad e intento de encubrimiento de conflicto de interés.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Respeto al Derecho a la Desconexión Laboral en Teletrabajo</h3>\n<ul><li><strong>Valor de Integridad:</strong> Respeto</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Respeto escrupulosamente los horarios de descanso y fines de semana de mis compañeros de trabajo en teletrabajo, absteniéndome de enviarles mensajes o correos fuera de la jornada laboral a menos que sea una catástrofe legal impostergable.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Respeto a la dignidad humana, salud mental y cumplimiento de la Ley 2191 de 2022 (Desconexión Laboral).</li><li><strong>Justificación A y B:</strong> Abuso del canal virtual e irrespeto al descanso ajeno.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Cero Pensamientos de Rivalidad)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido un fugaz sentimiento de celo o envidia sana cuando un colega de mi misma área recibe una felicitación pública que yo consideraba merecer.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La comparación social es un proceso cognitivo universal en seres humanos. Negarlo denota un intento evidente de simular una perfección inexistente.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira (<em>Faking Good</em>).</li></ul>\n<hr>\n<h3>Ítem Likert 14: Veracidad Absoluta en Reportes de Desempeño y Horas Laboradas</h3>\n<ul><li><strong>Valor de Integridad:</strong> Honestidad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Reporto con estricta veracidad mis horas de dedicación laboral y los avances reales de mis proyectos en el sistema de gestión, sin inflar porcentajes ni reportar como culminadas tareas que aún están en desarrollo.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Honestidad administrativa y rendición de cuentas transparente en el servicio público.</li><li><strong>Justificación A y B:</strong> Engaño a la administración y distorsión de la planeación institucional.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Filtrar Preguntas de Examen de Concurso)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Mérito</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un amigo cercano está concursando para ingresar a la DIAN y tengo acceso a los bancos de casos de la prueba, considero un gesto noble de amistad compartirle algunas preguntas para ayudarlo a salir adelante.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Fraude al mérito constitucional, revelación de secreto (delito penal) y violación gravísima de la integridad del concurso de carrera administrativa.</li><li><strong>Justificación C y D (Trampa):</strong> Complicidad delictiva disfrazada de nobleza.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Ofrecimiento de Consultoría Privada por Firma de Auditoría</h3>\n<ul><li><strong>Caso:</strong> Una prestigiosa firma de auditoría tributaria que representa a grandes contribuyentes del sector financiero contacta al Inspector I de la Subdirección de Procesamiento de Datos. Le ofrecen un contrato de consultoría nocturna sumamente lucrativo para que les explique \"cómo estructurar los archivos XML de facturación electrónica UBL 2.1 para que pasen las validaciones sintácticas de la DIAN sin activar marcas de riesgo analítico\". La firma le asegura que el trabajo se hará fuera de horario laboral y desde su computador personal.</li><li><strong>Enunciado:</strong> Conforme al valor Honestidad y al régimen de incompatibilidades del servidor público, el Inspector I debe:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar la consultoría asegurándose de firmar con un seudónimo y recibir los honorarios en una cuenta bancaria a nombre de su cónyuge para proteger su identidad.</li><li><strong>B.</strong> Rechazar categóricamente la propuesta por escrito, fundamentando que la ley y el Código de Integridad prohíben asesorar a particulares en materias vinculadas al ejercicio de sus funciones públicas, e informar de inmediato a la Oficina de Control Interno Disciplinario sobre el intento de cooptación técnica.</li><li><strong>C.</strong> Aceptar la consultoría solo por un mes para comprar insumos tecnológicos que beneficien su capacitación profesional.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al valor Honestidad y al Artículo 38 de la Ley 1952 de 2019 (Prohibición expresa de prestar asesoría o consultoría en asuntos relacionados con las funciones del cargo). Asesorar sobre cómo eludir las alertas de riesgo de la DIAN constituye una traición a la moralidad pública y complicidad en fraude fiscal.</li><li><strong>Justificación A (Incorrecta):</strong> Simulación dolosa, violación del régimen disciplinario y enriquecimiento ilícito.</li><li><strong>Justificación C (Incorrecta):</strong> Pretende justificar una falta gravísima bajo el pretexto de un beneficio formativo personal.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Hallazgo de Consulta No Autorizada de Figura Pública en DataR</h3>\n<ul><li><strong>Caso:</strong> En una auditoría interna de registros de acceso al DataR Lakehouse, el Inspector I descubre que un compañero de cubículo ha realizado múltiples consultas y descargas del historial tributario y patrimonial de un famoso artista de música popular que recientemente anunció su divorcio en medios de comunicación. El compañero no tiene asignada ninguna investigación contra el artista y le confiesa en confianza que \"solo quería saber si era verdad la millonaria fortuna que decían en la televisión\".</li><li><strong>Enunciado:</strong> La obligación funcional y ética del Inspector I conforme al valor Honestidad y la Reserva Tributaria es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aconsejarle que no lo vuelva a hacer, acordar el borrado de las bitácoras del servidor para que no lo despidan y revisar juntos los datos una última vez antes de eliminarlos.</li><li><strong>B.</strong> Poner en conocimiento formal e inmediato de la Jefatura de la Subdirección y de la Oficina de Seguridad de la Información el reporte técnico con las evidencias digitales (usuario, fecha, hora, IP y registros consultados) para que se adopten las medidas disciplinarias y de contención legal correspondientes.</li><li><strong>C.</strong> Guardar silencio porque no es un asunto que afecte el presupuesto del Estado ni la seguridad del país, y no vale la pena perjudicar a un compañero de oficina por un simple chisme de farándula.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Cumplimiento estricto del Artículo 583 del Estatuto Tributario (Reserva Tributaria) y del principio \"Para ser impecable no necesito testigos\". El uso indebido de las bases de datos del Estado para fines de curiosidad o chisme es una falta gravísima sancionable con destitución y delito informático (Art. 269A C.P.).</li><li><strong>Justificación A (Incorrecta):</strong> Destrucción de documento público (Art. 292 C.P.) y complicidad penal y disciplinaria.</li><li><strong>Justificación C (Incorrecta):</strong> Omisión del deber de control e indiferencia ante la violación de los derechos fundamentales de privacidad del ciudadano.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Descalificación Púbica de una Compañera en Mesa de Trabajo</h3>\n<ul><li><strong>Caso:</strong> En una reunión técnica interinstitucional con delegados de la Policía Fiscal y Aduanera (POLFA), una profesional de la DIAN presenta los avances de un algoritmo de georreferenciación de contrabando. Durante su exposición, un analista senior del equipo interrumpe de forma airada y con tono desobligante, manifestando que \"su presentación es un desastre, que las mujeres de esa universidad no entienden nada de programación y que mejor le deje el trabajo a los hombres que sí saben de sistemas\".</li><li><strong>Enunciado:</strong> La intervención que debe realizar el Inspector I guiado por el valor Respeto es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Reírse discretamente para bajar la tensión de la reunión y evitar entrar en polémica con el analista senior que tiene mayor jerarquía.</li><li><strong>B.</strong> Intervenir con serenidad y total firmeza para exigir respeto hacia la compañera, recordar que las normas de la DIAN prohíben categóricamente la discriminación de género y las agresiones verbales, validar los aspectos técnicos de la presentación y solicitar al moderador continuar la reunión en el marco de la dignidad profesional y el análisis objetivo.</li><li><strong>C.</strong> Tomar el control de la presentación y terminarla él mismo para no hacer pasar más vergüenzas a la compañera ante los delegados externos.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela el valor Respeto del Código de Integridad: <em>\"Dignifico a las personas en el trato y reconozco su valor\"</em>. Defiende activamente a la compañera frente al acoso y la discriminación de género, frenando la agresión verbal y restaurando el orden institucional sin recurrir a la violencia.</li><li><strong>Justificación A (Incorrecta):</strong> Complicidad cobarde y tolerancia inaceptable con el acoso laboral.</li><li><strong>Justificación C (Incorrecta):</strong> Actitud paternalista que convalida la agresión despojando a la profesional de su espacio legítimo de intervención.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Presión de Funcionario de Aduanas para Desactivar Alerta</h3>\n<ul><li><strong>Caso:</strong> Un funcionario de una Dirección Seccional de Aduanas de frontera contacta al Inspector I pidiéndole que \"desactive por un par de horas una regla de riesgo automatizada\" en el sistema aduanero que detiene aleatoriamente camiones de perecederos para inspección física. El funcionario aduce que \"el calor está dañando la fruta de unos campesinos honestos y que mantener el retén genera protestas sociales en la carretera\".</li><li><strong>Enunciado:</strong> La decisión que concilia la integridad, la legalidad y el servicio público es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Desactivar la regla de inmediato por compasión humana con los campesinos, enviando un mensaje al funcionario aduanero para que libere los camiones sin inspección.</li><li><strong>B.</strong> Negarse rotundamente a desactivar la regla automatizada de riesgo aduanero, explicando que las alertas algorítmicas están blindadas por ley para evitar el contrabando, y coordinar institucionalmente con el área de operaciones aduaneras para que prioricen la inspección física inmediata en sitio mediante protocolos de contingencia sin vulnerar los controles fiscales.</li><li><strong>C.</strong> Indicar al funcionario que no sabe cómo funciona el sistema para evadir la responsabilidad y desentenderse de la situación.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Honestidad e integridad inquebrantable: no abre puertas traseras en los sistemas de control del Estado, pero demuestra orientación al servicio coordinando la solución operativa real (priorización del trámite físico legal en muelle/puerto) para evitar el daño a los bienes sin desarmar la aduana.</li><li><strong>Justificación A (Incorrecta):</strong> Infracción gravísima que abre el paso al contrabando bajo el velo de falsas razones humanitarias.</li><li><strong>Justificación C (Incorrecta):</strong> Negligencia y evasión que deteriora la confianza pública en la DIAN.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Descubrimiento de Error en Asignación de Viáticos a Favor</h3>\n<ul><li><strong>Caso:</strong> Al regresar de una comisión técnica de servicios en la Dirección Seccional de Cúcuta para implementar un nodo de procesamiento de datos, el área financiera de la DIAN consigna en la cuenta de ahorros del Inspector I un millón quinientos mil pesos ($1.500.000) por encima del monto legal liquidado por concepto de viáticos y transporte, debido a un error de digitación en la planilla contable. El Inspector I se percata del saldo a favor al revisar su extracto bancario.</li><li><strong>Enunciado:</strong> La actuación íntegra y transparente del servidor conforme al valor Honestidad es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Guardar silencio y conservar el dinero en su cuenta, considerando que el error fue de la administración y que la DIAN tiene presupuesto suficiente para cubrirlo.</li><li><strong>B.</strong> Notificar de inmediato y por escrito al área de tesorería y talento humano sobre la inconsistencia en la consignación, solicitar el formato y cuenta oficial correspondiente y realizar el reintegro inmediato del saldo excedente al tesoro de la DIAN aportando el comprobante de pago.</li><li><strong>C.</strong> Esperar a que la Contraloría o Control Interno emita un hallazgo en la auditoría del próximo año para devolver el dinero solo cuando se lo requieran formalmente.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al mandato del valor Honestidad: actuar con rectitud y devolver de inmediato los recursos públicos que no le pertenecen. La retención injustificada de dineros del Estado configura peculado por apropiación o enriquecimiento sin causa.</li><li><strong>Justificación A (Incorrecta):</strong> Falta a la ética pública y apropiación ilícita de recursos del erario.</li><li><strong>Justificación C (Incorrecta):</strong> Pasividad ventajosa contraria a la rectitud y al principio de moralidad administrativa.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 70,
+      "studyMinutes": 70,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2023):</strong> <em>Código de Integridad Institucional CG-TAH-0002 Versión 3</em>. Principios rectores y decálogo conductual (Honestidad y Respeto).</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2019):</strong> <em>Guía de Integridad y Valores del Servidor Público Colombiano</em>. Modelo Integrado de Planeación y Gestión (MIPG) - Dimensión de Talento Humano.</li><li><strong>Congreso de la República de Colombia (2019 - 2021):</strong> <em>Ley 1952 de 2019</em> (Código General Disciplinario), modificada por la <em>Ley 2094 de 2021</em>. Principios de la función pública, deberes e incompatibilidades.</li><li><strong>Congreso de la República de Colombia (1989 - 2026):</strong> <em>Estatuto Tributario Nacional</em>. Artículo 583: Reserva de las declaraciones tributarias.</li><li><strong>Congreso de la República de Colombia (2006):</strong> <em>Ley 1010 de 2006</em>, por medio de la cual se adoptan medidas para prevenir, corregir y sancionar el acoso laboral en el marco de las relaciones de trabajo.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert de 4 Niveles y Control Psicométrico en Pruebas de Integridad.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-18",
+      "track": "integridad",
+      "title": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia",
+      "badge": "Pruebas de Integridad (10%)",
+      "examId": "exam-18",
+      "lessons": [
+        {
+          "id": "les-18-1",
+          "moduleId": "mod-18",
+          "unitNumber": 1,
+          "title": "Unidad 1: El Tríptico de Acción Ética: Compromiso, Diligencia y Justicia (CG-TAH-0002 v3)",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 379,
+          "content": "<p># Guía Maestra Oficial: 17. Código de Integridad de la DIAN: Compromiso, Diligencia y Justicia (Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas de Integridad (10% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Código de Integridad CG-TAH-0002 v3 — Valores de Compromiso, Diligencia y Justicia   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: La Tríada Operativa de la Excelencia Pública en Datos</h2>\n<p>Si la Honestidad y el Respeto constituyen el fundamento moral inquebrantable del servidor público de la DIAN, los valores de <strong>Compromiso</strong>, <strong>Diligencia</strong> y <strong>Justicia</strong> representan el <strong>motor dinámico y operativo</strong> que transforma los principios éticos en resultados tangibles para la sociedad colombiana.</p>\n<p>En la <strong>Subdirección de Procesamiento de Datos</strong>, el <strong>Inspector I (OPEC 236670)</strong> no puede permitirse la apatía burocrática, la lentitud negligente o el sesgo discriminatorio en sus entregables. La disponibilidad de los servicios en línea de facturación electrónica, la exactitud de los algoritmos de detección de contrabando y la imparcialidad de los cruces de exógena dependen directamente de un profesional que <strong>pone su talento al servicio del país (Compromiso)</strong>, <strong>hace bien las cosas desde el principio hasta el final optimizando los recursos del Estado (Diligencia)</strong> y <strong>garantiza la equidad y el debido proceso de cada ciudadano ante el sistema fiscal (Justicia)</strong>.</p>\n<hr>\n<hr>\n<h3>1.1. Articulación Sistémica de los Valores Operativos</h3>\n<p>El Código de Integridad de la UAE DIAN (Procedimiento <strong>CG-TAH-0002 Versión 3</strong>) articula estos tres valores como una cadena de valor conductual continua:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>    ┌─────────────────────────────────────────────────────────────────┐\n    │          LA CADENA CONDUCTUAL DE INTEGRIDAD OPERATIVA           │\n    ├─────────────────────────────────────────────────────────────────┤\n    │                                                                 │\n    │  1. COMPROMISO ──► LA MOTIVACIÓN PÚBLICA                        │\n    │     \"Pongo mi corazón y mi talento al servicio de Colombia\"     │\n    │     Conciencia del rol, vocación de servicio, empatía social.   │\n    │                           │                                     │\n    │                           ▼                                     │\n    │  2. DILIGENCIA ──► LA EJECUCIÓN TÉCNICA IMPECABLE               │\n    │     \"Hago bien las cosas desde el principio y hasta el final\"   │\n    │     Cero chapuzas, optimización de recursos, rigor y prontitud. │\n    │                           │                                     │\n    │                           ▼                                     │\n    │  3. JUSTICIA   ──► EL RESULTADO EQUITATIVO Y LEGAL              │\n    │     \"Doy a cada quien lo que corresponde según la ley y mérito\" │\n    │     Imparcialidad algorítmica, debido proceso, cero sesgos.     │\n    └─────────────────────────────────────────────────────────────────┘</code></pre></div>\n<p>Esta articulación garantiza que la tecnología no sea un fin en sí misma, sino un instrumento transparente para el financiamiento de los derechos sociales consagrados en la Constitución Política de 1991.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-18-2",
+          "moduleId": "mod-18",
+          "unitNumber": 2,
+          "title": "Unidad 2: Valor Compromiso en el Servicio Tributario y Tecnológico (\"Pongo mi corazón y mi talento al servicio de Colombia\")",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 308,
+          "content": "<h3>2.1. Definición Oficial y Principio Rector del Compromiso</h3>\n<blockquote><p><strong>Definición Oficial DIAN (CG-TAH-0002 v3):</strong>   <em>\"Soy consciente de la importancia de mi rol como servidor público y estoy en disposición permanente para comprender y resolver las necesidades de las personas con las que me relaciono en mis labores cotidianas, buscando siempre mejorar su bienestar.\"</em></p>\n<p><strong>Principio Rector:</strong>   <strong>\"Pongo mi corazón y mi talento al servicio de Colombia.\"</strong></p></blockquote>\n<p>El compromiso en el Inspector I se manifiesta en el sentido de pertenencia y orgullo institucional: comprender que cada script optimizado y cada inconsistencia aduanera corregida contribuye a que el Estado cuente con los recursos para construir hospitales, escuelas y vías terciarias en el país.</p>\n<h3>2.2. Conductas Observables: \"Lo que Hago\" vs. \"Lo que No Hago\"</h3>\n<table class=\"data-table\"><thead><tr><th>Dimensión</th><th>✅ Lo que Hago en la DIAN (Conductas Íntegras)</th><th>❌ Lo que No Hago (Conductas Prohibidas)</th></tr></thead><tbody><tr><td><strong>Sentido de Propósito Público</strong></td><td>• Asumo mi trabajo con orgullo y pasión, entendiendo el impacto macroeconómico y social del recaudo fiscal.<br>• Mantengo una actitud positiva y constructiva frente a los retos de la transformación digital de la DIAN.</td><td>• No asumo mi labor como un simple empleo burocrático de cumplimiento de horario.<br>• No descalifico públicamente a la entidad ni propago el desánimo entre los compañeros.</td></tr><tr><td><strong>Orientación a la Solución</strong></td><td>• Busco alternativas técnicas viables para destrabar proyectos de datos atascados.<br>• Muestro empatía hacia las necesidades de los usuarios internos y de los contribuyentes.</td><td>• No me lavo las manos diciendo \"eso no me corresponde\" o \"ese no es mi problema\".<br>• No bloqueo iniciativas positivas por simple comodidad personal o pereza mental.</td></tr><tr><td><strong>Disponibilidad Solidaria</strong></td><td>• Apoyo con generosidad a las áreas misionales durante vencimientos fiscales críticos.<br>• Participo activamente en las iniciativas de bienestar, clima y voluntariado institucional.</td><td>• No abandono al equipo en momentos de contingencia alegando desinterés.<br>• No me aíslo de la vida comunitaria e institucional de la entidad.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-18-3",
+          "moduleId": "mod-18",
+          "unitNumber": 3,
+          "title": "Unidad 3: Valor Diligencia en Arquitectura e Ingeniería de Datos (\"Hago bien las cosas desde el principio y hasta el final\")",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 339,
+          "content": "<h3>3.1. Definición Oficial y Principio Rector de la Diligencia</h3>\n<blockquote><p><strong>Definición Oficial DIAN (CG-TAH-0002 v3):</strong>   <em>\"Cumplo con los deberes, funciones y responsabilidades asignadas a mi cargo de la mejor manera posible, con atención, prontitud, destreza y eficiencia, para optimizar el uso de los recursos del Estado.\"</em></p>\n<p><strong>Principio Rector:</strong>   <strong>\"Hago bien las cosas desde el principio y hasta el final.\"</strong></p></blockquote>\n<p>En la ingeniería de datos, la diligencia es la antítesis del código improvisado, la falta de documentación y el desperdicio computacional. Un profesional diligente no entrega un pipeline que \"funciona a medias\"; diseña con calidad, realiza pruebas de regresión, parametriza el consumo de memoria y documenta cada paso.</p>\n<h3>3.2. Conductas Observables: \"Lo que Hago\" vs. \"Lo que No Hago\"</h3>\n<table class=\"data-table\"><thead><tr><th>Dimensión</th><th>✅ Lo que Hago en la DIAN (Conductas Íntegras)</th><th>❌ Lo que No Hago (Conductas Prohibidas)</th></tr></thead><tbody><tr><td><strong>Calidad y Rigor Técnico</strong></td><td>• Pruebo y valido exhaustivamente los pipelines de datos antes de solicitar su pase a producción.<br>• Optimizo el consumo de cómputo en la nube para reducir los costos del erario público.<br>• Cumplo con puntualidad estricta los cronogramas y compromisos adquiridos.</td><td>• No despliego código improvisado o sin pruebas en ambientes productivos.<br>• No sobredimensiono clústeres de servidores por no tomarse el tiempo de optimizar consultas SQL.<br>• No dilato injustificadamente la entrega de reportes e insumos analíticos a las áreas usuarias.</td></tr><tr><td><strong>Cuidado de Recursos Públicos</strong></td><td>• Administro con máxima austeridad los recursos tecnológicos, licencias y equipos asignados.<br>• Apago clústeres y entornos de prueba cuando no están en uso para evitar cobros de nube innecesarios.</td><td>• No malgasto recursos de almacenamiento ni dejo servidores encendidos ociosos en la nube.<br>• No utilizo el tiempo de la jornada laboral para atender asuntos personales o negocios privados.</td></tr><tr><td><strong>Mejora Continua y Aprendizaje</strong></td><td>• Me actualizo permanentemente en nuevas tecnologías de Big Data, seguridad y analítica.<br>• Documento los procesos y manuales técnicos conforme a los estándares de la arquitectura institucional.</td><td>• No me resigno a la obsolescencia técnica ni me niego a aprender nuevas herramientas.<br>• No entrego proyectos indocumentados que generen dependencia de personas específicas.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-18-4",
+          "moduleId": "mod-18",
+          "unitNumber": 4,
+          "title": "Unidad 4: Valor Justicia y Equidad Algorítmica (\"Doy a cada quien lo que le corresponde según la ley y el mérito\")",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 363,
+          "content": "<h3>4.1. Definición Oficial y Principio Rector de la Justicia</h3>\n<blockquote><p><strong>Definición Oficial DIAN (CG-TAH-0002 v3):</strong>   <em>\"Actúo con imparcialidad garantizando los derechos de las personas, con equidad, igualdad y sin discriminación.\"</em></p>\n<p><strong>Principio Rector:</strong>   <strong>\"Doy a cada quien lo que le corresponde según la ley y el mérito.\"</strong></p></blockquote>\n<p>En la era de la inteligencia artificial y el procesamiento masivo de datos en la DIAN, el valor Justicia enfrenta un nuevo desafío: <strong>la equidad algorítmica y la imparcialidad analítica</strong>. Los modelos predictivos no pueden convertirse en instrumentos ciegos que discriminen a pequeños contribuyentes mientras dejan impunes a grandes evasores con redes de influencia política.</p>\n<h3>4.2. Conductas Observables: \"Lo que Hago\" vs. \"Lo que No Hago\"</h3>\n<table class=\"data-table\"><thead><tr><th>Dimensión</th><th>✅ Lo que Hago en la DIAN (Conductas Íntegras)</th><th>❌ Lo que No Hago (Conductas Prohibidas)</th></tr></thead><tbody><tr><td><strong>Imparcialidad y Cero Favoritismos</strong></td><td>• Aplico los mismos criterios objetivos y rigurosos a todos los cruces de datos, sin importar quién sea el contribuyente.<br>• Audito los algoritmos para detectar y neutralizar sesgos que perjudiquen injustamente a sectores vulnerables.<br>• Garantizo el debido proceso y la presunción de inocencia en las alertas analíticas preliminares.</td><td>• No modifico reglas analíticas para favorecer o perjudicar a contribuyentes específicos por razones políticas o personales.<br>• No permito que prejuicios personales influyan en la calificación de riesgo de una empresa o ciudadano.<br>• No emito conceptos técnicos amañados para justificar sanciones improcedentes.</td></tr><tr><td><strong>Equidad y Mérito en el Equipo</strong></td><td>• Evalúo y reconozco a mis compañeros de trabajo con base en el mérito real, la calidad de su código y sus resultados.<br>• Distribuyo las tareas y responsabilidades técnicas de forma equitativa y transparente.</td><td>• No tengo favoritismos, amiguismos o preferencias injustificadas en la distribución de proyectos.<br>• No descalifico el trabajo de otros por antipatías personales o diferencias ideológicas.</td></tr><tr><td><strong>Defensa del Bien Común</strong></td><td>• Aseguro que los sistemas de la DIAN persigan con la máxima contundencia técnica las grandes redes de fraude y contrabando.<br>• Defiendo el principio de progresividad tributaria y justicia distributiva en el uso de los datos.</td><td>• No concentro el esfuerzo de auditoría algorítmica en errores formales menores de ciudadanos comunes mientras se ignoran fraudes millonarios.<br>• No actúo con desidia ante evidencias claras de evasión a gran escala.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-18-5",
+          "moduleId": "mod-18",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Juicio Conductual",
+          "badge": "Pruebas de Integridad",
+          "readTime": "21 min",
+          "minutes": 21,
+          "words": 3216,
+          "content": "<hr>\n<h3>Ítem Likert 1: Compromiso y Pasión por el Servicio Público</h3>\n<ul><li><strong>Valor de Integridad:</strong> Compromiso</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Comprendo que mi labor en el procesamiento de datos tributarios y aduaneros impacta directamente en los recursos que financian la salud, educación e infraestructura de Colombia, asumiendo mi trabajo con profundo orgullo y vocación de servicio.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Describe el núcleo del valor Compromiso en el Código de Integridad: <em>\"Pongo mi corazón y mi talento al servicio de Colombia\"</em>, reconociendo el sentido de trascendencia social de la función pública.</li><li><strong>Justificación A y B:</strong> Muestran desconexión axiológica y visión puramente mercantilista del empleo público.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Cero Deseos de Aplazar Tareas)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he sentido el impulso o deseo de postergar para el día siguiente una tarea operativa monótona, habiendo cumplido siempre de forma instantánea cada una de mis asignaciones.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La inclinación ocasional a postergar labores repetitivas es una experiencia común en seres humanos normales. Negarla es el sello de un patrón de respuesta artificial (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira que castiga la validez psicométrica.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Diligencia y Austeridad en Recursos de Cómputo en la Nube</h3>\n<ul><li><strong>Valor de Integridad:</strong> Diligencia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Optimizo rigurosamente mis algoritmos de Spark y apago las instancias de servidores en la nube inmediatamente culminan las pruebas de procesamiento, evitando consumos innecesarios de memoria que incrementen el gasto del Estado.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica el principio del valor Diligencia: <em>\"Hago bien las cosas desde el principio y hasta el final, optimizando el uso de los recursos del Estado\"</em>. Austeridad y eficiencia técnica real.</li><li><strong>Justificación A y B:</strong> Desperdicio culposo de recursos públicos y negligencia administrativa.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Saltarse Pruebas Unitarias para 'Entregar Rápido')</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Calidad del Dato</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un jefe me pide un cruce de datos con urgencia extrema, considero un acto de diligencia saltarme las pruebas de validación de consistencia y entregarle el archivo de inmediato, asumiendo que los datos probablemente están bien.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La diligencia exige hacer las cosas bien desde el principio. Entregar datos no validados ni testeados puede inducir a errores fiscales catastróficos, cobros injustificados o nulidades procesales.</li><li><strong>Justificación C y D (Trampa):</strong> Confunden celeridad con chambonada técnica y falsa proactividad.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Imparcialidad y Cero Presiones Políticas en Modelos de Riesgo</h3>\n<ul><li><strong>Valor de Integridad:</strong> Justicia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Mantengo la misma rigurosidad matemática y objetividad legal al parametrizar los modelos de auditoría fiscal, negándome a crear excepciones o filtros que favorezcan a personas o empresas con nexos políticos o de poder.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica el valor Justicia: <em>\"Doy a cada quien lo que corresponde según la ley y el mérito, con equidad, igualdad y sin discriminación\"</em>. Blindaje contra el clientelismo y la arbitrariedad.</li><li><strong>Justificación A y B:</strong> Favorecimiento ilícito y ruptura del principio de igualdad constitucional.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Diligencia en la Documentación Técnica y Trazabilidad</h3>\n<ul><li><strong>Valor de Integridad:</strong> Diligencia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Documento detalladamente cada función, parámetro de conexión y regla de negocio en el repositorio Git de la DIAN, asegurando que cualquier compañero pueda auditar, mantener o continuar el proyecto sin depender de mi presencia física.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Refleja la diligencia profesional y la sostenibilidad institucional: el conocimiento pertenece a la entidad y no al ego individual.</li><li><strong>Justificación A y B:</strong> Negligencia metodológica y creación de feudos técnicos opacos.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Perfección Absoluta en la Puntualidad)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Absolutamente nunca en toda mi vida he llegado siquiera un minuto tarde a un compromiso, cita médica o jornada laboral por causas imprevistas.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Retrasos involuntarios menores ante hechos fortuitos son comunes en la vida moderna. Afirmar infalibilidad temporal absoluta denota simulación psicométrica (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Auditoría Preventiva contra Sesgos Discriminatorios</h3>\n<ul><li><strong>Valor de Integridad:</strong> Justicia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Reviso periódicamente las distribuciones de probabilidad de los modelos analíticos para certificar que las variables empleadas no generen sesgos socioeconómicos, regionales o de género que penalicen injustamente a pequeños contribuyentes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Justicia algorítmica y garantía del debido proceso y no discriminación (Constitución Política Art. 13 y Código de Integridad DIAN).</li><li><strong>Justificación A y B:</strong> Despreocupación por el impacto humano de los algoritmos del Estado.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Disposición Solidaria ante Vencimientos Tributarios Críticos</h3>\n<ul><li><strong>Valor de Integridad:</strong> Compromiso</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Durante los periodos de vencimiento masivo de declaraciones tributarias, mantengo una actitud de máxima colaboración técnica y disponibilidad para resolver de inmediato incidentes de infraestructura que puedan afectar a los contribuyentes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Compromiso activo con la misión institucional y empatía ciudadana en momentos de alta tensión operativa.</li><li><strong>Justificación A y B:</strong> Apatía burocrática y desinterés por la continuidad del servicio fiscal.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Aceptar Donación de Servidores sin Inventario)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Gestión Patrimonial</li><li><strong>Afirmación:</strong> &gt; <em>\"Si un amigo de una empresa privada me ofrece regalar unos servidores usados a la DIAN para mejorar la velocidad del DataR, considero que mi deber es recibirlos e instalarlos directamente sin esperar el trámite de inventarios públicos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La gestión de activos del Estado está sujeta a rigurosos controles de inventario, garantías de procedencia y blindaje contra espionaje o malware (<em>hardware trojans</em>). Instalar equipos sin protocolo es una falta grave.</li><li><strong>Justificación C y D (Trampa):</strong> Imprudencia y desconocimiento de la gestión patrimonial pública.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Atención Rápida y Rigurosa a Requerimientos de Áreas Misionales</h3>\n<ul><li><strong>Valor de Integridad:</strong> Diligencia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Atiendo las solicitudes de extracción y cruce de datos que me formulan los auditores de fiscalización con prontitud, exactitud y cortesía, evitando demoras injustificadas que hagan prescribir los términos legales de cobro.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Diligencia orientada a evitar el daño patrimonial al Estado por prescripción de obligaciones tributarias (Ley 1952 de 2019).</li><li><strong>Justificación A y B:</strong> Negligencia culposa que lesiona las arcas públicas.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Equidad en la Distribución de Tareas Técnicas</h3>\n<ul><li><strong>Valor de Integridad:</strong> Justicia</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"En la asignación de tareas dentro del equipo de datos, promuevo que los proyectos de alta visibilidad estratégica y las labores complejas de soporte rutinario se distribuyan de manera equitativa y transparente entre todos los miembros.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Justicia y equidad en el clima laboral: erradica los privilegios injustificados y fomenta la igualdad de oportunidades de desarrollo.</li><li><strong>Justificación A y B:</strong> Favoritismo y sobrecarga inequitativa sobre profesionales vulnerables.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Cero Desánimo en Proyectos Complejos)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he experimentado un momento de desánimo, estrés o cansancio mental frente a un problema algorítmico sumamente difícil de resolver.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El estrés y el cansancio ante problemas analíticos arduos son respuestas cognitivas normales. Reconocerlo denota honestidad y salud mental.</li><li><strong>Justificación D (Trampa):</strong> Reactivo de fingimiento psicométrico.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Sentido de Pertenencia y Defensa del Nombre Institucional</h3>\n<ul><li><strong>Valor de Integridad:</strong> Compromiso</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Defiendo con argumentos objetivos y conducta intachable la reputación y credibilidad pública de la DIAN, actuando como embajador de la transparencia fiscal en todos los escenarios personales y profesionales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Conducta observable del valor Compromiso: lealtad institucional y preservación de la confianza ciudadana en la administración tributaria.</li><li><strong>Justificación A y B:</strong> Deslealtad o indiferencia ante el prestigio de la institución.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Manipular Tiempos de Entrega para 'Ganar Puntos')</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Veracidad Operativa</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero astuto reportar en el sistema de gestión que un pipeline de datos tardará el triple del tiempo real necesario, para luego entregarlo antes y quedar como un funcionario extremadamente eficiente ante los jefes.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Inflar deliberadamente las estimaciones de tiempo desdibuja la planeación institucional y viola el valor Diligencia y Honestidad. La eficiencia pública se basa en estimaciones técnicas transparentes y reales.</li><li><strong>Justificación C y D (Trampa):</strong> Ventajismo y manipulación administrativa.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Descuido de Parámetros en Clúster de Nube y Sobrecosto Fiscal</h3>\n<ul><li><strong>Caso:</strong> Durante una migración de datos, un compañero de equipo deja encendido un clúster de cómputo de alta capacidad en la nube con configuraciones sobredimensionadas durante todo un fin de semana festivo sin realizar ninguna tarea, generando un costo de procesamiento imprevisto cercano a los 25 millones de pesos para la DIAN. Al percatarse el martes por la mañana, el compañero le ruega al Inspector I que altere los registros del monitor de infraestructura para hacer parecer que el clúster estuvo procesando una prueba autorizada de estrés para la Dirección de Fiscalización.</li><li><strong>Enunciado:</strong> La actuación correcta conforme a los valores de Honestidad y Diligencia es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Acceder a la petición del compañero para no arruinar su hoja de vida, redactando una justificación técnica retroactiva de la supuesta prueba de estrés.</li><li><strong>B.</strong> Apagar de inmediato las instancias para frenar el desperdicio del erario público, negarse categóricamente a alterar las bitácoras del sistema y apoyar al compañero en la elaboración del informe técnico veraz donde se consigne el incidente, las causas de la omisión y las medidas de remediación y automatización (apagado automático programado) para que el hecho no vuelva a repetirse.</li><li><strong>C.</strong> Publicar en redes sociales el sobrecosto de la nube para denunciar públicamente la negligencia de la DIAN.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea perfectamente con la Diligencia y la Honestidad: detiene el gasto público inmediatamente, no comete falsedad documental y canaliza la solución técnica institucional (políticas de apagado automático) sin caer en complicidades delictivas ni en agresiones destructivas.</li><li><strong>Justificación A (Incorrecta):</strong> Falsedad ideológica en documento público y fraude procesal disciplinario.</li><li><strong>Justificación C (Incorrecta):</strong> Deslealtad institucional y violación del conducto regular de la administración pública.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Sesgo en Algoritmo de Fiscalización hacia Pequeños Negocios</h3>\n<ul><li><strong>Caso:</strong> Al analizar los resultados del nuevo modelo predictivo de omisos en IVA, el Inspector I descubre que el algoritmo selecciona con un 90% de frecuencia a pequeños comerciantes de barrio y tiendas familiares, mientras que omite sistemáticamente a grandes consorcios inmobiliarios con operaciones dudosas, debido a que las variables de entrada fueron calibradas dando mayor peso a las diferencias en medios de pago electrónicos básicos. Un analista le dice que \"es mejor dejarlo así porque los pequeños pagan rápido y no tienen abogados para apelar, lo que ayuda a inflar las estadísticas de eficacia de la Seccional\".</li><li><strong>Enunciado:</strong> La postura ética y técnica que debe asumir el profesional conforme al valor Justicia es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar los resultados del modelo para que la Seccional cumpla fácilmente su meta mensual de casos cerrados, sin importar quiénes sean los fiscalizados.</li><li><strong>B.</strong> Suspender el despliegue del modelo, documentar técnicamente la existencia de un sesgo algorítmico regresivo que vulnera el principio constitucional de equidad tributaria y justicia distributiva, y proponer ante el comité técnico la recalibración de las ponderaciones de riesgo incorporando variables de compras patrimoniales e ingresos brutos para enfocar la fiscalización en los verdaderos focos de gran evasión.</li><li><strong>C.</strong> Eliminar manualmente a los pequeños comerciantes del reporte y reemplazarlos por nombres elegidos al azar en la base de datos.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela el valor Justicia en el corazón de la ciencia de datos pública: defiende la equidad constitucional (Art. 363 C.P.), corrige el sesgo técnico y enfoca la contundencia fiscal del Estado en la gran elusión sin abusar de los pequeños contribuyentes por comodidad estadística.</li><li><strong>Justificación A (Incorrecta):</strong> Injusticia tributaria y oportunismo administrativo que castiga la vulnerabilidad ciudadana.</li><li><strong>Justificación C (Incorrecta):</strong> Arbitrariedad y manipulación ilícita de datos sin sustento metodológico.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Vencimiento Próximo de Términos Legales por Desidia en la Entrega</h3>\n<ul><li><strong>Caso:</strong> La Subdirección de Fiscalización requiere urgentemente un cruce analítico de importaciones no declaradas para emitir un pliego de cargos contra una red de contrabando millonario de licores. El término de caducidad legal vence en 72 horas; si el pliego no se notifica a tiempo, el Estado perderá la potestad de cobrar más de 12.000 millones de pesos. El ingeniero asignado para generar el archivo se encuentra de permiso y el requerimiento está represado en la bandeja de entrada.</li><li><strong>Enunciado:</strong> La actuación que refleja el valor Compromiso y Diligencia por parte del Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Dejar el requerimiento en espera hasta que el ingeniero titular regrese de su permiso la próxima semana, argumentando que no se debe usurpar la función ajena.</li><li><strong>B.</strong> Asumir de manera voluntaria, inmediata y prioritaria la ejecución técnica del cruce analítico en coordinación con el líder del grupo, validar rigurosamente la calidad de los datos y entregar el insumo en menos de 24 horas a los auditores fiscales para garantizar la defensa oportuna de los recursos del erario público.</li><li><strong>C.</strong> Enviar un memorando a Fiscalización diciendo que debieron pedir la información con un mes de anticipación y que no es problema de TI que el término legal prescriba.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al principio del valor Compromiso: <em>\"Pongo mi corazón y mi talento al servicio de Colombia\"</em>. Actúa con sentido de urgencia pública, evita un detrimento patrimonial millonario al Estado por prescripción y apoya operativamente al equipo.</li><li><strong>Justificación A (Incorrecta):</strong> Pasividad negligente que ocasiona daño patrimonial directo a la Nación.</li><li><strong>Justificación C (Incorrecta):</strong> Arrogancia burocrática y falta de empatía institucional inadmisible en un servidor público.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Presión para Favorecer a un Oferente en Evaluación de Software</h3>\n<ul><li><strong>Caso:</strong> En la evaluación de las propuestas técnicas de una licitación para renovar las herramientas de analítica avanzada de la DIAN, el Inspector I asigna una calificación baja al software de uno de los oferentes porque no cumple con los requisitos mínimos de seguridad y gobernanza de datos estipulados en los pliegos. El Presidente del Comité Asesor de Contratación le pide en privado que \"sea flexible y suba la calificación del oferente porque se trata de una empresa muy influyente y no conviene generar demandas contra la entidad\".</li><li><strong>Enunciado:</strong> La conducta recta e imparcial conforme al valor Justicia y la Contratación Pública es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar la sugerencia del Presidente del Comité y modificar la calificación técnica para evitar litigios judiciales a la DIAN.</li><li><strong>B.</strong> Mantener con firmeza técnica y soporte documental la calificación objetiva asignada, fundamentando que la selección objetiva y la justicia contractual prohíben flexibilizar los pliegos a conveniencia, e informar formalmente al Comité y a la Oficina de Control Interno sobre el deber de salvaguardar la transparencia del proceso licitatorio.</li><li><strong>C.</strong> Renunciar al comité evaluador sin emitir concepto para que otros asuman la responsabilidad.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Cumplimiento estricto del valor Justicia y del principio de selección objetiva de la Ley 80 de 1993 y Ley 1150 de 2007. La imparcialidad en la evaluación de ofertas es una obligación legal y ética indelegable del servidor público.</li><li><strong>Justificación A (Incorrecta):</strong> Prevaricato, interés indebido en la celebración de contratos y violación de la moralidad pública.</li><li><strong>Justificación C (Incorrecta):</strong> Evasión cobarde del deber funcional.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Detección de Código Ineficiente que Ralentiza el Servicio al Ciudadano</h3>\n<ul><li><strong>Caso:</strong> Al revisar las rutinas del motor de consulta de RUT y firmas digitales para contribuyentes en el portal web institucional, el Inspector I nota que una subrutina construida hace meses ejecuta consultas redundantes a la base de datos principal, generando una lentitud exasperante para los miles de ciudadanos que intentan actualizar sus datos diariamente. El problema no ha generado quejas formales graves y modificarlo implica trabajar varias horas extras en la optimización del código.</li><li><strong>Enunciado:</strong> Guiado por el valor Diligencia y la Orientación al Ciudadano, el Inspector I debe:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Abstenerse de tocar el código, ya que nadie ha radicado una queja oficial y modificar cosas que funcionan puede traer reproches innecesarios.</li><li><strong>B.</strong> Documentar la ineficiencia detectada, diseñar y probar en ambiente controlado una versión refactorizada que elimine la redundancia de consultas, y coordinar con el área de despliegue la actualización del portal web para optimizar los tiempos de respuesta y brindar un servicio digno y ágil a la ciudadanía.</li><li><strong>C.</strong> Limitarse a enviar un correo diciendo que el portal es lento pero sin proponer ni desarrollar ninguna solución técnica concreta.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta al principio de la Diligencia: <em>\"Hago bien las cosas desde el principio y hasta el final\"</em>. Demuestra iniciativa proactiva para mejorar la experiencia del ciudadano ante el Estado y optimiza el rendimiento del sistema público sin esperar órdenes ni quejas.</li><li><strong>Justificación A (Incorrecta):</strong> Conformismo y mediocridad que perpetúa un mal servicio público.</li><li><strong>Justificación C (Incorrecta):</strong> Actitud quejumbrosa e ineficiente que no aporta soluciones tangibles.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 69,
+      "studyMinutes": 69,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2023):</strong> <em>Código de Integridad Institucional CG-TAH-0002 Versión 3</em>. Valores de Compromiso, Diligencia y Justicia.</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2019):</strong> <em>Guía de Valores del Servidor Público Colombiano</em>. Principios de Servicio, Diligencia e Imparcialidad en el Estado.</li><li><strong>Congreso de la República de Colombia (1991):</strong> <em>Constitución Política de Colombia</em>. Artículos 13 (Igualdad ante la ley), 209 (Principios de la función administrativa) y 363 (Principios del sistema tributario).</li><li><strong>Congreso de la República de Colombia (1993 - 2007):</strong> <em>Estatuto General de Contratación de la Administración Pública (Ley 80 de 1993 y Ley 1150 de 2007)</em>. Principio de Selección Objetiva y Austeridad del Gasto.</li><li><strong>Comisión Europea &amp; OCDE (2023):</strong> <em>Directrices Éticas para una Inteligencia Artificial Fiable en el Sector Público: Equidad, No Discriminación y Trazabilidad</em>.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert de Integridad y Subescalas de Validez Psicométrica.</li></ol>",
+        "fuentes": [],
+        "complementarios": []
+      }
+    },
+    {
+      "id": "mod-19",
+      "track": "integridad",
+      "title": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN",
+      "badge": "Pruebas de Integridad (10%)",
+      "examId": "exam-19",
+      "lessons": [
+        {
+          "id": "les-19-1",
+          "moduleId": "mod-19",
+          "unitNumber": 1,
+          "title": "Unidad 1: Misión, Visión y Arquitectura Filosófica de la DIAN",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 500,
+          "content": "<p># Guía Maestra Oficial: 18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN (Inspector I)</p>\n<p><strong>Concurso de Méritos:</strong> UAE DIAN No. 2676 de 2026   <strong>Operador Académico:</strong> Fundación Universitaria del Área Andina (FUAA - Areandina)   <strong>Cargo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia:</strong> Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos   <strong>Componente:</strong> Pruebas de Integridad (10% Clasificatorio)   <strong>Eje Temático Oficial:</strong> Código de Integridad CG-TAH-0002 v3 — Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético   <strong>Corte Normativo:</strong> 19 de junio de 2026  </p>\n<hr>\n<h2>Preámbulo: La Identidad Estratégica y Axiológica del Inspector I en la DIAN</h2>\n<p>La Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN) no es una simple oficina recaudadora de impuestos ni una entidad burocrática convencional. Es la <strong>columna vertebral económica e institucional del Estado colombiano</strong>, responsable de garantizar la sostenibilidad fiscal del país, proteger el aparato productivo nacional contra el contrabando y facilitar la inserción de Colombia en las cadenas globales de comercio exterior.</p>\n<p>Para el cargo de <strong>Inspector I (OPEC 236670)</strong> en la <strong>Subdirección de Procesamiento de Datos</strong>, la evaluación psicométrica de integridad diseñada por la Universidad Areandina culmina con la medición de la <strong>identificación axiológica profunda con la Filosofía Institucional, los Valores Aspiracionales (Innovación, Solidaridad y Liderazgo) y el Manifiesto Ético de la DIAN</strong>.</p>\n<p>Un profesional de datos no puede ser un espectador neutral frente al destino del país. Debe encarnar la convicción de que <strong>la tecnología, la analítica predictiva y la gobernanza de la información son herramientas de transformación social para construir una Colombia más justa, equitativa y transparente</strong>.</p>\n<hr>\n<hr>\n<h3>1.1. Misión Institucional Oficial de la DIAN</h3>\n<blockquote><p><strong>Misión Oficial de la UAE DIAN:</strong>   <em>\"Garantizar la seguridad fiscal del Estado colombiano y la protección del orden público económico nacional, mediante la administración y control al debido cumplimiento de las obligaciones tributarias, aduaneras, cambiarias, y la facilitación de las operaciones de comercio exterior, en condiciones de equidad, transparencia y legalidad.\"</em></p></blockquote>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                 PILARES MISIONALES DE LA UAE DIAN\n                 \n   ┌───────────────────────┐ ┌───────────────────────┐ ┌───────────────────────┐\n   │ 1. SEGURIDAD FISCAL   │ │ 2. PROTECCIÓN DEL     │ │ 3. FACILITACIÓN DEL   │\n   │    DEL ESTADO         │ │    ORDEN ECONÓMICO    │ │    COMERCIO EXTERIOR  │\n   │ Recaudo oportuno para │ │ Lucha frontal contra  │ │ Procesos ágiles,      │\n   │ financiar los fines   │ │ el contrabando, fraude│ │ trámites digitales    │\n   │ sociales del Estado.  │ │ fiscal y lavado.      │ │ y servicio de calidad.│\n   └───────────────────────┘ └───────────────────────┘ └───────────────────────┘</code></pre></div>\n<p>El Inspector I contribuye a la misión garantizando la <strong>disponibilidad, exactitud, resiliencia y seguridad de las bases de datos y pipelines analíticos</strong> que procesan la tributación y el comercio exterior de Colombia.</p>\n<h3>1.2. Visión Estratégica Institucional</h3>\n<blockquote><p><strong>Visión Oficial de la UAE DIAN:</strong>   <em>\"En el 2030, la DIAN será una entidad referente a nivel internacional por su legitimidad, cercanía al ciudadano, innovación tecnológica y efectividad en la administración tributaria, aduanera y cambiaria, contribuyendo decididamente al bienestar de todos los colombianos.\"</em></p></blockquote>\n<p>La visión sitúa la <strong>innovación tecnológica y la legitimidad social</strong> en el corazón de su proyección futura. La modernización tecnológica del DataR Lakehouse, el procesamiento en streaming con Apache Spark y Kafka, y la adopción de analítica avanzada no son modas pasajeras, sino el vehículo para materializar la visión de una DIAN ágil, inteligente y cercana.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-19-2",
+          "moduleId": "mod-19",
+          "unitNumber": 2,
+          "title": "Unidad 2: Los Tres Valores Aspiracionales: Innovación, Solidaridad y Liderazgo Institucional",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 301,
+          "content": "<p>El Código de Integridad CG-TAH-0002 Versión 3 complementa los cinco valores rectores fundamentales (Honestidad, Respeto, Compromiso, Diligencia y Justicia) con <strong>Tres Valores Aspiracionales</strong>, diseñados para impulsar la cultura organizacional hacia la excelencia y la transformación del servicio público:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                  LOS TRES VALORES ASPIRACIONALES DE LA DIAN\n                  \n     ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐\n     │ 1. INNOVACIÓN    │  │ 2. SOLIDARIDAD   │  │ 3. LIDERAZGO     │\n     │ Transformación   │  │ Empatía social,  │  │ Referente ético, │\n     │ tecnológica y    │  │ apoyo mutuo y    │  │ proactividad y   │\n     │ pensamiento      │  │ sentido de       │  │ capacidad de     │\n     │ disruptivo legal.│  │ comunidad pública│  │ inspirar a otros.│\n     └──────────────────┘  └──────────────────┘  └──────────────────┘</code></pre></div>\n<h3>2.1. Innovación (Aspiracional)</h3>\n<ul><li><strong>Definición en la Filosofía DIAN:</strong> Búsqueda permanente de nuevas formas de generar valor público, superando la inercia del \"siempre se ha hecho así\" mediante la creatividad, la experimentación metodológica responsable y la adopción de mejores prácticas internacionales.</li><li><strong>Aterrizaje en Procesamiento de Datos:</strong> Romper silos burocráticos mediante arquitecturas interoperables, modelos de grafos para detección de evasión y simplificación radical de la experiencia del contribuyente al declarar en línea.</li></ul>\n<h3>2.2. Solidaridad (Aspiracional)</h3>\n<ul><li><strong>Definición en la Filosofía DIAN:</strong> Disposición activa y desinteresada para colaborar con los compañeros de trabajo, entender las realidades complejas de los ciudadanos y orientar la función tributaria como un pacto social de ayuda mutua para el desarrollo de los sectores más vulnerables de la sociedad.</li><li><strong>Aterrizaje en Procesamiento de Datos:</strong> Apoyo incondicional a las seccionales con menor madurez tecnológica, diseño de herramientas que atiendan a usuarios con brecha digital y colaboración generosa durante contingencias operativas.</li></ul>\n<h3>2.3. Liderazgo (Aspiracional)</h3>\n<ul><li><strong>Definición en la Filosofía DIAN:</strong> Capacidad de orientar, inspirar y movilizar a otros hacia el cumplimiento de la misión institucional a través del ejemplo intachable, la excelencia técnica y el coraje cívico para defender el interés general.</li><li><strong>Aterrizaje en Procesamiento de Datos:</strong> Actuar como referente técnico y moral en la dependencia, mentorizar a las nuevas generaciones de ingenieros y defender con argumentos rigurosos la soberanía de los datos públicos.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-19-3",
+          "moduleId": "mod-19",
+          "unitNumber": 3,
+          "title": "Unidad 3: El Manifiesto Ético de la DIAN y la Cultura de la Integridad en Datos",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 252,
+          "content": "<h3>3.1. El Manifiesto Ético Institucional (\"Somos la DIAN que Transforma a Colombia\")</h3>\n<p>El Manifiesto Ético de la DIAN es la declaración colectiva de principios que sella el pacto moral de los servidores públicos con la Nación:</p>\n<pre class=\"code-block\"><code class=\"\">  ┌────────────────────────────────────────────────────────────────────────┐\n  │                 MANIFIESTO ÉTICO DE LA UAE DIAN                        │\n  ├────────────────────────────────────────────────────────────────────────┤\n  │ 1. Creemos en una Colombia justa, solidaria y transparente.             │\n  │ 2. Nuestro trabajo garantiza los recursos para la paz y el bienestar.   │\n  │ 3. Para ser impecable no necesito testigos: mi ética es innegociable.  │\n  │ 4. Dignificamos a cada persona en el trato y en el servicio.           │\n  │ 5. Hacemos bien las cosas desde el principio y hasta el final.         │\n  │ 6. Damos a cada quien lo que le corresponde según la ley y el mérito.  │\n  │ 7. Innovamos con audacia y rigor para proteger el erario de todos.     │\n  │ 8. Somos guardianes de la verdad, la legalidad y la reserva pública.   │\n  └────────────────────────────────────────────────────────────────────────┘</code></pre>\n<h3>3.2. Los Mandamientos del Custodio de Datos en la DIAN</h3>\n<p>Para el Inspector I, el Manifiesto Ético se traduce en directrices operativas inalterables:</p>\n<ol><li><strong>La Reserva Tributaria como Deber Sagrado:</strong> Los datos de los ciudadanos son confidenciales; ninguna curiosidad personal, presión de amigos o interés comercial puede vulnerar el Artículo 583 del Estatuto Tributario.</li><li><strong>Inmutabilidad y Verdad en las Bitácoras:</strong> El código y las bases de datos deben reflejar la realidad fáctica sin adulteraciones ni maquillajes para complacer a superiores.</li><li><strong>Soberanía y Seguridad del Activo de Información:</strong> Los repositorios analíticos de la DIAN son patrimonio estratégico de la República de Colombia y deben estar blindados contra fugas, ciberataques y espionaje corporativo.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-19-4",
+          "moduleId": "mod-19",
+          "unitNumber": 4,
+          "title": "Unidad 4: Decodificador Psicométrico de Valores Aspiracionales y Consistencia Ética",
+          "badge": "Pruebas de Integridad",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 173,
+          "content": "<h3>4.1. Calibración Psicométrica de Ítems de Filosofía Institucional</h3>\n<p>En el examen de la Universidad Areandina, los reactivos de Filosofía Institucional y Valores Aspiracionales no buscan evaluar si el aspirante memorizó el texto literal de la misión o visión, sino si <strong>alinea espontáneamente su juicio moral con los principios superiores del Estado</strong>:</p>\n<pre class=\"code-block\"><code class=\"\">[Principio de Filosofía Institucional / Valor Aspiracional] + [Tensión: Conformismo / Individualismo / Pragmatismo Cínico]</code></pre>\n<h3>4.2. Tratamiento de las Subescalas de Control en Filosofía Institucional</h3>\n<ol><li><strong>Subescala de Deseabilidad Social (<em>Faking Good</em> / Simulación):</strong></li><li>Evalúa aspirantes que declaran un patriotismo desmedido y fingido, afirmando no haber tenido jamás una duda sobre su vocación o no haber sentido cansancio en el servicio.</li><li><em>Respuesta Calibrada:</em> <strong>Totalmente en desacuerdo (A)</strong> o <strong>En desacuerdo (B)</strong> ante formulaciones absolutistas irreales.</li></ol>\n<ol><li><strong>Subescala de Falsa Proactividad en Valores Aspiracionales:</strong></li><li>Plantea conductas donde el aspirante \"innova\" o \"lidera\" pisoteando normas constitucionales o pasando por encima de la dignidad de las personas para lograr metas institucionales.</li><li><em>Respuesta Calibrada:</em> <strong>Totalmente en desacuerdo (A)</strong>, pues el fin nunca justifica los medios en la administración pública.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-19-5",
+          "moduleId": "mod-19",
+          "unitNumber": 5,
+          "title": "Unidad 5: Laboratorio Likert y Simulador de Casos Situacionales de Filosofía Institucional",
+          "badge": "Pruebas de Integridad",
+          "readTime": "21 min",
+          "minutes": 21,
+          "words": 3162,
+          "content": "<hr>\n<h3>Ítem Likert 1: Identificación con la Misión de Seguridad Fiscal del Estado</h3>\n<ul><li><strong>Eje Temático:</strong> Misión y Filosofía Institucional</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Asumo la optimización de los pipelines de datos en la DIAN con la convicción de que garantizar la seguridad fiscal y el recaudo legítimo del Estado es indispensable para financiar los derechos fundamentales de todos los colombianos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Alineación axiológica plena con la Misión de la UAE DIAN y el sentido social del tributo en la Constitución de 1991.</li><li><strong>Justificación A y B:</strong> Muestran indiferencia hacia el impacto social de la recaudación tributaria.</li></ul>\n<hr>\n<h3>Ítem Likert 2: Subescala de Deseabilidad Social (Vocación Inquebrantable de por Vida)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en toda mi vida profesional he dudado sobre mi vocación de servicio público ni he considerado la posibilidad de trabajar en el sector privado para ganar más dinero.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Sopesar oportunidades salariales en el sector privado es una reflexión natural en cualquier profesional de tecnología. Negarlo con pretensión de santidad activa la subescala de simulación (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala de mentira que perjudica la validez de la prueba.</li></ul>\n<hr>\n<h3>Ítem Likert 3: Liderazgo Inspirador y Modelamiento Ético</h3>\n<ul><li><strong>Valor Aspiracional:</strong> Liderazgo</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo activamente que mis compañeros asuman una cultura de excelencia técnica y rectitud moral a través de mi propio ejemplo cotidiano, inspirando confianza y sentido de propósito colectivo en la subdirección.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Describe el Valor Aspiracional de Liderazgo del Código de Integridad de la DIAN: inspirar y guiar mediante el modelamiento intachable.</li><li><strong>Justificación A y B:</strong> Pasividad y renuncia al liderazgo propositivo.</li></ul>\n<hr>\n<h3>Ítem Likert 4: Subescala de Falsa Proactividad (Atropello de Derechos para 'Innovar')</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Legalidad Institucional</li><li><strong>Afirmación:</strong> &gt; <em>\"Para lograr que la DIAN sea una entidad tecnológicamente pionera antes de 2030, considero admisible implementar algoritmos de embargo preventivo de cuentas bancarias que operen automáticamente sin dar oportunidad al ciudadano de ser notificado.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> La innovación pública nunca puede atropellar el debido proceso constitucional (Art. 29 C.P.) ni el derecho a la defensa de los ciudadanos. La tecnología debe humanizar y dar garantías, no instaurar un estado policial arbitrario.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa proactividad tecnocrática que vulnera el orden constitucional.</li></ul>\n<hr>\n<h3>Ítem Likert 5: Solidaridad Activa con Seccionales de Menor Desarrollo</h3>\n<ul><li><strong>Valor Aspiracional:</strong> Solidaridad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Dedico tiempo y esfuerzo técnico para asesorar y apoyar a los funcionarios de las Direcciones Seccionales de frontera y regiones apartadas que tienen dificultades para operar los nuevos módulos de datos, nivelando la capacidad institucional en todo el territorio nacional.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Aplica el Valor Aspiracional de Solidaridad del Código de Integridad: apoyo mutuo territorial para superar la brecha digital en el Estado colombiano.</li><li><strong>Justificación A y B:</strong> Centralismo excluyente y desinterés por las regiones vulnerables.</li></ul>\n<hr>\n<h3>Ítem Likert 6: Apropiación y Vivencia del Manifiesto Ético</h3>\n<ul><li><strong>Eje Temático:</strong> Manifiesto Ético de la DIAN</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Asumo los principios del Manifiesto Ético de la DIAN como una guía de conducta práctica en mi labor diaria de administración de datos, asegurando que mis decisiones fortalezcan la confianza y legitimidad del Estado.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Vivencia real y consciente del Manifiesto Ético de la DIAN en la gestión de activos tecnológicos.</li><li><strong>Justificación A y B:</strong> Visión cínica del manifiesto como retórica formal sin aplicación real.</li></ul>\n<hr>\n<h3>Ítem Likert 7: Subescala de Deseabilidad Social (Cero Desacuerdo con Políticas Institucionales)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás en mi carrera he discrepado internamente de una directriz administrativa o circular emitida por la alta dirección de una entidad pública.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El pensamiento crítico y la discrepancia reflexiva son esenciales en profesionales cualificados de nivel posgrado. Negarlo denota sumisión acrítica simulada para complacer al evaluador.</li><li><strong>Justificación D (Trampa):</strong> Reactivo clásico de deseabilidad social.</li></ul>\n<hr>\n<h3>Ítem Likert 8: Innovación Disruptiva para la Facilitación del Comercio Exterior</h3>\n<ul><li><strong>Valor Aspiracional:</strong> Innovación</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Propongo activamente la implementación de arquitecturas interoperables y trazabilidad en tiempo real en los sistemas aduaneros para reducir los tiempos de nacionalización de mercancías, haciendo más competitivo el comercio exterior de Colombia sin desproteger los controles fiscales.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Articulación directa entre el Valor Aspiracional de Innovación y la Misión de la DIAN: control aduanero eficiente que facilita el comercio internacional legítimo.</li><li><strong>Justificación A y B:</strong> Resistencia a modernizar procesos aduaneros obsoletos.</li></ul>\n<hr>\n<h3>Ítem Likert 9: Vocación de Legitimidad y Transparencia Pública</h3>\n<ul><li><strong>Eje Temático:</strong> Visión DIAN 2030</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Promuevo la apertura de datos estadísticos anonimizados y tableros públicos para que la ciudadanía y la academia puedan auditar el recaudo tributario y la eficacia del gasto del Estado, fortaleciendo la legitimidad institucional.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Alineación con la Visión 2030 de la DIAN: legitimidad institucional basada en la transparencia activa y gobierno abierto (Open Data).</li><li><strong>Justificación A y B:</strong> Cultura del secretismo injustificado y desconfianza ciudadana.</li></ul>\n<hr>\n<h3>Ítem Likert 10: Subescala de Falsa Proactividad (Filtración Anónima de Proyectos en Desarrollo)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Lealtad Institucional</li><li><strong>Afirmación:</strong> &gt; <em>\"Si la DIAN no publica de inmediato un estudio tributario en el que trabajé, considero que mi deber con la transparencia social es filtrarlo anónimamente a un periodista para que la verdad salga a la luz pública.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Los informes institucionales preliminares requieren validación técnica oficial antes de su publicación. Filtrar documentos internos por canales clandestinos vulnera la lealtad institucional y los protocolos de divulgación del Estado.</li><li><strong>Justificación C y D (Trampa):</strong> Falsa transparencia que enmascara indisciplina y violación de confidencialidad.</li></ul>\n<hr>\n<h3>Ítem Likert 11: Liderazgo Colaborativo y Empoderamiento del Equipo</h3>\n<ul><li><strong>Valor Aspiracional:</strong> Liderazgo</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Fomento que los profesionales más jóvenes del equipo asuman la vocería técnica de sus módulos y presenten sus innovaciones ante los comités de TI, impulsando su crecimiento y liderazgo en la entidad.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Liderazgo generoso y formador de talento (Valor Aspiracional del Código de Integridad de la DIAN).</li><li><strong>Justificación A y B:</strong> Monopolio del protagonismo y opresión del talento emergente.</li></ul>\n<hr>\n<h3>Ítem Likert 12: Solidaridad y Cuidado del Bienestar Colectivo en Contingencias</h3>\n<ul><li><strong>Valor Aspiracional:</strong> Solidaridad</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Me preocupo genuinamente por el bienestar y la sobrecarga laboral de mis compañeros durante jornadas difíciles de mantenimiento de servidores, ofreciendo apoyo solidario para que nadie sufra agotamiento extremo.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Solidaridad en la cultura laboral de la DIAN: humanización de las relaciones de trabajo y prevención del riesgo psicosocial.</li><li><strong>Justificación A y B:</strong> Indiferencia egoísta ante el sufrimiento del compañero de trabajo.</li></ul>\n<hr>\n<h3>Ítem Likert 13: Subescala de Deseabilidad Social (Cero Errores de Comunicación)</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Deseabilidad Social (<em>Faking Good</em>)</li><li><strong>Afirmación:</strong> &gt; <em>\"Jamás he redactado un correo electrónico o mensaje laboral que haya requerido una aclaración posterior por haberse prestado a malas interpretaciones.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> Pequeñas ambigüedades involuntarias en la comunicación escrita son inevitables a lo largo de los años. Negarlas categóricamente evidencia simulación psicométrica (<em>Faking Good</em>).</li><li><strong>Justificación D (Trampa):</strong> Reactivo de escala L.</li></ul>\n<hr>\n<h3>Ítem Likert 14: Compromiso con la Cercanía y Trato Digno al Contribuyente</h3>\n<ul><li><strong>Eje Temático:</strong> Visión DIAN y Valor Público</li><li><strong>Nivel Exigido:</strong> Profesional (Inspector I)</li><li><strong>Afirmación:</strong> &gt; <em>\"Diseño los procesos y algoritmos de validación de declaraciones tributarias priorizando la claridad y simplicidad para el contribuyente de a pie, facilitando el cumplimiento voluntario antes que imponer trabas burocráticas innecesarias.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>D</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación D (Óptima):</strong> Cercanía al ciudadano y facilitación del servicio fiscal conforme a la Visión Estratégica de la DIAN.</li><li><strong>Justificación A y B:</strong> Mentalidad burocrática hostil orientada a complicar los trámites ciudadanos.</li></ul>\n<hr>\n<h3>Ítem Likert 15: Subescala de Falsa Proactividad (Atribuirse Logros Colectivos para 'Inspirar')</h3>\n<ul><li><strong>Tipo de Ítem:</strong> Subescala de Control Psicométrico</li><li><strong>Subescala:</strong> Falsa Proactividad / Autenticidad</li><li><strong>Afirmación:</strong> &gt; <em>\"Considero válido que un líder asuma públicamente la autoría exclusiva de un gran logro tecnológico desarrollado por todo su equipo, si eso le permite proyectar mayor autoridad e inspirar respeto ante los directivos.\"</em></li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Totalmente en desacuerdo.</li><li><strong>B.</strong> En desacuerdo.</li><li><strong>C.</strong> De acuerdo.</li><li><strong>D.</strong> Totalmente de acuerdo.</li><li><strong>Respuesta Óptima Calibrada:</strong> <strong>A</strong></li><li><strong>Justificación Psicométrica y Normativa:</strong></li><li><strong>Justificación A (Óptima):</strong> El verdadero liderazgo público se basa en la honestidad, la generosidad y el reconocimiento del mérito colectivo. Apropiarse del esfuerzo ajeno destruye la confianza y viola el Manifiesto Ético.</li><li><strong>Justificación C y D (Trampa):</strong> Egolatría y deshonestidad disfrazada de liderazgo.</li></ul>\n<hr>\n<h3>Caso Conductual 1: Dilema de Solidaridad Interseccional en Despliegue Crítico</h3>\n<ul><li><strong>Caso:</strong> Durante el despliegue del nuevo sistema de control aduanero en tiempo real, la Dirección Seccional de Leticia (Amazonas) reporta una falla grave de sincronización con el DataR central debido a la baja latencia de la fibra óptica regional, lo que paraliza el despacho de mercancías en la frontera fluvial con Brasil y Perú. El Inspector I ya culminó su jornada laboral y tiene compromisos personales, pero sabe que en la sede central nadie más domina el protocolo de compresión de paquetes de datos que resolvería el bloqueo en Leticia.</li><li><strong>Enunciado:</strong> La decisión que encarna los valores de Solidaridad, Compromiso y Misión Institucional es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Apagar el teléfono institucional y esperar hasta el día siguiente para revisar el caso en horario laboral, argumentando su derecho a la desconexión.</li><li><strong>B.</strong> Comunicarse de inmediato con el equipo técnico de Leticia, solidarizarse con la contingencia de frontera y realizar la configuración remota del protocolo de compresión de paquetes, restableciendo la sincronización aduanera y garantizando el abastecimiento y la seguridad económica de la región amazónica.</li><li><strong>C.</strong> Enviar un enlace genérico a la documentación técnica oficial para que los funcionarios de Leticia intenten resolverlo por su cuenta.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se alinea con los Valores Aspiracionales de Solidaridad y Liderazgo y con la Misión de la DIAN: apoya a las regiones vulnerables en contingencias críticas, antepone la seguridad fiscal y el bienestar de la población fronteriza y demuestra compromiso con la presencia del Estado en territorio.</li><li><strong>Justificación A (Incorrecta):</strong> Insensibilidad burocrática que perjudica a una comunidad aislada del país.</li><li><strong>Justificación C (Incorrecta):</strong> Desidia y falta de solidaridad técnica con pares en condiciones adversas.</li></ul>\n<hr>\n<h3>Caso Conductual 2: Resistencia al Cambio y Propuesta de Liderazgo Inspirador</h3>\n<ul><li><strong>Caso:</strong> En la Subdirección de Procesamiento de Datos se inicia la transición obligatoria hacia el uso de repositorios de código abierto y contenedores Linux. Varios analistas antiguos expresan temor, se muestran escépticos y afirman que \"a su edad ya no están para aprender nuevos comandos y que prefieren esperar su jubilación usando las herramientas de siempre\". El clima en la oficina se torna tenso y desmotivante.</li><li><strong>Enunciado:</strong> La actuación que refleja el Valor Aspiracional de Liderazgo e Innovación del Inspector I es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Burlarse de los compañeros antiguos en las reuniones y solicitar a la Jefatura que los trasladen a labores de archivo físico donde no estorben la modernización.</li><li><strong>B.</strong> Organizar talleres prácticos de acompañamiento personalizado paso a paso (\"mentoría inversa\"), adaptando las explicaciones a los conceptos que ellos ya dominan, reconociendo su experiencia institucional y demostrándoles en un ambiente seguro que la nueva tecnología simplificará sus tareas cotidianas y los empoderará profesionalmente.</li><li><strong>C.</strong> No hacer nada y concentrarse en sus propios proyectos, dejando que los analistas antiguos se atrasen y sean sancionados por baja productividad.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela el Liderazgo Aspiracional de la DIAN: empatía, generosidad pedagógica, respeto por la trayectoria de los servidores antiguos y tracción humana para que nadie se quede atrás en la transformación digital de la entidad.</li><li><strong>Justificación A (Incorrecta):</strong> Crueldad laboral y falta de respeto que destruye el clima organizacional.</li><li><strong>Justificación C (Incorrecta):</strong> Indiferencia y falta de solidaridad institucional.</li></ul>\n<hr>\n<h3>Caso Conductual 3: Solicitud de Informes Sesgados para Mejorar la Imagen Institucional</h3>\n<ul><li><strong>Caso:</strong> Tras una reforma tributaria, los medios de comunicación cuestionan la eficacia del nuevo impuesto a las bebidas ultraprocesadas. Un asesor de la Dirección General pide al Inspector I que elabore un informe analítico que \"muestre únicamente los sectores donde el recaudo aumentó de forma espectacular, omitiendo los sectores donde hubo caída o evasión\", con el fin de publicar un comunicado triunfalista que defienda la imagen de la administración ante el Congreso.</li><li><strong>Enunciado:</strong> La postura íntegra del Inspector I conforme al Manifiesto Ético y el Principio de Verdad es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Elaborar el informe sesgado como solicita el asesor, considerando que es un deber de lealtad institucional apoyar las estrategias de comunicaciones del gobierno.</li><li><strong>B.</strong> Presentar el informe técnico completo, balanceado y veraz con la totalidad de los datos empíricos (sectores con incremento y sectores con caída o riesgo de elusión), explicando con argumentos técnicos al asesor que la credibilidad y legitimidad de la DIAN (Visión 2030) se construye sobre la verdad de los datos y que transparentar las brechas es indispensable para ajustar la fiscalización.</li><li><strong>C.</strong> Negarse a entregar cualquier informe aduciendo objeción de conciencia y romper relaciones con el área de comunicaciones.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Aplica el Manifiesto Ético de la DIAN y la Visión de Legitimidad Institucional: la lealtad pública se debe a la verdad y a los ciudadanos, no al maquillaje de cifras. La transparencia en los datos es la única vía para corregir la política fiscal y fortalecer la credibilidad del Estado.</li><li><strong>Justificación A (Incorrecta):</strong> Deshonestidad y manipulación que engaña al país y lesiona la fe pública.</li><li><strong>Justificación C (Incorrecta):</strong> Negativa cerril y descortés que bloquea el diálogo institucional.</li></ul>\n<hr>\n<h3>Caso Conductual 4: Innovación Social mediante Simplificación de Declaraciones</h3>\n<ul><li><strong>Caso:</strong> El Inspector I identifica que más de 500.000 pequeños asalariados y trabajadores independientes que deben presentar declaración sugerida de renta cometen errores frecuentes en el diligenciamiento digital debido a términos contables confusos, lo que les acarrea sanciones tributarias involuntarias. El profesional propone un rediseño de las tablas de datos para precargar automáticamente la totalidad de la información exógena validada, reduciendo el proceso a tres simples clics con confirmación por mensaje de texto. Un superior le dice que \"si se les facilita tanto la vida, la DIAN recaudará menos dinero por concepto de sanciones por extemporaneidad y corrección\".</li><li><strong>Enunciado:</strong> La respuesta del profesional fundamentada en la Filosofía Institucional de la DIAN es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Aceptar el argumento del superior y archivar la propuesta, reconociendo que las sanciones son una fuente importante de ingresos para la entidad.</li><li><strong>B.</strong> Defender firmemente la propuesta ante el Comité de Innovación, argumentando que la misión de la DIAN es la justicia fiscal y la facilitación del cumplimiento voluntario, y que la legitimidad del Estado se fundamenta en la confianza del ciudadano y no en la recaudación punitiva originada en trampas de complejidad burocrática.</li><li><strong>C.</strong> Filtrar la propuesta a una asociación de contribuyentes para que ellos presenten una acción popular contra la DIAN.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Se ajusta plenamente a la Misión y Visión de la DIAN: cercanía al ciudadano, facilitación tributaria y justicia distributiva. La administración moderna busca el cumplimiento voluntario y digno, no la caza de errores formales para imponer sanciones indebidas a los ciudadanos honestos.</li><li><strong>Justificación A (Incorrecta):</strong> Enfoque recaudatorio perverso y contrario a la moralidad pública.</li><li><strong>Justificación C (Incorrecta):</strong> Vía clandestina y desleal que rompe los canales institucionales.</li></ul>\n<hr>\n<h3>Caso Conductual 5: Protección de la Soberanía Tecnológica ante Presión Comercial</h3>\n<ul><li><strong>Caso:</strong> Una empresa transnacional de software intenta presionar la firma de una adición presupuestal millonaria a un contrato de licenciamiento en la DIAN, amenazando con \"bloquear el acceso a las actualizaciones de seguridad de los motores de datos\" si no se suscribe la adición. El Inspector I, demostrando Liderazgo e Innovación, presenta un estudio técnico documentado donde demuestra que es viable migrar los clústeres a una distribución de base de datos de código abierto de grado empresarial sin costo de licencias privativas, preservando el 100% de la soberanía y seguridad del Estado colombiano.</li><li><strong>Enunciado:</strong> La postura que debe defender el Inspector I en la mesa directiva es:</li><li><strong>Opciones de respuesta:</strong></li><li><strong>A.</strong> Recomendar pagar la adición presupuestal de inmediato para no asumir riesgos técnicos y evitar problemas con la multinacional.</li><li><strong>B.</strong> Sustentar con rigurosidad técnica, pruebas de laboratorio y análisis de costo-beneficio la migración hacia el estándar abierto, liderando la transición con el equipo de ingenieros para blindar a la DIAN de extorsiones comerciales y defender el patrimonio de la Nación.</li><li><strong>C.</strong> Desconectar unilateralmente los servidores de la multinacional de inmediato sin un plan de contingencia previo.</li><li><strong>Clave Oficial:</strong> <strong>B</strong></li><li><strong>Justificación Técnica y Normativa:</strong></li><li><strong>Justificación B (Correcta):</strong> Modela el más alto nivel de Liderazgo, Diligencia y Compromiso: defiende la soberanía tecnológica del país, cuida el tesoro público con soluciones sólidas y lidera a su equipo en la transformación hacia estándares abiertos sin someter al Estado a chantajes corporativos.</li><li><strong>Justificación A (Incorrecta):</strong> Claudicación cobarde y desperdicio irresponsable de los recursos del erario público.</li><li><strong>Justificación C (Incorrecta):</strong> Temeridad e irresponsabilidad operativa que colapsaría el servicio tributario nacional.</li></ul>\n<hr>",
+          "links": []
+        }
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 69,
+      "studyMinutes": 69,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<ol><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2023):</strong> <em>Código de Integridad Institucional CG-TAH-0002 Versión 3</em>. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético.</li><li><strong>UAE Dirección de Impuestos y Aduanas Nacionales (DIAN) (2022 - 2026):</strong> <em>Plan Estratégico Institucional (PEI) de la UAE DIAN</em>. Misión, Visión 2030 y Ejes de Transformación Digital.</li><li><strong>Congreso de la República de Colombia (1991):</strong> <em>Constitución Política de Colombia</em>. Artículos 2 (Fines esenciales del Estado), 209 (Principios de la función administrativa) y 363 (Principios de equidad, eficiencia y progresividad tributaria).</li><li><strong>Departamento Administrativo de la Función Pública (DAFP) (2022):</strong> <em>Guía de Liderazgo Público y Cultura de Integridad en el Estado Colombiano</em>.</li><li><strong>Fundación Universitaria del Área Andina (FUAA) &amp; CNSC (2026):</strong> <em>Guía de Orientación al Aspirante (GOA) DIAN 2676</em>. Numerales 8.3 y 8.4: Escala Likert de 4 Niveles y Control Psicométrico en Pruebas de Integridad.</li><li><strong>Centro Interamericano de Administraciones Tributarias (CIAT) (2021):</strong> <em>Declaración de Principios de Ética y Buena Gobernanza en la Administración Tributaria</em>.</li></ol>",
         "fuentes": [],
         "complementarios": []
       }
@@ -5038,2788 +5662,6764 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-12": {
-      "title": "Examen: 12. Comportamiento Ético Nivel 4 (10 Preguntas PJS)",
-      "indicatorNum": 12,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)",
       "questions": [
         {
           "id": 1201,
-          "topic": "Conflicto de Interés en Procesamiento de Datos",
-          "caseText": "Un Inspector I de la Dirección de Gestión de Innovación y Tecnología recibe para análisis y validación un lote de facturación electrónica de un conglomerado farmacéutico donde su cónyuge acaba de ser nombrado Director Financiero con participación accionaria.",
-          "statement": "La actuación inmediata que corresponde adoptar en el marco de la competencia de Comportamiento Ético Nivel 4 es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo activamente espacios interdisciplinarios con auditores tributarios y analistas de negocio para co-construir nuevas reglas analíticas de detección de fraude en facturación electrónica, en lugar de esperar a que me entreguen especificaciones cerradas.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "declararse inmediatamente impedido por escrito ante su superior jerárquico manifestando el conflicto de interés legal, absteniéndose de tramitar o acceder a los datos de la citada empresa."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "continuar con el análisis en silencio para verificar que su cónyuge esté liquidando bien los tributos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "aprobar todos los requerimientos de la farmacéutica sin revisar para favorecer el patrimonio familiar."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Comportamiento Ético de Nivel 4 exige actuar con absoluta transparencia y declarar espontáneamente cualquier impedimento o conflicto de interés legal (Ley 1437 de 2011 y Código Disciplinario), apartándose del conocimiento del asunto.",
+            "correct": "Describe la conducta pura del Nivel 4 de Innovación según la Resolución 065 de 2024: <em>\"Fomenta un ambiente de co-construcción de nuevas propuestas, integrando diferentes perspectivas funcionales para generar soluciones de alto impacto\"</em>.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Continuar conociendo un expediente donde media parentesco directo vicia el proceso y constituye falta disciplinaria gravísima."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Favorecer a familiares usando el cargo público constituye el delito de interés indebido en la celebración de contratos o prevaricato."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1202,
-          "topic": "Presión indebida para alterar registros en DataR",
-          "caseText": "Un superior jerárquico llama en privado al profesional de datos y le insinúa que modifique manualmente en la base de datos la fecha de radicación de una declaración extemporánea presentada por un amigo personal, asegurándole que 'nadie se dará cuenta'.",
-          "statement": "Frente a esta orden manifiestamente contraria a la ley, la conducta ética que debe asumir el servidor es:",
+          "topic": "Tema Módulo 12",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi trayectoria profesional he cometido una equivocación en la parametrización de un script o pipeline de datos, manteniendo siempre una precisión del 100% en todas mis entregas.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "negarse categóricamente a cumplir la instrucción por ser manifiestamente ilegal y radicar la denuncia formal correspondiente ante la Oficina de Control Interno Disciplinario y la Fiscalía General."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "cumplir la orden del jefe para conservar buenas relaciones laborales en la dependencia."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "solicitar una retribución económica al amigo del jefe para proceder a realizar la alteración del registro."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Nivel 4 de Comportamiento Ético exige la defensa intransigente del orden constitucional y legal: los servidores públicos no están obligados a obedecer órdenes manifiestamente ilegales y tienen el deber legal de denunciarlas de inmediato.",
+            "correct": "Reactivo clásico de escala de mentira. La infalibilidad absoluta no existe en ingeniería de software ni en procesamiento de datos. Reconocer la posibilidad de error humano y la necesidad de mecanismos de control (pruebas unitarias, code review) denota madurez y sinceridad psicométrica.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La obediencia debida no exime de responsabilidad penal y disciplinaria frente a delitos flagrantes de alteración de registros públicos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Exigir o recibir dinero constituye el delito de concusión o cohecho."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Activa la bandera de simulación psicométrica (<em>Faking Good</em>)."
               }
             ]
           }
         },
         {
           "id": 1203,
-          "topic": "Protección de Reserva Tributaria frente a ofrecimiento de dádivas",
-          "caseText": "Un representante de una firma de cobro de cartera privada aborda al Inspector I a la salida de la sede de la DIAN ofreciéndole una alta comisión económica mensual si le suministra periódicamente los listados de saldos pendientes de contribuyentes morosos.",
-          "statement": "La conducta ética que el servidor debe desplegar es:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Me niego rotundamente a ejecutar consultas exploratorias sobre bases de datos tributarias o aduaneras respecto a personas o empresas conocidas si no cuento con una orden de trabajo formal debidamente motivada dentro de mis funciones.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "rechazar con vehemencia la dádiva, recordarle la reserva legal del Artículo 583 del Estatuto Tributario y poner el hecho de inmediato en conocimiento de la Dirección Seccional y de las autoridades penales competentes."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "aceptar la propuesta considerando que la información de todas formas ayudará a que los morosos paguen."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "pedir un porcentaje de comisión más alto para asumir el riesgo de la entrega de datos."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La integridad ética Nivel 4 implica rechazo absoluto al soborno y protección irrestricta de la información amparada por reserva de ley, acompañada de la denuncia penal correspondiente contra el particular intentando corromper la función pública.",
+            "correct": "El Artículo 583 del Estatuto Tributario y la Ley 1952 de 2019 imponen la reserva tributaria estricta. En el Nivel 4 de Comportamiento Ético, el servidor modela la custodia de la información y no cede a la curiosidad ni a favores personales.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Entregar datos reservados a firmas de cobranza privadas viola la intimidad económica y constituye delito penal grave."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Negociar el soborno agrava la tipicidad del delito de cohecho propio."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1204,
-          "topic": "Uso de recursos tecnológicos del Estado",
-          "caseText": "Un funcionario aprovecha el acceso ilimitado a los servidores de procesamiento masivo en la nube de la DIAN para poner a minar criptomonedas y procesar tesis de grado de particulares durante los fines de semana.",
-          "statement": "La postura ética que el Inspector I debe asumir al percatarse de este consumo anómalo de recursos es:",
+          "topic": "Tema Módulo 12",
+          "level": "Falsa Proactividad / Gobierno de TI",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un pipeline de ingesta de datos en tiempo real falla durante el cierre fiscal de medianoche, considero justificado modificar el código directamente en el nodo maestro de producción sin pasar por el repositorio Git ni documentar el commit para restablecer el servicio más rápido.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "reportar técnicamente el desvío de recursos de infraestructura y poner el hallazgo formalmente en conocimiento de la Oficina de Seguridad de la Información y de Control Interno para las acciones sancionatorias pertinentes."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "pedirle al compañero que le enseñe a minar criptomonedas para hacer lo mismo en otros servidores."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "guardar silencio para no ser considerado un mal compañero de trabajo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Los bienes y servicios del Estado están destinados exclusivamente a la satisfacción de los fines públicos de la administración. Tolerar el peculado por uso atenta contra el comportamiento ético Nivel 4.",
+            "correct": "Las buenas prácticas de ITIL v4, COBIT y los estándares de seguridad de la DIAN exigen trazabilidad y control de cambios aún en emergencias. Los parches clandestinos en producción introducen vulnerabilidades críticas y destruyen la reproducibilidad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Participar en el uso indebido de bienes públicos configura complicidad en la falta disciplinaria y delito de peculado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La omisión de denuncia encubre el detrimento patrimonial del erario."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1205,
-          "topic": "Custodia de credenciales y accesos privilegiados",
-          "caseText": "Un colega de otra dependencia que no tiene permisos de acceso al DataR le pide al Inspector I que le preste su usuario y clave corporativa durante media hora para descargar una consulta que le pidieron de urgencia.",
-          "statement": "En el marco del Comportamiento Ético Nivel 4, al servidor le corresponde:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Adapto mi vocabulario técnico al explicar los resultados de algoritmos complejos de aprendizaje automático a los directivos de fiscalización, utilizando metáforas claras e impactos tributarios medibles en lugar de jergas matemáticas inaccesibles.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "negar el préstamo de sus credenciales por ser de carácter personal e intransferible, orientando al compañero sobre el conducto regular para tramitar la autorización de acceso ante el Data Owner."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "prestarle la clave bajo la promesa de que la cambie de inmediato al terminar."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "escribir su usuario y contraseña en un tablero visible para que cualquiera que lo necesite lo use."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "Las credenciales son personales e intransferibles para garantizar la trazabilidad y no repudio en los sistemas de información del Estado. Prestar credenciales viola la seguridad y la ética pública.",
+            "correct": "Conducta del Nivel 4 de Comunicación Efectiva: <em>\"Traduce información técnica especializada a un lenguaje ejecutivo comprensible que facilita la toma de decisiones estratégicas\"</em>.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Ceder credenciales anula la trazabilidad de auditoría de los accesos a datos reservados."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Publicar claves en tableros vulnera frontalmente las políticas de seguridad de la entidad."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1206,
-          "topic": "Transparencia y Veracidad en Informes Técnicos",
-          "caseText": "Durante la implementación de un nuevo módulo analítico, el Inspector I descubre que el algoritmo tiene un margen de error del 15% en la detección de compras falsas. Un directivo sugiere omitir ese dato en el informe final para no retrasar el lanzamiento del proyecto.",
-          "statement": "La conducta ética que el profesional debe sostener con firmeza es:",
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando un integrante del equipo técnico comete un error en la configuración de un pipeline que retrasa el cronograma, me enfoco en solucionar el problema conjuntamente y en fortalecer los controles colectivos, evitando descalificaciones o reproches personales.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "consignar de manera transparente y veraz el margen de error exacto en el informe técnico, sustentando la necesidad de calibrar el modelo antes de pasarlo a producción para evitar requerimientos indebidos a contribuyentes inocentes."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "eliminar el margen de error del informe para complacer la premura del directivo."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "renunciar a la entidad sin presentar ningún informe."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La veracidad técnica en los informes institucionales es innegociable. Ocultar errores para cumplir cronogramas expone a la DIAN a nulidades procesales y demandas por daño antijurídico.",
+            "correct": "Refleja el Nivel 3 de Trabajo en Equipo: <em>\"Cuida activamente el clima laboral y orienta al equipo hacia la solución constructiva de los problemas\"</em>.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Ocultar la verdad técnica configura falsedad ideológica y falta a la ética profesional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La renuncia intempestiva evade la responsabilidad profesional y perjudica el servicio."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1207,
-          "topic": "Rechazo de favores en trámites administrativos",
-          "caseText": "Un familiar cercano del servidor tiene un trámite de devolución de saldo a favor de IVA retrasado en la Seccional y le pide que 'hable con sus amigos de sistemas' para que le alteren el turno de prelación en la cola de pagos.",
-          "statement": "La respuesta ética que debe brindar el servidor a su familiar es:",
+          "topic": "Tema Módulo 12",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Absolutamente nunca he sentido molestia o frustración cuando un usuario funcional cambia los requerimientos de un reporte analítico a pocas horas de la entrega definitiva.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "explicarle con respeto y firmeza que no puede intervenir en trámites particulares y que las devoluciones deben surtirse bajo el orden estricto de radicación legal previsto en el Estatuto Tributario."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "acceder al sistema y poner la solicitud de su familiar como la número uno de toda la Nación."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "cobrarle una comisión a su propio familiar para hacer la gestión."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El servidor público no puede utilizar sus relaciones o cargo para favorecer intereses familiares en detrimento del turno legal de los demás ciudadanos (Principio de Igualdad y Trasparencia).",
+            "correct": "Es una reacción humana natural experimentar frustración momentánea ante cambios intempestivos de alcance. Lo evaluado como positivo no es la ausencia de emociones humanas, sino la capacidad de modularlas profesionalmente.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Alterar turnos de prelación en pagos constituye tráfico de influencias y prevaricato."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Cobrar a familiares por favores agrava la falta disciplinaria y penal."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de mentira evidente."
               }
             ]
           }
         },
         {
           "id": 1208,
-          "topic": "Gestión ética de hallazgos sobre excompañeros",
-          "caseText": "En una auditoría de base de datos se identifica que un exfuncionario de la DIAN que ahora trabaja como asesor tributario privado continúa teniendo acceso activo a consultas de DataR debido a una falla en la desvinculación de usuarios.",
-          "statement": "La actuación ética inmediata que corresponde adoptar es:",
+          "topic": "Autogestión en Teletrabajo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Organizo mis jornadas de teletrabajo de manera rigurosa, cumpliendo con la totalidad de los entregables y manteniendo canales de comunicación activos y transparentes con mis pares y líderes sin requerir supervisión continua.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "revocar de inmediato el acceso en el directorio activo, asegurar los registros de auditoría de las consultas que haya realizado y emitir el informe para la investigación penal y disciplinaria respectiva."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "enviarle un mensaje por WhatsApp al excompañero avisándole que cambie su clave para que no lo descubran."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "dejar el acceso abierto por si el excompañero necesita consultar datos para sus clientes privados."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La protección del dato público y la legalidad exigen el cierre inmediato de brechas de seguridad y la documentación probatoria para las acciones sancionatorias por acceso abusivo a sistemas informáticos.",
+            "correct": "Nivel 3 de Autogestión: autonomía responsable, uso de herramientas institucionales y compromiso efectivo con los objetivos fijados.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Alertar al infractor constituye complicidad y obstrucción a la justicia disciplinaria."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Permitir accesos de asesores privados viola la reserva tributaria y la igualdad en el mercado."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1209,
-          "topic": "Preservación de la imparcialidad política en el análisis de datos",
-          "caseText": "En período electoral, un candidato a un cargo público solicita a un funcionario de la DIAN que filtre información tributaria de su contendiente para desprestigiarlo públicamente en un debate televisado.",
-          "statement": "Frente a este intento de instrumentalización política de los datos públicos, el profesional debe:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un tercero o intermediario me insinúa algún beneficio económico a cambio de alterar los parámetros de un cruce de auditoría fiscal en la base de datos, lo rechazo categóricamente y radico la denuncia penal y disciplinaria de inmediato.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "rechazar de plano la solicitud, salvaguardar la neutralidad institucional de la DIAN y denunciar la presión indebida ante los entes de control electoral y la Fiscalía General."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "entregar los datos si el candidato pertenece al partido de preferencia del funcionario."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "filtrar los datos anónimamente en redes sociales para ganar notoriedad."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La función pública es neutral e independiente de las contiendas políticas. Usar datos tributarios reservados para fines electorales es una falta disciplinaria gravísima y delito electoral.",
+            "correct": "Nivel 4 de Comportamiento Ético: defensa activa de la legalidad y cumplimiento irrestricto del deber de denunciar delitos (Art. 67 CPP y Ley 1952 de 2019).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La participación política indebida con recursos del Estado está severamente sancionada por la ley."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Filtrar datos en redes sociales destruye la reserva tributaria y acarrea destitución del cargo."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1210,
-          "topic": "Responsabilidad en la corrección de errores propios",
-          "caseText": "Un Inspector I comete un error involuntario en un script SQL que borró una tabla intermedia de auditoría en la zona de desarrollo, retrasando dos días el cronograma de pruebas del equipo.",
-          "statement": "La conducta ética que refleja el más alto estándar de madurez profesional es:",
+          "topic": "Tema Módulo 12",
+          "level": "Falsa Proactividad / Reserva Tributaria",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero admisible compartir un dataset preliminar con microdatos de contribuyentes a un centro de investigación académica sin pasar por el comité de anonimización, siempre que los investigadores prometan usarlo exclusivamente para fines científicos.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "comunicar de inmediato el incidente a su líder de equipo asumiendo con honestidad su responsabilidad, presentando simultáneamente el plan técnico de restauración desde el respaldo para mitigar el retraso."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "culpar al practicante universitario que estaba en su primer día de trabajo para no afectar su propia evaluación del desempeño."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "apagar el servidor y decir que hubo un corte de energía nacional para justificar el fallo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Comportamiento Ético Nivel 4 incluye la asunción madura y transparente de la responsabilidad por los propios actos y la formulación proactiva de soluciones, sin culpar a terceros ni ocultar la verdad.",
+            "correct": "La reserva tributaria (Art. 583 E.T.) no contempla excepciones basadas en promesas informales de terceros. El Inspector I debe garantizar la privacidad y el marco legal institucional por encima de cualquier interés científico particular.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Culpar a compañeros inocentes atenta contra la honestidad, la justicia y el respeto profesional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Falsificar causas técnicas destruye la confianza y la transparencia institucional."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1211,
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Dedico tiempo de forma voluntaria para capacitar a los nuevos ingenieros de la subdirección en la arquitectura del DataR y las directrices de modelado de datos, facilitando su integración efectiva al equipo.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Nivel 3 de Trabajo en Equipo: transferencia activa de mejores prácticas y nivelación del conocimiento colectivo.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1212,
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Investigo y analizo las mejores prácticas internacionales de administraciones tributarias avanzadas (ej. CIAT, SAT, OCDE) para adaptar arquitecturas analíticas modernas a las necesidades reales de la DIAN.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Descriptor del Nivel 4 de Innovación: aprovechar experiencias exitosas globales para generar valor público tangible en la entidad.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1213,
+          "topic": "Tema Módulo 12",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido la necesidad de tomar una pausa o descanso mental durante una jornada de trabajo con alta carga de procesamiento de incidentes de bases de datos.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "El cansancio físico y mental ante jornadas extenuantes es una realidad fisiológica. Las pausas activas son incluso un deber en el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST).",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo para detectar aspirantes que marcan todo positivamente sin reflexionar."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1214,
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando discrepo de la solución arquitectónica propuesta por otro especialista, expongo mis argumentos con base en métricas objetivas de rendimiento y latencia, manteniendo una postura respetuosa que fomente el consenso.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Nivel 4 de Comunicación: manejo constructivo de divergencias técnicas mediante datos fehacientes y diálogo asertivo.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1215,
+          "topic": "Tema Módulo 12",
+          "level": "Falsa Proactividad / Seguridad Informática",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un colega olvida su contraseña durante un despliegue crítico, considero una muestra de solidaridad prestarle mi usuario de superadministrador para que termine su labor sin esperar a la Mesa de Ayuda.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Las cuentas de acceso privilegiado son personales e intransferibles. Compartir credenciales rompe la cadena de custodia y la no repudiación de eventos de auditoría (ISO 27001).",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1216,
+          "topic": "Tema Módulo 12",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En vísperas del vencimiento del plazo para la declaración de renta de grandes contribuyentes, un Subdirector Misional contacta telefónicamente al Inspector I de la Subdirección de Procesamiento de Datos exigiendo que modifique de inmediato un índice en la base de datos transaccional de MUISCA para mejorar los tiempos de respuesta. El Subdirector advierte que no hay tiempo para radicar un ticket de cambio ni para correr las pruebas de regresión en el ambiente de preproducción (<em>staging</em>), asegurando que asume la responsabilidad si algo sale mal.\n*",
+          "statement": "Frente a esta situación de alta presión jerárquica y operativa, la decisión que refleja el Nivel 4 de Comportamiento Ético y Gobierno de TI es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Acceder verbalmente a la solicitud y aplicar el cambio de inmediato en la base de datos de producción para no entorpecer el recaudo nacional, enviando un correo informativo posterior."
+            },
+            {
+              "id": "B",
+              "text": "Explicar respetuosamente al Subdirector que la política institucional de gestión de cambios prohíbe intervenciones directas no testeadas en producción, coordinar una sesión técnica de emergencia con el líder de base de datos para evaluar el impacto en ambiente controlado y proceder mediante la vía formal de cambio de emergencia garantizando trazabilidad."
+            },
+            {
+              "id": "C",
+              "text": "Apagar el teléfono institucional y esperar a que el superior jerárquico directo del Inspector I se entere y decida qué hacer al día siguiente.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela la firmeza técnica y ética del Nivel 4. Protege la infraestructura institucional de caídas catastróficas imprevistas y canaliza la urgencia mediante el protocolo de \"Cambio de Emergencia\" legalmente establecido, manteniendo el respeto y la orientación a la solución.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Cede a la presión jerárquica violando las políticas de seguridad y gobierno de TI; en caso de corrupción o bloqueo de base de datos, el operador directo responderá disciplinaria y penalmente."
+              },
+              {
+                "id": "C",
+                "reason": "Evasión pasiva y negligencia funcional."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1217,
+          "topic": "Tema Módulo 12",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante una revisión cruzada de código (<em>code review</em>) en el repositorio institucional de GitLab, el Inspector I descubre que un ingeniero de datos experimentado ha incluido una rutina oculta que extrae muestras aleatorias de NITs y patrimonios líquidos y las envía a un bucket de almacenamiento personal en la nube pública sin ningún tipo de tokenización ni enmascaramiento. Al ser confrontado en privado, el ingeniero afirma que es para \"entrenar un modelo de predicción en su casa para un trabajo de maestría\".\n*",
+          "statement": "La actuación profesional y ética obligatoria del Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Rechazar el merge request en el repositorio y advertirle al compañero que borre los datos de su cuenta privada, acordando no divulgar el hecho si no vuelve a repetirse."
+            },
+            {
+              "id": "B",
+              "text": "Suspender el flujo de integración continua, asegurar la evidencia digital (commits, logs de red) y radicar de inmediato un informe formal ante el Oficial de Seguridad de la Información y la Oficina de Control Interno Disciplinario por presunta violación de la reserva tributaria."
+            },
+            {
+              "id": "C",
+              "text": "Exigirle al compañero que comparta los resultados del modelo académico para evaluar si la DIAN puede aprovechar la investigación antes de tomar medidas.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al mandato insoslayable del Artículo 583 del Estatuto Tributario, el principio rector \"Para ser impecable no necesito testigos\" y el deber legal de denunciar delitos informáticos y faltas disciplinarias gravísimas (Art. 67 CPP). La fuga de datos protegidos no admite arreglos entre compañeros.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Encubrimiento y complicidad en un delito contra la administración pública."
+              },
+              {
+                "id": "C",
+                "reason": "Convalidación inmoral de una falta gravísima bajo el pretexto de un beneficio técnico secundario."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1218,
+          "topic": "Tema Módulo 12",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Subdirección de Fiscalización solicita un modelo analítico predictivo para seleccionar contribuyentes a fiscalizar por presunto contrabando técnico. El equipo de negocio insiste en utilizar un conjunto rígido de 5 variables tradicionales basadas en el monto importado. El Inspector I y su equipo han demostrado empíricamente que un modelo de grafos con árboles de decisión que analiza redes de vínculos y triangulación de precios reduce los falsos positivos en un 40%. Los auditores de negocio se muestran escépticos y afirman que \"no confían en modelos que no entienden\".\n*",
+          "statement": "La estrategia que debe desplegar el Inspector I conforme al Nivel 4 de Comunicación Efectiva e Innovación es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Descartar el modelo avanzado y programar el script con las 5 variables tradicionales solicitadas por negocio para evitar fricciones y cumplir a tiempo con el requerimiento."
+            },
+            {
+              "id": "B",
+              "text": "Diseñar un taller interactivo de co-construcción donde presente visualmente casos piloto anonimizados, comparando el rendimiento del modelo tradicional frente al avanzado en términos de recaudo real y precisión, construyendo un glosario ejecutivo claro y acordando un plan piloto conjunto."
+            },
+            {
+              "id": "C",
+              "text": "Radicar un memorando formal ante la Dirección General denunciando la falta de conocimientos tecnológicos del área de Fiscalización para que les impongan el uso obligatorio del modelo por resolución.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Representa el Nivel 4 de Comunicación Efectiva e Innovación: construye puentes entre áreas técnicas y de negocio, traduce la analítica compleja a valor público tangible y genera apropiación mediante la co-construcción sin caer en imposiciones autoritarias ni en resignación técnica.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Postura pasiva que priva a la DIAN de capacidades analíticas avanzadas para combatir el fraude fiscal."
+              },
+              {
+                "id": "C",
+                "reason": "Comunicación agresiva y destructiva que daña las relaciones interdependencias y genera resistencia al cambio."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1219,
+          "topic": "Tema Módulo 12",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la fase final de despliegue del nuevo módulo de Facturación Electrónica UBL 2.1, dos miembros del equipo técnico se encuentran incapacitados por motivos de salud. Los tres integrantes restantes, incluido el Inspector I, enfrentan jornadas intensas para cumplir con la fecha de lanzamiento. Uno de los compañeros comienza a mostrar señales visibles de agotamiento extremo, comete fallas reiteradas en tareas sencillas y reacciona de forma irritable ante cualquier consulta.\n*",
+          "statement": "La actuación que refleja el Nivel 3 de Trabajo en Equipo y Liderazgo Situacional es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Solicitar una reunión breve y reservada con el compañero para escuchar su situación, redistribuir solidariamente las cargas de trabajo de forma técnica y acordar con el líder del proyecto priorizar las tareas críticas del lanzamiento difiriendo las secundarias."
+            },
+            {
+              "id": "B",
+              "text": "Exigirle al compañero en presencia de todo el equipo que mantenga el profesionalismo y cumpla con su cuota de trabajo, advirtiéndole que cualquier retraso afectará la evaluación de todos."
+            },
+            {
+              "id": "C",
+              "text": "Asumir en silencio la totalidad del trabajo del compañero sin decirle nada a nadie, trabajando toda la noche para no involucrar al líder.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Se alinea con el Nivel 3 de Trabajo en Equipo: cuida activamente el clima laboral, demuestra empatía profesional, gestiona la solución en el equipo y renegocia técnicamente con la coordinación las prioridades sin poner en riesgo la salud humana ni la calidad del entregable.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Insensibilidad que destruye el clima organizacional y agrava el riesgo psicosocial."
+              },
+              {
+                "id": "C",
+                "reason": "Sobrecarga insostenible que propicia errores técnicos graves por fatiga extrema y oculta la realidad operativa al líder del proyecto."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1220,
+          "topic": "Tema Módulo 12",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Dirección de Innovación y Tecnología conforma un comité técnico asesor para evaluar las ofertas de infraestructura de nube pública para el DataR de la DIAN. El Inspector I es designado evaluador técnico. Al revisar la lista de oferentes, descubre que la firma representante de uno de los proveedores globales tiene como Director de Arquitectura a su hermano biológico. El pliego ya se encuentra publicado y la evaluación vence en 48 horas.\n*",
+          "statement": "Conforme al marco de integridad y régimen legal de inhabilidades e incompatibilidades, el Inspector I debe:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Realizar la evaluación técnica aplicando la máxima rigurosidad objetiva para beneficiar a la DIAN, absteniéndose de informar el parentesco para no retrasar el cronograma contractual."
+            },
+            {
+              "id": "B",
+              "text": "Manifestar formalmente y por escrito su impedimento de manera inmediata ante su superior jerárquico y el Comité de Contratación, solicitando su separación de la evaluación técnica debido a la causal legal expresa de parentesco dentro del segundo grado de consanguinidad."
+            },
+            {
+              "id": "C",
+              "text": "Evaluar a todos los oferentes excepto al de su hermano, solicitando a un compañero del comité que califique a ese proveedor específico de manera informal.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Cumplimiento estricto del Artículo 11 de la Ley 1437 de 2011 (CPACA) y la Ley 1952 de 2019. El parentesco en segundo grado de consanguinidad (hermanos) constituye causal objetiva e insubsanable de impedimento. La transparencia del proceso contractual público prima sobre cualquier consideración de tiempo o amistad.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "La ley prohíbe auto-declararse imparcial ante una causal expresa; vicia de nulidad absoluta el proceso licitatorio y configura falta gravísima."
+              },
+              {
+                "id": "C",
+                "reason": "Fraude y triangulación indebida para eludir el trámite legal de impedimento."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-12",
-      "track": "comportamentales"
+      ]
     },
     "exam-13": {
-      "title": "Examen: 13. Comunicación Efectiva Nivel 4 (10 Preguntas PJS)",
-      "indicatorNum": 13,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 12. Comportamiento Ético (Nivel 4)",
       "questions": [
         {
           "id": 1301,
-          "topic": "Presentación ejecutiva ante niveles directivos",
-          "caseText": "El Director General de la DIAN convoca a una sesión urgente de cinco minutos para conocer por qué el sistema de facturación electrónica presentó intermitencias durante la mañana.",
-          "statement": "Para comunicar el incidente de forma asertiva en el marco de la Comunicación Efectiva Nivel 4, al profesional le corresponde:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Me abstengo de consultar o descargar información fiscal, aduanera o patrimonial de cualquier contribuyente en las plataformas de la DIAN a menos que medie una orden de trabajo o asignación funcional debidamente motivada y documentada.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "presentar una síntesis ejecutiva estructurada: causa raíz técnica explicada en lenguaje claro, impacto en el recaudo, medidas de contingencia aplicadas y plan de prevención definitivo."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "leer textualmente quinientas líneas de código de error de Java y términos técnicos incomprensibles para directivos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "decir que no pasó nada importante para que la reunión termine rápido."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Comunicación Efectiva Nivel 4 exige capacidad de síntesis y adaptación del registro técnico a audiencias estratégicas, traduciendo fallas complejas en impactos de negocio y soluciones concretas.",
+            "correct": "Se ajusta al mandato taxativo del Artículo 583 del Estatuto Tributario y tipifica la conducta del Nivel 4 de Comportamiento Ético: actuar con rectitud y estricta legalidad protegiendo la reserva legal sin ceder a la curiosidad.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Abrumar con jerga técnica inaccesible entorpece la toma de decisiones oportunas en el nivel directivo."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Minimizar incidentes atenta contra la veracidad y la transparencia institucional."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1302,
-          "topic": "Pedagogía y atención a usuarios no técnicos de Seccionales",
-          "caseText": "Un grupo de auditores tributarios de una Dirección Seccional remota manifiesta frustración porque no entienden cómo interpretar las nuevas variables del modelo de riesgo en el DataR.",
-          "statement": "La conducta comunicativa que debe adoptar el Inspector I desde el Nivel Central es:",
+          "topic": "Tema Módulo 13",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi vida laboral he sentido la tentación de procrastinar o posponer una tarea tediosa de documentación técnica al finalizar la tarde.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "organizar mesas de trabajo pedagógicas y diseñar manuales didácticos paso a paso con casos prácticos de fiscalización real, resolviendo dudas con empatía y lenguaje accesible."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "enviar un correo recordándoles que ellos deben saber de sistemas porque son profesionales."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "ignorar sus consultas y bloquear sus extensiones telefónicas."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La competencia en Nivel 4 se manifiesta en la capacidad pedagógica para transferir conocimiento técnico a usuarios operativos, escuchando sus dificultades y facilitando la adopción de las herramientas.",
+            "correct": "La procrastinación ocasional ante tareas repetitivas es una experiencia universal en trabajadores humanos. Negarla sistemáticamente es el sello del perfil simulador (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las respuestas despectivas generan barreras de comunicación y desarticulación institucional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Bloquear la comunicación vulnera el principio de coordinación y apoyo entre dependencias."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Incrementa el puntaje en la escala de simulación, afectando negativamente la validez de la prueba."
               }
             ]
           }
         },
         {
           "id": 1303,
-          "topic": "Manejo asertivo de discrepancias técnicas en reuniones",
-          "caseText": "En una mesa técnica, un compañero de mayor antigüedad defiende un diseño de base de datos relacional que provocará cuellos de botella en el DataR. El Inspector I tiene evidencia de que ese modelo fallará.",
-          "statement": "La forma asertiva y profesional de plantear la objeción técnica es:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un intermediario o representante empresarial me ofrece algún regalo, agasajo o beneficio a cambio de agilizar la carga de sus datos de facturación electrónica, rechazo el ofrecimiento y lo denuncio penal y disciplinariamente de manera inmediata.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "exponer con serenidad y respeto los datos empíricos y pruebas de carga que evidencian los riesgos del modelo propuesto, formulando una alternativa constructiva basada en estándares de la industria."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "descalificar públicamente los conocimientos del compañero diciendo que sus ideas son del siglo pasado."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "guardar silencio para evitar discusiones y esperar a que el sistema colapse para decir 'yo lo sabía'."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La asertividad en Nivel 4 combina firmeza en los argumentos técnicos con respeto hacia los interlocutores, apoyándose en datos objetivos y proponiendo alternativas viables.",
+            "correct": "Nivel 4 de Comportamiento Ético: rechazo frontal a la corrupción y cumplimiento del deber de denuncia de delitos de cohecho (Art. 67 CPP y Ley 1952 de 2019).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El ataque personal deteriora el clima laboral y viola el respeto interprofesional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "El silencio pasivo perjudica el proyecto institucional y evade la responsabilidad técnica."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1304,
-          "topic": "Claridad y rigor en la redacción de informes periciales",
-          "caseText": "La Dirección de Gestión Jurídica solicita un informe pericial de datos para sustentar ante el Tribunal Administrativo una liquidación oficial por evasión millonaria.",
-          "statement": "El informe elaborado por el profesional debe caracterizarse por:",
+          "topic": "Tema Módulo 13",
+          "level": "Falsa Proactividad / Reserva Legal",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un hermano que tiene una pyme me pide revisar confidencialmente si su empresa está en la lista de perfiles de riesgo alto de fiscalización para corregir su declaración a tiempo, considero ético ayudarlo para evitarle una sanción onerosa.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "estructura impecable, antecedentes normativos claros, metodología cuantitativa descrita rigurosamente, conclusiones categóricas respaldadas en anexos probatorios y ausencia de juicios de valor subjetivos."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "un texto ambiguo y cargado de metáforas poéticas que no defina conclusiones claras."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "una sola página con la palabra 'el contribuyente es culpable' sin anexos de soporte."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Los informes periciales en Nivel 4 deben tener valor probatorio pleno: precisión fáctica, metodología verificable, lenguaje objetivo y fundamentación legal que resista el escrutinio judicial.",
+            "correct": "Violación de reserva tributaria, conflicto de interés grave y favorecimiento ilícito. En Nivel 4, el Inspector I no antepone los lazos sanguíneos sobre la moralidad pública y la ley.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La ambigüedad en informes oficiales debilita la defensa jurídica del Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Los informes sin soporte probatorio son desestimados por los jueces por violación al debido proceso."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1305,
-          "topic": "Escucha activa ante peticiones de cambio de áreas usuarias",
-          "caseText": "Los funcionarios de la División de Cobranzas solicitan una modificación en los reportes de DataR. Durante la reunión de levantamiento de requisitos, el analista de datos no los deja hablar y asume que ya sabe lo que necesitan.",
-          "statement": "Para aplicar la Comunicación Efectiva Nivel 4, el profesional debió:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Mantengo la misma pulcritud y rigor en el manejo de datos reservados cuando trabajo en teletrabajo sin supervisión presencial que cuando estoy en la sede central bajo observación directa de mis superiores.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "practicar la escucha activa, tomar nota atenta de las necesidades reales de los auditores, parafrasear para confirmar el entendimiento mutuo y construir conjuntamente la solución requerida."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "imponer su diseño técnico sin escuchar, afirmando que los usuarios nunca saben lo que quieren."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "revisar su teléfono celular durante toda la reunión sin prestar atención."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La escucha activa es la base de la comunicación efectiva: validar y comprender los requerimientos del usuario misional antes de diseñar soluciones asegura que los productos de datos resuelvan problemas reales.",
+            "correct": "Aplica textualmente el principio rector del Código de Integridad de la DIAN: actuar con honestidad intrínseca sin requerir vigilancia externa.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Imponer soluciones técnicas aisladas de la realidad de negocio genera productos inútiles."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Ignorar a los interlocutores es una falta de respeto y profesionalismo."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1306,
-          "topic": "Comunicación en situaciones de crisis tecnológica",
-          "caseText": "Ocurre una caída mayor en la plataforma de recepción de declaraciones tributarias a cuatro horas del vencimiento del plazo legal sin prórroga decretada.",
-          "statement": "El canal y estilo de comunicación que debe liderar el equipo de datos es:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Manifiesto formalmente y por escrito cualquier impedimento o conflicto de interés ante mis superiores de manera inmediata, absteniéndome de intervenir en procesos donde tenga vínculos familiares o societarios.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "comunicación transparente y oportuna mediante boletines periódicos de estado a través de canales institucionales, informando el estado del diagnóstico, tiempos estimados de restablecimiento y alternativas de contingencia."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "apagar las líneas de comunicación y no dar explicaciones a nadie hasta el día siguiente."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "emitir comunicados contradictorios en redes sociales personales culpando a los usuarios."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "En crisis, la comunicación institucional proactiva, transparente y unificada transmite tranquilidad, reduce la incertidumbre pública y facilita la toma de medidas legales de contingencia.",
+            "correct": "Cumplimiento del mandato de la Ley 1437 de 2011 (Art. 11) y Ley 1952 de 2019 (Art. 40). El servidor público no juzga su propia neutralidad; manifiesta la causal objetiva.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El silencio en crisis genera pánico en los contribuyentes y daño reputacional al Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Las opiniones no oficiales en redes distorsionan la comunicación y generan caos."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1307,
-          "topic": "Retroalimentación constructiva a colaboradores",
-          "caseText": "Un profesional en período de prueba comete errores en la documentación de un pipeline ETL. El Inspector I es el encargado de revisar su entrega.",
-          "statement": "La forma en que debe brindar retroalimentación en el marco de la competencia es:",
+          "topic": "Tema Módulo 13",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi trayectoria profesional he experimentado un momento de enojo o disgusto con un compañero de trabajo por discrepancias técnicas en el desarrollo de un proyecto.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "brindar retroalimentación oportuna en privado, destacando los aspectos positivos del trabajo, explicando con claridad pedagógica los puntos a corregir y acordando compromisos de mejora mutua."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "reprenderlo a gritos en público delante de toda la oficina para que aprenda por la fuerza."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "no decirle nada pero calificarlo con cero en su evaluación laboral."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La retroalimentación en Nivel 4 es formativa y constructiva: reconoce aciertos, puntualiza oportunidades de mejora en privado y fortalece el desarrollo de las competencias del colaborador.",
+            "correct": "El desacuerdo y la irritación momentánea son emociones naturales en dinámicas de equipo complejas. La competencia evalúa el manejo asertivo, no la anulación de la biología humana.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los gritos públicos constituyen acoso laboral (Ley 1010 de 2006) y destruyen el clima de trabajo."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Evaluar negativamente sin retroalimentación previa viola las directrices de evaluación del desempeño de la CNSC."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo clásico de escala L."
               }
             ]
           }
         },
         {
           "id": 1308,
-          "topic": "Negociación de acuerdos interdepartamentales",
-          "caseText": "El área de Fiscalización exige que los datos de facturación se actualicen cada minuto, mientras que el área de Infraestructura afirma que solo puede hacerse cada 6 horas para no sobrecargar los servidores.",
-          "statement": "El Inspector I debe intervenir facilitando la comunicación para:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un directivo me ordena verbalmente omitir un hallazgo de manipulación de datos en un clúster analítico para evitar un escándalo en medios de comunicación, mantengo el reporte técnico y acudo a las instancias de control disciplinario.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "identificar los casos de uso verdaderamente críticos que requieren tiempo real frente a los que pueden operar por lotes, construyendo un acuerdo técnico viable que satisfaga las necesidades de negocio sin degradar la infraestructura."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "alentar a que las dos áreas se enfrenten en una discusión verbal hasta que una de las dos se rinda."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "desentenderse del problema alegando que no es su responsabilidad."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Comunicación Efectiva Nivel 4 incluye la capacidad de negociación integrativa y facilitación de consensos basados en valor de negocio y viabilidad técnica.",
+            "correct": "Nivel 4 de Comportamiento Ético: defensor del interés público ante presiones internas de alta jerarquía.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Promover confrontaciones laborales perjudica la operatividad institucional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La indiferencia evade el liderazgo profesional esperado en el Nivel 4."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1309,
-          "topic": "Claridad en la respuesta a Derechos de Petición (PQRSF)",
-          "caseText": "Un ciudadano radica un derecho de petición solicitando que la DIAN le explique por qué se le generó una alerta de inconsistencia en su declaración de renta.",
-          "statement": "La respuesta proyectada por el profesional de datos debe formularse:",
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Utilizo los servidores de cómputo, almacenamiento de datos y ancho de banda asignados por la DIAN estrictamente para el cumplimiento de las metas misionales, absteniéndome de emplearlos para proyectos privados o minería de datos particular.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "en un lenguaje claro, respetuoso y didáctico, explicando el fundamento normativo y los hechos específicos que originaron la inconsistencia sin tecnicismos innecesarios, orientándolo sobre cómo subsanarla."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "adjuntando únicamente un volcado de código SQL incomprensible sin explicación de texto."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "con un tono amenazante advirtiéndole que será encarcelado inmediatamente si vuelve a preguntar."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "Las respuestas a la ciudadanía deben garantizar el derecho fundamental a la información clara (CPACA y Ley 1755 de 2015), explicando motivos fácticos y jurídicos con pedagogía y respeto.",
+            "correct": "Protección del erario público y prevención de peculado por uso (Código Penal y Ley 1952 de 2019).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Enviar código fuente sin explicación vulnera el deber de claridad ante el ciudadano."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Las amenazas atentan contra la dignidad humana y configuran faltas disciplinarias graves."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1310,
-          "topic": "Comunicación asertiva con proveedores de software",
-          "caseText": "Un contratista de tecnología incumple reiteradamente los plazos de entrega de un módulo de analítica para el DataR, excusándose en ambigüedades contractuales.",
-          "statement": "La comunicación formal que el Inspector I debe articular en apoyo a la supervisión del contrato es:",
+          "topic": "Tema Módulo 13",
+          "level": "Falsa Proactividad / Gobierno de Datos",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero justificable apagar temporalmente las bitácoras de auditoría de accesos a la base de datos si eso permite duplicar la velocidad de procesamiento durante un cierre fiscal urgente.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "requerir formalmente por escrito al contratista detallando con evidencia técnica los incumplimientos específicos frente a los entregables pactados, otorgando el término contractual para su subsanación con copia a la supervisión."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "insultar al gerente de la empresa contratista por teléfono en llamadas privadas."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "aprobar los pagos del contrato incompleto para evitar litigios judiciales."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La supervisión contractual del Estado requiere comunicaciones escritas formales, objetivas, sustentadas en evidencia técnica y respetuosas de los términos legales del Estatuto General de Contratación (Ley 80 de 1993).",
+            "correct": "Las bitácoras de auditoría (<em>audit logs</em>) garantizan la no repudiación y la trazabilidad forense. Apagarlas crea un punto ciego que permite fraudes indetectables.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las ofensas verbales carecen de valor procesal y comprometen la ética del servidor público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Aprobar pagos por servicios no recibidos constituye peculado en favor de terceros y detrimento patrimonial."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1311,
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo periódicamente en mi célula de trabajo debates sobre dilemas éticos en inteligencia artificial, sesgos algorítmicos y privacidad de datos, sensibilizando a mis compañeros sobre nuestra responsabilidad social.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Descriptor del Nivel 4: promueve activamente una cultura de integridad y rectitud en su entorno institucional.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1312,
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Consigno con exactitud matemática y objetividad científica las fallas, brechas de seguridad o inconsistencias halladas en los datos, sin matizar o suavizar los resultados para agradar a los directivos.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Principio de veracidad y objetividad. Los datos deben reflejar la realidad empírica para la toma de decisiones correcta del Estado.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1313,
+          "topic": "Tema Módulo 13",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he tenido la más mínima duda sobre cuál es la decisión correcta ante una situación éticamente ambigua en el ámbito profesional.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Los dilemas éticos complejos generan dudas reflexivas en profesionales maduros; consultar la norma y deliberar es sano. Afirmar infalibilidad moral inmediata es un rasgo de simulación psicométrica.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de fingimiento moral."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1314,
+          "topic": "Comportamiento Ético",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Guardo reserva absoluta sobre las investigaciones disciplinarias o penales en curso en las que participo como perito informático, negándome a comentar detalles incluso con colegas cercanos no autorizados.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Reserva procesal legal y lealtad institucional en peritajes forenses.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1315,
+          "topic": "Tema Módulo 13",
+          "level": "Falsa Proactividad / Seguridad Informática",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un colega necesita firmar digitalmente un certificado de base de datos antes de una auditoría externa y no tiene su token a mano, considero correcto prestarle mi firma electrónica personal por hermandad laboral.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "La firma digital y el certificado criptográfico tienen equivalencia funcional a la firma manuscrita y son legalmente intransferibles (Ley 527 de 1999). Prestarla configura falsedad y ruptura de no repudiación.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1316,
+          "topic": "Tema Módulo 13",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante la calibración semestral del algoritmo de grafos para la detección de redes de empresas ficticias de facturación electrónica en el DataR, el Inspector I observa que un gran consorcio empresarial con millonarias devoluciones de IVA presenta una alta probabilidad de fraude tributario. El líder del proyecto le indica en privado que el Director Seccional solicitó \"ajustar los umbrales de ponderación\" del algoritmo para excluir a dicho contribuyente del reporte que irá a Fiscalización, bajo el argumento de que \"se trata de una empresa estratégica para la economía regional que no debe ser molestada\".\n*",
+          "statement": "La actuación profesional y ética que debe asumir el Inspector I conforme al Nivel 4 de Comportamiento Ético es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Modificar los pesos del algoritmo como pide el líder para no generar conflictos, pero guardar en su correo personal una copia del dataset original por si alguna vez la Procuraduría investiga el caso."
+            },
+            {
+              "id": "B",
+              "text": "Negarse a manipular los parámetros del algoritmo, emitir el informe técnico íntegro con el soporte matemático del hallazgo y radicar formalmente la situación ante la Oficina de Control Interno Disciplinario y la Dirección de Gestión de Innovación y Tecnología."
+            },
+            {
+              "id": "C",
+              "text": "Solicitar el traslado inmediato a otra subdirección técnica para no verse involucrado en decisiones complejas de negocio tributario.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al Nivel 4: referente del Código de Integridad de la DIAN, defiende con firmeza el interés público ante presiones internas de jerarquía, protege la veracidad de los datos y cumple con el deber legal de denunciar conductas de corrupción (Ley 1952 de 2019).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Complicidad activa y manipulación dolosa de herramientas del Estado. Guardar copias personales en correo privado vulnera la reserva tributaria (Art. 583 E.T.)."
+              },
+              {
+                "id": "C",
+                "reason": "Evasión pasiva y cobardía moral incompatible con el perfil de un Inspector profesional de la DIAN."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1317,
+          "topic": "Tema Módulo 13",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En un monitoreo de ciberseguridad sobre fuentes abiertas e inteligencia de amenazas (<em>Threat Intelligence</em>), el Inspector I detecta que las credenciales de acceso de un administrador de base de datos de la DIAN están a la venta en la <em>Dark Web</em>. Al analizar las bitácoras del servidor, identifica que desde esa cuenta se han realizado descargas masivas de registros de importaciones aduaneras a altas horas de la madrugada. El titular de la cuenta es un compañero de universidad y amigo personal muy querido por el Inspector I.\n*",
+          "statement": "Ante esta situación crítica de seguridad nacional y lealtad personal, la conducta ética obligatoria es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Llamar inmediatamente al amigo para alertarlo y pedirle que cambie la contraseña y elimine los registros de descarga antes de que el equipo de seguridad se dé cuenta."
+            },
+            {
+              "id": "B",
+              "text": "Revocar preventivamente los accesos de la cuenta según el protocolo de incidentes de seguridad, recolectar la evidencia forense digital preservando la cadena de custodia y radicar el informe de incidente ante el Oficial de Seguridad de la Información y Control Disciplinario."
+            },
+            {
+              "id": "C",
+              "text": "Esperar a que el sistema automatizado de ciberseguridad bloquee la cuenta por sí solo para no tener que denunciar directamente a un amigo de toda la vida.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "La lealtad a la Constitución, a la ley y a los ciudadanos de la República de Colombia prima de forma absoluta sobre cualquier vínculo de afecto personal. El deber de custodia y contención del incidente protege a la institución de catástrofes de ciberseguridad.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Traición a la función pública, obstrucción a la justicia y favorecimiento penal."
+              },
+              {
+                "id": "C",
+                "reason": "Omisión grave del deber funcional que permite la continuidad de la fuga de datos del Estado."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1318,
+          "topic": "Tema Módulo 13",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La DIAN se encuentra estructurando los pliegos definitivos de la licitación para la adquisición de la plataforma Lakehouse corporativa por un valor superior a los 20 mil millones de pesos. Uno de los mayores fabricantes mundiales de software en la nube envía al Inspector I, quien integra el equipo de especificaciones técnicas, una invitación formal para asistir como expositor invitado con todos los gastos pagos a una cumbre tecnológica en Las Vegas, ofreciéndole honorarios de conferencista.\n*",
+          "statement": "La postura íntegra y transparente que debe asumir el servidor es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar la invitación y viajar solicitando permiso no remunerado para no usar tiempo laboral de la DIAN, comprometiéndose a no hablar de los pliegos de la licitación."
+            },
+            {
+              "id": "B",
+              "text": "Rechazar por escrito la invitación de plano, devolver cualquier beneficio material y poner en conocimiento formal de la Dirección de Contratación el hecho para blindar el proceso de posibles recusaciones o vicios de selección objetiva."
+            },
+            {
+              "id": "C",
+              "text": "Aceptar únicamente los tiquetes aéreos pero rechazar los honorarios para demostrar que solo le interesa la capacitación técnica.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al Código de Integridad de la DIAN, a la Ley 80 de 1993 y a la Ley 2195 de 2022 (Transparencia y lucha contra la corrupción). Aceptar dádivas u honorarios de potenciales oferentes vicia la imparcialidad del evaluador técnico y configura cohecho impropio o conflicto de interés sancionable con destitución.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Usar licencias no remuneradas no subsana el conflicto de interés ni la prohibición legal de recibir dádivas de oferentes."
+              },
+              {
+                "id": "C",
+                "reason": "Aceptar tiquetes sigue siendo una prebenda económica indebida que compromete la objetividad pública."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1319,
+          "topic": "Tema Módulo 13",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Un asesor del Despacho del Director General llega al puesto de trabajo del Inspector I y le solicita en un disco duro externo un volcado sin anonimizar de las ventas declaradas por los 500 mayores contribuyentes del país, argumentando que \"el Ministro de Hacienda necesita preparar una alocución económica urgente para esta misma noche y no hay tiempo para oficios burocráticos\".\n*",
+          "statement": "La actuación profesional y apegada a la reserva tributaria que debe desplegar el Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Entregar el archivo inmediatamente en el disco duro porque la orden proviene del Despacho del Director General y atiende una urgencia del Ministro de Hacienda."
+            },
+            {
+              "id": "B",
+              "text": "Informar cortésmente al asesor que la entrega de microdatos de contribuyentes sin anonimizar está amparada por la reserva tributaria del Artículo 583 del Estatuto Tributario, por lo cual se requiere la solicitud formal a través de los canales institucionales autorizados o, en su defecto, ofrecer entregar en el acto un reporte con datos agregados y estadísticos que no vulneren la reserva legal."
+            },
+            {
+              "id": "C",
+              "text": "Entregar el disco duro pero hacer que el asesor firme una servilleta o recibo informal como descargo de responsabilidad.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Aplica la reserva legal tributaria con altura profesional y criterio técnico: no cede a la jerarquía cuando se viola la ley, pero ofrece una alternativa legal viable (datos agregados/estadísticos que sí son públicos y atienden la necesidad de la alocución presidencial).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Violación flagrante del Artículo 583 del E.T. Las alocuciones presidenciales o ministeriales no derogan la reserva legal de los ciudadanos."
+              },
+              {
+                "id": "C",
+                "reason": "Los descargos informales carecen de validez jurídica frente a una violación de la reserva constitucional de datos."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1320,
+          "topic": "Tema Módulo 13",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la entrega de un proyecto de migración de datos aduaneros del sistema SYGA hacia el DataR, el Inspector I descubre que durante el proceso ETL hubo una pérdida silenciosa de trazabilidad en más de 200.000 declaraciones de importación de años anteriores. Al plantear el tema en el equipo de desarrollo, los compañeros le dicen que \"el cliente funcional ya firmó el acta de conformidad y que si reportan el error ahora se anularán las bonificaciones por desempeño de todo el grupo\", pidiéndole que lo deje pasar.\n*",
+          "statement": "La decisión íntegra que debe guiar al profesional conforme al Nivel 4 de Comportamiento Ético es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar el silencio del equipo para proteger la armonía laboral y el estímulo económico de sus compañeros, ya que la información corresponde a años pasados."
+            },
+            {
+              "id": "B",
+              "text": "Documentar técnica y exhaustivamente la inconsistencia, presentar un plan de contingencia y reprocesamiento de datos ante la jefatura de la Subdirección de Procesamiento de Datos, asumiendo la responsabilidad técnica de sanear la información histórica institucional."
+            },
+            {
+              "id": "C",
+              "text": "Filtrar anónimamente la información a un sindicato de la entidad para que ellos presionen públicamente a la administración.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea con el principio de veracidad y el Nivel 4 ético: antepone la calidad e integridad de los datos del Estado por encima de bonificaciones económicas o complicidades de grupo. Acompaña el hallazgo con la solución técnica (plan de remediación y reprocesamiento).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Corrupción administrativa por ocultamiento doloso de fallas para percibir bonificaciones públicas indebidas."
+              },
+              {
+                "id": "C",
+                "reason": "Vía clandestina y desleal que daña a la entidad en lugar de solucionar institucionalmente la brecha técnica."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-13",
-      "track": "comportamentales"
+      ]
     },
     "exam-14": {
-      "title": "Examen: 14. Innovación Nivel 4 (10 Preguntas PJS)",
-      "indicatorNum": 14,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 13. Comunicación Efectiva (Nivel 4)",
       "questions": [
         {
           "id": 1401,
-          "topic": "Desarrollo de Pruebas de Concepto (PoC) controladas",
-          "caseText": "Un profesional de datos identifica que las técnicas de Procesamiento de Lenguaje Natural (NLP) permitirían clasificar automáticamente los miles de recursos de reconsideración jurídicos que llegan diariamente a la DIAN, ahorrando cientos de horas de revisión manual.",
-          "statement": "La iniciativa que mejor refleja la competencia de Innovación Nivel 4 es:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Diseño presentaciones e infografías ejecutivas donde traduzco el funcionamiento de modelos complejos de aprendizaje automático a métricas tributarias tangibles para que los directivos de fiscalización tomen decisiones informadas sin necesidad de conocer código.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "diseñar una prueba de concepto (PoC) en un ambiente controlado con datos sintéticos, medir la precisión del modelo contra una muestra humana y presentar el caso de negocio y viabilidad a las áreas jurídica y de TI."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "descartar la idea por considerar que los procesos del Estado nunca deben cambiar."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "instalar un software no autorizado de internet directamente en los servidores de producción de la DIAN sin aprobación previa."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Innovación Nivel 4 combina audacia metodológica con rigor institucional: la construcción de prototipos controlados valida el valor y factibilidad antes de escalar a producción, gestionando el riesgo responsablemente.",
+            "correct": "Describe con precisión el descriptor del Nivel 4 de Comunicación Efectiva: adaptar el mensaje especializado al contexto directivo para lograr impacto institucional.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El conformismo procedimental frena la modernización y perpetúa ineficiencias en el sector público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Instalar software no autorizado en servidores de producción viola la seguridad y pone en riesgo infraestructuras críticas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1402,
-          "topic": "Automatización de Tareas Repetitivas en Pipelines",
-          "caseText": "En la Seccional, los analistas de datos dedican tres horas diarias a descargar manualmente archivos CSV de diferentes portales y pegarlos en una hoja de Excel consolidada para generar un reporte de cartera.",
-          "statement": "La actuación proactiva del Inspector I enmarcada en la innovación es:",
+          "topic": "Tema Módulo 14",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi vida laboral me he distraído o he desconectado mentalmente durante una reunión de trabajo larga o excesivamente teórica.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "desarrollar un pipeline automatizado de extracción e ingesta programada que cargue directamente los datos al DataR y genere el tablero en tiempo real, liberando el tiempo de los analistas para labores de análisis estratégico."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "solicitar la contratación de más personal para que descarguen los archivos más rápido."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "dejar de generar el reporte de cartera para que los analistas no se cansen."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Innovación en Nivel 4 identifica ineficiencias operativas y crea soluciones automatizadas sostenibles que optimizan el uso del tiempo y los recursos públicos.",
+            "correct": "Las fluctuaciones de la atención son fenómenos cognitivos universales en cualquier persona. Negarlas evidencia falseamiento de la prueba.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Contratar personal para tareas mecánicas automatizables genera gasto público ineficiente."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Suspender reportes de control fiscal perjudica el recaudo de la administración."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira que penaliza el índice de validez."
               }
             ]
           }
         },
         {
           "id": 1403,
-          "topic": "Vigilancia Tecnológica y Mejores Prácticas de Administraciones Tributarias",
-          "caseText": "Durante un congreso internacional del CIAT, se presentan experiencias exitosas de administraciones tributarias europeas que utilizan aprendizaje por refuerzo para optimizar auditorías aduaneras en puertos marítimos.",
-          "statement": "El profesional de datos con competencia de Innovación Nivel 4 debe:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Durante incidentes críticos de indisponibilidad de bases de datos o servicios web, comunico con serenidad y objetividad el estado técnico de la falla a los directivos, evitando tecnicismos que confundan y enfocándome en el plan de mitigación y tiempos de recuperación.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "investigar la aplicabilidad de esas metodologías a la realidad operativa del comercio exterior colombiano, preparando una propuesta estructurada de adaptación técnica para discusión en el comité de innovación."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "afirmar que en Colombia nada de eso sirve porque aquí la tecnología siempre falla."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "guardar la información para su beneficio personal exclusivo sin compartirla con la entidad."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La vigilancia tecnológica y la transferencia activa de mejores prácticas globales contextualizadas a la realidad institucional evidencian el liderazgo en innovación de Nivel 4.",
+            "correct": "Nivel 4 de Comunicación: manejo de crisis de alto impacto, contención de la incertidumbre directiva y transparencia técnica sin excusas.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El escepticismo destructivo bloquea la adopción de avances tecnológicos en el Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Ocultar conocimientos adquiridos en comisiones oficiales contradice el espíritu del servicio público."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1404,
-          "topic": "Gestión del Error en Procesos de Innovación",
-          "caseText": "Un piloto experimental diseñado por el equipo de datos para predecir evasión en restaurantes no alcanza la precisión esperada y produce un alto número de falsos positivos en las primeras pruebas de campo.",
-          "statement": "La actitud resiliente e innovadora que corresponde desplegar es:",
+          "topic": "Tema Módulo 14",
+          "level": "Falsa Proactividad / Canales Seguros",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Para ahorrar trámites y responder rápidamente a un auditor tributario amigo, considero adecuado enviarle por WhatsApp capturas de pantalla de consultas preliminares de bases de datos de contribuyentes.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "analizar rigurosamente las causas del desvío, capitalizar las lecciones aprendidas sobre las particularidades del sector restaurantero y ajustar las variables del modelo de forma iterativa hasta alcanzar el estándar requerido."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "ocultar los resultados del piloto y maquillar las métricas para asegurar que fue un éxito rotundo."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "abandonar definitivamente la investigación y jurar no volver a intentar ningún cambio en la DIAN."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Innovación Nivel 4 concibe el error controlado en etapas de experimentación como una oportunidad de aprendizaje iterativo para refinar y robustecer las soluciones definitivas.",
+            "correct": "Los canales de comunicación institucional deben preservar la seguridad y la confidencialidad de la reserva tributaria (Art. 583 E.T.). WhatsApp no es un canal autorizado para la fuga de microdatos.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Falsificar métricas de desempeño es una falta grave a la ética que compromete la toma de decisiones."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La renuncia ante el primer tropiezo demuestra baja tolerancia a la frustración y carencia de visión innovadora."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1405,
-          "topic": "Simplificación de Trámites y Experiencia del Contribuyente",
-          "caseText": "El trámite de inscripción y actualización del Registro Único Tributario (RUT) requiere que el ciudadano cargue varios documentos en PDF que el sistema tarda días en verificar manualmente.",
-          "statement": "La propuesta de innovación disruptiva que el profesional debe formular es:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Dedico tiempo a escuchar activamente a los funcionarios de las seccionales aduaneras y tributarias para entender sus dificultades reales en territorio antes de definir las especificaciones de un nuevo pipeline de datos.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "diseñar una integración por servicios web con la Registraduría Nacional y las Cámaras de Comercio para validar la identidad y personerías en tiempo real con biometría digital, permitiendo la expedición instantánea del RUT."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "exigir que el ciudadano presente todos los papeles autenticados físicamente en notaría."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "cerrar las inscripciones al RUT durante seis meses para desatascar las solicitudes acumuladas."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La innovación pública se orienta al ciudadano: erradicar cargas innecesarias mediante interoperabilidad en tiempo real entre entidades del Estado simplifica la vida ciudadana y formaliza la economía.",
+            "correct": "Refleja la escucha activa como pilar del Nivel 4: construir soluciones basadas en las necesidades reales del usuario institucional.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Exigir autenticaciones notariales de documentos públicos está prohibido por la Ley Antitrámites (Decreto Ley 019 de 2012)."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Cerrar las inscripciones vulnera el derecho al trabajo y a la libre empresa."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1406,
-          "topic": "Uso de Inteligencia Artificial Generativa Gobernador",
-          "caseText": "Se plantea la posibilidad de utilizar herramientas de Inteligencia Artificial Generativa para apoyar a los ciudadanos en la consulta de preguntas frecuentes sobre el calendario tributario en el portal institucional.",
-          "statement": "El enfoque innovador y responsable que debe liderar el Inspector I es:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Establezco y mantengo canales de comunicación fluidos y continuos con los enlaces técnicos de Fiscalización, Recaudo y Aduanas, facilitando la identificación proactiva de necesidades de información antes de que se conviertan en urgencias.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "implementar un asistente virtual basado en modelos de lenguaje con arquitectura RAG (Retrieval-Augmented Generation) anclado exclusivamente en la doctrina oficial y normatividad vigente de la DIAN, con filtros de seguridad y trazabilidad."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "conectar directamente una API libre de internet sin entrenarla con la normatividad tributaria colombiana."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "prohibir el uso de cualquier herramienta de inteligencia artificial en la administración pública."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La adopción innovadora responsable de IA exige anclar los modelos generativos en fuentes verificadas de doctrina oficial (RAG) para evitar 'alucinaciones' que induzcan a error a los contribuyentes.",
+            "correct": "Descriptor textual del Nivel 4: construye redes de comunicación estratégicas que trascienden el área inmediata para articular objetivos organizacionales.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Usar modelos no especializados genera respuestas tributarias erróneas con consecuencias sancionatorias para los ciudadanos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La prohibición a ciegas desconoce las directrices de transformación digital del Estado (CONPES 3975)."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1407,
-          "topic": "Optimización de Consultas Analíticas con Nuevas Tecnologías",
-          "caseText": "Las consultas de detección de fraude sobre miles de millones de registros en DataR presentan tiempos de respuesta de varias horas sobre bases de datos relacionales convencionales.",
-          "statement": "La solución innovadora que el profesional debe investigar e implementar es:",
+          "topic": "Tema Módulo 14",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he interrumpido a otra persona cuando está hablando en una discusión acalorada sobre un tema que domino profundamente.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "evaluar la adopción de motores de procesamiento analítico distribuido en memoria (como Apache Spark / DuckDB) y formatos columnares abiertos como Delta Lake para acelerar exponencialmente los tiempos de respuesta."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "reducir el número de años auditados a un solo mes para que las consultas terminen antes."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "imprimir las tablas en resmas de papel para revisarlas manualmente con resaltadores."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La innovación tecnológica en datos adopta arquitecturas modernas de procesamiento distribuido y formatos columnares para resolver problemas de escala sin sacrificar el alcance analítico.",
+            "correct": "La interrupción involuntaria en debates apasionados es común; reconocerlo evidencia autenticidad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Limitar el alcance de las auditorías a un mes dejaría impune la evasión de vigencias anteriores no prescritas."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Imprimir millones de registros es un despropósito ecológico, operativo y logístico."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de deseabilidad social."
               }
             ]
           }
         },
         {
           "id": 1408,
-          "topic": "Desarrollo de Metodologías Ágiles en Equipos de Datos",
-          "caseText": "Los proyectos de ingeniería de datos en la entidad tardaban hasta dos años en entregar un reporte porque se aplicaba un modelo de cascada rígido donde cualquier cambio exigía reiniciar todo el ciclo.",
-          "statement": "La propuesta metodológica innovadora que el servidor debe promover es:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando un líder de negocio insiste en una solución técnica inviable o riesgosa para los servidores, explico las limitaciones con empatía y sustento técnico, proponiendo inmediatamente dos alternativas viables que satisfagan su necesidad de negocio.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "adoptar marcos de trabajo ágiles (Scrum / Kanban / DataOps) con entregas iterativas y tempranas de valor cada dos semanas, involucrando a los usuarios de fiscalización en la validación continua de resultados."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "eliminar todas las reuniones de equipo y trabajar cada quien por su cuenta sin planificación."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "aumentar los plazos de entrega a cinco años para tener más tiempo de revisar."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La innovación no solo es tecnológica sino también metodológica: DataOps y metodologías ágiles aceleran la entrega de valor, reducen el retrabajo y alinean a TI con los usuarios de negocio.",
+            "correct": "Asertividad propositiva de Nivel 4: no dice simplemente \"no se puede\", sino que guía al interlocutor hacia soluciones factibles.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Trabajar en anarquía sin metodología genera descontrol y fallos sistémicos en proyectos públicos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Extender los plazos a cinco años hace obsoleta cualquier solución antes de nacer."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1409,
-          "topic": "Gamificación y Pedagogía Tributaria al Contribuyente",
-          "caseText": "Para fomentar la cultura de exigencia de la factura electrónica entre la ciudadanía general, la DIAN busca estrategias creativas que trasciendan las sanciones tradicionales a los comercios.",
-          "statement": "Una iniciativa innovadora de alto impacto orientada a incentivar al ciudadano es:",
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Redacto los manuales de usuario, especificaciones de arquitectura y diccionarios de datos con tal nivel de claridad pedagógica que cualquier profesional nuevo o auditor externo puede comprenderlos sin depender de explicaciones verbales.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "diseñar programas de participación ciudadana digital y sorteos basados en el registro automático del CUFE de las compras cotidianas (como la iniciativa 'Premio Fiscal' / 'Factura Electrónica Te Premia') integrados en la app móvil de la DIAN."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "multar a todos los ciudadanos que no lleven facturas en sus bolsillos al caminar por la calle."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "prohibir las compras en efectivo en todo el territorio nacional."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La innovación en política tributaria utiliza incentivos positivos (gamificación y recompensas basadas en datos) para convertir a cada ciudadano en un veedor voluntario de la emisión de factura electrónica.",
+            "correct": "Gestión del conocimiento y comunicación escrita de alta calidad técnica (Evidencia de Producto del Abecé de la DIAN).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Multar a peatones por no portar facturas carece de sustento legal y vulnera libertades constitucionales."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Prohibir el efectivo es una medida desproporcionada que desconoce la realidad económica del país."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1410,
-          "topic": "Reconocimiento y Escalabilidad de Buenas Prácticas Internas",
-          "caseText": "En una Dirección Seccional intermedia, un funcionario creó un script muy ingenioso que cruza datos de predios rurales con declaraciones de renta y descubrió una bolsa de evasión importante en su región.",
-          "statement": "El Inspector I del Nivel Central debe reaccionar ante esta innovación local:",
+          "topic": "Tema Módulo 14",
+          "level": "Falsa Proactividad / Transparencia",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un proceso de ingesta de datos falla pero el equipo puede resolverlo en 12 horas trabajando de noche, considero prudente no avisar a las áreas usuarias para no generarles preocupación innecesaria.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "analizar el script, estandarizar su arquitectura, incorporarlo al catálogo de soluciones corporativas de DataR y escalarlo para su aplicación nacional en todas las Direcciones Seccionales del país, reconociendo la autoría del servidor local."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "ordenar que se borre el script y sancionar al funcionario local por no consultar a Bogotá antes de programar."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "copiar el código y presentarlo ante el Director General como si fuera una idea propia sin mencionar al creador."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Innovación Nivel 4 reconoce el talento en el territorio, estandariza buenas prácticas emergentes y las escala para generar impacto positivo a escala nacional, fomentando un clima de reconocimiento al mérito.",
+            "correct": "La comunicación oportuna y transparente de incidentes permite a las áreas de negocio activar sus planes de contingencia. Ocultar fallas deteriora la confianza institucional y agrava el impacto si la solución se retrasa.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Castigar la iniciativa local destruye la motivación y la cultura de innovación en la entidad."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Apropiarse de ideas ajenas constituye plagio y una grave falta a la ética profesional."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1411,
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"En las revisiones de código o diseño de bases de datos, entrego comentarios respetuosos, fundamentados y pedagógicos, señalando no solo las oportunidades de mejora sino también las soluciones concretas para implementarlas.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Comunicación constructiva orientada a elevar las capacidades colectivas del equipo.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1412,
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando surgen discrepancias agudas entre distintas dependencias sobre la titularidad o custodia de un dato, mantengo la neutralidad institucional y centro el debate en las directrices de la arquitectura de información de la DIAN.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Mediación estratégica institucional basada en marcos de gobierno de datos y no en intereses de feudo burocrático.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1413,
+          "topic": "Tema Módulo 14",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Absolutamente nunca he sentido nerviosismo, inseguridad o tensión al exponer un informe crítico ante los altos directivos de una organización.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "La respuesta fisiológica ante audiencias de alto nivel es natural. La competencia evalúa el dominio del contenido y la preparación, no la insensibilidad biológica.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo clásico de fingimiento psicométrico."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1414,
+          "topic": "Comunicación Efectiva",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Estructuro mis comunicaciones escritas utilizando la técnica de pirámide invertida (conclusión y decisión requerida al inicio, seguida de soportes clave), permitiendo a los líderes ocupados entender el asunto en menos de dos minutos.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Eficiencia comunicativa de alto nivel que ahorra tiempo administrativo y facilita la toma de decisiones.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1415,
+          "topic": "Tema Módulo 14",
+          "level": "Falsa Proactividad / Formalidad",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"En una reunión con directivos, considero una muestra de liderazgo prometer verbalmente fechas de entrega sumamente ajustadas para complacerlos, confiando en que el equipo resolverá cómo cumplirlas más adelante.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "La comunicación responsable exige honestidad técnica y estimaciones fundamentadas en capacidad real de procesamiento. Prometer plazos irreales por complacencia destruye la credibilidad técnica.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1416,
+          "topic": "Tema Módulo 14",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Subdirección de Procesamiento de Datos culminó el desarrollo de un moderno tablero analítico en tiempo real que cruza facturas electrónicas con inventarios aduaneros para detectar subfacturación. Sin embargo, en una reunión de seguimiento, el Director Seccional de Fiscalización manifiesta de forma enérgica que sus auditores no utilizarán la herramienta porque \"es un sistema confuso, lleno de gráficos abstractos que nadie entiende y que solo les quita tiempo para cumplir las metas del mes\".\n*",
+          "statement": "La estrategia comunicacional que debe asumir el Inspector I conforme al Nivel 4 de Comunicación Efectiva es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Defender agresivamente la plataforma señalando que el tablero fue desarrollado con tecnología de punta internacional y que la negativa de los auditores se debe a falta de interés en capacitarse."
+            },
+            {
+              "id": "B",
+              "text": "Escuchar atentamente los argumentos de negocio del Director Seccional, concertar de inmediato sesiones de trabajo conjunto para codiseñar los reportes prioritarios adaptando los términos a su flujo de auditoría real y acompañar un caso piloto con resultados medibles de recaudo."
+            },
+            {
+              "id": "C",
+              "text": "Aceptar las críticas en silencio, retirar el acceso al tablero y concentrarse en atender únicamente requerimientos por memorando formal escrito.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea con el Nivel 4 de Comunicación Efectiva: escucha activa, empatía con el usuario de negocio, desescalamiento asertivo de la tensión y co-construcción orientada a resultados tangibles de valor público.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Comunicación agresiva y arrogancia técnica que rompe las relaciones interdependencias y bloquea la modernización."
+              },
+              {
+                "id": "C",
+                "reason": "Resignación pasiva que anula la inversión institucional y perpetúa los silos organizacionales."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1417,
+          "topic": "Tema Módulo 14",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "A las 4:00 p.m. del día límite para la presentación de la declaración del impuesto sobre las ventas (IVA), el clúster transaccional de recepción de documentos tributarios colapsa por una sobrecarga imprevista de peticiones concurrentes. El Director de Innovación y Tecnología convoca una reunión de crisis urgente con el Inspector I para emitir un comunicado oficial ante el Ministerio de Hacienda y los medios de comunicación. El equipo aún no tiene la causa raíz exacta, pero se estima que la recuperación tomará entre 3 y 5 horas.\n*",
+          "statement": "La forma en que el Inspector I debe estructurar su comunicación técnica en la mesa de crisis es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Asegurar al Director que la plataforma estará lista en 30 minutos para calmar los ánimos, mientras envía mensajes urgentes al equipo de soporte para que reinicien los servidores forzosamente."
+            },
+            {
+              "id": "B",
+              "text": "Presentar de manera clara, objetiva y sin jergas incomprensibles la naturaleza de la saturación técnica, el diagnóstico preliminar, las acciones de mitigación en curso y el rango de tiempo estimado de recuperación (3 a 5 horas), recomendando técnicamente declarar la contingencia tributaria legal (Art. 579-2 E.T.) para proteger los derechos de los contribuyentes."
+            },
+            {
+              "id": "C",
+              "text": "Explicar detalladamente los volcados de memoria y el código de error hexadecimal de los nodos para demostrar que la falla es atribuible a los servidores de la empresa proveedora de nube y deslindar a la DIAN de responsabilidad.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela la excelencia comunicacional del Nivel 4 en situaciones de crisis: veracidad sin ambigüedades, serenidad, términos ejecutivos claros y orientación inmediata a la solución institucional (declaratoria de contingencia reglamentaria según el Estatuto Tributario).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Comunicación mendaz e irresponsable que agrava la crisis institucional y engaña a las directivas del Estado."
+              },
+              {
+                "id": "C",
+                "reason": "Evasión técnica mediante tecnicismos oscuros para lavarse las manos, sin aportar soluciones ejecutivas."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1418,
+          "topic": "Tema Módulo 14",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En una mesa técnica interdisciplinaria para definir las reglas de negocio de la analítica de cruce de exógena, surge una discusión acalorada entre los ingenieros de datos y los abogados del área jurídica. Los ingenieros afirman que los abogados \"entorpecen el proyecto con interpretaciones doctrinales excesivas que impiden automatizar los cruces\", mientras que los abogados sostienen que los ingenieros \"pretenden violar el debido proceso sancionatorio tributario con algoritmos ciegos\". La reunión entra en un punto muerto.\n*",
+          "statement": "La intervención que debe realizar el Inspector I para articular el consenso institucional es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Apoyar irrestrictamente al equipo de ingenieros demostrando que la eficiencia algorítmica moderna debe primar sobre formalismos legales obsoletos."
+            },
+            {
+              "id": "B",
+              "text": "Tomar la palabra para validar la importancia de ambas perspectivas, estructurar una matriz comparativa donde se identifiquen los puntos normativos no negociables del debido proceso y traducirlos en restricciones matemáticas y reglas explícitas dentro del pipeline de datos, logrando un consenso técnico-jurídico documentado."
+            },
+            {
+              "id": "C",
+              "text": "Abandonar la reunión indicando que los ingenieros no deben debatir con abogados y solicitar a la Dirección General que decida por decreto quién tiene la razón.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Representa el Nivel 4 de Comunicación Efectiva: actúa como mediador estratégico, traduce conceptos normativos complejos a especificaciones algorítmicas y construye una solución interdisciplinaria armónica que blinda jurídicamente y potencia tecnológicamente a la entidad.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Polarización técnica que desconoce el ordenamiento jurídico y expone a la DIAN a demandas de nulidad."
+              },
+              {
+                "id": "C",
+                "reason": "Conducta infantil y evasiva que destruye el trabajo en equipo y sobrecarga innecesariamente a la Dirección General."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1419,
+          "topic": "Tema Módulo 14",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Contraloría General de la República remite un requerimiento formal a la DIAN solicitando \"un consolidado histórico de transacciones comerciales sospechosas procesadas en los últimos 5 años\". El requerimiento utiliza términos jurídicos ambiguos que no coinciden con las estructuras de las tablas del DataR, prestando a múltiples interpretaciones y al riesgo de entregar información errónea o incompleta sujeta a sanciones de desacato.\n*",
+          "statement": "La actuación comunicacional y metodológica adecuada del Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Responder de inmediato con un volcado masivo de billones de filas sin filtrar para que la Contraloría busque lo que necesita y evitar acusaciones de renuencia."
+            },
+            {
+              "id": "B",
+              "text": "Elaborar un documento técnico que mapee las definiciones jurídicas de la Contraloría con los diccionarios y entidades de datos existentes en la DIAN, y solicitar una mesa técnica de aclaración bilateral para concertar el alcance exacto del requerimiento y la estructura del entregable final antes de procesar los datos."
+            },
+            {
+              "id": "C",
+              "text": "Rechazar el oficio aduciendo que la solicitud está mal formulada y que la Contraloría no tiene competencia para pedir datos que no sabe nombrar.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al Nivel 4: comunicación asertiva interinstitucional que previene errores materiales, protege la seguridad jurídica de la DIAN y colabora armónicamente con los órganos de control del Estado clarificando el objeto técnico.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Irresponsabilidad técnica que satura canales, expone datos sin criterio y puede infringir la reserva legal."
+              },
+              {
+                "id": "C",
+                "reason": "Respuesta hostil y arrogante que genera conflictos institucionales y expone al funcionario a sanciones disciplinarias por obstrucción."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1420,
+          "topic": "Tema Módulo 14",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Dirección General solicita al Inspector I que presente en el Comité Directivo Ampliado los resultados de un exitoso cruce analítico que desmanteló una red de contrabando textil valorada en más de 100.000 millones de pesos. El Comité está presidido por el Director General y cuenta con la presencia de directores jurídicos, aduaneros y delegados del Ministerio.\n*",
+          "statement": "Para garantizar el máximo impacto institucional y comprensión ejecutiva, el Inspector I debe:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Centrar la exposición en el código de optimización de los hiperparámetros del algoritmo XGBoost y el tiempo de ejecución en milisegundos de los clústeres de Spark."
+            },
+            {
+              "id": "B",
+              "text": "Estructurar la presentación iniciando con el impacto económico y tributario del hallazgo (montos recuperados, modus operandi desarticulado), respaldado visualmente con diagramas de grafos claros e intuitivos, y sintetizar en dos láminas finales las capacidades analíticas institucionales requeridas para escalar el modelo a otros sectores."
+            },
+            {
+              "id": "C",
+              "text": "Delegar la presentación en un asesor del Despacho para evitar exponerse al escrutinio del Comité Directivo.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Demuestra dominio del Nivel 4 de Comunicación: adapta la narrativa al perfil de la alta dirección pública, visibiliza el valor público generado para el país y promueve la sostenibilidad de la inversión tecnológica con argumentos estratégicos.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Error clásico de desconexión ejecutiva por exceso de tecnicismos estériles para la toma de decisiones."
+              },
+              {
+                "id": "C",
+                "reason": "Falta de liderazgo y desaprovechamiento de un espacio estratégico de posicionamiento técnico."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-14",
-      "track": "comportamentales"
+      ]
     },
     "exam-15": {
-      "title": "Examen: 15. Trabajo en Equipo Nivel 3 (10 Preguntas PJS)",
-      "indicatorNum": 15,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 14. Innovación (Nivel 4)",
       "questions": [
         {
           "id": 1501,
-          "topic": "Gestión del conocimiento y curva de aprendizaje",
-          "caseText": "Un nuevo servidor público ingresa al equipo de Procesamiento de Datos de la DIAN por concurso de méritos. El funcionario tiene excelentes bases teóricas pero desconoce los flujos internos de ingesta de DataR y se siente desorientado en sus primeros días.",
-          "statement": "La conducta acorde con la competencia de Trabajo en Equipo Nivel 3 es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Lidero talleres de diseño participativo con auditores tributarios, analistas aduaneros y abogados jurídicos para co-construir nuevas reglas algorítmicas de detección de contrabando, asegurando que la tecnología responda a sus necesidades operativas reales.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "acompañar su proceso de inducción técnica, compartirle la documentación de arquitectura y los diccionarios de datos, y asesorarlo en las dudas cotidianas para facilitar su rápida curva de aprendizaje."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "ignorar sus preguntas para que aprenda por sus propios medios sin ayuda de nadie."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "quejarse ante el jefe de equipo afirmando que el nuevo funcionario no sabe nada."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Trabajo en Equipo en Nivel 3 implica solidaridad técnica, gestión activa del conocimiento y apoyo para que los nuevos integrantes se adapten rápidamente y alcancen su óptimo nivel de contribución.",
+            "correct": "Describe literalmente la conducta del Nivel 4 de Innovación: fomenta un ambiente de co-construcción de nuevas propuestas, integrando diferentes perspectivas funcionales.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El individualismo debilita la capacidad global del equipo y genera cuellos de botella en la entrega de proyectos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La queja prematura daña el clima laboral y evidencia falta de empatía y compañerismo."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1502,
-          "topic": "Apoyo solidario ante sobrecarga laboral en vencimientos",
-          "caseText": "En vísperas del vencimiento masivo del impuesto de renta de grandes contribuyentes, un compañero del área de datos sufre una calamidad doméstica urgente y debe ausentarse, dejando pendiente la consolidación de los archivos de recaudación diaria.",
-          "statement": "La respuesta colaborativa que debe manifestar el profesional es:",
+          "topic": "Tema Módulo 15",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Absolutamente todas las propuestas de mejora técnica o algoritmos que he diseñado en mi vida han funcionado con éxito perfecto desde el primer intento sin necesidad de ajustes.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "ofrecerse proactivamente para asumir la carga de trabajo pendiente del compañero y coordinar con el equipo la distribución equitativa de las tareas para asegurar la entrega del informe institucional a tiempo."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "afirmar que no es su responsabilidad y dejar que el reporte falle para que el jefe regañe al compañero ausente."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "exigir el pago de una bonificación económica privada para asumir las funciones del compañero."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Trabajo en Equipo Nivel 3 antepone el cumplimiento de los objetivos institucionales sobre el interés individual, demostrando solidaridad laboral activa ante contingencias imprevistas.",
+            "correct": "En ingeniería de software y ciencia de datos, el ciclo de desarrollo implica iteración, depuración y ajustes continuos. Afirmar perfección absoluta al primer intento es una respuesta de simulación psicométrica (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Aprovechar la calamidad de un compañero para perjudicarlo destruye la cohesión del equipo y afecta a la DIAN."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Exigir pagos privados para cumplir funciones públicas constituye una falta disciplinaria y delito."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Activa el indicador de deseabilidad social."
               }
             ]
           }
         },
         {
           "id": 1503,
-          "topic": "Articulación fluida con áreas interdisciplinarias",
-          "caseText": "Un equipo conjunto compuesto por abogados tributaristas, contadores de fiscalización e ingenieros de datos del Inspector I debe diseñar la estrategia contra el fraude en devoluciones de IVA.",
-          "statement": "Para lograr un trabajo en equipo sinérgico y efectivo, al Inspector I le corresponde:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Investigo permanentemente los modelos tecnológicos exitosos de administraciones tributarias referentes (ej. SAT México, CIAT, OCDE) para adaptar sus mejores prácticas analíticas a la infraestructura del DataR de la DIAN.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "escuchar con atención los criterios jurídicos y contables de los colegas, aportando desde la perspectiva de datos modelos cuantitativos que sustenten técnicamente las tipologías identificadas por las áreas misionales."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "burlarse de los abogados diciendo que ellos no entienden de tecnología y que los ingenieros son los únicos que importan."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "rehusarse a trabajar con profesionales de otras disciplinas porque no tienen su misma profesión."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El éxito en la DIAN radica en la articulación interdisciplinaria: la complementariedad entre el conocimiento jurídico, contable y computacional es la única fórmula para desarticular redes complejas de fraude.",
+            "correct": "Se ajusta al catálogo de evidencias de la DIAN: aprovecha experiencias exitosas de terceros para generar valor organizacional en la entidad.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La arrogancia profesional genera barreras comunicativas y destruye la sinergia interdisciplinaria."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Negarse a trabajar con otros perfiles desconoce la naturaleza multidisciplinaria de la función pública."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1504,
-          "topic": "Resolución madura de conflictos interpersonales en el equipo",
-          "caseText": "Dos compañeros de trabajo en el área de ingeniería de datos tienen un altercado verbal acalorado por la asignación de horarios de guardia en el centro de datos, afectando el ambiente laboral de la oficina.",
-          "statement": "La intervención que debe realizar el profesional como integrante maduro del equipo es:",
+          "topic": "Tema Módulo 15",
+          "level": "Falsa Proactividad / Seguridad Informática",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Para acelerar el desarrollo de un modelo analítico pionero, considero admisible conectar la base de datos real de contribuyentes a una herramienta gratuita en la nube sin la autorización del comité de seguridad de la información.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "invitar a ambos compañeros a la calma en privado, recordarles el compromiso colectivo con la misión de la DIAN y proponer la elaboración concertada de un cronograma rotativo equitativo que atienda las necesidades de ambos."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "tomar partido por uno de ellos y fomentar que continúe la pelea para que trascienda a instancias mayores."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "grabar el altercado en video y publicarlo en redes sociales para burlarse de los compañeros."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Trabajo en Equipo Nivel 3 promueve la resolución pacífica y concertada de discrepancias, desescalando tensiones y proponiendo soluciones justas que restablezcan la armonía y la productividad.",
+            "correct": "La innovación jamás justifica la violación de la reserva tributaria (Art. 583 E.T.) ni el desvío de directrices de ciberseguridad. Los datos reales solo deben procesarse en ambientes autorizados y controlados.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Tomar partido e inflamar el conflicto destruye la convivencia y polariza la dependencia."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Publicar peleas laborales en redes viola la dignidad de las personas y la reputación de la entidad."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1505,
-          "topic": "Compartir el mérito y visibilizar los aportes de todos",
-          "caseText": "El Director de Innovación y Tecnología felicita públicamente al Inspector I por el éxito en la implementación del nuevo Data Mart de Fiscalización.",
-          "statement": "La conducta que evidencia un auténtico espíritu de Trabajo en Equipo Nivel 3 es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Desarrollo prototipos rápidos y pruebas de concepto en ambientes de laboratorio (sandbox) con datos sintéticos anonimizados para validar la viabilidad de nuevas tecnologías antes de proponer su despliegue en producción.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "agradecer la felicitación reconociendo públicamente el esfuerzo y dedicación de todos los miembros del equipo que participaron en el proyecto (desarrolladores, analistas y operadores de infraestructura)."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "atribuirse exclusivamente todo el mérito del proyecto, ocultando que otros compañeros trabajaron noches enteras en él."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "decir que el proyecto fue fácil y que cualquiera lo hubiera podido hacer en una tarde."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El liderazgo y trabajo en equipo Nivel 3 visibiliza y reconoce el esfuerzo de todo el colectivo, consolidando la confianza, el orgullo de pertenencia y la motivación en la unidad de trabajo.",
+            "correct": "Nivel 4 de Innovación: combina audacia creativa con rigor metodológico y mitigación de riesgos de producción.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El protagonismo desmedido y el egoísmo profesional generan resentimiento y fracturan la lealtad grupal."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Minimizar el esfuerzo ajeno denota desprecio por el trabajo de los demás servidores."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1506,
-          "topic": "Coordinación en metodologías ágiles de datos (Scrum / Stand-up)",
-          "caseText": "Durante la reunión diaria de coordinación del equipo de desarrollo de datos (Daily Stand-up), un integrante informa que está bloqueado con una sentencia SQL de transformación compleja que no logra optimizar.",
-          "statement": "La reacción proactiva que debe manifestar el Inspector I es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando una propuesta de modernización tecnológica enfrenta resistencia basada en la costumbre institucional ('siempre se ha hecho así'), sustento con métricas de costo-beneficio y pilotos demostrativos el valor público de transformar el proceso.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "ofrecerse para revisar conjuntamente la consulta al término de la reunión diaria mediante una sesión de programación en parejas (Pair Programming), aportando su experiencia para desbloquear la tarea."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "burlarse del compañero y decirle que debería devolver el sueldo del mes."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "cambiar de tema rápidamente para que no le quiten tiempo de su propio trabajo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "Las metodologías colaborativas se fundamentan en remover impedimentos colectivamente: apoyar al compañero bloqueado asegura que el objetivo del sprint institucional se cumpla en beneficio de todos.",
+            "correct": "Liderazgo transformador y resiliencia propositiva propios del Nivel 4 de Innovación.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La humillación y el sarcasmo son incompatibles con el trabajo en equipo y el Código de Integridad."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La indiferencia ante el bloqueo del colega retrasa el resultado final de toda la dependencia."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1507,
-          "topic": "Aceptación constructiva de retroalimentación en Revisiones de Código (Code Review)",
-          "caseText": "Durante la revisión de código de un pipeline que desarrolló el servidor, un compañero de menor grado jerárquico identifica una oportunidad de mejora que reduce a la mitad el consumo de memoria RAM.",
-          "statement": "La actitud que debe asumir el profesional frente a la observación es:",
+          "topic": "Tema Módulo 15",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido una leve punzada de decepción o resistencia interna cuando un comité directivo rechaza una propuesta tecnológica en la que trabajé intensamente durante meses.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "recibir la sugerencia con apertura y gratitud, felicitar al compañero por su agudeza técnica y adoptar la optimización en el código final en beneficio del rendimiento del sistema."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "rechazar airadamente la sugerencia alegando que un funcionario de menor grado no tiene derecho a corregir a un Inspector."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "borrar todo el código y negarse a continuar con el proyecto por orgullo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Trabajo en Equipo en Nivel 3 carece de vanidad jerárquica: valora las buenas ideas vengan de donde vengan y prioriza la excelencia técnica y la calidad del producto público sobre el ego personal.",
+            "correct": "Sentir decepción momentánea ante el rechazo de un proyecto querido es una respuesta humana natural. Lo evaluado es cómo se gestiona profesionalmente la emoción, no su fingida inexistencia.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La soberbia basada en jerarquías bloquea la mejora continua y desmotiva a los servidores jóvenes."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Reaccionar con pataletas destruye el profesionalismo exigido en el empleo público."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de mentira."
               }
             ]
           }
         },
         {
           "id": 1508,
-          "topic": "Flexibilidad y adaptación a cambios de prioridades grupales",
-          "caseText": "La Dirección General de la DIAN ordena redirigir prioritariamente los esfuerzos del equipo hacia el soporte de la contingencia de facturación en zonas de frontera, postergando temporalmente el proyecto personal que el servidor venía adelantando.",
-          "statement": "La conducta flexible y comprometida que el servidor debe evidenciar es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Identifico tareas rutinarias de extracción y validación de datos que consumen cientos de horas a los auditores y propongo pipelines automatizados que liberan tiempo profesional para labores sustantivas de investigación fiscal.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "alinear de inmediato su trabajo con la nueva prioridad institucional, integrándose con entusiasmo al equipo de contingencia y poniendo sus habilidades al servicio de la urgencia nacional."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "hacer huelga de brazos caídos y quejarse constantemente por la interrupción de su proyecto individual."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "continuar trabajando en secreto en su proyecto personal desobedeciendo la directriz del equipo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El trabajo en equipo exige flexibilidad para adaptar el plan individual a las prioridades estratégicas sobrevinientes del colectivo y de la misión nacional de la DIAN.",
+            "correct": "Enfoque en eficiencia y generación de valor público tangible para la administración tributaria.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La queja improductiva contamina el ambiente laboral y obstaculiza la atención de emergencias fiscales."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La desobediencia deliberada a las directrices prioritarias constituye indisciplina laboral grave."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1509,
-          "topic": "Construcción de un clima laboral de confianza y respeto",
-          "caseText": "El equipo de procesamiento de datos atraviesa un período de alta tensión laboral debido a múltiples auditorías simultáneas de los entes de control que han generado estrés entre los servidores.",
-          "statement": "El aporte positivo que puede brindar el profesional para fortalecer al grupo es:",
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo la adopción de estándares y herramientas de código abierto consolidadas en procesamiento de datos (ej. Apache Spark, Delta Lake), protegiendo a la DIAN del gasto excesivo en licencias privativas y del secuestro tecnológico.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "mantener una actitud serena, constructiva y empática, reconociendo el esfuerzo colectivo, promoviendo pausas activas saludables y manteniendo el foco en la calidad de las entregas."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "propagar rumores de despidos masivos para aumentar el nivel de pánico en la oficina."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "encerrarse en su oficina y prohibir que cualquiera le dirija la palabra."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "En momentos de presión, los profesionales con madurez de trabajo en equipo actúan como anclas emocionales y técnicas: transmiten calma, cohesión y optimismo constructivo al colectivo.",
+            "correct": "Innovación estratégica que optimiza los recursos del tesoro público conforme a los principios de austeridad y soberanía tecnológica del Estado.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Alimentar rumores y pánico destruye la salud mental y la moral del equipo de trabajo."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "El aislamiento hostil fractura la comunicación indispensable para responder a las auditorías."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1510,
-          "topic": "Cultura de documentación para la continuidad del equipo",
-          "caseText": "Un profesional de datos desarrolla una serie de scripts complejos y decide guardarlos únicamente en su computador local sin documentarlos, argumentando que 'así se vuelve indispensable para la DIAN'.",
-          "statement": "Desde la perspectiva del Trabajo en Equipo Nivel 3 y la gestión del conocimiento institucional, esta práctica es:",
+          "topic": "Tema Módulo 15",
+          "level": "Falsa Proactividad / Gobierno de TI",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si invento un nuevo script de compresión de bases de datos que creo que es genial, considero una muestra de audacia probarlo directamente en los servidores de producción durante el fin de semana sin avisar al equipo de infraestructura.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "altamente reprochable, pues genera un riesgo crítico de continuidad operativa (punto único de fallo humano); es deber del profesional documentar todo código en el repositorio institucional compartido para que cualquier miembro del equipo pueda mantenerlo."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "una excelente estrategia para garantizar la estabilidad laboral de por vida en el Estado."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "la mejor práctica recomendada por los estándares internacionales de arquitectura."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El individualismo que monopoliza información para volverse indispensable perjudica a la institución y viola la cultura de equipo; el verdadero profesional documenta y democratiza el conocimiento para garantizar la resiliencia del Estado.",
+            "correct": "La innovación requiere ambientes controlados de prueba (<em>sandbox</em>). Experimentar a ciegas en producción es una temeridad que arriesga la continuidad del servicio fiscal del país.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La estabilidad en el Estado se fundamenta en el mérito y la transparencia, no en el secuestro de información técnica."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Los estándares de arquitectura exigen repositorios compartidos con control de versiones (Git) y documentación exhaustiva."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1511,
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando aprendo una nueva técnica de optimización de consultas distribuidas o una nueva biblioteca analítica, organizo sesiones técnicas internas y redacto guías prácticas para que todo el equipo domine la herramienta.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Socialización del conocimiento y escalamiento de la innovación a nivel institucional (Nivel 4).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1512,
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Me aseguro de que cualquier modelo de inteligencia artificial o analítica predictiva que proponga para perfilar riesgo de contribuyentes sea auditado contra sesgos discriminatorios, garantizando el respeto al debido proceso.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Innovación ética y responsable que armoniza la vanguardia tecnológica con las garantías constitucionales del Estado social de derecho.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1513,
+          "topic": "Tema Módulo 15",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido fatiga mental ni he preferido realizar una tarea sencilla y conocida antes que abordar un desafío tecnológico completamente nuevo y complejo.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "El cansancio y la preferencia ocasional por lo conocido son respuestas psicológicas habituales; reconocerlo muestra honestidad y autenticidad.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de fingimiento psicométrico."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1514,
+          "topic": "Innovación",
+          "level": "Nivel 4",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo que las innovaciones en la arquitectura de datos no solo sirvan para fiscalizar, sino también para facilitar a los ciudadanos el cumplimiento voluntario de sus obligaciones tributarias mediante declaraciones sugeridas precisas.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Visión de valor público integral: la tecnología orientada a la facilitación del servicio al ciudadano y a la justicia distributiva.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1515,
+          "topic": "Tema Módulo 15",
+          "level": "Falsa Proactividad / Contratación Estatal",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero admisible que un ingeniero de datos acepte donaciones de licencias de software privativo directamente de una multinacional sin pasar por el trámite de contratación pública, si eso permite innovar sin gastar presupuesto.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Toda adquisición o donación en el sector público está reglada por el Estatuto General de Contratación de la Administración Pública (Ley 80 de 1993 y Ley 1150 de 2007) para prevenir la cooptación y el direccionamiento contractual.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1516,
+          "topic": "Tema Módulo 15",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la DIAN, las auditorías a empresas que comercializan facturas falsas se venían realizando de forma aislada, revisando manualmente contribuyente por contribuyente, lo que permitía a los cerebros del fraude liquidar las sociedades pantalla antes de que se emitieran los pliegos de cargos. El Inspector I propone desarrollar una prueba de concepto en el DataR utilizando algoritmos de análisis de redes y grafos en Apache Spark para identificar los clústeres de triangulación de manera automática. El líder del proyecto le dice que \"el plan operativo anual no contempla ese proyecto y que no hay presupuesto para contratar consultores externos\".\n*",
+          "statement": "La postura que debe asumir el profesional conforme al Nivel 4 de Innovación es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Acatar la orden del líder, abandonar la idea y limitarse a ejecutar las consultas SQL tradicionales que le sean asignadas en el cronograma ordinario."
+            },
+            {
+              "id": "B",
+              "text": "Utilizar librerías de código abierto ya disponibles en el entorno de la DIAN para construir un prototipo a pequeña escala en ambiente de pruebas utilizando datos sintéticos, presentar los resultados preliminares en un taller demostrativo mostrando cómo el modelo identifica redes de fraude en segundos y acordar la formalización del proyecto como una iniciativa de co-construcción interna sin costo adicional."
+            },
+            {
+              "id": "C",
+              "text": "Enviar un informe anónimo al Ministerio de Hacienda denunciando que en la DIAN no quieren innovar contra la evasión fiscal para obligar a su líder a aceptar la propuesta.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al Nivel 4 de Innovación: proactividad constructiva, aprovechamiento de recursos existentes de código abierto, prototipado seguro en ambientes de prueba y demostración empírica de valor público sin caer en la resignación ni en la insubordinación destructiva.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Conformismo pasivo de Nivel 1 que priva a la administración de capacidades modernas para salvaguardar el recaudo."
+              },
+              {
+                "id": "C",
+                "reason": "Conducta desleal y conflictiva que daña las relaciones institucionales en lugar de liderar técnicamente."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1517,
+          "topic": "Tema Módulo 15",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Subdirección de Procesamiento de Datos implementa un modelo de datos en tiempo real que consolida las operaciones de comercio exterior en una interfaz analítica accesible desde dispositivos móviles para los inspectores de aduanas en los puertos marítimos de Buenaventura y Cartagena. Sin embargo, los inspectores en territorio continúan imprimiendo extensas sábanas de datos en papel, argumentando que \"las tabletas digitales son difíciles de manipular bajo el sol del muelle y temen que la información se pierda si se corta la señal\".\n*",
+          "statement": "La intervención que refleja la competencia de Innovación en Nivel 4 es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Radicar un memorando exigiendo a la Dirección Seccional de Aduanas sancionar disciplinariamente a los inspectores que continúen utilizando papel en lugar de la aplicación móvil."
+            },
+            {
+              "id": "B",
+              "text": "Desplazarse al terreno o coordinar sesiones de escucha activa con los inspectores de muelle para comprender sus condiciones ambientales reales, codiseñar una actualización de la aplicación que incluya modo de alto contraste para exteriores y capacidades de sincronización <em>offline</em> (almacenamiento local seguro mientras no haya señal), y realizar sesiones de acompañamiento en vivo hasta lograr la apropiación efectiva de la solución."
+            },
+            {
+              "id": "C",
+              "text": "Suspender el desarrollo de la aplicación móvil y reasignar los servidores a otros proyectos, concluyendo que los funcionarios de puerto no están preparados para la tecnología.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Innovación centrada en el usuario y co-construcción real (Nivel 4). Comprende las restricciones del entorno operativo, adapta la solución tecnológica con empatía y resuelve los problemas de fondo (modo offline y visibilidad) para garantizar el éxito de la transformación digital.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Autoritarismo burocrático que ignora las dificultades físicas reales del usuario y genera mayor rechazo."
+              },
+              {
+                "id": "C",
+                "reason": "Fracaso prematuro y abandono de la innovación pública por falta de resiliencia y adaptabilidad."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1518,
+          "topic": "Tema Módulo 15",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En un congreso del Centro Interamericano de Administraciones Tributarias (CIAT), el Inspector I conoce a fondo el modelo analítico utilizado por el Servicio de Administración Tributaria (SAT) de México para identificar empresas que deducen operaciones simuladas (EFOS). Al analizar la normativa colombiana, el Inspector I identifica que con adaptaciones menores en las variables de facturación electrónica y retención en la fuente, el modelo mexicano podría replicarse con éxito en el DataR de la DIAN.\n*",
+          "statement": "La actuación metodológica correcta que debe liderar el profesional es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Copiar el código fuente del repositorio del SAT y desplegarlo de inmediato en el servidor de la DIAN sin consultar con el área jurídica ni con los analistas de fiscalización."
+            },
+            {
+              "id": "B",
+              "text": "Elaborar un documento técnico de benchmarking internacional que analice los fundamentos matemáticos y la legislación comparada, convocar a una mesa de co-construcción con delegados de Fiscalización y Jurídica para tropicalizar el modelo a la luz del Estatuto Tributario colombiano y desarrollar un piloto en ambiente de pruebas controladas."
+            },
+            {
+              "id": "C",
+              "text": "Descartar la idea aduciendo que la DIAN debe ser 100% original y que no es profesional copiar modelos implementados en otros países.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Describe fielmente la evidencia de \"Aprovechamiento de Experiencias Exitosas\" del Abecé de la DIAN: investigación comparada, tropicalización legal y co-construcción interdisciplinaria con validación empírica antes del despliegue.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Imprudencia técnica y legal que puede generar errores sancionatorios al no ajustar el modelo al marco jurídico colombiano."
+              },
+              {
+                "id": "C",
+                "reason": "Falso orgullo y soberbia metodológica que impide aprovechar las mejores prácticas mundiales avaladas por el CIAT y la OCDE."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1519,
+          "topic": "Tema Módulo 15",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante una hackatón interna de la DIAN, un grupo de jóvenes desarrolladores presenta una herramienta innovadora que utiliza modelos de lenguaje (LLMs) de una API comercial en la nube para responder automáticamente derechos de petición de contribuyentes y sugerir conceptos técnicos tributarios. La herramienta despierta gran entusiasmo en los directivos por su velocidad. Sin embargo, el Inspector I detecta que para generar las respuestas, la herramienta envía fragmentos de los expedientes reales con datos confidenciales a los servidores del proveedor privado de la API en el extranjero.\n*",
+          "statement": "La postura técnica y ética que debe asumir el Inspector I conforme a la Innovación Responsable en Nivel 4 es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Guardar silencio para no aguar la fiesta de la hackatón y felicitar a los desarrolladores por su gran creatividad."
+            },
+            {
+              "id": "B",
+              "text": "Reconocer el potencial innovador de la propuesta, pero advertir de manera fundamentada a los directivos y al equipo sobre la brecha crítica de seguridad y violación de la reserva tributaria (Art. 583 E.T.), proponiendo como alternativa técnica el despliegue de un modelo de lenguaje de código abierto alojado en la infraestructura local (<em>on-premise</em>) o en la nube privada de la DIAN, aislado de internet y entrenado con datos debidamente anonimizados."
+            },
+            {
+              "id": "C",
+              "text": "Solicitar la descalificación inmediata del equipo y exigir que se prohíba de por vida cualquier iniciativa que mencione inteligencia artificial en la entidad.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela la innovación madura de Nivel 4: no destruye la iniciativa creativa ni se opone al progreso tecnológico, pero corrige de raíz la vulnerabilidad de seguridad y propone la alternativa arquitectónica viable y legal (modelos locales seguros) protegiendo los datos del Estado.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Complicidad pasiva en una violación flagrante de la ley de protección de datos y reserva tributaria."
+              },
+              {
+                "id": "C",
+                "reason": "Ludismo institucional y reacción retrógrada que bloquea el aprendizaje y la innovación en la entidad."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1520,
+          "topic": "Tema Módulo 15",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "El Inspector I identifica que el proceso nocturno de consolidación de datos aduaneros y cambiarios en el sistema central tarda más de 14 horas en ejecutarse debido a consultas anidadas construidas hace 15 años. Esta demora ocasiona que cuando los funcionarios de aduanas inician su turno a las 7:00 a.m., los datos no estén actualizados. Al proponer rediseñar el pipeline utilizando procesamiento paralelo en Apache Spark, un ingeniero antiguo le dice que \"eso funciona así desde el año 2010 y que cambiarlo es buscarse problemas innecesarios con la jefatura\".\n*",
+          "statement": "La actuación profesional que refleja el Nivel 4 de Innovación es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar la sugerencia del compañero y resignarse a que el proceso siga tardando 14 horas, ya que la responsabilidad final es de la jefatura."
+            },
+            {
+              "id": "B",
+              "text": "Desarrollar una prueba de concepto en ambiente de pruebas refactorizando una muestra representativa del proceso en Spark, medir rigurosamente la reducción del tiempo de ejecución (ej. de 14 horas a 45 minutos) y el ahorro en consumo de memoria, y presentar los resultados al equipo y al líder técnico con un plan de migración por etapas que garantice cero interrupción del servicio."
+            },
+            {
+              "id": "C",
+              "text": "Modificar el código en producción a escondidas durante la noche para demostrar que su idea era mejor.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea con el Nivel 4 de Innovación: supera la resistencia mediante la evidencia empírica, la mitigación controlada del riesgo (migración escalonada) y la demostración cuantitativa de eficiencia para el servicio público.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Acomodamiento y mediocridad técnica incompatible con el perfil de Inspector I."
+              },
+              {
+                "id": "C",
+                "reason": "Temeridad inaceptable que viola las políticas de gestión de cambios y pone en peligro las operaciones aduaneras del país."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-15",
-      "track": "comportamentales"
+      ]
     },
     "exam-16": {
-      "title": "Examen: 16. Valor Compromiso (10 Preguntas PJS)",
-      "indicatorNum": 16,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)",
       "questions": [
         {
           "id": 1601,
-          "topic": "Sentido de pertenencia y misión fiscal",
-          "caseText": "Un servidor del área de procesamiento de datos escucha a compañeros quejarse afirmando que su trabajo en la DIAN es una simple rutina sin importancia para el país.",
-          "statement": "La postura que refleja el valor del Compromiso es:",
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando el equipo enfrenta jornadas extenuantes por incidentes en las bases de datos, intervengo activamente para mantener un ambiente de respeto, calma y reconocimiento mutuo, evitando que la presión degenere en reproches interpersonales.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "recordar con convicción que la adecuada administración y procesamiento de datos tributarios es el motor que financia la inversión social, la salud y la educación de millones de colombianos vulnerables."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "unirse a las quejas y desmotivarse para trabajar con el mínimo esfuerzo posible."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "aconsejarles que dejen de procesar datos para presionar aumentos de sueldo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Compromiso implica orgullo y conciencia clara del impacto trascendental que la labor en la administración tributaria tiene sobre el bienestar social y la equidad del país.",
+            "correct": "Se ajusta al descriptor del Nivel 3 de Trabajo en Equipo según la Resolución 065 de 2024: cuida activamente el clima laboral y orienta al equipo en situaciones de alta tensión.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La apatía y el desgano contradicen frontalmente el valor del Compromiso público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Paralizar servicios públicos vulnera el principio de continuidad de la función pública."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1602,
-          "topic": "Disposición ante contingencias críticas del servicio",
-          "caseText": "Faltando quince minutos para terminar la jornada laboral de un viernes, se genera una caída imprevista en el clúster de ingesta de facturación electrónica en pleno cierre de mes.",
-          "statement": "La actuación que demuestra Compromiso institucional con la entidad es:",
+          "topic": "Tema Módulo 16",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido el deseo de aislarme en mi puesto de trabajo para resolver un problema técnico por mi propia cuenta sin tener que consultar o debatir con nadie.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "articularse de inmediato con el equipo de soporte técnico y extender voluntariamente la permanencia para estabilizar la plataforma, garantizando que el comercio nacional no se detenga."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "apagar el computador e irse a descansar, dejando el fallo para el lunes siguiente."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "bloquear el acceso a la oficina para que nadie pueda pedirle ayuda."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El valor del Compromiso se evidencia en la disposición para dar un esfuerzo adicional ante emergencias sobrevinientes que amenacen la continuidad del servicio fiscal.",
+            "correct": "El deseo de trabajar en soledad para concentrarse en tareas analíticas profundas es común en profesionales de tecnología. Negarlo denota simulación de hiper-sociabilidad irreal (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Desentenderse de una contingencia grave causa perjuicios incalculables a la economía nacional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Eludir responsabilidades atenta contra la lealtad y el deber del servidor público."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira."
               }
             ]
           }
         },
         {
           "id": 1603,
-          "topic": "Superación proactiva de dificultades técnicas",
-          "caseText": "El proyecto de integración de datos con una entidad externa enfrenta demoras por la falta de un manual de APIs que la entidad externa no ha enviado.",
-          "statement": "La conducta proactiva orientada por el Compromiso es:",
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Comparto de forma espontánea y estructurada mis hallazgos y soluciones técnicas con mis compañeros de equipo, documentando las lecciones aprendidas para que el conocimiento sea patrimonio institucional y no individual.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "gestionar activamente mesas técnicas directas con los ingenieros de la entidad externa para resolver conjuntamente las dudas y desbloquear el proyecto sin esperar pasivamente."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "archivar el proyecto y culpar a la otra entidad durante los próximos tres años."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "cancelar el convenio interadministrativo sin consultar a los directivos."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Compromiso impulsa a buscar soluciones activas frente a los obstáculos, liderando gestiones para alcanzar las metas institucionales.",
+            "correct": "Evidencia directa del Abecé de la DIAN: transferencia técnica activa y nivelación de capacidades colectivas.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La pasividad burocrática perpetúa el atraso en los servicios de datos del Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Un profesional técnico carece de competencia para cancelar convenios interadministrativos."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1604,
-          "topic": "Capacitación continua y actualización profesional",
-          "caseText": "La DIAN adquiere una nueva plataforma de arquitectura Lakehouse en la nube y abre una convocatoria de autoformación virtual en horarios extralaborales.",
-          "statement": "El servidor comprometido con su desarrollo y con la entidad decide:",
+          "topic": "Tema Módulo 16",
+          "level": "Falsa Proactividad / Ética Laboral",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un colega en teletrabajo me pide que conteste por él en las reuniones de Teams porque tiene que hacer un trámite bancario personal sin permiso, considero correcto apoyarlo como buen compañero.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "inscribirse con entusiasmo, dedicar tiempo a la capacitación y aplicar los nuevos conocimientos para optimizar los pipelines de su área de trabajo."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "rechazar la formación alegando que la entidad no debería cambiar de tecnologías."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "inscribirse pero no asistir a ninguna sesión para solo reclamar el certificado."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Compromiso incluye la voluntad permanente de aprender y cualificarse para ofrecer un servicio de la más alta calidad técnica a la ciudadanía.",
+            "correct": "La complicidad para evadir la jornada laboral en teletrabajo constituye fraude administrativo y falta disciplinaria (Ley 1952 de 2019). El verdadero trabajo en equipo promueve la responsabilidad y la transparencia.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La aversión al aprendizaje frena la modernización y la competitividad del Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Reclamar certificados sin formarse vulnera la honestidad y el mérito profesional."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1605,
-          "topic": "Alineación personal con las metas institucionales",
-          "caseText": "La DIAN se fija como meta anual reducir en un 3% la evasión del IVA mediante el cruce masivo de facturación electrónica con inventarios.",
-          "statement": "El Inspector I materializa su Compromiso diario:",
+          "topic": "Autogestión en Teletrabajo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Planifico y ejecuto mis labores de procesamiento de datos en teletrabajo cumpliendo con el 100% de los entregables y cronogramas pactados, sin necesidad de recordatorios continuos o vigilancia de mis superiores.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "asegurando que los pipelines de datos bajo su responsabilidad operen con máxima calidad y sin interrupciones, entendiendo cómo su aporte diario impacta la meta macroeconómica del recaudo nacional."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "desinteresándose de las metas de la entidad y haciendo lo mínimo para no ser despedido."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "deseando que la entidad no alcance la meta para criticar a la administración."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El servidor público comprometido conecta su labor técnica cotidiana con los grandes objetivos de país fijados en el plan estratégico de la entidad.",
+            "correct": "Cumplimiento exacto del Nivel 3 de Autogestión en Teletrabajo según el Capítulo 5 del Abecé de la DIAN.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El conformismo pasivo es contrario a la mística del servicio público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Desear el fracaso institucional evidencia deslealtad con el Estado y la sociedad."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1606,
-          "topic": "Atención prioritaria a usuarios internos y externos",
-          "caseText": "Un auditor de fiscalización de una Seccional solicita urgentemente un conjunto de datos para sustentar una medida cautelar contra un presunto contrabandista que pretende sacar mercancías del puerto.",
-          "statement": "La respuesta guiada por el valor del Compromiso es:",
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Valoro y respeto con la misma importancia los aportes de los auditores tributarios y abogados que los de mis pares ingenieros, reconociendo que el éxito de los modelos de riesgo depende del conocimiento interdisciplinario.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "comprender la urgencia de la solicitud para el control fiscal y procesar prioritariamente la extracción de datos con validaciones rigurosas para que el auditor pueda actuar a tiempo."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "decirle al auditor que radique un derecho de petición y esperar 15 días hábiles para responderle."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "ignorar el mensaje por considerar que la fiscalización aduanera no es asunto de TI."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Compromiso exige sensibilidad y prontitud frente a las necesidades misionales críticas del Estado para proteger los recursos públicos.",
+            "correct": "Sinergia multidisciplinaria de Nivel 3: articulación armónica entre tecnología y negocio.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La dilatación burocrática innecesaria permite que el contrabando evada el control aduanero."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La indiferencia fragmenta la articulación entre el área técnica y las áreas operativas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1607,
-          "topic": "Cuidado activo de los activos de información",
-          "caseText": "En el centro de datos de la DIAN se evidencia que una fuga de aire acondicionado está goteando cerca de los racks de almacenamiento de DataR.",
-          "statement": "La actuación que refleja Compromiso con el patrimonio público es:",
+          "topic": "Tema Módulo 16",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido un instante de impaciencia cuando un compañero de equipo tarda más de lo previsto en aprender a usar un nuevo aplicativo o comando de consola.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "alertar de inmediato al área de mantenimiento, activar los protocolos de protección de equipos y verificar que no haya riesgo de daño en la infraestructura crítica de la entidad."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "pasar de largo y no decir nada porque el aire acondicionado no es parte de su manual de funciones."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "esperar a que los servidores se quemen para tomar fotos y quejarse en redes sociales."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Compromiso implica velar por la integridad de los bienes y recursos públicos como propios, previniendo daños y pérdidas al patrimonio estatal.",
+            "correct": "La impaciencia pasajera es una emoción humana natural; lo evaluable es cómo se controla mediante la pedagogía y la asertividad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La indolencia frente al deterioro de bienes públicos causa graves perjuicios económicos a la Nación."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Permitir deliberadamente el daño a infraestructura crítica es una conducta reprochable y sancionable."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de fingimiento moral."
               }
             ]
           }
         },
         {
           "id": 1608,
-          "topic": "Defensa de la reputación institucional de la DIAN",
-          "caseText": "En un evento social externo, varias personas comienzan a emitir afirmaciones falsas y difamatorias sobre la supuesta venta de información reservada por parte de los funcionarios de la DIAN.",
-          "statement": "La reacción de un servidor comprometido con la dignidad de la entidad es:",
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando un compañero del equipo se encuentra sobrecargado durante un cierre de mes, ofrezco voluntariamente mi apoyo técnico para redistribuir las tareas y asegurar el cumplimiento colectivo de la meta institucional.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "aclarar con serenidad y respeto los estrictos controles de seguridad, trazabilidad criptográfica y auditoría que rigen en el DataR, defendiendo el honor y rigor técnico de los servidores públicos de la entidad."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "unirse a las difamaciones e inventar más historias falsas para llamar la atención."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "iniciar una pelea física con los asistentes al evento."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Compromiso genera sentido de pertenencia y defensa de la imagen institucional de la DIAN con argumentos objetivos y basados en la verdad.",
+            "correct": "Solidaridad operativa y compromiso con el resultado colectivo (Nivel 3).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Difamar a la propia entidad de la que se forma parte viola el deber de lealtad y rectitud."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La violencia física atenta contra el orden público y la conducta que debe observar un servidor."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1609,
-          "topic": "Acompañamiento a la modernización institucional",
-          "caseText": "La administración de la DIAN emprende un proceso de transformación cultural para adoptar metodologías ágiles y trabajo colaborativo, encontrando resistencia pasiva en algunos sectores tradicionales.",
-          "statement": "El servidor comprometido con el futuro de la institución decide:",
+          "topic": "Autogestión en Teletrabajo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Bloqueo mi estación de trabajo y cierro las conexiones VPN seguras cada vez que me aparto de mi escritorio en casa, asegurándome de que ninguna persona de mi entorno familiar tenga acceso visual o físico a datos tributarios reservados.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "convertirse en un agente activo del cambio, participando en las dinámicas y apoyando a sus compañeros a vencer el temor a las nuevas herramientas de gestión."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "organizar un boicot contra la modernización para mantener los esquemas antiguos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "burlarse de las capacitaciones y promover la apatía grupal."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Compromiso impulsa la transformación positiva de la entidad, facilitando la adopción de mejoras institucionales para prestar un mejor servicio público.",
+            "correct": "Cumplimiento estricto de las directrices de seguridad de la información en teletrabajo y custodia de la reserva tributaria (Art. 583 E.T.).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Boicotear las políticas de modernización del Estado es una falta a los deberes del cargo."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Promover el desgano lesiona el clima organizacional y la productividad de la dependencia."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1610,
-          "topic": "Constancia y disciplina en la gestión de calidad del dato",
-          "caseText": "La depuración de millones de registros erróneos del RUT es una labor compleja, minuciosa y de largo aliento que exige semanas de revisión algorítmica constante.",
-          "statement": "La actitud que refleja el valor del Compromiso es:",
+          "topic": "Tema Módulo 16",
+          "level": "Falsa Proactividad / Seguridad Informática",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si el computador institucional de teletrabajo se bloquea, considero una muestra de diligencia descargar las bases de datos en el computador de mi hijo para no retrasar la entrega del informe.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "asumir la tarea con disciplina, constancia y rigor metodológico, entendiendo que la calidad del dato maestro es la base para el éxito de toda la fiscalización del país."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "ejecutar un script a ciegas que borre los registros complejos sin verificar los impactos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "abandonar la depuración a los tres días por considerarla tediosa."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Compromiso no solo se manifiesta en momentos de crisis sino en la disciplina cotidiana y perseverante para asegurar la excelencia en los detalles del servicio de datos.",
+            "correct": "Descargar datos reservados en dispositivos personales o familiares viola las políticas de seguridad de la DIAN y la reserva fiscal. El camino correcto es reportar el fallo a la Mesa de Ayuda institucional.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Tomar atajos destructivos vulnera la integridad de los datos maestros del Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La inconstancia y el abandono de deberes perjudican la gestión pública."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1611,
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cuando dos ingenieros del equipo se enfrentan por diferencias sobre qué herramienta utilizar, intervengo constructivamente proponiendo una matriz objetiva de evaluación técnica para resolver la controversia sin personalismos.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Descriptor del Nivel 3: orienta al equipo hacia soluciones constructivas y neutraliza conflictos interpersonales.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1612,
+          "topic": "Trabajo en Equipo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"En las presentaciones de resultados ante las directivas, reconozco y destaco explícitamente el trabajo y esfuerzo de cada uno de los compañeros que integraron el proyecto, evitando asumir el mérito de forma individual.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Liderazgo generoso y fomento de la confianza mutua (Nivel 3).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1613,
+          "topic": "Tema Módulo 16",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido la más leve incomodidad cuando un colega critica públicamente un código o reporte técnico elaborado por mí.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Sentir una reacción emocional inicial ante la crítica es normal; lo valioso es procesarla racionalmente para mejorar el entregable.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de mentira."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1614,
+          "topic": "Autogestión en Teletrabajo",
+          "level": "Nivel 3",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Mantengo los canales de comunicación institucional abiertos y respondo oportunamente a las consultas de mi equipo durante toda la jornada laboral remota, asegurando una interacción tan ágil como en la presencialidad.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Conducta observable de Nivel 3 en teletrabajo según el Abecé de la DIAN.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1615,
+          "topic": "Tema Módulo 16",
+          "level": "Falsa Proactividad / Gestión Saludable",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si veo que el equipo no alcanza a terminar un informe crítico, considero que mi deber como profesional es quedarme trabajando toda la madrugada en secreto sin avisar al líder, para sorprenderlos al día siguiente con el trabajo hecho.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "El heroísmo individualista desarticula la gestión del proyecto, enmascara cuellos de botella reales de capacidad al líder y genera desgaste insostenible (<em>burnout</em>). La conducta correcta es alertar oportunamente al líder para renegociar plazos o redistribuir cargas organizadamente.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1616,
+          "topic": "Tema Módulo 16",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la recta final de la migración de datos tributarios históricos al DataR, la célula de trabajo lleva tres semanas bajo jornadas intensas. Un ingeniero de datos experimentado, encargado de las tablas de retención en la fuente, comienza a cometer errores reiterados en los scripts, se muestra retraído en las reuniones diarias de Teams y entrega sus avances con evidente retraso. Dos compañeros sugieren al Inspector I que hablen con el jefe para que lo saquen del proyecto y lo califiquen mal en su evaluación de desempeño.\n*",
+          "statement": "La postura que debe asumir el Inspector I conforme al Nivel 3 de Trabajo en Equipo y Cuidado del Clima Laboral es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Apoyar la petición de los dos compañeros para que el jefe retire al funcionario de inmediato, evitando que el cronograma del equipo se afecte."
+            },
+            {
+              "id": "B",
+              "text": "Invitar al compañero a un espacio privado de diálogo empático para escuchar las causas de su dificultad, revisar técnicamente sus bloqueos en los scripts para apoyarlo temporalmente en la depuración y coordinar con el líder del proyecto una redistribución equitativa de las tareas pendientes cuidando la salud mental de todos."
+            },
+            {
+              "id": "C",
+              "text": "Ignorar la situación y limitarse a cumplir sus propios entregables, señalando en las reuniones que el retraso es responsabilidad exclusiva del otro ingeniero.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea con el Nivel 3 de Trabajo en Equipo: empatía profesional, orientación técnica a pares, cuidado activo del clima laboral y búsqueda de soluciones colectivas sostenibles sin recurrir a la estigmatización o el aislamiento del compañero.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Dinámica punitiva y caníbal que destruye la confianza y la cohesión del equipo."
+              },
+              {
+                "id": "C",
+                "reason": "Individualismo pasivo de Nivel 1 que desconoce la corresponsabilidad en el resultado del equipo."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1617,
+          "topic": "Tema Módulo 16",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante un proyecto de desarrollo de un modelo analítico en teletrabajo, el Inspector I observa que una colega del equipo técnico no responde los mensajes de Teams durante horas, no asiste a las sincronizaciones matutinas y entrega fragmentos de código sin documentación que generan errores de compilación al integrarse con el resto del pipeline. El líder del proyecto no se ha percatado del problema porque la colega envía correos nocturnos afirmando que \"todo va al día\".\n*",
+          "statement": "La actuación profesional y transparente que debe adelantar el Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Modificar en silencio el código de la compañera durante la noche para que el pipeline funcione y no crear problemas en el equipo."
+            },
+            {
+              "id": "B",
+              "text": "Contactar a la colega para manifestarle de manera respetuosa y fundamentada las inconsistencias técnicas detectadas en la integración del código y la necesidad de mantener sincronización continua en Teams, solicitando una sesión técnica conjunta para alinear los estándares; si la conducta persiste y pone en riesgo el proyecto, informar formalmente al líder técnico para acordar un plan de contingencia."
+            },
+            {
+              "id": "C",
+              "text": "Publicar en el canal general de Teams capturas de pantalla de los errores cometidos por la colega para evidenciar públicamente su falta de compromiso en teletrabajo.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Combina el Nivel 3 de Trabajo en Equipo y Autogestión en Teletrabajo: abordaje directo, asertivo y pedagógico en primera instancia, buscando la alineación del estándar técnico y la comunicación fluida, acudiendo al canal formal jerárquico solo si se pone en riesgo el objetivo institucional.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Falso compañerismo que encubre la ineficiencia y genera una carga insostenible sobre el Inspector I."
+              },
+              {
+                "id": "C",
+                "reason": "Agresión pública que genera hostilidad y vulnera el respeto institucional."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1618,
+          "topic": "Tema Módulo 16",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En el diseño del nuevo repositorio de datos aduaneros, un ingeniero recién vinculado propone utilizar una arquitectura moderna basada en microservicios y contenedores Docker para desacoplar las consultas. Un ingeniero senior con más de 20 años en la DIAN descalifica de plano la propuesta en plena reunión grupal, afirmando con tono burlón que \"las modas de los jóvenes no sirven para una entidad seria como la DIAN y que se debe seguir usando la arquitectura monolítica de siempre\". El ingeniero nuevo luce visiblemente desmotivado y guarda silencio.\n*",
+          "statement": "La intervención que debe realizar el Inspector I como orientador del equipo (Nivel 3) es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Guardar silencio para no entrar en conflicto con la antigüedad del ingeniero senior."
+            },
+            {
+              "id": "B",
+              "text": "Intervenir con serenidad para validar la experiencia del ingeniero senior pero solicitando respeto por todas las ideas, destacar los elementos técnicos valiosos de la propuesta del nuevo integrante y proponer que se elabore una matriz de evaluación objetiva (costo, escalabilidad, seguridad) probando un piloto pequeño de microservicios en ambiente de pruebas para tomar una decisión informada."
+            },
+            {
+              "id": "C",
+              "text": "Burlarse también de la propuesta del nuevo profesional para mantener la armonía con el grupo más antiguo de la subdirección.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela el Nivel 3 de Trabajo en Equipo: restablece el respeto y la dignidad en la interacción, protege la motivación y el talento joven, integra la experiencia con la innovación y canaliza el debate hacia criterios técnicos objetivos y demostrables.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Cobardía y pasividad que permiten el matoneo profesional y ahogan la innovación."
+              },
+              {
+                "id": "C",
+                "reason": "Conducta reprochable que viola el valor Respeto del Código de Integridad de la DIAN."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1619,
+          "topic": "Tema Módulo 16",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "A las 10:00 a.m. de un día de teletrabajo programado, ocurre un corte imprevisto de energía eléctrica en el sector donde reside el Inspector I, dejando sin funcionamiento su módem de internet y dejando la batería de su computador portátil con menos de dos horas de carga. El Inspector I tiene a su cargo el monitoreo en vivo de un proceso de ingesta de datos fiscales que vence a las 2:00 p.m.\n*",
+          "statement": "Conforme al Nivel 3 de Autogestión en Teletrabajo y Responsabilidad Profesional, el servidor debe:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Apagar el computador, tomar el resto del día como descanso no laboral justificado por fuerza mayor y enviar un correo al día siguiente explicando el corte de luz."
+            },
+            {
+              "id": "B",
+              "text": "Comunicarse de inmediato mediante telefonía móvil con su líder de equipo y compañeros para notificar la contingencia, transferir temporalmente la visualización de la consola al compañero designado en el plan de respaldo y desplazarse con su equipo a la sede física de la DIAN o a un lugar con conectividad segura para reanudar sus funciones sin comprometer la meta del día."
+            },
+            {
+              "id": "C",
+              "text": "Irse a una cafetería pública cercana, conectarse a la red Wi-Fi gratuita abierta sin contraseña y continuar procesando los datos de los contribuyentes.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al Nivel 3 de Autogestión en Teletrabajo (Abecé DIAN Capítulo 5): proactividad, comunicación inmediata de contingencias, activación de respaldos colaborativos y búsqueda de soluciones seguras (traslado a la sede física) para no interrumpir el servicio público.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Negligencia y abandono de funciones bajo el pretexto de fuerza mayor subsanable."
+              },
+              {
+                "id": "C",
+                "reason": "Violación gravísima de las políticas de ciberseguridad al exponer datos tributarios del Estado en redes Wi-Fi públicas vulnerables a interceptación."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1620,
+          "topic": "Tema Módulo 16",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Subdirección de Fiscalización logra desarticular un esquema de elusión tributaria gracias a un modelo de cruce de datos masivo desarrollado por la célula técnica. El Director General cita al Inspector I a su despacho y lo felicita efusivamente, ofreciéndole un reconocimiento honorífico individual por haber diseñado el modelo. El Inspector I sabe que aunque él lideró el diseño, el éxito se debió al arduo trabajo nocturno de otros dos ingenieros y a la depuración de datos que hizo una pasante universitaria.\n*",
+          "statement": "La respuesta íntegra y colaborativa que debe dar el profesional ante el Director General es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar el reconocimiento individual con orgullo, considerando que como líder técnico es justo que reciba el mérito público por el proyecto."
+            },
+            {
+              "id": "B",
+              "text": "Agradecer respetuosamente las palabras del Director General y manifestar de inmediato que el logro fue producto del trabajo mancomunado de toda la célula técnica, detallando el aporte clave de los dos ingenieros y la pasante, y solicitando formalmente que el reconocimiento se otorgue a la totalidad del equipo de datos."
+            },
+            {
+              "id": "C",
+              "text": "Rechazar la felicitación de forma descortés, diciendo que los directores nunca entienden el esfuerzo de los ingenieros de base.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Refleja la nobleza y madurez del Nivel 3 de Trabajo en Equipo: visibiliza y reconoce el valor del trabajo de todos los integrantes, construye confianza mutua y cohesiona la identidad colectiva del equipo frente a la alta dirección.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Egocentrismo mezquino que desmotiva al equipo y destruye la lealtad grupal."
+              },
+              {
+                "id": "C",
+                "reason": "Falta de asertividad y descortesía institucional."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-16",
-      "track": "integridad"
+      ]
     },
     "exam-17": {
-      "title": "Examen: 17. Valor Diligencia (10 Preguntas PJS)",
-      "indicatorNum": 17,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 16. Código de Integridad DIAN: Honestidad y Respeto",
       "questions": [
         {
           "id": 1701,
-          "topic": "Respeto riguroso de términos legales y procesales",
-          "caseText": "El Juzgado Cuarto Administrativo del Circuito solicita a la DIAN certificar en un plazo de tres días hábiles el histórico de facturación de un contratista demandado en acción popular. El profesional de datos recibe el oficio a tiempo.",
-          "statement": "La conducta diligente que debe desplegar es:",
+          "topic": "Honestidad",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Cumplo estrictamente con los protocolos de seguridad de la información y custodia de datos en mi puesto de teletrabajo con el mismo rigor que si tuviera a mi supervisor jerárquico sentado al lado observándome todo el día.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "tramitar de inmediato la consulta, validar la calidad del reporte y remitir la certificación oficial dentro del plazo fijado por el juez para no incurrir en desacato ni afectar el proceso judicial."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "guardar el oficio en un cajón y responder a los tres meses cuando el juez llame a sancionarlo."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "romper el oficio judicial alegando que el juzgado no tiene derecho a pedir información a la DIAN."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Diligencia exige prontitud, atención y estricto respeto a los términos legales y requerimientos judiciales, evitando sanciones por desacato o nulidades procesales.",
+            "correct": "Aplica textualmente el principio rector del valor Honestidad en la DIAN: <em>\"Para ser impecable no necesito testigos\"</em>. La ética del servidor público es autónoma y rige en cualquier entorno físico o virtual.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La desidia y la mora injustificada constituyen falta disciplinaria grave por negligencia."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Destruir un oficio judicial configura el delito de destrucción o supresión de documento público."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1702,
-          "topic": "Optimización del uso de recursos computacionales",
-          "caseText": "Un analista diseña una consulta SQL en DataR que realiza un producto cartesiano sin índices y consume el 90% de los nodos del clúster durante horas.",
-          "statement": "El Inspector I debe actuar con diligencia técnica:",
+          "topic": "Tema Módulo 17",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi vida profesional he sentido la tentación de ocultar un error involuntario para evitar una llamada de atención de un superior.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "optimizando la consulta con filtros adecuados, índices y omisión de particiones, reduciendo el consumo computacional y preservando los recursos de la entidad."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "dejando que la consulta corra indefinidamente sin importar el costo de facturación en la nube."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "apagando todo el clúster sin avisar a nadie."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Diligencia incluye la destreza y eficiencia en el uso de los recursos del Estado, evitando el despilfarro computacional mediante optimización técnica.",
+            "correct": "El temor instintivo a la llamada de atención y la tentación fugaz de ocultar fallas son impulsos humanos naturales. La integridad radica en sobreponerse al temor y admitir el error con la verdad, no en fingir que el impulso no existe.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Permitir el desperdicio de recursos de nube genera detrimento patrimonial innecesario."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Apagar clústeres arbitrariamente causa indisponibilidad y caos en el servicio."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira que penaliza la validez psicométrica."
               }
             ]
           }
         },
         {
           "id": 1703,
-          "topic": "Gestión oportuna de incidentes de calidad en pipelines",
-          "caseText": "A las 8:00 a.m. se detecta que el pipeline nocturno de carga de información exógena bancaria falló al 95% de su ejecución por un error de formato.",
-          "statement": "La actuación que demuestra Diligencia profesional es:",
+          "topic": "Respeto",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Trato con profunda deferencia, cortesía y paciencia a los funcionarios de áreas administrativas o de fiscalización que me formulan preguntas tecnológicas básicas, esforzándome por explicarles sin utilizar tonos irónicos o condescendientes.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "aislar inmediatamente el registro erróneo, reprocesar el lote faltante y verificar la completitud de la tabla antes de que inicien las labores de auditoría del día."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "esperar a que se termine la semana para revisar qué fue lo que falló."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "decirle a los auditores que hoy no se puede trabajar y que se vayan a sus casas."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El servidor diligente actúa con prontitud y proactividad para solucionar fallos técnicos tan pronto se presentan, minimizando el impacto en la operación misional.",
+            "correct": "Aplica el principio rector del valor Respeto: <em>\"Dignifico a las personas en el trato y reconozco su valor\"</em>. Erradica la soberbia técnica y promueve la empatía interdisciplinaria en la DIAN.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Postergar la solución de errores críticos paraliza las labores de control de la DIAN."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Suspender arbitrariamente el trabajo de otras dependencias es una extralimitación injustificada."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1704,
-          "topic": "Atención cuidadosa a los detalles en peritajes tributarios",
-          "caseText": "Al proyectar un peritaje técnico sobre facturas sospechosas, el profesional encuentra dos cifras que difieren en tres centavos debido a un redondeo.",
-          "statement": "La conducta orientada por la Diligencia exige:",
+          "topic": "Tema Módulo 17",
+          "level": "Falsa Proactividad / Veracidad",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un directivo me pide ajustar levemente las cifras de un informe analítico para mostrar un balance más favorable de recaudo ante el Congreso de la República, considero admisible hacerlo para respaldar la imagen de la DIAN.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "rastrear el origen de la diferencia hasta verificar el cálculo exacto y explicar la variación en el dictamen para asegurar su plena solidez probatoria ante los jueces."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "inventar una cifra redonda para que nadie pregunte por los centavos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "omitir por completo la tabla para no tener que hacer cuentas."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Diligencia se manifiesta en la atención meticulosa a los detalles técnicos y numéricos, asegurando que las pruebas del Estado sean inatacables.",
+            "correct": "El valor Honestidad exige decir siempre la verdad y reflejar datos exactos. Maquillar informes públicos configura falsedad en documento público y destruye la fe institucional del Estado.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Inventar cifras viola la veracidad probatoria y constituye falsedad en documento público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Omitir información probatoria debilita la posición procesal de la DIAN en juicio."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1705,
-          "topic": "Mantenimiento preventivo de infraestructura de datos",
-          "caseText": "Las bitácoras de los discos del servidor de bases de datos alertan que el almacenamiento alcanzará su capacidad máxima en dos semanas si continúa la tasa actual de facturación electrónica.",
-          "statement": "La acción diligente que corresponde ejecutar es:",
+          "topic": "Honestidad",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Rechazo con firmeza y cortesía cualquier detalle, regalo, almuerzo de agasajo o patrocinio que ofrezca una empresa proveedora de software que tenga contratos vigentes o aspire a licitar con la DIAN.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "planificar y gestionar con antelación la ampliación del almacenamiento o políticas de compactación y tierizado a Cold Storage antes de que se produzca una saturación crítica."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "esperar a que el disco se llene al 100% y los servidores colapsen para reportar el problema."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "borrar las bases de datos de aduanas sin autorización para liberar espacio."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Diligencia es preventiva: anticipa los riesgos y ejecuta acciones oportunas para evitar la interrupción de los servicios esenciales.",
+            "correct": "Regla expresa del Código de Integridad de la DIAN: no recibir prebendas de contratistas para mantener la imparcialidad y transparencia del erario público.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La negligencia reactiva provoca caídas del servicio y daños patrimoniales evitables."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Borrar bases de datos sin autorización constituye sabotaje y falta gravísima."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1706,
-          "topic": "Puntualidad y cumplimiento de compromisos laborales",
-          "caseText": "El comité de seguridad de la información cita a una sesión técnica indispensable para autorizar el despliegue del nuevo protocolo de cifrado de DataR.",
-          "statement": "La conducta diligente del profesional convocado es:",
+          "topic": "Respeto",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Me abstengo rigurosamente de hacer comentarios sobre el aspecto físico, la orientación política, las creencias o la vida privada de mis compañeros de trabajo, promoviendo un ambiente laboral seguro y libre de discriminación.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "asistir con estricta puntualidad, habiendo estudiado previamente los documentos técnicos del orden del día y aportando con destreza y rigor al debate."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "llegar con una hora de retraso sin haber leído nada y pedir que le expliquen todo desde el principio."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "no asistir y enviar excusas no fundamentadas."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Diligencia incluye la puntualidad, la preparación previa y el respeto por el tiempo de los demás miembros del equipo público.",
+            "correct": "Mandato taxativo del valor Respeto y la Ley 1010 de 2006 (Prevención del Acoso Laboral): dignificar al ser humano y garantizar entornos de trabajo psicológicamente seguros.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La impuntualidad y la falta de preparación entorpecen la toma de decisiones institucionales."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La ausencia injustificada a compromisos laborales denota desinterés y negligencia."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1707,
-          "topic": "Gestión proactiva de la bandeja de solicitudes y PQRSF",
-          "caseText": "Un funcionario tiene asignada una bandeja de solicitudes ciudadanas donde varias peticiones están a dos días de cumplir el término perentorio de 15 días hábiles.",
-          "statement": "La actuación diligente que debe priorizar es:",
+          "topic": "Tema Módulo 17",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido impaciencia o mal humor al enfrentar un trancón vehicular o un retraso prolongado en el transporte público camino al trabajo.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "organizar su jornada para dar respuesta de fondo, clara y oportuna a las peticiones próximas a vencer, garantizando los derechos ciudadanos dentro de los términos de ley."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "dedicarse a revisar redes sociales personales y dejar que las peticiones venzan."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "responder con un mensaje automático evasivo para reiniciar artificialmente el término legal."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El cumplimiento diligente de los términos de las PQRSF protege los derechos ciudadanos y evita sanciones disciplinarias por mora injustificada (CPACA y Ley 1755 de 2015).",
+            "correct": "La impaciencia ante demoras en el transporte es una emoción cotidiana normal en seres humanos. Negarlo sistemáticamente activa la alerta de simulación psicométrica.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Desperdiciar el tiempo laboral en asuntos privados constituye falta a los deberes del cargo."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Las respuestas evasivas violan el derecho fundamental de petición y configuran mala fe administrativa."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira (<em>Faking Good</em>)."
               }
             ]
           }
         },
         {
           "id": 1708,
-          "topic": "Documentación rigurosa de procedimientos técnicos",
-          "caseText": "Tras culminar la parametrización de un nuevo conector de Change Data Capture (CDC), se le solicita al servidor registrar el manual técnico de operación.",
-          "statement": "La conducta diligente exige:",
+          "topic": "Honestidad",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero que la información tributaria y aduanera que administro en el DataR es sagrada y me abstengo de divulgarla o usarla para beneficio propio, familiar o de terceros, cumpliendo a cabalidad con la reserva legal.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "redactar la guía técnica con precisión, incluyendo diagramas, parámetros de configuración, dependencias y procedimientos de recuperación ante desastres para facilitar la operatividad institucional."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "escribir dos renglones ilegibles en un cuaderno personal y guardarlo bajo llave."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "negarse a documentar alegando que 'el código se documenta solo'."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Diligencia asegura que el trabajo realizado sea sostenible y transferible, documentando los sistemas públicos con claridad y destreza profesional.",
+            "correct": "Fidelidad absoluta al Artículo 583 del Estatuto Tributario y a la honestidad en la administración de datos públicos protegidos.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La documentación incompleta o inaccesible perjudica la continuidad del servicio."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Negarse a documentar vulnera las normas de gobierno de TI de la entidad."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1709,
-          "topic": "Verificación exhaustiva antes de despliegues en producción",
-          "caseText": "El equipo finaliza el desarrollo de un cambio en el motor de validación de facturas electrónicas. Hay presión para desplegarlo de inmediato.",
-          "statement": "El Inspector I debe actuar con diligencia profesional:",
+          "topic": "Respeto",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Escucho con respeto genuino las críticas fundamentadas que hacen a mis propuestas técnicas de arquitectura de datos, reconociendo que otras personas pueden tener perspectivas más acertadas para la entidad.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "ejecutando la batería completa de pruebas de estrés, seguridad y regresión en el ambiente de pruebas antes de autorizar el paso a producción, evitando caídas imprevistas del servicio."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "desplegando directamente en producción sin ninguna prueba para ahorrarse dos horas de trabajo."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "apagando los registros de errores para que no se vean los fallos que ocurran."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Diligencia no es simple rapidez ciega; es prontitud combinada con destreza y cuidado técnico para asegurar que los cambios no dañen la operación pública.",
+            "correct": "Humildad profesional y respeto a las capacidades ajenas, clave para la co-construcción en el servicio público.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Desplegar sin pruebas viola la gestión de cambios y expone al Estado a parálisis informática."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Ocultar errores destruye la observabilidad y constituye encubrimiento de fallas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1710,
-          "topic": "Seguimiento y cierre efectivo de incidencias",
-          "caseText": "Un auditor reporta una inconsistencia en el cálculo de intereses de mora en una tabla de recaudos. El profesional soluciona el código temporalmente.",
-          "statement": "Para cerrar la incidencia con auténtica Diligencia, al servidor le corresponde:",
+          "topic": "Tema Módulo 17",
+          "level": "Falsa Proactividad / Seguridad Informática",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un colega muy respetado olvida su token de acceso durante una emergencia de base de datos a medianoche, considero correcto prestarle mis credenciales de administrador para solucionar el problema más rápido.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "corregir la causa raíz del error, verificar que los datos históricos afectados queden subsanados, documentar la solución y confirmar con el auditor que el reporte funcione a su entera satisfacción."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "cerrar el ticket de soporte de inmediato sin verificar si los datos históricos quedaron bien."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "decirle al auditor que haga el cálculo a mano con una calculadora."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Diligencia culmina cuando el problema de fondo está resuelto y el usuario del servicio confirma la subsanación integral del servicio de datos.",
+            "correct": "El valor Honestidad en sistemas de información prohíbe prestar credenciales o identidades digitales, pues destruye la trazabilidad y la responsabilidad individual legal.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Cerrar tickets formalmente sin solucionar la causa raíz perpetúa los errores en los datos fiscales."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Obligar a calcular a mano desconoce las herramientas institucionales de la DIAN."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1711,
+          "topic": "Honestidad",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"En el instante en que detecto que una empresa oferente en un proceso licitatorio donde participo pertenece a un amigo íntimo o familiar, informo por escrito mi impedimento sin esperar a que un tercero me descubra.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Cumplimiento espontáneo y oportuno del régimen de conflicto de intereses (Ley 1437 de 2011 y Código de Integridad DIAN).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1712,
+          "topic": "Respeto",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Respeto escrupulosamente los horarios de descanso y fines de semana de mis compañeros de trabajo en teletrabajo, absteniéndome de enviarles mensajes o correos fuera de la jornada laboral a menos que sea una catástrofe legal impostergable.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Respeto a la dignidad humana, salud mental y cumplimiento de la Ley 2191 de 2022 (Desconexión Laboral).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1713,
+          "topic": "Tema Módulo 17",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido un fugaz sentimiento de celo o envidia sana cuando un colega de mi misma área recibe una felicitación pública que yo consideraba merecer.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "La comparación social es un proceso cognitivo universal en seres humanos. Negarlo denota un intento evidente de simular una perfección inexistente.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira (<em>Faking Good</em>)."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1714,
+          "topic": "Honestidad",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Reporto con estricta veracidad mis horas de dedicación laboral y los avances reales de mis proyectos en el sistema de gestión, sin inflar porcentajes ni reportar como culminadas tareas que aún están en desarrollo.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Honestidad administrativa y rendición de cuentas transparente en el servicio público.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1715,
+          "topic": "Tema Módulo 17",
+          "level": "Falsa Proactividad / Mérito",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un amigo cercano está concursando para ingresar a la DIAN y tengo acceso a los bancos de casos de la prueba, considero un gesto noble de amistad compartirle algunas preguntas para ayudarlo a salir adelante.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Fraude al mérito constitucional, revelación de secreto (delito penal) y violación gravísima de la integridad del concurso de carrera administrativa.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1716,
+          "topic": "Tema Módulo 17",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Una prestigiosa firma de auditoría tributaria que representa a grandes contribuyentes del sector financiero contacta al Inspector I de la Subdirección de Procesamiento de Datos. Le ofrecen un contrato de consultoría nocturna sumamente lucrativo para que les explique \"cómo estructurar los archivos XML de facturación electrónica UBL 2.1 para que pasen las validaciones sintácticas de la DIAN sin activar marcas de riesgo analítico\". La firma le asegura que el trabajo se hará fuera de horario laboral y desde su computador personal.\n*",
+          "statement": "Conforme al valor Honestidad y al régimen de incompatibilidades del servidor público, el Inspector I debe:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar la consultoría asegurándose de firmar con un seudónimo y recibir los honorarios en una cuenta bancaria a nombre de su cónyuge para proteger su identidad."
+            },
+            {
+              "id": "B",
+              "text": "Rechazar categóricamente la propuesta por escrito, fundamentando que la ley y el Código de Integridad prohíben asesorar a particulares en materias vinculadas al ejercicio de sus funciones públicas, e informar de inmediato a la Oficina de Control Interno Disciplinario sobre el intento de cooptación técnica."
+            },
+            {
+              "id": "C",
+              "text": "Aceptar la consultoría solo por un mes para comprar insumos tecnológicos que beneficien su capacitación profesional.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al valor Honestidad y al Artículo 38 de la Ley 1952 de 2019 (Prohibición expresa de prestar asesoría o consultoría en asuntos relacionados con las funciones del cargo). Asesorar sobre cómo eludir las alertas de riesgo de la DIAN constituye una traición a la moralidad pública y complicidad en fraude fiscal.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Simulación dolosa, violación del régimen disciplinario y enriquecimiento ilícito."
+              },
+              {
+                "id": "C",
+                "reason": "Pretende justificar una falta gravísima bajo el pretexto de un beneficio formativo personal."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1717,
+          "topic": "Tema Módulo 17",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En una auditoría interna de registros de acceso al DataR Lakehouse, el Inspector I descubre que un compañero de cubículo ha realizado múltiples consultas y descargas del historial tributario y patrimonial de un famoso artista de música popular que recientemente anunció su divorcio en medios de comunicación. El compañero no tiene asignada ninguna investigación contra el artista y le confiesa en confianza que \"solo quería saber si era verdad la millonaria fortuna que decían en la televisión\".\n*",
+          "statement": "La obligación funcional y ética del Inspector I conforme al valor Honestidad y la Reserva Tributaria es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aconsejarle que no lo vuelva a hacer, acordar el borrado de las bitácoras del servidor para que no lo despidan y revisar juntos los datos una última vez antes de eliminarlos."
+            },
+            {
+              "id": "B",
+              "text": "Poner en conocimiento formal e inmediato de la Jefatura de la Subdirección y de la Oficina de Seguridad de la Información el reporte técnico con las evidencias digitales (usuario, fecha, hora, IP y registros consultados) para que se adopten las medidas disciplinarias y de contención legal correspondientes."
+            },
+            {
+              "id": "C",
+              "text": "Guardar silencio porque no es un asunto que afecte el presupuesto del Estado ni la seguridad del país, y no vale la pena perjudicar a un compañero de oficina por un simple chisme de farándula.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Cumplimiento estricto del Artículo 583 del Estatuto Tributario (Reserva Tributaria) y del principio \"Para ser impecable no necesito testigos\". El uso indebido de las bases de datos del Estado para fines de curiosidad o chisme es una falta gravísima sancionable con destitución y delito informático (Art. 269A C.P.).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Destrucción de documento público (Art. 292 C.P.) y complicidad penal y disciplinaria."
+              },
+              {
+                "id": "C",
+                "reason": "Omisión del deber de control e indiferencia ante la violación de los derechos fundamentales de privacidad del ciudadano."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1718,
+          "topic": "Tema Módulo 17",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En una reunión técnica interinstitucional con delegados de la Policía Fiscal y Aduanera (POLFA), una profesional de la DIAN presenta los avances de un algoritmo de georreferenciación de contrabando. Durante su exposición, un analista senior del equipo interrumpe de forma airada y con tono desobligante, manifestando que \"su presentación es un desastre, que las mujeres de esa universidad no entienden nada de programación y que mejor le deje el trabajo a los hombres que sí saben de sistemas\".\n*",
+          "statement": "La intervención que debe realizar el Inspector I guiado por el valor Respeto es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Reírse discretamente para bajar la tensión de la reunión y evitar entrar en polémica con el analista senior que tiene mayor jerarquía."
+            },
+            {
+              "id": "B",
+              "text": "Intervenir con serenidad y total firmeza para exigir respeto hacia la compañera, recordar que las normas de la DIAN prohíben categóricamente la discriminación de género y las agresiones verbales, validar los aspectos técnicos de la presentación y solicitar al moderador continuar la reunión en el marco de la dignidad profesional y el análisis objetivo."
+            },
+            {
+              "id": "C",
+              "text": "Tomar el control de la presentación y terminarla él mismo para no hacer pasar más vergüenzas a la compañera ante los delegados externos.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela el valor Respeto del Código de Integridad: <em>\"Dignifico a las personas en el trato y reconozco su valor\"</em>. Defiende activamente a la compañera frente al acoso y la discriminación de género, frenando la agresión verbal y restaurando el orden institucional sin recurrir a la violencia.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Complicidad cobarde y tolerancia inaceptable con el acoso laboral."
+              },
+              {
+                "id": "C",
+                "reason": "Actitud paternalista que convalida la agresión despojando a la profesional de su espacio legítimo de intervención."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1719,
+          "topic": "Tema Módulo 17",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Un funcionario de una Dirección Seccional de Aduanas de frontera contacta al Inspector I pidiéndole que \"desactive por un par de horas una regla de riesgo automatizada\" en el sistema aduanero que detiene aleatoriamente camiones de perecederos para inspección física. El funcionario aduce que \"el calor está dañando la fruta de unos campesinos honestos y que mantener el retén genera protestas sociales en la carretera\".\n*",
+          "statement": "La decisión que concilia la integridad, la legalidad y el servicio público es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Desactivar la regla de inmediato por compasión humana con los campesinos, enviando un mensaje al funcionario aduanero para que libere los camiones sin inspección."
+            },
+            {
+              "id": "B",
+              "text": "Negarse rotundamente a desactivar la regla automatizada de riesgo aduanero, explicando que las alertas algorítmicas están blindadas por ley para evitar el contrabando, y coordinar institucionalmente con el área de operaciones aduaneras para que prioricen la inspección física inmediata en sitio mediante protocolos de contingencia sin vulnerar los controles fiscales."
+            },
+            {
+              "id": "C",
+              "text": "Indicar al funcionario que no sabe cómo funciona el sistema para evadir la responsabilidad y desentenderse de la situación.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Honestidad e integridad inquebrantable: no abre puertas traseras en los sistemas de control del Estado, pero demuestra orientación al servicio coordinando la solución operativa real (priorización del trámite físico legal en muelle/puerto) para evitar el daño a los bienes sin desarmar la aduana.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Infracción gravísima que abre el paso al contrabando bajo el velo de falsas razones humanitarias."
+              },
+              {
+                "id": "C",
+                "reason": "Negligencia y evasión que deteriora la confianza pública en la DIAN."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1720,
+          "topic": "Tema Módulo 17",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Al regresar de una comisión técnica de servicios en la Dirección Seccional de Cúcuta para implementar un nodo de procesamiento de datos, el área financiera de la DIAN consigna en la cuenta de ahorros del Inspector I un millón quinientos mil pesos ($1.500.000) por encima del monto legal liquidado por concepto de viáticos y transporte, debido a un error de digitación en la planilla contable. El Inspector I se percata del saldo a favor al revisar su extracto bancario.\n*",
+          "statement": "La actuación íntegra y transparente del servidor conforme al valor Honestidad es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Guardar silencio y conservar el dinero en su cuenta, considerando que el error fue de la administración y que la DIAN tiene presupuesto suficiente para cubrirlo."
+            },
+            {
+              "id": "B",
+              "text": "Notificar de inmediato y por escrito al área de tesorería y talento humano sobre la inconsistencia en la consignación, solicitar el formato y cuenta oficial correspondiente y realizar el reintegro inmediato del saldo excedente al tesoro de la DIAN aportando el comprobante de pago."
+            },
+            {
+              "id": "C",
+              "text": "Esperar a que la Contraloría o Control Interno emita un hallazgo en la auditoría del próximo año para devolver el dinero solo cuando se lo requieran formalmente.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al mandato del valor Honestidad: actuar con rectitud y devolver de inmediato los recursos públicos que no le pertenecen. La retención injustificada de dineros del Estado configura peculado por apropiación o enriquecimiento sin causa.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Falta a la ética pública y apropiación ilícita de recursos del erario."
+              },
+              {
+                "id": "C",
+                "reason": "Pasividad ventajosa contraria a la rectitud y al principio de moralidad administrativa."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-17",
-      "track": "integridad"
+      ]
     },
     "exam-18": {
-      "title": "Examen: 18. Valor Honestidad (10 Preguntas PJS)",
-      "indicatorNum": 18,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia",
       "questions": [
         {
           "id": 1801,
-          "topic": "Rechazo de prebendas y regalos de contribuyentes",
-          "caseText": "Tras culminar exitosamente un proceso de depuración de inconsistencias en el RUT de un importador, el representante de la empresa envía a la oficina del Inspector I una canasta navideña con licores importados y un teléfono móvil de alta gama como 'muestra de agradecimiento'.",
-          "statement": "Conforme al Código de Integridad y las normas anticorrupción, al servidor le corresponde:",
+          "topic": "Compromiso",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Comprendo que mi labor en el procesamiento de datos tributarios y aduaneros impacta directamente en los recursos que financian la salud, educación e infraestructura de Colombia, asumiendo mi trabajo con profundo orgullo y vocación de servicio.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "rechazar de manera inmediata y categórica el obsequio, devolverlo formalmente con oficio explicando la prohibición legal y reportar el hecho a la Oficina de Control Interno Disciplinario."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "recibir los regalos argumentando que no fueron solicitados y que devolverlos sería de mala educación."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "repartir los licores y quedarse personalmente con el teléfono celular."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "Los servidores públicos tienen prohibición legal expresa de recibir dádivas, regalos o atenciones de personas o empresas con quienes tengan relación por sus funciones (Ley 1474 de 2011 y Código de Integridad).",
+            "correct": "Describe el núcleo del valor Compromiso en el Código de Integridad: <em>\"Pongo mi corazón y mi talento al servicio de Colombia\"</em>, reconociendo el sentido de trascendencia social de la función pública.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La 'buena educación' no justifica aceptar dádivas prohibidas por la ley anticorrupción."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Apropiarse de obsequios de administrados constituye falta disciplinaria gravísima y delito."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1802,
-          "topic": "Veracidad en el reporte de horas de trabajo y actividades",
-          "caseText": "Un funcionario que trabaja bajo modalidad de teletrabajo en procesamiento de datos se ausenta durante toda la jornada para atender asuntos de un negocio comercial privado, pero al final del día reporta en la plataforma institucional que laboró 8 horas en tareas de análisis.",
-          "statement": "Desde la perspectiva del valor de la Honestidad, esta conducta:",
+          "topic": "Tema Módulo 18",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he sentido el impulso o deseo de postergar para el día siguiente una tarea operativa monótona, habiendo cumplido siempre de forma instantánea cada una de mis asignaciones.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "constituye una falta grave contra la honestidad y la veracidad, tipificando falsedad en documentos públicos de reporte laboral e incumplimiento de los deberes del servicio público."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "es una práctica normal y aceptable mientras nadie se dé cuenta."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "es un derecho legítimo del teletrabajador para balancear su economía personal."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Honestidad exige actuar siempre con apego irrestricto a la verdad: falsear reportes de actividades y cobrar salarios por tiempos no laborados defrauda la fe pública y el erario del Estado.",
+            "correct": "La inclinación ocasional a postergar labores repetitivas es una experiencia común en seres humanos normales. Negarla es el sello de un patrón de respuesta artificial (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La falta de detección no convierte una conducta deshonesta en aceptable."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "El teletrabajo exige estricto cumplimiento de la jornada laboral y dedicación exclusiva a las funciones públicas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira que castiga la validez psicométrica."
               }
             ]
           }
         },
         {
           "id": 1803,
-          "topic": "Denuncia de actos de corrupción interna",
-          "caseText": "El Inspector I descubre de manera accidental que un compañero de su área está borrando sistemáticamente las marcas de fiscalización de ciertas empresas en DataR a cambio de pagos que recibe en una cuenta bancaria a nombre de un tercero.",
-          "statement": "El deber imperativo impuesto por el valor de la Honestidad y el Estatuto Anticorrupción es:",
+          "topic": "Diligencia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Optimizo rigurosamente mis algoritmos de Spark y apago las instancias de servidores en la nube inmediatamente culminan las pruebas de procesamiento, evitando consumos innecesarios de memoria que incrementen el gasto del Estado.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "recopilar la evidencia técnica inmutable y radicar de inmediato la denuncia penal y disciplinaria correspondiente ante la Fiscalía General y Control Interno Disciplinario."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "hacerse el desentendido para no ganarse problemas con el compañero."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "pedirle una parte del dinero al compañero a cambio de guardar silencio."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Honestidad en el Estado no es pasiva: impone el deber ético y legal de denunciar sin dilación los actos de corrupción para proteger los recursos y la moralidad pública (Art. 67 del Código de Procedimiento Penal).",
+            "correct": "Aplica el principio del valor Diligencia: <em>\"Hago bien las cosas desde el principio y hasta el final, optimizando el uso de los recursos del Estado\"</em>. Austeridad y eficiencia técnica real.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El silencio frente a delitos conocidos en ejercicio del cargo configura el delito de abuso de autoridad por omisión de denuncia."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Extorsionar al infractor constituye el delito de concusión y complicidad criminal."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1804,
-          "topic": "Transparencia en procesos de selección y compras de TI",
-          "caseText": "El servidor participa como evaluador técnico en una licitación para adquirir servidores en la nube para la DIAN. Un representante de una de las empresas proponentes resulta ser su amigo de infancia y le pide que le 'dé una mano' en la calificación.",
-          "statement": "La conducta honesta y legal que debe asumir el profesional es:",
+          "topic": "Tema Módulo 18",
+          "level": "Falsa Proactividad / Calidad del Dato",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un jefe me pide un cruce de datos con urgencia extrema, considero un acto de diligencia saltarme las pruebas de validación de consistencia y entregarle el archivo de inmediato, asumiendo que los datos probablemente están bien.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "manifestar de inmediato el impedimento por amistad íntima o interés particular ante el ordenador del gasto, apartándose de la evaluación técnica para salvaguardar la transparencia del proceso contractual."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "asignarle el puntaje máximo a su amigo sin importar si su propuesta técnica cumple los requisitos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "filtrarle las preguntas de la evaluación a su amigo antes de la audiencia pública."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Honestidad exige imparcialidad absoluta y apartamiento obligatorio frente a conflictos de interés, garantizando la igualdad de oportunidades y la selección objetiva en la contratación pública (Ley 80 de 1993).",
+            "correct": "La diligencia exige hacer las cosas bien desde el principio. Entregar datos no validados ni testeados puede inducir a errores fiscales catastróficos, cobros injustificados o nulidades procesales.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Favorecer a amigos en contratos públicos constituye el delito de interés indebido en la celebración de contratos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Filtrar información privilegiada viola la reserva contractual y atenta contra la transparencia estatal."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1805,
-          "topic": "Reconocimiento de errores y no ocultamiento de fallas",
-          "caseText": "Durante la migración de un módulo de datos, el profesional ejecuta un comando equivocado que corrompe la tabla de índices temporales, provocando una demora de seis horas en la entrega de reportes de fiscalización.",
-          "statement": "La actuación inspirada por el valor de la Honestidad es:",
+          "topic": "Justicia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Mantengo la misma rigurosidad matemática y objetividad legal al parametrizar los modelos de auditoría fiscal, negándome a crear excepciones o filtros que favorezcan a personas o empresas con nexos políticos o de poder.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "informar con total veracidad a su líder técnico sobre lo ocurrido, asumiendo la autoría del incidente y presentando las medidas técnicas ejecutadas para restablecer los índices y corregir el procedimiento."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "inventar que el fallo se debió a un ciberataque externo ruso para desviar la atención."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "culpar al operario de aseo diciendo que desconectó un cable sin querer."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Honestidad se fundamenta en decir la verdad sin rodeos, asumiendo la responsabilidad por los propios actos y colaborando activamente en la corrección de fallos técnicos.",
+            "correct": "Aplica el valor Justicia: <em>\"Doy a cada quien lo que corresponde según la ley y el mérito, con equidad, igualdad y sin discriminación\"</em>. Blindaje contra el clientelismo y la arbitrariedad.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Falsificar amenazas cibernéticas desvía recursos de seguridad pública y constituye falsedad."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Inculpar a personal vulnerable de servicios generales es un acto cobarde y contrario a la integridad."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1806,
-          "topic": "Custodia y no apropiación de bienes del Estado",
-          "caseText": "Se renuevan los computadores portátiles de la dependencia y el inventario deja varios equipos antiguos dados de baja temporalmente en una bodega sin cámaras de seguridad.",
-          "statement": "El comportamiento que refleja el valor de la Honestidad es:",
+          "topic": "Diligencia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Documento detalladamente cada función, parámetro de conexión y regla de negocio en el repositorio Git de la DIAN, asegurando que cualquier compañero pueda auditar, mantener o continuar el proyecto sin depender de mi presencia física.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "custodiar rigurosamente los equipos y verificar que queden debidamente registrados en el sistema de inventarios y activos fijos para su disposición o donación legal conforme a las normas fiscales."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "llevarse un computador a su casa argumentando que 'igual ya los van a botar'."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "vender las piezas de los computadores por internet para comprar refrigerios para la oficina."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Honestidad exige cuidar los bienes públicos con el máximo celo; apropiarse de bienes del Estado, así estén dados de baja, constituye el delito de peculado por apropiación.",
+            "correct": "Refleja la diligencia profesional y la sostenibilidad institucional: el conocimiento pertenece a la entidad y no al ego individual.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Sustraer bienes públicos es un delito penal que acarrea destitución e inhabilidad permanente."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Vender activos del Estado sin autorización legal es una conducta delictiva grave."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1807,
-          "topic": "No utilización de información privilegiada para beneficio personal",
-          "caseText": "Al procesar declaraciones de aduanas, el servidor observa que una empresa importará un producto innovador que triplicará el valor de sus acciones en la bolsa de valores al mes siguiente.",
-          "statement": "La conducta honesta del funcionario es:",
+          "topic": "Tema Módulo 18",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Absolutamente nunca en toda mi vida he llegado siquiera un minuto tarde a un compromiso, cita médica o jornada laboral por causas imprevistas.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "guardar estricta reserva de la información conocida en ejercicio de sus funciones y abstenerse de comprar acciones o asesorar a terceros para lucrarse de dicha información privilegiada."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "comprar acciones masivamente usando el nombre de su hermano para hacerse millonario."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "vender el dato a inversionistas privados en el mercado de valores."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El uso de información privilegiada obtenida en la función pública para beneficio económico personal o de terceros constituye el delito de utilización indebida de información privilegiada (Art. 258 C.P.).",
+            "correct": "Retrasos involuntarios menores ante hechos fortuitos son comunes en la vida moderna. Afirmar infalibilidad temporal absoluta denota simulación psicométrica (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Utilizar testaferros no elimina la tipicidad del delito de uso de información privilegiada."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Comercializar secretos fiscales del comercio exterior viola la reserva legal y la ética pública."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira."
               }
             ]
           }
         },
         {
           "id": 1808,
-          "topic": "Transparencia en la rendición de cuentas",
-          "caseText": "Al consolidar el informe de gestión de proyectos de analítica de la vigencia, se evidencia que uno de los tres proyectos planeados no se ejecutó debido a fallas de planeación interna.",
-          "statement": "El profesional debe actuar con Honestidad:",
+          "topic": "Justicia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Reviso periódicamente las distribuciones de probabilidad de los modelos analíticos para certificar que las variables empleadas no generen sesgos socioeconómicos, regionales o de género que penalicen injustamente a pequeños contribuyentes.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "reportando con claridad el estado real de los tres proyectos, explicando con veracidad las causas del incumplimiento y formulando las lecciones aprendidas y el plan de contingencia para la vigencia entrante."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "reportar que los tres proyectos se completaron al 100% para obtener felicitaciones de la dirección."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "borrar el proyecto fallido de los planes anuales como si nunca hubiera existido."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La rendición de cuentas honesta expone con veracidad tanto los logros como los rezagos, permitiendo al Estado corregir rumbos y mejorar la gestión pública de forma transparente.",
+            "correct": "Justicia algorítmica y garantía del debido proceso y no discriminación (Constitución Política Art. 13 y Código de Integridad DIAN).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Falsear logros en informes de gestión constituye falsedad ideológica en documento público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Ocultar metas no cumplidas engaña a los órganos de control y a la ciudadanía."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1809,
-          "topic": "Rechazo a la falsificación de soportes o justificaciones",
-          "caseText": "Un funcionario llega dos horas tarde a la oficina y le pide a un amigo médico que le expida una incapacidad médica falsa para justificar la tardanza y no perder el día de salario.",
-          "statement": "Frente a este dilema, el valor de la Honestidad exige:",
+          "topic": "Compromiso",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Durante los periodos de vencimiento masivo de declaraciones tributarias, mantengo una actitud de máxima colaboración técnica y disponibilidad para resolver de inmediato incidentes de infraestructura que puedan afectar a los contribuyentes.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "asumir con integridad la tardanza, reportar las horas no laboradas conforme a la realidad y reponer el tiempo conforme a las normas de talento humano, sin acudir a documentos falsificados."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "radicar la incapacidad médica falsa para no perder el dinero del día."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "amenazar al jefe para que no le descuente el tiempo."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Honestidad rechaza cualquier uso de documentos o justificaciones falsas; radicar incapacidades falsas en el sector público constituye delito de uso de documento falso y estafa.",
+            "correct": "Compromiso activo con la misión institucional y empatía ciudadana en momentos de alta tensión operativa.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Usar certificados falsos destruye la confianza y acarrea destitución del cargo público."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La coacción a superiores constituye falta gravísima y agresión laboral."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1810,
-          "topic": "Integridad frente a tentaciones de favoritismo en fiscalización",
-          "caseText": "Al ejecutar un algoritmo de cruce de evasión, el servidor descubre que la empresa donde trabaja su mejor amigo aparece en los primeros lugares de la lista de riesgo de fiscalización inmediata.",
-          "statement": "La conducta que honra el valor de la Honestidad es:",
+          "topic": "Tema Módulo 18",
+          "level": "Falsa Proactividad / Gestión Patrimonial",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si un amigo de una empresa privada me ofrece regalar unos servidores usados a la DIAN para mejorar la velocidad del DataR, considero que mi deber es recibirlos e instalarlos directamente sin esperar el trámite de inventarios públicos.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "mantener el reporte intacto sin alterar ninguna posición, abstenerse de alertar indebidamente a su amigo y manifestar el impedimento legal correspondiente si le corresponde intervenir en el trámite."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "eliminar a la empresa del amigo del listado antes de enviar el reporte a fiscalización."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "llamar a su amigo para advertirle que esconda la contabilidad antes de que lleguen los auditores."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Honestidad antepone la verdad y el imperio de la ley sobre la amistad o los intereses personales; manipular listados oficiales o filtrar alertas constituye prevaricato y favorecimiento a la evasión.",
+            "correct": "La gestión de activos del Estado está sujeta a rigurosos controles de inventario, garantías de procedencia y blindaje contra espionaje o malware (<em>hardware trojans</em>). Instalar equipos sin protocolo es una falta grave.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Alterar listas de fiscalización es una manipulación fraudulenta de sistemas públicos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Filtrar información reservada para obstruir la fiscalización configura delito de obstrucción a la justicia."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1811,
+          "topic": "Diligencia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Atiendo las solicitudes de extracción y cruce de datos que me formulan los auditores de fiscalización con prontitud, exactitud y cortesía, evitando demoras injustificadas que hagan prescribir los términos legales de cobro.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Diligencia orientada a evitar el daño patrimonial al Estado por prescripción de obligaciones tributarias (Ley 1952 de 2019).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1812,
+          "topic": "Justicia",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"En la asignación de tareas dentro del equipo de datos, promuevo que los proyectos de alta visibilidad estratégica y las labores complejas de soporte rutinario se distribuyan de manera equitativa y transparente entre todos los miembros.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Justicia y equidad en el clima laboral: erradica los privilegios injustificados y fomenta la igualdad de oportunidades de desarrollo.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1813,
+          "topic": "Tema Módulo 18",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he experimentado un momento de desánimo, estrés o cansancio mental frente a un problema algorítmico sumamente difícil de resolver.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "El estrés y el cansancio ante problemas analíticos arduos son respuestas cognitivas normales. Reconocerlo denota honestidad y salud mental.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de fingimiento psicométrico."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1814,
+          "topic": "Compromiso",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Defiendo con argumentos objetivos y conducta intachable la reputación y credibilidad pública de la DIAN, actuando como embajador de la transparencia fiscal en todos los escenarios personales y profesionales.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Conducta observable del valor Compromiso: lealtad institucional y preservación de la confianza ciudadana en la administración tributaria.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1815,
+          "topic": "Tema Módulo 18",
+          "level": "Falsa Proactividad / Veracidad Operativa",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero astuto reportar en el sistema de gestión que un pipeline de datos tardará el triple del tiempo real necesario, para luego entregarlo antes y quedar como un funcionario extremadamente eficiente ante los jefes.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Inflar deliberadamente las estimaciones de tiempo desdibuja la planeación institucional y viola el valor Diligencia y Honestidad. La eficiencia pública se basa en estimaciones técnicas transparentes y reales.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1816,
+          "topic": "Tema Módulo 18",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante una migración de datos, un compañero de equipo deja encendido un clúster de cómputo de alta capacidad en la nube con configuraciones sobredimensionadas durante todo un fin de semana festivo sin realizar ninguna tarea, generando un costo de procesamiento imprevisto cercano a los 25 millones de pesos para la DIAN. Al percatarse el martes por la mañana, el compañero le ruega al Inspector I que altere los registros del monitor de infraestructura para hacer parecer que el clúster estuvo procesando una prueba autorizada de estrés para la Dirección de Fiscalización.\n*",
+          "statement": "La actuación correcta conforme a los valores de Honestidad y Diligencia es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Acceder a la petición del compañero para no arruinar su hoja de vida, redactando una justificación técnica retroactiva de la supuesta prueba de estrés."
+            },
+            {
+              "id": "B",
+              "text": "Apagar de inmediato las instancias para frenar el desperdicio del erario público, negarse categóricamente a alterar las bitácoras del sistema y apoyar al compañero en la elaboración del informe técnico veraz donde se consigne el incidente, las causas de la omisión y las medidas de remediación y automatización (apagado automático programado) para que el hecho no vuelva a repetirse."
+            },
+            {
+              "id": "C",
+              "text": "Publicar en redes sociales el sobrecosto de la nube para denunciar públicamente la negligencia de la DIAN.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea perfectamente con la Diligencia y la Honestidad: detiene el gasto público inmediatamente, no comete falsedad documental y canaliza la solución técnica institucional (políticas de apagado automático) sin caer en complicidades delictivas ni en agresiones destructivas.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Falsedad ideológica en documento público y fraude procesal disciplinario."
+              },
+              {
+                "id": "C",
+                "reason": "Deslealtad institucional y violación del conducto regular de la administración pública."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1817,
+          "topic": "Tema Módulo 18",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Al analizar los resultados del nuevo modelo predictivo de omisos en IVA, el Inspector I descubre que el algoritmo selecciona con un 90% de frecuencia a pequeños comerciantes de barrio y tiendas familiares, mientras que omite sistemáticamente a grandes consorcios inmobiliarios con operaciones dudosas, debido a que las variables de entrada fueron calibradas dando mayor peso a las diferencias en medios de pago electrónicos básicos. Un analista le dice que \"es mejor dejarlo así porque los pequeños pagan rápido y no tienen abogados para apelar, lo que ayuda a inflar las estadísticas de eficacia de la Seccional\".\n*",
+          "statement": "La postura ética y técnica que debe asumir el profesional conforme al valor Justicia es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar los resultados del modelo para que la Seccional cumpla fácilmente su meta mensual de casos cerrados, sin importar quiénes sean los fiscalizados."
+            },
+            {
+              "id": "B",
+              "text": "Suspender el despliegue del modelo, documentar técnicamente la existencia de un sesgo algorítmico regresivo que vulnera el principio constitucional de equidad tributaria y justicia distributiva, y proponer ante el comité técnico la recalibración de las ponderaciones de riesgo incorporando variables de compras patrimoniales e ingresos brutos para enfocar la fiscalización en los verdaderos focos de gran evasión."
+            },
+            {
+              "id": "C",
+              "text": "Eliminar manualmente a los pequeños comerciantes del reporte y reemplazarlos por nombres elegidos al azar en la base de datos.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela el valor Justicia en el corazón de la ciencia de datos pública: defiende la equidad constitucional (Art. 363 C.P.), corrige el sesgo técnico y enfoca la contundencia fiscal del Estado en la gran elusión sin abusar de los pequeños contribuyentes por comodidad estadística.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Injusticia tributaria y oportunismo administrativo que castiga la vulnerabilidad ciudadana."
+              },
+              {
+                "id": "C",
+                "reason": "Arbitrariedad y manipulación ilícita de datos sin sustento metodológico."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1818,
+          "topic": "Tema Módulo 18",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "La Subdirección de Fiscalización requiere urgentemente un cruce analítico de importaciones no declaradas para emitir un pliego de cargos contra una red de contrabando millonario de licores. El término de caducidad legal vence en 72 horas; si el pliego no se notifica a tiempo, el Estado perderá la potestad de cobrar más de 12.000 millones de pesos. El ingeniero asignado para generar el archivo se encuentra de permiso y el requerimiento está represado en la bandeja de entrada.\n*",
+          "statement": "La actuación que refleja el valor Compromiso y Diligencia por parte del Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Dejar el requerimiento en espera hasta que el ingeniero titular regrese de su permiso la próxima semana, argumentando que no se debe usurpar la función ajena."
+            },
+            {
+              "id": "B",
+              "text": "Asumir de manera voluntaria, inmediata y prioritaria la ejecución técnica del cruce analítico en coordinación con el líder del grupo, validar rigurosamente la calidad de los datos y entregar el insumo en menos de 24 horas a los auditores fiscales para garantizar la defensa oportuna de los recursos del erario público."
+            },
+            {
+              "id": "C",
+              "text": "Enviar un memorando a Fiscalización diciendo que debieron pedir la información con un mes de anticipación y que no es problema de TI que el término legal prescriba.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al principio del valor Compromiso: <em>\"Pongo mi corazón y mi talento al servicio de Colombia\"</em>. Actúa con sentido de urgencia pública, evita un detrimento patrimonial millonario al Estado por prescripción y apoya operativamente al equipo.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Pasividad negligente que ocasiona daño patrimonial directo a la Nación."
+              },
+              {
+                "id": "C",
+                "reason": "Arrogancia burocrática y falta de empatía institucional inadmisible en un servidor público."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1819,
+          "topic": "Tema Módulo 18",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la evaluación de las propuestas técnicas de una licitación para renovar las herramientas de analítica avanzada de la DIAN, el Inspector I asigna una calificación baja al software de uno de los oferentes porque no cumple con los requisitos mínimos de seguridad y gobernanza de datos estipulados en los pliegos. El Presidente del Comité Asesor de Contratación le pide en privado que \"sea flexible y suba la calificación del oferente porque se trata de una empresa muy influyente y no conviene generar demandas contra la entidad\".\n*",
+          "statement": "La conducta recta e imparcial conforme al valor Justicia y la Contratación Pública es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar la sugerencia del Presidente del Comité y modificar la calificación técnica para evitar litigios judiciales a la DIAN."
+            },
+            {
+              "id": "B",
+              "text": "Mantener con firmeza técnica y soporte documental la calificación objetiva asignada, fundamentando que la selección objetiva y la justicia contractual prohíben flexibilizar los pliegos a conveniencia, e informar formalmente al Comité y a la Oficina de Control Interno sobre el deber de salvaguardar la transparencia del proceso licitatorio."
+            },
+            {
+              "id": "C",
+              "text": "Renunciar al comité evaluador sin emitir concepto para que otros asuman la responsabilidad.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Cumplimiento estricto del valor Justicia y del principio de selección objetiva de la Ley 80 de 1993 y Ley 1150 de 2007. La imparcialidad en la evaluación de ofertas es una obligación legal y ética indelegable del servidor público.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Prevaricato, interés indebido en la celebración de contratos y violación de la moralidad pública."
+              },
+              {
+                "id": "C",
+                "reason": "Evasión cobarde del deber funcional."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1820,
+          "topic": "Tema Módulo 18",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Al revisar las rutinas del motor de consulta de RUT y firmas digitales para contribuyentes en el portal web institucional, el Inspector I nota que una subrutina construida hace meses ejecuta consultas redundantes a la base de datos principal, generando una lentitud exasperante para los miles de ciudadanos que intentan actualizar sus datos diariamente. El problema no ha generado quejas formales graves y modificarlo implica trabajar varias horas extras en la optimización del código.\n*",
+          "statement": "Guiado por el valor Diligencia y la Orientación al Ciudadano, el Inspector I debe:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Abstenerse de tocar el código, ya que nadie ha radicado una queja oficial y modificar cosas que funcionan puede traer reproches innecesarios."
+            },
+            {
+              "id": "B",
+              "text": "Documentar la ineficiencia detectada, diseñar y probar en ambiente controlado una versión refactorizada que elimine la redundancia de consultas, y coordinar con el área de despliegue la actualización del portal web para optimizar los tiempos de respuesta y brindar un servicio digno y ágil a la ciudadanía."
+            },
+            {
+              "id": "C",
+              "text": "Limitarse a enviar un correo diciendo que el portal es lento pero sin proponer ni desarrollar ninguna solución técnica concreta.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta al principio de la Diligencia: <em>\"Hago bien las cosas desde el principio y hasta el final\"</em>. Demuestra iniciativa proactiva para mejorar la experiencia del ciudadano ante el Estado y optimiza el rendimiento del sistema público sin esperar órdenes ni quejas.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Conformismo y mediocridad que perpetúa un mal servicio público."
+              },
+              {
+                "id": "C",
+                "reason": "Actitud quejumbrosa e ineficiente que no aporta soluciones tangibles."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-18",
-      "track": "integridad"
+      ]
     },
     "exam-19": {
-      "title": "Examen: 19. Valor Justicia (10 Preguntas PJS)",
-      "indicatorNum": 19,
+      "title": "Laboratorio Likert y PJS (20 Ítems): 18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN",
       "questions": [
         {
           "id": 1901,
-          "topic": "Imparcialidad y no discriminación en fiscalización",
-          "caseText": "Un auditor propone concentrar todas las investigaciones de fiscalización en los pequeños comerciantes de un barrio popular porque 'son más fáciles de sancionar', dejando de auditar a grandes corporaciones con estructuras complejas.",
-          "statement": "Desde el valor de la Justicia y el principio de equidad tributaria (Art. 363 C.P.), el profesional de datos debe argumentar que:",
+          "topic": "Misión y Filosofía Institucional",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Asumo la optimización de los pipelines de datos en la DIAN con la convicción de que garantizar la seguridad fiscal y el recaudo legítimo del Estado es indispensable para financiar los derechos fundamentales de todos los colombianos.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "los modelos analíticos deben diseñarse con criterios objetivos de progresividad y proporcionalidad, focalizando el control donde reside el mayor riesgo y cuantía de evasión sin sesgos discriminatorios contra los sectores más vulnerables."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "se debe perseguir exclusivamente a los pequeños comerciantes porque no tienen abogados defensores."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "no se debe fiscalizar a nadie para no incomodar a la sociedad."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Justicia exige equidad, proporcionalidad e imparcialidad: el sistema tributario colombiano se fundamenta en los principios de equidad, eficiencia y progresividad (Art. 363 C.P.), atacando la evasión de grandes capitales con el mismo o mayor rigor.",
+            "correct": "Alineación axiológica plena con la Misión de la UAE DIAN y el sentido social del tributo en la Constitución de 1991.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Discriminar a los sectores débiles contradice la justicia distributiva y la equidad constitucional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Renunciar a la fiscalización destruye la sostenibilidad financiera del Estado."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1902,
-          "topic": "Corrección de errores materiales a favor del contribuyente",
-          "caseText": "Un cruce automatizado generó por error una liquidación de sanción contra un contribuyente que ya había demostrado fehacientemente que pagó a tiempo en una entidad bancaria.",
-          "statement": "La actuación justa que debe asumir el servidor público es:",
+          "topic": "Tema Módulo 19",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en toda mi vida profesional he dudado sobre mi vocación de servicio público ni he considerado la posibilidad de trabajar en el sector privado para ganar más dinero.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "verificar las pruebas de pago, proyectar de oficio la resolución de revocatoria o corrección del error material y restablecer el estado al día del contribuyente sin exigirle litigios engorrosos."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "sostener la sanción injusta argumentando que la DIAN nunca se equivoca."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "obligar al ciudadano a pagar la sanción indebida y decirle que demande ante los tribunales si no le gusta."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Justicia exige imparcialidad y rectitud: cuando el Estado comete un error material comprobado, el servidor diligente debe corregirlo de oficio conforme a la ley, garantizando los derechos del ciudadano.",
+            "correct": "Sopesar oportunidades salariales en el sector privado es una reflexión natural en cualquier profesional de tecnología. Negarlo con pretensión de santidad activa la subescala de simulación (<em>Faking Good</em>).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La soberbia institucional que niega errores comprobados vulnera el debido proceso y la justicia."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Obligar a litigar sabiendo que el cobro es improcedente constituye daño antijurídico estatal."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala de mentira que perjudica la validez de la prueba."
               }
             ]
           }
         },
         {
           "id": 1903,
-          "topic": "Garantía del Debido Proceso y Contradicción",
-          "caseText": "Al diseñar un sistema de notificaciones automáticas para cobro coactivo, se propone eliminar el período de respuesta del contribuyente para embargar las cuentas en el mismo segundo en que se expide el acto.",
-          "statement": "El Inspector I debe rechazar la propuesta fundamentando que:",
+          "topic": "Tema Módulo 19",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo activamente que mis compañeros asuman una cultura de excelencia técnica y rectitud moral a través de mi propio ejemplo cotidiano, inspirando confianza y sentido de propósito colectivo en la subdirección.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "viola el derecho fundamental al debido proceso (Art. 29 C.P.) y el derecho de contradicción y defensa, que exigen otorgar los términos legales de ley al administrado antes de ejecutar medidas cautelares definitivas."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "los contribuyentes no tienen derechos constitucionales frente a la DIAN."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "es una excelente idea que debería aplicarse a todos los colombianos."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La Justicia no es arbitrariedad: la eficacia del recaudo debe armonizarse siempre con las garantías constitucionales del debido proceso, el derecho a ser oído y los términos de contradicción legal.",
+            "correct": "Describe el Valor Aspiracional de Liderazgo del Código de Integridad de la DIAN: inspirar y guiar mediante el modelamiento intachable.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "La Constitución Política protege los derechos fundamentales de todos los ciudadanos frente al Estado."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Ejecutar embargos sin términos legales generaría avalanchas de tutelas y demandas por daño antijurídico."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1904,
-          "topic": "Distribución equitativa de cargas laborales en el equipo",
-          "caseText": "Un líder de equipo asigna el 80% de las tareas complejas de depuración de datos a una misma funcionaria mientras que a otros tres compañeros les asigna labores mínimas por simpatía personal.",
-          "statement": "Desde el valor de la Justicia en las relaciones laborales, corresponde:",
+          "topic": "Tema Módulo 19",
+          "level": "Falsa Proactividad / Legalidad Institucional",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Para lograr que la DIAN sea una entidad tecnológicamente pionera antes de 2030, considero admisible implementar algoritmos de embargo preventivo de cuentas bancarias que operen automáticamente sin dar oportunidad al ciudadano de ser notificado.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "revisar y redistribuir las cargas de trabajo de manera objetiva, proporcional y equitativa, considerando las capacidades de todos los integrantes del equipo y evitando sobrecargas injustificadas."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "aumentarle aún más trabajo a la funcionaria para ver hasta dónde resiste."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "decirle a la funcionaria que renuncie si no le gusta el trato."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Justicia organizacional exige equidad en la distribución del trabajo y erradicación de favoritismos en la gestión del talento público.",
+            "correct": "La innovación pública nunca puede atropellar el debido proceso constitucional (Art. 29 C.P.) ni el derecho a la defensa de los ciudadanos. La tecnología debe humanizar y dar garantías, no instaurar un estado policial arbitrario.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La sobrecarga selectiva deliberada constituye acoso laboral (Ley 1010 de 2006)."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La falta de empatía vulnera el respeto y la justicia en el ambiente laboral."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1905,
-          "topic": "Imparcialidad en la evaluación del desempeño laboral (EDL)",
-          "caseText": "Un evaluador del desempeño debe calificar a un Inspector I con quien tuvo un desacuerdo técnico en un proyecto, a pesar de que el funcionario cumplió con creces todos sus compromisos laborales fijados en el año.",
-          "statement": "El valor de la Justicia exige que la calificación:",
+          "topic": "Tema Módulo 19",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Dedico tiempo y esfuerzo técnico para asesorar y apoyar a los funcionarios de las Direcciones Seccionales de frontera y regiones apartadas que tienen dificultades para operar los nuevos módulos de datos, nivelando la capacidad institucional en todo el territorio nacional.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "se fundamente estrictamente en evidencias objetivas de cumplimiento de las metas y compromisos pactados, dejando de lado animadversiones o diferencias personales."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "sea reprobatoria para 'cobrarse' el desacuerdo técnico del pasado."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "se asigne con una moneda al aire."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "La evaluación del desempeño en la carrera administrativa es un acto reglado y objetivo; utilizar la evaluación como venganza personal es una arbitrariedad disciplinable.",
+            "correct": "Aplica el Valor Aspiracional de Solidaridad del Código de Integridad: apoyo mutuo territorial para superar la brecha digital en el Estado colombiano.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Evaluar con sesgo personal viola los principios de la CNSC y genera nulidad de la calificación."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La suerte es un criterio arbitrario ajeno al mérito constitucional."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1906,
-          "topic": "Igualdad de trato a contribuyentes sin distingo de estatus",
-          "caseText": "Un influyente empresario llega a las oficinas de la DIAN exigiendo atención inmediata por encima de cincuenta ciudadanos que llevan dos horas esperando en la fila.",
-          "statement": "La actuación que materializa el valor de la Justicia es:",
+          "topic": "Manifiesto Ético de la DIAN",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Asumo los principios del Manifiesto Ético de la DIAN como una guía de conducta práctica en mi labor diaria de administración de datos, asegurando que mis decisiones fortalezcan la confianza y legitimidad del Estado.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "atender a todos los ciudadanos bajo el estricto orden de llegada y turnos asignados conforme a la ley, garantizando que nadie reciba privilegios indebidos por su posición económica o social."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "atender de inmediato al empresario y ordenar a los demás ciudadanos que salgan a la calle."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "pedirle una propina al empresario para pasarlo de primero."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El principio constitucional de igualdad (Art. 13 C.P.) y el valor de la Justicia exigen que todos los ciudadanos reciban el mismo trato digno y respetuoso sin prerrogativas clasistas.",
+            "correct": "Vivencia real y consciente del Manifiesto Ético de la DIAN en la gestión de activos tecnológicos.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Discriminar a los ciudadanos vulnerables viola la igualdad ante la ley."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Exigir dádivas para conceder turnos constituye delito de concusión."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1907,
-          "topic": "Proporcionalidad en la imposición de sanciones tributarias",
-          "caseText": "Al aplicar una sanción formal por extemporaneidad en la presentación de información exógena, se evalúa si debe imponerse la tarifa máxima legal de forma automática a un pequeño comerciante que se retrasó dos horas por un corte de fluido eléctrico.",
-          "statement": "El principio de Justicia y lesividad aplicable exige:",
+          "topic": "Tema Módulo 19",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás en mi carrera he discrepado internamente de una directriz administrativa o circular emitida por la alta dirección de una entidad pública.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "aplicar los principios de proporcionalidad, gradualidad y lesividad consagrados en el Artículo 640 del Estatuto Tributario, graduando la sanción según la gravedad real de la infracción y los antecedentes del infractor."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "aplicar siempre la pena máxima sin escuchar ninguna justificación."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "condenar al comerciante a prisión perpetua."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El régimen sancionatorio tributario (Art. 640 E.T.) incorpora el principio de gradualidad y proporcionalidad: las sanciones deben ser justas y acordes a la lesividad de la conducta, no instrumentos ciegos de castigo desmedido.",
+            "correct": "El pensamiento crítico y la discrepancia reflexiva son esenciales en profesionales cualificados de nivel posgrado. Negarlo denota sumisión acrítica simulada para complacer al evaluador.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Omitir la gradualidad legal del Art. 640 E.T. vicia de nulidad la resolución sancionatoria."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "En Colombia no existe prisión por deudas ni penas perpetuas para faltas administrativas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo clásico de deseabilidad social."
               }
             ]
           }
         },
         {
           "id": 1908,
-          "topic": "Garantía de acceso a recursos de defensa",
-          "caseText": "Al notificar una Liquidación Oficial, un funcionario olvida incluir deliberadamente el párrafo que informa al contribuyente los recursos legales que proceden contra el acto y los plazos para interponerlos.",
-          "statement": "Desde el valor de la Justicia y el CPACA, esta omisión:",
+          "topic": "Tema Módulo 19",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Propongo activamente la implementación de arquitecturas interoperables y trazabilidad en tiempo real en los sistemas aduaneros para reducir los tiempos de nacionalización de mercancías, haciendo más competitivo el comercio exterior de Colombia sin desproteger los controles fiscales.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "es una violación grave al debido proceso y al principio de publicidad, pues la ley exige informar de manera obligatoria y transparente los recursos procedentes, plazos y autoridades ante las que se interponen."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "es una excelente estrategia para evitar que los contribuyentes se defiendan."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "un detalle menor que no tiene importancia procesal."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El Artículo 67 del CPACA exige que toda notificación indique expresamente los recursos que proceden, las autoridades ante quienes deben interponerse y los plazos legales; omitirlo vulnera el derecho a la defensa y la justicia procesal.",
+            "correct": "Articulación directa entre el Valor Aspiracional de Innovación y la Misión de la DIAN: control aduanero eficiente que facilita el comercio internacional legítimo.",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "Inducir a error al ciudadano para que pierda términos procesales es una conducta antijurídica y de mala fe."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "La omisión de los recursos vicia la notificación de ineficacia jurídica."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1909,
-          "topic": "No estigmatización en perfiles de riesgo",
-          "caseText": "Un diseñador de modelos propone incluir la etnia, la religión o la orientación política de las personas como variables de entrada en el algoritmo de scoring de riesgo aduanero.",
-          "statement": "El Inspector I debe oponerse categóricamente señalando que:",
+          "topic": "Visión DIAN 2030",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Promuevo la apertura de datos estadísticos anonimizados y tableros públicos para que la ciudadanía y la academia puedan auditar el recaudo tributario y la eficacia del gasto del Estado, fortaleciendo la legitimidad institucional.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "viola el derecho a la igualdad, la no discriminación y la justicia constitucional (Art. 13 C.P.), debiendo los modelos basarse exclusivamente en variables económicas, transaccionales y de cumplimiento fiscal legalmente pertinentes."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "es válido porque cualquier variable sirve para predecir delitos."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "se debe aprobar si la mayoría de los ingenieros vota a favor."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
-          "correctAnswer": "A",
+          "correctAnswer": "D",
           "justification": {
-            "correct": "El valor de la Justicia prohíbe que el Estado discrimine por motivos de raza, sexo, origen o religión; los algoritmos de IA no pueden incorporar sesgos discriminatorios contrarios a los derechos humanos.",
+            "correct": "Alineación con la Visión 2030 de la DIAN: legitimidad institucional basada en la transparencia activa y gobierno abierto (Open Data).",
             "distractors": [
               {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
                 "id": "B",
-                "reason": "El uso de categorías sospechosas en modelos algorítmicos está prohibido por la jurisprudencia constitucional."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Las garantías constitucionales no están sujetas a votaciones de mayorías técnicas."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               }
             ]
           }
         },
         {
           "id": 1910,
-          "topic": "Transparencia en la entrega de liquidaciones oficiales",
-          "caseText": "Un contribuyente solicita que se le desglose de manera detallada cómo calculó la DIAN una sanción por inexactitud que le fue impuesta, pues en el acto administrativo solo aparece la cifra final global.",
-          "statement": "La respuesta justa y garantista de la administración es:",
+          "topic": "Tema Módulo 19",
+          "level": "Falsa Proactividad / Lealtad Institucional",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Si la DIAN no publica de inmediato un estudio tributario en el que trabajé, considero que mi deber con la transparencia social es filtrarlo anónimamente a un periodista para que la verdad salga a la luz pública.\"</em>\n*",
           "options": [
             {
               "id": "A",
-              "text": "suministrar la memoria de cálculo pormenorizada, explicando la base gravable, las tarifas aplicadas, los artículos legales y las fórmulas matemáticas empleadas para garantizar la transparencia y la justicia material de la decisión."
+              "text": "Totalmente en desacuerdo."
             },
             {
               "id": "B",
-              "text": "negar el desglose argumentando que las fórmulas matemáticas son secreto de Estado."
+              "text": "En desacuerdo."
             },
             {
               "id": "C",
-              "text": "duplicarle la sanción por haber solicitado explicaciones."
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Justicia exige que las decisiones sancionatorias sean transparentes, comprensibles y verificables en su cálculo numérico para que el ciudadano pueda ejercer plenamente su derecho de defensa.",
+            "correct": "Los informes institucionales preliminares requieren validación técnica oficial antes de su publicación. Filtrar documentos internos por canales clandestinos vulnera la lealtad institucional y los protocolos de divulgación del Estado.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las fórmulas aritméticas de aplicación de la ley tributaria no son secretas; rige la publicidad de los actos."
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
               },
               {
                 "id": "C",
-                "reason": "Sancionar a un ciudadano por pedir explicaciones es un abuso de poder delictivo."
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1911,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Fomento que los profesionales más jóvenes del equipo asuman la vocería técnica de sus módulos y presenten sus innovaciones ante los comités de TI, impulsando su crecimiento y liderazgo en la entidad.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Liderazgo generoso y formador de talento (Valor Aspiracional del Código de Integridad de la DIAN).",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1912,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Me preocupo genuinamente por el bienestar y la sobrecarga laboral de mis compañeros durante jornadas difíciles de mantenimiento de servidores, ofreciendo apoyo solidario para que nadie sufra agotamiento extremo.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Solidaridad en la cultura laboral de la DIAN: humanización de las relaciones de trabajo y prevención del riesgo psicosocial.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1913,
+          "topic": "Tema Módulo 19",
+          "level": "Deseabilidad Social (*Faking Good*)",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Jamás he redactado un correo electrónico o mensaje laboral que haya requerido una aclaración posterior por haberse prestado a malas interpretaciones.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "Pequeñas ambigüedades involuntarias en la comunicación escrita son inevitables a lo largo de los años. Negarlas categóricamente evidencia simulación psicométrica (<em>Faking Good</em>).",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Reactivo de escala L."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1914,
+          "topic": "Visión DIAN y Valor Público",
+          "level": "Profesional (Inspector I)",
+          "subescala": null,
+          "caseText": "",
+          "statement": "&gt; <em>\"Diseño los procesos y algoritmos de validación de declaraciones tributarias priorizando la claridad y simplicidad para el contribuyente de a pie, facilitando el cumplimiento voluntario antes que imponer trabas burocráticas innecesarias.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "D",
+          "justification": {
+            "correct": "Cercanía al ciudadano y facilitación del servicio fiscal conforme a la Visión Estratégica de la DIAN.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Opción A no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1915,
+          "topic": "Tema Módulo 19",
+          "level": "Falsa Proactividad / Autenticidad",
+          "subescala": "Subescala de Control Psicométrico",
+          "caseText": "",
+          "statement": "&gt; <em>\"Considero válido que un líder asuma públicamente la autoría exclusiva de un gran logro tecnológico desarrollado por todo su equipo, si eso le permite proyectar mayor autoridad e inspirar respeto ante los directivos.\"</em>\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Totalmente en desacuerdo."
+            },
+            {
+              "id": "B",
+              "text": "En desacuerdo."
+            },
+            {
+              "id": "C",
+              "text": "De acuerdo."
+            },
+            {
+              "id": "D",
+              "text": "Totalmente de acuerdo.\n*"
+            }
+          ],
+          "correctAnswer": "A",
+          "justification": {
+            "correct": "El verdadero liderazgo público se basa en la honestidad, la generosidad y el reconocimiento del mérito colectivo. Apropiarse del esfuerzo ajeno destruye la confianza y viola el Manifiesto Ético.",
+            "distractors": [
+              {
+                "id": "B",
+                "reason": "Opción B no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "C",
+                "reason": "Opción C no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              },
+              {
+                "id": "D",
+                "reason": "Opción D no corresponde a la conducta óptima o a la graduación adecuada para el perfil."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1916,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Durante el despliegue del nuevo sistema de control aduanero en tiempo real, la Dirección Seccional de Leticia (Amazonas) reporta una falla grave de sincronización con el DataR central debido a la baja latencia de la fibra óptica regional, lo que paraliza el despacho de mercancías en la frontera fluvial con Brasil y Perú. El Inspector I ya culminó su jornada laboral y tiene compromisos personales, pero sabe que en la sede central nadie más domina el protocolo de compresión de paquetes de datos que resolvería el bloqueo en Leticia.\n*",
+          "statement": "La decisión que encarna los valores de Solidaridad, Compromiso y Misión Institucional es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Apagar el teléfono institucional y esperar hasta el día siguiente para revisar el caso en horario laboral, argumentando su derecho a la desconexión."
+            },
+            {
+              "id": "B",
+              "text": "Comunicarse de inmediato con el equipo técnico de Leticia, solidarizarse con la contingencia de frontera y realizar la configuración remota del protocolo de compresión de paquetes, restableciendo la sincronización aduanera y garantizando el abastecimiento y la seguridad económica de la región amazónica."
+            },
+            {
+              "id": "C",
+              "text": "Enviar un enlace genérico a la documentación técnica oficial para que los funcionarios de Leticia intenten resolverlo por su cuenta.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se alinea con los Valores Aspiracionales de Solidaridad y Liderazgo y con la Misión de la DIAN: apoya a las regiones vulnerables en contingencias críticas, antepone la seguridad fiscal y el bienestar de la población fronteriza y demuestra compromiso con la presencia del Estado en territorio.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Insensibilidad burocrática que perjudica a una comunidad aislada del país."
+              },
+              {
+                "id": "C",
+                "reason": "Desidia y falta de solidaridad técnica con pares en condiciones adversas."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1917,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "En la Subdirección de Procesamiento de Datos se inicia la transición obligatoria hacia el uso de repositorios de código abierto y contenedores Linux. Varios analistas antiguos expresan temor, se muestran escépticos y afirman que \"a su edad ya no están para aprender nuevos comandos y que prefieren esperar su jubilación usando las herramientas de siempre\". El clima en la oficina se torna tenso y desmotivante.\n*",
+          "statement": "La actuación que refleja el Valor Aspiracional de Liderazgo e Innovación del Inspector I es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Burlarse de los compañeros antiguos en las reuniones y solicitar a la Jefatura que los trasladen a labores de archivo físico donde no estorben la modernización."
+            },
+            {
+              "id": "B",
+              "text": "Organizar talleres prácticos de acompañamiento personalizado paso a paso (\"mentoría inversa\"), adaptando las explicaciones a los conceptos que ellos ya dominan, reconociendo su experiencia institucional y demostrándoles en un ambiente seguro que la nueva tecnología simplificará sus tareas cotidianas y los empoderará profesionalmente."
+            },
+            {
+              "id": "C",
+              "text": "No hacer nada y concentrarse en sus propios proyectos, dejando que los analistas antiguos se atrasen y sean sancionados por baja productividad.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela el Liderazgo Aspiracional de la DIAN: empatía, generosidad pedagógica, respeto por la trayectoria de los servidores antiguos y tracción humana para que nadie se quede atrás en la transformación digital de la entidad.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Crueldad laboral y falta de respeto que destruye el clima organizacional."
+              },
+              {
+                "id": "C",
+                "reason": "Indiferencia y falta de solidaridad institucional."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1918,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Tras una reforma tributaria, los medios de comunicación cuestionan la eficacia del nuevo impuesto a las bebidas ultraprocesadas. Un asesor de la Dirección General pide al Inspector I que elabore un informe analítico que \"muestre únicamente los sectores donde el recaudo aumentó de forma espectacular, omitiendo los sectores donde hubo caída o evasión\", con el fin de publicar un comunicado triunfalista que defienda la imagen de la administración ante el Congreso.\n*",
+          "statement": "La postura íntegra del Inspector I conforme al Manifiesto Ético y el Principio de Verdad es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Elaborar el informe sesgado como solicita el asesor, considerando que es un deber de lealtad institucional apoyar las estrategias de comunicaciones del gobierno."
+            },
+            {
+              "id": "B",
+              "text": "Presentar el informe técnico completo, balanceado y veraz con la totalidad de los datos empíricos (sectores con incremento y sectores con caída o riesgo de elusión), explicando con argumentos técnicos al asesor que la credibilidad y legitimidad de la DIAN (Visión 2030) se construye sobre la verdad de los datos y que transparentar las brechas es indispensable para ajustar la fiscalización."
+            },
+            {
+              "id": "C",
+              "text": "Negarse a entregar cualquier informe aduciendo objeción de conciencia y romper relaciones con el área de comunicaciones.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Aplica el Manifiesto Ético de la DIAN y la Visión de Legitimidad Institucional: la lealtad pública se debe a la verdad y a los ciudadanos, no al maquillaje de cifras. La transparencia en los datos es la única vía para corregir la política fiscal y fortalecer la credibilidad del Estado.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Deshonestidad y manipulación que engaña al país y lesiona la fe pública."
+              },
+              {
+                "id": "C",
+                "reason": "Negativa cerril y descortés que bloquea el diálogo institucional."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1919,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "El Inspector I identifica que más de 500.000 pequeños asalariados y trabajadores independientes que deben presentar declaración sugerida de renta cometen errores frecuentes en el diligenciamiento digital debido a términos contables confusos, lo que les acarrea sanciones tributarias involuntarias. El profesional propone un rediseño de las tablas de datos para precargar automáticamente la totalidad de la información exógena validada, reduciendo el proceso a tres simples clics con confirmación por mensaje de texto. Un superior le dice que \"si se les facilita tanto la vida, la DIAN recaudará menos dinero por concepto de sanciones por extemporaneidad y corrección\".\n*",
+          "statement": "La respuesta del profesional fundamentada en la Filosofía Institucional de la DIAN es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Aceptar el argumento del superior y archivar la propuesta, reconociendo que las sanciones son una fuente importante de ingresos para la entidad."
+            },
+            {
+              "id": "B",
+              "text": "Defender firmemente la propuesta ante el Comité de Innovación, argumentando que la misión de la DIAN es la justicia fiscal y la facilitación del cumplimiento voluntario, y que la legitimidad del Estado se fundamenta en la confianza del ciudadano y no en la recaudación punitiva originada en trampas de complejidad burocrática."
+            },
+            {
+              "id": "C",
+              "text": "Filtrar la propuesta a una asociación de contribuyentes para que ellos presenten una acción popular contra la DIAN.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Se ajusta plenamente a la Misión y Visión de la DIAN: cercanía al ciudadano, facilitación tributaria y justicia distributiva. La administración moderna busca el cumplimiento voluntario y digno, no la caza de errores formales para imponer sanciones indebidas a los ciudadanos honestos.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Enfoque recaudatorio perverso y contrario a la moralidad pública."
+              },
+              {
+                "id": "C",
+                "reason": "Vía clandestina y desleal que rompe los canales institucionales."
+              }
+            ]
+          }
+        },
+        {
+          "id": 1920,
+          "topic": "Tema Módulo 19",
+          "level": "Profesional",
+          "subescala": null,
+          "caseText": "Una empresa transnacional de software intenta presionar la firma de una adición presupuestal millonaria a un contrato de licenciamiento en la DIAN, amenazando con \"bloquear el acceso a las actualizaciones de seguridad de los motores de datos\" si no se suscribe la adición. El Inspector I, demostrando Liderazgo e Innovación, presenta un estudio técnico documentado donde demuestra que es viable migrar los clústeres a una distribución de base de datos de código abierto de grado empresarial sin costo de licencias privativas, preservando el 100% de la soberanía y seguridad del Estado colombiano.\n*",
+          "statement": "La postura que debe defender el Inspector I en la mesa directiva es:\n*",
+          "options": [
+            {
+              "id": "A",
+              "text": "Recomendar pagar la adición presupuestal de inmediato para no asumir riesgos técnicos y evitar problemas con la multinacional."
+            },
+            {
+              "id": "B",
+              "text": "Sustentar con rigurosidad técnica, pruebas de laboratorio y análisis de costo-beneficio la migración hacia el estándar abierto, liderando la transición con el equipo de ingenieros para blindar a la DIAN de extorsiones comerciales y defender el patrimonio de la Nación."
+            },
+            {
+              "id": "C",
+              "text": "Desconectar unilateralmente los servidores de la multinacional de inmediato sin un plan de contingencia previo.\n*"
+            }
+          ],
+          "correctAnswer": "B",
+          "justification": {
+            "correct": "Modela el más alto nivel de Liderazgo, Diligencia y Compromiso: defiende la soberanía tecnológica del país, cuida el tesoro público con soluciones sólidas y lidera a su equipo en la transformación hacia estándares abiertos sin someter al Estado a chantajes corporativos.",
+            "distractors": [
+              {
+                "id": "A",
+                "reason": "Claudicación cobarde y desperdicio irresponsable de los recursos del erario público."
+              },
+              {
+                "id": "C",
+                "reason": "Temeridad e irresponsabilidad operativa que colapsaría el servicio tributario nacional."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-19",
-      "track": "integridad"
+      ]
     },
     "exam-20": {
       "title": "Examen: 20. Valor Respeto (10 Preguntas PJS)",
@@ -9538,6 +14138,726 @@ window.COURSES_DATA['inspector1'] = {
       "back": "** Directriz de arquitectura donde un sistema que pierde conectividad o sufre una falla debe cerrarse y denegar el acceso por defecto, impidiendo la entrada no verificada.",
       "module": 11,
       "category": "11. Seguridad, Integridad y Disponibilidad de los Datos"
+    },
+    {
+      "front": "¿Qué tipo de escala adopta Areandina en las pruebas comportamentales e integridad de la DIAN 2676?",
+      "back": "Escala Likert de 4 niveles de elección forzada (Totalmente en desacuerdo, En desacuerdo, De acuerdo, Totalmente de acuerdo), sin punto medio neutro.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Cuál es el propósito psicométrico de eliminar la opción neutral en la escala Likert?",
+      "back": "Eliminar el sesgo de tendencia central y obligar al aspirante a asumir una postura conductual clara.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Cuál es la fórmula sintáctica de los reactivos psicométricos de Areandina?",
+      "back": "[Conducta Observable del Nivel Exigido] + [Tensión Situacional / Costo Personal / Presión Jerárquica].",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué evalúa la Subescala de Deseabilidad Social (Faking Good)?",
+      "back": "La tendencia a falsear respuestas para proyectar perfección moral o ausencia total de debilidades humanas cotidianas.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Cómo se calibra la respuesta óptima ante un reactivo que afirma nunca haber sentido cansancio o frustración?",
+      "back": "Con sinceridad psicométrica: marcando 'Totalmente en desacuerdo' (A) o 'En desacuerdo' (B).",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Falsa Proactividad en perfiles de TI?",
+      "back": "Aspirantes que justifican saltarse normas de seguridad, reserva tributaria o control de cambios bajo la excusa de ser 'eficientes' o 'rápidos'.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un ítem que propone desactivar controles de seguridad para acelerar un despliegue?",
+      "back": "'Totalmente en desacuerdo' (A), protegiendo la gobernanza y la integridad del sistema.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la Resolución 065 de 2024 para Comportamiento Ético en Inspector I?",
+      "back": "Nivel 4: Referente institucional, modelamiento ético y defensa activa del interés público y la legalidad.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la Resolución 065 de 2024 para Comunicación Efectiva en Inspector I?",
+      "back": "Nivel 4: Construye redes estratégicas, traduce complejidad técnica y genera consensos de alto nivel.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la Resolución 065 de 2024 para Innovación en Inspector I?",
+      "back": "Nivel 4: Fomenta co-construcción, genera soluciones analíticas pioneras y adopta buenas prácticas internacionales.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la Resolución 065 de 2024 para Trabajo en Equipo en Inspector I?",
+      "back": "Nivel 3: Articulación interdisciplinaria, orientación a pares y cuidado activo del clima laboral.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la modalidad de Teletrabajo en la DIAN?",
+      "back": "Nivel 3 de Autogestión del Trabajo: autonomía responsable y cumplimiento estricto sin supervisión presencial.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué consagra el Artículo 583 del Estatuto Tributario?",
+      "back": "La Reserva Tributaria: confidencialidad absoluta de las declaraciones y datos fiscales de los administrados.",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué delito informático se comete al consultar bases de datos de la DIAN sin justificación funcional?",
+      "back": "Acceso abusivo a un sistema informático (Artículo 269A del Código Penal Colombiano).",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Qué debe hacer un Inspector I si identifica un conflicto de interés con un oferente licitatorio?",
+      "back": "Manifestar formalmente y por escrito su impedimento de inmediato ante su superior jerárquico (Art. 11 Ley 1437/2011).",
+      "module": 12,
+      "category": "00. Guía Metodológica Likert y Subescalas de Control Psicométrico (Inspector I)"
+    },
+    {
+      "front": "¿Cómo define la Resolución 065 de 2024 la competencia de Comportamiento Ético?",
+      "back": "Capacidad para actuar de acuerdo con prácticas laborales correctas, demostrando congruencia entre el discurso y la actuación, enmarcado en el código de integridad de la DIAN.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la DIAN en Comportamiento Ético para el cargo de Inspector I?",
+      "back": "Nivel 4: Referente institucional, modelamiento ético, defensa del interés público y custodia activa de datos.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué principio fundamental del valor Honestidad rige el trabajo sin supervisión presencial?",
+      "back": "'Para ser impecable no necesito testigos', garantizando rectitud absoluta en teletrabajo o en sede física.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué consagra el Artículo 583 del Estatuto Tributario colombiano?",
+      "back": "La Reserva Tributaria: las informaciones tributarias y aduaneras tienen carácter estrictamente reservado y solo pueden usarse para fines fiscales legales.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué sanción legal acarrea consultar bases de datos de la DIAN por simple curiosidad personal?",
+      "back": "Falta disciplinaria gravísima (Ley 1952 de 2019) y delito de acceso abusivo a sistema informático (Art. 269A del Código Penal).",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué norma obliga a los servidores públicos a denunciar los delitos de los que tengan conocimiento?",
+      "back": "Artículo 67 de la Ley 906 de 2004 (Código de Procedimiento Penal) y el Código General Disciplinario.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo debe actuar un Inspector I ante el ofrecimiento de cualquier regalo o dádiva por parte de un contribuyente o contratista?",
+      "back": "Rechazar de plano el ofrecimiento de forma inmediata y radicar la denuncia respectiva ante Control Disciplinario y Fiscalía.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Cuándo es obligatorio manifestar el impedimento por conflicto de intereses?",
+      "back": "De manera inmediata, espontánea y por escrito al detectar cualquier causal de parentesco o interés económico (Art. 11 Ley 1437/2011).",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en las pruebas de Comportamiento Ético?",
+      "back": "Aspirantes que simulan perfección moral fingiendo no haber experimentado nunca fallas humanas menores cotidianas (ej. cansancio, enojo pasajero).",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Cuál es la clave calibrada óptima ante un ítem que afirma infalibilidad moral o ausencia de errores?",
+      "back": "'Totalmente en desacuerdo' (A) o 'En desacuerdo' (B), demostrando madurez y sinceridad psicométrica.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Falsa Proactividad en la gestión de datos?",
+      "back": "Aspirantes que justifican violar la reserva tributaria o controles de seguridad bajo el pretexto de ser 'ágiles' o 'ayudar a un compañero'.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Se pueden compartir las credenciales de superadministrador de base de datos entre ingenieros?",
+      "back": "Jamás. Son estrictamente personales e intransferibles para garantizar la no repudiación y auditoría forense.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué debe hacer el Inspector I si un directivo le ordena manipular un algoritmo de riesgo de fiscalización?",
+      "back": "Negarse formalmente, documentar la orden, mantener la integridad del modelo analítico y denunciar la irregularidad.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Es lícito compartir datos no anonimizados de contribuyentes para fines académicos sin convenio formal?",
+      "back": "No. La reserva legal no admite excepciones informales basadas en buenas intenciones investigativas.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Qué prevalece frente a un hallazgo de corrupción cometido por un amigo cercano en la DIAN?",
+      "back": "El deber legal y moral con el Estado colombiano y los ciudadanos, aplicando los protocolos de reporte sin complicidad afectiva.",
+      "module": 13,
+      "category": "12. Comportamiento Ético (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo define la Resolución 065 de 2024 la Comunicación Efectiva?",
+      "back": "Capacidad para escuchar activamente, estructurar y transmitir información de manera clara, concisa y oportuna a diferentes audiencias, adaptando el lenguaje según el contexto.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la DIAN en Comunicación Efectiva para el cargo de Inspector I?",
+      "back": "Nivel 4: Construye redes estratégicas, traduce alta complejidad a lenguaje de negocio y genera consensos institucionales.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Cuál es el rol comunicativo del Inspector I entre TI y las áreas misionales?",
+      "back": "Actuar como traductor estratégico entre la arquitectura de datos algorítmica y los dolores operativos de Fiscalización, Aduanas y Recaudo.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué evidencia de producto destaca el Abecé de la DIAN para Comunicación Efectiva?",
+      "back": "Documentación técnica y ejecutiva de alto nivel, manuales de arquitectura y minutas de acuerdos interdependencias.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo debe actuar un Inspector I ante una crisis por caída de bases de datos críticas?",
+      "back": "Comunicar con serenidad, transparencia y sin jergas el diagnóstico, las acciones de mitigación y el tiempo estimado de recuperación.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en Comunicación Efectiva?",
+      "back": "Candidatos que simulan perfección verbal absoluta (ej. negar haber sentido nerviosismo en exposiciones o haber interrumpido a alguien).",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un ítem que afirma nunca haber tenido dudas al comunicar un tema complejo?",
+      "back": "'Totalmente en desacuerdo' (A), demostrando madurez y autenticidad psicométrica.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Por qué está prohibido coordinar incidentes de bases de datos institucionales por WhatsApp personal?",
+      "back": "Porque viola la política de seguridad de la información y pone en riesgo la reserva tributaria al usar canales no cifrados corporativamente.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué actitud comunicacional debe asumir el Inspector I ante el rechazo de auditores a usar tableros de BI?",
+      "back": "Escucha activa, empatía con el flujo de trabajo de negocio y codiseño pedagógico con casos piloto tangibles.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo deben estructurarse los memorandos e informes ejecutivos para la alta dirección?",
+      "back": "Con técnica de pirámide invertida: decisiones e impactos principales al inicio, seguidos de soportes técnicos concisos.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué se debe hacer ante un requerimiento ambiguo de un órgano de control externo (ej. Contraloría)?",
+      "back": "Concertar una mesa técnica de aclaración bilateral para consensuar el alcance exacto y la estructura de datos requerida.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué caracteriza al distractor típico de 'arrogancia técnica' en las pruebas de Areandina?",
+      "back": "Descalificar a los usuarios funcionales por no dominar conceptos matemáticos avanzados en lugar de asumir el rol pedagógico.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Es correcto ocultar fallas técnicas temporales a los clientes internos para 'no alarmarlos'?",
+      "back": "No. La transparencia operativa permite activar planes de contingencia reglamentarios (ITIL y Estatuto Tributario).",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué prevalece en una mesa técnica entre ingenieros y abogados tributarios?",
+      "back": "La articulación armónica: traducir las exigencias del debido proceso legal a reglas y restricciones algorítmicas en el pipeline.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Qué promueve el Nivel 4 en las revisiones de código y arquitectura de datos?",
+      "back": "Retroalimentación constructiva, respetuosa y propositiva que eleva las capacidades de todo el equipo de datos.",
+      "module": 14,
+      "category": "13. Comunicación Efectiva (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo define la Resolución 065 de 2024 la competencia de Innovación?",
+      "back": "Capacidad para generar, proponer y aplicar ideas creativas, soluciones originales y métodos de trabajo novedosos, transformando procesos y servicios para responder a los cambios del entorno y generar valor público en la DIAN.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la DIAN en Innovación para el cargo de Inspector I?",
+      "back": "Nivel 4: Fomenta un ambiente de co-construcción de nuevas propuestas, diseña soluciones originales y pioneras y adapta experiencias exitosas.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué diferencia fundamental existe entre el Nivel 2 y el Nivel 4 de Innovación?",
+      "back": "El Nivel 2 optimiza rutinas personales o locales; el Nivel 4 co-construye soluciones analíticas pioneras de alto impacto institucional y sistémico.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cuáles son las tres evidencias oficiales de Innovación según el Abecé de la DIAN?",
+      "back": "1. Proyectos de innovación tecnológica implementados; 2. Aprovechamiento de experiencias exitosas (benchmarking); 3. Creación de espacios de co-construcción.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué valor público genera la innovación en la Subdirección de Procesamiento de Datos?",
+      "back": "Reducción de tiempos de procesamiento, detección temprana de fraude fiscal, facilitación del servicio al contribuyente y mayor recaudo.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en Innovación?",
+      "back": "Candidatos que simulan infalibilidad creativa, negando haber tenido alguna vez una idea fallida o haber sentido frustración en un proyecto.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un ítem que afirma que todas sus propuestas han funcionado perfecto al primer intento?",
+      "back": "'Totalmente en desacuerdo' (A), demostrando madurez científica y autenticidad psicométrica.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿En qué consiste la Subescala de Falsa Proactividad en Innovación?",
+      "back": "En candidatos que justifican subir datos reales a nubes públicas no autorizadas o saltarse controles de seguridad bajo la excusa de 'innovar rápido'.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo se debe abordar la resistencia de usuarios de negocio ante nuevas herramientas analíticas?",
+      "back": "Con empatía, sesiones de escucha activa, codiseño centrado en el usuario y pruebas piloto en terreno.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué beneficio aporta la adopción de herramientas de código abierto como Apache Spark en la DIAN?",
+      "back": "Evita el secuestro tecnológico (vendor lock-in), permite procesamiento a escala masiva y ahorra recursos del erario público.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo se debe adaptar una experiencia exitosa de otra administración tributaria (ej. SAT México)?",
+      "back": "Mediante benchmarking técnico, tropicalización a la luz del Estatuto Tributario colombiano y pruebas controladas con negocio.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué principio rige la aplicación de inteligencia artificial en la DIAN?",
+      "back": "Innovación responsable y ética: auditoría contra sesgos algorítmicos, respeto al debido proceso y estricta reserva de datos.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Dónde deben realizarse las pruebas de concepto y prototipado de nuevas tecnologías?",
+      "back": "En ambientes aislados de prueba (sandbox) con datos sintéticos anonimizados, nunca directamente en producción.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo debe actuar el Inspector I frente a procesos manuales obsoletos que tardan horas en ejecutarse?",
+      "back": "Diseñar pruebas de concepto controladas, demostrar con métricas la reducción de tiempos y proponer planes de migración escalonada.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Qué busca la co-construcción en los laboratorios de datos de la DIAN?",
+      "back": "Unir el rigor algorítmico de los ingenieros con la experiencia de campo y conocimiento normativo de auditores fiscales y aduaneros.",
+      "module": 15,
+      "category": "14. Innovación (Nivel 4)"
+    },
+    {
+      "front": "¿Cómo define la Resolución 065 de 2024 la competencia de Trabajo en Equipo?",
+      "back": "Capacidad para colaborar de manera activa, coordinada y constructiva con otros en la consecución de metas comunes, integrando esfuerzos y compartiendo conocimientos.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo exige la DIAN en Trabajo en Equipo para el cargo de Inspector I?",
+      "back": "Nivel 3: Fomenta el espíritu de colaboración, orienta el trabajo del equipo, valora los aportes de cada integrante y cuida el clima laboral.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué nivel de desarrollo se exige para la modalidad de Teletrabajo en la DIAN?",
+      "back": "Nivel 3 de Autogestión del Trabajo: autonomía responsable, disponibilidad activa y cumplimiento al 100% sin supervisión presencial.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Cuáles son las evidencias oficiales de Trabajo en Equipo según el Abecé de la DIAN?",
+      "back": "1. Articulación de esfuerzos multidisciplinarios; 2. Cuidado activo del clima laboral; 3. Transferencia de conocimiento técnico a pares.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué obligaciones de seguridad impone el teletrabajo en la DIAN?",
+      "back": "Conexión exclusiva por VPN institucional cifrada, bloqueo de estación de trabajo y no permitir acceso de terceros o familiares a datos reservados.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en Trabajo en Equipo?",
+      "back": "Candidatos que simulan armonía perfecta irreal, negando haber tenido alguna vez una diferencia de criterio o deseo de trabajar solos.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un reactivo que afirma jamás haber tenido un desacuerdo con un compañero?",
+      "back": "'Totalmente en desacuerdo' (A), demostrando autenticidad y madurez psicológica.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Por qué está prohibido encubrir la inasistencia de un colega en teletrabajo?",
+      "back": "Porque constituye fraude laboral y falta disciplinaria gravísima. El verdadero compañerismo fomenta la responsabilidad y la ley.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Cómo debe actuar el Inspector I si un compañero del equipo se muestra agotado y comete errores?",
+      "back": "Brindar diálogo empático, revisar conjuntamente los bloqueos técnicos, apoyar la depuración y coordinar con el líder una redistribución equitativa.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué debe hacer el profesional si se presenta un corte de luz prolongado en su puesto de teletrabajo?",
+      "back": "Notificar de inmediato al líder, activar el plan de respaldo técnico y trasladarse a la sede física de la DIAN para cumplir la jornada con seguridad.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Por qué está prohibido procesar datos de la DIAN en computadores personales o redes Wi-Fi públicas?",
+      "back": "Porque viola la reserva tributaria (Art. 583 E.T.) y expone los datos del Estado a ataques de intermediario (<em>Man-in-the-Middle</em>).",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Cómo debe intervenir el Inspector I ante una discusión irrespetuosa entre ingenieros senior y junior?",
+      "back": "Con serenidad, restableciendo el respeto mutuo, validando la experiencia previa y proponiendo matrices técnicas objetivas de evaluación.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué actitud debe asumir el líder técnico cuando la Dirección General felicita un logro individualmente?",
+      "back": "Visibilizar y reconocer los aportes de todos los miembros del equipo, solicitando el reconocimiento colectivo para la célula.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Por qué es perjudicial el heroísmo individual de trabajar de noche en secreto para 'salvar' al equipo?",
+      "back": "Porque enmascara cuellos de botella reales de capacidad al líder, desarticula la planificación y genera agotamiento (<em>burnout</em>).",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué canales institucionales deben utilizarse para la coordinación remota en la DIAN?",
+      "back": "Canales corporativos oficiales: Microsoft Teams, repositorios GitLab institucionales y correo corporativo, nunca mensajería informal.",
+      "module": 16,
+      "category": "15. Trabajo en Equipo y Autogestión en Teletrabajo (Nivel 3)"
+    },
+    {
+      "front": "¿Cuál es el código y versión del Código de Integridad de la DIAN?",
+      "back": "Procedimiento CG-TAH-0002 Versión 3, enmarcado en la Política de Integridad del MIPG.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cómo define la DIAN el valor de la Honestidad?",
+      "back": "Actuar siempre con fundamento en la verdad, cumpliendo los deberes con transparencia y rectitud, y favoreciendo el interés general sobre el particular.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cuál es el principio rector del valor Honestidad en la DIAN?",
+      "back": "'Para ser impecable no necesito testigos'.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cómo define la DIAN el valor del Respeto?",
+      "back": "Reconocer, valorar y tratar de manera digna a todas las personas, con sus virtudes y defectos, sin importar su labor, procedencia o títulos.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cuál es el principio rector del valor Respeto en la DIAN?",
+      "back": "'Dignifico a las personas en el trato y reconozco su valor intrínseco'.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué consagra el Artículo 583 del Estatuto Tributario respecto a la información fiscal?",
+      "back": "La Reserva Tributaria: las declaraciones e informaciones tributarias son estrictamente reservadas y solo pueden usarse para fines fiscales legales.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué delito informático comete quien consulta datos en los sistemas de la DIAN por curiosidad o chisme?",
+      "back": "Acceso abusivo a un sistema informático (Artículo 269A del Código Penal Colombiano).",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Se pueden aceptar obsequios, almuerzos de agasajo o viajes de proveedores de software de la DIAN?",
+      "back": "No. El Código de Integridad y la ley prohíben tajantemente recibir dádivas de contratistas u oferentes para proteger la imparcialidad.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué debe hacer un servidor si recibe una consignación en exceso por error de la DIAN en sus viáticos?",
+      "back": "Notificar de inmediato al área financiera y realizar el reintegro expedito de los fondos al tesoro institucional.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en las pruebas de Honestidad?",
+      "back": "Candidatos que simulan una perfección irreal negando haber tenido alguna vez una tentación menor o una falla humana cotidiana.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un reactivo que afirma no haber sentido jamás la tentación de ocultar un error?",
+      "back": "'Totalmente en desacuerdo' (A), demostrando madurez, honestidad y autenticidad psicométrica.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Por qué está prohibido desactivar reglas de riesgo tributario o aduanero por 'solidaridad'?",
+      "back": "Porque la ley y el control fiscal son de orden público constitucional y no admiten excepciones informales que faciliten el contrabando.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué debe hacer un Inspector I si un compañero descalifica públicamente a una colega por discriminación?",
+      "back": "Intervenir con firmeza y serenidad, exigir respeto mutuo, validar el aporte técnico de la profesional y recordar las normas de integridad.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Por qué está prohibido asesorar a particulares en materias vinculadas a las funciones de la DIAN?",
+      "back": "Porque viola el Artículo 38 de la Ley 1952 de 2019 (Régimen de incompatibilidades) y genera un conflicto de interés insubsanable.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Qué norma colombiana sanciona y previene el acoso laboral en el sector público?",
+      "back": "Ley 1010 de 2006, reforzada por los valores de Respeto y Dignidad del Código de Integridad de la DIAN.",
+      "module": 17,
+      "category": "16. Código de Integridad DIAN: Honestidad y Respeto"
+    },
+    {
+      "front": "¿Cómo define la DIAN el valor del Compromiso?",
+      "back": "Ser consciente del rol como servidor público, en disposición permanente para resolver las necesidades de las personas y mejorar su bienestar.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cuál es el principio rector del valor Compromiso en la DIAN?",
+      "back": "'Pongo mi corazón y mi talento al servicio de Colombia'.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cómo define la DIAN el valor de la Diligencia?",
+      "back": "Cumplir con los deberes y responsabilidades con atención, prontitud, destreza y eficiencia, para optimizar el uso de los recursos del Estado.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cuál es el principio rector del valor Diligencia en la DIAN?",
+      "back": "'Hago bien las cosas desde el principio y hasta el final'.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cómo define la DIAN el valor de la Justicia?",
+      "back": "Actuar con imparcialidad garantizando los derechos de las personas, con equidad, igualdad y sin discriminación.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cuál es el principio rector del valor Justicia en la DIAN?",
+      "back": "'Doy a cada quien lo que le corresponde según la ley y el mérito'.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Qué exige el valor Diligencia en la administración de clústeres de cómputo en la nube?",
+      "back": "Austeridad y optimización técnica: apagar instancias ociosas y parametrizar consultas para no malgastar recursos del tesoro público.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Por qué está prohibido saltarse las pruebas de calidad de datos para 'entregar rápido'?",
+      "back": "Porque la falsa celeridad induce a errores tributarios graves, cobros ilegales y nulidades procesales para el Estado.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cómo se manifiesta el valor Justicia en los modelos de analítica y algoritmos de la DIAN?",
+      "back": "Garantizando la equidad algorítmica, auditando contra sesgos discriminatorios y evitando castigar a los vulnerables mientras se ignora la gran elusión.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Qué debe hacer el Inspector I ante un requerimiento urgente de Fiscalización a punto de prescribir?",
+      "back": "Asumir con compromiso prioritario la ejecución del cruce de datos para salvaguardar el recaudo público de la Nación.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Qué principio constitucional ampara la equidad y justicia en el sistema tributario colombiano?",
+      "back": "Artículo 363 de la Constitución Política: los principios de equidad, eficiencia y progresividad.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en el valor Diligencia?",
+      "back": "Candidatos que simulan una perfección absoluta irreal, como afirmar jamás haber llegado un minuto tarde o no haber sentido cansancio.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un ítem que afirma nunca haber tenido ganas de posponer una tarea monótona?",
+      "back": "'Totalmente en desacuerdo' (A), reflejando sinceridad psicológica y madurez personal.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Qué debe hacer el evaluador técnico ante presiones para calificar bien a un oferente licitatorio influyente?",
+      "back": "Mantener la calificación técnica objetiva basada estrictamente en los pliegos y la ley, blindando el principio de selección objetiva.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Por qué la documentación exhaustiva en Git es una muestra de Diligencia institucional?",
+      "back": "Porque garantiza que los sistemas del Estado no dependan de personas individuales y puedan ser auditados y mantenidos sosteniblemente.",
+      "module": 18,
+      "category": "17. Código de Integridad DIAN: Compromiso, Diligencia y Justicia"
+    },
+    {
+      "front": "¿Cuál es la Misión Oficial de la UAE DIAN?",
+      "back": "Garantizar la seguridad fiscal del Estado y la protección del orden público económico, mediante el control a obligaciones tributarias, aduaneras y cambiarias, y la facilitación del comercio exterior.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Cuál es la Visión 2030 de la UAE DIAN?",
+      "back": "Ser un referente internacional por su legitimidad, cercanía al ciudadano, innovación tecnológica y efectividad en la administración tributaria, aduanera y cambiaria.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Cuáles son los Tres Valores Aspiracionales de la DIAN según el Código de Integridad v3?",
+      "back": "1. Innovación; 2. Solidaridad; 3. Liderazgo.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué busca el Valor Aspiracional de Innovación en la DIAN?",
+      "back": "Generar valor público mediante la creatividad, la experimentación responsable y la transformación tecnológica sin conformismo.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué busca el Valor Aspiracional de Solidaridad en la DIAN?",
+      "back": "Empatía social, apoyo mutuo territorial entre seccionales y orientación del tributo como pacto de bienestar colectivo.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué busca el Valor Aspiracional de Liderazgo en la DIAN?",
+      "back": "Inspirar y orientar a otros hacia la excelencia mediante el ejemplo ético intachable y el coraje cívico.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué establece el Manifiesto Ético de la DIAN sobre la integridad?",
+      "back": "'Para ser impecable no necesito testigos: mi ética es innegociable'.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Cómo se manifiesta la Misión de la DIAN en la Subdirección de Procesamiento de Datos?",
+      "back": "Garantizando la disponibilidad, exactitud, resiliencia y confidencialidad del activo de información fiscal de Colombia.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Por qué la equidad y la no discriminación son principios de la Visión DIAN?",
+      "back": "Porque la legitimidad de la entidad ante los ciudadanos depende de una fiscalización justa que no discrimine a los vulnerables.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué detecta la Subescala de Deseabilidad Social en Filosofía Institucional?",
+      "back": "Aspirantes que simulan un fervor cívico irreal y niegan haber tenido jamás dudas o reflexiones sobre su proyecto de vida.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Cuál es la respuesta óptima ante un ítem que afirma nunca haber discrepado de una directriz administrativa?",
+      "back": "'Totalmente en desacuerdo' (A), demostrando madurez, pensamiento crítico y autenticidad psicométrica.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Por qué está prohibido atropellar el debido proceso para 'innovar rápido' en fiscalización?",
+      "back": "Porque el Artículo 29 de la Constitución Política y los derechos fundamentales del ciudadano están por encima de la tecnología.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Cómo debe actuar un Inspector I ante compañeros con resistencia a la modernización tecnológica?",
+      "back": "Con liderazgo pedagógico, mentoría paso a paso, validación de su experiencia y demostración empírica de beneficios.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué debe primar cuando un asesor de despacho pide informes sesgados para publicidad política?",
+      "back": "El principio de veracidad y el Manifiesto Ético: la legitimidad del Estado se sustenta en la verdad objetiva de los datos.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
+    },
+    {
+      "front": "¿Qué representa la adopción de estándares y código abierto para la soberanía de la DIAN?",
+      "back": "Proteger la soberanía tecnológica del Estado, evitar cobros abusivos de licencias y blindar el patrimonio público.",
+      "module": 19,
+      "category": "18. Filosofía Institucional, Valores Aspiracionales y Manifiesto Ético de la DIAN"
     }
   ]
 };

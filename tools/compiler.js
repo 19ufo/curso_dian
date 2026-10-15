@@ -325,7 +325,7 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
     }
 
     // 6. Extraer Preguntas PJS del Simulador y Afirmaciones Likert
-    const examSecMatch = content.match(/##\s*(?:(?:Unidad\s*\d+:|\d+\.)\s*)?(?:Simulador Oficial de Examen|Laboratorio de Entrenamiento|Simulador)[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Flashcards|\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i) ||
+    const examSecMatch = content.match(/##\s*(?:(?:Unidad\s*\d+:|\d+\.)\s*)?(?:Simulador Oficial de Examen|Laboratorio de Entrenamiento|Laboratorio Likert|Laboratorio|Simulador)[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Flashcards|\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i) ||
                          content.match(/##\s*(?:(?:Unidad\s*\d+:|\d+\.)\s*)?Simulador Oficial de Examen[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i);
     const questions = [];
     if (examSecMatch) {
@@ -507,12 +507,20 @@ function compileCargo(cargoKey) {
         // Encontrar o crear módulo en courseData.modules
         let track = (parsed.frontmatter && parsed.frontmatter.track) ? parsed.frontmatter.track.toLowerCase() : null;
         if (!track) {
-            if (file.includes('02_Comportamentales') || file.includes('Comportamentales') || (parsed.modNum >= 11 && parsed.modNum <= 17)) {
-                track = 'comportamentales';
-            } else if (file.includes('03_Integridad') || file.includes('Integridad') || (parsed.modNum >= 18 && parsed.modNum <= 20)) {
-                track = 'integridad';
-            } else {
+            if (file.includes('01_Funcionales') || file.includes('Funcionales')) {
                 track = 'funcionales';
+            } else if (file.includes('02_Comportamentales') || file.includes('Comportamentales')) {
+                track = 'comportamentales';
+            } else if (file.includes('03_Integridad') || file.includes('Integridad')) {
+                track = 'integridad';
+            } else if (config.id === 'inspector1') {
+                if (parsed.modNum <= 11) track = 'funcionales';
+                else if (parsed.modNum <= 16) track = 'comportamentales';
+                else track = 'integridad';
+            } else {
+                if (parsed.modNum <= 10) track = 'funcionales';
+                else if (parsed.modNum <= 17) track = 'comportamentales';
+                else track = 'integridad';
             }
         }
 
@@ -642,7 +650,7 @@ function compileExtraLessons() {
         if (fm) raw = raw.slice(fm[0].length);
 
         // Si el módulo ya fue compilado de forma universal en data.js, omitir
-        if (modulo >= 1 && modulo <= 11) {
+        if (modulo >= 1 && modulo <= 20) {
             return;
         }
 
