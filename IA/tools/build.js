@@ -20,6 +20,14 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { compileCargo, CARGOS_REGISTRY } = require('./compiler');
+
+// 1. Ejecutar el compilador universal Multi-Cargo para todos los cargos registrados
+console.log("=== INICIANDO COMPILACIÓN MULTI-CARGO UNIVERSAL ===");
+Object.keys(CARGOS_REGISTRY).forEach(cargoKey => {
+    compileCargo(cargoKey);
+});
+console.log("=== FIN DE COMPILACIÓN MULTI-CARGO UNIVERSAL ===\n");
 
 const SRC = path.join(__dirname, '..', 'documentacion', 'lecciones_interactivas');
 const OUT = path.join(__dirname, '..', 'Aplicativo', 'js', 'data_extra.js');
@@ -169,6 +177,11 @@ function build() {
         const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
         const modulo = fm ? +fm[1].match(/modulo:\s*(\d+)/)[1] : +file.match(/Tema_(\d+)/)[1];
         if (fm) raw = raw.slice(fm[0].length);
+
+        // Si el módulo ya fue compilado de forma universal en data.js, omitir lecciones extra obsoletas
+        if (modulo === 2) {
+            return;
+        }
 
         const parts = raw.split(/^# /m).filter(p => p.trim());
         let idx = 2;

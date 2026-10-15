@@ -38,6 +38,17 @@
         </div>
 
         <div class="header-right">
+            <div class="modality-switch-container" id="modality-switch-container">
+                <span class="modality-label">Ponderación GOA:</span>
+                <div class="modality-toggle-group">
+                    <button class="btn-modality active" id="btn-modalidad-ascenso" onclick="setModalidad('ascenso')" title="Modalidad Ascenso con Experiencia (GOA Numeral 4.2: 60% / 15% / 10% / 15%)">
+                        Ascenso (60%)
+                    </button>
+                    <button class="btn-modality" id="btn-modalidad-ingreso" onclick="setModalidad('ingreso')" title="Modalidad Ingreso con Experiencia (GOA Numeral 4.2: 65% / 15% / 10% / 10%)">
+                        Ingreso (65%)
+                    </button>
+                </div>
+            </div>
             <button class="btn-icon backup-header-btn" id="backup-btn" title="Guardar / Cargar Avance (Descargar o Subir archivo JSON)">
                 <span class="btn-icon-emoji">💾</span>
                 <span class="backup-header-label">Avance</span>
@@ -49,9 +60,9 @@
     <!-- Barra de Pestañas de Navegación por Componente de Evaluación CNSC -->
     <nav class="nav-tabs-bar">
         <button class="nav-tab-btn" data-tab="tab-plan">🗓️ Plan de Estudio (1 mes)</button>
-        <button class="nav-tab-btn active" data-tab="tab-lesson" data-track="funcionales">📘 Pruebas Funcionales (60%)</button>
-        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="comportamentales">🤝 Pruebas Comportamentales (15%)</button>
-        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="integridad">⚖️ Pruebas de Integridad (10%)</button>
+        <button class="nav-tab-btn active" data-tab="tab-lesson" data-track="funcionales" id="tab-nav-funcionales">📘 Pruebas Funcionales (60%)</button>
+        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="comportamentales" id="tab-nav-comportamentales">🤝 Pruebas Comportamentales (15%)</button>
+        <button class="nav-tab-btn" data-tab="tab-lesson" data-track="integridad" id="tab-nav-integridad">⚖️ Pruebas de Integridad (10%)</button>
         <button class="nav-tab-btn" data-tab="tab-quiz">📝 Simulador de Exámenes (PJS)</button>
         <button class="nav-tab-btn" data-tab="tab-flashcards">⚡ Flashcards Rápidas</button>
         <button class="nav-tab-btn" data-tab="tab-tips">💡 Tips & Estrategia PJS</button>
@@ -99,6 +110,10 @@
                 <article class="lesson-body" id="lesson-body">
                     <!-- Contenido en profundidad renderizado dinámicamente -->
                 </article>
+
+                <!-- Secciones de Estudio Activo del Módulo: Flashcards & Simulador PJS -->
+                <div class="lesson-flashcards-box" id="lesson-flashcards-box"></div>
+                <div class="lesson-exam-prompt-box" id="lesson-exam-prompt-box"></div>
 
                 <div class="lesson-biblio-box" id="lesson-biblio-box">
                     <!-- Bibliografía oficial y libros reconocidos renderizados dinámicamente -->

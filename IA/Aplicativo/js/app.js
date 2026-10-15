@@ -35,6 +35,66 @@ let currentModuleId = (APP_DATA && APP_DATA.modules && APP_DATA.modules[0]) ? AP
 let currentTrack = 'funcionales'; // 'funcionales' | 'comportamentales' | 'integridad'
 let completedLessons = JSON.parse((typeof localStorage !== 'undefined' ? (localStorage.getItem('dian2676_completed_' + currentCourseId) || (currentCourseId === 'inspector1' ? localStorage.getItem('dian2676_completed') : null)) : null) || '[]');
 
+// =============================================================================
+// GESTIÓN DE PONDERACIÓN OFICIAL GOA (MODALIDAD INGRESO VS. ASCENSO)
+// =============================================================================
+let currentModalidad = (typeof localStorage !== 'undefined' ? (localStorage.getItem('dian2676_modalidad') || 'ascenso') : 'ascenso');
+window.currentModalidad = currentModalidad;
+
+function setModalidad(modalidad) {
+    if (modalidad !== 'ascenso' && modalidad !== 'ingreso') return;
+    currentModalidad = modalidad;
+    window.currentModalidad = modalidad;
+    try {
+        localStorage.setItem('dian2676_modalidad', modalidad);
+    } catch (e) {}
+
+    // Actualizar botones de modalidad en cabecera
+    const btnAscenso = document.getElementById('btn-modalidad-ascenso');
+    const btnIngreso = document.getElementById('btn-modalidad-ingreso');
+    if (btnAscenso) btnAscenso.classList.toggle('active', modalidad === 'ascenso');
+    if (btnIngreso) btnIngreso.classList.toggle('active', modalidad === 'ingreso');
+
+    // Actualizar badges en las pestañas superiores
+    const tabFunc = document.getElementById('tab-nav-funcionales');
+    const tabComp = document.getElementById('tab-nav-comportamentales');
+    const tabInteg = document.getElementById('tab-nav-integridad');
+
+    if (modalidad === 'ascenso') {
+        if (tabFunc) tabFunc.innerHTML = '📘 Pruebas Funcionales (60%)';
+        if (tabComp) tabComp.innerHTML = '🤝 Pruebas Comportamentales (15%)';
+        if (tabInteg) tabInteg.innerHTML = '⚖️ Pruebas de Integridad (10%)';
+    } else {
+        // Ingreso con experiencia (GOA Numeral 4.2)
+        if (tabFunc) tabFunc.innerHTML = '📘 Pruebas Funcionales (65%)';
+        if (tabComp) tabComp.innerHTML = '🤝 Pruebas Comportamentales (15%)';
+        if (tabInteg) tabInteg.innerHTML = '⚖️ Pruebas de Integridad (10%)';
+    }
+
+    // Actualizar sidebar si la vista está lista
+    renderSidebar();
+
+    // Si la pestaña de guía del componente está activa, actualizar su vista
+    const introTab = document.getElementById('tab-track-intro');
+    if (introTab && introTab.classList.contains('active')) {
+        openTrackIntro(currentTrack);
+    }
+}
+window.setModalidad = setModalidad;
+
+function openModuleFlashcards(modNum) {
+    switchView('tab-flashcards');
+    document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === 'tab-flashcards');
+    });
+    flashFilter = String(modNum);
+    const selectEl = document.getElementById('flash-select');
+    if (selectEl) selectEl.value = String(modNum);
+    renderFlashcards();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.openModuleFlashcards = openModuleFlashcards;
+
 
 const EXAM_MIN = 15;   // minutos estimados por examen de módulo (10 preguntas)
 const FLASH_MIN = 5;   // minutos estimados de repaso con flashcards por módulo
@@ -48,17 +108,29 @@ function augmentData() {
     if (!APP_DATA || APP_DATA._augmented) return;
     APP_DATA._augmented = true;
 
-    if (currentCourseId === 'inspector1') {
-        const extra = window.EXTRA_LESSONS || {};
-        APP_DATA.modules.forEach(m => {
-            const n = parseInt(m.id.split('-')[1], 10);
-            m.title = m.title.replace(/^\d+\.\s*/, '').trim();
+    const extra = (currentCourseId === 'inspector1' && window.EXTRA_LESSONS) ? window.EXTRA_LESSONS : {};
 
+    APP_DATA.modules.forEach(m => {
+        const n = parseInt(m.id.split('-')[1], 10);
+        m.title = m.title.replace(/^\d+\.\s*/, '').trim();
+
+        // 1. Si el módulo ya contiene N Unidades universales (m.hasUnits o m.lessons > 1), preservarlas dinámicamente
+        if (m.hasUnits || (m.lessons && m.lessons.length > 1)) {
+            m.lessons.forEach(l => {
+                if (!l.minutes) {
+                    l.minutes = Math.max(12, Math.round(countWordsHtml(l.content || '') / 150));
+                }
+                l.readTime = `${l.minutes} min`;
+            });
+        } else if (m.lessons && m.lessons.length === 1 && extra[n] && extra[n].length > 0) {
+            // 2. Módulos heredados en transición que requieren lecciones de data_extra.js
             const first = m.lessons[0];
-            first.title = 'Fundamentos y marco del tema';
-            first.minutes = Math.max(10, Math.round(countWordsHtml(first.content) / 160));
+            if (!first.minutes) {
+                first.minutes = Math.max(10, Math.round(countWordsHtml(first.content || '') / 160));
+            }
+            first.readTime = `${first.minutes} min`;
 
-            (extra[n] || []).forEach((l, i) => {
+            extra[n].forEach(l => {
                 const cleanTitle = l.title.replace(/^\d+(\.\d+)?\s*/, '').trim();
                 m.lessons.push({
                     id: l.id,
@@ -66,30 +138,30 @@ function augmentData() {
                     badge: first.badge,
                     content: l.html,
                     links: [],
-                    minutes: l.minutes || Math.max(8, Math.round(countWordsHtml(l.html) / 160))
+                    minutes: l.minutes || Math.max(8, Math.round(countWordsHtml(l.html) / 160)),
+                    readTime: `${l.minutes || 15} min`
                 });
             });
-
-            m.lessons.forEach(l => {
-                l.readTime = `${l.minutes} min`;
-            });
-
-            m.lessonMinutes = m.lessons.reduce((a, l) => a + l.minutes, 0);
-            m.studyMinutes = m.lessonMinutes;
-        });
-        (window.EXTRA_FLASHCARDS || []).forEach(f => APP_DATA.flashcards.push(f));
-    } else {
-        // Gestor II u otros cursos oficiales estructurados
-        APP_DATA.modules.forEach(m => {
-            m.title = m.title.replace(/^\d+\.\s*/, '').trim();
+        } else if (m.lessons) {
             m.lessons.forEach(l => {
                 if (!l.minutes) {
                     l.minutes = Math.max(12, Math.round(countWordsHtml(l.content || '') / 150));
                 }
                 l.readTime = `${l.minutes} min`;
             });
-            m.lessonMinutes = m.lessons.reduce((a, l) => a + l.minutes, 0);
-            m.studyMinutes = m.lessonMinutes;
+        }
+
+        m.lessonMinutes = (m.lessons || []).reduce((a, l) => a + (l.minutes || 15), 0);
+        m.studyMinutes = m.lessonMinutes;
+    });
+
+    if (currentCourseId === 'inspector1' && window.EXTRA_FLASHCARDS) {
+        const existingFronts = new Set((APP_DATA.flashcards || []).map(f => f.front));
+        (window.EXTRA_FLASHCARDS || []).forEach(f => {
+            if (!existingFronts.has(f.front)) {
+                APP_DATA.flashcards.push(f);
+                existingFronts.add(f.front);
+            }
         });
     }
 }
@@ -194,6 +266,9 @@ function initApp() {
         opecBadgeEl.textContent = currentCourseId === 'gestor2' ? 'OPEC 236916' : 'OPEC 236670';
     }
 
+    // Inicializar Modalidad Oficial GOA (Ascenso vs. Ingreso)
+    setModalidad(currentModalidad);
+
     // Renderizar Sidebar inicial
     renderSidebar();
 
@@ -234,7 +309,8 @@ function renderSidebar(filterText = '') {
     const search = filterText.toLowerCase().trim();
 
     if (!search) {
-        const trackLabel = currentTrack === 'funcionales' ? '📘 Guía y Marco: Pruebas Funcionales (60%)' :
+        const pondFunc = currentModalidad === 'ingreso' ? '65%' : '60%';
+        const trackLabel = currentTrack === 'funcionales' ? `📘 Guía y Marco: Pruebas Funcionales (${pondFunc})` :
                            currentTrack === 'comportamentales' ? '🤝 Guía y Marco: Pruebas Comportamentales (15%)' :
                            '⚖️ Guía y Marco: Pruebas de Integridad (10%)';
         html += `
@@ -317,12 +393,15 @@ function openTrackIntro(trackId) {
 
     const trackMods = APP_DATA.modules.filter(m => m.track === trackId);
     const firstLessonId = trackMods.length > 0 && trackMods[0].lessons.length > 0 ? trackMods[0].lessons[0].id : null;
+    const currentPond = trackId === 'funcionales' 
+        ? (currentModalidad === 'ingreso' ? '65%' : '60%')
+        : (trackId === 'comportamentales' ? '15%' : '10%');
 
     container.innerHTML = `
         <div class="track-hero">
             <div class="track-hero-top">
                 <span class="badge ${trackId === 'funcionales' ? 'badge-danger' : trackId === 'comportamentales' ? 'badge-warning' : 'badge-success'} track-hero-badge">
-                    ${intro.caracter.toUpperCase()} · ${intro.ponderacion}
+                    ${intro.caracter.toUpperCase()} · ${currentPond}
                 </span>
             </div>
             <h1 class="track-hero-title">${intro.icono} ${intro.title}</h1>
@@ -330,7 +409,7 @@ function openTrackIntro(trackId) {
             <div class="track-meta-row">
                 <div class="track-meta-item">
                     <span class="track-meta-label">Ponderación Oficial</span>
-                    <span class="track-meta-val">${intro.ponderacion}</span>
+                    <span class="track-meta-val">${currentPond}</span>
                 </div>
                 <div class="track-meta-item">
                     <span class="track-meta-label">Carácter</span>
@@ -385,7 +464,19 @@ function openTrackIntro(trackId) {
 
 function renderModuleBiblio(mod) {
     const box = document.getElementById('lesson-biblio-box');
-    if (!box || !window.MODULE_BIBLIOGRAPHIES) return;
+    if (!box) return;
+
+    if (mod.bibliografia && mod.bibliografia.raw) {
+        box.style.display = 'block';
+        box.innerHTML = `<div class="bibliografia-raw-container">${mod.bibliografia.raw}</div>`;
+        return;
+    }
+
+    if (!window.MODULE_BIBLIOGRAPHIES) {
+        box.innerHTML = '';
+        box.style.display = 'none';
+        return;
+    }
     const n = parseInt(mod.id.split('-')[1], 10);
     const bibData = window.MODULE_BIBLIOGRAPHIES[n];
 
@@ -484,6 +575,56 @@ function loadLesson(lessonId) {
 
     // Renderizar contenido
     document.getElementById('lesson-body').innerHTML = foundLesson.content;
+
+    // Renderizar caja de Flashcards de este módulo
+    const modNum = parseInt(foundMod.id.split('-')[1], 10);
+    const modFlashes = (APP_DATA.flashcards || []).filter(f => f.module === modNum);
+    const flashBox = document.getElementById('lesson-flashcards-box');
+    if (flashBox) {
+        if (modFlashes.length > 0) {
+            flashBox.style.display = 'block';
+            flashBox.innerHTML = `
+                <div class="lfb-card">
+                    <div class="lfb-content">
+                        <span class="lfb-icon">⚡</span>
+                        <div class="lfb-text">
+                            <h4>Flashcards de Repaso Activo (${foundMod.title})</h4>
+                            <p>Memoriza los <strong>${modFlashes.length} conceptos clave</strong>, normas, definiciones y criterios críticos de este tema.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary lfb-btn" onclick="openModuleFlashcards(${modNum})">
+                        ⚡ Repasar ${modFlashes.length} Flashcards de este Tema →
+                    </button>
+                </div>
+            `;
+        } else {
+            flashBox.style.display = 'none';
+        }
+    }
+
+    // Renderizar caja de Simulador PJS de este módulo
+    const examBox = document.getElementById('lesson-exam-prompt-box');
+    if (examBox) {
+        if (foundMod.examId) {
+            examBox.style.display = 'block';
+            examBox.innerHTML = `
+                <div class="lepb-card">
+                    <div class="lepb-content">
+                        <span class="lepb-icon">🎯</span>
+                        <div class="lepb-text">
+                            <h4>Simulador de Examen: 10 Preguntas de Juicio Situacional (PJS)</h4>
+                            <p>Prueba oficial con <strong>3 opciones de respuesta (A, B y C)</strong> y justificaciones jurídicas/técnicas según la GOA de Areandina.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary lepb-btn" onclick="startModuleExam('${foundMod.examId}')">
+                        🎯 Tomar Examen de este Módulo (10 PJS) →
+                    </button>
+                </div>
+            `;
+        } else {
+            examBox.style.display = 'none';
+        }
+    }
 
     // Renderizar Bibliografía Oficial del Módulo
     renderModuleBiblio(foundMod);

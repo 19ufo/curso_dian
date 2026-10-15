@@ -14,6 +14,8 @@
 .callout.exam { background: rgba(70, 112, 126, .12); border-color: var(--color-fog-horizon); }
 .callout.case { background: rgba(107, 139, 129, .12); border-color: var(--color-mist-sage); }
 .callout.note { background: rgba(206, 205, 185, .25); border-color: var(--color-morning-clay); }
+.callout.law { background: rgba(30, 77, 63, .10); border-color: #1e4d3f; }
+body.dark-theme .callout.law { background: rgba(77, 182, 172, .14); border-color: #4db6ac; }
 
 /* Autoevaluación desplegable */
 details.selfcheck { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius); margin: 14px 0; box-shadow: var(--shadow); }
@@ -1616,4 +1618,159 @@ body.dark-theme .btn-back-portal:hover {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ==========================================================================
+   Conmutador de Ponderaciones Oficiales GOA (Ascenso vs. Ingreso)
+   ========================================================================== */
+.modality-switch-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 12px;
+}
+
+.modality-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modality-toggle-group {
+    display: inline-flex;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2px;
+}
+
+.btn-modality {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-modality:hover {
+    color: var(--text-primary);
+}
+
+.btn-modality.active {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   Secciones de Estudio Activo al Final de la Lección (Flashcards & Simulador)
+   ========================================================================== */
+.lesson-flashcards-box,
+.lesson-exam-prompt-box {
+    margin: 24px 0;
+}
+
+.lfb-card,
+.lepb-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 22px;
+    background: var(--bg-surface);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lfb-card:hover,
+.lepb-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.lfb-content,
+.lepb-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lfb-icon,
+.lepb-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.lfb-text h4,
+.lepb-text h4 {
+    margin: 0 0 4px 0;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+.lfb-text p,
+.lepb-text p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.lfb-btn,
+.lepb-btn {
+    white-space: nowrap;
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+
+.bibliografia-raw-container {
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.bibliografia-raw-container h2,
+.bibliografia-raw-container h3,
+.bibliografia-raw-container h4 {
+    color: var(--text-primary);
+    margin-top: 20px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+}
+
+.bibliografia-raw-container ul,
+.bibliografia-raw-container ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+.bibliografia-raw-container li {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .lfb-card, .lepb-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .lfb-btn, .lepb-btn {
+        width: 100%;
+    }
+    .modality-switch-container {
+        margin-right: 4px;
+    }
+    .modality-label {
+        display: none;
+    }
+}
+
 

@@ -179,20 +179,25 @@ class QuizEngine {
         let feedbackHtml = "";
         if (isPractice && isAnswered) {
             const isCorrect = selected === q.correctAnswer;
+            const correctText = (q.justification && typeof q.justification === 'object') ? (q.justification.correct || '') : (q.justification || '');
+            const distractorsList = (q.justification && Array.isArray(q.justification.distractors)) ? q.justification.distractors : [];
+
             feedbackHtml = `
                 <div class="quiz-feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
                     <h4>${isCorrect ? '🎉 ¡Excelente! Respuesta Correcta' : '⚠️ Respuesta Incorrecta'}</h4>
                     <p style="margin-bottom: 8px;"><strong>Clave Oficial:</strong> Opción ${q.correctAnswer}</p>
                     <div class="feedback-justification">
                         <p><strong>Fundamento Técnico y Jurídico:</strong></p>
-                        <p>${q.justification.correct}</p>
+                        <p>${correctText}</p>
                     </div>
+                    ${distractorsList.length > 0 ? `
                     <div class="feedback-distractors">
                         <p style="margin-top: 10px; font-weight: 600;">¿Por qué fallaron los otros distractores?:</p>
                         <ul>
-                            ${q.justification.distractors.map(d => `<li><strong>Opción ${d.id}:</strong> ${d.reason}</li>`).join('')}
+                            ${distractorsList.map(d => `<li><strong>Opción ${d.id}:</strong> ${d.reason}</li>`).join('')}
                         </ul>
                     </div>
+                    ` : ''}
                 </div>
             `;
         }
@@ -307,7 +312,7 @@ class QuizEngine {
                                     </span>
                                 </div>
                                 <p style="font-size: 0.9rem; margin-bottom: 6px;"><em>${q.caseText.substring(0, 140)}...</em></p>
-                                <p class="review-justification"><strong>Fundamento:</strong> ${q.justification.correct}</p>
+                                <p class="review-justification"><strong>Fundamento:</strong> ${(q.justification && typeof q.justification === 'object') ? (q.justification.correct || '') : (q.justification || '')}</p>
                             </div>
                         `;
                     }).join('')}

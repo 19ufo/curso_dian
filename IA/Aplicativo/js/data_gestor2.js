@@ -1,5 +1,6 @@
-// Base de datos oficial de preparación DIAN 2676 para GESTOR II (OPEC 236916 - Nivel Profesional)
-// 19 Módulos a profundidad, 190 Preguntas de Juicio Situacional (PJS) y Likert, y Flashcards de Repaso.
+// ARCHIVO COMPILADO AUTOMÁTICAMENTE por IA/tools/compiler.js
+// Fuente de verdad: IA\documentacion_gestor2
+// Multi-OPEC: Gestor II (OPEC 236916 - Nivel Profesional)
 window.COURSES_DATA = window.COURSES_DATA || {};
 window.COURSES_DATA['gestor2'] = {
   "courseInfo": {
@@ -11,7 +12,7 @@ window.COURSES_DATA['gestor2'] = {
       "funcionales": {
         "peso": "60%",
         "caracter": "Eliminatorio",
-        "minimo": 70.0
+        "minimo": 70
       },
       "comportamentales": {
         "peso": "15%",
@@ -7486,4 +7487,3 @@ window.COURSES_DATA['gestor2'] = {
     }
   ]
 };
-console.log("✓ Base de datos de Gestor II cargada exitosamente en window.COURSES_DATA['gestor2']");
