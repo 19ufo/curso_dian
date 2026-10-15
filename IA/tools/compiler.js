@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * compiler.js — Compilador Universal Multi-Cargo DIAN 2676
  * 
