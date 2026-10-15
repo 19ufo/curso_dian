@@ -22,8 +22,8 @@ const CARGOS_REGISTRY = {
         cargo: 'Inspector I (OPEC 236670 - Nivel Profesional)',
         dependencia: 'Dirección de Gestión de Innovación y Tecnología / Procesamiento de Datos (Nivel Central)',
         entidadEvaluadora: 'Comisión Nacional del Servicio Civil (CNSC) & Universidad Areandina',
-        srcDir: path.join(__dirname, '..', 'documentacion'),
-        dataFile: path.join(__dirname, '..', 'Aplicativo', 'js', 'data.js'),
+        srcDir: path.join(__dirname, '..', 'content', 'cargos', 'inspector1'),
+        dataFile: path.join(__dirname, '..', 'assets', 'data', 'data.js'),
         varName: "window.COURSES_DATA['inspector1']"
     },
     gestor2: {
@@ -32,19 +32,20 @@ const CARGOS_REGISTRY = {
         cargo: 'Gestor II (OPEC 236916 - Nivel Profesional)',
         dependencia: 'Áreas de Planeación, Gestión Pública, Control Interno y Misionales',
         entidadEvaluadora: 'Comisión Nacional del Servicio Civil (CNSC) & Universidad Areandina',
-        srcDir: path.join(__dirname, '..', 'documentacion_gestor2'),
-        dataFile: path.join(__dirname, '..', 'Aplicativo', 'js', 'data_gestor2.js'),
+        srcDir: path.join(__dirname, '..', 'content', 'cargos', 'gestor2'),
+        dataFile: path.join(__dirname, '..', 'assets', 'data', 'data_gestor2.js'),
         varName: "window.COURSES_DATA['gestor2']"
     }
 };
 
-// Auto-descubrimiento de carpetas documentacion_<cargo>
+// Auto-descubrimiento de carpetas en content/cargos/<cargo>
 function discoverCargos() {
-    const baseDir = path.join(__dirname, '..');
-    const entries = fs.readdirSync(baseDir, { withFileTypes: true });
+    const cargosBaseDir = path.join(__dirname, '..', 'content', 'cargos');
+    if (!fs.existsSync(cargosBaseDir)) return;
+    const entries = fs.readdirSync(cargosBaseDir, { withFileTypes: true });
     entries.forEach(entry => {
-        if (entry.isDirectory() && entry.name.startsWith('documentacion_')) {
-            const slug = entry.name.replace('documentacion_', '');
+        if (entry.isDirectory() && !entry.name.startsWith('_') && !entry.name.startsWith('.')) {
+            const slug = entry.name;
             if (!CARGOS_REGISTRY[slug]) {
                 CARGOS_REGISTRY[slug] = {
                     id: slug,
@@ -52,8 +53,8 @@ function discoverCargos() {
                     cargo: `${slug.toUpperCase()}`,
                     dependencia: 'Dirección Misional DIAN',
                     entidadEvaluadora: 'Comisión Nacional del Servicio Civil (CNSC) & Universidad Areandina',
-                    srcDir: path.join(baseDir, entry.name),
-                    dataFile: path.join(baseDir, 'Aplicativo', 'js', `data_${slug}.js`),
+                    srcDir: path.join(cargosBaseDir, slug),
+                    dataFile: path.join(__dirname, '..', 'assets', 'data', slug === 'inspector1' ? 'data.js' : `data_${slug}.js`),
                     varName: `window.COURSES_DATA['${slug}']`
                 };
             }
@@ -102,7 +103,7 @@ const CALLOUTS = {
     LAW: ['law', '⚖️ Marco Normativo']
 };
 
-function renderMarkdown(src) {
+function renderMarkdown(src, stats = { questions: 0 }) {
     if (!src) return '';
     const lines = src.replace(/\r/g, '').split('\n');
     const out = [];
@@ -112,6 +113,20 @@ function renderMarkdown(src) {
     while (i < lines.length) {
         const line = lines[i];
         if (!line.trim()) { i++; continue; }
+
+        // Autoevaluación interactiva ::: q ... --- ... :::
+        if (/^:::\s*q\s*$/.test(line)) {
+            const q = [], a = []; let inA = false; i++;
+            while (i < lines.length && !/^:::\s*$/.test(lines[i])) {
+                if (/^---\s*$/.test(lines[i])) inA = true; else (inA ? a : q).push(lines[i]);
+                i++;
+            }
+            i++;
+            stats.questions++;
+            out.push(`<details class="selfcheck"><summary><span class="sc-n">Q${stats.questions}</span> ${inline(q.join(' ').trim())}</summary>` +
+                `<div class="sc-answer">${renderMarkdown(a.join('\n'), { questions: 0 })}</div></details>`);
+            continue;
+        }
 
         // Bloque HTML nativo
         if (/^<div\b/i.test(line.trim())) {
@@ -549,7 +564,7 @@ function compileCargo(cargoKey) {
     }
 
     // Guardar archivo final compilado
-    const outJs = `// ARCHIVO COMPILADO AUTOMÁTICAMENTE por IA/tools/compiler.js\n` +
+    const outJs = `// ARCHIVO COMPILADO AUTOMÁTICAMENTE por tools/compiler.js\n` +
         `// Fuente de verdad: ${path.relative(process.cwd(), config.srcDir)}\n` +
         `// Multi-OPEC: ${config.cargo}\n` +
         `window.COURSES_DATA = window.COURSES_DATA || {};\n` +
@@ -568,6 +583,76 @@ function compileCargo(cargoKey) {
 }
 
 // =============================================================================
+// 4.1 COMPILACIÓN DE LECCIONES INTERACTIVAS EXTRA (Inspector I: Comportamentales & Integridad)
+// =============================================================================
+function compileExtraLessons() {
+    const extraSrc = path.join(__dirname, '..', 'content', 'cargos', 'inspector1', 'lecciones_interactivas');
+    const extraOut = path.join(__dirname, '..', 'assets', 'data', 'data_extra.js');
+    if (!fs.existsSync(extraSrc)) return;
+
+    console.log(`\n======================================================`);
+    console.log(`Compilando Lecciones Extra (Inspector I - Comportamentales e Integridad)`);
+    console.log(`Directorio Fuentes: ${path.relative(process.cwd(), extraSrc)}`);
+    console.log(`Archivo Destino:   ${path.relative(process.cwd(), extraOut)}`);
+    console.log(`======================================================`);
+
+    const files = fs.readdirSync(extraSrc).filter(f => /^Tema_\d+.*\.md$/.test(f)).sort();
+    const lessons = {};
+    const flashcards = [];
+    const report = [];
+
+    files.forEach(file => {
+        let raw = fs.readFileSync(path.join(extraSrc, file), 'utf8').replace(/^\uFEFF/, '').replace(/\r/g, '');
+        const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
+        const modulo = fm ? +fm[1].match(/modulo:\s*(\d+)/)[1] : +file.match(/Tema_(\d+)/)[1];
+        if (fm) raw = raw.slice(fm[0].length);
+
+        // Si el módulo ya fue compilado de forma universal en data.js, omitir
+        if (modulo >= 1 && modulo <= 11) {
+            return;
+        }
+
+        const parts = raw.split(/^# /m).filter(p => p.trim());
+        let idx = 2;
+        parts.forEach(p => {
+            const nl = p.indexOf('\n');
+            const title = p.slice(0, nl).trim();
+            const body = p.slice(nl + 1);
+            if (/^flashcards/i.test(title)) {
+                body.split('\n').filter(l => /::/.test(l)).forEach(l => {
+                    const [f, ...b] = l.replace(/^\s*[-*]\s*/, '').split('::');
+                    flashcards.push({ front: f.trim(), back: b.join('::').trim(), module: modulo });
+                });
+                return;
+            }
+            const stats = { questions: 0 };
+            const html = renderMarkdown(body, stats);
+            const words = countWords(body);
+            const minutes = Math.round((words / 130 + stats.questions * 2.5) / 5) * 5;
+            (lessons[modulo] = lessons[modulo] || []).push({
+                id: `les-${modulo}-${idx++}`,
+                title,
+                html,
+                words,
+                questions: stats.questions,
+                minutes: Math.max(minutes, 10),
+            });
+        });
+        const ls = lessons[modulo] || [];
+        report.push(`  📄 ${file}: ${ls.length} lecciones, ${ls.reduce((a, l) => a + l.words, 0)} palabras, ` +
+            `${ls.reduce((a, l) => a + l.questions, 0)} autoevaluaciones, ${ls.reduce((a, l) => a + l.minutes, 0)} min`);
+    });
+
+    const js = '// ARCHIVO COMPILADO AUTOMÁTICAMENTE por tools/compiler.js\n' +
+        '// Fuente: content/cargos/inspector1/lecciones_interactivas/*.md\n' +
+        'window.EXTRA_LESSONS = ' + JSON.stringify(lessons, null, 2) + ';\n' +
+        'window.EXTRA_FLASHCARDS = ' + JSON.stringify(flashcards, null, 2) + ';\n';
+    fs.writeFileSync(extraOut, js, 'utf8');
+    console.log(report.join('\n'));
+    console.log(`\n✅ Lecciones extra compiladas: ${path.relative(process.cwd(), extraOut)} (${(js.length / 1024).toFixed(1)} KB, ${flashcards.length} flashcards)`);
+}
+
+// =============================================================================
 // 5. EJECUCIÓN PRINCIPAL
 // =============================================================================
 function main() {
@@ -582,11 +667,15 @@ function main() {
             process.exit(1);
         }
         compileCargo(targetCargo);
+        if (targetCargo === 'inspector1') {
+            compileExtraLessons();
+        }
     } else {
         // Compilar todos los cargos registrados
         Object.keys(CARGOS_REGISTRY).forEach(cargoKey => {
             compileCargo(cargoKey);
         });
+        compileExtraLessons();
     }
 }
 
@@ -595,7 +684,9 @@ if (require.main === module) {
 }
 
 module.exports = {
+    main,
     compileCargo,
+    compileExtraLessons,
     parseUniversalModule,
     renderMarkdown,
     CARGOS_REGISTRY

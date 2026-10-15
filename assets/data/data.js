@@ -1,5 +1,5 @@
-// ARCHIVO COMPILADO AUTOMÁTICAMENTE por IA/tools/compiler.js
-// Fuente de verdad: IA\documentacion
+// ARCHIVO COMPILADO AUTOMÁTICAMENTE por tools/compiler.js
+// Fuente de verdad: content\cargos\inspector1
 // Multi-OPEC: Inspector I (OPEC 236670 - Nivel Profesional)
 window.COURSES_DATA = window.COURSES_DATA || {};
 window.COURSES_DATA['inspector1'] = {

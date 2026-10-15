@@ -1,9 +1,0 @@
-# Archivos temporales y de entorno
-__pycache__/
-*.pyc
-*.pyo
-.DS_Store
-Thumbs.db
-node_modules/
-.vscode/
-.idea/

@@ -1,5 +1,5 @@
-// ARCHIVO COMPILADO AUTOMÁTICAMENTE por IA/tools/compiler.js
-// Fuente de verdad: IA\documentacion_gestor2
+// ARCHIVO COMPILADO AUTOMÁTICAMENTE por tools/compiler.js
+// Fuente de verdad: content\cargos\gestor2
 // Multi-OPEC: Gestor II (OPEC 236916 - Nivel Profesional)
 window.COURSES_DATA = window.COURSES_DATA || {};
 window.COURSES_DATA['gestor2'] = {

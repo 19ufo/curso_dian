@@ -1,0 +1,25 @@
+{
+  "name": "curso-dian-2676",
+  "version": "4.0.0",
+  "description": "Plataforma Integral de Preparación para Pruebas Escritas - Concurso DIAN 2676 (CNSC)",
+  "scripts": {
+    "build": "node tools/compiler.js",
+    "build:inspector1": "node tools/compiler.js inspector1",
+    "build:gestor2": "node tools/compiler.js gestor2",
+    "start": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/19ufo/curso_dian.git"
+  },
+  "keywords": [
+    "dian",
+    "cnsc",
+    "concurso-meritos",
+    "preparacion-examen",
+    "juicio-situacional",
+    "lms"
+  ],
+  "author": "19ufo",
+  "license": "MIT"
+}
