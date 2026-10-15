@@ -266,6 +266,9 @@ class QuizEngine {
         `;
 
         this.updateTimerDisplay();
+        if (typeof renderMathAndEnhanceContent === 'function') {
+            renderMathAndEnhanceContent(container);
+        }
     }
 
     goTo(idx) {
@@ -319,6 +322,9 @@ class QuizEngine {
                 </div>
             </div>
         `;
+        if (typeof renderMathAndEnhanceContent === 'function') {
+            renderMathAndEnhanceContent(container);
+        }
     }
 }
 

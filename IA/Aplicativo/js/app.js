@@ -1,4 +1,4 @@
-﻿// Controlador Principal de la Aplicación DIAN Prep LMS (3 Tracks Oficiales CNSC)
+// Controlador Principal de la Aplicación DIAN Prep LMS (3 Tracks Oficiales CNSC)
 document.addEventListener('DOMContentLoaded', () => {
     initApp();
 });
@@ -293,7 +293,6 @@ function initApp() {
 
     // Soporte para Navegación Móvil (Sidebar desplegable)
     setupMobileSidebar();
-    setupGlobalMath();
 
     // Actualizar Barra de Progreso
     updateGlobalProgress();
@@ -934,30 +933,6 @@ function renderMathAndEnhanceContent(container) {
     container.innerHTML = container.innerHTML.replace(/\$([A-Za-z0-9\(\)\-\+]+)\$/g, '<em>$1</em>');
 }
 
-// Renderizado KaTeX automático para contenido dinámico (quiz, flashcards, tips, etc.)
-function setupGlobalMath() {
-    const root = document.querySelector('.main-viewport');
-    if (!root || root.dataset.mathObserver) return;
-    root.dataset.mathObserver = '1';
-    let timer = null;
-    const run = () => {
-        if (!window.renderMathInElement) return;
-        try {
-            window.renderMathInElement(root, {
-                delimiters: [
-                    { left: '', right: '', display: true },
-                    { left: '$', right: '$', display: false }
-                ],
-                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-                throwOnError: false
-            });
-        } catch (e) {}
-    };
-    new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(run, 80); })
-        .observe(root, { childList: true, subtree: true });
-    window.addEventListener('load', run);
-    run();
-}
 function setupMobileSidebar() {
     const toggleBtn = document.getElementById('mobile-sidebar-toggle');
     const closeBtn = document.getElementById('mobile-sidebar-close');
@@ -1041,6 +1016,9 @@ function renderFlashcards() {
             </div>
         </div>
     `).join('');
+    if (typeof renderMathAndEnhanceContent === 'function') {
+        renderMathAndEnhanceContent(container);
+    }
 }
 
 function renderTips() {
