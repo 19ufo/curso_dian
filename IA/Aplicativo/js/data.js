@@ -45,33 +45,104 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-1",
       "track": "funcionales",
-      "title": "ARQUITECTURA BIG DATA",
+      "title": "Arquitectura Big Data",
       "badge": "Funcional - Big Data & Cómputo Distribuido",
       "examId": "exam-1",
       "lessons": [
         {
-          "id": "les-1",
+          "id": "les-1-1",
           "moduleId": "mod-1",
-          "title": "ARQUITECTURA BIG DATA",
-          "badge": "Funcional - Big Data & Cómputo Distribuido",
-          "readTime": "35 min",
-          "content": "<h2>Guía Maestra de Estudio: Arquitectura Big Data</h2>\n<p class=\"lead\">Esta guía profundiza en los fundamentos teóricos del cómputo distribuido, patrones arquitectónicos masivos (Lambda, Kappa, Lakehouse), motores de procesamiento distribuido, semánticas de streaming y su aplicación estratégica en el sector público.</p>\n\n<h3>Módulo 1: Fundamentos y Principios del Cómputo Distribuido</h3>\n<p>Big Data trasciende el volumen masivo de datos; representa un cambio de paradigma en cómo se procesan y almacenan datos que superan la capacidad de cómputo y memoria de un único nodo de procesamiento (arquitecturas de escalado vertical vs. horizontal).</p>\n\n<h4>1. Las Dimensiones Fundamentales (Las 5 V's del Big Data)</h4>\n<ul>\n    <li><strong>Volumen:</strong> Escala de datos desde terabytes hasta petabytes y exabytes. Requiere particionamiento distribuido (sharding) y almacenamiento elástico.</li>\n    <li><strong>Velocidad:</strong> Tasa a la cual se generan y procesan los datos (lotes periódicos vs. micro-lotes vs. flujos continuos en tiempo real con latencias subsegundo).</li>\n    <li><strong>Variedad:</strong> Diversidad estructural de las fuentes: estructuradas (tablas SQL), semiestructuradas (JSON, XML UBL 2.1, Avro, Parquet) y no estructuradas (imágenes, documentos PDF, textos libres).</li>\n    <li><strong>Veracidad:</strong> Calidad, confiabilidad, completitud y autenticidad probatoria de los datos capturados, mitigando el ruido, los duplicados y las anomalías.</li>\n    <li><strong>Valor:</strong> La capacidad intrínseca de transformar datos crudos en decisiones de negocio, detección de patrones anómalos y optimización de políticas públicas.</li>\n</ul>\n\n<h4>2. Teoremas Fundamentales en Sistemas Distribuidos</h4>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Teorema</th>\n            <th>Dimensiones / Postulado</th>\n            <th>Implicación Arquitectónica</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Teorema CAP (Eric Brewer)</strong></td>\n            <td>En un sistema distribuido es imposible garantizar simultáneamente más de dos de las siguientes tres propiedades:\n            <br>• <strong>Consistencia (C):</strong> Todos los nodos ven el mismo dato al mismo tiempo.\n            <br>• <strong>Disponibilidad (A):</strong> Toda petición recibe una respuesta (sin garantía del dato más reciente).\n            <br>• <strong>Tolerancia a Particiones (P):</strong> El sistema continúa operando ante caídas de comunicación entre nodos.</td>\n            <td>En redes reales donde las particiones de red son inevitables (P obligatoria), los sistemas eligen entre <strong>CP</strong> (Consistencia estricta como HBase, Spanner o MongoDB con escritura mayoritaria) o <strong>AP</strong> (Alta disponibilidad con consistencia eventual como Cassandra o CouchDB).</td>\n        </tr>\n        <tr>\n            <td><strong>Teorema PACELC (Daniel Abadi)</strong></td>\n            <td>Extensión del Teorema CAP: Si hay partición (P), el sistema elige entre Disponibilidad (A) y Consistencia (C); <em>de lo contrario (Else - E)</em>, cuando el sistema opera normalmente, elige entre <strong>Latencia (L)</strong> y <strong>Consistencia (C)</strong>.</td>\n            <td>Permite clasificar motores modernos: por ejemplo, motores PC/EC (priorizan consistencia siempre) frente a motores PA/EL (priorizan disponibilidad y baja latencia sacrificando consistencia inmediata).</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 2: Paradigmas Arquitectónicos de Procesamiento</h3>\n\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>1. Arquitectura Lambda (Nathan Marz)</h4>\n        <p><strong>Diseño de Doble Vía:</strong></p>\n        <ul>\n            <li><strong>Batch Layer (Capa de Lotes):</strong> Almacena el log de datos inmutables y precomputa vistas analíticas completas pero con alta latencia (horas). Utiliza Hadoop MapReduce o Spark Batch.</li>\n            <li><strong>Speed Layer (Capa Rápida):</strong> Procesa eventos recientes en tiempo real para compensar la latencia de la capa batch. Utiliza Apache Flink, Storm o Spark Streaming.</li>\n            <li><strong>Serving Layer (Capa de Servicio):</strong> Indexa y expone las vistas consolidadas combinando los resultados de la capa batch y speed para consultas finales.</li>\n        </ul>\n        <p><strong>Desventaja Crítica:</strong> Duplicación del código de lógica de negocio (mantener dos bases de código idénticas: una para batch y otra para streaming) y riesgo de desincronización.</p>\n    </div>\n\n    <div class=\"arch-card\">\n        <h4>2. Arquitectura Kappa (Jay Kreps)</h4>\n        <p><strong>Diseño Centrado en Streaming Unificado:</strong></p>\n        <ul>\n            <li><strong>Principio Rector:</strong> Todo procesamiento se modela como un flujo de eventos continuo. Se elimina la capa batch dedicada.</li>\n            <li><strong>Eje Central:</strong> Un log de eventos inmutable distribuido con alta retención (Apache Kafka o Apache Pulsar).</li>\n            <li><strong>Reprocesamiento:</strong> Si se modifica la lógica analítica o el código, simplemente se arranca una nueva instancia del motor de streaming apuntando al offset inicial (offset 0) del log de eventos y se regenera la vista de servicio.</li>\n        </ul>\n        <p><strong>Ventaja:</strong> Una única base de código para tiempo real e histórico.</p>\n    </div>\n\n    <div class=\"arch-card\">\n        <h4>3. Lakehouse Streaming Unificado</h4>\n        <p><strong>Convergencia Moderna:</strong></p>\n        <ul>\n            <li>Combina formatos de tabla abiertos (Delta Lake, Apache Iceberg) con motores de procesamiento elásticos (Spark Structured Streaming).</li>\n            <li>Garantiza propiedades ACID sobre almacenamiento de objetos de bajo costo.</li>\n            <li>Permite operaciones concurrentes de lectura y escritura en micro-lotes continuos con compactación automática y time travel.</li>\n        </ul>\n    </div>\n</div>\n\n<h3>Módulo 3: Motores de Cómputo Distribuido: De MapReduce a Apache Spark</h3>\n\n<h4>1. Límites de MapReduce y el Salto a Cómputo en Memoria</h4>\n<p>MapReduce (Hadoop) persistía el estado intermedio de cada fase (Map y Reduce) directamente en disco local y HDFS, generando cuellos de botella severos de I/O en procesos iterativos o consultas interactivas. <strong>Apache Spark</strong> resolvió esto introduciendo el cómputo en memoria compartida a través de abstracciones formales:</p>\n\n<ul>\n    <li><strong>RDD (Resilient Distributed Dataset):</strong> Colección inmutable y particionada de registros calculada de forma perezosa (lazy evaluation) que puede reconstruirse automáticamente mediante su gráfico de linaje (Lineage DAG) en caso de fallo de un nodo ejecutor.</li>\n    <li><strong>DataFrames y Datasets:</strong> Colecciones fuertemente estructuradas con esquemas definidos, optimizadas por el motor <strong>Catalyst Optimizer</strong> (optimización de planes lógicos, pushdown de predicados y proyecciones) y el motor de ejecución <strong>Tungsten</strong> (gestión de memoria off-heap, generación de código en bytecode y compactación de memoria caché L1/L2).</li>\n    <li><strong>Mecanismo de Shuffle:</strong> La redistribución física de datos a través de la red entre particiones de diferentes ejecutores (provocada por operaciones como <code>groupByKey</code>, <code>reduceByKey</code>, o <code>join</code>). Es la operación más costosa en Big Data y la causa principal de fallos por Out-Of-Memory (OOM) y desbalanceo de datos (Data Skew).</li>\n</ul>\n\n<h3>Módulo 4: Procesamiento de Flujos en Tiempo Real (Stream Processing)</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Concepto de Streaming</th>\n            <th>Definición Técnica</th>\n            <th>Impacto en la Exactitud Analítica</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Event Time vs. Processing Time</strong></td>\n            <td>• <em>Event Time:</em> El momento exacto en que el evento ocurrió en el dispositivo de origen (timestamp embebido en el payload).\n            <br>• <em>Processing Time:</em> El momento en que el nodo del clúster recibe y procesa el evento.</td>\n            <td>El análisis financiero, tributario y de auditoría debe calcularse obligatoriamente sobre <strong>Event Time</strong> para garantizar consistencia reproducible independientemente de retrasos en la red.</td>\n        </tr>\n        <tr>\n            <td><strong>Watermarks (Marcas de Agua)</strong></td>\n            <td>Mecanismo que establece el límite temporal para aceptar eventos que llegan con retraso (Late-arriving data). Un watermark expresa: \"se asume que todos los eventos anteriores al timestamp T ya han llegado\".</td>\n            <td>Permite cerrar ventanas temporales y emitir resultados agregados definitivos sin retener memoria de estado indefinidamente.</td>\n        </tr>\n        <tr>\n            <td><strong>Tipos de Ventanas Temporales (Windowing)</strong></td>\n            <td>• <strong>Tumbling (Volteo/Fijas):</strong> Ventanas continuas, no superpuestas de tamaño fijo (ej. de 10:00 a 10:05, 10:05 a 10:10).\n            <br>• <strong>Sliding (Deslizantes):</strong> Ventanas de tamaño fijo que se superponen según un intervalo (ej. ventana de 10 minutos cada 2 minutos).\n            <br>• <strong>Session (Sesión):</strong> Ventanas delimitadas por períodos de inactividad entre eventos del mismo emisor.</td>\n            <td>Permiten calcular métricas de velocidad de transacciones, ráfagas de facturación o picos de tráfico sospechosos.</td>\n        </tr>\n        <tr>\n            <td><strong>Garantías de Entrega (Semánticas)</strong></td>\n            <td>• <strong>At-most-once:</strong> El evento se entrega 0 o 1 vez (puede haber pérdida).\n            <br>• <strong>At-least-once:</strong> El evento se entrega 1 o más veces (garantiza entrega, requiere deduplicación).\n            <br>• <strong>Exactly-once:</strong> Cada evento afecta el estado analítico exactamente una vez mediante protocolos Two-Phase Commit (2PC) y checkpoints idempotentes.</td>\n            <td>Crítica en entornos fiscales: duplicar un evento de factura distorsiona el recaudo tributario y las deducciones permitidas.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 5: Motores de Almacenamiento NoSQL en Ecosistemas Big Data</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Familia NoSQL</th>\n            <th>Estructuras Internas y Ejemplos</th>\n            <th>Casos de Uso Óptimos</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Columnar Ancho (Wide-Column)</strong></td>\n            <td>Apache Cassandra, HBase. Basados en árboles LSM (Log-Structured Merge-tree), SSTables y Memtables. Alta velocidad de escritura distribuida y particionamiento por claves compuestas.</td>\n            <td>Series temporales, telemetría masiva, bitácoras de acceso inmutables y almacenamiento de eventos históricos.</td>\n        </tr>\n        <tr>\n            <td><strong>Documental</strong></td>\n            <td>MongoDB, Couchbase. Almacenamiento jerárquico BSON/JSON con índices secundarios y esquemas flexibles.</td>\n            <td>Perfiles integrales de contribuyentes, formularios dinámicos, expedientes digitales heterogéneos.</td>\n        </tr>\n        <tr>\n            <td><strong>Clave-Valor (Key-Value)</strong></td>\n            <td>Redis, DynamoDB. Acceso O(1) en memoria o disco, estructuras de datos avanzadas (sets, hashes, sorted sets).</td>\n            <td>Caché de sesiones, limitación de tasa (rate limiting de APIs), catálogos de búsqueda rápida de tokens.</td>\n        </tr>\n        <tr>\n            <td><strong>Grafos</strong></td>\n            <td>Neo4j, Amazon Neptune, JanusGraph. Nodos, relaciones y propiedades con recorrido de grafos index-free adjacency.</td>\n            <td>Detección de carruseles de IVA, redes de empresas de papel/fachada, estructuras de propiedad corporativa oculta.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 6: Perspectiva y Aplicación en la DIAN y el Sector Público</h3>\n<div class=\"callout tip\">\n    <h4>Casos Prácticos en la Administración Tributaria</h4>\n    <ul>\n        <li><strong>Sistema de Facturación Electrónica y Nómina:</strong> Manejo de más de 20 millones de documentos XML UBL 2.1 diarios. Se utiliza ingestión basada en streaming (Kafka) con validación asíncrona de firmas criptográficas y esquemas XSD antes de persistencia masiva.</li>\n        <li><strong>Cruce Masivo de Información Exógena:</strong> Carga anual de cientos de terabytes de reportes de terceros (bancos, notarías, cámaras de comercio). Se ejecutan algoritmos de Shuffle y Join distribuido en Apache Spark sobre clústeres elásticos en la nube.</li>\n        <li><strong>Detección de Fraude en Tiempo Real:</strong> Ventanas deslizantes sobre Kafka para detectar emisión masiva y anómala de facturas por parte de proveedores recién creados antes de que soliciten devoluciones indebidas.</li>\n    </ul>\n</div>\n\n<h3>Checklist Rápido de Estudio Previo al Examen</h3>\n<ul>\n    <li>[ ] Dominar las diferencias entre arquitecturas Lambda y Kappa (y por qué Kappa evita duplicar código).</li>\n    <li>[ ] Explicar el Teorema CAP y por qué los sistemas eligen entre CP y AP en entornos de red reales.</li>\n    <li>[ ] Conocer los componentes de Apache Spark (Catalyst, Tungsten, RDD vs DataFrame, Shuffle).</li>\n    <li>[ ] Distinguir Event Time de Processing Time y cómo los Watermarks gestionan datos demorados.</li>\n    <li>[ ] Identificar los patrones de diseño NoSQL (Wide-Column vs Documental vs Grafos) según el caso de uso.</li>\n</ul>",
-          "links": [
-            {
-              "name": "Apache Spark Architecture Guide",
-              "url": "https://spark.apache.org/docs/latest/"
-            },
-            {
-              "name": "Apache Kafka Event Streaming Concepts",
-              "url": "https://kafka.apache.org/documentation/"
-            },
-            {
-              "name": "Streaming Systems (O'Reilly Concepts)",
-              "url": "https://www.oreilly.com/library/view/streaming-systems/9781491983867/"
-            }
-          ]
+          "unitNumber": 1,
+          "title": "Unidad 1: Fundamentos del Cómputo Distribuido, Teoremas Rectores (CAP, PACELC, FLP) y Modelos de Consistencia",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 1548,
+          "content": "<p># Guía Maestra de Estudio: 01. Arquitectura Big Data</p>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Propósito del Indicador en la Prueba Escrita DIAN 2676 En el empleo <strong>Inspector I (OPEC 236670)</strong> de la Subdirección de Procesamiento de Datos, el eje <strong>Arquitectura Big Data</strong> evalúa tu competencia técnica, analítica y normativa para diseñar, diagnosticar, gobernar y optimizar plataformas de <strong>cómputo distribuido masivo</strong> y <strong>procesamiento de eventos en tiempo real</strong>. La prueba exige tomar decisiones acertadas sobre teoremas de sistemas distribuidos (<strong>CAP, PACELC, FLP</strong>), selección de paradigmas (<strong>Lambda, Kappa, Lakehouse Streaming</strong>), afinamiento y resolución de fallos en motores analíticos (<strong>Apache Spark: Catalyst, Tungsten, gestión de memoria, Data Skew y Shuffle</strong>), semánticas de streaming (<strong>Event Time, Watermarks, Exactly-Once</strong>), almacenamiento distribuido y motores <strong>NoSQL</strong>, plataformas de mensajería masiva (<strong>Apache Kafka</strong>) y su integración con los sistemas misionales de la DIAN (<strong>Facturación Electrónica UBL 2.1, Cruce Masivo de Información Exógena y Perfilamiento de Riesgo</strong>) bajo estricta observancia de la <strong>Reserva Tributaria (Art. 583 del Estatuto Tributario)</strong> y la <strong>Política de Big Data del Estado (CONPES 3920 de 2018)</strong>.</p></div>\n<hr>\n<h2>Mapa de Ruta del Módulo (7 Unidades de Profundización)</h2>\n<ol><li><strong>Unidad 1:</strong> Fundamentos del Cómputo Distribuido, Teoremas Rectores (CAP, PACELC, FLP) y Modelos de Consistencia.</li><li><strong>Unidad 2:</strong> Paradigmas de Arquitectura de Datos Masivos: Lambda, Kappa, Lakehouse y Streaming Unificado.</li><li><strong>Unidad 3:</strong> Motores de Cómputo Distribuido: Ecosistema Spark, Grafo Acíclico Dirigido (DAG), Catalyst, Tungsten y Optimización de Memoria / Shuffle.</li><li><strong>Unidad 4:</strong> Procesamiento de Flujos en Tiempo Real (Stream Processing): Event Time, Watermarks, Ventanas y Semánticas de Entrega.</li><li><strong>Unidad 5:</strong> Almacenamiento Distribuido y Ecosistema NoSQL: Columnar Ancho (Cassandra/HBase), Documental, Clave-Valor y Grafos para Detección de Fraude.</li><li><strong>Unidad 6:</strong> Ingesta y Mensajería Masiva en Streaming: Arquitectura Interna de Apache Kafka, Particionamiento, Semánticas y Schema Registry.</li><li><strong>Unidad 7:</strong> Arquitectura Big Data en la DIAN: Facturación Electrónica Masiva, Cruce de Exógena, Nube Híbrida y Marco Normativo Institucional.</li></ol>\n<hr>\n<hr>\n<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Teórico, Matemático-Arquitectónico y Decisión Técnica</p>\n<h3>1.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender las leyes físicas y teoremas fundamentales que gobiernan los sistemas de datos distribuidos, analizando los compromisos ineludibles (<em>trade-offs</em>) entre consistencia, disponibilidad y latencia, para justificar la selección de tecnologías en plataformas analíticas de alta concurrencia en la DIAN.</p>\n<h3>1.2. Del Escalado Vertical al Escalado Horizontal (Scale-Out)</h3>\n<p>El crecimiento exponencial de las transacciones tributarias y aduaneras en Colombia (más de 20 millones de eventos diarios entre facturación electrónica, declaraciones y pagos) superó el límite físico del **escalado vertical (<em>Scale-Up</em>)**, donde aumentar CPU, memoria RAM o discos en un único servidor monolítico genera rendimientos decrecientes, costos prohibitivos y un punto único de fallo (<em>Single Point of Failure - SPOF</em>).</p>\n<p>El cómputo distribuido adopta el **escalado horizontal (<em>Scale-Out</em>)**, agrupando decenas o cientos de nodos de cómputo y almacenamiento conectados por red (<em>Commodity Hardware</em> o instancias elásticas en la nube), donde el estado y el procesamiento se particionan y coordinan mediante software.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESCALADO VERTICAL (Scale-Up)            ESCALADO HORIZONTAL (Scale-Out)\n+-----------------------+              +---------+ +---------+ +---------+\n|     SERVIDOR ÚNICO    |              | NODO 1  | | NODO 2  | | NODO 3  |\n|  [+] CPU [+] RAM      |              | Storage | | Storage | | Storage |\n|  Límite físico/costo  |              +---------+ +---------+ +---------+\n|  Punto Único de Fallo |                   \\           |           /\n+-----------------------+                    Red Distribuida de Alta Velocidad</code></pre></div>\n<h3>1.3. Las Dimensiones Fundamentales de Big Data (Las 5 V's en la DIAN)</h3>\n<ol><li><strong>Volumen:</strong> Escala desde decenas de terabytes hasta petabytes. En la DIAN, el archivo histórico consolidado de declaraciones, declaraciones aduaneras y anexos de información exógena supera los petabytes de información inmutable.</li><li><strong>Velocidad:</strong> Frecuencia de generación e ingesta. Las facturas electrónicas de venta, documentos equivalentes POS y eventos de nómina electrónica ingresan de forma continua con picos de miles de mensajes por segundo en días hábiles.</li><li><strong>Variedad:</strong> Coexistencia de formatos estructurados (tablas relacionales SQL de recaudo), semiestructurados (archivos <strong>XML UBL 2.1</strong>, JSON, Avro, Parquet) y no estructurados (documentos de auditoría en PDF, imágenes de escáneres en puertos aduaneros).</li><li><strong>Veracidad:</strong> Calidad, completitud y autenticidad del dato. Al constituir soporte probatorio judicial para liquidaciones oficiales y procesos de cobro coactivo, el linaje y la inmutabilidad no admiten degradación.</li><li><strong>Valor:</strong> Capacidad de extraer patrones analíticos de riesgo, detectar subfacturación, evasión de IVA o simulación de operaciones mediante algoritmos distribuidos.</li></ol>\n<h3>1.4. Teoremas Fundamentales de Sistemas Distribuidos</h3>\n<h4>A. Teorema CAP (Eric Brewer, 2000; formalizado por Gilbert &amp; Lynch, 2002)</h4>\n<p>En cualquier sistema de datos distribuido y replicado, es imposible garantizar simultáneamente más de dos de las siguientes tres propiedades:</p>\n<table class=\"data-table\"><thead><tr><th>Dimensión CAP</th><th>Definición Formal</th><th>Implicación en el Mundo Real</th></tr></thead><tbody><tr><td><strong>Consistencia (C - Linearizability)</strong></td><td>Toda operación de lectura devuelve el valor de la escritura más reciente confirmada, o genera un error. Todos los nodos ven el mismo estado simultáneamente.</td><td>Exige protocolos de consenso (Raft, Paxos) y bloqueos distribuidos que incrementan la latencia.</td></tr><tr><td><strong>Disponibilidad (A - Availability)</strong></td><td>Todo nodo que no haya fallado devuelve siempre una respuesta exitosa (no de error), sin garantizar que contenga la escritura más reciente.</td><td>Prioriza que el usuario reciba datos operativos sin importar si hay réplicas desactualizadas.</td></tr><tr><td><strong>Tolerancia a Particiones (P - Partition Tolerance)</strong></td><td>El clúster continúa operando aun cuando se pierdan mensajes o exista una caída total de comunicación de red entre subconjuntos de nodos.</td><td><strong>No es opcional en redes reales:</strong> En cualquier red física o de nube ocurren particiones, cortes y demoras.</td></tr></tbody></table>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>La Elección Real del Teorema CAP (CP vs. AP) Dado que las redes físicas jamás son 100% inmunes a fallos de comunicación, <strong>la propiedad P es obligatoria</strong>. Por tanto, la verdadera decisión en caso de partición de red es binaria:</p>\n<ul><li><strong>Sistemas CP (Consistencia + Tolerancia a Particiones):</strong> Ante un corte de red entre dos centros de datos o zonas de disponibilidad, el sistema rechaza escrituras o suspende operaciones en la partición minoritaria para evitar inconsistencias (<em>Split-Brain</em>). <em>Ejemplos:</em> Apache HBase, Google Cloud Spanner, Apache ZooKeeper, etcd.</li><li><strong>Sistemas AP (Disponibilidad + Tolerancia a Particiones):</strong> El sistema acepta lecturas y escrituras en ambos lados de la partición, aceptando divergencia temporal de datos que luego se reconcilia mediante consistencia eventual. <em>Ejemplos:</em> Apache Cassandra, Amazon DynamoDB, CouchDB.</li></ul></div>\n<h4>B. Teorema PACELC (Daniel Abadi, 2012)</h4>\n<p>El Teorema CAP solo explica qué ocurre cuando <strong>hay una partición (P)</strong>. El Teorema PACELC amplía la formulación describiendo el comportamiento cuando el sistema opera en <strong>condiciones normales (Else)</strong>:</p>\n<p>$$\\text{Si } \\mathbf{P} \\text{ (Partición): } \\mathbf{A} \\text{ vs. } \\mathbf{C} \\quad \\Big| \\quad \\mathbf{E} \\text{ (Else - Operación Normal): } \\mathbf{L} \\text{ (Latencia) vs. } \\mathbf{C} \\text{ (Consistencia)}$$</p>\n<table class=\"data-table\"><thead><tr><th>Clasificación PACELC</th><th>Comportamiento en Partición</th><th>Comportamiento Normal</th><th>Tecnologías Representativas</th></tr></thead><tbody><tr><td><strong>PC/EC</strong></td><td>Prioriza Consistencia (C)</td><td>Prioriza Consistencia (C) sobre Latencia</td><td>BigQuery, Google Spanner, HBase</td></tr><tr><td><strong>PA/EL</strong></td><td>Prioriza Disponibilidad (A)</td><td>Prioriza Baja Latencia (L) sobre Consistencia</td><td>Apache Cassandra, Amazon DynamoDB, Riak</td></tr><tr><td><strong>PA/EC</strong></td><td>Prioriza Disponibilidad (A)</td><td>Prioriza Consistencia (C) sobre Latencia</td><td>MongoDB (según configuración de escritura/lectura)</td></tr><tr><td><strong>PC/EL</strong></td><td>Prioriza Consistencia (C)</td><td>Prioriza Baja Latencia (L) sobre Consistencia</td><td>Poco común en arquitecturas masivas</td></tr></tbody></table>\n<h4>C. Resultado de Imposibilidad FLP (Fischer, Lynch, Paterson, 1985)</h4>\n<p>Demuestra matemáticamente que en un sistema distribuido completamente asíncrono, <strong>es imposible alcanzar un consenso determinístico libre de fallos si existe la posibilidad de que tan solo un único nodo falle</strong> deteniéndose sin previo aviso (<em>Crash failure</em>). Por esta razón, los sistemas reales (como Apache ZooKeeper o Raft en Kafka KRaft) asumen modelos parcialmente sincrónicos con temporizadores (<em>heartbeats</em> y <em>timeouts</em>).</p>\n<h3>1.5. Modelos de Consistencia: Del Estricto al Eventual</h3>\n<ol><li>**Consistencia Estricta / Linealizable (<em>Linearizability</em>):** Existe un único reloj global lógico; cualquier lectura posterior al inicio o confirmación de una escritura ve inmediatamente el nuevo valor.</li><li>**Consistencia Secuencial (<em>Sequential Consistency</em>):** Las operaciones se ejecutan en un orden global que respeta el orden local de cada proceso, aunque no corresponda con el tiempo físico en tiempo real.</li><li>**Consistencia Causal (<em>Causal Consistency</em>):** Solo las operaciones que guardan relación de causalidad entre sí deben ser vistas en el mismo orden por todos los nodos; operaciones independientes pueden verse en orden distinto.</li><li>**Consistencia Eventual (<em>Eventual Consistency</em>):** Si no ingresan nuevas escrituras, eventualmente todas las réplicas convergerán al mismo valor. Típica del modelo BASE (<em>Basically Available, Soft state, Eventual consistency</em>).</li><li><strong>Garantías de Sesión de Usuario:</strong></li><li><em>Read-After-Write Consistency (Read-Your-Writes):</em> Un usuario siempre ve sus propias modificaciones inmediatamente después de enviarlas.</li><li><em>Monotonic Reads:</em> Una vez un usuario lee una versión del dato, jamás verá una versión más antigua en consultas subsiguientes.</li></ol>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p>Principio de Integridad y Reserva de Datos (Ley 1581 de 2012 y Art. 583 E.T.) En los sistemas de recaudo y fiscalización de la DIAN, las bases de datos transaccionales de declaraciones y pagos <strong>no pueden operar bajo modelos de consistencia puramente eventual sin conciliación estricta</strong>, puesto que un desfase en el saldo reportado de un contribuyente puede acarrear cobros coactivos indebidos o sanciones administrativas viciadas de nulidad.</p></div>\n<pre class=\"code-block\"><code class=\"\">Consistencia Fuerte (Linearizable) -----------------------&gt; Consistencia Débil (Eventual)\n[Spanner / Relacional ACID]   [Read-Your-Writes]   [Causal]   [Cassandra BASE / Eventual]\n- Latencia más alta           - Confiabilidad media           - Máxima velocidad / escala\n- Cero divergencia             - Dependiente de sesión        - Riesgo de lectura obsoleta</code></pre>\n<div class=\"callout note\"><strong class=\"callout-title\">📌 Micro-verificación / Recuerda</strong><p>Micro-verificación de la Unidad 1 <strong>Pregunta:</strong> Si un clúster distribuido en la DIAN experimenta un corte de fibra óptica entre la sede Bogotá y la sede contingente en Medellín, ¿qué garantiza un motor configurado como CP frente a uno AP?   <strong>Respuesta razonada:</strong> El motor CP bloquea las operaciones de escritura en la partición que no cuente con la mayoría de votos del quórum para preservar la consistencia matemática y evitar datos corruptos. El motor AP permite que ambas sedes sigan escribiendo de forma autónoma, sacrificando la consistencia inmediata y requiriendo resolución posterior de conflictos.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-2",
+          "moduleId": "mod-1",
+          "unitNumber": 2,
+          "title": "Unidad 2: Paradigmas de Arquitectura de Datos Masivos: Lambda, Kappa, Lakehouse y Streaming Unificado",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 781,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Arquitectónico, Comparativo y Patrones de Diseño</p>\n<h3>2.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Analizar los patrones arquitectónicos canónicos para el procesamiento de datos masivos (Lambda, Kappa y Lakehouse Streaming), identificando sus componentes internos, sus costos operacionales y los criterios técnicos para seleccionar el modelo adecuado frente a los requerimientos analíticos de la DIAN.</p>\n<h3>2.2. Arquitectura Lambda (Nathan Marz)</h3>\n<p>Diseñada originalmente para resolver el problema de procesar volúmenes masivos de datos históricos manteniendo métricas actualizadas en tiempo real:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                          +------------------------------------+\n                          |       CAPA BATCH (Batch Layer)     |\n                          |   - Almacenamiento Inmutable (HDFS)|\n                          |   - Cómputo Exhaustivo (Spark)    |\n                    +----&gt;|   - Genera: Vistas Batch           |----+\n                    |     +------------------------------------+    |\nDATOS CRUDOS        |                                               v\n(Stream Inmutable) --+                                           CAPA DE SERVICIO\n(Logs / Eventos)    |                                            (Serving Layer)\n                    |     +------------------------------------+   Combina Vistas\n                    |     |       CAPA RÁPIDA (Speed Layer)    |   para el Usuario\n                    +----&gt;|   - Baja Latencia (Flink / Storm)  |----+\n                          |   - Procesa datos recientes        |\n                          |   - Genera: Vistas en Tiempo Real  |\n                          +------------------------------------+</code></pre></div>\n<h4>Capas de la Arquitectura Lambda:</h4>\n<ol><li><strong>Batch Layer (Capa de Lotes):</strong> Almacena el conjunto maestro de datos inmutables y de solo anexado (<em>append-only</em>). Precomputa vistas agregadas exhaustivas y matemáticamente perfectas con alta latencia (ejecución periódica cada 4, 8 o 24 horas).</li><li><strong>Speed Layer (Capa Rápida):</strong> Procesa en tiempo real exclusivamente los eventos generados desde la última ejecución de la capa batch. Compensa la latencia de la capa de lotes sacrificando precisión estricta o utilizando algoritmos aproximados (como <em>HyperLogLog</em> o <em>Count-Min Sketch</em>).</li><li><strong>Serving Layer (Capa de Servicio):</strong> Indexa tanto las vistas de lotes como las vistas en tiempo real para exponer una interfaz unificada de consulta SQL o API.</li></ol>\n<div class=\"callout warning\"><strong class=\"callout-title\">⚠️ Cuidado / Distractor Típico</strong><p>El Antipatrón Crítico de la Arquitectura Lambda El principal defecto técnico y operativo de Lambda es la <strong>duplicación obligatoria de código</strong>: los ingenieros deben programar y mantener la misma lógica tributaria dos veces (una en lenguaje para motores batch como Spark y otra en el motor de streaming como Flink o Storm), lo que inevitablemente genera discrepancias numéricas en los reportes de auditoría y duplica el costo de mantenimiento.</p></div>\n<h3>2.3. Arquitectura Kappa (Jay Kreps)</h3>\n<p>Propuesta como alternativa superadora de Lambda bajo un postulado simple: **todo procesamiento de datos es en realidad un flujo de eventos continuo (<em>streaming</em>), donde los lotes históricos son simplemente un caso especial de un flujo acotado (<em>bounded stream</em>)**.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>DATOS CRUDOS ---------&gt; SISTEMA DE MENSAJERÍA DISTRIBUIDO (Kafka) ---------&gt; MOTOR STREAMING UNIFICADO\n(Eventos en Venta)      - Log inmutable de alta retención                    (Apache Flink / Spark Streaming)\n                        - Almacena historial completo                                    |\n                                                                                         v\n                                                                             CAPA DE SERVICIO / DESTINO\n                                                                             (Vistas Analíticas Únicas)</code></pre></div>\n<h4>Principios de Kappa:</h4>\n<ol><li><strong>Un Solo Motor:</strong> Se elimina la capa batch dedicada. Una única base de código de procesamiento atiende tanto eventos en tiempo real como reprocesamiento histórico.</li><li><strong>Eje Central en Log Inmutable:</strong> El almacenamiento primario es un log distribuido de eventos particionado con retención prolongada o infinita (Apache Kafka con <em>Log Compaction</em> o almacenamiento por niveles).</li><li><strong>Mecanismo de Reprocesamiento:</strong> Si cambia una regla de negocio o se detecta un error de cálculo, se inicia una nueva versión del trabajo de streaming configurado para leer desde el <strong>offset 0</strong> del topic de Kafka, escribiendo en una nueva vista de servicio sin detener el procesamiento en curso. Una vez completado, se redirige el tráfico de consulta y se elimina la vista anterior.</li></ol>\n<h3>2.4. Arquitectura Lakehouse Streaming Unificado</h3>\n<p>La convergencia moderna entre motores distribuidos elásticos y <strong>formatos de tabla abiertos (Apache Iceberg, Delta Lake, Apache Hudi)</strong> sobre almacenamiento de objetos (Amazon S3, Azure Data Lake Storage, Cloud Storage o MinIO) consolidó el Lakehouse Streaming:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>[Fuentes: FEV, Exógena, RUT] \n             |\n             v\n[Log de Mensajería: Kafka] \n             |  (Structured Streaming)\n             v\n+---------------------------------------------------------------------------------+\n|                         DATA LAKEHOUSE (Apache Iceberg)                         |\n|  Capa Bronce (Raw Inmutable) -&gt; Capa Plata (Limpio/CDC) -&gt; Capa Oro (Modelado)  |\n|  - Transacciones ACID  - Snapshots Inmutables  - Time Travel  - Compactación    |\n+---------------------------------------------------------------------------------+\n             |\n             v\nMotores Analíticos Directos (Spark / Trino / BigQuery) sin duplicar datos</code></pre></div>\n<h3>2.5. Matriz Comparativa de Paradigmas Arquitectónicos</h3>\n<table class=\"data-table\"><thead><tr><th>Criterio Técnico</th><th>Arquitectura Lambda</th><th>Arquitectura Kappa</th><th>Data Lakehouse Streaming</th></tr></thead><tbody><tr><td><strong>Bases de Código</strong></td><td><strong>Dos</strong> (Batch y Streaming separadas)</td><td><strong>Una</strong> (Solo Streaming)</td><td><strong>Una</strong> (Unificada Batch/Streaming)</td></tr><tr><td><strong>Complejidad Operativa</strong></td><td>Muy Alta (Doble clúster y sincronización)</td><td>Media-Alta (Gestión de retención en Kafka)</td><td>Equilibrada y Centralizada</td></tr><tr><td><strong>Costo de Reprocesamiento</strong></td><td>Predecible (Capa batch nativa)</td><td>Alto si Kafka almacena petabytes en disco</td><td>Eficiente (Lee Parquet en almacenamiento de objetos)</td></tr><tr><td><strong>Soporte Transaccional</strong></td><td>Depende del Serving Layer</td><td>Débil (Requiere sinks idempotentes)</td><td><strong>Fuerte (Garantías ACID nativas)</strong></td></tr><tr><td><strong>Latencia de Respuesta</strong></td><td>Subsegundo en Speed Layer, horas en Batch</td><td>Subsegundo continuo</td><td>Subsegundo a micro-lotes (10-30 seg)</td></tr><tr><td><strong>Caso Óptimo en la DIAN</strong></td><td>Sistemas legados en migración</td><td>Monitoreo de anomalías en FEV al vuelo</td><td><strong>Repositorio Único Institucional (DataR)</strong></td></tr></tbody></table>\n<div class=\"callout tip\"><strong class=\"callout-title\">💡 Clave Práctica</strong><p>Clave para el Examen Si la pregunta de examen plantea una problemática de <strong>discrepancias crónicas entre los tableros de tiempo real y los informes de cierre mensual</strong>, la causa raíz arquitectónica es la implementación de <strong>Arquitectura Lambda</strong> con dualidad de lógica de negocio, y la solución recomendada es converger a <strong>Arquitectura Kappa</strong> o <strong>Lakehouse con motor unificado</strong>.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-3",
+          "moduleId": "mod-1",
+          "unitNumber": 3,
+          "title": "Unidad 3: Motores de Cómputo Distribuido: Ecosistema Spark, Grafo Acíclico Dirigido (DAG), Catalyst, Tungsten y Optimización de Memoria / Shuffle",
+          "badge": "Competencias Funcionales",
+          "readTime": "30 min",
+          "minutes": 30,
+          "words": 841,
+          "content": "<p><strong>Tiempo estimado:</strong> 30 min | <strong>Enfoque:</strong> Operativo, Rendimiento Físico e Ingeniería Interna</p>\n<h3>3.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Dominar la arquitectura interna y los mecanismos de ejecución de <strong>Apache Spark</strong>, analizando la formación del Grafo Acíclico Dirigido (DAG), el ciclo de optimización de consultas (Catalyst Optimizer), la gestión de memoria off-heap (Project Tungsten) y las técnicas de ingeniería para mitigar cuellos de botella por <em>Shuffle</em> y <em>Data Skew</em>.</p>\n<h3>3.2. Topología de Clúster en Apache Spark</h3>\n<p>Apache Spark se estructura bajo un patrón maestro-trabajador coordinado por un gestor de recursos (<em>Cluster Manager</em> como YARN, Kubernetes o Standalone):</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>+-------------------------------------------------------------+\n|                      DRIVER PROGRAM                         |\n|  - SparkContext / SparkSession                              |\n|  - DAG Scheduler (Transforma RDDs en Stages)                |\n|  - Task Scheduler (Asigna Tasks a Executors)                |\n+-------------------------------------------------------------+\n         |                              |\n         v (Solicitud de Recursos)      v (Despliegue de Tareas)\n+------------------+          +-------------------------------+\n| CLUSTER MANAGER  |          |       WORKER NODE 1           |\n| (YARN / K8s)     |          |  +-------------------------+  |\n+------------------+          |  |       EXECUTOR 1        |  |\n                              |  | [Core 1]  [Core 2]      |  |\n                              |  | [Storage] [Execution]   |  |\n                              |  +-------------------------+  |\n                              +-------------------------------+</code></pre></div>\n<ol><li><strong>Driver Program:</strong> Proceso central que ejecuta la función <code>main()</code>, instancia la <code>SparkSession</code>, compila el código en un plan lógico, lo optimiza y descompone en un <strong>DAG (Directed Acyclic Graph)</strong> de <em>Stages</em> y <em>Tasks</em>.</li><li><strong>Executors:</strong> Procesos JVM distribuidos que corren en los nodos trabajadores (<em>Workers</em>), responsables de ejecutar las tareas en paralelo en múltiples hilos (<em>Cores</em>) y de almacenar en memoria o disco los bloques de datos cacheados.</li></ol>\n<h3>3.3. RDDs, Linaje y Dependencias Estrechas vs. Anchas</h3>\n<p>El <strong>RDD (Resilient Distributed Dataset)</strong> es la abstracción fundamental de Spark: una colección particionada, inmutable y tolerante a fallos que se evalúa de forma perezosa (<em>Lazy Evaluation</em>).</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>DEPENDENCIAS ESTRECHAS (Narrow)               DEPENDENCIAS ANCHAS (Wide - SHUFFLE)\n   Partición A1 ---&gt; Partición B1                Partición A1 ---\\ /--- Partición B1\n   Partición A2 ---&gt; Partición B2                Partición A2 --- X --- Partición B2\n   (Sin movimiento de red / Mismo Stage)         Partición A3 ---/ \\--- Partición B3\n   Ejemplos: map, filter, flatMap                 (Redistribución en Red / Nuevo Stage)\n                                                  Ejemplos: groupByKey, join, distinct</code></pre></div>\n<ul><li>**Dependencias Estrechas (<em>Narrow Dependencies</em>):** Cada partición del RDD padre es utilizada por a lo sumo una partición del RDD hijo. No requiere intercambio de datos por red. Las transformaciones pueden encadenarse (<em>pipelining</em>) en memoria en una sola tarea del mismo <strong>Stage</strong>.</li><li>**Dependencias Anchas (<em>Wide Dependencies</em>):<strong> Múltiples particiones hijas dependen de los datos de una sola partición padre. Exige obligatoriamente una redistribución física de datos entre nodos a través de la red (</strong>Operación de Shuffle**). Cada dependencia ancha delimita el fin de un <em>Stage</em> y el inicio de otro.</li></ul>\n<h3>3.4. El Mecanismo de Shuffle y los Fallos por Out-Of-Memory (OOM)</h3>\n<p>El <strong>Shuffle</strong> es la operación más costosa en Big Data. Se compone de dos fases:</p>\n<ol><li><strong>Shuffle Write:</strong> Los ejecutores del Stage emisor particionan los datos procesados, los ordenan por clave en memoria y los vuelcan a archivos de disco locales organizados en bloques.</li><li><strong>Shuffle Read:</strong> Los ejecutores del Stage receptor se conectan vía TCP/IP a los ejecutores emisores para transferir sus particiones correspondientes por red.</li></ol>\n<div class=\"callout warning\"><strong class=\"callout-title\">⚠️ Cuidado / Distractor Típico</strong><p>Causa Principal de Fallos en Cruces de Información Exógena (Data Skew) El **desbalanceo de datos (<em>Data Skew</em>)** ocurre cuando una clave concentra un porcentaje desproporcionado de registros (por ejemplo, el NIT de grandes contribuyentes o entidades bancarias en la información exógena). Al ejecutar un <code>JOIN</code> o <code>groupBy</code>, el ejecutor asignado a esa clave procesa gigabytes de datos mientras los demás permanecen ociosos, colapsando su memoria JVM y generando el error fatal:   <code>java.lang.OutOfMemoryError: Java heap space / GC overhead limit exceeded</code>.</p></div>\n<h4>Soluciones Técnicas para Mitigar Data Skew:</h4>\n<ul><li><strong>Broadcast Hash Join:</strong> Si una de las dos tablas a cruzar es pequeña (por defecto menor a 10 MB, configurable con <code>spark.sql.autoBroadcastJoinThreshold</code>), el Driver envía una copia completa a todos los ejecutores, transformando un Join ancho en una operación local sin Shuffle.</li><li><strong>Técnica de Salting (Salado de Claves):</strong> Consiste en concatenar un sufijo numérico aleatorio (ej. <code>nit_1</code>, <code>nit_2</code>, ..., <code>nit_N</code>) a la clave desbalanceada en la tabla grande y replicar las filas de la tabla de referencia con esos sufijos, distribuyendo el cómputo uniformemente entre ejecutores.</li><li><strong>Adaptive Query Execution (AQE):</strong> Habilitado en Spark moderno (<code>spark.sql.adaptive.enabled=true</code>), recombina automáticamente particiones de shuffle pequeñas y divide dinámicamente particiones con <em>skew</em>.</li></ul>\n<h3>3.5. Optimizadores Internos: Catalyst y Project Tungsten</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>Código SQL / DataFrame\n          |\n          v\n[Unresolved Logical Plan] ---&gt; Valida contra Catálogo de Metadatos\n          |\n          v\n[Resolved Logical Plan]   ---&gt; Reglas de Optimización (Catalyst)\n          |                    - Pushdown de Predicados (Filter pushdown)\n          v                    - Proyección de Columnas (Pruning)\n[Optimized Logical Plan]  ---&gt; Generación de Múltiples Planes Físicos\n          |\n          v\n[Cost-Based Model (CBO)]  ---&gt; Selecciona Plan Físico de Menor Costo\n          |\n          v\n[Project Tungsten]        ---&gt; Bytecode Java Nativo + Memoria Off-Heap</code></pre></div>\n<ol><li><strong>Catalyst Optimizer:</strong></li><li><strong>Pushdown de Predicados:</strong> Empuja los filtros <code>WHERE</code> directamente al motor de almacenamiento (ej. archivos Parquet) para leer únicamente las filas requeridas sin escanear la tabla completa.</li><li>**Poda de Columnas (<em>Column Pruning</em>):** Lee exclusivamente las columnas proyectadas en el <code>SELECT</code>, descartando campos innecesarios en memoria.</li><li><strong>Project Tungsten:</strong></li><li><strong>Gestión de Memoria Off-Heap:</strong> Gestiona memoria binaria directamente sin depender del recolector de basura (<em>Garbage Collector</em>) de la JVM, eliminando pausas prolongadas de GC (<em>Stop-the-World</em>).</li><li><strong>Whole-Stage Code Generation:</strong> Fusiona múltiples operadores físicos en una única función de código Java compilado al vuelo (<em>bytecode</em>) que corre a la velocidad de la memoria caché L1/L2 del procesador.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-4",
+          "moduleId": "mod-1",
+          "unitNumber": 4,
+          "title": "Unidad 4: Procesamiento de Flujos en Tiempo Real (Stream Processing): Event Time, Watermarks, Ventanas y Semánticas de Entrega",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 664,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Semántico, Temporal y Concurrencia de Datos</p>\n<h3>4.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Diferenciar los modelos temporales en el procesamiento continuo de eventos, dominando el funcionamiento de las marcas de agua (<em>Watermarks</em>), las políticas de agregación por ventanas temporales y los mecanismos que aseguran semánticas de entrega <em>Exactly-Once</em> en sistemas críticos de auditoría tributaria.</p>\n<h3>4.2. Las Tres Dimensiones Temporales del Dato en Streaming</h3>\n<ol><li><strong>Event Time (Tiempo del Evento):</strong> El instante exacto en que la transacción ocurrió en el sistema emisor, capturado como una marca de tiempo (<em>timestamp</em>) dentro del propio cuerpo del mensaje. <em>Ejemplo:</em> La hora exacta en que el establecimiento comercial emitió la Factura Electrónica de Venta.</li><li><strong>Ingestion Time (Tiempo de Ingesta):</strong> El momento en que el evento fue recibido y persistido en el log del broker de mensajería (Apache Kafka).</li><li><strong>Processing Time (Tiempo de Procesamiento):</strong> La hora del reloj del nodo ejecutor en el momento exacto en que procesa el evento. Es no determinístico: si un trabajo se detiene 3 horas por mantenimiento y se reinicia, el Processing Time reflejará el reloj actual, distorsionando cualquier análisis histórico.</li></ol>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Regla de Oro Regulatoria y de Examen Toda liquidación tributaria, auditoría aduanera o balance de recaudo oficial en la DIAN <strong>debe calcularse obligatoriamente sobre Event Time</strong>. Utilizar Processing Time provocaría que declaraciones presentadas puntualmente a las 23:58 sean registradas como extemporáneas a las 00:03 debido a demoras de red o encolamiento en el broker.</p></div>\n<h3>4.3. Datos Desordenados y Mecanismo de Watermarks</h3>\n<p>En redes reales, los eventos llegan desordenados debido a latencias variables, fallos transitorios de conectividad o reintentos en clientes móviles. Un <strong>Watermark (Marca de Agua)</strong> es una señal de control temporal monótonamente creciente que le indica al motor de streaming: <em>\"se asume que todos los eventos con Event Time anterior a $T$ ya han arribado al sistema\"</em>.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>Flujo de Eventos que llegan por red (de derecha a izquierda):\n[Evento 10:04]  [Evento 10:01 (tardío)]  [WATERMARK: 10:00]  [Evento 09:59]  [Evento 09:58]\n                                                |\n                              Cierra ventana [09:50 - 10:00] y emite resultado final.\n                              Todo evento &lt; 10:00 que llegue después es descartado o enviado a Cuarentena.</code></pre></div>\n<ul><li><strong>Cálculo del Watermark:</strong> Generalmente se define como $W(t) = \\max(\\text{EventTime visto}) - \\Delta t_{\\text{tolerancia}}$.</li><li>**Datos Excesivamente Tardíos (<em>Late Data</em>):** Cuando un evento llega con una marca de tiempo inferior al Watermark actual, la ventana temporal ya fue cerrada. El arquitecto puede:</li><li>Descartar el dato (inaceptable en tributos).</li><li>Actualizar la ventana emitida (genera retractaciones complejas en la capa de servicio).</li><li>Desviar el evento tardío a una **Cola de Mensajes Muertos (<em>Dead-Letter / Side Output</em>)** para su auditoría y conciliación forense.</li></ul>\n<h3>4.4. Tipos de Ventanas Temporales (Windowing)</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>1. TUMBLING (Fija / Volteo): No se superponen. Tamaño fijo.\n   [--- 10:00 a 10:05 ---][--- 10:05 a 10:10 ---][--- 10:10 a 10:15 ---]\n\n2. SLIDING (Deslizante): Tamaño fijo con intervalo de avance menor. Se superponen.\n   [----- Ventana 1: 10:00 a 10:10 -----]\n           [----- Ventana 2: 10:02 a 10:12 -----]\n                   [----- Ventana 3: 10:04 a 10:14 -----]\n\n3. SESSION (Sesión): Basadas en actividad/inactividad. Tamaño dinámico.\n   [-- Eventos Contribuyente A --] (Inactividad &gt; 15m) [-- Nuevos Eventos A --]</code></pre></div>\n<h3>4.5. Garantías y Semánticas de Entrega</h3>\n<table class=\"data-table\"><thead><tr><th>Semántica</th><th>Definición Técnica</th><th>Mecanismo</th><th>Impacto Tributario en la DIAN</th></tr></thead><tbody><tr><td><strong>At-Most-Once</strong> (A lo sumo una vez)</td><td>Los mensajes se entregan 0 o 1 vez. No hay duplicados, pero puede haber pérdida ante caídas.</td><td>Auto-commit de offsets antes del procesamiento.</td><td><strong>Inadmisible:</strong> Perder facturas distorsiona el recaudo y anula deducciones.</td></tr><tr><td><strong>At-Least-Once</strong> (Al menos una vez)</td><td>Los mensajes se entregan 1 o más veces. No hay pérdidas, pero pueden existir duplicados.</td><td>Reintentos del productor y commit posterior al procesamiento.</td><td>Aceptable únicamente si el destino es <strong>Idempotente</strong> (claves primarias fijas).</td></tr><tr><td><strong>Exactly-Once</strong> (Exactamente una vez)</td><td>Cada evento afecta el estado del sistema exactamente una vez, sin pérdidas ni duplicados.</td><td>Protocolo <strong>Two-Phase Commit (2PC)</strong> distribuido + Productores Idempotentes en Kafka.</td><td><strong>Estándar Exigido:</strong> Garantiza cuadre contable y probatorio en recaudos.</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-5",
+          "moduleId": "mod-1",
+          "unitNumber": 5,
+          "title": "Unidad 5: Almacenamiento Distribuido y Ecosistema NoSQL: Columnar Ancho (Cassandra/HBase), Documental, Clave-Valor y Grafos para Detección de Fraude",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 575,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Estructuras Físicas de Almacenamiento y Casos Misionales</p>\n<h3>5.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Seleccionar y sustentar la base de datos NoSQL adecuada según la tipología del dato y la carga de trabajo, reconociendo el funcionamiento interno de estructuras de almacenamiento masivo (<strong>LSM-Trees, Memtables, SSTables</strong>) y la aplicación de motores de grafos para desarticular fraudes tributarios complejos.</p>\n<h3>5.2. Familias NoSQL y Arquitectura Interna</h3>\n<h4>A. Motores Columnar Ancho (Wide-Column): Apache Cassandra y HBase</h4>\n<p>Estructurados sobre el patrón <strong>LSM-Tree (Log-Structured Merge-Tree)</strong>, optimizado para escrituras masivas secuenciales en disco sin bloqueos:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>Operación de Escritura (INSERT / UPDATE)\n     |\n     +---&gt; 1. Se anexa secuencialmente en disco al CommitLog / WAL (Garantiza durabilidad ante caídas)\n     |\n     +---&gt; 2. Se inserta en memoria en la MEMTABLE (Estructura de árbol ordenado en RAM)\n                 |\n                 v (Cuando Memtable se llena)\n           Se vuelca a disco como una SSTABLE inmutable (Sorted String Table)\n                 |\n                 v\n           Procesos en background de COMPACTACIÓN (Fusiona SSTables y depura tumbas / tombstones)</code></pre></div>\n<ul><li><strong>Lecturas Optimizadas:</strong> Emplean <strong>Filtros de Bloom</strong> (estructuras probabilísticas en memoria que determinan con certeza si una clave <em>no está</em> en una SSTable, evitando búsquedas en disco) y cachés de bloques.</li><li><strong>Caso en la DIAN:</strong> Bitácoras inmutables de auditoría transaccional de funcionarios y series temporales de telemetría de recaudos bancarios.</li></ul>\n<h4>B. Motores Documentales: MongoDB</h4>\n<ul><li><strong>Estructura Interna:</strong> Almacenan documentos en formato binario <strong>BSON</strong> con esquemas dinámicos, admitiendo subdocumentos anidados y arreglos.</li><li><strong>Caso en la DIAN:</strong> Expedientes electrónicos heterogéneos de contribuyentes, formularios dinámicos de encuestas y anexos tributarios no normalizados.</li></ul>\n<h4>C. Motores Clave-Valor: Redis</h4>\n<ul><li><strong>Estructura Interna:</strong> Almacenamiento en memoria RAM con latencias submilimétricas ($&lt; 1\\text{ ms}$), con persistencia asíncrona a disco (RDB y AOF).</li><li><strong>Caso en la DIAN:</strong> Control de cuotas de consumo (<em>Rate Limiting</em>) de las APIs de recepción de factura electrónica, listas negras temporales de tokens revocados y sesiones de contribuyentes en el portal web.</li></ul>\n<h4>D. Motores de Grafos: Neo4j y JanusGraph</h4>\n<ul><li><strong>Estructura Interna:</strong> Almacenamiento de nodos, etiquetas, relaciones dirigidas con propiedades y **Adyacencia Libre de Índices (<em>Index-Free Adjacency</em>)**: cada nodo mantiene punteros físicos directos a sus nodos adyacentes en disco y memoria, permitiendo recorrer millones de relaciones con costo $O(k)$ independiente del tamaño total de la base de datos (a diferencia de los costosos <code>JOIN</code> recursivos en SQL).</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>[EMPRESA FACHADA 1] ---emite FEV simulada---&gt; [EMPRESA FACHADA 2]\n         |                                           |\n    mismo representante                         mismo contador\n         v                                           v\n[PERSONA NATURAL X (Testaferro)] &lt;------socio----- [EMPRESA BENEFICIARIA FINAL]</code></pre></div>\n<div class=\"callout case\"><strong class=\"callout-title\">🏛️ Caso DIAN</strong><p>Aplicación Real DIAN: Desarticulación de \"Carruseles de IVA\" En la detección de redes de evasión organizada y carruseles de devoluciones fraudulentas de IVA, las empresas ficticias facturan entre sí de manera circular para inflar impuestos descontables. Una consulta en base de datos relacional que intente cruzar 6 o 7 niveles de proveedores genera bloqueos por producto cartesiano; en una <strong>Base de Datos de Grafos</strong>, algoritmos de detección de comunidades (<em>Louvain</em>), centralidad (<em>PageRank</em>) y detección de ciclos encuentran la estructura circular en segundos.</p></div>\n<h3>5.3. Matriz de Decisión NoSQL en la DIAN</h3>\n<table class=\"data-table\"><thead><tr><th>Familia NoSQL</th><th>Motor Representativo</th><th>Fortaleza Arquitectónica</th><th>Limitación Crítica</th><th>Caso de Uso DIAN</th></tr></thead><tbody><tr><td><strong>Wide-Column</strong></td><td>Apache Cassandra / HBase</td><td>Escritura masiva secuencial, escalabilidad lineal</td><td>Consultas complejas con joins no soportadas</td><td>Logs de auditoría y eventos masivos</td></tr><tr><td><strong>Documental</strong></td><td>MongoDB</td><td>Esquema flexible, indexación rica</td><td>Consumo elevado de memoria por redundancia</td><td>Expediente digital del obligado</td></tr><tr><td><strong>Clave-Valor</strong></td><td>Redis</td><td>Latencia submilimétrica en RAM</td><td>Costo elevado de memoria RAM</td><td>Caché de validación de tokens FEV</td></tr><tr><td><strong>Grafos</strong></td><td>Neo4j / JanusGraph</td><td>Recorridos profundos de relaciones ($N$ saltos)</td><td>No apto para escaneos agregados masivos</td><td>Detección de carruseles y lavado</td></tr></tbody></table>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-6",
+          "moduleId": "mod-1",
+          "unitNumber": 6,
+          "title": "Unidad 6: Ingesta y Mensajería Masiva en Streaming: Arquitectura Interna de Apache Kafka, Particionamiento, Semánticas y Schema Registry",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 624,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Mensajería Distribuida, Concurrencia y Gobernanza de Esquemas</p>\n<h3>6.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la arquitectura interna de <strong>Apache Kafka</strong>, las políticas de particionamiento, el balanceo de grupos de consumidores y el gobierno evolutivo de esquemas mediante <strong>Schema Registry y Apache Avro</strong>, asegurando una ingesta continua sin interrupciones en la DIAN.</p>\n<h3>6.2. Arquitectura Interna de Apache Kafka</h3>\n<p>Apache Kafka es un log distribuido de confirmaciones (<em>distributed commit log</em>) particionado, inmutable y replicado:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>TOPIC: facturas-electronicas-in (3 Particiones / Factor de Replicación: 2)\n+-------------------------------------------------------------------------------+\n| PARTITION 0 (Leader: Broker 1 / Follower: Broker 2) -&gt; [0][1][2][3][4]...     |\n| PARTITION 1 (Leader: Broker 2 / Follower: Broker 3) -&gt; [0][1][2][3][4][5]...  |\n| PARTITION 2 (Leader: Broker 3 / Follower: Broker 1) -&gt; [0][1][2]...           |\n+-------------------------------------------------------------------------------+\n     ^                                                       |\n     | (Produce con Clave: NIT)                             v (Consume en Paralelo)\n[Productor: API Gateway]                        [Consumer Group: Motores de Validación]\n                                                - Consumidor 1 lee Partición 0\n                                                - Consumidor 2 lee Partición 1\n                                                - Consumidor 3 lee Partición 2</code></pre></div>\n<ol><li><strong>Topics y Particiones:</strong> La partición es la unidad básica de paralelismo y escalabilidad física. Cada partición es una secuencia ordenada e inmutable de mensajes en disco.</li><li><strong>Orden Garantizado Únicamente por Partición:</strong> Kafka <strong>no garantiza orden global a nivel de Topic</strong>, únicamente dentro de la misma partición. Si todos los eventos de un mismo contribuyente deben procesarse estrictamente en orden, deben enviarse con la <strong>misma clave de partición (ej. <code>key = NIT</code>)</strong>.</li><li><strong>Consenso y Metadatos:</strong> En clústeres modernos se utiliza <strong>Kafka Raft Metadata Mode (KRaft)</strong>, eliminando la dependencia externa de Apache ZooKeeper y gestionando el consenso internamente mediante un quórum de controladores.</li></ol>\n<h3>6.3. Configuración Crítica del Productor</h3>\n<ul><li><strong>Política de Confirmación (<code>acks</code>):</strong></li><li><code>acks=0</code>: El productor no espera confirmación. Máxima velocidad, alto riesgo de pérdida.</li><li><code>acks=1</code>: Espera confirmación del Broker Líder únicamente. Si el líder cae antes de replicar, se pierde el mensaje.</li><li><code>acks=all</code> (o <code>-1</code>): El mensaje se confirma solo cuando el líder y todas las réplicas sincronizadas (<strong>In-Sync Replicas - ISR</strong>) han escrito en disco. Exigido en la DIAN junto con <code>min.insync.replicas=2</code>.</li><li><strong>Productor Idempotente (<code>enable.idempotence=true</code>):</strong> Asigna un identificador único al productor (<em>Producer ID - PID</em>) y un número de secuencia monótono por partición, descartando duplicados provocados por reintentos de red.</li></ul>\n<h3>6.4. Grupos de Consumidores (<em>Consumer Groups</em>) y Balanceo</h3>\n<ul><li>Un grupo de consumidores permite distribuir el trabajo: cada partición del Topic es leída exclusivamente por un único consumidor del grupo a la vez.</li><li>Si el número de consumidores supera el número de particiones, los consumidores sobrantes quedan inactivos en espera (<em>idle</em>).</li><li><strong>Gestión de Offsets:</strong> Para garantizar procesamiento confiable, se desactiva el commit automático (<code>enable.auto.commit=false</code>) y se confirman los offsets de forma síncrona o asíncrona solo tras completar el procesamiento exitoso en la base de datos de destino.</li></ul>\n<h3>6.5. Gobernanza de Esquemas con Schema Registry y Apache Avro</h3>\n<p>En un entorno con miles de emisores de software tributario, los cambios no coordinados en los payloads JSON rompen los procesos analíticos. La solución empresarial es el <strong>Confluent Schema Registry</strong>:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>[Productor Kafka] ----1. Consulta / Registra Esquema----&gt; [SCHEMA REGISTRY]\n       |                                                         ^\n       | 2. Serializa mensaje en binario con Schema-ID          | 3. Valida Schema-ID\n       v                                                         |\n[TOPIC KAFKA] ==============================================&gt; [Consumidor]</code></pre></div>\n<ul><li><strong>Apache Avro:</strong> Formato de serialización binario compacto que no incluye los nombres de los campos en cada mensaje (como JSON), sino únicamente los valores tipados y el identificador del esquema en el encabezado (<em>Magic Byte + Schema ID</em>).</li><li><strong>Reglas de Compatibilidad de Esquemas:</strong></li><li><em>Backward (Hacia Atrás):</em> Los consumidores nuevos pueden leer datos producidos con esquemas viejos (se pueden borrar campos o agregar campos opcionales con valor por defecto).</li><li><em>Forward (Hacia Adelante):</em> Los consumidores viejos pueden leer datos producidos con el esquema nuevo.</li><li><em>Full (Total):</em> Garantiza compatibilidad bidireccional continua. Es la política exigida para actualizar especificaciones de documentos electrónicos en la DIAN.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-1-7",
+          "moduleId": "mod-1",
+          "unitNumber": 7,
+          "title": "Unidad 7: Arquitectura Big Data en la DIAN: Facturación Electrónica Masiva, Cruce de Exógena, Nube Híbrida y Marco Normativo Institucional",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 529,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Operación Institucional, Procesamiento Misional y Marco Normativo</p>\n<h3>7.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Integrar todos los conceptos técnicos en la operación misional real de la DIAN, comprendiendo la arquitectura de procesamiento masivo para Facturación Electrónica y Exógena, así como los mandatos legales (<strong>Decreto 1742 de 2020, CONPES 3920 de 2018 y Art. 583 del E.T.</strong>) que limitan y orientan las decisiones de un Inspector I.</p>\n<h3>7.2. Pipeline de Facturación Electrónica Masiva (FEV) y Nómina</h3>\n<p>El Sistema de Facturación Electrónica (Art. 616-1 del E.T.) procesa millones de transacciones de compraventa en el país:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>[Contribuyentes / Proveedores Tecnológicos]\n             |\n             v (HTTPS / REST API / SOAP)\n[API Gateway DIAN: Rate Limiting &amp; Validación de Certificados Digitales X.509]\n             |\n             v\n[Cluster Apache Kafka: Topic 'fev-recibida-raw']\n             |\n             +---&gt; Motor de Validación Inmediata (Esquemas XSD UBL 2.1)\n             |          |\n             |          v\n             |     [Firma Digital DIAN y Emisión de Respuesta al Emisor (&lt; 3 seg)]\n             |\n             +---&gt; Motor Streaming Analítico (Kafka -&gt; Lakehouse Capa Bronce)\n                        |\n                        v\n                   [Perfilamiento de Riesgo y Cruce con Registro Único Tributario]</code></pre></div>\n<ol><li><strong>Validación Previa:</strong> Se comprueba el esquema XML UBL 2.1, la firma electrónica basada en certificados digitales reconocidos (ONAC) y la autorización de numeración de facturación.</li><li><strong>Persistencia Inmutable:</strong> La factura original se almacena sin modificaciones en almacenamiento de objetos en la Capa Bronce del repositorio analítico institucional, garantizando su valor probatorio judicial inalterable.</li></ol>\n<h3>7.3. Cruce Masivo de Información Exógena (Reporte de Terceros)</h3>\n<p>Anualmente, personas naturales y jurídicas reportan a la DIAN las operaciones financieras, compras, ventas, retenciones y saldos de terceros (Formatos 1001, 1007, 1008, 1009, etc.).</p>\n<ul><li><strong>Desafío Arquitectónico:</strong> El volumen de datos no estructurados en XML y planos supera los cientos de terabytes.</li><li><strong>Procesamiento Distribuido:</strong> Se ejecutan trabajos en clústeres elásticos de <strong>Apache Spark</strong> que descomprimen, limpian, deduplican y cruzan estos datos con las declaraciones de renta presentadas por los contribuyentes para generar la <strong>Declaración Sugerida de Renta</strong> y detectar omisos o inexactos.</li></ul>\n<h3>7.4. Marco Normativo Colombiano e Institucional DIAN</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>+-----------------------------------------------------------------------------+\n|                      MARCO NORMATIVO INSTITUCIONAL                          |\n|                                                                             |\n|  1. Estatuto Tributario (Art. 583-587)  --&gt; Reserva Tributaria Estricta    |\n|  2. CONPES 3920 de 2018                 --&gt; Infraestructura Crítica de Datos|\n|  3. Decreto 1742 de 2020 &amp; Res. 067/2024--&gt; Funciones Subd. Procesamiento  |\n|  4. Ley 1581 de 2012 y Ley 1712 de 2014 --&gt; Habeas Data vs. Transparencia    |\n|  5. MRAE MinTIC (Decreto 1078 de 2015)  --&gt; Interoperabilidad Segura X-Road |\n+-----------------------------------------------------------------------------+</code></pre></div>\n<ol><li><strong>Artículo 583 del Estatuto Tributario (Reserva de las Declaraciones):</strong> La información tributaria individual tiene carácter estrictamente confidencial. En la plataforma Big Data, <strong>el Inspector I es penal y disciplinariamente responsable</strong> de asegurar que el acceso a datos crudos esté blindado mediante control de acceso basado en atributos (<strong>ABAC</strong>), enmascaramiento dinámico (<strong>DDM</strong>) y cifrado en tránsito (<strong>TLS 1.3</strong>) y en reposo (<strong>AES-256</strong> con gestión de llaves en HSM).</li><li><strong>Documento CONPES 3920 de 2018 (Política Nacional de Explotación de Datos):</strong> Define los datos públicos como activos estratégicos del Estado y ordena a entidades como la DIAN generar capacidades analíticas, estandarizar metadatos y garantizar infraestructura de alta disponibilidad.</li><li><strong>Decreto 1742 de 2020 y Resolución DIAN 067 de 2024 (MERF):</strong> Asigna a la Subdirección de Procesamiento de Datos la administración, explotación técnica, custodia y optimización del <strong>Repositorio Único de Datos (DataR)</strong> y las plataformas de analítica masiva.</li></ol>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 7,
+      "lessonMinutes": 180,
+      "studyMinutes": 180,
+      "bibliografia": {
+        "raw": "<h2>11. Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>11.1. Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>Kleppmann, M. (2017).</strong> <em>Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems</em>. O'Reilly Media.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra cumbre internacional para comprender modelos de consistencia, teoremas distribuidos (CAP/FLP), particionamiento, replicación y procesamiento de flujos.</li><li><strong>Chambers, B., &amp; Zaharia, M. (2018).</strong> <em>Spark: The Definitive Guide — Big Data Processing Made Simple</em>. O'Reilly Media.</li><li><strong>Por qué leerlo para el examen:</strong> Escrito por el creador de Apache Spark; detalla minuciosamente el funcionamiento del Catalyst Optimizer, la gestión de memoria de Tungsten y la optimización de Shuffles y Joins.</li><li><strong>Marz, N., &amp; Warren, J. (2015).</strong> <em>Big Data: Principles and Best Practices of Scalable Realtime Data Systems</em>. Manning Publications.</li><li><strong>Por qué leerlo para el examen:</strong> Define formalmente la Arquitectura Lambda, la inmutabilidad de los datos maestros y los principios de escalabilidad distribuida.</li><li><strong>Departamento Nacional de Planeación - DNP (2018).</strong> <em>Documento CONPES 3920: Política Nacional de Explotación de Datos (Big Data)</em>. Consejo Nacional de Política Económica y Social, República de Colombia.</li><li><strong>Por qué leerlo para el examen:</strong> Marco de política pública vinculante para las entidades estatales en Colombia; establece los lineamientos para considerar los datos como infraestructura estratégica nacional.</li></ol>\n<h3>11.2. Bibliografía Técnica, Estándares y Marco Normativo (Corte: 19 de junio de 2026)</h3>\n<h4>A. Estándares Técnicos y Literatura Canónica</h4>\n<ul><li><strong>DAMA International (2017).</strong> <em>DAMA-DMBOK: Data Management Body of Knowledge</em> (2nd Ed.). Technics Publications. <em>(Capítulos 4: Arquitectura de Datos, 8: Integración e Interoperabilidad, 11: Data Warehousing y Business Intelligence).</em></li><li><strong>Kreps, J. (2014).</strong> <em>Questioning the Lambda Architecture</em>. O'Reilly Media / LinkedIn Engineering. <em>(Artículo fundamental de origen de la Arquitectura Kappa).</em></li><li><strong>Shapira, G., Palino, T., Sivaram, R., &amp; Petty, K. (2021).</strong> <em>Kafka: The Definitive Guide: Real-Time Data and Stream Processing at Scale</em> (2nd Ed.). O'Reilly Media.</li><li><strong>Akidau, T., Chernyak, S., &amp; Lax, R. (2018).</strong> <em>Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing</em>. O'Reilly Media. <em>(La referencia canónica sobre Event Time, Watermarks y ventanas de agregación).</em></li><li><strong>Abadi, D. (2012).</strong> <em>Consistency Tradeoffs in Modern Distributed Database System Design: CAP is Only Part of the Story</em>. Computer, 45(2), 37-42. IEEE.</li><li><strong>Brewer, E. (2012).</strong> <em>CAP Twelve Years Later: How the \"Rules\" Have Changed</em>. Computer, 45(2), 23-29. IEEE.</li><li><strong>Gilbert, S., &amp; Lynch, N. (2002).</strong> <em>Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services</em>. ACM SIGACT News, 33(2), 51-59.</li></ul>\n<h4>B. Marco Normativo Colombiano e Institucional DIAN (Vigencia al 19 de junio de 2026)</h4>\n<ul><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes).</strong> Especialmente <strong>Artículo 583 al 587</strong> (Reserva tributaria de las declaraciones, excepciones legales e intercambios de información) y <strong>Artículo 616-1</strong> (Sistema de Facturación Electrónica).</li><li><strong>Documento CONPES 3920 de 2018.</strong> Política Nacional de Explotación de Datos (Big Data) en Colombia.</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) — Funciones de la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos.</li><li><strong>Resolución DIAN No. 067 de 2024 (y Resoluciones 065 y 066 de 2024).</strong> Manual Específico de Requisitos y Funciones (MERF) vigente para el concurso DIAN 2676.</li><li><strong>Ley Estatutaria 1581 de 2012 y Decreto 1074 de 2015.</strong> Régimen General de Protección de Datos Personales en Colombia (Habeas Data).</li><li><strong>Ley Estatutaria 1712 de 2014.</strong> Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional.</li><li><strong>Decreto 1078 de 2015 (y modificaciones del Decreto 088 de 2022).</strong> Marco de Referencia de Arquitectura Empresarial (MRAE) y Servicios Ciudadanos Digitales / Interoperabilidad de la Política de Gobierno Digital (MinTIC).</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-2",
@@ -696,352 +767,359 @@ window.COURSES_DATA['inspector1'] = {
   ],
   "exams": {
     "exam-1": {
-      "title": "Examen: 1. Arquitectura Big Data (10 Preguntas de Arquitectura y Casos)",
-      "indicatorNum": 1,
+      "title": "Examen Oficial: Arquitectura Big Data (10 Preguntas PJS)",
       "questions": [
         {
           "id": 101,
-          "topic": "Teorema CAP en Sistemas Distribuidos",
-          "caseText": "Una entidad pública implementa un clúster distribuido en la nube para procesar transacciones críticas entre múltiples zonas de disponibilidad geográficas, donde las particiones y retrasos de red son inevitables.",
-          "statement": "¿Qué postula el Teorema CAP respecto al diseño de este sistema distribuido ante la ocurrencia de una partición de red (P)?",
+          "topic": "Arquitectura Big Data — Teoremas de Sistemas Distribuidos y Alta Disponibilidad",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Durante una jornada nacional de compras sin IVA, el volumen de Facturas Electrónicas de Venta (FEV) remitidas a los servicios web de la DIAN supera las 3.500 transacciones por segundo. En el pico de la operación, se produce un corte imprevisto en los enlaces de fibra óptica que comunican el centro de datos principal con el centro de datos secundario de contingencia, aislando dos particiones de red. El clúster de base de datos distribuido que valida la no duplicidad del consecutivo de factura está configurado como un sistema de alta disponibilidad AP (Eventual Consistency), permitiendo que emisores en ambos lados de la partición sigan registrando comprobantes. Horas después, al restablecerse el enlace, se evidencia que cientos de facturas distintas fueron autorizadas con el mismo número consecutivo por el mismo emisor en nodos opuestos, generando colisiones fiscales y duplicidades normativas.",
+          "statement": "Para corregir el diseño arquitectónico de modo que se impida la autorización de facturas duplicadas ante caídas de enlace de red, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "El sistema debe elegir forzosamente entre garantizar Consistencia estricta (C) o garantizar Disponibilidad (A), siendo imposible ofrecer ambas propiedades simultáneamente."
+              "text": "reconfigurar el servicio de validación de consecutivos sobre un motor de datos de consistencia fuerte CP con quórum mayoritario (como Cloud Spanner o HBase con Paxos/Raft), bloqueando escrituras en la partición minoritaria para garantizar que jamás se asigne un mismo consecutivo a dos transacciones distintas."
             },
             {
               "id": "B",
-              "text": "El sistema puede garantizar Consistencia, Disponibilidad y Tolerancia a Particiones simultáneamente si utiliza almacenamiento SSD NVMe."
+              "text": "mantener la configuración AP para priorizar la disponibilidad absoluta del servicio al contribuyente y delegar la anulación de las facturas duplicadas en procesos manuales de fiscalización posterior mediante resoluciones sancionatorias."
             },
             {
               "id": "C",
-              "text": "El sistema debe descartar la Tolerancia a Particiones para mantener la Consistencia y Disponibilidad en tiempo real."
+              "text": "desactivar la replicación de datos entre los centros de datos y asignar a cada nodo una secuencia de números pares o impares administrada manualmente en hojas de cálculo por los administradores de infraestructura."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Teorema CAP de Eric Brewer demuestra que, ante una partición de red inevitable en sistemas distribuidos, el arquitecto debe elegir entre Consistencia (CP: rechazar peticiones si no hay consenso) o Disponibilidad (AP: responder con datos potencialmente desactualizados).",
+            "correct": "Es correcta. De acuerdo con el **Teorema CAP** y la formalización de Gilbert & Lynch, en presencia de una partición de red ($P$), un sistema debe elegir estrictamente entre Consistencia ($C$) o Disponibilidad ($A$). En la validación tributaria de comprobantes fiscales (Art. 616-1 del E.T.), la unicidad del consecutivo es un mandato jurídico ineludible. Un diseño **CP** garantiza que, ante la partición de red, solo el subconjunto de nodos que mantenga el quórum de mayoría legal pueda autorizar escrituras mediante algoritmos de consenso, rechazando temporalmente operaciones en la partición aislada y evitando por completo el fenómeno de *Split-Brain* y la duplicidad de documentos.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Ninguna mejora de hardware puede violar los límites matemáticos del teorema CAP."
+                "reason": "Es incorrecta. Priorizar disponibilidad (AP) a costa de autorizar facturas duplicadas con validez jurídica vulnera el régimen de facturación electrónica y crea contingencias fiscales e inseguridad jurídica probatoria que no pueden ser saneadas válidamente por fiscalizaciones posteriores."
               },
               {
                 "id": "C",
-                "reason": "En redes reales distribuidas no es posible 'descartar' las fallas de comunicación física entre nodos."
+                "reason": "Es incorrecta. Eliminar la replicación automática y depender de particionamientos estáticos o manuales destruye la resiliencia del clúster, aumenta drásticamente el riesgo de error humano y no escala ante contingencias dinámicas en una infraestructura crítica del Estado."
               }
             ]
           }
         },
         {
           "id": 102,
-          "topic": "Arquitectura Lambda vs. Arquitectura Kappa",
-          "caseText": "Un equipo de datos mantiene un sistema analítico donde la lógica de negocio se implementa por duplicado: una versión en Spark Batch para consolidaciones nocturnas y otra versión en Flink para streaming en tiempo real, lo que genera desincronizaciones de métricas.",
-          "statement": "¿Cuál es la principal ventaja técnica de migrar este diseño de una Arquitectura Lambda a una Arquitectura Kappa?",
+          "topic": "Arquitectura Big Data — Motores de Cómputo Distribuido (Apache Spark)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el proceso anual de cruce de información exógena tributaria para generar las declaraciones sugeridas de renta de personas naturales, un trabajo programado en Apache Spark procesa un DataFrame de 180 millones de movimientos bancarios y financieros (Formato 1003) para cruzarlo mediante la operación `.join()` con el catálogo maestro de contribuyentes (RUT). El trabajo falla de manera sistemática tras dos horas de ejecución en la fase de Shuffle con el error `java.lang.OutOfMemoryError: Java heap space` en un único nodo ejecutor, mientras que los restantes treinta ejecutores del clúster terminan su carga en menos de quince minutos con un uso de CPU y memoria inferior al 20%. Al revisar las métricas, el Inspector I observa que un único grupo financiero concentra el 35% de la totalidad de registros transaccionales reportados.",
+          "statement": "Para resolver de raíz el fallo de memoria en el ejecutor y lograr que el procesamiento se complete de forma balanceada y eficiente en todo el clúster, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Unificar el procesamiento en una sola base de código centrada en streaming sobre un log inmutable distribuido (Kafka/Pulsar), eliminando la duplicidad de capas y permitiendo reprocesamiento por replay."
+              "text": "aplicar la técnica de salado de claves (*Salting*) agregando un sufijo aleatorio a la clave de cruce en los registros del gran reportante para distribuir el cómputo en múltiples particiones de shuffle, o utilizar un Broadcast Hash Join si la tabla de referencia cruzada es susceptible de ser transmitida en memoria a los ejecutores."
             },
             {
               "id": "B",
-              "text": "Eliminar la necesidad de motores de mensajería distribuida utilizando únicamente bases de datos relacionales tradicionales."
+              "text": "duplicar la cantidad de memoria RAM asignada a todo el clúster y desactivar la recolección de basura (*Garbage Collection*) en la configuración general de Spark para que ningún ejecutor libere memoria durante el cruce."
             },
             {
               "id": "C",
-              "text": "Aumentar la latencia de las consultas para reducir los costos de memoria RAM en los nodos ejecutores."
+              "text": "dividir el archivo plano en carpetas de diez mil registros y ejecutar el cruce mediante un script monohilo en lenguaje Python iterando secuencialmente con bucles `for` en un único servidor de escritorio."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Arquitectura Kappa (Jay Kreps) reemplaza la doble vía de Lambda con un único pipeline de procesamiento continuo de eventos sobre un log inmutable; para reprocesar históricos, simplemente se reinicia el offset en el log.",
+            "correct": "Es correcta. El escenario describe el problema clásico de **desbalanceo de datos (*Data Skew*)** en sistemas distribuidos: al hacer un join por la clave del reportante, la partición que recibe los datos de la entidad bancaria que concentra el 35% de los registros desborda la memoria física asignada al ejecutor correspondiente en la fase de shuffle. La solución técnica canónica consiste en aplicar **Salting** (añadir un número pseudoaleatorio entre $1$ y $N$ a la clave en la tabla desbalanceada y replicar $N$ veces la clave correspondiente en la tabla contraparte) para dividir el bloque en $N$ tareas paralelas, o forzar un **Broadcast Hash Join** si la tabla dimensionada es pequeña, eliminando el shuffle por completo.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La arquitectura Kappa depende críticamente de logs distribuidos como Kafka, no de bases relacionales aisladas."
+                "reason": "Es incorrecta. Sobredimensionar la memoria sin resolver la distribución de claves es costoso e ineficiente, y desactivar el recolector de basura es técnicamente inviable en la JVM, acelerando el colapso del proceso."
               },
               {
                 "id": "C",
-                "reason": "Kappa busca procesar en baja latencia con un solo código, no incrementar deliberadamente la latencia."
+                "reason": "Es incorrecta. Abandonar el motor distribuido y procesar cientos de millones de filas mediante un script monohilo secuencial tardaría semanas en ejecutarse, colapsando los cronogramas institucionales de publicación de declaraciones sugeridas de la DIAN."
               }
             ]
           }
         },
         {
           "id": 103,
-          "topic": "Mecanismo de Shuffle y Data Skew en Apache Spark",
-          "caseText": "Durante la ejecución de un job de Apache Spark que realiza un JOIN masivo entre declaraciones tributarias y facturas electrónicas por la columna 'NIT', varias tareas fallan con errores Out-Of-Memory (OOM) y el 95% del clúster queda ocioso esperando que una sola tarea termine.",
-          "statement": "El diagnóstico técnico y la técnica de remediación adecuada para este problema son:",
+          "topic": "Arquitectura Big Data — Paradigmas de Procesamiento y Consistencia",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Fiscalización Tributaria alerta que los tableros analíticos de seguimiento diario de recaudo por facturación electrónica presentan cifras que no coinciden con los consolidados emitidos por el reporte mensual de cierre. Al auditar la infraestructura, el Inspector I constata que la plataforma opera bajo una Arquitectura Lambda: la capa en tiempo real (*Speed Layer*) calcula el valor del impuesto sobre las ventas (IVA) consumiendo eventos de un topic de Kafka mediante un script en Apache Flink con lógica simplificada, mientras que la capa por lotes (*Batch Layer*) ejecuta cada noche un pipeline en Apache Spark sobre almacenamiento de objetos utilizando una biblioteca en Java que implementa validaciones tributarias avanzadas sobre exenciones y exclusiones de bienes.",
+          "statement": "Para erradicar las discrepancias de cálculo y asegurar que tanto el tiempo real como los reportes históricos produzcan resultados numéricamente idénticos y auditables, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Se presenta un problema de Data Skew (sesgo de datos) durante la fase de Shuffle debido a grandes emisores que concentran millones de facturas; se debe aplicar 'salting' a las claves o salar la partición para redistribuir la carga."
+              "text": "migrar hacia una Arquitectura Kappa o Lakehouse Streaming unificado, implementando una única base de código de lógica de negocio compartida que procese tanto el flujo continuo como el reprocesamiento histórico sobre el mismo motor."
             },
             {
               "id": "B",
-              "text": "El clúster tiene poca memoria swap en el nodo master; se debe reiniciar el servidor principal sin alterar el código."
+              "text": "programar un trabajo de conciliación diario que aplique un factor de corrección estadístico arbitrario para forzar que las cifras del tablero de tiempo real coincidan visualmente con el reporte mensual."
             },
             {
               "id": "C",
-              "text": "La memoria de Spark está corrupta; se debe deshabilitar el Catalyst Optimizer para que no optimice el plan lógico."
+              "text": "desactivar de forma definitiva el procesamiento en tiempo real y obligar a todas las áreas misionales a esperar 30 días para conocer cualquier dato transaccional de facturación electrónica."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Data Skew ocurre cuando una o pocas claves agrupan un volumen desproporcionado de datos, saturando la partición de un solo ejecutor tras el Shuffle. El salting (agregar un prefijo aleatorio a la clave) dispersa los datos uniformemente.",
+            "correct": "Es correcta. El caso evidencia el antipatrón crítico intrínseco de la **Arquitectura Lambda**: la duplicación y desincronización de la lógica de negocio entre la capa rápida y la capa de lotes. En la administración tributaria, donde las reglas de liquidación (Arts. 420 y ss. del E.T.) son complejas, mantener dos algoritmos separados en lenguajes distintos genera divergencias contables inaceptables. La solución arquitectónica moderna consiste en adoptar **Arquitectura Kappa** o un **Lakehouse con motor unificado (como Spark Structured Streaming o Apache Flink)**, donde la misma lógica de negocio se ejecuta exactamente de forma idéntica en streaming y en reprocesamiento histórico.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El fallo ocurre en los nodos ejecutores por desbalance de datos, no en el master ni por memoria swap."
+                "reason": "Es incorrecta. Forzar cifras mediante factores estadísticos arbitrarios o ajustes visuales constituye una alteración injustificada de la información financiera y tributaria que vulnera los principios de fidelidad y veracidad de la función pública."
               },
               {
                 "id": "C",
-                "reason": "Catalyst Optimizer es el motor de optimización que mejora el plan de ejecución; deshabilitarlo empeoraría el rendimiento."
+                "reason": "Es incorrecta. Eliminar el tiempo real anula las capacidades de detección temprana de fraudes y alertas operativas de la entidad, contraviniendo los objetivos de modernización tecnológica e innovación del Decreto 1742 de 2020."
               }
             ]
           }
         },
         {
           "id": 104,
-          "topic": "Event Time vs. Processing Time y Watermarks",
-          "caseText": "En un pipeline de streaming que audita transacciones de comercio electrónico, varias facturas emitidas a las 23:58 llegan a los servidores de procesamiento a las 00:03 del día siguiente debido a problemas de intermitencia de red celular.",
-          "statement": "¿Qué mecanismo técnico garantiza que estas transacciones se contabilicen en la ventana temporal del día en que realmente ocurrieron y no en el día de llegada?",
+          "topic": "Arquitectura Big Data — Procesamiento de Flujos y Semántica Temporal",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el último día de vencimiento para el pago de anticipos de impuestos, se genera un pico de saturación en los servicios bancarios que provoca un retraso de hasta 25 minutos en la entrega de los mensajes JSON de confirmación de pago hacia el clúster de streaming de la DIAN. El pipeline analítico que calcula las alertas de extemporaneidad utiliza una ventana fija de tiempo (*Tumbling Window*) configurada sobre el tiempo de procesamiento (*Processing Time*) con un Watermark de 2 minutos. Como consecuencia del desfase, miles de transacciones efectuadas por los contribuyentes a las 23:50 son procesadas a las 00:15 del día siguiente y etiquetadas automáticamente por el motor analítico como \"Pagos Extemporáneos con Sanción de Extemporaneidad\", generando reclamos masivos.",
+          "statement": "Para corregir la evaluación temporal y garantizar que la extemporaneidad se juzgue con estricta validez jurídica y técnica, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Procesar con base en Event Time (timestamp del evento en el origen) y configurar un Watermark que tolere el retraso máximo esperado de los eventos tardíos."
+              "text": "reconfigurar el pipeline de streaming para evaluar las ventanas exclusivamente sobre el Tiempo del Evento (*Event Time*) capturado en la transacción bancaria original y ajustar la tolerancia del Watermark junto con una salida lateral (*Side Output*) para auditar eventos rezagados sin emitir sanciones automáticas indebidas."
             },
             {
               "id": "B",
-              "text": "Utilizar Processing Time asignando la fecha y hora del reloj del servidor que recibe la petición HTTP."
+              "text": "mantener la evaluación sobre el tiempo de procesamiento (*Processing Time*) y reducir el Watermark a cero segundos para que cualquier evento demorado sea eliminado inmediatamente sin procesar."
             },
             {
               "id": "C",
-              "text": "Descartar automáticamente cualquier factura que llegue con más de un minuto de diferencia respecto a la hora del servidor."
+              "text": "adelantar el reloj físico del sistema operativo de todos los servidores del clúster analítico en dos horas para compensar las demoras de las entidades financieras."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Event Time respeta el momento real de ocurrencia de la transacción comercial. Los Watermarks le indican al motor de streaming hasta qué momento del tiempo de evento debe esperar datos tardíos antes de emitir el cierre de la ventana.",
+            "correct": "Es correcta. En el procesamiento de flujos de datos tributarios, la puntualidad del contribuyente está amparada por la fecha y hora de la transacción registrada en la entidad recaudadora (*Event Time*), conforme a los principios de debido proceso y el Estatuto Tributario. Utilizar *Processing Time* hace que la legalidad del pago dependa de la latencia técnica de la red o la carga de los servidores. Al configurar el motor sobre **Event Time** con un **Watermark** calibrado adecuadamente y capturar los eventos que excedan la tolerancia en un **Side Output**, el sistema procesa con justicia distributiva y preserva los registros demorados para su validación formal sin generar sanciones improcedentes.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Processing Time asignaría las facturas al día siguiente, falseando los cierres fiscales y tributarios del contribuyente."
+                "reason": "Es incorrecta. Reducir el Watermark a cero y descartar pagos válidos de los contribuyentes provocaría la pérdida de evidencia financiera y vulneraría de forma grave los derechos de los ciudadanos."
               },
               {
                 "id": "C",
-                "reason": "Descartar transacciones legítimas por latencias transitorias de red provocaría pérdidas de información y nulidades administrativas."
+                "reason": "Es incorrecta. Modificar artificialmente los relojes de los servidores descalibra los protocolos de sincronización NTP, rompe los mecanismos de seguridad criptográfica (certificados TLS) y destruye la validez probatoria de las pistas de auditoría institucional."
               }
             ]
           }
         },
         {
           "id": 105,
-          "topic": "Garantías de Entrega en Streaming: Exactly-Once",
-          "caseText": "Un pipeline de procesamiento de flujos calcula en tiempo real el saldo de retenciones practicadas por grandes contribuyentes y escribe los resultados en una base de datos contable.",
-          "statement": "¿Qué semántica de procesamiento es estrictamente requerida y cómo se garantiza de extremo a extremo?",
+          "topic": "Arquitectura Big Data — Bases de Datos NoSQL y Detección de Fraude",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección de Gestión de Fiscalización adelanta una investigación para identificar estructuras organizadas de proveedores ficticios que simulan transacciones comerciales para solicitar devoluciones indebidas de IVA. El equipo de analistas intenta cruzar los registros de facturas electrónicas en una base de datos relacional tradicional (RDBMS), pero al encadenar cinco niveles sucesivos de compras y ventas entre empresas con uniones relacionales complejas (`JOIN`), las consultas consumen el 100% de la memoria y la base de datos se bloquea por tiempo de espera excedido (*timeout*), impidiendo rastrear el destino final de los recursos.",
+          "statement": "Para modelar y consultar eficientemente las relaciones de intermediación multinivel y descubrir ciclos sospechosos de facturación, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Semántica Exactly-Once (exactamente una vez), garantizada mediante checkpoints idempotentes en el motor de streaming combinados con un sumidero transaccional de dos fases (Two-Phase Commit)."
+              "text": "modelar los contribuyentes como nodos y las transacciones de facturación electrónica como aristas dirigidas dentro de una Base de Datos de Grafos (como Neo4j o JanusGraph), aprovechando la adyacencia libre de índices para ejecutar algoritmos de detección de ciclos y comunidades en milisegundos."
             },
             {
               "id": "B",
-              "text": "Semántica At-most-once (a lo sumo una vez), ya que es la única que no requiere almacenar el estado del consumidor."
+              "text": "desnormalizar todos los datos en una única tabla de base de datos relacional de trescientos millones de columnas y ejecutar consultas con la cláusula `LIKE '%iva%'` sobre campos de texto libre."
             },
             {
               "id": "C",
-              "text": "Semántica At-least-once sin deduplicación, permitiendo que las facturas se sumen dos veces para asegurar que no se pierdan fondos."
+              "text": "migrar las tablas a un motor de base de datos Clave-Valor simple (como Redis) utilizando el número de factura como clave y almacenar los nombres de los compradores en una cadena de texto sin índices."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En cálculos financieros y tributarios, la duplicación o pérdida de transacciones es inadmisible. Exactly-once asegura que cada evento altere el estado analítico exactamente una sola vez de extremo a extremo mediante 2PC o escrituras idempotentes.",
+            "correct": "Es correcta. El problema descrito representa el caso de uso por excelencia de las **Bases de Datos de Grafos**. Los motores relacionales sufren una degradación exponencial de rendimiento ($O(N^k)$) al realizar uniones recursivas de múltiples niveles sobre millones de registros. En cambio, los motores de grafos basados en **Adyacencia Libre de Índices (*Index-Free Adjacency*)** navegan las conexiones directamente mediante punteros físicos en memoria ($O(k)$), permitiendo rastrear cadenas de 5, 10 o más saltos, identificar anillos de facturación circular (*carruseles de IVA*) y detectar beneficiarios finales ocultos en fracciones de segundo con algoritmos nativos de grafos.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "At-most-once tolera pérdida de datos, lo cual violaría la integridad contable y legal."
+                "reason": "Es incorrecta. Crear una tabla de millones de columnas es técnicamente imposible en la mayoría de motores relacionales y el escaneo por `LIKE` sobre texto libre es el mecanismo más lento e ineficiente existente en bases de datos."
               },
               {
                 "id": "C",
-                "reason": "Duplicar retenciones generaría cobros dobles ilegales y distorsión grave en el recaudo público."
+                "reason": "Es incorrecta. Las bases de datos Clave-Valor están diseñadas para consultas puntuales por clave exacta; carecen por completo de mecanismos para navegar relaciones complejas o ejecutar análisis de conectividad entre entidades."
               }
             ]
           }
         },
         {
           "id": 106,
-          "topic": "Tipos de Ventanas Temporales en Streaming",
-          "caseText": "Se requiere detectar anomalías de emisión de facturas electrónicas donde un mismo contribuyente emite más de 500 facturas en cualquier intervalo continuo de 5 minutos, evaluando la condición cada 1 minuto.",
-          "statement": "¿Qué tipo de ventana de procesamiento de flujos debe implementarse?",
+          "topic": "Arquitectura Big Data — Mensajería Masiva en Streaming (Apache Kafka)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el marco de la modernización de los sistemas aduaneros en puertos marítimos, se implementa un clúster de Apache Kafka para ingerir las declaraciones de importación y actas de inspección física en tiempo real. Para alcanzar la mayor velocidad de transferencia posible, el desarrollador inicial configuró los productores con `acks=0` y deshabilitó los reintentos. Tras una falla eléctrica transitoria que reinició el nodo líder de uno de los brokers, se detecta que se perdieron irreversiblemente las actas de inspección de más de ochenta contenedores de alto riesgo, impidiendo el control aduanero y generando un grave incidente de seguridad en la frontera.",
+          "statement": "Para reconfigurar el servicio de mensajería de modo que se garantice de manera estricta la persistencia de cada documento sin pérdida ante fallos de nodos, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Ventana Deslizante (Sliding Window) con una duración de 5 minutos y un intervalo de deslizamiento (slide) de 1 minuto."
+              "text": "configurar los productores con confirmación total (`acks=all` o `-1`), habilitar la idempotencia del productor (`enable.idempotence=true`) y establecer un factor de réplicas mínimas sincronizadas (`min.insync.replicas=2`) en los tópicos del clúster."
             },
             {
               "id": "B",
-              "text": "Ventana Fija de Volteo (Tumbling Window) de 1 minuto que no se superponga."
+              "text": "mantener la configuración `acks=0` para no comprometer el ancho de banda y solicitar a los inspectores de aduanas que anoten en libretas manuales de papel el número de cada contenedor que inspeccionen."
             },
             {
               "id": "C",
-              "text": "Ventana de Sesión (Session Window) delimitada por 24 horas de inactividad."
+              "text": "configurar el productor con `acks=1` y reducir el número de particiones del tópico a una sola para que ningún otro broker reciba mensajes de respaldo."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las ventanas deslizantes (Sliding Windows) permiten evaluar intervalos de tiempo superpuestos (ventana de 5 min evaluada cada 1 min), capturando ráfagas de transacciones que cruzan los límites de ventanas fijas.",
+            "correct": "Es correcta. La configuración `acks=0` implica que el productor dispara los mensajes sin esperar ninguna confirmación de persistencia, lo que ocasiona pérdida de datos si el broker falla en ese instante. En una administración tributaria y aduanera, la integridad documental es mandataria. La combinación de **`acks=all`** (el líder no confirma hasta que todas las réplicas sincronizadas hayan escrito en su log), **`min.insync.replicas=2`** (exige al menos dos copias persistidas para validar la escritura) y **`enable.idempotence=true`** (evita duplicidades por reintentos de red) garantiza el nivel más alto de resiliencia y cero pérdida de información crítica (*Zero Data Loss*).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Una Tumbling window de 1 min solo evalúa bloques aislados de 1 minuto, perdiendo la ráfaga acumulada de 5 minutos."
+                "reason": "Es incorrecta. Aceptar la pérdida de actas aduaneras viola la regulación de aduanas (Decreto 1165 de 2019) y delegar el control en registros manuales de papel destruye la trazabilidad digital y favorece la corrupción en frontera."
               },
               {
                 "id": "C",
-                "reason": "Las ventanas de sesión dependen de brechas de inactividad, no de intervalos fijos de tiempo de reloj."
+                "reason": "Es incorrecta. `acks=1` no protege ante la caída del líder si las réplicas aún no se habían sincronizado, y limitar el tópico a una sola partición elimina la tolerancia a fallos y colapsa el rendimiento del clúster."
               }
             ]
           }
         },
         {
           "id": 107,
-          "topic": "Selección de Almacenamiento NoSQL según el Modelo de Acceso",
-          "caseText": "El equipo de analítica necesita modelar y consultar en milisegundos complejas redes corporativas de empresas fachada, socios interconectados y triangulaciones de facturas falsas a través de múltiples saltos (multi-hop).",
-          "statement": "¿Cuál es la familia de bases de datos NoSQL óptima para este caso de uso?",
+          "topic": "Arquitectura Big Data — Gobernanza de Esquemas y Serialización",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos actualiza el formato JSON/Avro de recepción de eventos de documentos equivalentes electrónicos para añadir un nuevo campo tributario obligatorio derivado de una reforma legal. Tras desplegar el cambio en producción, los consumidores del clúster de analítica de riesgo fallan masivamente arrojando excepciones de deserialización, debido a que muchos contribuyentes aún transmiten con el software en la versión anterior y otros consumidores internos no han actualizado sus bibliotecas de lectura.",
+          "statement": "Para gobernar la evolución de los esquemas en la plataforma de streaming evitando la ruptura de aplicaciones productivas, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Bases de datos de Grafos (Graph Databases, ej. Neo4j, Amazon Neptune), debido a su propiedad de adyacencia libre de índices (index-free adjacency) que permite recorrer relaciones de múltiples saltos en tiempo constante."
+              "text": "implementar el Confluent Schema Registry sobre Apache Avro con una política de compatibilidad hacia atrás (*Backward*) o total (*Full Compatibility*), asegurando que los nuevos campos cuenten con valores por defecto y validando los contratos de datos antes de permitir la emisión al tópico."
             },
             {
               "id": "B",
-              "text": "Bases de datos Clave-Valor (Key-Value, ej. Redis), porque solo almacenan cadenas planas de texto con acceso por clave primaria."
+              "text": "rechazar y bloquear el acceso tributario a todos los contribuyentes que no hayan actualizado su software en un plazo de cuatro horas mediante una orden administrativa."
             },
             {
               "id": "C",
-              "text": "Bases de datos de Columnas Anchas (Wide-Column, ej. Cassandra), porque requieren definir de antemano todas las consultas en la clave de partición sin permitir JOINs."
+              "text": "desactivar la validación de esquemas y transformar todos los mensajes en cadenas de texto plano sin tipos de datos para que cada consumidor intente adivinar el contenido."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Los motores de grafos están optimizados específicamente para traversing de relaciones altamente conectadas sin el costo computacional prohibitivo de hacer múltiples JOINs relacionales.",
+            "correct": "Es correcta. En ecosistemas distribuidos de gran escala, los contratos de datos deben gestionarse mediante un **Schema Registry**. El uso de **Apache Avro** junto con políticas formales de compatibilidad (**Backward** o **Full Compatibility**) garantiza que los esquemas puedan evolucionar con seguridad: si se añade un nuevo atributo, debe definirse como opcional o asignársele un valor por defecto (*default value*), permitiendo que los consumidores nuevos procesen los datos antiguos sin fallar y que los consumidores no actualizados ignoren el campo nuevo sin interrumpir la operación.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Key-Value no tiene conocimiento de relaciones complejas entre entidades."
+                "reason": "Es incorrecta. Bloquear masivamente a los contribuyentes por una rigidez técnica de software vulnera el principio de facilitación del cumplimiento voluntario y el debido proceso administrativo."
               },
               {
                 "id": "C",
-                "reason": "Cassandra desaconseja recorridos dinámicos no planificados y no soporta relaciones de grafos nativas."
+                "reason": "Es incorrecta. Eliminar los esquemas y transmitir texto sin estructura destruye el gobierno de datos, fomenta el caos operativo (*Data Swamp*) y traslada la complejidad de validación a decenas de aplicaciones cliente."
               }
             ]
           }
         },
         {
           "id": 108,
-          "topic": "El Problema de Archivos Pequeños en Data Lakes (Small Files Problem)",
-          "caseText": "Un pipeline de ingesta de micro-lotes en streaming escribe un archivo Parquet cada 5 segundos en el almacenamiento de objetos. Al cabo de tres meses, las consultas analíticas sobre esa tabla tardan horas en responder y agotan la memoria del clúster.",
-          "statement": "¿Cuál es la causa técnica de la degradación y la solución arquitectónica recomendada?",
+          "topic": "Arquitectura Big Data — Optimización Físico-Matemática en Clústeres",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un equipo de analistas de datos de la DIAN construye un pipeline en Apache Spark para calcular perfiles patrimoniales que concatena sucesivas transformaciones RDD utilizando métodos como `groupByKey()`, seguidos de múltiples `map()` en lenguaje Python que instancian objetos complejos dentro de bucles. Durante la ejecución en un clúster de sesenta nodos, los registros del driver muestran que el 70% del tiempo de procesamiento total se gasta en pausas de recolección de basura (*Garbage Collection pauses*) y transferencias masivas de datos serializados entre procesos Python y la JVM.",
+          "statement": "Para optimizar el rendimiento del pipeline y aprovechar la aceleración nativa de hardware del clúster, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Se produjo el 'Small Files Problem' (millones de archivos pequeños que sobrecargan el metastore y generan latencia excesiva de metadatos/I/O); la solución es ejecutar procesos periódicos de compactación (ej. OPTIMIZE / BIN-PACKING) para unificarlos en archivos de 128 MB a 1 GB."
+              "text": "refactorizar el código utilizando la API de DataFrames/Datasets de Spark con funciones nativas de Spark SQL y reemplazar `groupByKey()` por `reduceByKey()` o agregaciones optimizadas, permitiendo que el Catalyst Optimizer y el motor Tungsten ejecuten optimizaciones off-heap y generación de código en una sola etapa (*Whole-Stage CodeGen*)."
             },
             {
               "id": "B",
-              "text": "Los archivos Parquet se desgastaron por exceso de lecturas; se deben convertir a archivos planos CSV sin compresión."
+              "text": "forzar la persistencia de todos los RDDs intermedios en memoria RAM sin compresión utilizando el nivel de almacenamiento `MEMORY_ONLY_SER` en cada línea de código."
             },
             {
               "id": "C",
-              "text": "El problema es que Parquet no permite compresión; se debe cambiar a formato JSON sin particiones."
+              "text": "cambiar el clúster a procesamiento en discos mecánicos tradicionales para evitar el uso de la memoria RAM de los nodos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Generar miles de archivos diminutos penaliza la lectura distribuida porque el tiempo de apertura y lectura de metadatos supera al tiempo de lectura del dato. La compactación (Bin-Packing) une archivos pequeños en tamaños óptimos para procesamiento paralelo.",
+            "correct": "Es correcta. El caso presenta dos antipatrones graves: el uso de `groupByKey()` (que transfiere todas las filas por la red antes de agrupar, saturando el shuffle) y el uso de transformaciones RDD en Python (que exige serializar y deserializar datos entre la JVM y el runtime de Python vía Py4J). La solución arquitectónica óptima consiste en: (1) usar la API de **DataFrames/Spark SQL**, que permite a **Catalyst** y **Project Tungsten** gestionar los datos en formato binario compacto fuera de la JVM (eliminando pausas de GC) y generar código optimizado en un único paso (*Whole-Stage CodeGen*), y (2) sustituir `groupByKey()` por agregaciones combinadas que reduzcan los datos localmente en el emisor antes de enviarlos a la red.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los archivos digitales no sufren desgaste físico; CSV empeoraría drásticamente el rendimiento analítico."
+                "reason": "Es incorrecta. Cachear indiscriminadamente todos los pasos intermedios satura la memoria del clúster (*Storage Memory*), dejando sin espacio a la memoria de ejecución (*Execution Memory*) y provocando volcados prematuros a disco (*Spill to disk*)."
               },
               {
                 "id": "C",
-                "reason": "Parquet soporta compresión columnar nativa de alta eficiencia (Snappy, ZSTD)."
+                "reason": "Es incorrecta. Regresar a procesamiento centrado en disco anula la ventaja competitiva de computación en memoria de Apache Spark y reproduce los cuellos de botella del legado MapReduce."
               }
             ]
           }
         },
         {
           "id": 109,
-          "topic": "Internals de Apache Spark: Catalyst y Tungsten",
-          "caseText": "Un desarrollador de datos sostiene que escribir consultas en SQL puro en Spark es significativamente más lento que escribir transformaciones con RDDs en Scala nativo porque SQL requiere interpretación en tiempo de ejecución.",
-          "statement": "¿Qué principio de los componentes internos de Spark desvirtúa técnicamente esta afirmación?",
+          "topic": "Arquitectura Big Data — Seguridad de la Información y Marco Legal",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la implementación de un nuevo data lakehouse en la nube para consolidar los macrodatos institucionales de la DIAN, se plantea la necesidad de que científicos de datos externos contratados para entrenar modelos de analítica predictiva tengan acceso a los registros de facturas electrónicas y declaraciones tributarias. Un asesor técnico propone otorgar acceso directo de solo lectura a las carpetas de almacenamiento de objetos (archivos Parquet en crudo) argumentando que, como no pueden modificar ni borrar datos, no se vulnera la normatividad institucional.",
+          "statement": "Frente a la propuesta formulada y en cumplimiento de la regulación colombiana sobre reserva tributaria y protección de datos, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "El Catalyst Optimizer genera planes de ejecución físicos optimizados (pushdown de predicados, reordenamiento de joins) y el motor Tungsten compila el código en bytecode de máquina en memoria off-heap, haciendo que DataFrames y SQL superen habitualmente a los RDDs manuales."
+              "text": "rechazar el acceso directo a los archivos crudos en almacenamiento de objetos y exigir la implementación de una capa de gobierno con Control de Acceso Basado en Atributos (ABAC), enmascaramiento dinámico (DDM) y anonimización de identificadores fiscales (Art. 583 del E.T. y Ley 1581 de 2012)."
             },
             {
               "id": "B",
-              "text": "Los RDDs siempre son más rápidos porque no validan esquemas ni tipos de datos."
+              "text": "aprobar la propuesta siempre que los científicos de datos firmen un acuerdo de confidencialidad en papel membretado antes de descargar los archivos a sus computadores personales."
             },
             {
               "id": "C",
-              "text": "Spark no compila código en tiempo de ejecución; únicamente delega el trabajo al sistema operativo del nodo."
+              "text": "eliminar todas las contraseñas del clúster para acelerar los proyectos de inteligencia artificial conforme a los principios de agilidad administrativa."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Gracias a Catalyst (optimización lógica/física) y Tungsten (generación de código en bytecode y gestión de memoria off-heap sin sobrecarga del Garbage Collector de Java), las APIs estructuradas (DataFrames/SQL) son generalmente más rápidas que RDDs manuales no optimizados.",
+            "correct": "Es correcta. En virtud del **Artículo 583 del Estatuto Tributario (Reserva de las Declaraciones Tributarias)** y la **Ley Estatutaria 1581 de 2012 (Protección de Datos Personales)**, la información de los contribuyentes amparada por reserva no puede ser expuesta en claro a personal no autorizado por la ley. Entregar acceso directo a archivos Parquet en almacenamiento elude los controles de auditoría y permite extraer NITs, patrimonios y transacciones privadas. La arquitectura Big Data debe aplicar **Seguridad y Privacidad por Diseño**: restringir el acceso al almacenamiento crudo e interponer una capa semántica de acceso gobernada por políticas **ABAC**, **Enmascaramiento Dinámico de Datos (DDM)** y técnicas de **k-Anonimato / Privacidad Diferencial**.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los RDDs sufren sobrecarga de serialización Java y recolección de basura, siendo superados por Tungsten."
+                "reason": "Es incorrecta. Un acuerdo de confidencialidad en papel no exime a los funcionarios de la DIAN de su responsabilidad penal, disciplinaria y fiscal si entregan datos reservados a terceros sin los controles técnicos y jurídicos de anonimización exigidos por el legislador."
               },
               {
                 "id": "C",
-                "reason": "Tungsten realiza 'whole-stage code generation', compilando bytecode Java optimizado directamente en memoria."
+                "reason": "Es incorrecta. Desactivar controles de autenticación y autorización es una falta gravísima contra la seguridad de la información del Estado colombiano."
               }
             ]
           }
         },
         {
           "id": 110,
-          "topic": "Resiliencia y Tolerancia a Fallos en RDDs (Lineage Graph)",
-          "caseText": "Durante la ejecución de un cálculo que lleva 45 minutos en un clúster de 100 nodos, uno de los nodos de cómputo sufre una falla de hardware catastrófica y se apaga.",
-          "statement": "¿Cómo logra Apache Spark recuperar los datos de las particiones perdidas sin necesidad de reiniciar todo el trabajo desde cero?",
+          "topic": "Arquitectura Big Data — Plataformas de Mensajería y Ciclo de Vida del Dato",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el clúster de mensajería de la DIAN se mantiene un tópico de Kafka denominado `rut-estado-contribuyentes`, donde se publican las actualizaciones de estado de los obligados tributarios (Activo, Suspendido, Cancelado, Fallecido). Debido a que el tópico acumula millones de eventos a lo largo de varios años, el almacenamiento en disco de los brokers alcanza el 95% de su capacidad. Un operador de sistemas propone activar una política de retención por tiempo de 48 horas (`log.cleanup.policy=delete`, `retention.ms=172800000`), lo que provocaría que los consumidores que se reinicien o inicialicen desde cero desconozcan el estado de los contribuyentes que no hayan tenido movimientos en los últimos dos días.",
+          "statement": "Para optimizar el uso de disco en los brokers preservando intacto el último estado válido conocido de cada contribuyente en el sistema, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "A través del grafo de linaje acíclico dirigido (Lineage DAG) del RDD, que registra la secuencia determinista de transformaciones aplicadas a los datos originales, permitiendo recalcular únicamente las particiones perdidas en otro nodo disponible."
+              "text": "configurar la política de limpieza del tópico como compactación de log (`log.cleanup.policy=compact`), asegurando que Kafka conserve de forma indefinida el último mensaje registrado para cada clave única (NIT) y depure únicamente los registros con estados históricos obsoletos."
             },
             {
               "id": "B",
-              "text": "Recuperando los datos de una copia de seguridad en cinta magnética que el driver guarda cada 5 segundos."
+              "text": "aceptar la política de borrado a las 48 horas y asumir que todo contribuyente cuyo registro haya sido eliminado se considere administrativamente como \"No Inscrito en el RUT\"."
             },
             {
               "id": "C",
-              "text": "Pidiendo al usuario que vuelva a ingresar los parámetros y ejecutando todo el job desde el inicio."
+              "text": "detener el clúster de Kafka indefinidamente y consultar manualmente el estado de cada persona en las ventanillas físicas de atención al ciudadano."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La 'R' de RDD significa Resilient (Resiliente): Spark no replica datos de memoria en otros nodos (lo cual sería ineficiente), sino que conserva el linaje DAG de transformaciones para reconstruir de forma perezosa y exacta solo las particiones que se pierdan.",
+            "correct": "Es correcta. En Apache Kafka, la **Compactación de Log (*Log Compaction*)** es la solución arquitectónica diseñada específicamente para tópicos que representan estados de entidades maestros: en lugar de descartar datos por antigüedad de tiempo físico, el motor de limpieza en segundo plano (*Log Cleaner*) examina las particiones y retiene **al menos el último valor asociado a cada clave (`key = NIT`)**, eliminando versiones intermedias superadas. Esto reduce drásticamente el consumo de disco y garantiza que cualquier aplicación consumidora pueda reconstruir el estado íntegro y actualizado de todos los contribuyentes leyendo desde el offset 0.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Spark no usa copias en cinta magnética durante la ejecución de tareas distribuidas en memoria."
+                "reason": "Es incorrecta. Borrar datos por tiempo en un catálogo de estado genera falsos negativos en los cruces de validación fiscal, impidiendo que contribuyentes legítimos puedan facturar o declarar."
               },
               {
                 "id": "C",
-                "reason": "Tener que reiniciar todo el trabajo anularía la propiedad de resiliencia y tolerancia a fallos del cómputo distribuido."
+                "reason": "Es incorrecta. Detener el clúster paraliza los sistemas informáticos de la administración tributaria y vulnera el principio de continuidad de los servicios públicos."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-1",
-      "track": "funcionales"
+      ]
     },
     "exam-2": {
       "title": "Examen Oficial: Arquitectura de Datos (10 Preguntas PJS)",
@@ -7735,6 +7813,126 @@ window.COURSES_DATA['inspector1'] = {
     {
       "front": "¿Cuáles son las 4 competencias comportamentales evaluadas en el cargo de Inspector I?",
       "back": "1. Comportamiento Ético (Nivel 4)\n2. Comunicación Efectiva (Nivel 4)\n3. Innovación (Nivel 4)\n4. Trabajo en Equipo (Nivel 3)"
+    },
+    {
+      "front": "¿Qué establece el Teorema CAP frente a las redes físicas en sistemas distribuidos?",
+      "back": "Que las particiones de red (P) son inevitables en entornos reales, por lo que un sistema distribuido solo puede elegir entre Consistencia estricta (CP) o Disponibilidad continua (AP) durante una falla de comunicación.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Cuál es la diferencia central entre el Teorema CAP y el Teorema PACELC?",
+      "back": "CAP solo explica qué ocurre durante una partición (P). PACELC añade el análisis de la operación normal (Else): si no hay partición, el sistema debe balancear Latencia (L) frente a Consistencia (C).",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Por qué la Arquitectura Lambda genera sobrecostos de mantenimiento en la DIAN?",
+      "back": "Porque duplica la lógica de negocio al exigir dos bases de código distintas: una para la capa por lotes (Batch Layer) y otra para la capa en tiempo real (Speed Layer).",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Cómo resuelve la Arquitectura Kappa el problema de reprocesamiento histórico?",
+      "back": "Modela todo como un flujo continuo sobre un log inmutable (Kafka) y, ante un cambio de reglas, reinicia un consumidor de streaming desde el offset 0 sobre una nueva vista de servicio.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué es una Dependencia Estrecha (Narrow Dependency) en Apache Spark?",
+      "back": "Es aquella donde cada partición del RDD padre es utilizada por a lo sumo una partición hija (ej. `map`, `filter`). Se ejecutan en memoria en un solo Stage sin transferir datos por red.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué es una Dependencia Ancha (Wide Dependency) y qué operación física detona?",
+      "back": "Es aquella donde múltiples particiones hijas dependen de una misma partición padre (ej. `groupByKey`, `join`). Detona obligatoriamente una operación de **Shuffle** a través de la red y delimita un nuevo Stage.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué es el problema de Data Skew en Apache Spark y cómo se soluciona?",
+      "back": "Es la acumulación desproporcionada de datos en una sola clave (ej. un banco o gran contribuyente). Provoca que un único ejecutor colapse por falta de memoria (OOM). Se corrige mediante Broadcast Join o Salting de claves.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué optimizaciones ejecuta el Catalyst Optimizer en Spark SQL?",
+      "back": "Genera el plan de ejecución óptimo mediante Poda de Columnas (*Column Pruning*), Empuje de Predicados (*Predicate Pushdown* hacia Parquet) y Selección de Joins mediante Cost-Based Optimizer (CBO).",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué ventaja proporciona Project Tungsten en la gestión de memoria de Spark?",
+      "back": "Asigna memoria en formato binario directamente fuera de la JVM (Off-Heap), eliminando las pausas de recolección de basura (*Garbage Collection*), y compila código nativo a nivel de CPU.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Por qué las auditorías y liquidaciones de la DIAN deben calcularse sobre Event Time y no sobre Processing Time?",
+      "back": "Porque Event Time refleja el momento exacto en que ocurrió la transacción en el emisor. Processing Time depende de la hora del servidor analítico y distorsiona la puntualidad de declaraciones ante caídas de red.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué es un Watermark en el procesamiento de flujos?",
+      "back": "Es una marca temporal móvil que declara que no se esperan eventos anteriores a esa marca, permitiendo cerrar ventanas de agregación y liberar memoria de estado.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Cómo se manejan los eventos excesivamente tardíos (Late Data) en una arquitectura de streaming robusta?",
+      "back": "No se descartan a ciegas; se desvían a una Cola de Mensajes Muertos (*Dead-Letter / Side Output*) para su conciliación y auditoría posterior sin bloquear la ventana emitida.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué garantiza la semántica de entrega Exactly-Once en un pipeline de datos?",
+      "back": "Garantiza que cada evento afecta el estado analítico exactamente una vez mediante productores idempotentes y protocolos de compromiso de dos fases (Two-Phase Commit).",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Por qué los motores NoSQL Wide-Column (Cassandra/HBase) son óptimos para escrituras masivas?",
+      "back": "Porque utilizan estructuras **LSM-Trees**, escribiendo primero de forma secuencial en disco (CommitLog) y en memoria (Memtable), postergando las escrituras costosas a volcados periódicos (SSTables).",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Para qué se utilizan las Bases de Datos de Grafos (Neo4j) en la DIAN?",
+      "back": "Para detectar redes complejas de fraude tributario, empresas fachada y \"carruseles de IVA\" mediante algoritmos de detección de ciclos y comunidades sin sobrecargar con JOINs relacionales.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Por qué Kafka no garantiza ordenamiento global de mensajes en un Topic?",
+      "back": "Porque el orden solo está garantizado de forma estricta **dentro de cada partición individual**. Para ordenar eventos de un contribuyente, se debe usar su NIT como clave de particionamiento.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué función cumple el parámetro acks=all (-1) en un productor de Kafka?",
+      "back": "Obliga al broker líder a esperar que todas las réplicas sincronizadas (ISR) hayan persistido el mensaje antes de responder al productor, garantizando cero pérdida de transacciones.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué valor añade el Confluent Schema Registry y Apache Avro en la mensajería de la DIAN?",
+      "back": "Serializa mensajes en binario compacto y valida centralmente que los cambios de esquema cumplan compatibilidad (Backward/Full), evitando que modificaciones en emisores rompan los consumidores.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué exige el Artículo 583 del Estatuto Tributario en la plataforma Big Data de la DIAN?",
+      "back": "Consagra la Reserva Tributaria de las declaraciones; exige implementar control de acceso por atributos (ABAC), cifrado de datos y enmascaramiento dinámico (DDM) para proteger la confidencialidad del contribuyente.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
+    },
+    {
+      "front": "¿Qué mandato establece el CONPES 3920 de 2018 para las entidades del Estado colombiano?",
+      "back": "Declara los datos públicos como activos estratégicos e infraestructura crítica, ordenando implementar plataformas escalables de analítica masiva y estándares de interoperabilidad.",
+      "module": 1,
+      "category": "Arquitectura Big Data"
     },
     {
       "front": "¿Por qué nunca se deben ejecutar consultas analíticas pesadas (OLAP) sobre la base transaccional (OLTP)?",
