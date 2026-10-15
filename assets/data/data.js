@@ -27,17 +27,17 @@ window.COURSES_DATA['inspector1'] = {
   "tracks": [
     {
       "id": "funcionales",
-      "name": "📘 Pruebas Funcionales (11 Módulos - 60% Eliminatoria)",
+      "name": "📘 Pruebas Funcionales (10 Módulos - 60% Eliminatoria)",
       "icon": "database"
     },
     {
       "id": "comportamentales",
-      "name": "🤝 Pruebas Comportamentales - 4 Indicadores (15%)",
+      "name": "🤝 Pruebas Comportamentales (1 Módulos - 15%)",
       "icon": "users"
     },
     {
       "id": "integridad",
-      "name": "⚖️ Pruebas de Integridad - 5 Indicadores (10%)",
+      "name": "⚖️ Pruebas de Integridad (0 Módulos - 10%)",
       "icon": "shield"
     }
   ],
@@ -46,7 +46,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-1",
       "track": "funcionales",
       "title": "Arquitectura Big Data",
-      "badge": "Funcional - Big Data & Cómputo Distribuido",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-1",
       "lessons": [
         {
@@ -148,7 +148,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-2",
       "track": "funcionales",
       "title": "Arquitectura de Datos",
-      "badge": "Funcional - Paradigmas, Formatos & Modelado",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-2",
       "lessons": [
         {
@@ -250,7 +250,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-3",
       "track": "funcionales",
       "title": "Arquitectura de Integración de Datos",
-      "badge": "Funcional - CDC, Streaming & Interoperabilidad",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-3",
       "lessons": [
         {
@@ -352,7 +352,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-4",
       "track": "funcionales",
       "title": "Capacidades Analíticas y Uso Estratégico de la Información",
-      "badge": "Funcional - Machine Learning & Analítica Avanzada",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-4",
       "lessons": [
         {
@@ -442,7 +442,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-5",
       "track": "funcionales",
       "title": "Estándares y Políticas Establecidos en el Gobierno de Datos",
-      "badge": "Funcional - DAMA-DMBOK, ISO 25012 & MDM",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-5",
       "lessons": [
         {
@@ -532,7 +532,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-6",
       "track": "funcionales",
       "title": "Estructura Organizacional de la DIAN",
-      "badge": "Funcional - Decreto 1742/2020 & Gobernanza",
+      "badge": "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)",
       "examId": "exam-6",
       "lessons": [
         {
@@ -610,7 +610,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-7",
       "track": "funcionales",
       "title": "07. Gobierno y Gestión de los Servicios de Datos",
-      "badge": "Funcional - Data Contracts, SLAs & APIs",
+      "badge": "Funcional - Servicios de Datos & Gestión de TI (60%)",
       "examId": "exam-7",
       "lessons": [
         {
@@ -700,7 +700,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-8",
       "track": "funcionales",
       "title": "08. Misionalidad de la DIAN",
-      "badge": "Funcional - Frentes Misionales & Marco Penal",
+      "badge": "Funcional - Servicios de Datos & Gestión de TI (60%)",
       "examId": "exam-8",
       "lessons": [
         {
@@ -778,7 +778,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-9",
       "track": "funcionales",
       "title": "09. Modelado y Repositorios de Datos",
-      "badge": "Funcional - Kimball Dimensional & Data Vault",
+      "badge": "Funcional - Modelado Relacional, Dimensional & NoSQL (60%)",
       "examId": "exam-9",
       "lessons": [
         {
@@ -868,7 +868,7 @@ window.COURSES_DATA['inspector1'] = {
       "id": "mod-10",
       "track": "funcionales",
       "title": "10. Razonamiento Analítico",
-      "badge": "Funcional - Lógica, Estadística & Causa Raíz",
+      "badge": "Funcional - Lógica, Argumentación & Pensamiento Crítico (60%)",
       "examId": "exam-10",
       "lessons": [
         {
@@ -944,9 +944,9 @@ window.COURSES_DATA['inspector1'] = {
     },
     {
       "id": "mod-11",
-      "track": "funcionales",
+      "track": "comportamentales",
       "title": "11. Seguridad, Integridad y Disponibilidad de los Datos",
-      "badge": "Funcional - Criptografía, ABAC & Reserva Tributaria",
+      "badge": "Funcional - Seguridad de la Información & Ciberseguridad (60%)",
       "examId": "exam-11",
       "lessons": [
         {
@@ -1019,275 +1019,17 @@ window.COURSES_DATA['inspector1'] = {
         "fuentes": [],
         "complementarios": []
       }
-    },
-    {
-      "id": "mod-12",
-      "track": "comportamentales",
-      "title": "COMPORTAMIENTO ETICO NIVEL 4",
-      "badge": "Comportamental - Nivel 4",
-      "examId": "exam-12",
-      "lessons": [
-        {
-          "id": "les-12",
-          "moduleId": "mod-12",
-          "title": "COMPORTAMIENTO ETICO NIVEL 4",
-          "badge": "Comportamental - Nivel 4",
-          "readTime": "30 min",
-          "content": "<h3>1. Marco Normativo Oficial (Resolución 065 de 2024 - DIAN)</h3>\n<p>El <strong>Comportamiento Ético</strong> en la DIAN se rige por su <strong>Sistema Específico de Carrera Administrativa</strong> (Decretos Ley 071 de 2020 y 927 de 2023), el <strong>Diccionario Oficial de Competencias Comportamentales (Resolución No. 065 del 11 de abril de 2024)</strong>, el <strong>Código de Integridad CG-TAH-0002 Versión 3</strong> y el <strong>Abecé de Evidencias Conductuales</strong>. Para el cargo de <strong>Inspector I (Nivel Profesional)</strong>, la CNSC y Areandina exigen el <strong>NIVEL 4 (Dominio Experto y Referente Institucional)</strong>.</p>\n\n<p><strong>Definición Oficial DIAN (Res. 065/2024):</strong> <em>Capacidad para actuar de acuerdo con prácticas laborales correctas, demostrando congruencia entre el discurso y la actuación, enmarcado en el código de integridad de la DIAN.</em></p>\n\n<h3>2. Matriz Oficial de Niveles de Desarrollo</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Nivel</th><th>Definición de Desarrollo</th><th>Conductas Observables Oficiales (DIAN)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Nivel 1 (Básico)</strong></td><td>Desarrolla su trabajo a la luz del código de integridad institucional y siendo consciente del impacto de su actuación.</td><td>Demuestra integridad en tareas cotidianas; conoce y aplica el código de integridad; asume como propios los valores institucionales.</td></tr>\n        <tr><td><strong>Nivel 2</strong></td><td>Actúa en coherencia con el código de integridad institucional y orienta a sus pares cuando se presentan dilemas éticos.</td><td>Asume consecuencias de decisiones; previene irregularidades en su entorno inmediato; orienta ante posibles conflictos de interés.</td></tr>\n        <tr><td><strong>Nivel 3</strong></td><td>Promueve y asegura la observancia del código de integridad en sus equipos y entorno de trabajo.</td><td>Resuelve con apego ético situaciones complejas; denuncia formalmente actos irregulares; fomenta la transparencia.</td></tr>\n        <tr><td><strong>Nivel 4 (🎯 Inspector I)</strong></td><td><strong>Es referente y modelo del Código de Integridad de la DIAN</strong>, promueve activamente una cultura de integridad y rectitud, y defiende con firmeza el interés público ante presiones.</td><td><strong>• Actúa con transparencia inquebrantable aún sin supervisión (\"Para ser impecable no necesito testigos\").<br>• Rechaza cualquier dádiva, presión o intento de soborno.<br>• Defiende la reserva tributaria (Art. 583 E.T.) y la custodia de datos.<br>• Modela conductas probas para toda la organización.</strong></td></tr>\n    </tbody>\n</table>\n\n<h3>3. Decodificador Psicométrico para Preguntas de Juicio Situacional</h3>\n<div class=\"callout tip\">\n    <p><strong>🎯 Clave de Examen:</strong> Ante cualquier caso de conflicto de interés o presión indebida, la única opción correcta en Nivel 4 es <strong>declararse formalmente impedido por escrito y apartarse de inmediato del asunto</strong>, o radicar la denuncia formal ante Control Interno. La lealtad personal a superiores o amigos jamás prima sobre la legalidad.</p>\n</div>",
-          "links": [
-            {
-              "name": "Resolución 065 de 2024 - Diccionario de Competencias DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Código de Integridad CG-TAH-0002 v3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Abecé de Evidencias de Competencias Conductuales - DIAN",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-13",
-      "track": "comportamentales",
-      "title": "COMUNICACION EFECTIVA NIVEL 4",
-      "badge": "Comportamental - Nivel 4",
-      "examId": "exam-13",
-      "lessons": [
-        {
-          "id": "les-13",
-          "moduleId": "mod-13",
-          "title": "COMUNICACION EFECTIVA NIVEL 4",
-          "badge": "Comportamental - Nivel 4",
-          "readTime": "30 min",
-          "content": "<h3>1. Marco Normativo Oficial (Resolución 065 de 2024 - DIAN)</h3>\n<p>La <strong>Comunicación Efectiva</strong> en la DIAN se fundamenta en la <strong>Resolución 065 de 2024</strong> y el <strong>Abecé de Evidencias Conductuales</strong>. Para el cargo de <strong>Inspector I</strong>, está clasificada en el <strong>NIVEL 4 (Construcción de Redes Estratégicas y Articulación Institucional)</strong>.</p>\n\n<p><strong>Definición Oficial DIAN (Res. 065/2024):</strong> <em>Capacidad para escuchar, entender a otros y transmitir de forma clara y precisa la información requerida, tanto en lo escrito como en lo verbal y gestual, a fin de construir redes de contacto efectivas con los funcionarios y ciudadanos para alcanzar los objetivos institucionales.</em></p>\n\n<h3>2. Matriz Oficial de Niveles de Desarrollo</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Nivel</th><th>Definición de Desarrollo</th><th>Conductas Observables Oficiales (DIAN)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Nivel 1 (Básico)</strong></td><td>Transmite y recibe información de manera clara y oportuna utilizando adecuadamente las herramientas disponibles.</td><td>Facilita información requerida; comunica con respeto y orden; utiliza canales formales institucionalmente establecidos.</td></tr>\n        <tr><td><strong>Nivel 2</strong></td><td>Se asegura de la comprensión del mensaje transmitido, adaptando el lenguaje a las características de sus interlocutores.</td><td>Escucha activamente; valida que el mensaje haya sido comprendido; adapta tecnicismos a lenguaje accesible.</td></tr>\n        <tr><td><strong>Nivel 3</strong></td><td>Comunica de forma persuasiva y asertiva, facilitando acuerdos y resolviendo malentendidos en su equipo.</td><td>Presenta informes de impacto; maneja conversaciones complejas con empatía; media en discrepancias funcionales.</td></tr>\n        <tr><td><strong>Nivel 4 (🎯 Inspector I)</strong></td><td><strong>Construye redes de comunicación estratégicas</strong>, transmite directrices de alta complejidad con claridad absoluta y genera consensos institucionales.</td><td><strong>• Articula el diálogo técnico-jurídico entre áreas de TI, Fiscalización y Aduanas.<br>• Traduce requerimientos analíticos complejos a directivos y usuarios de negocio.<br>• Gestiona crisis de comunicación técnica con serenidad, asertividad y rigor.<br>• Aplica estándares de Lenguaje Claro del Estado colombiano.</strong></td></tr>\n    </tbody>\n</table>\n\n<div class=\"callout tip\">\n    <p><strong>🎯 Clave de Examen:</strong> En Nivel 4, descarta opciones que utilicen tecnicismos herméticos para excluir a otros o que comuniquen decisiones de forma unilateral. La opción correcta genera entendimiento mutuo y articula redes colaborativas.</p>\n</div>",
-          "links": [
-            {
-              "name": "Resolución 065 de 2024 - Diccionario de Competencias DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Abecé de Evidencias Conductuales - DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Guía de Lenguaje Claro - Función Pública",
-              "url": "https://www.funcionpublica.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-14",
-      "track": "comportamentales",
-      "title": "INNOVACION NIVEL 4",
-      "badge": "Comportamental - Nivel 4",
-      "examId": "exam-14",
-      "lessons": [
-        {
-          "id": "les-14",
-          "moduleId": "mod-14",
-          "title": "INNOVACION NIVEL 4",
-          "badge": "Comportamental - Nivel 4",
-          "readTime": "30 min",
-          "content": "<h3>1. Marco Normativo Oficial (Resolución 065 de 2024 - DIAN)</h3>\n<p>La competencia de <strong>Innovación</strong> en la DIAN se rige por la <strong>Resolución 065 de 2024</strong>. Para el Inspector I en la Dirección de Gestión de Innovación y Tecnología, se exige el <strong>NIVEL 4 (Co-construcción y Transformación de Soluciones Organizacionales)</strong>.</p>\n\n<p><strong>Definición Oficial DIAN (Res. 065/2024):</strong> <em>Capacidad para idear e implementar efectivamente soluciones nuevas y diferentes a problemas o situaciones que se presentan en su puesto de trabajo, la organización y/o los usuarios, agregando valor a la organización.</em></p>\n\n<h3>2. Matriz Oficial de Niveles de Desarrollo</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Nivel</th><th>Definición de Desarrollo</th><th>Conductas Observables Oficiales (DIAN)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Nivel 1 (Básico)</strong></td><td>Aplica soluciones conocidas a situaciones de su puesto de trabajo, utilizando su experiencia previa.</td><td>Asume con responsabilidad el riesgo de implementar mejoras en sus tareas; utiliza herramientas con eficiencia.</td></tr>\n        <tr><td><strong>Nivel 2</strong></td><td>Presenta, recomienda y aplica soluciones pertinentes alineadas a objetivos institucionales, agregando valor a su área.</td><td>Aprovecha y mejora experiencias exitosas de otras áreas; capitaliza recursos tecnológicos disponibles.</td></tr>\n        <tr><td><strong>Nivel 3</strong></td><td>Presenta, recomienda y aplica soluciones creativas a situaciones complejas, evaluando los impactos de su aplicación.</td><td>Formula soluciones que exceden su puesto de trabajo; evalúa riesgos y beneficios metodológicos.</td></tr>\n        <tr><td><strong>Nivel 4 (🎯 Inspector I)</strong></td><td><strong>Presenta, recomienda, aplica y fomenta un ambiente de co-construcción de nuevas propuestas</strong>, diseñando soluciones originales que superan expectativas y generan valor organizacional.</td><td><strong>• Diseña e implementa soluciones pioneras (Big Data, analítica predictiva, automatización de fiscalización).<br>• Impulsa la cultura de co-construcción y experimentación controlada.<br>• Adopta y adapta modelos internacionales exitosos (CIAT, SAT, OCDE).<br>• Genera valor público tangible y medible para la DIAN.</strong></td></tr>\n    </tbody>\n</table>\n\n<div class=\"callout tip\">\n    <p><strong>🎯 Clave de Examen:</strong> La innovación en el sector público no es improvisación caótica ni saltarse la ley. Es diseñar prototipos controlados, evaluar riesgos y co-construir soluciones interdisciplinarias que agreguen valor comprobable.</p>\n</div>",
-          "links": [
-            {
-              "name": "Resolución 065 de 2024 - Diccionario de Competencias DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Abecé de Evidencias Conductuales - DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Centro Interamericano de Administraciones Tributarias (CIAT) - Innovación",
-              "url": "https://www.ciat.org/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-15",
-      "track": "comportamentales",
-      "title": "TRABAJO EN EQUIPO NIVEL 3",
-      "badge": "Comportamental - Nivel 3",
-      "examId": "exam-15",
-      "lessons": [
-        {
-          "id": "les-15",
-          "moduleId": "mod-15",
-          "title": "TRABAJO EN EQUIPO NIVEL 3",
-          "badge": "Comportamental - Nivel 3",
-          "readTime": "30 min",
-          "content": "<h3>1. Marco Normativo Oficial (Resolución 065 de 2024 - DIAN)</h3>\n<p>El <strong>Trabajo en Equipo</strong> en la DIAN se rige por la <strong>Resolución 065 de 2024</strong>. Para el perfil de Inspector I, se evalúa en el <strong>NIVEL 3 (Fomento de la Colaboración y Cuidado del Clima Laboral)</strong>.</p>\n\n<p><strong>Definición Oficial DIAN (Res. 065/2024):</strong> <em>Capacidad para trabajar con otros de forma coordinada, armónica y sinérgica, potenciando los aportes de cada integrante, en pro del logro de los objetivos establecidos.</em></p>\n\n<h3>2. Matriz Oficial de Niveles de Desarrollo</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Nivel</th><th>Definición de Desarrollo</th><th>Conductas Observables Oficiales (DIAN)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Nivel 1 (Básico)</strong></td><td>Se compromete con los acuerdos alcanzados por el equipo para el desarrollo del trabajo y consecución de objetivos.</td><td>Participa en actividades del equipo; colabora con compañeros; acepta normas comunes de trabajo.</td></tr>\n        <tr><td><strong>Nivel 2</strong></td><td>Coopera y muestra disposición para ayudar a otros miembros con el fin de favorecer el logro de metas.</td><td>Interactúa en el marco de valores institucionales; aporta su conocimiento; reconoce el valor de la diversidad de opiniones.</td></tr>\n        <tr><td><strong>Nivel 3 (🎯 Inspector I)</strong></td><td><strong>Fomenta el espíritu de colaboración</strong>, valorando positivamente los aportes de cada integrante, orientando el trabajo colectivo y cuidando activamente el buen clima laboral.</td><td><strong>• Orienta el trabajo del equipo fomentando la participación de todos.<br>• Cuida activamente el clima laboral y previene tensiones interpersonales.<br>• Demuestra satisfacción por el éxito de sus compañeros.<br>• Articula sinergias entre ingenieros de datos, auditores fiscales y abogados.</strong></td></tr>\n        <tr><td><strong>Nivel 4</strong></td><td>Desarrolla el espíritu de equipo y la cooperación entre áreas y dependencias, construyendo productos sinérgicos a gran escala.</td><td>Construye alianzas estratégicas interdependencias; moviliza equipos de alto rendimiento para metas institucionales.</td></tr>\n    </tbody>\n</table>\n\n<div class=\"callout tip\">\n    <p><strong>🎯 Clave de Examen:</strong> En Nivel 3, la respuesta correcta siempre fomenta la inclusión de todos los miembros del equipo, comparte el crédito de los logros y busca la armonía operativa orientada a los resultados institucionales.</p>\n</div>",
-          "links": [
-            {
-              "name": "Resolución 065 de 2024 - Diccionario de Competencias DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Abecé de Evidencias Conductuales - DIAN",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-16",
-      "track": "integridad",
-      "title": "COMPROMISO",
-      "badge": "Integridad - Código de Buen Gobierno",
-      "examId": "exam-16",
-      "lessons": [
-        {
-          "id": "les-16",
-          "moduleId": "mod-16",
-          "title": "COMPROMISO",
-          "badge": "Integridad - Código de Buen Gobierno",
-          "readTime": "25 min",
-          "content": "<h3>1. Marco Doctrinal del Valor Institucional (Código CG-TAH-0002 Versión 3)</h3>\n<p>El <strong>Compromiso</strong> en la DIAN se rige por su <strong>Código de Integridad CG-TAH-0002 Versión 3</strong>, articulado con el MIPG y la <strong>Filosofía Institucional</strong>.</p>\n\n<p><strong>Definición Oficial DIAN:</strong> <em>Soy consciente de la importancia de mi rol como servidor público y estoy en disposición permanente para comprender y resolver las necesidades de las personas con las que me relaciono en mis labores cotidianas, buscando siempre mejorar su bienestar.</em></p>\n\n<div class=\"callout exam\">\n    <h4>Principio Rector Oficial DIAN</h4>\n    <p><strong>\"Nunca llego a pensar que mi trabajo como servidor es un 'favor' que le hago a la ciudadanía. Es, en cambio, un compromiso y un orgullo.\"</strong></p>\n</div>\n\n<h3>2. Filosofía Institucional de la DIAN y Manifiesto</h3>\n<p>El servidor de la DIAN vive el <strong>Propósito Central</strong> (garantizar los recursos económicos para el desarrollo de Colombia) y honra el <strong>Manifiesto Institucional</strong>: <em>\"No somos iguales pero dos cosas nos unen: el respeto por la diferencia y el compromiso sagrado de recaudar los recursos económicos que hacen posible la existencia y el desarrollo de nuestro país.\"</em></p>\n\n<h3>3. Carta Oficial de Conductas DIAN: Lo que HAGO y Lo que NO HAGO</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Lo que HAGO (Conductas Requeridas)</th><th>Lo que NO HAGO (Conductas Prohibidas)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td>• Asumo mi papel como servidor público, entendiendo el valor de los compromisos frente al país.</td><td>• Nunca trabajo con una actitud negativa. No es válido afectar mi trabajo por no ponerle pasión.</td></tr>\n        <tr><td>• Asumo una posición de empatía, al ponerme en los zapatos de las personas y entender sus requerimientos.</td><td>• <strong>Nunca llego a pensar que mi trabajo es un 'favor' que le hago a la ciudadanía.</strong></td></tr>\n        <tr><td>• Presto un servicio ágil, amable y de calidad, escuchando atentamente sin distracciones.</td><td>• No asumo que mi trabajo es irrelevante. Jamás ignoro a un ciudadano y sus inquietudes.</td></tr>\n        <tr><td>• <strong>En situaciones extraordinarias o de excepción, redoblo con generosidad mis esfuerzos para brindar un servicio oportuno.</strong></td><td>• No antepongo la comodidad personal en cierres de calendario tributario o contingencias críticas de TI.</td></tr>\n        <tr><td>• Me capacito y practico el autoaprendizaje constantemente para realizar con excelencia mi función.</td><td>• No me estanco técnicamente ni me resisto a las nuevas tecnologías implementadas en la entidad.</td></tr>\n    </tbody>\n</table>",
-          "links": [
-            {
-              "name": "Código de Integridad CG-TAH-0002 Versión 3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Filosofía Institucional y Manifiesto de la DIAN",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-17",
-      "track": "integridad",
-      "title": "DILIGENCIA",
-      "badge": "Integridad - Celeridad & Oportunidad",
-      "examId": "exam-17",
-      "lessons": [
-        {
-          "id": "les-17",
-          "moduleId": "mod-17",
-          "title": "DILIGENCIA",
-          "badge": "Integridad - Celeridad & Oportunidad",
-          "readTime": "25 min",
-          "content": "<h3>1. Marco Doctrinal del Valor Institucional (Código CG-TAH-0002 Versión 3)</h3>\n<p>La <strong>Diligencia</strong> en la DIAN se rige por su <strong>Código de Integridad CG-TAH-0002 Versión 3</strong>, rigiendo la eficiencia, el cuidado de los recursos públicos y la celeridad administrativa.</p>\n\n<p><strong>Definición Oficial DIAN:</strong> <em>Cumplo con los deberes, funciones y responsabilidades asignadas a mi cargo de la mejor manera posible, con atención, prontitud, destreza y eficiencia, para así optimizar el uso de los recursos del Estado.</em></p>\n\n<div class=\"callout exam\">\n    <h4>Principios Rectores Oficiales DIAN</h4>\n    <p><strong>\"Lo público es de todos y no se desperdicia. El tiempo de todos es valioso. No son aceptables las gestiones a medias.\"</strong></p>\n</div>\n\n<h3>2. Carta Oficial de Conductas DIAN: Lo que HAGO y Lo que NO HAGO</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Lo que HAGO (Conductas Requeridas)</th><th>Lo que NO HAGO (Conductas Prohibidas)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td>• Uso responsablemente los recursos públicos para cumplir mis obligaciones. Lo público no se desperdicia.</td><td>• No malgasto ningún recurso público (computadores, licencias, horas laborales, insumos).</td></tr>\n        <tr><td>• Cumplo rigurosamente con los tiempos estipulados para cada obligación. El tiempo de todos es valioso.</td><td>• <strong>No postergo decisiones ni actividades que den solución a problemáticas ciudadanas. Hay situaciones que no se dejan para otro día.</strong></td></tr>\n        <tr><td>• <strong>Aseguro la calidad en cada uno de los productos que entrego. No son aceptables las gestiones a medias.</strong></td><td>• No demuestro desinterés ante los ciudadanos y servidores públicos.</td></tr>\n        <tr><td>• Soy proactivo comunicando a tiempo propuestas para mejorar continuamente la labor.</td><td>• No evado mis funciones y responsabilidades por ningún motivo.</td></tr>\n        <tr><td>• Conozco y entiendo en detalle el ordenamiento jurídico que regula mi función.</td><td>• No entrego tareas incompletas justificándome en la sobrecarga laboral.</td></tr>\n    </tbody>\n</table>",
-          "links": [
-            {
-              "name": "Código de Integridad CG-TAH-0002 Versión 3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Ley 1952 de 2019 / Ley 2094 de 2021 - Código General Disciplinario",
-              "url": "https://www.funcionpublica.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-18",
-      "track": "integridad",
-      "title": "HONESTIDAD",
-      "badge": "Integridad - Transparencia & Verdad",
-      "examId": "exam-18",
-      "lessons": [
-        {
-          "id": "les-18",
-          "moduleId": "mod-18",
-          "title": "HONESTIDAD",
-          "badge": "Integridad - Transparencia & Verdad",
-          "readTime": "25 min",
-          "content": "<h3>1. Marco Doctrinal del Valor Institucional (Código CG-TAH-0002 Versión 3)</h3>\n<p>La <strong>Honestidad</strong> es la columna vertebral de la DIAN. En una entidad que administra los recursos económicos de la Nación, la honestidad es absoluta e incondicional.</p>\n\n<p><strong>Definición Oficial DIAN:</strong> <em>Actúo siempre con fundamento en la verdad, cumpliendo mis deberes con transparencia y rectitud, y favoreciendo el interés general frente al particular.</em></p>\n\n<div class=\"callout exam\">\n    <h4>Principio Rector Oficial DIAN</h4>\n    <p><strong>\"Cumplo a cabalidad mis deberes y respeto las prohibiciones, aun cuando esté ausente quien supervise mi gestión o mi conducta. Para ser impecable no necesito testigos.\"</strong></p>\n</div>\n\n<h3>2. Carta Oficial de Conductas DIAN: Lo que HAGO y Lo que NO HAGO</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Lo que HAGO (Conductas Requeridas)</th><th>Lo que NO HAGO (Conductas Prohibidas)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td>• Promuevo espacios de participación ciudadana en decisiones que los afectan.</td><td>• No doy trato preferencial a personas cercanas para favorecerlas en igualdad de condiciones.</td></tr>\n        <tr><td>• <strong>Cumplo deberes sin supervisión: Para ser impecable no necesito testigos.</strong></td><td>• No acepto incentivos, regalos, favores ni dádivas de interesados en decisiones.</td></tr>\n        <tr><td>• Honro la promesa de confidencialidad (reserva tributaria Art. 583 E.T. y datos protegidos).</td><td>• No uso recursos públicos para fines personales, familiares, estudios o pasatiempos.</td></tr>\n        <tr><td>• <strong>Me aparto de asuntos cuando exista conflicto entre el interés general y el particular.</strong></td><td>• No soy descuidado con la información a mi cargo ni con su gestión.</td></tr>\n        <tr><td>• Denuncio oportunamente cualquier hecho o indicio de corrupción.</td><td>• No escondo situaciones personales que incidan en la función pública.</td></tr>\n        <tr><td></td><td>• No justifico situaciones administrativas con documentos falsos.</td></tr>\n        <tr><td></td><td>• <strong>No presto ni facilito mi carné; no uso el de otro para simular registro de asistencia; no uso mi cargo para presionar indebidamente.</strong></td></tr>\n    </tbody>\n</table>",
-          "links": [
-            {
-              "name": "Código de Integridad CG-TAH-0002 Versión 3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Guía para la Gestión y Trámite del Conflicto de Interés - DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Estatuto Tributario Art. 583 - Reserva Tributaria",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-19",
-      "track": "integridad",
-      "title": "JUSTICIA",
-      "badge": "Integridad - Imparcialidad & Equidad",
-      "examId": "exam-19",
-      "lessons": [
-        {
-          "id": "les-19",
-          "moduleId": "mod-19",
-          "title": "JUSTICIA",
-          "badge": "Integridad - Imparcialidad & Equidad",
-          "readTime": "25 min",
-          "content": "<h3>1. Marco Doctrinal del Valor Institucional (Código CG-TAH-0002 Versión 3)</h3>\n<p>La <strong>Justicia</strong> en la DIAN garantiza la imparcialidad, la equidad tributaria y el apego estricto al debido proceso constitucional.</p>\n\n<p><strong>Definición Oficial DIAN:</strong> <em>Actúo con imparcialidad garantizando los derechos de las personas, con equidad, igualdad y sin discriminación.</em></p>\n\n<div class=\"callout exam\">\n    <h4>Principio Rector Oficial DIAN y Valor Aspiracional: Objetividad (Lechuza)</h4>\n    <p><strong>\"Tomo decisiones informadas y objetivas basadas en evidencias y datos confiables. Es muy grave fallar en mis actuaciones por no tener la suficiente claridad en los temas.\"</strong></p>\n</div>\n\n<h3>2. Carta Oficial de Conductas DIAN: Lo que HAGO y Lo que NO HAGO</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Lo que HAGO (Conductas Requeridas)</th><th>Lo que NO HAGO (Conductas Prohibidas)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td>• <strong>Tomo decisiones informadas y objetivas basadas en evidencias y datos confiables.</strong></td><td>• No promuevo ni ejecuto medidas que afecten la igualdad y libertad de las personas.</td></tr>\n        <tr><td>• Reconozco y protejo los derechos de cada persona según sus necesidades y condiciones.</td><td>• No favorezco el punto de vista de un grupo de interés sin considerar a todos los actores.</td></tr>\n        <tr><td>• Tomo decisiones estableciendo mecanismos de diálogo y concertación con las partes.</td><td>• <strong>Nunca permito que odios, simpatías, antipatías, caprichos o intereses interfieran en mi criterio y gestión.</strong></td></tr>\n    </tbody>\n</table>",
-          "links": [
-            {
-              "name": "Código de Integridad CG-TAH-0002 Versión 3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Ley 1437 de 2011 - CPACA (Debido Proceso e Imparcialidad)",
-              "url": "https://www.funcionpublica.gov.co/"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod-20",
-      "track": "integridad",
-      "title": "RESPETO",
-      "badge": "Integridad - Dignidad & Consideración",
-      "examId": "exam-20",
-      "lessons": [
-        {
-          "id": "les-20",
-          "moduleId": "mod-20",
-          "title": "RESPETO",
-          "badge": "Integridad - Dignidad & Consideración",
-          "readTime": "25 min",
-          "content": "<h3>1. Marco Doctrinal del Valor Institucional (Código CG-TAH-0002 Versión 3)</h3>\n<p>El <strong>Respeto</strong> en la DIAN reconoce el valor intrínseco de cada persona y promueve un ambiente laboral armónico y un trato digno a la ciudadanía.</p>\n\n<p><strong>Definición Oficial DIAN:</strong> <em>Reconozco, valoro y trato de manera digna a todas las personas, con sus virtudes y defectos, sin importar su labor, su procedencia, sus títulos o cualquier otra condición.</em></p>\n\n<div class=\"callout exam\">\n    <h4>Principio Rector Oficial DIAN</h4>\n    <p><strong>\"Soy amable todos los días, ¡esta es la clave! No hay nada que no se pueda solucionar hablando y escuchando al otro.\"</strong></p>\n</div>\n\n<h3>2. El Manifiesto Institucional: El Respeto por la Diferencia</h3>\n<p>En palabras del Manifiesto DIAN: <em>\"Con tradiciones, circunstancias y pensamientos, algunos similares, otros distantes. No somos iguales pero dos cosas nos unen: el respeto por la diferencia y el compromiso sagrado de recaudar los recursos económicos que hacen posible la existencia y el desarrollo de nuestro país.\"</em></p>\n\n<h3>3. Carta Oficial de Conductas DIAN: Lo que HAGO y Lo que NO HAGO</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Lo que HAGO (Conductas Requeridas)</th><th>Lo que NO HAGO (Conductas Prohibidas)</th></tr>\n    </thead>\n    <tbody>\n        <tr><td>• Atiendo con amabilidad, igualdad y equidad a todas las personas en cualquier situación. <strong>Soy amable todos los días, ¡esta es la clave!</strong></td><td>• Nunca actúo de manera discriminatoria, grosera o hiriente, bajo ninguna circunstancia.</td></tr>\n        <tr><td>• Estoy abierto al diálogo y a la comprensión, a pesar de perspectivas distintas.</td><td>• Jamás baso mis decisiones en presunciones, estereotipos o prejuicios.</td></tr>\n        <tr><td>• Expongo con argumentos mi posición diferente de manera noble, con consideración sincera por el otro.</td><td>• <strong>De ninguna manera me refiero a otros injuriosa o calumniosamente, ni con ironía, burla, sarcasmo o desdén.</strong></td></tr>\n        <tr><td>• Contribuyo a un adecuado clima laboral con mi buena actitud en el trabajo.</td><td>• No excluyo ni minimizo el trabajo o aportes de compañeros de otras áreas.</td></tr>\n    </tbody>\n</table>",
-          "links": [
-            {
-              "name": "Código de Integridad CG-TAH-0002 Versión 3 - UAE DIAN",
-              "url": "https://www.dian.gov.co/"
-            },
-            {
-              "name": "Manifiesto Institucional de la DIAN: El Respeto por la Diferencia",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
-        }
-      ]
     }
   ],
   "exams": {
     "exam-1": {
-      "title": "Examen Oficial: Arquitectura Big Data (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Arquitectura Big Data",
       "questions": [
         {
           "id": 101,
           "topic": "Arquitectura Big Data — Teoremas de Sistemas Distribuidos y Alta Disponibilidad",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante una jornada nacional de compras sin IVA, el volumen de Facturas Electrónicas de Venta (FEV) remitidas a los servicios web de la DIAN supera las 3.500 transacciones por segundo. En el pico de la operación, se produce un corte imprevisto en los enlaces de fibra óptica que comunican el centro de datos principal con el centro de datos secundario de contingencia, aislando dos particiones de red. El clúster de base de datos distribuido que valida la no duplicidad del consecutivo de factura está configurado como un sistema de alta disponibilidad AP (Eventual Consistency), permitiendo que emisores en ambos lados de la partición sigan registrando comprobantes. Horas después, al restablecerse el enlace, se evidencia que cientos de facturas distintas fueron autorizadas con el mismo número consecutivo por el mismo emisor en nodos opuestos, generando colisiones fiscales y duplicidades normativas.",
           "statement": "Para corregir el diseño arquitectónico de modo que se impida la autorización de facturas duplicadas ante caídas de enlace de red, al profesional le corresponde",
           "options": [
@@ -1323,6 +1065,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 102,
           "topic": "Arquitectura Big Data — Motores de Cómputo Distribuido (Apache Spark)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el proceso anual de cruce de información exógena tributaria para generar las declaraciones sugeridas de renta de personas naturales, un trabajo programado en Apache Spark procesa un DataFrame de 180 millones de movimientos bancarios y financieros (Formato 1003) para cruzarlo mediante la operación <code>.join()</code> con el catálogo maestro de contribuyentes (RUT). El trabajo falla de manera sistemática tras dos horas de ejecución en la fase de Shuffle con el error <code>java.lang.OutOfMemoryError: Java heap space</code> en un único nodo ejecutor, mientras que los restantes treinta ejecutores del clúster terminan su carga en menos de quince minutos con un uso de CPU y memoria inferior al 20%. Al revisar las métricas, el Inspector I observa que un único grupo financiero concentra el 35% de la totalidad de registros transaccionales reportados.",
           "statement": "Para resolver de raíz el fallo de memoria en el ejecutor y lograr que el procesamiento se complete de forma balanceada y eficiente en todo el clúster, al profesional le corresponde",
           "options": [
@@ -1358,6 +1101,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 103,
           "topic": "Arquitectura Big Data — Paradigmas de Procesamiento y Consistencia",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Fiscalización Tributaria alerta que los tableros analíticos de seguimiento diario de recaudo por facturación electrónica presentan cifras que no coinciden con los consolidados emitidos por el reporte mensual de cierre. Al auditar la infraestructura, el Inspector I constata que la plataforma opera bajo una Arquitectura Lambda: la capa en tiempo real (<em>Speed Layer</em>) calcula el valor del impuesto sobre las ventas (IVA) consumiendo eventos de un topic de Kafka mediante un script en Apache Flink con lógica simplificada, mientras que la capa por lotes (<em>Batch Layer</em>) ejecuta cada noche un pipeline en Apache Spark sobre almacenamiento de objetos utilizando una biblioteca en Java que implementa validaciones tributarias avanzadas sobre exenciones y exclusiones de bienes.",
           "statement": "Para erradicar las discrepancias de cálculo y asegurar que tanto el tiempo real como los reportes históricos produzcan resultados numéricamente idénticos y auditables, al profesional le corresponde",
           "options": [
@@ -1393,6 +1137,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 104,
           "topic": "Arquitectura Big Data — Procesamiento de Flujos y Semántica Temporal",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el último día de vencimiento para el pago de anticipos de impuestos, se genera un pico de saturación en los servicios bancarios que provoca un retraso de hasta 25 minutos en la entrega de los mensajes JSON de confirmación de pago hacia el clúster de streaming de la DIAN. El pipeline analítico que calcula las alertas de extemporaneidad utiliza una ventana fija de tiempo (<em>Tumbling Window</em>) configurada sobre el tiempo de procesamiento (<em>Processing Time</em>) con un Watermark de 2 minutos. Como consecuencia del desfase, miles de transacciones efectuadas por los contribuyentes a las 23:50 son procesadas a las 00:15 del día siguiente y etiquetadas automáticamente por el motor analítico como \"Pagos Extemporáneos con Sanción de Extemporaneidad\", generando reclamos masivos.",
           "statement": "Para corregir la evaluación temporal y garantizar que la extemporaneidad se juzgue con estricta validez jurídica y técnica, al profesional le corresponde",
           "options": [
@@ -1428,6 +1173,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 105,
           "topic": "Arquitectura Big Data — Bases de Datos NoSQL y Detección de Fraude",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión de Fiscalización adelanta una investigación para identificar estructuras organizadas de proveedores ficticios que simulan transacciones comerciales para solicitar devoluciones indebidas de IVA. El equipo de analistas intenta cruzar los registros de facturas electrónicas en una base de datos relacional tradicional (RDBMS), pero al encadenar cinco niveles sucesivos de compras y ventas entre empresas con uniones relacionales complejas (<code>JOIN</code>), las consultas consumen el 100% de la memoria y la base de datos se bloquea por tiempo de espera excedido (<em>timeout</em>), impidiendo rastrear el destino final de los recursos.",
           "statement": "Para modelar y consultar eficientemente las relaciones de intermediación multinivel y descubrir ciclos sospechosos de facturación, al profesional le corresponde",
           "options": [
@@ -1463,6 +1209,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 106,
           "topic": "Arquitectura Big Data — Mensajería Masiva en Streaming (Apache Kafka)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el marco de la modernización de los sistemas aduaneros en puertos marítimos, se implementa un clúster de Apache Kafka para ingerir las declaraciones de importación y actas de inspección física en tiempo real. Para alcanzar la mayor velocidad de transferencia posible, el desarrollador inicial configuró los productores con <code>acks=0</code> y deshabilitó los reintentos. Tras una falla eléctrica transitoria que reinició el nodo líder de uno de los brokers, se detecta que se perdieron irreversiblemente las actas de inspección de más de ochenta contenedores de alto riesgo, impidiendo el control aduanero y generando un grave incidente de seguridad en la frontera.",
           "statement": "Para reconfigurar el servicio de mensajería de modo que se garantice de manera estricta la persistencia de cada documento sin pérdida ante fallos de nodos, al Inspector I le corresponde",
           "options": [
@@ -1498,6 +1245,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 107,
           "topic": "Arquitectura Big Data — Gobernanza de Esquemas y Serialización",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos actualiza el formato JSON/Avro de recepción de eventos de documentos equivalentes electrónicos para añadir un nuevo campo tributario obligatorio derivado de una reforma legal. Tras desplegar el cambio en producción, los consumidores del clúster de analítica de riesgo fallan masivamente arrojando excepciones de deserialización, debido a que muchos contribuyentes aún transmiten con el software en la versión anterior y otros consumidores internos no han actualizado sus bibliotecas de lectura.",
           "statement": "Para gobernar la evolución de los esquemas en la plataforma de streaming evitando la ruptura de aplicaciones productivas, al profesional le corresponde",
           "options": [
@@ -1533,6 +1281,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 108,
           "topic": "Arquitectura Big Data — Optimización Físico-Matemática en Clústeres",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo de analistas de datos de la DIAN construye un pipeline en Apache Spark para calcular perfiles patrimoniales que concatena sucesivas transformaciones RDD utilizando métodos como <code>groupByKey()</code>, seguidos de múltiples <code>map()</code> en lenguaje Python que instancian objetos complejos dentro de bucles. Durante la ejecución en un clúster de sesenta nodos, los registros del driver muestran que el 70% del tiempo de procesamiento total se gasta en pausas de recolección de basura (<em>Garbage Collection pauses</em>) y transferencias masivas de datos serializados entre procesos Python y la JVM.",
           "statement": "Para optimizar el rendimiento del pipeline y aprovechar la aceleración nativa de hardware del clúster, al Inspector I le corresponde",
           "options": [
@@ -1568,6 +1317,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 109,
           "topic": "Arquitectura Big Data — Seguridad de la Información y Marco Legal",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la implementación de un nuevo data lakehouse en la nube para consolidar los macrodatos institucionales de la DIAN, se plantea la necesidad de que científicos de datos externos contratados para entrenar modelos de analítica predictiva tengan acceso a los registros de facturas electrónicas y declaraciones tributarias. Un asesor técnico propone otorgar acceso directo de solo lectura a las carpetas de almacenamiento de objetos (archivos Parquet en crudo) argumentando que, como no pueden modificar ni borrar datos, no se vulnera la normatividad institucional.",
           "statement": "Frente a la propuesta formulada y en cumplimiento de la regulación colombiana sobre reserva tributaria y protección de datos, al profesional le corresponde",
           "options": [
@@ -1603,6 +1353,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 110,
           "topic": "Arquitectura Big Data — Plataformas de Mensajería y Ciclo de Vida del Dato",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el clúster de mensajería de la DIAN se mantiene un tópico de Kafka denominado <code>rut-estado-contribuyentes</code>, donde se publican las actualizaciones de estado de los obligados tributarios (Activo, Suspendido, Cancelado, Fallecido). Debido a que el tópico acumula millones de eventos a lo largo de varios años, el almacenamiento en disco de los brokers alcanza el 95% de su capacidad. Un operador de sistemas propone activar una política de retención por tiempo de 48 horas (<code>log.cleanup.policy=delete</code>, <code>retention.ms=172800000</code>), lo que provocaría que los consumidores que se reinicien o inicialicen desde cero desconozcan el estado de los contribuyentes que no hayan tenido movimientos en los últimos dos días.",
           "statement": "Para optimizar el uso de disco en los brokers preservando intacto el último estado válido conocido de cada contribuyente en el sistema, al profesional le corresponde",
           "options": [
@@ -1637,12 +1388,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-2": {
-      "title": "Examen Oficial: Arquitectura de Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Arquitectura de Datos",
       "questions": [
         {
           "id": 201,
           "topic": "Arquitectura de Datos — Ciclo de Vida e Ingesta sin Impacto Operacional",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la semana de vencimientos para la presentación de la Declaración de Renta de Personas Jurídicas, el sistema transaccional de recaudo y declaraciones experimenta una degradación severa en sus tiempos de respuesta y bloqueos de tablas. Al diagnosticar el incidente en la Subdirección de Procesamiento de Datos, se identifica que un proceso de extracción ejecutado cada 15 minutos lanza consultas <code>SELECT</code> masivas con uniones complejas sobre las tablas operacionales para alimentar los tableros de seguimiento de recaudo y, adicionalmente, no está detectando las declaraciones que fueron eliminadas físicamente tras un procedimiento de contingencia técnica. Se designa al Inspector I para rediseñar el mecanismo de integración hacia el repositorio analítico institucional (DataR) sin afectar la operación en línea.",
           "statement": "Para resolver de raíz la degradación del sistema transaccional y garantizar la captura íntegra y oportuna de los eventos hacia el repositorio analítico, al profesional le corresponde",
           "options": [
@@ -1678,6 +1430,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 202,
           "topic": "Arquitectura de Datos — Arquitectura Medallion y Cadena de Custodia en DataR",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el proceso de ingesta diaria de archivos XML de información exógena tributaria hacia el repositorio único de datos (DataR), estructurado bajo una arquitectura Lakehouse en capas (Bronce, Plata y Oro), se detecta que el 1,5% de los registros remitidos contienen inconsistencias en el código de municipio o valores numéricos con formato inválido. Un ingeniero del equipo propone modificar el pipeline para que descarte definitivamente de la capa Bronce los archivos con errores y sobrescriba con ceros los campos defectuosos directamente al cargar la capa Oro, con el fin de ahorrar almacenamiento y evitar retrasos en los tableros de fiscalización.",
           "statement": "Frente a la propuesta planteada y en cumplimiento de los principios de arquitectura y gobierno de datos de la entidad, al Inspector I le corresponde",
           "options": [
@@ -1713,6 +1466,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 203,
           "topic": "Arquitectura de Datos — Modelado Dimensional y Dimensiones de Cambio Lento",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Análisis Operacional solicita revisar el modelo dimensional del Data Mart de Fiscalización Tributaria ubicado en la capa Oro. Al ejecutar un estudio comparativo del recaudo por actividad económica (CIIU) y Dirección Seccional entre los años 2022 y 2025, los analistas observan que los pagos realizados en 2022 por contribuyentes que cambiaron de domicilio o de actividad económica en 2025 aparecen ahora imputados en su totalidad a la nueva seccional y al nuevo código CIIU, distorsionando el análisis histórico de las auditorías de vigencias anteriores.",
           "statement": "Para corregir el diseño del modelo dimensional de modo que las transacciones históricas conserven el contexto exacto vigente en la fecha en que ocurrieron, al profesional le corresponde",
           "options": [
@@ -1748,6 +1502,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 204,
           "topic": "Arquitectura de Datos — Paradigmas (Data Mesh vs. Arquitectura Centralizada)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el comité de arquitectura institucional se analiza un cuello de botella recurrente: las áreas misionales de Impuestos, Aduanas, Control Cambiario y Facturación Electrónica dependen de un único equipo central para transformar y documentar todos sus conjuntos de datos analíticos. Como consecuencia, los tiempos de entrega superan los seis meses y se presentan errores de interpretación sobre las reglas de negocio específicas de cada dominio. Se propone adoptar un enfoque de <strong>Data Mesh</strong> (Malla de Datos), pero surge la inquietud de cómo evitar que cada área cree silos incompatibles o vulnere la reserva tributaria.",
           "statement": "Para implementar correctamente el paradigma Data Mesh garantizando tanto la agilidad de las áreas misionales como la integridad y seguridad institucional, al profesional le corresponde",
           "options": [
@@ -1783,6 +1538,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 205,
           "topic": "Arquitectura de Datos — Formatos de Tabla Abiertos y Auditoría Histórica",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Con ocasión de un proceso ante la jurisdicción de lo contencioso administrativo, la oficina jurídica requiere que la Subdirección de Procesamiento de Datos certifique y reproduzca exactamente el estado de los datos consolidados en el repositorio analítico con los cuales el modelo de perfilamiento de riesgo seleccionó a un usuario aduanero en una fecha específica de hace ocho meses. Actualmente, esa zona del repositorio almacena archivos planos en formato CSV que son sobrescritos cada noche por un proceso por lotes, lo que impide reconstruir la foto exacta de aquel momento sin restaurar cintas completas de respaldo.",
           "statement": "Para modernizar la capa de almacenamiento de modo que soporte consultas analíticas de alto rendimiento y permita reproducir de forma inmediata el estado exacto de la tabla en cualquier punto histórico del tiempo, al profesional le corresponde",
           "options": [
@@ -1818,6 +1574,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 206,
           "topic": "Arquitectura de Datos — Seguridad, Reserva Tributaria (Art. 583 E.T.) y Control de Acceso",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo de analistas cuantitativos y desarrolladores de tableros de gestión necesita consultar las vistas de la capa Oro del repositorio DataR para validar el comportamiento agregado de los tiempos de atención y los montos declarados por región. Sin embargo, por su rol funcional no están autorizados para visualizar la identificación individual (NIT/Cédula), la razón social ni el detalle privado sujeto a reserva tributaria de los contribuyentes, mientras que los inspectores de fiscalización asignados al caso sí requieren ver el dato real completo sobre la misma tabla.",
           "statement": "Para atender la necesidad de ambos perfiles sobre la misma fuente de datos sin duplicar tablas ni alterar la información almacenada en producción, al Inspector I le corresponde",
           "options": [
@@ -1853,6 +1610,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 207,
           "topic": "Arquitectura de Datos — Rendimiento Físico y Gestión de Metadatos en Lakehouse",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el repositorio DataR se configuró un flujo de ingesta continua que escribe micro-lotes de eventos de validación de documentos electrónicos cada 30 segundos en una tabla Apache Iceberg. Además, el diseñador definió como clave física de particionamiento el número de identificación del emisor (<code>nit_emisor</code>). Tras tres meses de operación, las consultas analíticas de las áreas misionales tardan horas en responder debido a que el motor de consulta debe listar y abrir más de doce millones de directorios que contienen archivos Parquet de apenas 15 kilobytes cada uno.",
           "statement": "Para corregir la degradación de lectura y optimizar la disposición física de los datos en el almacenamiento del Lakehouse, al profesional le corresponde",
           "options": [
@@ -1888,6 +1646,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 208,
           "topic": "Arquitectura de Datos — Modelado Data Vault 2.0 (Hubs, Links y Satellites)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La DIAN adelanta un proyecto en la capa Plata del repositorio DataR para consolidar información de operaciones de comercio exterior proveniente simultáneamente de declaraciones aduaneras internas, reportes de puertos, ventanilla única de comercio exterior (VUCE) y convenios de intercambio internacional. Los esquemas de estas fuentes cambian con frecuencia agregando nuevos campos descriptivos, y la oficina de control interno exige un modelo de integración que permita cargar las fuentes en paralelo, auditar exactamente de qué sistema y en qué fecha provino cada dato, y absorber nuevos atributos sin tener que reconstruir las tablas existentes.",
           "statement": "Para satisfacer los requerimientos de integración ágil, escalabilidad y trazabilidad de auditoría en esta capa del repositorio, al profesional le corresponde diseñar el modelo aplicando la metodología",
           "options": [
@@ -1923,6 +1682,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 209,
           "topic": "Arquitectura de Datos — Tipos de Tablas de Hechos en Modelado Dimensional",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Gestión de Devoluciones requiere construir un modelo analítico en la capa Oro para monitorear la eficiencia y los cuellos de botella del proceso de solicitudes de devolución y/o compensación de saldos a favor. Cada solicitud atraviesa una secuencia fija de hitos institucionales: fecha de radicación en el sistema, fecha de auto admisorio, fecha de asignación a verificación, fecha de acto administrativo que decide la solicitud y fecha de giro efectivo, necesitando medir con exactitud los días transcurridos entre cada etapa por cada expediente.",
           "statement": "Para modelar eficientemente el ciclo de vida de cada solicitud y facilitar el cálculo de los tiempos de permanencia entre sus hitos, al profesional le corresponde implementar una",
           "options": [
@@ -1958,6 +1718,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 210,
           "topic": "Arquitectura de Datos — Repositorio Único (DataR), Capa Semántica e Interoperabilidad",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante una auditoría a los reportes institucionales, se evidencia que la Subdirección de Recaudo y la Subdirección de Fiscalización presentan cifras discrepantes frente al indicador de <em>\"Cartera Morosa Recuperable\"</em> del último trimestre. Al indagar la causa técnica, el Inspector I encuentra que una de las dependencias descargó copias parciales de las tablas hacia una base de datos local en su área y programó su propia fórmula de cálculo en sus tableros, excluyendo conceptos de intereses y sanciones que la otra dependencia sí incluye.",
           "statement": "Para eliminar la discrepancia de cifras, erradicar los silos de datos locales y garantizar una única fuente de verdad gobernada en la entidad, al profesional le corresponde",
           "options": [
@@ -1992,12 +1753,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-3": {
-      "title": "Examen Oficial: Arquitectura de Integración de Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Arquitectura de Integración de Datos",
       "questions": [
         {
           "id": 301,
           "topic": "Arquitectura de APIs y Resiliencia en Servicios de Integración",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la última jornada del mes, los servidores perimetrales de la DIAN reciben un pico masivo de peticiones HTTP <code>POST</code> procedentes de los Proveedores Tecnológicos autorizados que transmiten paquetes comprimidos con Facturas Electrónicas de Venta en formato XML UBL 2.1. Debido a una inestabilidad momentánea en el enlace de telecomunicaciones de un proveedor, el cliente experimenta un error de tiempo de espera (<em>Socket Timeout</em>) tras enviar un lote de facturas de alto valor. Al no recibir el código <code>HTTP 201 Created</code> con el acuse de recibo correspondiente, el sistema automatizado del proveedor reintenta inmediatamente el envío del mismo lote en tres ocasiones sucesivas.",
           "statement": "Para evitar que las transacciones tributarias se registren duplicadas en el sistema de recepción y prevenir inconsistencias en la cuenta corriente del contribuyente, al Inspector I le corresponde",
           "options": [
@@ -2033,6 +1795,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 302,
           "topic": "API Gateway, OAuth 2.0 y JWT",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el marco de la modernización de los servicios de consulta interna del Registro Único Tributario (RUT), un equipo de desarrollo propone asegurar la comunicación entre los microservicios distribuidos mediante tokens JSON Web Tokens (JWT) utilizando el algoritmo simétrico <strong>HS256 (HMAC with SHA-256)</strong>, argumentando que este método consume menos milisegundos de CPU en las pruebas locales. El diseño propuesto exige que la clave secreta institucional de cifrado se almacene en archivos de texto plano dentro del código fuente de los 35 microservicios consumidores para que puedan descifrar y validar los tokens que emite el API Gateway.",
           "statement": "Al evaluar la viabilidad de la propuesta técnica con base en las mejores prácticas de ciberseguridad y gobernanza de la información, al Inspector I le corresponde",
           "options": [
@@ -2068,6 +1831,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 303,
           "topic": "Patrones de Resiliencia y Estabilidad en Servicios Web",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El sistema de liquidación de impuestos aduaneros en el aplicativo SYGA consume un servicio web síncrono alojado en una entidad bancaria para verificar el pago electrónico de aranceles. Durante una jornada de alta congestión en los puertos de comercio exterior, la pasarela bancaria sufre una degradación severa en su base de datos, provocando que los tiempos de respuesta pasen de 200 milisegundos a más de 45 segundos por transacción. Como consecuencia, las conexiones HTTP en los servidores de la DIAN se represan, consumiendo la totalidad del pool de hilos de cómputo y bloqueando el funcionamiento de los demás módulos de comercio exterior.",
           "statement": "Para aislar el fallo del proveedor bancario y garantizar la estabilidad y alta disponibilidad de los servicios de la DIAN, al profesional le corresponde",
           "options": [
@@ -2103,6 +1867,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 304,
           "topic": "Arquitecturas Orientadas a Eventos (EDA) y Transactional Outbox",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo de ingeniería de datos diseña el nuevo módulo de actualización de cartera de la DIAN. En el flujo planteado, cuando un contribuyente realiza un pago, el microservicio ejecuta un bloque de código en Python que primero inserta el registro en la base de datos relacional de cartera y, acto seguido, invoca el método <code>producer.send('topico-recaudo', pago)</code> para notificar al clúster de analítica de DataR. Durante las pruebas de carga, la red corporativa experimenta microcortes aleatorios: la base de datos confirma el commit de la transacción, pero el broker de mensajería rechaza la conexión, provocando que los eventos de pago no se transmitan y DataR reporte saldos de deuda desactualizados.",
           "statement": "Para resolver de forma estructural la inconsistencia de datos generada por el antipatrón de escritura dual (<em>Dual-Write</em>), el Inspector I debe",
           "options": [
@@ -2138,6 +1903,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 305,
           "topic": "Procesamiento de Mensajería y Manejo de Errores Asíncronos",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el pipeline de ingesta en tiempo real que consume los eventos del tópico <code>facturas-emitidas</code> en la DIAN, un contribuyente transmite un archivo XML corrupto que carece de las etiquetas mínimas obligatorias del esquema UBL 2.1. El microservicio de validación falla con una excepción fatal de análisis sintáctico (<em>Unparseable XML Exception</em>). Debido a que el consumidor está configurado para reintentar indefinidamente ante cualquier error antes de confirmar el commit del offset, el hilo de procesamiento queda atrapado en un ciclo infinito de error, impidiendo que los millones de facturas válidas que vienen detrás en la misma partición del tópico puedan ser procesadas.",
           "statement": "Para desbloquear de inmediato el flujo de procesamiento masivo sin perder la información del mensaje mal estructurado, al profesional le corresponde",
           "options": [
@@ -2173,6 +1939,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 306,
           "topic": "Orquestación de Flujos de Trabajo Masivos y DataOps",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos detecta que, debido a un error en una regla de negocio implementada en un DAG de Apache Airflow, el cálculo de las declaraciones sugeridas de renta para personas naturales correspondiente a los meses de abril y mayo de 2025 subestimó los ingresos por rentas de trabajo. El equipo requiere corregir el código del DAG y recalcular los valores de dichos periodos históricos sin detener la ejecución de las tareas del mes corriente ni duplicar los registros de los contribuyentes en el data warehouse analítico.",
           "statement": "Para llevar a cabo la corrección histórica garantizando la reproducibilidad y la consistencia matemática de los datos, el Inspector I debe",
           "options": [
@@ -2208,6 +1975,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 307,
           "topic": "Marco de Interoperabilidad del Estado Colombiano y Seguridad Jurídica",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el marco de la lucha integral contra el lavado de activos y el contrabando, la Unidad de Información y Análisis Financiero (UIAF) solicita conectarse con la DIAN para consultar de forma continua y automatizada las declaraciones aduaneras de importación de mercancías de alto valor. Para viabilizar el intercambio tecnológico, un consultor externo propone crear un enlace de red privado punto a punto (VPN IPsec) y habilitar a la UIAF un usuario con rol de administrador directamente sobre el motor de base de datos relacional de producción de SYGA.",
           "statement": "Frente a la solución planteada y de conformidad con el Marco de Referencia de Arquitectura Empresarial (MRAE) del MinTIC, al profesional le corresponde",
           "options": [
@@ -2243,6 +2011,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 308,
           "topic": "Integración en DataR, Seguridad de la Información y Marco Legal",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una importante asociación gremial del sector comercial solicita formalmente a la Subdirección de Procesamiento de Datos de la DIAN la apertura de una API REST pública que le permita consultar en tiempo real, digitando el NIT de cualquier empresa del país, el valor exacto de los ingresos brutos, costos deducibles, patrimonio líquido y saldo a pagar reportados en las últimas declaraciones del Impuesto sobre la Renta. La agremiación fundamenta su petición en la Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional (Ley 1712 de 2014).",
           "statement": "Al emitir el concepto técnico-arquitectónico sobre la viabilidad de diseñar e implementar el servicio web solicitado, al Inspector I le corresponde",
           "options": [
@@ -2278,6 +2047,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 309,
           "topic": "Excepciones Legales a la Reserva y Convenios de Información",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Contraloría General de la República, en el marco de una auditoría de cumplimiento sobre los programas de devolución de saldos a favor del IVA, requiere que la DIAN le suministre mediante servicios de integración automatizados el detalle de las solicitudes radicadas por un grupo específico de contribuyentes objeto de investigación fiscal. Un funcionario de la Dirección de Gestión de Innovación y Tecnología sugiere negar el acceso al servicio web argumentando que el Artículo 583 del Estatuto Tributario prohíbe entregar datos de declaraciones a cualquier autoridad externa bajo cualquier circunstancia.",
           "statement": "Frente al conflicto suscitado y con fundamento en el régimen normativo de excepciones a la reserva legal, al Inspector I le corresponde",
           "options": [
@@ -2313,6 +2083,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 310,
           "topic": "Seguridad por Diseño y Técnicas de Protección de Datos",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la consolidación de los servicios analíticos sobre el Repositorio Único DataR, la Subdirección de Procesamiento de Datos debe habilitar el acceso a los datos de facturación electrónica a un grupo de científicos de datos contratados para desarrollar modelos de aprendizaje automático orientados a predecir la evasión de impuestos. Los contratistas no forman parte de la planta de personal de la DIAN ni poseen funciones de fiscalización individualizada sobre contribuyentes específicos.",
           "statement": "Para permitir el entrenamiento y validación de los modelos analíticos garantizando la máxima utilidad del dato sin quebrantar la reserva tributaria ni la Ley 1581 de 2012, al profesional le corresponde",
           "options": [
@@ -2347,12 +2118,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-4": {
-      "title": "Examen Oficial: Capacidades Analíticas y Uso Estratégico de la Información (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Capacidades Analíticas y Uso Estratégico de la Información",
       "questions": [
         {
           "id": 401,
           "topic": "Evaluación de Modelos y Análisis del Costo Asimétrico de Errores",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos desarrolla un modelo de clasificación para identificar contribuyentes del régimen ordinario que omiten ingresos operacionales en sus declaraciones de renta. En el histórico institucional, solo el 0.8% de los declarantes fiscalizados incurrió en esta conducta delictiva. El científico de datos líder presenta con entusiasmo un modelo preliminar que alcanza un 99.2% de exactitud (<em>Accuracy</em>), asegurando que el sistema está listo para producción. Sin embargo, al inspeccionar la matriz de confusión, se descubre que el modelo clasificó al 100% de los contribuyentes como honestos ($y=0$).",
           "statement": "Al evaluar el rendimiento del modelo para garantizar que la solución satisfaga las metas reales de la fiscalización tributaria, al Inspector I le corresponde",
           "options": [
@@ -2388,6 +2160,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 402,
           "topic": "Machine Learning No Supervisado y Detección de Anomalías",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En una seccional de aduanas e impuestos se detecta la proliferación de sociedades comerciales recién constituidas que reportan direcciones en zonas residenciales populares pero emiten facturas electrónicas por miles de millones de pesos a empresas del sector de la construcción por concepto de \"servicios intangibles de consultoría\", permitiendo que los constructores descuenten costos ficticios. Al no existir denuncias previas ni sanciones históricas registradas contra estas nuevas empresas en MUISCA, el equipo analítico no dispone de etiquetas de entrenamiento ($y$) para un clasificador supervisado.",
           "statement": "Para identificar de manera temprana y automatizada a las posibles empresas de papel en las emisiones de Facturación Electrónica UBL 2.1, el Inspector I debe",
           "options": [
@@ -2423,6 +2196,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 403,
           "topic": "Analítica de Grafos y Redes Complejas en Fiscalización",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Fiscalización Tributaria investiga una red delictiva dedicada a solicitar devoluciones improcedentes de saldos a favor en el Impuesto sobre las Ventas (IVA). Las tablas relacionales tradicionales muestran que todas las empresas involucradas tienen sus libros contables al día y transmiten sus facturas electrónicas puntualmente. Sin embargo, los auditores sospechan que las transacciones comerciales son ficticias y que las mercancías nunca existieron físicamente, sino que se crearon empresas intermediarias para recircular facturas.",
           "statement": "Para demostrar la existencia del entramado delictivo y descubrir a los beneficiarios reales del fraude, al profesional le corresponde",
           "options": [
@@ -2458,6 +2232,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 404,
           "topic": "Inteligencia Artificial Explicable (XAI), SHAP y Debido Proceso",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La DIAN implementa una red neuronal profunda (<em>Deep Learning</em>) para emitir de forma automatizada Emplazamientos para Declarar a ciudadanos que presuntamente omitieron el impuesto de renta. Un contribuyente sancionado interpone una acción de tutela y demanda de nulidad contra el acto administrativo, argumentando que el emplazamiento se limitó a señalar que <em>\"un modelo de inteligencia artificial de última generación determinó con un 97.4% de certeza matemática que usted omitió declarar\"</em>, sin indicar qué compras, consignaciones o bienes sustentan la acusación.",
           "statement": "Frente al fallo judicial inminente y para corregir la arquitectura de generación de actos administrativos, el Inspector I debe dictaminar que",
           "options": [
@@ -2493,6 +2268,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 405,
           "topic": "MLOps, Mantenimiento de Modelos y Deriva Estadística",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Tras la aprobación de una reforma tributaria que modificó sustancialmente las tarifas del impuesto sobre la renta, unificó cédulas y redujo a la mitad el límite máximo de rentas exentas y deducciones para personas naturales, los inspectores de la DIAN notan que el modelo predictivo de riesgo desplegado hace dos años comienza a clasificar erróneamente como \"evasores potenciales\" a casi el 70% de los asalariados del país. El análisis estadístico muestra que la distribución de la variable de deducciones cambió radicalmente en toda la población declarante.",
           "statement": "Al diagnosticar la causa técnica del fallo del modelo y aplicar las mejores prácticas de MLOps, al Inspector I le corresponde",
           "options": [
@@ -2528,6 +2304,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 406,
           "topic": "Feature Store, Ingeniería de Características y Consistencia Temporal",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un científico de datos diseña un modelo para predecir si un importador cometerá infracciones aduaneras en el momento en que su cargamento arriba al puerto marítimo en el mes de marzo. Durante la fase de preparación de datos en el entorno de desarrollo, el analista calcula una variable llamada <code>volumen_infracciones_anuales</code> agrupando todas las actas de aprehensión levantadas a ese mismo importador a lo largo de todo el año fiscal (incluyendo actas de agosto y noviembre). En las pruebas de laboratorio, el modelo obtiene un desempeño casi perfecto ($AUC = 0.99$), pero al ser desplegado en el puerto de Cartagena, su precisión colapsa drásticamente al 42%.",
           "statement": "Al identificar la causa técnica del fracaso del modelo en producción, el Inspector I debe determinar que",
           "options": [
@@ -2563,6 +2340,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 407,
           "topic": "Optimización del Umbral de Decisión y Gestión de Capacidad",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El modelo predictivo de fiscalización masiva asigna a cada contribuyente una probabilidad continua de inexactitud entre 0.0 y 1.0. Por configuración predeterminada de software, el sistema clasifica como \"sujeto a auditar\" a todo aquel con probabilidad $\\ge 0.50$, lo que genera una lista de 45.000 contribuyentes priorizados en la ciudad de Cali. No obstante, la Seccional de Cali informa a la Subdirección de Procesamiento de Datos que su planta de personal solo dispone de capacidad técnica y operativa para realizar un máximo de 800 auditorías exhaustivas durante el semestre.",
           "statement": "Para conciliar las capacidades del modelo algorítmico con la capacidad operativa real de la entidad sin generar falsas expectativas ni expedientes represados, al profesional le corresponde",
           "options": [
@@ -2598,6 +2376,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 408,
           "topic": "Ética de Datos, Mitigación de Sesgos y Equidad Algorítmica",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la evaluación de un modelo analítico de cobranza coactiva, se observa que el algoritmo asigna sistemáticamente la calificación de \"Riesgo Extremo de Insolvencia\" y ordena embargos preventivos masivos a pequeños comerciantes ubicados en municipios rurales apartados, mientras que empresas ubicadas en las capitales con niveles de endeudamiento financiero proporcionalmente idénticos reciben calificaciones favorables de reestructuración de deuda. El equipo descubre que el modelo utilizó indirectamente el código de municipio como variable sustituta (<em>proxy</em>).",
           "statement": "En cumplimiento de la política de ética e inteligencia artificial del Estado colombiano (CONPES 3975 de 2019) y los principios constitucionales de equidad, al Inspector I le corresponde",
           "options": [
@@ -2633,6 +2412,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 409,
           "topic": "Niveles de Madurez Analítica — Analítica Prescriptiva",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión de Fiscalización cuenta con modelos predictivos que le indican con gran precisión qué contribuyentes tienen mayor propensión a incurrir en evasión del Impuesto Nacional al Consumo. Sin embargo, los directores seccionales manifiestan que los listados de sospechosos no son suficientes para actuar, puesto que no saben cómo balancear la asignación de sus inspectores especializados en auditorías de campo frente a los peritos en auditorías informáticas para maximizar el cobro coactivo antes de los vencimientos legales.",
           "statement": "Para elevar el nivel de madurez analítica de la DIAN y solucionar la necesidad de los directivos, el profesional debe proponer",
           "options": [
@@ -2668,6 +2448,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 410,
           "topic": "MLOps, Despliegue Seguro y Validación en Producción",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El equipo de analítica de datos de la DIAN entrena un nuevo modelo basado en <strong>LightGBM</strong> para reemplazar al clasificador tradicional de perfilamiento aduanero en puertos de comercio exterior. Aunque el nuevo algoritmo obtuvo mejores métricas en los datos de prueba, la Dirección de Gestión de Aduanas teme que un error imprevisto en producción detenga las operaciones de comercio exterior o genere falsos positivos masivos que congestionen los puertos nacionales.",
           "statement": "Para validar el rendimiento y la estabilidad técnica del nuevo modelo en condiciones de tráfico real sin arriesgar la operación del país, al Inspector I le corresponde",
           "options": [
@@ -2702,12 +2483,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-5": {
-      "title": "Examen Oficial: Estándares y Políticas Establecidos en el Gobierno de Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Estándares y Políticas Establecidos en el Gobierno de Datos",
       "questions": [
         {
           "id": 501,
           "topic": "Marco Conceptual DAMA-DMBOK v2 y Estructura Decisoria",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En una reunión del Comité Técnico de la Dirección de Gestión de Innovación y Tecnología, surge una fuerte discrepancia operativa entre los desarrolladores de software y los analistas de fiscalización. Los ingenieros de infraestructura afirman que, como ellos administran el clúster de servidores de base de datos Oracle y los lagos en DataR, tienen la facultad discrecional de autorizar a una entidad bancaria privada el acceso a las tablas de declaraciones de renta de los ciudadanos para un estudio de mercadeo crediticio.",
           "statement": "Al aplicar los principios de delimitación de competencias del DAMA-DMBOK v2 y la normatividad institucional, al Inspector I le corresponde dictaminar que",
           "options": [
@@ -2743,6 +2525,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 502,
           "topic": "Estructura Orgánica y Roles de Gobierno (Owners, Stewards y Custodians)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección Seccional de Impuestos de Medellín reporta que más de 12.000 contribuyentes del sector calzado aparecen registrados en el RUT con la casilla de \"Actividad Económica Principal\" vacía, lo que impide cruzarlos contra las declaraciones de IVA y genera traumatismos en las devoluciones automáticas. El equipo de TI argumenta que ellos son los encargados de arreglar el problema y propone ejecutar un comando SQL masivo que asigne a todos esos 12.000 contribuyentes el código de actividad de \"Fabricación de Calzado\" por defecto.",
           "statement": "Para remediar la falla de calidad respetando la gobernanza institucional y la veracidad de la información pública, al profesional le corresponde",
           "options": [
@@ -2778,6 +2561,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 503,
           "topic": "Dimensiones Canónicas de Calidad del Dato",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la auditoría preventiva sobre la ingesta masiva de Facturación Electrónica en DataR, el Inspector I realiza un perfilamiento de datos sobre un lote de 2.000.000 de documentos XML UBL 2.1 recibidos durante el fin de semana. El informe revela que el 100% de las facturas tienen la estructura física correcta y no tienen campos nulos, pero el 18% de ellas fueron transmitidas por los emisores 15 días después de la fecha en que se realizó materialmente la venta comercial.",
           "statement": "Al clasificar el fallo de calidad de datos identificado conforme a los estándares internacionales (ISO/IEC 25012 / DAMA), el profesional debe dictaminar que",
           "options": [
@@ -2813,6 +2597,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 504,
           "topic": "Gestión de Metadatos y Linaje de Datos de Punta a Punta",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una corporación multinacional interpone un recurso de reconsideración y posterior demanda judicial contra una Liquidación Oficial de Revisión proferida por la DIAN, argumentando que el cálculo del mayor valor a pagar en el impuesto de renta fue \"inventado por los sistemas informáticos de la administración sin sustento probatorio\". El juez contencioso administrativo ordena a la DIAN exhibir la traza técnica verificable que demuestre con exactitud qué documentos y qué transformaciones matemáticas originaron dicha cifra.",
           "statement": "Para responder al requerimiento judicial garantizando la legalidad del acto administrativo y la cadena de custodia probatoria, al Inspector I le corresponde",
           "options": [
@@ -2848,6 +2633,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 505,
           "topic": "Linaje Hacia Adelante y Mitigación de Rupturas Operacionales",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El equipo de modernización del aplicativo MUISCA planea renombrar una columna de la base de datos de recaudo denominada <code>vlr_saldo_favor</code> a <code>saldo_favorable_total_neto</code> y cambiar su tipo de dato de <code>NUMBER(15,2)</code> a <code>VARCHAR2(50)</code>. El líder técnico de desarrollo asegura que es un cambio menor que no requiere consultar con las demás dependencias de la entidad y ordena desplegar la modificación directamente en el ambiente de producción de este fin de semana.",
           "statement": "Al intervenir como garante de la gobernanza técnica de datos y prevenir incidentes críticos en la operación institucional, el profesional debe",
           "options": [
@@ -2883,6 +2669,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 506,
           "topic": "Gestión de Datos Maestros (MDM) y Resolución de Entidades",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la consolidación de macrodatos para la fiscalización del Impuesto de Renta, la DIAN descubre que un importante grupo empresarial figura en sus bases de datos bajo cinco registros diferentes: en un sistema aparece con el NIT principal, en otro con el NIT de una sucursal absorbida, en los bancos con una razón social abreviada y en aduanas con el nombre de su representante legal anterior. Esto provoca que el sistema de riesgo calcule erróneamente que cada registro corresponde a una pequeña empresa exenta de auditoría.",
           "statement": "Para resolver la duplicidad de registros y construir una vista fidedigna y única del obligado tributario, al Inspector I le corresponde",
           "options": [
@@ -2918,6 +2705,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 507,
           "topic": "Glosario de Negocio frente a Diccionario de Datos",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión de Fiscalización y la Dirección de Gestión de Recaudo publican informes contradictorios sobre el estado de la cartera nacional en el mismo mes: Fiscalización reporta una deuda tributaria exigible de $\\$18$ billones, mientras que Recaudo reporta $\\$11$ billones. La auditoría interna descubre que para Fiscalización el término \"Cartera Exigible\" incluye las sanciones administrativas en trámite de apelación judicial, mientras que para Recaudo solo incluye las deudas con mandamiento de pago debidamente ejecutoriado.",
           "statement": "Para resolver de forma definitiva esta disparidad de criterios semánticos y evitar desinformación pública, al profesional le corresponde",
           "options": [
@@ -2953,6 +2741,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 508,
           "topic": "Políticas Públicas Colombianas de Datos y Marco CONPES",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la formulación del Plan Estratégico de Tecnologías de la Información de la DIAN, un director de área propone desmantelar el proyecto del Repositorio Único DataR y regresar al almacenamiento descentralizado en archivos de texto plano locales en cada computador seccional, alegando que la adquisición de plataformas de macrodatos Big Data y catálogos de gobierno representa un gasto innecesario para el Estado.",
           "statement": "Al emitir el concepto técnico-jurídico con fundamento en las políticas públicas vigentes del Estado colombiano, el Inspector I debe advertir que",
           "options": [
@@ -2988,6 +2777,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 509,
           "topic": "Marco de Referencia de Arquitectura Empresarial (MRAE) MinTIC",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo interdisciplinario diseña una nueva aplicación móvil ciudadana para facilitar la inscripción en el RUT. En el diseño inicial, los desarrolladores configuran la base de datos de la app para que transmita y almacene en claro, sin ningún tipo de cifrado ni máscara, las contraseñas, números de cuenta bancaria y datos personales de los contribuyentes, argumentando que la seguridad y el cifrado se agregarán \"en una segunda fase dentro de dos años si el presupuesto lo permite\".",
           "statement": "Al revisar la arquitectura técnica de conformidad con el Dominio de Información del Marco de Referencia de Arquitectura Empresarial (MRAE) del MinTIC, al Inspector I le corresponde",
           "options": [
@@ -3023,6 +2813,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 510,
           "topic": "Modelo Integrado de Planeación y Gestión (MIPG)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la auditoría de gestión del Modelo Integrado de Planeación y Gestión (MIPG) de la DIAN, los auditores de la función pública identifican que la entidad carece de un inventario actualizado de activos de información y que no existen indicadores formales para medir la calidad y disponibilidad de los datos utilizados en los trámites tributarios y aduaneros. El equipo directivo solicita a la Subdirección de Procesamiento de Datos una estrategia inmediata de regularización.",
           "statement": "Para responder a los requerimientos del MIPG y articular la gestión institucional con los lineamientos del DAFP y MinTIC, al profesional le corresponde",
           "options": [
@@ -3057,12 +2848,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-6": {
-      "title": "Examen Oficial: Estructura Organizacional de la DIAN (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): Estructura Organizacional de la DIAN",
       "questions": [
         {
           "id": 601,
           "topic": "Naturaleza Jurídica de la DIAN y Régimen Administrativo",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El Ministro de Hacienda y Crédito Público emite una instrucción verbal dirigida al Director de Gestión de Fiscalización de la DIAN ordenándole que archive de forma inmediata y sin fórmula de juicio una investigación tributaria formal en curso contra una empresa multinacional que es aliada comercial del gobierno de turno. El Ministro argumenta que, al ser la DIAN una entidad adscrita a su despacho, él tiene jerarquía directa para ordenar el inicio o terminación de cualquier auditoría individual.",
           "statement": "Al analizar la situación a la luz del régimen legal y la naturaleza jurídica de la DIAN (Decreto 1071 de 1999 y Ley 489 de 1998), al profesional le corresponde determinar que",
           "options": [
@@ -3098,6 +2890,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 602,
           "topic": "Estructura de la Dirección de Gestión de Innovación y Tecnología (DGIT)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la Dirección de Gestión de Innovación y Tecnología (DGIT) se presenta una discusión técnica entre dependencias. La Subdirección de Soluciones de TI insiste en que ellos deben asumir la administración directa del lago de datos DataR, procesar la Facturación Electrónica UBL 2.1 y ejecutar los modelos analíticos de detección de evasión, relegando a la Subdirección de Procesamiento de Datos a realizar únicamente mantenimiento preventivo de impresoras y formateo de computadores personales.",
           "statement": "Con base en las competencias asignadas taxativamente por el Artículo 56 del Decreto 1742 de 2020, al Inspector I le corresponde dictaminar que",
           "options": [
@@ -3133,6 +2926,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 603,
           "topic": "Tipología de Direcciones Seccionales y Desconcentración Territorial",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección Seccional de Impuestos de Bucaramanga inicia una auditoría tributaria y notifica un pliego de cargos contra una empresa petrolera cuyo domicilio social principal se encuentra registrado en Barrancabermeja. La empresa responde al requerimiento señalando que la Seccional de Bucaramanga carece de competencia territorial y funcional para auditarla, debido a que la Dirección General de la DIAN expidió hace seis meses una resolución formal calificando a la compañía como \"Gran Contribuyente\".",
           "statement": "Al analizar la validez jurídica de la excepción de incompetencia formulada por la empresa contribuyente, al profesional le corresponde determinar que",
           "options": [
@@ -3168,6 +2962,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 604,
           "topic": "Sistema Específico de Carrera (Decreto Ley 927 de 2023)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Con ocasión de la automatización masiva de los procesos analíticos en DataR, la DIAN suprime varias dependencias operativas tradicionales. Un funcionario escalafonado con derechos de carrera administrativa en el empleo de Inspector I teme ser despedido sin justa causa por la administración. El jefe de personal le informa verbalmente que los empleados de carrera en la DIAN pueden ser desvinculados libremente sin ninguna indemnización ni derecho preferente cada vez que se modernice la tecnología.",
           "statement": "Al aplicar las garantías laborales consagradas en el Decreto Ley 071 de 2020 y el Decreto Ley 927 de 2023, el Inspector I debe advertir que",
           "options": [
@@ -3203,6 +2998,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 605,
           "topic": "Instancias de Carrera y Comisiones de Personal",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En la Subdirección de Procesamiento de Datos queda vacante de forma definitiva un empleo de Gestor II (Nivel Profesional superior). Un Inspector I que cumple con todos los requisitos de educación y experiencia, y que obtuvo la calificación de desempeño más alta en el nivel sobresaliente durante el último año, solicita formalmente ser encargado en dicha vacante. El Subdirector decide ignorar su solicitud y nombrar en encargo a un familiar recién egresado que no pertenece a la carrera de la DIAN.",
           "statement": "Para hacer valer su derecho preferente de carrera frente a la vulneración cometida por el superior jerárquico, al Inspector I le corresponde",
           "options": [
@@ -3238,6 +3034,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 606,
           "topic": "Oficinas Asesoras y de Control de la Dirección General",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la implementación de un nuevo protocolo de interoperabilidad en la Subdirección de Procesamiento de Datos, un grupo de desarrolladores decide deshabilitar el cifrado de datos en reposo y abrir los puertos de red del clúster de bases de datos hacia internet para facilitar el trabajo remoto de un contratista externo. La Oficina de Seguridad de la Información (OSI) detecta la anomalía y ordena la suspensión inmediata de la conexión. Los desarrolladores alegan que la OSI es una simple oficina asesora que no puede intervenir en asuntos técnicos de procesamiento de datos.",
           "statement": "Frente a la controversia técnica y con base en el Decreto 1742 de 2020, al profesional le corresponde determinar que",
           "options": [
@@ -3273,6 +3070,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 607,
           "topic": "Relación Funcional entre DataR y Divisiones de Fiscalización Seccionales",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos del Nivel Central detecta mediante modelos de grafos en DataR una presunta red de contrabando técnico de licores que opera en la zona aduanera de Buenaventura. El equipo del Nivel Central emite un informe analítico con la lista de contenedores sospechosos de alto riesgo para que la División de Operación Aduanera de la Seccional de Buenaventura ejecute la inspección física en muelle. El Jefe de División de Buenaventura responde que el Nivel Central no puede enviarles alertas analíticas porque las seccionales son independientes y no tienen relación funcional con los científicos de datos de Bogotá.",
           "statement": "Al esclarecer la articulación funcional entre el Nivel Central y el Nivel Desconcentrado según el Decreto 1742 de 2020, al Inspector I le corresponde dictaminar que",
           "options": [
@@ -3308,6 +3106,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 608,
           "topic": "Órganos Autónomos de Garantía Ciudadana",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un ciudadano adulto mayor se acerca a las ventanillas de la DIAN denunciando que, debido a un error de homonimia en el procesamiento de datos del RUT, el sistema informático le bloqueó indebidamente sus cuentas de ahorro bancarias confundiéndolo con un gran evasor que tiene un mandamiento de pago coactivo. El funcionario de cobranzas le manifiesta con desdén que no hay nada que hacer y que debe contratar un abogado y demandar a la DIAN ante el Consejo de Estado en un proceso que tardará diez años.",
           "statement": "Para garantizar los derechos fundamentales del administrado y canalizar adecuadamente el caso dentro de la estructura institucional de la DIAN, al servidor le corresponde",
           "options": [
@@ -3343,6 +3142,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 609,
           "topic": "Estructura Orgánica y Fuerzas de Apoyo Interinstitucional",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En un puesto de control en el eje vial entre Cali y Buenaventura, funcionarios civiles de la División de Fiscalización Aduanera de la DIAN detectan una caravana de camiones de carga pesada que transporta mercancías de contrabando no declaradas. Al solicitar la detención, los conductores aceleran y varios escoltas armados de la organización delictiva amenazan a los inspectores tributarios civiles.",
           "statement": "Dentro del marco orgánico del Decreto 1742 de 2020, la instancia institucional competente para coordinar y ejecutar la interdicción armada, el uso legítimo de la fuerza pública y el aseguramiento del cargamento es la",
           "options": [
@@ -3378,6 +3178,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 610,
           "topic": "Ficha Técnica del Empleo Inspector I en el MERF",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un Inspector I recién nombrado en período de prueba en la Subdirección de Procesamiento de Datos recibe de su superior inmediato la orden de dedicar el 100% de su jornada laboral a realizar labores de vigilancia física nocturna en las puertas de acceso peatonal del edificio central de la DIAN. El empleado revisa el Manual Específico de Requisitos y Funciones vigente (Resolución 067 de 2024) y constata que su cargo pertenece al Nivel Profesional y tiene como propósito el diseño, procesamiento, analítica masiva y calidad de datos en DataR.",
           "statement": "Al responder a la asignación de tareas con fundamento en las normas del empleo público y el MERF institucional, al servidor le corresponde",
           "options": [
@@ -3412,12 +3213,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-7": {
-      "title": "Examen Oficial: 07. Gobierno y Gestión de los Servicios de Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): 07. Gobierno y Gestión de los Servicios de Datos",
       "questions": [
         {
           "id": 701,
           "topic": "Servicios de Datos Gobernados (DaaS) y Reserva Tributaria",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión de Fiscalización de la DIAN requiere cruzar diariamente la información de Facturación Electrónica con las declaraciones del Impuesto sobre la Renta presentadas en MUISCA para detectar de forma automatizada deducciones ficticias de costos y gastos. El equipo de auditores tributarios solicita a la Subdirección de Procesamiento de Datos que les entregue las credenciales maestras de la base de datos de producción de MUISCA y del repositorio de facturación, o en su defecto, que se configure un proceso que copie todas las noches las tablas completas a un servidor local de la dependencia. Como Inspector I de la Subdirección de Procesamiento de Datos asignado al proyecto, usted debe emitir el concepto técnico arquitectónico correspondiente.",
           "statement": "¿Cuál es la decisión técnica y de gobernanza que garantiza la estabilidad de los sistemas misionales, la gobernanza de la información y el cumplimiento estricto de la Reserva Tributaria?",
           "options": [
@@ -3453,6 +3255,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 702,
           "topic": "Ciclo de Vida y Versionamiento de Servicios de Datos (*Contract-First*)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El equipo de ingeniería de datos responsable de la ingesta de transacciones aduaneras en DataR necesita optimizar el almacenamiento y decide modificar el servicio <code>ServicioDeclaracionesAduanas_v1</code>. La modificación implica renombrar el atributo <code>monto_fob_dolares</code> por <code>valor_fob_usd</code> y transformar el campo de fecha de formato <code>DD/MM/YYYY</code> a timestamp estándar ISO 8601 en milisegundos. Si este cambio se aplica directamente en producción, se interrumpirá la ejecución de los modelos de Machine Learning de la Subdirección de Análisis de Riesgo que procesan las importaciones en tiempo real en los puertos. Como Inspector I, se le solicita definir el plan de versionamiento y despliegue del servicio.",
           "statement": "De acuerdo con las mejores prácticas de <em>Data Contracts</em> y versionamiento semántico, ¿qué acción debe instruir para implementar la modificación?",
           "options": [
@@ -3488,6 +3291,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 703,
           "topic": "Acuerdos de Nivel de Servicio (SLI/SLO de Frescura y Latencia)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la semana previa al vencimiento bimestral del IVA, el modelo predictivo de analítica fiscal de la DIAN genera alertas erróneas informando que cientos de grandes contribuyentes han dejado de facturar sus ventas. Al revisar los sistemas, el Inspector I observa que la API de servicios de datos de facturación responde con código HTTP 200 OK y latencia de 120 ms; sin embargo, al inspeccionar el indicador de nivel de servicio (SLI) de Frescura del Dato (<em>Data Freshness</em>), se constata que la información disponible en el Lakehouse presenta un retraso de 38 horas respecto a la emisión real de las facturas en el sistema transaccional.",
           "statement": "¿Cómo debe clasificar y gestionar técnicamente esta situación el Inspector I en la Subdirección de Procesamiento de Datos?",
           "options": [
@@ -3523,6 +3327,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 704,
           "topic": "Presupuestos de Error (Error Budget) y Disponibilidad Institucional",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos está estructurando el Acuerdo de Nivel de Servicio (SLA) para la nueva API institucional de validación del RUT, consumida por las Direcciones Seccionales, notarias y entidades financieras para verificar la inscripción y responsabilidades tributarias de los contribuyentes. Se ha establecido una meta interna (SLO) de disponibilidad del 99.9% mensual. El equipo de desarrollo propone planificar tres ventanas de mantenimiento técnico al mes que implicarán 4 horas acumuladas de indisponibilidad del servicio.",
           "statement": "Como Inspector I, al realizar el cálculo del Presupuesto de Error (<em>Error Budget</em>) mensual, ¿cuál es su concepto técnico sobre la viabilidad de la propuesta del equipo de desarrollo?",
           "options": [
@@ -3558,6 +3363,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 705,
           "topic": "Gestión de Solicitudes Externas y Convenios Interinstitucionales (Art. 585 E.T.)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Secretaría de Hacienda de un municipio de categoría especial remite una solicitud formal a la Subdirección de Procesamiento de Datos de la DIAN requiriendo la entrega masiva en archivos Excel de la información de ingresos operacionales, compras registradas y saldos bancarios de todos los contribuyentes con domicilio en su jurisdicción para los años gravables 2024 y 2025. El peticionario alega que los datos son indispensables para actualizar el censo de contribuyentes del impuesto municipal de Industria y Comercio (ICA).",
           "statement": "Conforme al marco legal colombiano y las políticas de gestión de servicios de información, ¿qué trámite debe impartir el Inspector I a esta solicitud?",
           "options": [
@@ -3593,6 +3399,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 706,
           "topic": "Observabilidad de Datos (*Data Observability*) y Disyuntores de Calidad",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El sistema de observabilidad de datos de DataR genera una alerta automática de severidad crítica en el pipeline que procesa la información exógena del Formato 1001 (Pagos o abonos en cuenta y retenciones practicadas). La alerta señala que la media de retenciones en la fuente reportadas disminuyó en un 80% respecto a la línea base histórica, y que el 45% de los registros presentan valor nulo en el campo <code>concepto_pago</code>, a pesar de que el número total de filas recibidas es idéntico al del periodo anterior.",
           "statement": "¿Cuál es la causa técnica identificada por los pilares de observabilidad y cuál es la medida de mitigación inmediata?",
           "options": [
@@ -3628,6 +3435,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 707,
           "topic": "Seguridad, Control de Acceso Granular y Enmascaramiento Dinámico (DDM)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un grupo de científicos de datos contratados por la Dirección de Gestión de Innovación y Tecnología requiere consumir los datos del servicio de Facturación Electrónica en DataR para entrenar una red neuronal que agrupe tipologías de compras por sectores económicos. Para este objetivo analítico, los contratistas no requieren conocer la identidad de los compradores ni los números de cuenta bancaria donde se realizaron las transferencias.",
           "statement": "¿Qué técnica de seguridad a nivel de servicio de datos debe implementar el Inspector I para cumplir estrictamente con el principio de minimización de datos (Ley 1581 de 2012) y la Reserva Tributaria (Art. 583 E.T.)?",
           "options": [
@@ -3663,6 +3471,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 708,
           "topic": "Gestión de Concurrencia y Políticas de Rate Limiting (Token Bucket)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una entidad pública conectada al servicio de consulta de obligaciones tributarias en DataR despliega un script automatizado mal configurado que ejecuta millones de peticiones concurrentes por segundo, consumiendo la totalidad del pool de hilos del API Gateway y elevando la latencia de respuesta para las Direcciones Seccionales de la DIAN a más de 15 segundos.",
           "statement": "¿Qué mecanismo de gestión de concurrencia debió estar configurado en el API Gateway para mitigar automáticamente este impacto sin afectar a los demás consumidores?",
           "options": [
@@ -3698,6 +3507,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 709,
           "topic": "Transparencia Pasiva y Límites de la Reserva Tributaria (Ley 1712 de 2014)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un periodista presenta un derecho de petición ante la DIAN exigiendo que, en virtud del principio de máxima publicidad y la Ley 1712 de 2014, se le entregue a través de una API o en archivos planos el listado individual de los 1.000 mayores declarantes de renta del país, detallando el NIT, la razón social, el patrimonio líquido declarado y el impuesto neto pagado en el último año gravable.",
           "statement": "Como Inspector I llamado a proyectar el concepto técnico para la respuesta jurídica, ¿cuál es el fundamento aplicable a este requerimiento?",
           "options": [
@@ -3733,6 +3543,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 710,
           "topic": "Auditoría Forense Inmutable y Trazabilidad del Artículo 583 del E.T.",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Oficina de Control Interno Disciplinario de la DIAN adelanta una investigación por presunta extorsión y fuga de información reservada de un reconocido empresario. Se sospecha que un funcionario consultó sin autorización su declaración de renta y activos en el exterior para vender dicha información a terceros. La Subdirección de Procesamiento de Datos es requerida para aportar la evidencia digital del acceso.",
           "statement": "¿Qué componentes del registro de auditoría forense del servicio de datos gobernado debe extraer el Inspector I para sustentar la investigación con plena validez probatoria?",
           "options": [
@@ -3767,12 +3578,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-8": {
-      "title": "Examen Oficial: 08. Misionalidad de la DIAN (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): 08. Misionalidad de la DIAN",
       "questions": [
         {
           "id": 801,
           "topic": "Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una sociedad comercial del sector tecnológico radicada en Bogotá sufrió severas pérdidas operacionales durante el año gravable 2024 debido a la cancelación de varios contratos internacionales, arrojando una renta líquida gravable igual a cero ($0) y un saldo a favor en retenciones en la fuente. Convencido de que la obligación de declarar solo nace cuando existe un monto positivo de impuesto a pagar, el representante legal decide no presentar la Declaración del Impuesto sobre la Renta ni reportar la Información Exógena anual. Al ser requerido por la División de Fiscalización, la empresa alega que, al no existir obligación sustancial exigible, no se le pueden imputar deberes formales ni imponer sanciones. Como Inspector I comisionado para proyectar el pliego de cargos, usted debe calificar jurídicamente la situación.",
           "statement": "De acuerdo con la dogmática del derecho tributario colombiano y el Estatuto Tributario Nacional, ¿cuál es el concepto técnico-jurídico aplicable?",
           "options": [
@@ -3808,6 +3620,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 802,
           "topic": "Vigilancia y Control Cambiario de competencia de la DIAN",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante una auditoría interinstitucional adelantada a un grupo empresarial colombiano, los inspectores descubren dos operaciones en moneda extranjera: (1) La cancelación de un crédito en dólares por valor de USD $500.000 suscrito entre la matriz y una filial extranjera para adquirir maquinaria industrial nacionalizada en Barranquilla mediante declaración de importación; y (2) La compra de acciones en la Bolsa de Valores de Tokio por valor de USD $200.000 efectuada por el presidente de la junta directiva a título personal con dineros propios depositados en una cuenta corriente no declarada. Un auditor novato propone que la Subdirección de Fiscalización Cambiaria de la DIAN asuma la investigación y formule pliego de cargos por ambas transacciones.",
           "statement": "Como Inspector I de la DIAN experto en misionalidad y régimen cambiario, ¿cómo debe instruir la delimitación funcional de las competencias investigativas?",
           "options": [
@@ -3843,6 +3656,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 803,
           "topic": "Obligación Aduanera, Regímenes y Control Aduanero",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el puerto marítimo de Buenaventura arriba un buque portacontenedores con un cargamento de 50 toneladas de calzado y textiles procedentes de Asia, declarado formalmente bajo el régimen de importación ordinaria. El importador es una empresa constituida hace un mes con un capital suscrito de apenas $2.000.000 de pesos, cuyo representante legal registra antecedentes de incumplimiento en el RUT. No obstante, al momento de radicar la declaración aduanera y solicitar el desaduanamiento, el apoderado exige que se le otorgue de forma inmediata el levante automático, argumentando que sus tributos aduaneros fueron liquidados y pagados en el banco y que cualquier demora en el puerto viola el principio de facilitación del comercio internacional.",
           "statement": "En el marco de las fases de control aduanero y la gestión de riesgo de la DIAN, ¿cuál es la actuación que legal y técnicamente corresponde aplicar?",
           "options": [
@@ -3878,6 +3692,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 804,
           "topic": "Régimen Sancionatorio Cambiario (Decreto Ley 2245 de 2011)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una empresa importadora de repuestos industriales domiciliada en Cúcuta acordó con su proveedor extranjero en el exterior que, para ahorrarse las comisiones bancarias y las retenciones financieras de los bancos comerciales, pagaría un embarque de autopartes por valor de USD $80.000 entregando dinero en efectivo en pesos colombianos y dólares a un transportador particular no autorizado en la frontera, quien a su vez transfirió fondos mediante billeteras virtuales no reguladas en el extranjero. La operación no fue registrada mediante Declaración de Cambio ante ningún Intermediario del Mercado Cambiario (IMC) ni a través de una Cuenta de Compensación registrada.",
           "statement": "Al detectar este hecho mediante el cruce de datos aduaneros en DataR, ¿qué sanción debe proyectar el Inspector I conforme al Decreto Ley 2245 de 2011?",
           "options": [
@@ -3913,6 +3728,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 805,
           "topic": "Principios del Sistema Tributario (Artículo 363 C.P.)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El Congreso de la República aprueba una Ley de Reforma Tributaria que es promulgada en el Diario Oficial el día 20 de diciembre de 2024. Dicha ley crea una sobretasa especial del 5% sobre el Impuesto sobre la Renta para empresas del sector servicios. En febrero de 2025, un Director Seccional de Impuestos emite una instrucción interna ordenando a los inspectores tributarios exigir la sobretasa del 5% sobre las rentas líquidas obtenidas por las empresas durante la totalidad del año gravable 2024, aduciendo que la declaración correspondiente a ese año vence en abril de 2025 y por tanto la ley ya se encuentra vigente al momento de presentar el formulario.",
           "statement": "Al analizar la legalidad de la instrucción a la luz del Artículo 363 de la Constitución Política y el Artículo 338 constitucional, el Inspector I debe concluir que:",
           "options": [
@@ -3948,6 +3764,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 806,
           "topic": "Planeación Estratégica, MIPG y Transformación Digital",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Una pequeña y mediana empresa (MiPyME) proveedora de insumos médicos emite una factura electrónica de venta a crédito a una clínica privada con un plazo de pago de 90 días. Con el propósito de obtener liquidez inmediata para pagar su nómina, la empresa decide ceder y descontar dicha factura ante una entidad de financiamiento (<em>Factoring</em>). Sin embargo, el pagador (la clínica) se niega a registrar electrónicamente el Acuse de Recibo de la factura y el Recibo de las Mercancías en los servicios web de la DIAN, bloqueando la posibilidad de que la factura se convierta formalmente en Título Valor.",
           "statement": "¿Cuál es la función tecnológica y legal que cumple la plataforma institucional <strong>RADIAN</strong> administrada por la DIAN en este escenario económico?",
           "options": [
@@ -3983,6 +3800,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 807,
           "topic": "Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En una mesa de trabajo en la Subdirección de Procesamiento de Datos, se diseñan los algoritmos de validación previa de facturación electrónica y devolución automática de saldos a favor. Un programador pregunta la diferencia dogmática y contable entre los bienes clasificados como <strong>Exentos</strong> y los bienes clasificados como <strong>Excluidos</strong> en el Impuesto sobre las Ventas (IVA), para programar correctamente las reglas de cálculo en el motor de reglas de DataR.",
           "statement": "¿Cuál es la definición exacta que el Inspector I debe proporcionar para parametrizar el algoritmo de validación fiscal?",
           "options": [
@@ -4018,6 +3836,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 808,
           "topic": "Obligación Aduanera, Regímenes y Lucha contra el Contrabando",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En un operativo de control aduanero posterior en una bodega comercial de Bogotá, inspectores de fiscalización aduanera y agentes de la POLFA descubren un inventario de 500 computadores portátiles importados. El tenedor presenta una fotocopia ilegible de una declaración de importación en la que no coinciden los números de serie de los equipos ni se identifica el manifiesto de carga. La comisión redacta el acta de aprehensión de la mercancía. El comerciante acude al día siguiente a la Dirección Seccional exigiendo que se le indemnice por haberle \"expropiado definitivamente sus bienes sin un juicio previo\".",
           "statement": "Al responder jurídicamente la reclamación ciudadana, el Inspector I debe explicar la naturaleza de la medida cautelar señalando que:",
           "options": [
@@ -4053,6 +3872,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 809,
           "topic": "Planeación Estratégica, MIPG y Transformación Digital",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el marco de la auditoría de gestión institucional realizada bajo el Modelo Integrado de Planeación y Gestión (MIPG), la Oficina de Control Interno de la DIAN emite un hallazgo señalando que varias divisiones operativas continúan gestionando expedientes en carpetas locales de computadores personales, generando riesgos de pérdida de información, desactualización de cifras en los tableros de control directivo y potenciales fugas de datos amparados por reserva tributaria (Art. 583 E.T.). Como Inspector I en la Subdirección de Procesamiento de Datos, se le encomienda proponer la solución técnica integral alineada con las directrices del MIPG.",
           "statement": "¿Cuál es la estrategia institucional que solventa el hallazgo de auditoría fortaleciendo la dimensión de Información y Comunicación del MIPG?",
           "options": [
@@ -4088,6 +3908,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 810,
           "topic": "Objeto Misional y Seguridad Fiscal del Estado Colombiano",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El equipo de analistas de la Subdirección de Procesamiento de Datos identifica en DataR una red criminal compuesta por 45 empresas de papel (<em>Sociedades Fantasma o Proveedores Ficticios</em>) que han emitido más de $500.000 millones de pesos en facturas electrónicas falsas por supuestos servicios de consultoría y publicidad a grandes contribuyentes del país, quienes utilizaron dichas facturas para inflar artificialmente sus costos y deducciones en el impuesto de renta y disminuir indebidamente el IVA a pagar. Al consultar la actuación misional procedente, se discute si la DIAN debe limitarse a cobrar los intereses a las empresas fantasmas o coordinar una acción de mayor impacto estatal.",
           "statement": "En cumplimiento del objeto superior de la DIAN y la protección de la Seguridad Fiscal del Estado, ¿cuál es el curso de acción institucional integral que debe ejecutarse?",
           "options": [
@@ -4122,12 +3943,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-9": {
-      "title": "Examen Oficial: 09. Modelado y Repositorios de Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): 09. Modelado y Repositorios de Datos",
       "questions": [
         {
           "id": 901,
           "topic": "Modelado Relacional vs. Dimensional (Kimball frente a Inmon y Data Vault 2.0)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos de la DIAN está diseñando la capa intermedia de consolidación del repositorio DataR, la cual debe integrar diariamente cientos de millones de registros provenientes de sistemas heterogéneos (Facturación Electrónica UBL 2.1, Registro Único Tributario en MUISCA, Manifiestos de Carga en SYGA y declaraciones aduaneras). El requerimiento técnico no negociable exige: (1) Carga masiva en paralelo sin bloqueos referenciales; (2) Trazabilidad forense inmutable de la fuente original (<em>Record Source</em>) y fecha de carga para auditorías fiscales; y (3) Capacidad de incorporar nuevas fuentes y relaciones de negocio en el futuro sin necesidad de rediseñar las tablas preexistentes ni reprocesar la historia.",
           "statement": "Como Inspector I de la Subdirección de Procesamiento de Datos, ¿cuál es el paradigma de modelado que debe seleccionar y recomendar para estructurar esta capa del repositorio?",
           "options": [
@@ -4163,6 +3985,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 902,
           "topic": "Normalización (1FN a 3FN/BCNF) frente a Desnormalización Analítica",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el proceso de modernización del subsistema transaccional de radicación de declaraciones tributarias, un equipo de desarrollo propone la creación de una tabla denominada <code>Declaracion_Contribuyente</code> que contiene las siguientes columnas: <code>Numero_Formulario</code> (Clave Primaria), <code>Fecha_Presentacion</code>, <code>NIT_Contribuyente</code>, <code>Razon_Social</code>, <code>Codigo_Municipio_Domicilio</code>, <code>Nombre_Municipio</code> y <code>Nombre_Departamento</code>. El arquitecto advierte que la estructura contiene anomalías de actualización que violan las reglas de normalización formal de Codd.",
           "statement": "¿Qué forma normal está siendo violada en esta tabla y cuál es la refactorización relacional obligatoria?",
           "options": [
@@ -4198,6 +4021,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 903,
           "topic": "Modelado Dimensional Avanzado: Dimensiones Lentamente Cambiantes (SCD)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La empresa \"Logística del Caribe S.A.S.\" tuvo su domicilio fiscal en la ciudad de Barranquilla (Dirección Seccional Barranquilla) durante los años 2021, 2022 y 2023. El 1 de marzo de 2024, la sociedad trasladó formalmente su domicilio a Bogotá (Dirección Seccional de Impuestos de Bogotá) y actualizó su RUT. En julio de 2024, la Subdirección de Fiscalización ejecuta en DataR un programa analítico para fiscalizar las declaraciones del IVA presentadas durante el año gravable 2022. Si la dimensión de contribuyentes estuviese modelada bajo <strong>SCD Tipo 1</strong>, la consulta asociaría automáticamente a la empresa con la seccional de Bogotá, enviando una orden de fiscalización a inspectores que carecen de competencia territorial para el periodo 2022.",
           "statement": "Para garantizar la validez jurídica de la fiscalización y la correcta competencia territorial, ¿cómo debe estar diseñada la tabla <code>Dim_Contribuyente</code> bajo el estándar dimensional de Ralph Kimball?",
           "options": [
@@ -4233,6 +4057,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 904,
           "topic": "Modelado Dimensional Avanzado: Hechos, Jerarquías y Métricas",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un analista de la Dirección de Gestión de Recaudo y Cobranzas construye un tablero en Power BI conectado a la tabla de hechos <code>Fact_Saldos_Cartera_Morosa</code> en DataR. La tabla registra diariamente el saldo de la deuda vencida de cada contribuyente moroso. Al estructurar el reporte anual de cartera consolidada, el analista configura la medida en el tablero aplicando la función <code>SUM(Monto_Saldo_Deuda)</code> a lo largo de los 365 días del año para presentar el \"saldo total de deuda del año 2024\". El tablero arroja una cifra absurda equivalente a 365 veces la deuda real del país.",
           "statement": "Como Inspector I comisionado para revisar la calidad del modelo de datos, ¿cuál es el error técnico cometido por el analista y cómo debe definirse la métrica?",
           "options": [
@@ -4268,6 +4093,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 905,
           "topic": "Formatos de Archivo Modernos y Gobernanza de Almacenamiento",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos está modernizando la arquitectura de ingesta de la Facturación Electrónica en tiempo real, la cual recibe más de 30 millones de eventos transaccionales al día a través de clústeres de Apache Kafka. Un ingeniero junior propone que cada mensaje de factura individual sea serializado directamente como un archivo independiente en formato <strong>Apache Parquet</strong> dentro del almacenamiento de objetos, argumentando que Parquet es el mejor formato analítico de la industria.",
           "statement": "Al realizar la evaluación de arquitectura y gobernanza del almacenamiento, ¿qué instrucción debe impartir el Inspector I?",
           "options": [
@@ -4303,6 +4129,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 906,
           "topic": "Repositorios Especializados: RDBMS frente a Data Warehouses (Columnar / MPP)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección General de la DIAN solicita con carácter urgente un informe macroeconómico que determine el valor total recaudado por concepto de IVA general del 19% durante los últimos cinco años, analizando una tabla histórica de 4.000 millones de registros de facturación con 60 columnas por registro. En la base de datos relacional orientada a filas (<em>Row-Store</em>) del sistema operacional, la consulta tardó más de 8 horas y finalmente falló por agotamiento de memoria temporal. Al trasladar la misma consulta al repositorio analítico columnar de DataR, la consulta respondió en tan solo 14 segundos.",
           "statement": "¿Cuál es la razón arquitectónica fundamental que explica la reducción dramática en el tiempo de respuesta del repositorio columnar?",
           "options": [
@@ -4338,6 +4165,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 907,
           "topic": "Repositorios Especializados: Lakehouses y Formatos de Tabla Abierta",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En un proceso de cobro coactivo contra una empresa de contrabando de hidrocarburos, el apoderado judicial del demandado alega ante el Tribunal Administrativo que la liquidación oficial de revisión emitida por la DIAN en mayo de 2023 se basó en cifras adulteradas que no correspondían a los registros existentes en esa fecha específica. La Subdirección de Procesamiento de Datos es requerida por la Dirección de Gestión Jurídica para reconstruir el estado exacto de la tabla de declaraciones aduaneras tal como existía el 15 de mayo de 2023 a las 11:59:00 PM, sin alterar los datos vigentes en 2026.",
           "statement": "¿Qué característica técnica de los formatos de tabla abierta modernos (como Apache Iceberg sobre DataR) permite satisfacer el requerimiento judicial con plena validez probatoria?",
           "options": [
@@ -4373,6 +4201,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 908,
           "topic": "Modelado Dimensional Avanzado: Hechos, Jerarquías y Métricas",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Fiscalización Aduanera requiere un modelo analítico en DataR para auditar el cumplimiento de los controles de seguridad en las zonas primarias aduaneras de los puertos. Específicamente, se requiere registrar qué funcionarios aduaneros estuvieron asignados y presentes en qué muelles de carga, en qué turnos específicos y con qué facultades de inspección vigentes, independientemente de si en ese turno particular se realizaron o no inspecciones efectivas con decomisos de mercancías. Un modelador afirma que no es posible construir una tabla de hechos dimensional porque no existe ninguna métrica numérica que sumar (no hay montos de dinero ni recuentos de incautaciones obligatorios).",
           "statement": "Como Inspector I experto en modelado de Ralph Kimball, ¿cuál es la solución técnica que resuelve esta necesidad analítica?",
           "options": [
@@ -4408,6 +4237,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 909,
           "topic": "Formatos de Archivo Modernos y Gobernanza de Almacenamiento",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El volumen del Repositorio Único DataR supera actualmente los 10 Petabytes de información tributaria y aduanera almacenada en la nube, generando alertas en la Dirección de Gestión Corporativa por los elevados costos mensuales de infraestructura. Al auditar las tablas de la capa Oro destinadas al entrenamiento de redes neuronales y consultas analíticas interactivas frecuentes de fiscalización, el Inspector I observa que los archivos Parquet fueron configurados con compresión <strong>GZIP en nivel máximo</strong>, lo que provoca que cada consulta analítica consuma el 100% de la CPU de los clústeres de cómputo durante la fase de descompresión, elevando la factura de cómputo elástico.",
           "statement": "¿Cuál es la recomendación técnica y de optimización FinOps para equilibrar el espacio de almacenamiento y la eficiencia computacional en estas capas analíticas de alta concurrencia?",
           "options": [
@@ -4443,6 +4273,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 910,
           "topic": "Implementación Práctica del Modelo Dimensional sobre DataR",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos ejecuta un algoritmo de detección de fraude sobre la <strong>Vista 360 del Contribuyente</strong> en DataR. El algoritmo cruza la tabla de hechos de facturación electrónica con la dimensión de contribuyentes y la información exógena bancaria. Se detecta una empresa \"Comercializadora Fantasma S.A.S.\" que en su primer año de constitución emitió facturas electrónicas por $40.000 millones de pesos a 15 grandes empresas mineras por supuestos servicios de asesoría geológica. Sin embargo, al consultar la dimensión de nómina electrónica, la empresa registra cero (0) trabajadores contratados; en la dimensión de activos fijos no posee vehículos ni oficinas; y en las declaraciones aduaneras no registra importación de maquinaria especializada.",
           "statement": "En el marco de la gobernanza de datos y la fiscalización analítica de la DIAN, ¿cuál es el resultado técnico que genera este cruce dimensional sobre DataR?",
           "options": [
@@ -4477,12 +4308,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-10": {
-      "title": "Examen Oficial: 10. Razonamiento Analítico (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): 10. Razonamiento Analítico",
       "questions": [
         {
           "id": 1001,
           "topic": "Fundamentos del Razonamiento Analítico y Pensamiento Crítico",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En un proceso de perfilamiento en DataR, el Inspector I observa una situación tributaria inusual: una empresa de construcción domiciliada en Soacha facturó $15.000 millones de pesos en servicios de movimiento de tierras a empresas mineras durante el último semestre. Sin embargo, en el cruce de datos con la Nómina Electrónica no registra ni un solo trabajador afiliado; en las declaraciones aduaneras de SYGA no registra maquinaria pesada importada; y en los registros de activos fijos de su balance no posee vehículos ni maquinaria propia. Al analizar el caso, un analista afirma que \"deductivamente ya está probado el delito de estafa y que no se requiere más trámite que dictar orden de captura\".",
           "statement": "Desde la perspectiva de la epistemología analítica y la dogmática probatoria de la DIAN, ¿cómo debe clasificar y gestionar técnicamente este razonamiento el Inspector I?",
           "options": [
@@ -4518,6 +4350,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1002,
           "topic": "Metodologías Estructuradas de Resolución de Problemas y Causa Raíz",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Durante la campaña de Declaración de Renta Sugerida para Personas Naturales del año gravable 2024, más de 50.000 ciudadanos radicaron quejas formales ante la Defensoría del Contribuyente alegando que la DIAN les imputó retenciones en la fuente duplicadas en sus borradores sugeridos, haciéndoles parecer saldos a favor inexistentes que luego fueron objetados por el sistema. El equipo de soporte técnico propone corregir el problema reiniciando los servidores web de atención y borrando manualmente las quejas de la base de datos para no afectar los indicadores de gestión de servicio.",
           "statement": "Como Inspector I de la Subdirección de Procesamiento de Datos, ¿cuál es la metodología analítica estructurada que debe liderar para resolver definitivamente el incidente?",
           "options": [
@@ -4553,6 +4386,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1003,
           "topic": "Razonamiento Cuantitativo, Inferencia Estadística y Datos Fiscales",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión de Fiscalización requiere fijar un umbral de alerta automática en DataR para detectar médicos especialistas que deduzcan costos desproporcionados en su declaración de renta. Para el segmento de \"Médicos Cirujanos\", se analiza una muestra de 5.000 profesionales. El 98% de ellos deduce entre $40 millones y $80 millones de pesos al año. Sin embargo, cinco reconocidos cirujanos plásticos propietarios de clínicas de alta gama dedujeron sumas extraordinarias superiores a $20.000 millones de pesos cada uno. Un auditor novato calcula la <strong>Media Aritmética</strong> de costos ($240 millones) y propone programar la alerta para investigar únicamente a quienes deduzcan más de $300 millones de pesos.",
           "statement": "Al revisar la consistencia matemática y económica del modelo analítico, el Inspector I debe conceptuar que:",
           "options": [
@@ -4588,6 +4422,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1004,
           "topic": "Razonamiento Cuantitativo, Inferencia Estadística y Datos Fiscales",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En una auditoría analítica adelantada a un contratista de obras públicas que reportó $50.000 millones en costos soportados en 12.000 facturas electrónicas emitidas por ferreterías y proveedores de materiales, el Inspector I corre una prueba automatizada de la <strong>Ley de Benford</strong> en DataR sobre el primer dígito del valor total de cada factura. La prueba estadística de Chi-cuadrado ($\\chi^2$) arroja un resultado anómalo: el dígito 1 solo aparece como primer dígito en el 4% de las facturas (cuando Benford predice un 30.1%), mientras que los dígitos 4 y 5 aparecen en el 72% de los documentos, concentrándose masivamente en valores entre $48.000.000 y $49.500.000.",
           "statement": "¿Cuál es la inferencia analítica que se desprende de este hallazgo y qué actuación administrativa debe recomendar el Inspector I?",
           "options": [
@@ -4623,6 +4458,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1005,
           "topic": "Razonamiento Cuantitativo e Inferencia Estadística",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Dirección de Gestión Estratégica y Analítica analiza la efectividad del cobro coactivo comparando la Seccional Cali y la Seccional Medellín. Al segmentar los datos por tipo de cartera, los resultados muestran que: (1) En cobro a personas naturales, Cali recuperó el 45% de la cartera frente al 35% de Medellín; y (2) En cobro a personas jurídicas, Cali recuperó el 75% frente al 65% de Medellín. Sin embargo, al publicar el informe global agregado del país sin desglosar, Medellín aparece con una tasa de recuperación global del 58% y Cali con solo el 50%. El Subdirector, confundido por las cifras globales, propone sancionar a la seccional Cali por bajo desempeño.",
           "statement": "Al intervenir como Inspector I experto en análisis de datos, ¿cómo debe explicar técnicamente esta contradicción aparente?",
           "options": [
@@ -4658,6 +4494,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1006,
           "topic": "Pensamiento Sistémico, Modelado de Procesos y Teoría de Restricciones (TOC)",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El Gobierno Nacional estableció por decreto que las solicitudes de devolución automática de saldos a favor en el IVA y Renta para contribuyentes de bajo riesgo deben resolverse en un plazo máximo de quince (15) días hábiles. Al evaluar el proceso integral en la DIAN, se observa el siguiente flujo: (1) Radicación electrónica en el portal (1 hora); (2) Cruce automatizado de retenciones en DataR (2 horas); (3) Evaluación de riesgo crediticio (1 hora); y (4) Asignación y revisión documental manual en la división seccional correspondiente (18 días en cola de espera por falta de personal). El equipo de tecnología solicita $5.000 millones de pesos para comprar un nuevo servidor que acelere el cruce de datos de 2 horas a 10 minutos.",
           "statement": "A la luz de la Teoría de Restricciones de Goldratt (TOC), ¿cuál es el concepto técnico que el Inspector I debe emitir sobre la inversión solicitada?",
           "options": [
@@ -4693,6 +4530,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1007,
           "topic": "Pensamiento Sistémico y Dinámica de Sistemas",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Para elevar el recaudo tributario a corto plazo, una Dirección Seccional decide suspender temporalmente todas las visitas de auditoría e inspección física en terreno para trasladar al 100% de sus inspectores a labores de cobro coactivo telefónico sobre deudas ya prescritas de difícil cobro. En el primer mes, el recaudo reporta un incremento marginal transitorio; sin embargo, al cabo de seis meses, la emisión de facturas electrónicas en los comercios de la ciudad disminuye en un 35% y se dispara la informalidad y la evasión en el comercio minorista.",
           "statement": "¿Cómo explica el Inspector I este resultado a través de los bucles de retroalimentación de la dinámica de sistemas?",
           "options": [
@@ -4728,6 +4566,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1008,
           "topic": "Metodologías Estructuradas de Resolución de Problemas y RCA",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Procesamiento de Datos implementa un modelo de Machine Learning en DataR para calificar el riesgo aduanero de contrabando en los contenedores que ingresan por el puerto de Cartagena. Al ejecutar el <strong>Análisis de Modos y Efectos de Falla (FMEA)</strong>, se identifica el siguiente modo de falla: <em>\"Pérdida de conectividad con la base de datos de antecedentes de Interpol durante la noche, asignando por defecto una calificación de riesgo cero (0) a todos los contenedores no verificados\"</em>. La evaluación arroja: Severidad = 10 (entrada potencial de contrabando o armas); Ocurrencia = 6 (frecuente por cortes de enlace internacional); y Detección = 8 (el sistema no genera alerta visual en la pantalla del inspector de turno).",
           "statement": "¿Cuál es el Número de Prioridad de Riesgo (NPR) calculado y qué medida correctiva obligatoria debe ordenar el Inspector I?",
           "options": [
@@ -4763,6 +4602,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1009,
           "topic": "Razonamiento Analítico en Casos Complejos de Fiscalización",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Dos grandes accionistas de una empresa colombiana deciden vender el 100% de sus acciones a un fondo de inversión extranjero por valor de $100.000 millones de pesos, operación que generaría un impuesto de ganancia ocasional de $15.000 millones. Para evitar el pago, crean el mismo día una fundación sin ánimo de lucro en un paraíso fiscal, le donan las acciones en papel, y la fundación vende las acciones al fondo, girando el dinero a cuentas personales de los accionistas bajo la figura de \"préstamos de honorarios no reembolsables\". Los contribuyentes argumentan que cada contrato individual es legalmente válido conforme al Código Civil y que la DIAN no puede intervenir.",
           "statement": "Al estructurar el pliego de cargos aplicando el razonamiento analítico de la <strong>Cláusula General Antielusiva (Artículo 869 del Estatuto Tributario)</strong>, ¿cuál es el argumento técnico-jurídico que debe formular el Inspector I?",
           "options": [
@@ -4798,6 +4638,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1010,
           "topic": "Fundamentos del Razonamiento Analítico y Pensamiento Crítico",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo de fiscalización tributaria recibe una denuncia ciudadana anónima en la que se afirma que un reconocido restaurante de la ciudad vende alimentos sin expedir factura electrónica y que oculta sus ingresos mediante transferencias por aplicaciones de pago móvil. El auditor líder, convencido de la culpabilidad del investigado, proyecta una Liquidación Oficial de Aforo por $2.000 millones de pesos, utilizando únicamente como prueba tres capturas de pantalla de chats aportadas por el denunciante. El auditor se niega a solicitar los extractos bancarios de las billeteras móviles ni a cotejar las facturas electrónicas que el restaurante demuestra haber emitido en el sistema de la DIAN por más de $1.800 millones.",
           "statement": "Como Inspector I asignado a la revisión del expediente antes de su firma, ¿qué falla analítica identifica y qué instrucción correctiva debe impartir?",
           "options": [
@@ -4832,12 +4673,13 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-11": {
-      "title": "Examen Oficial: 11. Seguridad, Integridad y Disponibilidad de los Datos (10 Preguntas PJS)",
+      "title": "Simulador Oficial (10 Preguntas PJS): 11. Seguridad, Integridad y Disponibilidad de los Datos",
       "questions": [
         {
           "id": 1101,
           "topic": "La Tríada de Seguridad de la Información (CID) y Reserva Tributaria",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un funcionario de carrera que se desempeña como Inspector I en la Dirección Seccional de Impuestos de Medellín recibe la visita de un amigo de la infancia, quien es candidato a la alcaldía de un municipio cercano. El candidato le pide el favor informal de ingresar a los sistemas de DataR y revisar la declaración de renta y las facturas electrónicas de su principal contrincante político, para verificar si es cierto que posee propiedades no declaradas y denunciarlo en un debate público. El candidato le asegura que no habrá copia física y que solo le basta con ver la pantalla durante treinta segundos.",
           "statement": "De acuerdo con el Artículo 583 del Estatuto Tributario, la Ley 1273 de 2009 y el régimen disciplinario de la DIAN (Decreto Ley 927 de 2023), ¿cuál es la conducta legal y técnica que debe adoptar el Inspector I?",
           "options": [
@@ -4873,6 +4715,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1102,
           "topic": "Ciberseguridad Ofensiva/Defensiva y Gestión de Vulnerabilidades",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El Centro de Operaciones de Seguridad (SOC) de la DIAN detecta a las 11:00 PM de un viernes una vulnerabilidad crítica de día cero de ejecución remota de código (<strong>RCE con puntaje CVSS de 10.0</strong>) en el software del API Gateway que recibe y valida las declaraciones aduaneras de importación en todos los puertos marítimos del país. Los atacantes ya han comenzado a escanear masivamente los endpoints institucionales. El fabricante del software no ha publicado un parche oficial y la única medida técnica efectiva para evitar el secuestro y robo masivo de la base de datos es deshabilitar de inmediato el endpoint vulnerable mientras se aplica un parche temporal propio (<em>Virtual Patching</em> en el WAF), lo cual suspenderá temporalmente la radicación de importaciones durante tres horas.",
           "statement": "Al ser consultado en el comité de emergencia de ciberseguridad, ¿cuál es la decisión arquitectónica que debe respaldar el Inspector I aplicando los principios del SGSI (ISO/IEC 27001)?",
           "options": [
@@ -4908,6 +4751,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1103,
           "topic": "Criptografía Aplicada y Protección de Datos en Reposo",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En el diseño de la arquitectura de almacenamiento del lago de datos DataR en la nube, un proveedor tecnológico sugiere almacenar las tablas de la capa Oro en buckets de almacenamiento sin cifrar o utilizando llaves administradas por el proveedor en texto plano, argumentando que \"las bases de datos ya se encuentran detrás del firewall corporativo y que cifrar con AES-256 incrementa innecesariamente el tiempo de procesamiento de las consultas de Machine Learning en un 3%\".",
           "statement": "Como Inspector I de la Subdirección de Procesamiento de Datos, ¿cuál es el requerimiento de seguridad criptográfica no negociable que debe imponer al diseño?",
           "options": [
@@ -4943,6 +4787,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1104,
           "topic": "Continuidad del Negocio, Alta Disponibilidad y DRP/BCP",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un ataque sofisticado de ransomware logra vulnerar un controlador de dominio en la red corporativa de la DIAN y comienza a cifrar los servidores de base de datos donde se almacenan las facturas electrónicas emitidas en las últimas 48 horas. Afortunadamente, el sistema de alertas tempranas del SOC aísla la red. El Comité de Continuidad de Negocio se reúne para activar el Plan de Recuperación ante Desastres (DRP). El Director exige saber cuántos datos se perdieron y cuánto tiempo tardará el restablecimiento del servicio.",
           "statement": "¿Qué parámetros técnicos definidos en el DRP debe utilizar el Inspector I para explicar la situación y coordinar la restauración?",
           "options": [
@@ -4978,6 +4823,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1105,
           "topic": "Ciberseguridad Ofensiva/Defensiva y Auditoría Forense",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Oficina de Control Interno Disciplinario de la DIAN sorprende en flagrancia a un contratista de desarrollo informático descargando en una memoria USB personal más de 50.000 declaraciones del impuesto sobre la renta de personas expuestas políticamente (PEP). Un inspector novato propone apagar inmediatamente el computador de escritorio del contratista desconectando el cable de la pared y formatear la memoria USB para \"destruir la fuga y evitar el escándalo público\".",
           "statement": "Como Inspector I experto en informática forense, ¿cuál es el procedimiento probatorio estricto que debe ordenar para preservar la validez de la evidencia ante la Fiscalía General de la Nación?",
           "options": [
@@ -5013,6 +4859,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1106,
           "topic": "Continuidad del Negocio, Alta Disponibilidad y DRP/BCP",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "El día del vencimiento del plazo improrrogable para la presentación de la declaración de retención en la fuente (Formulario 350) para los contribuyentes con NIT terminado en 1 y 2, se produce un corte general de fibra óptica submarina que interrumpe los enlaces de comunicación externos de los centros de cómputo de la DIAN a las 2:00 PM. A pesar de los esfuerzos del equipo de infraestructura, el servicio de radicación en línea permanece inaccesible hasta las 11:59 PM. Cientos de miles de agentes de retención no pudieron radicar sus formularios ni pagar el impuesto dentro del término legal.",
           "statement": "¿Qué medida administrativa y jurídica reglada debe adoptar la Dirección General de la DIAN con base en el concepto técnico de la Subdirección de Procesamiento de Datos?",
           "options": [
@@ -5048,6 +4895,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1107,
           "topic": "Criptografía Aplicada y Protección de Datos en Reposo",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Subdirección de Análisis de Riesgo va a suministrar una base de datos de 20 millones de transacciones de facturación electrónica a una universidad pública para una investigación académica sobre redes de evasión. Para proteger la identidad de los contribuyentes, un ingeniero propone aplicar simplemente la función hash <code>SHA-256(NIT)</code> sobre el número de identificación tributaria sin añadir ningún componente adicional. El Inspector I advierte que, debido a que el espacio de búsqueda de los NITs en Colombia es muy pequeño (números de 9 a 10 dígitos), cualquier atacante puede generar una <strong>Tabla Arcoíris (<em>Rainbow Table</em>)</strong> en pocos minutos y revertir la totalidad de las identidades de los contribuyentes.",
           "statement": "¿Qué técnica criptográfica debe implementar el Inspector I para blindar matemáticamente la seudonimización antes de entregar la información?",
           "options": [
@@ -5083,6 +4931,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1108,
           "topic": "La Tríada CID y el Modelo de Defensa en Profundidad",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "En una auditoría de seguridad perimetral a la red de la DIAN, se descubre que cualquier computador de escritorio conectado a la red cableada de las Direcciones Seccionales (ej. Seccional Leticia o Girardot) tiene acceso directo a nivel de protocolo TCP a los puertos de administración de los clústeres de almacenamiento de DataR en el centro de datos principal de Bogotá. Si un computador local de una ventanilla se infecta con un troyano, el atacante podría desplazarse lateralmente y comprometer el núcleo de la base de datos nacional.",
           "statement": "¿Cuál es la directriz arquitectónica que el Inspector I debe ordenar para contener el movimiento lateral en la red institucional?",
           "options": [
@@ -5118,6 +4967,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1109,
           "topic": "Marco Normativo de Seguridad, Privacidad y Estándar ISO/IEC 27001",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "Un equipo de desarrollo de la Dirección de Gestión de Innovación y Tecnología finaliza la construcción de una nueva API REST que permite a los jueces de la república consultar medidas cautelares sobre cuentas bancarias embargadas por la DIAN. Para cumplir con el cronograma de entrega del Plan Estratégico, el líder técnico solicita desplegar la API directamente en producción sin someter el código a pruebas de análisis estático de seguridad (SAST) ni dinámico (DAST), asegurando que \"el código fue escrito por ingenieros muy experimentados y no tiene errores\".",
           "statement": "A la luz de los controles de seguridad en el ciclo de vida del software (ISO/IEC 27001 Anexo A y DevSecOps), ¿qué acción debe instruir el Inspector I?",
           "options": [
@@ -5153,6 +5003,7 @@ window.COURSES_DATA['inspector1'] = {
           "id": 1110,
           "topic": "Ciberseguridad Ofensiva/Defensiva y Auditoría Forense",
           "level": "Profesional (Inspector I - OPEC 236670)",
+          "subescala": null,
           "caseText": "La Oficina de Seguridad de la Información (OSI) de la DIAN recibe una alerta del SIEM reportando que un usuario con perfil de administrador en la Subdirección de Procesamiento de Datos ejecutó a las 2:30 AM un comando de volcado masivo (<code>pg_dump</code>) exportando la tabla completa de Declaraciones de Importación de Armamento y Material Bélico de los últimos tres años hacia una dirección IP externa en Europa Oriental. Al ser interrogado, el funcionario alega que su cuenta fue suplantada y que él no se encontraba despierto a esa hora.",
           "statement": "¿Qué evidencias técnicas del sistema de auditoría forense inmutable debe consolidar el Inspector I para sustentar el informe pericial ante la Dirección General y los organismos de investigación judicial?",
           "options": [

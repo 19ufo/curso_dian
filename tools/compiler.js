@@ -324,22 +324,28 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
         });
     }
 
-    // 6. Extraer Preguntas PJS del Simulador (Exactamente 3 opciones A, B y C según GOA Areandina)
-    const examSecMatch = content.match(/##\s*(?:\d+\.\s*)?Simulador Oficial de Examen[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i);
+    // 6. Extraer Preguntas PJS del Simulador y Afirmaciones Likert
+    const examSecMatch = content.match(/##\s*(?:(?:Unidad\s*\d+:|\d+\.)\s*)?(?:Simulador Oficial de Examen|Laboratorio de Entrenamiento|Simulador)[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Flashcards|\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i) ||
+                         content.match(/##\s*(?:(?:Unidad\s*\d+:|\d+\.)\s*)?Simulador Oficial de Examen[\s\S]*?(?=\n##\s*(?:\d+\.\s*)?Checklist|\n##\s*(?:\d+\.\s*)?Lecturas|$)/i);
     const questions = [];
     if (examSecMatch) {
         const qSec = examSecMatch[0];
-        const qBlocks = qSec.split(/###\s*Pregunta PJS\s*\d+:/i).slice(1);
+        const qBlocks = qSec.split(/###\s*(?:Pregunta PJS|Ítem Likert|Ítem Psicométrico|Pregunta Likert|Caso Conductual|Caso PJS|Pregunta|Ítem)\s*\d*:/i).slice(1);
         qBlocks.forEach((block, qIdx) => {
-            const topic = (block.match(/\*\*Eje Temático:\*\*\s*(.*?)(?:\n|$)/) || [])[1] || `Tema Módulo ${modNum}`;
-            const nivel = (block.match(/\*\*Nivel:\*\*\s*(.*?)(?:\n|$)/) || [])[1] || "Profesional";
-            const caso = (block.match(/\*\*Caso:\*\*\s*([\s\S]*?)(?=\*\*Enunciado:\*\*)/i) || [])[1] || "";
-            const enunciado = (block.match(/\*\*Enunciado:\*\*\s*([\s\S]*?)(?=\*\*Opciones de respuesta:\*\*)/i) || [])[1] || "";
-            const claveMatch = block.match(/\*\*Clave Oficial:\*\*\s*\*?\*?([A-D])\*?\*?/i);
+            const topic = (block.match(/\*\*Eje Temático:\*\*\s*(.*?)(?:\n|$)/) || 
+                           block.match(/\*\*Competencia:\*\*\s*(.*?)(?:\n|$)/) || 
+                           block.match(/\*\*Valor de Integridad:\*\*\s*(.*?)(?:\n|$)/) || [])[1] || `Tema Módulo ${modNum}`;
+            const nivel = (block.match(/\*\*Nivel(?:\s*Exigido)?:\*\*\s*(.*?)(?:\n|$)/) || 
+                           block.match(/\*\*Subescala:\*\*\s*(.*?)(?:\n|$)/) || [])[1] || "Profesional";
+            const subescalaMatch = block.match(/\*\*(?:Subescala(?:\s*de Control)?|Tipo de Ítem):\*\*\s*(.*?)(?:\n|$)/i);
+            const subescala = subescalaMatch ? subescalaMatch[1].trim() : null;
+            const caso = (block.match(/\*\*Caso(?:\s*Laboral|\s*Situacional|\s*Hipotético)?:\*\*\s*([\s\S]*?)(?=\*\*(?:Enunciado|Afirmación))/i) || [])[1] || "";
+            const enunciado = (block.match(/\*\*(?:Enunciado|Afirmación(?:\s*Likert)?):\*\*\s*([\s\S]*?)(?=\*\*Opciones de respuesta:\*\*)/i) || [])[1] || "";
+            const claveMatch = block.match(/\*\*(?:Clave Oficial|Respuesta Óptima(?:\s*Calibrada)?):\*\*\s*\*?\*?([A-D])\*?\*?/i);
             const clave = claveMatch ? claveMatch[1].toUpperCase() : 'A';
 
-            // Opciones A, B, C (o D si aplicara)
-            const optRegex = /-\s*\*\*([A-D])\.\*\*\s*([\s\S]*?)(?=(?:-\s*\*\*[A-D]\.\*\*|\*\*Clave Oficial:\*\*|$))/g;
+            // Opciones A, B, C (o D en Likert)
+            const optRegex = /-\s*\*\*([A-D])\.\*\*\s*([\s\S]*?)(?=(?:-\s*\*\*[A-D]\.\*\*|\*\*(?:Clave Oficial|Respuesta Óptima|Justificación)|$))/g;
             let m;
             const options = [];
             while ((m = optRegex.exec(block)) !== null) {
@@ -349,10 +355,10 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
                 });
             }
 
-            // Justificación triple
-            const justSecMatch = block.match(/\*\*Justificación Técnica y Normativa:\*\*([\s\S]*?)(?=\n---|---|$)/i);
+            // Justificación
+            const justSecMatch = block.match(/\*\*(?:Justificación Técnica y Normativa|Justificación Psicométrica y Normativa|Justificación Psicométrica|Justificación):\*\*([\s\S]*?)(?=\n---|---|$)/i);
             const justSec = justSecMatch ? justSecMatch[1] : "";
-            const justRegex = /\*\s*\*\*Justificación ([A-D])(?:\s*\([^)]*\))?:\*\*\s*([\s\S]*?)(?=(?:\*\s*\*\*Justificación|\n---|$))/gi;
+            const justRegex = /\*\s*\*\*Justificación(?:\s*Opción)?\s*([A-D])(?:\s*\([^)]*\))?:\*\*\s*([\s\S]*?)(?=(?:\*\s*\*\*Justificación|\n---|$))/gi;
             const justMap = {};
             while ((m = justRegex.exec(justSec)) !== null) {
                 justMap[m[1].toUpperCase()] = inline(m[2].trim());
@@ -361,19 +367,20 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
             const distractorKeys = options.map(o => o.id).filter(id => id !== clave);
             const distractors = distractorKeys.map(dId => ({
                 id: dId,
-                reason: justMap[dId] || `Opción ${dId} incorrecta según el procedimiento y la normatividad institucional aplicable.`
+                reason: justMap[dId] || `Opción ${dId} no corresponde a la conducta óptima o a la graduación adecuada para el perfil.`
             }));
 
             questions.push({
                 id: (modNum * 100) + (qIdx + 1),
                 topic: topic.trim(),
                 level: nivel.trim(),
+                subescala: subescala,
                 caseText: inline(caso.trim()),
                 statement: inline(enunciado.trim()),
                 options: options,
                 correctAnswer: clave,
                 justification: {
-                    correct: justMap[clave] || `Opción ${clave} correcta conforme a la doctrina y normativa institucional.`,
+                    correct: justMap[clave] || (justSec ? inline(justSec.trim()) : `Opción ${clave} calibrada como óptima conforme a la normatividad y al marco psicométrico.`),
                     distractors: distractors
                 }
             });
@@ -498,25 +505,33 @@ function compileCargo(cargoKey) {
         console.log(`     -> Examen PJS: ${parsed.questions.length} preguntas de 3 opciones (A, B, C)`);
 
         // Encontrar o crear módulo en courseData.modules
+        let track = (parsed.frontmatter && parsed.frontmatter.track) ? parsed.frontmatter.track.toLowerCase() : null;
+        if (!track) {
+            if (file.includes('02_Comportamentales') || file.includes('Comportamentales') || (parsed.modNum >= 11 && parsed.modNum <= 17)) {
+                track = 'comportamentales';
+            } else if (file.includes('03_Integridad') || file.includes('Integridad') || (parsed.modNum >= 18 && parsed.modNum <= 20)) {
+                track = 'integridad';
+            } else {
+                track = 'funcionales';
+            }
+        }
+
         let mod = courseData.modules.find(m => m.id === modId);
         if (!mod) {
-            // Inferir track a partir de ruta o número
-            let track = 'funcionales';
-            if (file.includes('Comportamentales') || parsed.modNum >= 12 && parsed.modNum <= 15) {
-                track = 'comportamentales';
-            } else if (file.includes('Integridad') || parsed.modNum >= 16) {
-                track = 'integridad';
-            }
-
             mod = {
                 id: modId,
                 track: track,
                 title: parsed.frontmatter.titulo || `Módulo ${parsed.modNum}`,
-                badge: parsed.frontmatter.componente || `Eje ${track}`,
+                badge: parsed.frontmatter.componente || (track === 'funcionales' ? 'Pruebas Funcionales' : (track === 'comportamentales' ? 'Pruebas Comportamentales' : 'Pruebas de Integridad')),
                 examId: examId,
                 lessons: []
             };
             courseData.modules.push(mod);
+        } else {
+            mod.track = track;
+            if (parsed.frontmatter.componente) {
+                mod.badge = parsed.frontmatter.componente;
+            }
         }
 
         // Actualizar datos del módulo
@@ -534,8 +549,10 @@ function compileCargo(cargoKey) {
 
         // Actualizar examen
         if (parsed.questions.length > 0) {
+            const isLikert = parsed.questions.some(q => q.options && q.options.length === 4);
+            const examLabel = isLikert ? `Laboratorio Likert y PJS (${parsed.questions.length} Ítems)` : `Simulador Oficial (${parsed.questions.length} Preguntas PJS)`;
             courseData.exams[examId] = {
-                title: `Examen Oficial: ${mod.title} (10 Preguntas PJS)`,
+                title: `${examLabel}: ${mod.title}`,
                 questions: parsed.questions
             };
         }
@@ -553,15 +570,32 @@ function compileCargo(cargoKey) {
         totalFlashcardsCount += parsed.flashcards.length;
     });
 
-    // Filtrar módulos funcionales obsoletos que no fueron procesados
+    // Filtrar módulos obsoletos que no fueron procesados
     if (processedModules.size > 0) {
-        courseData.modules = courseData.modules.filter(m => !(m.track === 'funcionales' && !processedModules.has(parseInt(m.id.replace('mod-', '')))));
+        courseData.modules = courseData.modules.filter(m => processedModules.has(parseInt(m.id.replace('mod-', ''))));
         const funcTrack = courseData.tracks.find(t => t.id === 'funcionales');
         if (funcTrack) {
             const funcCount = courseData.modules.filter(m => m.track === 'funcionales').length;
             funcTrack.name = `📘 Pruebas Funcionales (${funcCount} Módulos - 60% Eliminatoria)`;
         }
+        const compTrack = courseData.tracks.find(t => t.id === 'comportamentales');
+        if (compTrack) {
+            const compCount = courseData.modules.filter(m => m.track === 'comportamentales').length;
+            compTrack.name = `🤝 Pruebas Comportamentales (${compCount} Módulos - 15%)`;
+        }
+        const integTrack = courseData.tracks.find(t => t.id === 'integridad');
+        if (integTrack) {
+            const integCount = courseData.modules.filter(m => m.track === 'integridad').length;
+            integTrack.name = `⚖️ Pruebas de Integridad (${integCount} Módulos - 10%)`;
+        }
     }
+
+    // Ordenar módulos numéricamente por su id (mod-1, mod-2, ..., mod-20)
+    courseData.modules.sort((a, b) => {
+        const numA = parseInt(a.id.replace('mod-', ''), 10);
+        const numB = parseInt(b.id.replace('mod-', ''), 10);
+        return numA - numB;
+    });
 
     // Guardar archivo final compilado
     const outJs = `// ARCHIVO COMPILADO AUTOMÁTICAMENTE por tools/compiler.js\n` +
