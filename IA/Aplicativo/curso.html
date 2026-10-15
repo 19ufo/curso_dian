@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=3.2">
-    <link rel="stylesheet" href="css/extra.css?v=3.2">
+    <link rel="stylesheet" href="css/styles.css?v=3.3">
+    <link rel="stylesheet" href="css/extra.css?v=3.3">
     <!-- KaTeX para renderizado de fórmulas matemáticas y ecuaciones técnicas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -152,28 +152,9 @@
                     <div class="flashcards-header">
                         <h2>⚡ Flashcards de Repaso Activo</h2>
                         <p>Memorización espaciada de normatividad, plazos, definiciones y principios del cargo.</p>
-                        <div class="flashcards-filter" id="flashcards-filter">
-                            <!-- Filtros por módulo renderizados por JS -->
-                        </div>
+                        <div class="flash-filter" id="flashcards-filter"></div>
                     </div>
-                    <div class="flashcard-deck" id="flashcard-deck">
-                        <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
-                            <div class="flashcard-front">
-                                <span class="flashcard-tag" id="flashcard-tag">Tema</span>
-                                <div class="flashcard-content" id="flashcard-question">Haz clic en "Siguiente" para comenzar</div>
-                                <span class="flashcard-hint">Toca la tarjeta para voltear ↻</span>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="flashcard-tag">Respuesta Oficial</span>
-                                <div class="flashcard-content" id="flashcard-answer">...</div>
-                            </div>
-                        </div>
-                        <div class="flashcard-controls">
-                            <button class="btn btn-secondary" onclick="prevFlashcard()">← Anterior</button>
-                            <span class="flashcard-counter" id="flashcard-counter">0 / 0</span>
-                            <button class="btn btn-primary" onclick="nextFlashcard()">Siguiente →</button>
-                        </div>
-                    </div>
+                    <div class="flashcards-grid" id="flashcards-container"></div>
                 </div>
             </section>
 
@@ -249,14 +230,14 @@
     </div>
 
     <!-- Scripts de la Aplicación -->
-    <script src="js/data.js?v=3.2"></script>
-    <script src="js/data_extra.js?v=3.2"></script>
-    <script src="js/data_gestor2.js?v=3.2"></script>
-    <script src="js/track_intros.js?v=3.2"></script>
-    <script src="js/plan.js?v=3.2"></script>
-    <script src="js/tips.js?v=3.2"></script>
-    <script src="js/quiz.js?v=3.2"></script>
-    <script src="js/backup.js?v=3.2"></script>
-    <script src="js/app.js?v=3.2"></script>
+    <script src="js/data.js?v=3.3"></script>
+    <script src="js/data_extra.js?v=3.3"></script>
+    <script src="js/data_gestor2.js?v=3.3"></script>
+    <script src="js/track_intros.js?v=3.3"></script>
+    <script src="js/plan.js?v=3.3"></script>
+    <script src="js/tips.js?v=3.3"></script>
+    <script src="js/quiz.js?v=3.3"></script>
+    <script src="js/backup.js?v=3.3"></script>
+    <script src="js/app.js?v=3.3"></script>
 </body>
 </html>

@@ -2553,3 +2553,13 @@ body.dark-theme .btn-back-portal:hover {
 
 .sidebar-track-guide-item { flex-shrink: 0; }
 
+
+/* Flashcards: contenedor, cabecera y tarjetas legibles */
+.flashcards-container { width: 100%; max-width: 1100px; margin: 0 auto; min-width: 0; }
+.flashcards-header { margin-bottom: 18px; }
+.flashcards-header h2 { font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0 0 4px; }
+.flashcards-header p { color: var(--text-secondary); margin: 0 0 14px; }
+.flashcards-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.flashcards-grid .flashcard { height: 280px; }
+.flashcards-grid .flashcard-front, .flashcards-grid .flashcard-back { overflow-y: auto; justify-content: space-between; gap: 10px; }
+.flashcards-grid .flashcard-text-back { text-align: left; font-size: .86rem; }
