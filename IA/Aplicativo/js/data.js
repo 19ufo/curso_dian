@@ -699,29 +699,80 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-8",
       "track": "funcionales",
-      "title": "MISIONALIDAD DE LA DIAN",
+      "title": "08. Misionalidad de la DIAN",
       "badge": "Funcional - Frentes Misionales & Marco Penal",
       "examId": "exam-8",
       "lessons": [
         {
-          "id": "les-8",
+          "id": "les-8-1",
           "moduleId": "mod-8",
-          "title": "MISIONALIDAD DE LA DIAN",
-          "badge": "Funcional - Frentes Misionales & Marco Penal",
-          "readTime": "30 min",
-          "content": "<h2>Guía Maestra de Estudio: Misionalidad de la DIAN</h2>\n<p class=\"lead\">Esta guía desarrolla los tres pilares de la misión constitucional de la DIAN (Tributario, Aduanero y Cambiario), los fenómenos fiscales de evasión, elusión y contrabando, los tipos penales tributarios del Código Penal y el régimen de carrera específica (Decreto Ley 071 de 2020).</p>\n\n<h3>Módulo 1: Los Tres Frentes Misionales Integrados</h3>\n<p>La DIAN coadyuva a garantizar la seguridad fiscal del Estado colombiano y la protección del orden público económico nacional mediante tres frentes de acción:</p>\n\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>1. Frente Tributario</h4>\n        <p>Administración, control, recaudo, fiscalización, cobro y devolución de los <strong>Impuestos Nacionales Internos</strong>:</p>\n        <ul>\n            <li>Impuesto sobre la Renta y Complementarios.</li>\n            <li>Impuesto sobre las Ventas (IVA) e Impuesto Nacional al Consumo (INC).</li>\n            <li>Retención en la Fuente, Impuesto de Timbre, Gravamen a los Movimientos Financieros (GMF) e Impuestos Ambientales (Carbono, Plásticos).</li>\n        </ul>\n    </div>\n    <div class=\"arch-card\">\n        <h4>2. Frente Aduanero</h4>\n        <p>Control del comercio exterior y aseguramiento de la cadena logística en puertos, aeropuertos y pasos fronterizos:</p>\n        <ul>\n            <li>Regímenes de Importación, Exportación y Tránsito Aduanero.</li>\n            <li>Aranceles e impuestos a las importaciones.</li>\n            <li>Control aduanero previo, simultáneo (aforo físico/documental) y posterior (fiscalización aduanera hasta por 5 años).</li>\n        </ul>\n    </div>\n    <div class=\"arch-card\">\n        <h4>3. Frente Cambiario</h4>\n        <p>Vigilancia y control del Régimen Cambiario en operaciones de comercio exterior de bienes y servicios y endeudamiento externo:</p>\n        <ul>\n            <li>Canalización de divisas a través de los Intermediarios del Mercado Cambiario (bancos).</li>\n            <li>Control contra el lavado de activos y sub/sobrefacturación de exportaciones e importaciones.</li>\n        </ul>\n    </div>\n</div>\n\n<h3>Módulo 2: Evasión vs. Elusión y la Cláusula General Antielusión</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Concepto</th>\n            <th>Naturaleza Jurídica</th>\n            <th>Mecanismo y Tipificación Legal</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Evasión Fiscal</strong></td>\n            <td>Violación directa, abierta y deliberada de la ley tributaria. Ilegalidad frontal.</td>\n            <td>Ocultamiento deliberado de ingresos, inclusión de costos inexistentes, uso de facturas falsas. Constituye infracción administrativa y eventual delito penal.</td>\n        </tr>\n        <tr>\n            <td><strong>Elusión Fiscal (Abuso Tributario)</strong></td>\n            <td>Uso artificioso de formas jurídicas para reducir el impuesto respetando la letra formal de la ley pero violando su espíritu y finalidad económica.</td>\n            <td>Operaciones sin sustancia económica creadas con el único propósito de obtener una ventaja tributaria (ej. cascadas societarias en paraísos fiscales).</td>\n        </tr>\n        <tr>\n            <td><strong>Cláusula General Antielusión (Art. 869 E.T.)</strong></td>\n            <td>Facultad legal otorgada a la DIAN para <em>recaracterizar</em> o desconocer actos o negocios artificiosos.</td>\n            <td>Hace prevalecer la <strong>sustancia económica sobre la forma jurídica formal</strong>, liquidando el impuesto que verdaderamente correspondía a la realidad de la transacción.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 3: Contrabando Abierto vs. Contrabando Técnico</h3>\n<ul>\n    <li><strong>Contrabando Abierto:</strong> Introducción de mercancías al territorio nacional eludiendo completamente los lugares habilitados (puertos, aeropuertos) por trochas o playas clandestinas sin presentar ninguna declaración aduanera.</li>\n    <li><strong>Contrabando Técnico:</strong> Ingreso de mercancías por canales formales presentando declaración aduanera pero alterando fraudulentamente los datos para pagar menos tributos:\n        <br>• <em>Subfacturación:</em> Declarar un valor aduanero inferior al precio real de compra.\n        <br>• <em>Clasificación Arancelaria Falsa:</em> Asignar una subpartida arancelaria que pague 0% de arancel en lugar del 15% real.\n        <br>• <em>Fraude de Origen:</em> Certificar falsamente que la mercancía proviene de un país con tratado de libre comercio para acogerse a desgravación.</li>\n</ul>\n\n<h3>Módulo 4: Delitos Fiscales en el Código Penal Colombiano</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Artículo del Código Penal</th>\n            <th>Delito Tipificado</th>\n            <th>Sanción Penal</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Artículo 434A</strong></td>\n            <td><strong>Omisión de activos o inclusión de pasivos inexistentes</strong> en la declaración de renta (por valor superior a los montos umbrales de ley en UVT).</td>\n            <td>Pena de prisión de 48 a 108 meses, agravada si el monto supera 2.500 o 5.000 salarios mínimos legales vigentes.</td>\n        </tr>\n        <tr>\n            <td><strong>Artículo 434B</strong></td>\n            <td><strong>Omisión del agente retenedor o recaudador:</strong> Quien no consigne las sumas retenidas por renta o recaudadas por IVA dentro de los dos meses siguientes a su vencimiento.</td>\n            <td>Prisión de 48 a 108 meses y multa equivalente al doble de lo no consignado sin que supere 1.020.000 UVT.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 5: Régimen de Carrera Específica de la DIAN (Decreto Ley 071 de 2020)</h3>\n<ul>\n    <li><strong>Naturaleza Específica:</strong> La carrera administrativa en la DIAN es especial y está regulada privativamente por el <strong>Decreto Ley 071 de 2020</strong> debido a la naturaleza estratégica y de seguridad nacional de sus funciones.</li>\n    <li><strong>Período de Prueba:</strong> Una vez superado el concurso de méritos y nombrado en período de prueba, este tiene una duración perentoria e improrrogable de <strong>exactamente seis (6) meses</strong>. Finalizado este término con calificación satisfactoria, se produce la inscripción en el Registro Público de Carrera.</li>\n</ul>\n\n<h3>Checklist Rápido de Estudio Previo al Examen</h3>\n<ul>\n    <li>[ ] Diferenciar los 3 frentes de acción: Tributario, Aduanero y Cambiario.</li>\n    <li>[ ] Explicar la diferencia entre Evasión y Elusión y el efecto del Artículo 869 del Estatuto Tributario.</li>\n    <li>[ ] Distinguir Contrabando Abierto de Contrabando Técnico (subfacturación, clasificación, origen).</li>\n    <li>[ ] Conocer los delitos tributarios de los Arts. 434A y 434B del Código Penal.</li>\n    <li>[ ] Recordar la duración de 6 meses del período de prueba bajo el Decreto Ley 071 de 2020.</li>\n</ul>",
-          "links": [
-            {
-              "name": "Estatuto Tributario Nacional de Colombia",
-              "url": "https://estatuto.co/"
-            },
-            {
-              "name": "Decreto Ley 071 de 2020 - Sistema Específico de Carrera DIAN",
-              "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=105470"
-            }
-          ]
+          "unitNumber": 1,
+          "title": "Unidad 1: Objeto Misional y Seguridad Fiscal del Estado Colombiano",
+          "badge": "Funcional - Servicios de Datos & Gestión de TI",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 1143,
+          "content": "<p># Guía de Estudio e Inmersión Técnica: Misionalidad de la DIAN</p>\n<p><strong>Concurso de Méritos:</strong> DIAN 2676 de 2026 — Comisión Nacional del Servicio Civil (CNSC)   <strong>Operador Académico:</strong> Universidad de San Buenaventura / Areandina   <strong>Cargo Objetivo:</strong> Inspector I (OPEC 236670 - Nivel Profesional)   <strong>Dependencia Asignada:</strong> Subdirección de Procesamiento de Datos (Dirección de Gestión de Innovación y Tecnología - Nivel Central)   <strong>Eje Temático Funcional:</strong> 08. Misionalidad de la DIAN   <strong>Ponderación en Prueba de Competencias Funcionales:</strong> 60%   <strong>Corte Normativo y Técnico Oficial:</strong> 19 de junio de 2026  </p>\n<hr>\n<hr>\n<h3>1.1 Fundamento Constitucional de la Potestad Tributaria y la UAE DIAN</h3>\n<p>La Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN) es la institución del Estado colombiano encargada de administrar y garantizar la <strong>Seguridad Fiscal del Estado</strong>, entendida como el bien jurídico tutelado que asegura la recaudación efectiva y oportuna de los recursos necesarios para financiar el gasto público, sostener el Estado Social de Derecho y garantizar la inversión social consagrada en la Constitución Política de 1991.</p>\n<p>El sustento constitucional de la misionalidad de la DIAN emana de tres mandatos superiores:</p>\n<ol><li><strong>El Deber Ciudadano de Contribuir (Artículo 95, Numeral 9 de la Constitución Política):</strong> Establece como deber fundamental de toda persona en el territorio nacional <em>\"contribuir al financiamiento de los gastos e inversiones del Estado dentro de conceptos de justicia y equidad\"</em>. La DIAN es el brazo ejecutor y facilitador de esta obligación superior.</li><li><strong>Los Principios del Sistema Tributario (Artículo 363 de la Constitución Política):</strong> El sistema tributario se fundamenta en los principios de <strong>equidad</strong>, <strong>eficiencia</strong> y <strong>progresividad</strong>:</li><li><em>Equidad:</em> Trato igual a quienes están en idéntica situación económica (equidad horizontal) y carga tributaria diferenciada para quienes poseen mayor capacidad contributiva (equidad vertical).</li><li><em>Eficiencia:</em> Los tributos deben diseñarse y recaudarse con el menor costo administrativo posible para el Estado y la mínima carga operativa o fricción para el ciudadano cumplidor.</li><li><em>Progresividad:</em> A mayor nivel de ingreso, riqueza o patrimonio, mayor es la proporción de aporte fiscal requerida, mitigando la desigualdad socioeconómica.</li><li><em>Irretroactividad:</em> Las leyes tributarias no pueden aplicarse a hechos acaecidos con anterioridad a su promulgación (Art. 363, inciso 2).</li><li><strong>El Criterio de Sostenibilidad Fiscal (Acto Legislativo 03 de 2011 - Art. 334 C.P.):</strong> La sostenibilidad fiscal orienta la política económica del Estado para garantizar que el recaudo tributario y aduanero respalde el cumplimiento de las metas del Presupuesto General de la Nación (PGN) y el Marco Fiscal de Mediano Plazo (MFMP).</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>FUNDAMENTO CONSTITUCIONAL DE LA MISIONALIDAD DE LA DIAN\n\n                 [CONSTITUCIÓN POLÍTICA DE COLOMBIA (1991)]\n                                      |\n         +----------------------------+----------------------------+\n         |                                                         |\n         v                                                         v\n [Art. 95 Num. 9 C.P.]                                     [Art. 363 C.P.]\n Deber de Contribuir al                                    Principios del Sistema:\n Financiamiento del Estado                                 * Equidad\n                                                           * Eficiencia\n                                                           * Progresividad\n                                                           * Irretroactividad\n         \\                                                         /\n          \\                                                       /\n           +--------------------------+--------------------------+\n                                      |\n                                      v\n                       [UAE DIAN - DECRETO 1742 DE 2020]\n                       Misionalidad Tridimensional:\n                       1. Administración Tributaria Nacional\n                       2. Administración del Sistema Aduanero\n                       3. Control Cambiario de Comercio Exterior\n                                      |\n                                      v\n                       [SEGURIDAD FISCAL DEL ESTADO]\n                       Financiación del Gasto Social e Inversión Pública</code></pre></div>\n<h3>1.2 Objeto y Naturaleza Institucional de la UAE DIAN</h3>\n<p>Conforme a su régimen fundacional (<strong>Decreto 1071 de 1999</strong>) y su estructura orgánica vigente (<strong>Decreto 1742 de 2020</strong>), la DIAN tiene por objeto coadyuvar a garantizar la seguridad fiscal del Estado y la protección del orden público económico nacional, mediante la administración y control al debido cumplimiento de las obligaciones tributarias, aduaneras y cambiarias, los derechos de explotación y gastos de administración sobre los juegos de suerte y azar explotados por entidades públicas del nivel nacional, y la facilitación de las operaciones de comercio exterior en condiciones de equidad, transparencia y legalidad.</p>\n<p>Para materializar este objeto, la misionalidad de la entidad no opera como un fin punitivo en sí mismo, sino bajo una doble perspectiva estratégica:</p>\n<ul><li><strong>Facilitación del Cumplimiento Voluntario:</strong> A través de servicios digitales simplificados, declaraciones sugeridas basadas en inteligencia de datos sobre DataR, facturación electrónica y canales virtuales de atención al ciudadano.</li><li><strong>Control y Lucha Decidida contra la Evasión y el Contrabando:</strong> Mediante el ejercicio riguroso de las facultades de fiscalización, auditoría, determinación, cobro coactivo y persecución penal coordinada con la Fiscalía General de la Nación y la Policía Fiscal y Aduanera (POLFA).</li></ul>\n<h3>1.3 Los Tres Ejes Misionales de la DIAN: Matriz Comparativa Institucional</h3>\n<p>La siguiente tabla analiza en detalle los tres pilares de competencia que integran el mandato de la entidad:</p>\n<table class=\"data-table\"><thead><tr><th>Criterio de Comparación</th><th>Eje 1: Misionalidad Tributaria</th><th>Eje 2: Misionalidad Aduanera</th><th>Eje 3: Misionalidad Cambiaria</th></tr></thead><tbody><tr><td><strong>Objetivo Superior</strong></td><td>Garantizar el recaudo de los impuestos directos e indirectos del orden nacional para el PGN.</td><td>Facilitar el comercio exterior lícito y proteger la industria nacional contra el contrabando y el fraude aduanero.</td><td>Vigilar la debida canalización de divisas originadas en operaciones de importación y exportación de bienes y servicios.</td></tr><tr><td><strong>Base Normativa Rectoral</strong></td><td>Estatuto Tributario Nacional (Decreto 624 de 1989 y leyes de reforma tributaria).</td><td>Estatuto Aduanero (Decreto 1165 de 2019, Decreto 920 de 2023 - Régimen Sancionatorio).</td><td>Régimen Cambiario (Ley 9 de 1991, Resoluciones Externas Junta Directiva Banco de la República, Decreto Ley 2245 de 2011).</td></tr><tr><td><strong>Sujetos Obligados</strong></td><td>Personas naturales, personas jurídicas, sucesiones ilíquidas y agentes de retención.</td><td>Importadores, exportadores, declarantes, agencias de aduanas, usuarios de zonas francas y depósitos.</td><td>Personas naturales y jurídicas que realicen pagos o cobros de comercio exterior y profesionales de cambio de divisas.</td></tr><tr><td><strong>Hecho Generador / Ámbito de Control</strong></td><td>Obtención de renta, realización de ventas de bienes y servicios, transacciones financieras, propiedad patrimonial.</td><td>Entrada o salida de mercancías del territorio aduanero nacional (TAN) y su desaduanamiento legal.</td><td>Operaciones canalizables obligatoriamente a través del mercado regulado (IMC y cuentas de compensación).</td></tr><tr><td><strong>Sistemas de Información DIAN</strong></td><td>MUISCA, Factura Electrónica (UBL 2.1), Nómina Electrónica, Información Exógena, DataR.</td><td>SYGA (Importaciones/Exportaciones), Sistema de Carga, Escáneres de Inspección No Intrusiva, DataR.</td><td>Módulo Cambiario de Información (MUISCA Cambiario), Cruces con Balanza Cambiaria del Banco de la República.</td></tr><tr><td><strong>Consecuencia del Incumplimiento</strong></td><td>Sanciones tributarias (extemporaneidad, inexactitud), intereses moratorios y determinación oficial de tributos.</td><td>Aprehensión, decomiso de mercancías, sanciones aduaneras a operadores y tipificación penal de contrabando.</td><td>Sanciones cambiarias pecuniarias sobre el valor no canalizado o canalizado indebidamente (Decreto Ley 2245 de 2011).</td></tr></tbody></table>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>Alerta de Examen CNSC / Areandina:</strong>   En las pruebas de juicio situacional para empleos profesionales de la Subdirección de Procesamiento de Datos, las preguntas frecuentemente exploran la articulación de estos tres ejes misionales en el repositorio institucional <strong>DataR</strong>. La respuesta correcta siempre enfatiza que <strong>el cruce integral de datos tributarios (factura electrónica), aduaneros (declaraciones de importación) y cambiarios (información de canalización de divisas)</strong> es la estrategia técnica más potente para descubrir redes de lavado de activos, empresas de papel y sobrefacturación o subfacturación en frontera.</p></div>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p><strong>Fundamento Jurídico - Artículo 363 C.P. y Eficiencia Administrativa:</strong>   La Corte Constitucional ha reiterado de manera pacífica (Sentencias C-419 de 1995, C-776 de 2003 y C-1003 de 2004) que la eficiencia tributaria no es únicamente un principio técnico, sino un imperativo constitucional: el Estado tiene la obligación de modernizar sus tecnologías y repositorios informáticos para minimizar la evasión y evitar que la carga tributaria recaiga exclusivamente sobre los contribuyentes formales y cautivos.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-8-2",
+          "moduleId": "mod-8",
+          "unitNumber": 2,
+          "title": "Unidad 2: Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados",
+          "badge": "Funcional - Servicios de Datos & Gestión de TI",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 1148,
+          "content": "<h3>2.1 Estructura Dogmática de la Obligación Tributaria</h3>\n<p>En el derecho tributario colombiano, la obligación tributaria se bifurca en dos naturalezas jurídicas complementarias: la <strong>Obligación Sustancial</strong> y las <strong>Obligaciones Formales</strong>.</p>\n<h4>A. La Obligación Tributaria Sustancial (Artículo 1 del Estatuto Tributario)</h4>\n<p>La obligación tributaria sustancial se origina al realizarse el presupuesto o los presupuestos previstos en la ley como generadores del tributo y tiene por objeto exclusivo el <strong>pago efectivo del impuesto en dinero</strong> a favor del fisco nacional. Para que una obligación tributaria sustancial exista válidamente, la ley debe definir de manera expresa e inequívoca sus <strong>cinco elementos esenciales</strong>:</p>\n<ol><li><strong>Sujeto Activo:</strong> Es el acreedor de la obligación tributaria, en quien radica la potestad de recaudo y fiscalización. En los impuestos del orden nacional, el sujeto activo es la <strong>Nación</strong>, representada por la UAE DIAN.</li><li><strong>Sujeto Pasivo:</strong> Es la persona natural o jurídica, la sucesión ilíquida o la entidad sin personería jurídica obligada al cumplimiento de la prestación. Se clasifica en:</li><li><em>Sujeto pasivo económico:</em> Quien soporta patrimonialmente el impacto económico del tributo (ej. el consumidor final en el IVA).</li><li><em>Sujeto pasivo jurídico (responsable):</em> Quien tiene el deber legal de liquidar, recaudar y trasladar el tributo a la administración tributaria (ej. el comerciante o prestador del servicio en el IVA).</li><li><strong>Hecho Generador:</strong> Es la circunstancia fáctica, económica o jurídica contemplada abstractamente en la ley, cuya materialización en la realidad da nacimiento a la obligación tributaria (ej. la obtención de un ingreso susceptible de producir incremento neto del patrimonio en el Impuesto de Renta).</li><li><strong>Base Gravable:</strong> Es la magnitud dineraria o unidad de medida sobre la cual se aplica directamente la tarifa para determinar la cuantía líquida de la deuda tributaria (ej. la renta líquida gravable o el valor neto de la operación de venta de una mercancía).</li><li><strong>Tarifa:</strong> Es el porcentaje o alícuota fija o progresiva que se aplica a la base gravable para liquidar el impuesto (ej. la tarifa general del 35% para personas jurídicas en renta, o la tarifa general del 19% en el IVA).</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA DOGMÁTICA DE LA OBLIGACIÓN TRIBUTARIA\n\n                     +---------------------------------------+\n                     |        LEY DE LA REPÚBLICA            |\n                     |   (Principio de Legalidad Tributaria) |\n                     +---------------------------------------+\n                                         |\n                                         v\n                     +---------------------------------------+\n                     |           HECHO GENERADOR             |\n                     |   (Presupuesto fáctico/económico)     |\n                     +---------------------------------------+\n                                         |\n                         +---------------+---------------+\n                         |                               |\n                         v                               v\n         +-------------------------------+ +-------------------------------+\n         |    OBLIGACIÓN SUSTANCIAL      | |     OBLIGACIONES FORMALES     |\n         |  * Dar / Pagar suma de dinero | |  * Hacer / No Hacer / Informar|\n         |  * Extinción de la deuda      | |  * Facilitar la fiscalización |\n         +-------------------------------+ +-------------------------------+\n                         |                               |\n                         v                               v\n         +-------------------------------+ +-------------------------------+\n         |     ELEMENTOS ESENCIALES      | |     DEBERES PRINCIPALES       |\n         |  1. Sujeto Activo (Nación)    | |  1. Inscribirse en el RUT     |\n         |  2. Sujeto Pasivo (Contrib.)  | |  2. Presentar Declaraciones   |\n         |  3. Hecho Generador           | |  3. Expedir Factura Electrónica|\n         |  4. Base Gravable             | |  4. Suministrar Exógena       |\n         |  5. Tarifa                    | |  5. Conservar pruebas 5 años  |\n         +-------------------------------+ +-------------------------------+</code></pre></div>\n<h4>B. Las Obligaciones Tributarias Formales (Deberes Instrumentales)</h4>\n<p>Las obligaciones formales son mandatos de hacer, no hacer o tolerar establecidos por la ley y el reglamento, cuyo propósito exclusivo es <strong>permitir, vigilar y asegurar el cumplimiento de la obligación sustancial</strong>, facilitando las tareas de fiscalización y determinación de la DIAN.</p>\n<p>Entre las principales obligaciones formales administradas por la DIAN destacan:</p>\n<ul><li><strong>Inscripción y actualización del Registro Único Tributario (RUT - Art. 555-2 E.T.):</strong> Identificación, ubicación y clasificación de todos los sujetos con responsabilidades fiscales.</li><li><strong>Presentación oportuna de declaraciones tributarias:</strong> En los formularios oficiales prescritos por la DIAN (Formularios 110, 210, 300, 350, etc.), debidamente firmados y liquidados.</li><li><strong>Expedición de Factura Electrónica de Venta con Validación Previa (Art. 616-1 E.T.):</strong> Transmisión en tiempo real en formato XML estándar UBL 2.1 con Código Único de Factura Electrónica (CUFE).</li><li><strong>Suministro de Información Exógena Tributaria (Medios Magnéticos - Arts. 631 y 631-3 E.T.):</strong> Reporte periódico de operaciones económicas realizadas con terceros.</li><li><strong>Obligación de llevar contabilidad y conservar pruebas:</strong> Obligación de conservar libros contables, soportes y declaraciones durante el término de firmeza o un mínimo de cinco (5) años (Art. 632 E.T.).</li></ul>\n<h3>2.2 Catálogo Integral de Impuestos del Orden Nacional Administrados por la DIAN</h3>\n<p>La Subdirección de Procesamiento de Datos procesa en el lago institucional DataR las transacciones asociadas a la totalidad de los tributos del orden nacional:</p>\n<ol><li><strong>Impuesto sobre la Renta y Complementarios:</strong></li><li>Impuesto directo de periodo anual que grava los ingresos ordinarios y extraordinarios susceptibles de producir enriquecimiento.</li><li>Administra el <strong>Régimen Ordinario</strong> (tarifas progresivas hasta el 39% para personas naturales, y tarifa corporativa general del 35% con sobretasas al sector financiero y extractivo) y el <strong>Régimen Simple de Tributación (SIMPLE)</strong>, modelo opcional simplificado que unifica el impuesto de renta, el impuesto al consumo e impuestos municipales (ICA).</li><li>Impuesto complementario de Ganancias Ocasionales (herencias, legados, donaciones, loterías y venta de activos fijos poseídos por 2 o más años).</li><li><strong>Impuesto sobre las Ventas (IVA):</strong></li><li>Impuesto indirecto al consumo de causación instantánea y liquidación bimestral o cuatrimestral, que grava la venta e importación de bienes corporales muebles e inmuebles y la prestación de servicios en el territorio nacional.</li><li>Clasifica los bienes y servicios en: <strong>Gravados</strong> (tarifa general del 19%, diferencial del 5%), <strong>Exentos</strong> (tarifa 0%, con derecho a devolución de IVA pagado en la cadena productiva) y <strong>Excluidos</strong> (no causan el impuesto y el IVA pagado constituye mayor valor del costo o gasto).</li><li><strong>Impuesto Nacional al Consumo (INC):</strong></li><li>Impuesto indirecto que grava el servicio de telefonía y datos móviles (4%), el expendio de comidas y bebidas en restaurantes y bares (8%), y la venta o importación de vehículos automotores, camperos y aeronaves privadas (8% o 16%). No genera impuestos descontables.</li><li><strong>Impuesto al Patrimonio:</strong></li><li>Impuesto directo y permanente que grava la riqueza líquida poseída al 1 de enero de cada año por personas naturales y sucesiones ilíquidas que superen los umbrales legales (a partir de 72.000 UVT).</li><li><strong>Gravamen a los Movimientos Financieros (GMF - 4x1000):</strong></li><li>Impuesto indirecto e instantáneo que grava la realización de transacciones financieras mediante las cuales se disponga de recursos depositados en cuentas corrientes, de ahorros o de depósito en el Banco de la República.</li><li><strong>Impuestos Ambientales y a la Salud Pública:</strong></li><li><em>Impuesto Nacional al Carbono:</em> Grava el contenido de carbono equivalente de los combustibles fósiles.</li><li><em>Impuesto a los Plásticos de un Solo Uso:</em> Grava la venta, retiro e importación de productos plásticos utilizados para envasar o empacar bienes.</li><li><em>Impuestos Saludables:</em> Grava la producción e importación de <strong>bebidas ultraprocesadas azucaradas</strong> y <strong>productos comestibles ultraprocesados</strong> con alto contenido de azúcares añadidos, sodio o grasas saturadas.</li><li><strong>Impuesto de Timbre Nacional:</strong></li><li>Grava la elevación a escritura pública de la enajenación de bienes inmuebles que superen los topes legales de valor catastral o comercial.</li></ol>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p><strong>Autonomía de las Obligaciones Formales frente a la Sustancial:</strong>   La jurisprudencia del Consejo de Estado y la doctrina de la DIAN han dejado establecido que <strong>las obligaciones formales gozan de plena autonomía jurídica</strong>. En consecuencia, un contribuyente puede no estar obligado al pago del impuesto sustancial (por haber arrojado pérdida líquida en el ejercicio o encontrarse exento), pero permanece legalmente obligado a presentar la declaración tributaria o suministrar información exógena. La omisión del deber formal acarrea sanciones autónomas (extemporaneidad, sanción por no declarar o sanción por no enviar información exógena - Art. 651 E.T.).</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-8-3",
+          "moduleId": "mod-8",
+          "unitNumber": 3,
+          "title": "Unidad 3: Obligación Aduanera, Regímenes, Control y Lucha contra el Contrabando",
+          "badge": "Funcional - Servicios de Datos & Gestión de TI",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 926,
+          "content": "<h3>3.1 Naturaleza y Estructura de la Obligación Aduanera</h3>\n<p>La <strong>Obligación Aduanera</strong> es el vínculo jurídico que nace entre el Estado (a través de la UAE DIAN) y las personas jurídicas o naturales que introducen o extraen mercancías del <strong>Territorio Aduanero Nacional (TAN)</strong>. Su cumplimiento comprende:</p>\n<ul><li>El pago de los derechos e impuestos a la importación (arancel, IVA y demás tributos aduaneros).</li><li>El cumplimiento riguroso de las formalidades, licencias, vistos buenos y requisitos no arancelarios exigidos por el régimen de aduanas.</li><li>El suministro veraz de la información en las declaraciones aduaneras y la conservación de los documentos soporte durante un término de cinco (5) años.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>FASES TEMPORALES DEL CONTROL ADUANERO EN LA DIAN\n\n  [Llegada de Mercancía / Zona Primaria]\n                 |\n                 v\n  +--------------------------------------------------------------+\n  |  CONTROL PREVIO (Antes del Desaduanamiento)                 |\n  |  * Manifiesto de Carga Anticipado                            |\n  |  * Perfilamiento de Riesgo por Modelos de Machine Learning   |\n  |  * Análisis de Listas Restrictivas y Reglas de Selectividad  |\n  +--------------------------------------------------------------+\n                 |\n                 v\n  +--------------------------------------------------------------+\n  |  CONTROL SIMULTÁNEO (Durante el Desaduanamiento)            |\n  |  * Selectividad: Levante Automático vs. Inspección           |\n  |  * Inspección Documental (Revisión de soportes y origen)     |\n  |  * Inspección Física e Inspección No Intrusiva (Escáneres)   |\n  +--------------------------------------------------------------+\n                 |\n                 v (Autorización de Levante)\n  +--------------------------------------------------------------+\n  |  CONTROL POSTERIOR (Fiscalización Aduanera Ex-Post)         |\n  |  * Auditorías tributario-aduaneras a depósitos y empresas    |\n  |  * Verificación de Precios de Transferencia y Valoración     |\n  |  * Término de caducidad de 3 a 5 años                        |\n  +--------------------------------------------------------------+</code></pre></div>\n<h3>3.2 Clasificación de los Regímenes Aduaneros en Colombia</h3>\n<p>El Estatuto Aduanero clasifica las operaciones de comercio exterior en tres grandes grupos de regímenes:</p>\n<h4>A. Régimen de Importación</h4>\n<p>Introducción de mercancías de procedencia extranjera al TAN o procedentes de zona franca con el fin de permanecer en él de manera indefinida o temporal:</p>\n<ol><li><strong>Importación Ordinaria:</strong> Desaduanamiento para consumo definitivo con pago total de aranceles e IVA.</li><li><strong>Importación con Franquicia o Exención:</strong> Mercancías amparadas por tratados o normas especiales con exención parcial o total de tributos aduaneros.</li><li><strong>Importación Temporal para Reexportación en el Mismo Estado:</strong> Bienes de capital o maquinaria que ingresan por un plazo determinado sin sufrir modificaciones para cumplir un contrato específico.</li><li><strong>Importación Temporal para Perfeccionamiento Activo:</strong> Materias primas o insumos que ingresan para ser transformados, elaborados o reparados y posteriormente exportados (mecanismo Plan Vallejo).</li></ol>\n<h4>B. Régimen de Exportación</h4>\n<p>Salida de mercancías del TAN con destino a otro país o a una zona franca industrial de bienes y servicios:</p>\n<ol><li><strong>Exportación Definitiva:</strong> Salida de mercancías nacionales o nacionalizadas para su consumo o uso en el exterior.</li><li><strong>Exportación Temporal para Perfeccionamiento Pasivo:</strong> Salida de bienes para ser reparados o modificados en el extranjero y reimportados posteriormente.</li></ol>\n<h4>C. Régimen de Tránsito Aduanero y Operaciones Asociadas</h4>\n<p>Transporte de mercancías bajo control aduanero desde una aduana de partida hasta una aduana de destino dentro del TAN:</p>\n<ol><li><strong>Tránsito Aduanero Nacional:</strong> Transporte terrestre o férreo bajo garantía.</li><li><strong>Cabotaje:</strong> Transporte por vía marítima o aérea entre dos puertos o aeropuertos nacionales bajo control aduanero.</li><li><strong>Transbordo:</strong> Traslado de mercancías de un medio de transporte a otro sin salir de la zona primaria aduanera.</li></ol>\n<h3>3.3 El Sistema de Gestión de Riesgo y las Fases del Control Aduanero</h3>\n<p>La DIAN abandonó el modelo de inspección física aleatoria o total para adoptar un <strong>Sistema de Administración del Riesgo Aduanero</strong> altamente automatizado, alimentado por el procesamiento masivo de datos en DataR:</p>\n<ul><li><strong>Fase de Control Previo:</strong> Evaluación algorítmica de los manifiestos de carga antes del atraque del buque o aterrizaje de la aeronave. Se identifican contenedores de alto riesgo según el país de procedencia, el historial tributario del importador y alertas de inteligencia internacional.</li><li><strong>Fase de Control Simultáneo:</strong> Al radicar la declaración de importación, el motor de selectividad asigna uno de tres canales:</li><li><em>Levante Automático:</em> Autorización inmediata de retiro de la mercancía sin intervención de inspector.</li><li><em>Inspección Documental:</em> Verificación técnica y jurídica de los documentos soporte (factura comercial, certificado de origen, documento de transporte, vistos buenos).</li><li><em>Inspección Física / No Intrusiva:</em> Apertura del contenedor o paso por escáneres de alta resolución de rayos X o gamma para cotejar la carga real contra lo declarado.</li><li><strong>Fase de Control Posterior (Fiscalización):</strong> Auditorías integrales posteriores al levante, orientadas a descubrir subfacturación, falsedad en certificados de origen o desvío de mercancías bajo regímenes suspensivos.</li></ul>\n<h3>3.4 Delitos Aduaneros y Coordinación con la POLFA</h3>\n<p>El régimen legal distingue entre <strong>infracciones administrativas aduaneras</strong> (sancionadas con multas, aprehensión y decomiso según el Decreto 920 de 2023) y <strong>delitos contra el orden económico y social</strong> tipificados en el Código Penal:</p>\n<ul><li><strong>Contrabando (Artículo 319 del Código Penal):</strong> Introducir o extraer mercancías del TAN por cuantía superior a cincuenta (50) salarios mínimos legales mensuales vigentes (SMLMV), omitiendo los controles de la DIAN o declarando un valor menor.</li><li><strong>Favorecimiento y Facilitación del Contrabando (Artículo 320 C.P.):</strong> Transportar, almacenar, distribuir o comercializar mercancías que no cuenten con las declaraciones de importación o soportes legales.</li><li><strong>Fraude Aduanero (Artículo 321 C.P.):</strong> Suministrar información falsa, adulterar documentos de transporte o manipular certificados de origen para eludir el pago de aranceles o el cumplimiento de restricciones sanitarias.</li></ul>\n<p>La <strong>Dirección de Policía Fiscal y Aduanera (POLFA)</strong> es el cuerpo especializado de la Policía Nacional adscrito orgánicamente como Dirección de Gestión en la DIAN (Decreto 1742 de 2020), facultado para ejecutar operativos de interdicción en carretera, puertos, aeropuertos y pasos fronterizos en coordinación con los sistemas analíticos de la entidad.</p>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p><strong>Diferencia entre Aprehensión y Decomiso Aduanero:</strong>   La <strong>Aprehensión</strong> es una medida cautelar de carácter administrativo y temporal mediante la cual la autoridad aduanera retiene físicamente las mercancías al encontrar irregularidades en su importación. El <strong>Decomiso</strong> es el acto administrativo definitivo y en firme por el cual la DIAN declara que las mercancías pasan a ser de propiedad exclusiva de la Nación, al no haberse desvirtuado las causales de aprehensión dentro del proceso aduanero.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-8-4",
+          "moduleId": "mod-8",
+          "unitNumber": 4,
+          "title": "Unidad 4: Vigilancia y Control Cambiario de Competencia de la DIAN",
+          "badge": "Funcional - Servicios de Datos & Gestión de TI",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 787,
+          "content": "<h3>4.1 Delimitación de Competencias: La DIAN en el Sistema Cambiario Colombiano</h3>\n<p>El régimen cambiario en Colombia se fundamenta en la <strong>Ley 9 de 1991 (Ley Marco de Cambios Internacionales)</strong> y en las resoluciones expedidas por la Junta Directiva del Banco de la República (principalmente la <strong>Resolución Externa 1 de 2018</strong> y sus modificaciones concordantes).</p>\n<p>En el Estado colombiano, la vigilancia y control cambiario está distribuida entre tres entidades autónomas:</p>\n<ol><li><strong>Superintendencia Financiera de Colombia:</strong> Vigila las instituciones financieras y los intermediarios bancarios del mercado cambiario.</li><li><strong>Superintendencia de Sociedades:</strong> Vigila las operaciones cambiarias relacionadas con inversión extranjera en Colombia, inversión colombiana en el exterior y endeudamiento externo entre sociedades comerciales no financieras.</li><li><strong>UAE DIAN (Subdirección de Fiscalización Cambiaria):</strong> <strong>Competencia Exclusiva y Especializada.</strong> La DIAN tiene la potestad de vigilar y sancionar las operaciones de cambio vinculadas al <strong>comercio exterior de bienes y servicios</strong>, la financiación de importaciones y exportaciones, los servicios asociados a operaciones de comercio exterior (fletes, seguros y corretaje) y la actividad de los <strong>profesionales de compra y venta de divisas y cheques de viajero en efectivo</strong>.</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>DELIMITACIÓN DE COMPETENCIAS DEL RÉGIMEN CAMBIARIO EN COLOMBIA\n\n                [JUNTA DIRECTIVA DEL BANCO DE LA REPÚBLICA]\n                  Expide la Regulación (Res. Externa 1 de 2018)\n                                      |\n         +----------------------------+----------------------------+\n         |                            |                            |\n         v                            v                            v\n[SUPERINTENDENCIA FINANCIERA]   [SUPERINTENDENCIA SOCIEDADES]   [UAE DIAN]\nVigila:                          Vigila:                        Vigila Competencia Exclusiva:\n* Bancos e Intermediarios        * Inversión Extranjera Directa * Pago y Cobro de Importaciones\n* Casas de Cambio vigiladas      * Inversión Colombiana Ext.    * Pago y Cobro de Exportaciones\n* Mercado de Derivados           * Endeudamiento externo soc.   * Servicios de Comercio Exterior\n                                                                * Profesionales de Compra/Venta\n                                                                  de Divisas en Efectivo</code></pre></div>\n<h3>4.2 Las Operaciones Obligatoriamente Canalizables</h3>\n<p>El régimen cambiario establece que determinadas operaciones económicas deben canalizarse de forma obligatoria y exclusiva a través del <strong>Mercado Cambiario Regulado</strong>, utilizando dos únicos mecanismos autorizados:</p>\n<ol><li><strong>Los Intermediarios del Mercado Cambiario (IMC):</strong> Bancos comerciales, corporaciones financieras y compañías de financiamiento comercial.</li><li><strong>Las Cuentas de Compensación:</strong> Cuentas bancarias en el exterior abiertas por residentes colombianos, debidamente registradas ante el Banco de la República bajo la modalidad de compensación.</li></ol>\n<p>Las operaciones de competencia de la DIAN sujetas a canalización obligatoria comprenden:</p>\n<ul><li><strong>Importaciones de Bienes:</strong> Pago de las mercancías importadas al proveedor en el extranjero.</li><li><strong>Exportaciones de Bienes:</strong> Reintegro al país de las divisas obtenidas por la venta de mercancías al exterior.</li><li><strong>Endeudamiento Externo asociado a Comercio Exterior:</strong> Financiación directa otorgada por el proveedor extranjero o por entidades financieras para pagar la importación.</li><li><strong>Garantías y Avales en Moneda Extranjera:</strong> Respaldos financieros de operaciones de comercio exterior.</li></ul>\n<p>Cada canalización exige la suscripción y presentación de la respectiva <strong>Declaración de Cambio</strong>, donde el residente declara el monto exacto, la moneda, el NIT del beneficiario, el número de la declaración aduanera de importación o exportación y el numeral cambiario correspondiente.</p>\n<h3>4.3 Infracciones Cambiarias y Régimen Sancionatorio (Decreto Ley 2245 de 2011)</h3>\n<p>El régimen sancionatorio cambiario administrado por la DIAN está regulado de forma integral y autónoma por el <strong>Decreto Ley 2245 de 2011</strong> (modificado por el Decreto Ley 927 de 2023 y normas de procedimiento administrativo). A diferencia del régimen penal, las infracciones cambiarias son de carácter eminentemente objetivo y conllevan sanciones pecuniarias liquidables en Unidades de Valor Tributario (UVT) o en porcentajes sobre el monto de la operación:</p>\n<table class=\"data-table\"><thead><tr><th>Tipología de Infracción Cambiaria</th><th>Descripción Fáctica</th><th>Sanción Prevista (Decreto Ley 2245 de 2011)</th></tr></thead><tbody><tr><td><strong>No Canalización de Divisas</strong></td><td>Pagar una importación o recibir el pago de una exportación mediante mecanismos no autorizados (ej. efectivo en frontera, compensación de saldos sin cuenta registrada o criptoactivos).</td><td>Multa del <strong>100% del valor de la operación</strong> no canalizada a través del mercado regulado.</td></tr><tr><td><strong>Canalización Extemporánea</strong></td><td>Canalizar las divisas por fuera de los plazos perentorios establecidos por el Banco de la República sin causal de justificación válida.</td><td>Multa gradual tasada en UVT proporcional al tiempo de retardo en la canalización.</td></tr><tr><td><strong>Falsedad o Inexactitud en la Declaración de Cambio</strong></td><td>Declarar datos falsos respecto al monto real de la importación, el nombre del proveedor o el numeral cambiario para encubrir la operación.</td><td>Multa del <strong>100% de la diferencia</strong> entre el valor real y el valor falsamente declarado.</td></tr><tr><td><strong>Incumplimiento de Profesionales de Cambio</strong></td><td>Comprar o vender divisas en efectivo sin estar formalmente inscrito en el registro de profesionales de la DIAN o sin emitir factura electrónica.</td><td>Multa de hasta <strong>1.000 UVT</strong> y cancelación definitiva de la autorización para operar.</td></tr></tbody></table>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p><strong>Pregunta Clásica en Concursos DIAN:</strong>   La DIAN <strong>NO TIENE COMPETENCIA</strong> para investigar o sancionar irregularidades cambiarias relacionadas con préstamos en dólares otorgados entre dos empresas colombianas o la compra de acciones en la bolsa de Nueva York por una persona natural. Esa competencia corresponde a la Superintendencia de Sociedades. La competencia de la DIAN está indisolublemente atada a las operaciones de <strong>importación, exportación, servicios de comercio exterior y profesionales de cambio en efectivo</strong>.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-8-5",
+          "moduleId": "mod-8",
+          "unitNumber": 5,
+          "title": "Unidad 5: Planeación Estratégica, MIPG y Transformación Digital",
+          "badge": "Funcional - Servicios de Datos & Gestión de TI",
+          "readTime": "12 min",
+          "minutes": 12,
+          "words": 762,
+          "content": "<h3>5.1 El Modelo Integrado de Planeación y Gestión (MIPG) en la DIAN</h3>\n<p>El <strong>Modelo Integrado de Planeación y Gestión (MIPG)</strong>, adoptado a nivel nacional mediante el <strong>Decreto 1499 de 2017</strong>, es el marco de referencia que articula la formulación de políticas, la gestión del talento humano, la gestión del conocimiento, la transparencia y el control interno en todas las entidades del Estado colombiano.</p>\n<p>En la DIAN, el MIPG se implementa a través de sus <strong>Siete (7) Dimensiones Operativas</strong>, alineadas directamente con el cumplimiento de sus metas misionales:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>LAS 7 DIMENSIONES DEL MIPG APLICADAS A LA MISIONALIDAD DE LA DIAN\n\n+---------------------------------------------------------------------------------+\n| 1. TALENTO HUMANO: El corazón del modelo. Sistema Específico de Carrera        |\n|    (Dec. Ley 927 de 2023), mérito, ética y evaluación del desempeño.           |\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 2. DIRECCIONAMIENTO ESTRATÉGICO: Plan Estratégico Institucional, metas de       |\n|    recaudo fijadas en el Marco Fiscal de Mediano Plazo y lucha contra la evasión|\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 3. GESTIÓN CON VALORES PARA RESULTADOS: Facilitación al ciudadano, gestión      |\n|    por procesos, trámites 100% virtuales y fiscalización analítica.             |\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 4. EVALUACIÓN DE RESULTADOS: Monitoreo continuo de indicadores (KPIs), recaudo  |\n|    bruto diario, tiempos de desaduanamiento y resoluciones sancionatorias.       |\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 5. INFORMACIÓN Y COMUNICACIÓN: Transparencia pasiva/activa (Ley 1712 de 2014)   |\n|    y gobierno de los servicios de datos sobre el Repositorio Único DataR.       |\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 6. GESTIÓN DEL CONOCIMIENTO: Innovación en analítica avanzada, modelos de IA    |\n|    y transferencia metodológica en la Subdirección de Procesamiento de Datos.   |\n+---------------------------------------------------------------------------------+\n                                        |\n+---------------------------------------------------------------------------------+\n| 7. CONTROL INTERNO: Modelo Estándar de Control Interno (MECI) basado en         |\n|    tres líneas de defensa: operativa, gestión del riesgo y auditoría interna.   |\n+---------------------------------------------------------------------------------+</code></pre></div>\n<h3>5.2 El Plan Estratégico Institucional de la DIAN</h3>\n<p>El Plan Estratégico de la DIAN define cuatro pilares fundamentales para el periodo cuatrienal:</p>\n<ol><li><strong>Cercanía al Ciudadano y Legitimidad Institucional:</strong> Facilitar el cumplimiento espontáneo mediante declaraciones de renta sugeridas, devolución automática de saldos a favor en menos de 15 días para contribuyentes de bajo riesgo y simplificación del RUT.</li><li><strong>Lucha Frontal contra las Estructuras de Evasión y Contrabando:</strong> Identificar tipologías de fraude complejo mediante analítica de grafos y redes neuronales sobre DataR, desmantelando proveedores ficticios de facturas y operaciones de lavado de activos.</li><li><strong>Talento Humano Calificado y Sistema Específico de Carrera:</strong> Fortalecer la meritocracia, el sentido de pertenencia y la estabilidad laboral a través de los concursos de méritos administrados con la CNSC bajo el Decreto Ley 927 de 2023.</li><li><strong>Transformación Digital y Soberanía Tecnológica:</strong> Reemplazo definitivo de las arquitecturas monolíticas legadas por un ecosistema modular de microservicios, APIs gobernadas y lagos de datos modernos.</li></ol>\n<h3>5.3 Los Cuatro Motores de la Transformación Digital en la DIAN</h3>\n<p>La Subdirección de Procesamiento de Datos es el motor operativo de la modernización tecnológica de la entidad:</p>\n<ul><li><strong>El Ecosistema de Facturación Electrónica como Sensor de la Economía:</strong> Dejó de ser un simple comprobante fiscal para convertirse en un sensor en tiempo real del ciclo económico. Incorpora la Factura Electrónica de Venta (UBL 2.1), la <strong>Nómina Electrónica</strong>, el <strong>Documento Soporte con no obligados a facturar</strong>, el documento equivalente electrónico y el <strong>RADIAN</strong> (plataforma institucional donde se registran las facturas electrónicas como títulos valores para operaciones de <em>factoring</em>).</li><li><strong>El Repositorio Único Institucional DataR:</strong> Lago de datos unificado que consolida en formatos abiertos (Apache Iceberg / Parquet) la totalidad de los eventos tributarios, aduaneros y cambiarios del país, eliminando los silos históricos de MUISCA y SYGA.</li><li><strong>Declaraciones Sugeridas Basadas en Analítica:</strong> Mecanismo que utiliza la información exógena y la facturación electrónica para entregar al ciudadano una propuesta prellenada de su declaración de renta, reduciendo a cero los costos de intermediación y los errores involuntarios de liquidación.</li><li><strong>Modernización del Sistema Aduanero y Logístico:</strong> Integración de sistemas de paso no intrusivo en puertos (escáneres automáticos con visión por computador) con los manifiestos electrónicos de carga en tiempo real.</li></ul>\n<h3>5.4 Indicadores Misionales Clave de Rendimiento (KPIs)</h3>\n<p>El Inspector I debe comprender y monitorear los indicadores misionales que miden el impacto del procesamiento de datos en la gestión pública:</p>\n<ol><li><strong>Tasa de Evasión Tributaria:</strong> Medición macroeconómica de la brecha entre el recaudo teórico potencial y el recaudo efectivamente recibido en el IVA y en el Impuesto sobre la Renta.</li><li><strong>Cumplimiento de la Meta de Recaudo Bruto:</strong> Proporción entre el recaudo ejecutado por la DIAN y la meta fijada por el Ministerio de Hacienda en la Ley del Presupuesto General de la Nación.</li><li><strong>Tiempo Medio de Desaduanamiento (TAD):</strong> Promedio de horas transcurridas desde la llegada de la mercancía a puerto hasta la obtención de la autorización de levante aduanero.</li><li><strong>Eficacia de la Fiscalización Analítica:</strong> Porcentaje de auditorías tributarias y aduaneras iniciadas a partir de alertas automáticas de DataR que culminan con liquidación oficial de revisión o sanción efectiva confirmada.</li></ol>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 60,
+      "studyMinutes": 60,
+      "bibliografia": {
+        "raw": "<h2>Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>Insignares Gómez, R., &amp; Piza Rodríguez, J. R. (2021).</strong> <em>Curso de Derecho Tributario, Aduanero y de la Comercio Exterior</em>. Universidad Externado de Colombia.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra doctrinal contemporánea más autorizada en Colombia para comprender la integración sistemática de los tres ejes misionales de la DIAN y la dogmática de las obligaciones formales y sustanciales.</li><li><strong>Plazas Vega, M. A. (2020).</strong> <em>Derecho de la Hacienda Pública y Derecho Tributario (Tomo II - Derecho Tributario)</em>. Editorial Temis.</li><li><strong>Por qué leerlo para el examen:</strong> Desarrolla con profundidad insuperable los principios constitucionales de justicia, equidad, progresividad, eficiencia e irretroactividad del Artículo 363 C.P.</li><li><strong>DIAN (2023).</strong> <em>Doctrina General sobre el Ecosistema de Factura Electrónica y el RADIAN: Concepto Unificado No. 106 de 2022 y adiciones</em>. Dirección de Gestión Jurídica, UAE DIAN.</li><li><strong>Por qué leerlo para el examen:</strong> Explica detalladamente el funcionamiento de los eventos electrónicos, la validación previa y la circulación de facturas como títulos valores.</li></ol>\n<h3>Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)</h3>\n<h4>A. Marco Constitucional y Legal Tributario</h4>\n<ul><li><strong>Constitución Política de Colombia de 1991.</strong> Artículo 95 Numeral 9 (Deber de contribuir), Artículo 189 Numeral 20 (Facultades del Presidente en recaudación), Artículo 334 (Sostenibilidad fiscal), Artículo 338 (Principio de legalidad) y Artículo 363 (Principios del sistema tributario).</li><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes al 19 de junio de 2026).</strong> Artículos 1 (Obligación sustancial), 424 y 477 (Bienes excluidos y exentos de IVA), 555-2 (RUT), 616-1 (Facturación electrónica), 631 (Información exógena), 643 y 651 (Régimen sancionatorio formal) y 684 (Facultades de fiscalización e investigación).</li><li><strong>Ley 2277 de 2022 (Reforma Tributaria para la Igualdad y la Justicia Social).</strong> Impuestos saludables, impuesto al carbono, impuesto a los plásticos de un solo uso e impuesto permanente al patrimonio.</li></ul>\n<h4>B. Marco Orgánico, Aduanero, Cambiario y de Gestión Pública</h4>\n<ul><li><strong>Decreto 1071 de 1999.</strong> Organización y objeto fundacional de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN).</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica y funciones de las dependencias del Nivel Central y Desconcentrado de la UAE DIAN.</li><li><strong>Decreto 1165 de 2019.</strong> Disposiciones relativas al régimen de aduanas en Colombia (procedimientos, regímenes y control aduanero).</li><li><strong>Decreto 920 de 2023.</strong> Nuevo régimen sancionatorio y de decomiso de mercancías en materia aduanera.</li><li><strong>Ley 9 de 1991.</strong> Ley Marco de Cambios Internacionales de Colombia.</li><li><strong>Decreto Ley 2245 de 2011 (modificado por el Decreto Ley 927 de 2023).</strong> Régimen sancionatorio de las infracciones cambiarias de competencia de la DIAN.</li><li><strong>Resolución Externa 1 de 2018 (Junta Directiva del Banco de la República).</strong> Compendio de regulaciones cambiarias obligatorias para comercio exterior.</li><li><strong>Decreto 1499 de 2017.</strong> Adopción del Modelo Integrado de Planeación y Gestión (MIPG) para el sector público colombiano.</li><li><strong>Código Penal Colombiano (Ley 599 de 2000).</strong> Artículos 319 (Contrabando), 320 (Favorecimiento al contrabando), 321 (Fraude aduanero) y 434B (Defraudación o evasión tributaria).</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-9",
@@ -3555,360 +3606,359 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-8": {
-      "title": "Examen: 8. Misionalidad de la DIAN (10 Preguntas Misionales y Casos)",
-      "indicatorNum": 8,
+      "title": "Examen Oficial: 08. Misionalidad de la DIAN (10 Preguntas PJS)",
       "questions": [
         {
           "id": 801,
-          "topic": "Frentes Misionales de la DIAN",
-          "caseText": "Un funcionario sostiene que la DIAN es únicamente una entidad encargada de recaudar impuestos sobre la renta y el IVA, desestimando las funciones sobre comercio exterior y divisas.",
-          "statement": "¿Cuáles son los tres frentes misionales integrados que conforman la competencia constitucional y legal de la DIAN?",
+          "topic": "Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Una sociedad comercial del sector tecnológico radicada en Bogotá sufrió severas pérdidas operacionales durante el año gravable 2024 debido a la cancelación de varios contratos internacionales, arrojando una renta líquida gravable igual a cero ($0) y un saldo a favor en retenciones en la fuente. Convencido de que la obligación de declarar solo nace cuando existe un monto positivo de impuesto a pagar, el representante legal decide no presentar la Declaración del Impuesto sobre la Renta ni reportar la Información Exógena anual. Al ser requerido por la División de Fiscalización, la empresa alega que, al no existir obligación sustancial exigible, no se le pueden imputar deberes formales ni imponer sanciones. Como Inspector I comisionado para proyectar el pliego de cargos, usted debe calificar jurídicamente la situación.",
+          "statement": "De acuerdo con la dogmática del derecho tributario colombiano y el Estatuto Tributario Nacional, ¿cuál es el concepto técnico-jurídico aplicable?",
           "options": [
             {
               "id": "A",
-              "text": "El frente Tributario (impuestos internos), el frente Aduanero (comercio exterior y aranceles) y el frente Cambiario (control de operaciones y divisas de comercio exterior)."
+              "text": "Determinar que las obligaciones formales gozan de plena autonomía frente a la sustancial, por lo que la ausencia de impuesto a pagar no exime a la sociedad del deber formal de declarar y reportar exógena, siendo procedente la liquidación de las sanciones por no declarar y por no suministrar información."
             },
             {
               "id": "B",
-              "text": "El frente de Tránsito, el frente de Policía y el frente de Salud pública."
+              "text": "Aceptar los descargos de la empresa y archivar el expediente administrativo, dado que el Artículo 1 del Estatuto Tributario subordina las formalidades procesales a la existencia real de una deuda en dinero a favor del fisco."
             },
             {
               "id": "C",
-              "text": "El frente de Minería, el frente de Agricultura y el frente de Transporte aéreo."
+              "text": "Exonerar a la sociedad de la presentación de la declaración de renta, pero obligarla a pagar una donación forzosa a la DIAN equivalente al 5% de sus activos brutos como compensación fiscal."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La misionalidad de la DIAN integra de forma indivisible la administración y control Tributario, Aduanero y Cambiario del orden nacional.",
+            "correct": "Es correcta. La jurisprudencia del Consejo de Estado y la doctrina reiterada de la DIAN fundamentan el principio de **Autonomía de las Obligaciones Formales**. El hecho de que una sociedad no liquide impuesto a cargo no la dispensa de sus deberes instrumentales de presentar la declaración y suministrar la información exógena (Arts. 591 y 631 del E.T.). Dichos deberes permiten a la DIAN cruzar transacciones con terceros clientes y proveedores. Su incumplimiento acarrea las sanciones legalmente tasadas en los Artículos 643 y 651 del E.T.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Tránsito, policía y salud corresponden a otros ministerios y entidades del Estado."
+                "reason": "Es incorrecta. Desconoce la naturaleza de los deberes formales consagrados en el Artículo 95, Numeral 9 de la Constitución Política y despoja a la administración de su capacidad de fiscalización de terceros."
               },
               {
                 "id": "C",
-                "reason": "Minería y agricultura son sectores económicos regulados por sus respectivos ministerios."
+                "reason": "Es incorrecta. Vulnera de forma flagrante el Principio de Legalidad Tributaria (Art. 338 C.P.); no existen donaciones forzosas en el régimen tributario y toda sanción debe estar expresamente tipificada en la ley."
               }
             ]
           }
         },
         {
           "id": 802,
-          "topic": "Evasión vs. Elusión y Cláusula General Antielusión (Art. 869 E.T.)",
-          "caseText": "Una empresa constituye una red de 5 sociedades instrumentales en un paraíso fiscal sin empleados ni oficinas físicas, con el único propósito de triangular la venta de un inmueble en Colombia y no pagar el impuesto de ganancias ocasionales.",
-          "statement": "¿Qué figura jurídica faculta a la DIAN para desconocer esta estructura artificiosa y liquidar el impuesto real?",
+          "topic": "Vigilancia y Control Cambiario de competencia de la DIAN",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Durante una auditoría interinstitucional adelantada a un grupo empresarial colombiano, los inspectores descubren dos operaciones en moneda extranjera: (1) La cancelación de un crédito en dólares por valor de USD $500.000 suscrito entre la matriz y una filial extranjera para adquirir maquinaria industrial nacionalizada en Barranquilla mediante declaración de importación; y (2) La compra de acciones en la Bolsa de Valores de Tokio por valor de USD $200.000 efectuada por el presidente de la junta directiva a título personal con dineros propios depositados en una cuenta corriente no declarada. Un auditor novato propone que la Subdirección de Fiscalización Cambiaria de la DIAN asuma la investigación y formule pliego de cargos por ambas transacciones.",
+          "statement": "Como Inspector I de la DIAN experto en misionalidad y régimen cambiario, ¿cómo debe instruir la delimitación funcional de las competencias investigativas?",
           "options": [
             {
               "id": "A",
-              "text": "La Cláusula General Antielusión (Artículo 869 del Estatuto Tributario), haciendo prevalecer la sustancia económica sobre la forma jurídica formal para recaracterizar el negocio como abuso en materia tributaria."
+              "text": "Asumir la competencia investigativa exclusivamente sobre la operación de pago de endeudamiento externo vinculado a la importación de maquinaria por ser conexa al comercio exterior, y dar traslado formal por competencia a la Superintendencia de Sociedades y a la Superintendencia Financiera respecto a la inversión financiera en acciones en el exterior."
             },
             {
               "id": "B",
-              "text": "El principio de libre mercado que prohíbe al Estado intervenir en transacciones privadas."
+              "text": "Asumir la competencia integral sobre ambas operaciones basándose en que cualquier movimiento de dólares efectuado por un ciudadano colombiano o empresa nacional cae bajo la órbita de fiscalización ilimitada de la DIAN."
             },
             {
               "id": "C",
-              "text": "No se puede hacer nada porque la empresa utilizó formas jurídicas legalmente constituidas en el extranjero."
+              "text": "Rechazar de plano ambas investigaciones y remitir todo el expediente al Banco de la República manifestando que la DIAN solo vigila impuestos internos en pesos colombianos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Art. 869 del E.T. faculta a la DIAN a recaracterizar operaciones artificiosas que carezcan de un propósito comercial legítimo distinto del ahorro tributario abusivo, haciendo valer la realidad económica sobre la forma.",
+            "correct": "Es correcta. La competencia cambiaria de la DIAN está legalmente delimitada a las operaciones cambiarias vinculadas a la **importación y exportación de bienes y servicios**, la financiación de comercio exterior y la actividad de profesionales de compra/venta de divisas en efectivo (Decreto Ley 2245 de 2011 y Decreto 1742 de 2020). La primera operación encaja dentro de su órbita al estar atada a una importación de maquinaria. La segunda operación (inversión financiera en acciones extranjeras) escapa a la competencia de la DIAN y corresponde al ámbito de supervisión de la Superintendencia de Sociedades o Financiera.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El orden público económico y el deber constitucional de tributar prevalecen sobre el abuso de las formas."
+                "reason": "Es incorrecta. Viola el principio de legalidad y la competencia administrativa consagrada en la Ley 9 de 1991, invadiendo funciones asignadas por ley a otras superintendencias."
               },
               {
                 "id": "C",
-                "reason": "La Cláusula Antielusión existe precisamente para desvirtuar el uso fraudulento de figuras jurídicas extranjeras."
+                "reason": "Es incorrecta. El Banco de la República es una autoridad de regulación macroeconómica y banca central, no un órgano sancionatorio ni de policía administrativa de campo; la DIAN no puede abdicar de su competencia legalmente asignada sobre comercio exterior."
               }
             ]
           }
         },
         {
           "id": 803,
-          "topic": "Contrabando Abierto vs. Contrabando Técnico",
-          "caseText": "En el puerto de Buenaventura, un importador presenta una declaración aduanera declarando un cargamento de calzado deportivo a un valor de $1 dólar por par cuando el precio internacional real es de $30 dólares, con el fin de evadir el arancel ad-valorem.",
-          "statement": "¿Qué modalidad de contrabando se está cometiendo?",
+          "topic": "Obligación Aduanera, Regímenes y Control Aduanero",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el puerto marítimo de Buenaventura arriba un buque portacontenedores con un cargamento de 50 toneladas de calzado y textiles procedentes de Asia, declarado formalmente bajo el régimen de importación ordinaria. El importador es una empresa constituida hace un mes con un capital suscrito de apenas $2.000.000 de pesos, cuyo representante legal registra antecedentes de incumplimiento en el RUT. No obstante, al momento de radicar la declaración aduanera y solicitar el desaduanamiento, el apoderado exige que se le otorgue de forma inmediata el levante automático, argumentando que sus tributos aduaneros fueron liquidados y pagados en el banco y que cualquier demora en el puerto viola el principio de facilitación del comercio internacional.",
+          "statement": "En el marco de las fases de control aduanero y la gestión de riesgo de la DIAN, ¿cuál es la actuación que legal y técnicamente corresponde aplicar?",
           "options": [
             {
               "id": "A",
-              "text": "Contrabando Técnico mediante subfacturación de mercancías en canal aduanero formal."
+              "text": "Someter la operación a los filtros del Sistema de Administración del Riesgo de DataR y ordenar la inspección física e inspección no intrusiva con escáneres de alta resolución en la fase de control simultáneo, verificando precios reales de mercado, etiquetado y origen antes de autorizar el levante."
             },
             {
               "id": "B",
-              "text": "Contrabando Abierto por cruce clandestino en lancha rápida por aguas no autorizadas."
+              "text": "Conceder inmediatamente el levante automático de las mercancías, fundamentándose en que el pago oportuno de los tributos en la entidad bancaria extingue automáticamente toda potestad de inspección aduanera."
             },
             {
               "id": "C",
-              "text": "Exportación ficticia con devolución indebida de IVA."
+              "text": "Ordenar de manera inmediata la destrucción física y quema de todo el cargamento en el muelle sin adelantar inspección ni permitir el ejercicio del derecho de defensa al importador."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El contrabando técnico se realiza a través de puertos y canales legales formales presentando declaraciones oficiales, pero falseando el valor (subfacturación), la clasificación arancelaria o el país de origen.",
+            "correct": "Es correcta. El desaduanamiento de mercancías no es un trámite ciego al riesgo. Conforme al Estatuto Aduanero (Decreto 1165 de 2019) y las directrices de la OMA, la DIAN ejerce el **Control Simultáneo** a través de su Sistema de Administración del Riesgo. Mercancías sensibles como calzado y textiles importadas por operadores de reciente creación con bajo capital configuran perfiles de alto riesgo de subfacturación y contrabando técnico, lo que justifica plenamente la inspección física y documental con apoyo de escáneres no intrusivos antes de otorgar el levante.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El contrabando abierto elude todos los controles y lugares autorizados de ingreso."
+                "reason": "Es incorrecta. El pago bancario satisface la autoliquidación formal pero no convalida la legalidad de la mercancía ni restringe las facultades de inspección aduanera del Estado."
               },
               {
                 "id": "C",
-                "reason": "El caso describe una importación con subfacturación, no una exportación simulada."
+                "reason": "Es incorrecta. Configura una vía de hecho violatoria del debido proceso constitucional (Art. 29 C.P.) y genera responsabilidad patrimonial y disciplinaria gravísima contra los funcionarios."
               }
             ]
           }
         },
         {
           "id": 804,
-          "topic": "Delito de Omisión de Activos (Art. 434A del Código Penal)",
-          "caseText": "Un contribuyente oculta en su declaración de renta cuentas bancarias en el exterior y bienes inmuebles por valor de $5.000 millones de pesos colombianos para no pagar el impuesto al patrimonio.",
-          "statement": "¿En qué conducta delictiva tipificada en el Código Penal incurre?",
+          "topic": "Régimen Sancionatorio Cambiario (Decreto Ley 2245 de 2011)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Una empresa importadora de repuestos industriales domiciliada en Cúcuta acordó con su proveedor extranjero en el exterior que, para ahorrarse las comisiones bancarias y las retenciones financieras de los bancos comerciales, pagaría un embarque de autopartes por valor de USD $80.000 entregando dinero en efectivo en pesos colombianos y dólares a un transportador particular no autorizado en la frontera, quien a su vez transfirió fondos mediante billeteras virtuales no reguladas en el extranjero. La operación no fue registrada mediante Declaración de Cambio ante ningún Intermediario del Mercado Cambiario (IMC) ni a través de una Cuenta de Compensación registrada.",
+          "statement": "Al detectar este hecho mediante el cruce de datos aduaneros en DataR, ¿qué sanción debe proyectar el Inspector I conforme al Decreto Ley 2245 de 2011?",
           "options": [
             {
               "id": "A",
-              "text": "Delito de Omisión de activos o inclusión de pasivos inexistentes (Artículo 434A del Código Penal), sancionado con pena privativa de la libertad."
+              "text": "Proyectar pliego de cargos por la infracción cambiaria de **No Canalización de Divisas**, proponiendo la imposición de una sanción equivalente al **100% del valor de la operación no canalizada** a través del mercado regulado."
             },
             {
               "id": "B",
-              "text": "Hurto calificado con agravación punitiva de bienes del Estado."
+              "text": "Aplicar una amonestación escrita conminando a la empresa a no repetir la conducta y otorgándole un plazo de dos años para legalizar los recibos de caja en la seccional de aduanas."
             },
             {
               "id": "C",
-              "text": "Infracción de tránsito leve subsanable con un curso pedagógico."
+              "text": "Liquidar una sanción de extemporaneidad del 0.5% mensual sobre el impuesto de timbre, cerrando el expediente cambiario al no haber intervención de bancos comerciales."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Art. 434A del Código Penal castiga penalmente con prisión de 48 a 108 meses a quien omita activos o incluya pasivos inexistentes en sus declaraciones por montos que superen los umbrales legales.",
+            "correct": "Es correcta. El régimen cambiario de comercio exterior (Resolución Externa 1 de 2018 del Banco de la República) obliga a que el pago de importaciones de bienes se canalice exclusivamente a través de los IMC o cuentas de compensación debidamente registradas. El **Decreto Ley 2245 de 2011** tipifica de manera expresa que la no canalización de divisas acarrea una sanción pecuniaria correspondiente al **100% del valor de la operación** objeto de infracción, calculada a la tasa representativa del mercado (TRM) de la fecha de ocurrencia del hecho.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "No es hurto; es un delito fiscal contra el orden económico y social del Estado."
+                "reason": "Es incorrecta. El régimen sancionatorio cambiario es reglado y objetivo; los funcionarios de la DIAN carecen de discrecionalidad para sustituir multas legalmente tasadas por amonestaciones pedagógicas."
               },
               {
                 "id": "C",
-                "reason": "El fraude tributario no es una infracción de tránsito; es un delito penal de gravedad nacional."
+                "reason": "Es incorrecta. Confunde el régimen tributario interno de timbre con el régimen administrativo sancionatorio cambiario, dejando impune una violación directa al control de divisas del país."
               }
             ]
           }
         },
         {
           "id": 805,
-          "topic": "Delito de Omisión del Agente Retenedor (Art. 434B del Código Penal)",
-          "caseText": "Una empresa descuenta las retenciones en la fuente a sus empleados y cobra el IVA en sus ventas, pero utiliza ese dinero público para pagar gastos operativos de la empresa y no lo consigna a la DIAN pasados dos meses desde el vencimiento del plazo.",
-          "statement": "¿Qué consecuencia penal enfrentan el representante legal y los responsables?",
+          "topic": "Principios del Sistema Tributario (Artículo 363 C.P.)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El Congreso de la República aprueba una Ley de Reforma Tributaria que es promulgada en el Diario Oficial el día 20 de diciembre de 2024. Dicha ley crea una sobretasa especial del 5% sobre el Impuesto sobre la Renta para empresas del sector servicios. En febrero de 2025, un Director Seccional de Impuestos emite una instrucción interna ordenando a los inspectores tributarios exigir la sobretasa del 5% sobre las rentas líquidas obtenidas por las empresas durante la totalidad del año gravable 2024, aduciendo que la declaración correspondiente a ese año vence en abril de 2025 y por tanto la ley ya se encuentra vigente al momento de presentar el formulario.",
+          "statement": "Al analizar la legalidad de la instrucción a la luz del Artículo 363 de la Constitución Política y el Artículo 338 constitucional, el Inspector I debe concluir que:",
           "options": [
             {
               "id": "A",
-              "text": "Incurren en el delito de Omisión del agente retenedor o recaudador (Artículo 434B del Código Penal), castigado con pena de prisión de 48 a 108 meses y multa equivalente al doble de lo no consignado."
+              "text": "La instrucción es inconstitucional y violatoria del **Principio de Irretroactividad Tributaria**, dado que las leyes que regulan tributos cuya base sea el resultado de hechos ocurridos durante un periodo determinado solo pueden aplicarse a partir del periodo que comience después de iniciar la vigencia de la ley (es decir, a partir del año gravable 2025)."
             },
             {
               "id": "B",
-              "text": "Solo una amonestación verbal privada sin repercusiones económicas ni penales."
+              "text": "La instrucción es plenamente legal y vinculante, puesto que las leyes tributarias siempre operan de forma retroactiva cuando benefician las metas de recaudo del Estado."
             },
             {
               "id": "C",
-              "text": "Un premio por optimización de liquidez corporativa."
+              "text": "La sobretasa debe cobrarse sobre el año gravable 2024, pero únicamente a las empresas que reporten utilidades superiores a 1.000 salarios mínimos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las sumas retenidas o recaudadas por IVA no pertenecen a la empresa; son recursos públicos del Estado. No consignarlas dentro de los 2 meses siguientes al plazo es un delito penal tipificado en el Art. 434B del Código Penal.",
+            "correct": "Es correcta. El inciso 3 del **Artículo 338** y el inciso 2 del **Artículo 363 de la Constitución Política** consagran de manera categórica que las leyes tributarias no pueden aplicarse con retroactividad. En los impuestos de periodo (como el Impuesto sobre la Renta, que abarca del 1 de enero al 31 de diciembre), las modificaciones que introduzcan tributos o sobretasas no pueden afectar el periodo en curso ni periodos anteriores; su aplicación rige exclusivamente a partir del periodo fiscal siguiente (año gravable 2025, a declararse en 2026).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La retención de dineros públicos no se soluciona con amonestaciones verbales; es delito penal no excarcelable."
+                "reason": "Es incorrecta. Desconoce una de las garantías fundamentales del Estado de Derecho; la irretroactividad protege la seguridad jurídica y la confianza legítima de los contribuyentes."
               },
               {
                 "id": "C",
-                "reason": "Financiarse con dineros públicos retenidos es una conducta ilícita severamente reprimida por la ley."
+                "reason": "Es incorrecta. Introduce una distinción arbitraria no contemplada en la norma constitucional y convalida la vulneración del principio de irretroactividad."
               }
             ]
           }
         },
         {
           "id": 806,
-          "topic": "Período de Prueba en la Carrera Específica de la DIAN",
-          "caseText": "Un aspirante gana el concurso de méritos de la CNSC y es nombrado en período de prueba en el empleo de Inspector I. Pregunta cuánto tiempo debe permanecer en dicha condición antes de ser inscrito en el Registro Público de Carrera Administrativa.",
-          "statement": "Conforme al Decreto Ley 071 de 2020, la duración del período de prueba es de:",
+          "topic": "Planeación Estratégica, MIPG y Transformación Digital",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Una pequeña y mediana empresa (MiPyME) proveedora de insumos médicos emite una factura electrónica de venta a crédito a una clínica privada con un plazo de pago de 90 días. Con el propósito de obtener liquidez inmediata para pagar su nómina, la empresa decide ceder y descontar dicha factura ante una entidad de financiamiento (*Factoring*). Sin embargo, el pagador (la clínica) se niega a registrar electrónicamente el Acuse de Recibo de la factura y el Recibo de las Mercancías en los servicios web de la DIAN, bloqueando la posibilidad de que la factura se convierta formalmente en Título Valor.",
+          "statement": "¿Cuál es la función tecnológica y legal que cumple la plataforma institucional **RADIAN** administrada por la DIAN en este escenario económico?",
           "options": [
             {
               "id": "A",
-              "text": "Exactamente seis (6) meses perentorios e improrrogables."
+              "text": "Actuar como el registro oficial único administrado por la DIAN donde se inscriben los eventos electrónicos (acuse de recibo, recepción de bienes, aceptación expresa o tácita y endosos) necesarios para dotar a la factura electrónica de la calidad de **Título Valor negociable en el territorio nacional**."
             },
             {
               "id": "B",
-              "text": "Dos (2) semanas de inducción general."
+              "text": "Reemplazar a los jueces de la república para cobrar por la fuerza pública el dinero adeudado por la clínica sin necesidad de adelantar un proceso ejecutivo."
             },
             {
               "id": "C",
-              "text": "Tres (3) años con evaluación anual acumulada."
-            },
-            {
-              "id": "D",
-              "text": "Un (1) mes renovable indefinidamente."
+              "text": "Asumir la deuda como deudor solidario y girar los recursos directamente desde el presupuesto de la DIAN a la MiPyME proveedora."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Decreto Ley 071 de 2020 establece de forma expresa que el período de prueba para los empleos de la carrera específica de la DIAN tiene una duración exacta de seis (6) meses.",
+            "correct": "Es correcta. El **RADIAN** (Resolución DIAN 000085 de 2022 y concordantes, amparada en el Art. 616-1 del E.T.) es la plataforma oficial de la DIAN donde se administran y registran los eventos de la Factura Electrónica como Título Valor (acuse, aceptación expresa o tácita, avales, mandatos y endosos en factoring). Este ecosistema tecnológico otorga certeza jurídica, trazabilidad y unicidad, garantizando que una misma factura no sea cedida múltiples veces a distintos prestamistas y facilitando la liquidez del sector productivo.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Dos semanas es un término de inducción, no el período de prueba legal de carrera."
+                "reason": "Es incorrecta. El RADIAN es una plataforma de registro y consulta de eventos mercantiles de datos, no un tribunal jurisdiccional de cobro coactivo privado."
               },
               {
                 "id": "C",
-                "reason": "Tres años excede con creces el mandato legal perentorio de 6 meses."
-              },
-              {
-                "id": "D",
-                "reason": "El período de prueba en el sector público colombiano no es renovable indefinidamente."
+                "reason": "Es incorrecta. La DIAN administra el sistema de información pública; en ningún caso asume obligaciones crediticias privadas entre particulares ni compromete recursos del erario."
               }
             ]
           }
         },
         {
           "id": 807,
-          "topic": "El Estatuto Tributario y el Deber Ciudadano de Tributar",
-          "caseText": "En una mesa de trabajo se debate la justificación filosófica y constitucional del cobro de tributos en Colombia.",
-          "statement": "¿Qué mandato de la Constitución Política de 1991 fundamenta el deber de contribuir al fisco nacional?",
+          "topic": "Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En una mesa de trabajo en la Subdirección de Procesamiento de Datos, se diseñan los algoritmos de validación previa de facturación electrónica y devolución automática de saldos a favor. Un programador pregunta la diferencia dogmática y contable entre los bienes clasificados como **Exentos** y los bienes clasificados como **Excluidos** en el Impuesto sobre las Ventas (IVA), para programar correctamente las reglas de cálculo en el motor de reglas de DataR.",
+          "statement": "¿Cuál es la definición exacta que el Inspector I debe proporcionar para parametrizar el algoritmo de validación fiscal?",
           "options": [
             {
               "id": "A",
-              "text": "El Artículo 95, numeral 9 de la Constitución Política: 'Contribuir al financiamiento de los gastos e inversiones del Estado dentro de conceptos de justicia y equidad'."
+              "text": "Los bienes **Exentos** están gravados a una tarifa del 0% y otorgan a su productor el derecho a solicitar la devolución o compensación de los saldos a favor por el IVA pagado en sus costos e insumos; mientras que los bienes **Excluidos** no causan el impuesto y el IVA pagado en su adquisición constituye un mayor valor del costo o gasto no descontable."
             },
             {
               "id": "B",
-              "text": "El Artículo 1 de la Constitución que declara el derecho a la recreación y el deporte."
+              "text": "Ambos conceptos son sinónimos técnicos que implican que ningún ciudadano ni productor paga jamás un solo peso de impuesto en ninguna etapa de la cadena de producción."
             },
             {
               "id": "C",
-              "text": "Una costumbre mercantil que data de la época colonial sin sustento constitucional."
+              "text": "Los bienes **Excluidos** otorgan derecho a devolución en efectivo cada mes, mientras que los bienes **Exentos** exigen el pago de una tarifa punitiva del 35% en la aduana."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El numeral 9 del Art. 95 de la Constitución consagra como deber cívico fundamental de toda persona contribuir a las cargas públicas bajo los principios constitucionales de justicia, equidad y progresividad.",
+            "correct": "Es correcta. Conforme al Estatuto Tributario Nacional (Arts. 424, 477 y concordantes), los **bienes exentos** forman parte del hecho generador del IVA pero su tarifa legal es del 0%, lo que permite a los productores recuperar el IVA pagado en la cadena de insumos (IVA descontable) mediante solicitud de devolución de saldos a favor. Por el contrario, los **bienes excluidos** no forman parte del ámbito del hecho generador del IVA; no generan cobro alguno y el IVA pagado en su cadena de compras no puede descontarse ni devolverse, incorporándose como mayor valor del costo o gasto.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El artículo sobre recreación no es la fuente de la obligación tributaria ciudadana."
+                "reason": "Es incorrecta. Confunde dos categorías tributarias diametralmente opuestas en materia de derecho a impuestos descontables y devoluciones."
               },
               {
                 "id": "C",
-                "reason": "El sistema tributario colombiano tiene rango constitucional y legal estricto, no consuetudinario."
+                "reason": "Es incorrecta. Invierte y deforma completamente la doctrina tributaria, inventando una tarifa aduanera punitiva inexistente."
               }
             ]
           }
         },
         {
           "id": 808,
-          "topic": "Control Aduanero Previo, Simultáneo y Posterior",
-          "caseText": "Un cargamento de teléfonos celulares ingresó hace tres años al país y fue nacionalizado con levante automático. Nuevos cruces de datos en DataR revelan que los certificados de origen presentados eran completamente falsos.",
-          "statement": "¿Puede la DIAN iniciar actuaciones de fiscalización aduanera sobre una mercancía que ya obtuvo levante hace tres años?",
+          "topic": "Obligación Aduanera, Regímenes y Lucha contra el Contrabando",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En un operativo de control aduanero posterior en una bodega comercial de Bogotá, inspectores de fiscalización aduanera y agentes de la POLFA descubren un inventario de 500 computadores portátiles importados. El tenedor presenta una fotocopia ilegible de una declaración de importación en la que no coinciden los números de serie de los equipos ni se identifica el manifiesto de carga. La comisión redacta el acta de aprehensión de la mercancía. El comerciante acude al día siguiente a la Dirección Seccional exigiendo que se le indemnice por haberle \"expropiado definitivamente sus bienes sin un juicio previo\".",
+          "statement": "Al responder jurídicamente la reclamación ciudadana, el Inspector I debe explicar la naturaleza de la medida cautelar señalando que:",
           "options": [
             {
               "id": "A",
-              "text": "Sí, a través del Control Aduanero Posterior, el cual puede ejercerse dentro del término de caducidad fijado por la regulación aduanera (hasta 5 años después de la nacionalización)."
+              "text": "La **Aprehensión** es una medida cautelar de carácter preventivo y transitorio que busca asegurar la mercancía mientras se surte el proceso administrativo aduanero, garantizando al usuario la oportunidad legal de aportar las pruebas que acrediten su legal introducción antes de que se profiera la resolución definitiva de **Decomiso**."
             },
             {
               "id": "B",
-              "text": "No, porque una vez que la mercancía sale del puerto el Estado pierde toda potestad de revisión."
+              "text": "La aprehensión extingue automáticamente e irrevocablemente el derecho de dominio en el mismo instante en que el inspector firma el acta, perdiendo el comerciante todo derecho a interponer recursos o aportar pruebas."
             },
             {
               "id": "C",
-              "text": "Solo si el importador autoriza voluntariamente la revisión por escrito."
+              "text": "Los computadores pasan a ser propiedad privada inmediata del funcionario que realizó el operativo para su uso personal sin necesidad de acto administrativo."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La regulación aduanera faculta a la DIAN a ejercer fiscalización aduanera posterior hasta por cinco años después de la declaración para investigar fraudes, decomisar mercancías o liquidar tributos dejados de pagar.",
+            "correct": "Es correcta. El régimen aduanero (Decreto 1165 de 2019 y Decreto 920 de 2023) estructura el proceso de control aduanero en etapas regladas. La **Aprehensión** es una medida cautelar y preventiva que suspende temporalmente la disposición de las mercancías por no acreditarse su legal ingreso. No equivale a una expropiación. El interesado goza de un término legal para presentar el documento de objeción a la aprehensión y aportar las pruebas correspondientes. Solo si las inconsistencias no se desvirtúan, la DIAN expide el acto administrativo de **Decomiso**, mediante el cual la propiedad se transfiere definitivamente a la Nación.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El levante aduanero inicial no subsana fraudes ni impide la fiscalización posterior de ley."
+                "reason": "Es incorrecta. Vulnera el debido proceso consagrado en el Artículo 29 de la Constitución Política y confunde la medida cautelar con la sanción definitiva de fondo."
               },
               {
                 "id": "C",
-                "reason": "La potestad de fiscalización del Estado es coactiva y no depende de la voluntad del administrado."
+                "reason": "Es incorrecta. Configura el delito de peculado por apropiación y una falta disciplinaria gravísima sancionada con destitución inmediata."
               }
             ]
           }
         },
         {
           "id": 809,
-          "topic": "El Régimen Cambiario y el Lavado de Activos",
-          "caseText": "Una empresa exportadora declara haber exportado carbón por $10 millones de dólares pero canaliza a través de los bancos colombianos $80 millones de dólares en divisas alegando que sus clientes en el exterior le 'regalaron' el dinero sobrante.",
-          "statement": "¿Qué fenómeno de riesgo cambiario y financiero debe reportar el área de analítica?",
+          "topic": "Planeación Estratégica, MIPG y Transformación Digital",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En el marco de la auditoría de gestión institucional realizada bajo el Modelo Integrado de Planeación y Gestión (MIPG), la Oficina de Control Interno de la DIAN emite un hallazgo señalando que varias divisiones operativas continúan gestionando expedientes en carpetas locales de computadores personales, generando riesgos de pérdida de información, desactualización de cifras en los tableros de control directivo y potenciales fugas de datos amparados por reserva tributaria (Art. 583 E.T.). Como Inspector I en la Subdirección de Procesamiento de Datos, se le encomienda proponer la solución técnica integral alineada con las directrices del MIPG.",
+          "statement": "¿Cuál es la estrategia institucional que solventa el hallazgo de auditoría fortaleciendo la dimensión de Información y Comunicación del MIPG?",
           "options": [
             {
               "id": "A",
-              "text": "Sobrefacturación y potencial lavado de activos mediante el ingreso de divisas no justificadas por la operación de comercio exterior real, debiendo emitir reporte a la UIAF y fiscalización cambiaria."
+              "text": "Centralizar la gestión documental y analítica sobre el ecosistema gobernado de **DataR** y los sistemas oficiales de gestión documental, asegurando la interoperabilidad mediante servicios de datos protegidos por control de acceso basado en atributos (ABAC) y auditoría forense inmutable."
             },
             {
               "id": "B",
-              "text": "Felicitar a la empresa por generar riqueza para el país sin investigar el origen de los fondos."
+              "text": "Adquirir discos duros externos USB para cada funcionario con el fin de que respalden manualmente sus archivos cada viernes al finalizar la jornada."
             },
             {
               "id": "C",
-              "text": "Archivar el caso porque el ingreso de dólares siempre es legal."
+              "text": "Eliminar todos los registros históricos de auditorías para evitar que los organismos de control interno encuentren futuras discrepancias operativas."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El frente cambiario de la DIAN vigila que las divisas canalizadas correspondan a la realidad de la mercancía. Las discrepancias masivas indican tipologías de lavado de activos que deben reportarse a la Unidad de Información y Análisis Financiero (UIAF).",
+            "correct": "Es correcta. La dimensión de Información y Comunicación del **MIPG (Decreto 1499 de 2017)** en entidades que gestionan activos estratégicos como la DIAN exige garantizar la integridad, disponibilidad, confidencialidad y autenticidad del dato. Centralizar la información en DataR erradica los silos locales, estandariza las fuentes de verdad y blinda la custodia legal de los datos protegidos por reserva mediante controles de acceso robustos y auditoría forense inmutable.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Ignorar divisas de origen injustificado facilita el lavado de activos del crimen organizado."
+                "reason": "Es incorrecta. Multiplica exponencialmente los riesgos de pérdida, robo o sustracción de dispositivos portátiles sin cifrar, vulnerando el principio de seguridad de la información."
               },
               {
                 "id": "C",
-                "reason": "El régimen cambiario castiga severamente la falsa declaración y la canalización ilícita de divisas."
+                "reason": "Es incorrecta. El ocultamiento o destrucción de registros públicos constituye delito penal y falta disciplinaria de la mayor gravedad en la función pública."
               }
             ]
           }
         },
         {
           "id": 810,
-          "topic": "Devolución de Saldos a Favor y Control Antifraude",
-          "caseText": "Una empresa recién constituida solicita a la DIAN la devolución en efectivo de $5.000 millones de pesos por saldos a favor de IVA originados en compras de insumos a proveedores que no tienen capacidad instalada ni empleados.",
-          "statement": "El mecanismo analítico que debe activar el Inspector I antes de autorizar el desembolso es:",
+          "topic": "Objeto Misional y Seguridad Fiscal del Estado Colombiano",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El equipo de analistas de la Subdirección de Procesamiento de Datos identifica en DataR una red criminal compuesta por 45 empresas de papel (*Sociedades Fantasma o Proveedores Ficticios*) que han emitido más de $500.000 millones de pesos en facturas electrónicas falsas por supuestos servicios de consultoría y publicidad a grandes contribuyentes del país, quienes utilizaron dichas facturas para inflar artificialmente sus costos y deducciones en el impuesto de renta y disminuir indebidamente el IVA a pagar. Al consultar la actuación misional procedente, se discute si la DIAN debe limitarse a cobrar los intereses a las empresas fantasmas o coordinar una acción de mayor impacto estatal.",
+          "statement": "En cumplimiento del objeto superior de la DIAN y la protección de la Seguridad Fiscal del Estado, ¿cuál es el curso de acción institucional integral que debe ejecutarse?",
           "options": [
             {
               "id": "A",
-              "text": "Cruce de datos masivo en DataR para verificar la trazabilidad y realidad económica de los proveedores (facturación electrónica, nómina electrónica y exógena bancaria), suspendiendo el trámite si se detectan indicios de operaciones simuladas."
+              "text": "Desconocer los costos y deducciones ficticias a los contribuyentes que compraron las facturas, determinar oficialmente los tributos e imponer las sanciones por inexactitud del 100% (Art. 648 E.T.), declarar formalmente a los emisores como **Proveedores Ficticios** (Art. 671 E.T.) y trasladar el expediente con evidencia digital pericial a la **Fiscalía General de la Nación** por delitos de defraudación tributaria y falsedad."
             },
             {
               "id": "B",
-              "text": "Girar de inmediato los recursos públicos sin hacer ninguna validación de datos."
+              "text": "Limitarse a enviar un correo informativo genérico a las empresas de papel solicitándoles que actualicen su dirección de domicilio en el RUT antes del próximo año."
             },
             {
               "id": "C",
-              "text": "Pedir prestado el dinero de la devolución para uso personal de los ingenieros."
+              "text": "Legalizar las facturas ficticias autorizando un descuento tributario extraordinario del 50% para incentivar la inversión privada en consultoría."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Las devoluciones indebidas de IVA ('carruseles de devolución') son uno de los mayores focos de desfalco al Estado. La analítica de datos en DataR cruza la factura con la nómina y los pagos reales antes del desembolso.",
+            "correct": "Es correcta. La misionalidad de la DIAN en defensa de la Seguridad Fiscal exige una respuesta contundente y articulada frente a la evasión organizada. El Estatuto Tributario contempla herramientas específicas: la **declaratoria de Proveedor Ficticio** (Art. 671 E.T., que anula la validez de las facturas emitidas por la empresa de papel), la **reliquidación oficial de los impuestos** con sanción por inexactitud del 100% sobre los compradores del servicio simulado (Art. 648 E.T.) y la denuncia penal inmediata ante la Fiscalía por el delito de **Defraudación o Evasión Tributaria** (Art. 434B del Código Penal) y concierto para delinquir.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Pagar sin validación previa provocaría detrimento patrimonial al Estado y responsabilidad fiscal."
+                "reason": "Es incorrecta. Configura una omisión gravísima del deber funcional de fiscalización e investigación tributaria, facilitando la prescripción de los tributos y la impunidad penal."
               },
               {
                 "id": "C",
-                "reason": "Apropiarse de dineros públicos configura los delitos de concusión y peculado por apropiación."
+                "reason": "Es incorrecta. La DIAN carece de facultades para perdonar tributos o convalidar operaciones fraudulentas al margen de la ley del Congreso."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-8",
-      "track": "funcionales"
+      ]
     },
     "exam-9": {
       "title": "Examen: 9. Modelado y Repositorios de Datos (10 Preguntas de Kimball, Data Vault y Casos)",
@@ -8983,6 +9033,126 @@ window.COURSES_DATA['inspector1'] = {
       "back": "** Registro forense inmutable sellado criptográficamente que almacena quién, cuándo y con qué justificación accedió a un registro tributario amparado por reserva.",
       "module": 7,
       "category": "07. Gobierno y Gestión de los Servicios de Datos"
+    },
+    {
+      "front": "Seguridad Fiscal del Estado",
+      "back": "** Bien jurídico superior protegido por la DIAN que asegura la oportuna y justa recaudación tributaria para financiar el gasto público y sostener el Estado Social de Derecho.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Artículo 95 Numeral 9 C.P.",
+      "back": "** Mandato constitucional que establece el deber fundamental de toda persona de contribuir al financiamiento de los gastos e inversiones del Estado con justicia y equidad.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Principios del Sistema Tributario (Art. 363 C.P.)",
+      "back": "** Equidad (trato igual e igualitario), Eficiencia (mínimo costo administrativo y sin trabas) y Progresividad (mayor aporte a mayor capacidad económica), bajo el principio de Irretroactividad.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Sujeto Activo de la Obligación Tributaria",
+      "back": "** El acreedor jurídico de la prestación impositiva (en tributos nacionales es la Nación, representada por la UAE DIAN).",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Sujeto Pasivo Económico frente a Jurídico",
+      "back": "** El económico soporta el pago patrimonial final del impuesto (el consumidor en el IVA); el jurídico tiene la obligación legal de cobrarlo, declararlo y consignarlo a la DIAN.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Hecho Generador",
+      "back": "** Presupuesto fáctico o económico consagrado en la ley cuya materialización en la realidad hace nacer la obligación tributaria sustancial.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Obligación Sustancial frente a Formal",
+      "back": "** La sustancial consiste en pagar la suma líquida del tributo; la formal comprende los deberes instrumentales de hacer, no hacer e informar (RUT, declarar, facturar).",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Autonomía de las Obligaciones Formales",
+      "back": "** Principio por el cual un contribuyente debe cumplir sus deberes formales (declarar o reportar exógena) incluso si no arrojó impuesto a pagar en el ejercicio.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Régimen Simple de Tributación (SIMPLE)",
+      "back": "** Modelo opcional de recaudo unificado que integra el impuesto sobre la renta, el impuesto nacional al consumo y el ICA municipal para fomentar la formalización.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Bienes Exentos frente a Bienes Excluidos en IVA",
+      "back": "** Los exentos tienen tarifa del 0% y otorgan derecho a devolución de IVA descontable; los excluidos no causan IVA y el impuesto pagado forma parte del costo.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Obligación Aduanera",
+      "back": "** Vínculo jurídico entre el Estado y los usuarios de comercio exterior para el pago de tributos aduaneros, el cumplimiento de formalidades y la conservación de documentos soporte.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Levante Aduanero",
+      "back": "** Acto administrativo por el cual la autoridad aduanera autoriza a los interesados a disponer libremente de las mercancías importadas una vez cumplidos los requisitos legales.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Fases del Control Aduanero",
+      "back": "** Control Previo (antes de la llegada o desaduanamiento), Control Simultáneo (durante la inspección documental/física) y Control Posterior (auditoría ex-post hasta por 5 años).",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Aprehensión frente a Decomiso",
+      "back": "** La aprehensión es la retención física cautelar y preventiva de la mercancía; el decomiso es la declaración formal y definitiva de pérdida de dominio a favor de la Nación.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Competencia Cambiaria Exclusiva de la DIAN",
+      "back": "** Vigilancia y control de divisas asociadas a importaciones, exportaciones, servicios de comercio exterior y profesionales de compra/venta de divisas en efectivo.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Mercado Cambiario Regulado",
+      "back": "** Circuito obligatorio conformado por los Intermediarios del Mercado Cambiario (IMC) y las Cuentas de Compensación registradas ante el Banco de la República.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Infracción Cambiaria de No Canalización",
+      "back": "** Pagar o cobrar operaciones de comercio exterior mediante mecanismos no autorizados (efectivo o compensación no registrada), castigado con multa del 100% de la operación.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Dimensiones del MIPG en la DIAN",
+      "back": "** Las siete dimensiones operativas del Decreto 1499 de 2017 que estructuran la planeación, talento humano, conocimiento, gobierno de datos y control interno institucional.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "Ecosistema de Factura Electrónica",
+      "back": "** Conjunto integrado por Factura Electrónica UBL 2.1, Nómina Electrónica, Documento Soporte con no obligados y el RADIAN para registro de facturas como título valor.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
+    },
+    {
+      "front": "RADIAN",
+      "back": "** Plataforma tecnológica administrada por la DIAN donde se registran las facturas electrónicas de venta como títulos valores que circulan en el territorio nacional mediante operaciones de factoring.",
+      "module": 8,
+      "category": "08. Misionalidad de la DIAN"
     }
   ]
 };

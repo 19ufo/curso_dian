@@ -179,7 +179,7 @@ function build() {
         if (fm) raw = raw.slice(fm[0].length);
 
         // Si el módulo ya fue compilado de forma universal en data.js, omitir lecciones extra obsoletas
-        if (modulo >= 1 && modulo <= 7) {
+        if (modulo >= 1 && modulo <= 8) {
             return;
         }
 
