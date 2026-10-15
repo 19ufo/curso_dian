@@ -301,6 +301,24 @@ function initApp() {
     renderTips();
 }
 
+function formatModuleTitle(title) {
+    if (!title) return '';
+    if (title === title.toUpperCase() && title.length > 4) {
+        const smallWords = new Set(['y', 'e', 'o', 'u', 'de', 'del', 'en', 'el', 'la', 'los', 'las', 'un', 'una', 'por', 'con', 'para', 'a']);
+        const words = title.toLowerCase().split(/\s+/);
+        return words.map((w, idx) => {
+            if (idx > 0 && smallWords.has(w)) return w;
+            if (w === 'dian') return 'DIAN';
+            if (w === 'mipg') return 'MIPG';
+            if (w === 'meci') return 'MECI';
+            if (w === 'pjs') return 'PJS';
+            if (w === 'rut') return 'RUT';
+            return w.charAt(0).toUpperCase() + w.slice(1);
+        }).join(' ');
+    }
+    return title;
+}
+
 function renderSidebar(filterText = '') {
     const navList = document.getElementById('modules-list');
     if (!navList) return;
@@ -338,7 +356,7 @@ function renderSidebar(filterText = '') {
             <div class="module-group">
                 <div class="module-header" onclick="toggleModuleGroup(this)">
                     <span class="module-title-wrap">
-                        <span class="module-title">${mod.title}</span>
+                        <span class="module-title">${formatModuleTitle(mod.title)}</span>
                         <span class="module-meta">${mod.lessons.length} lecciones · ⏱️ ${fmtMin(mod.studyMinutes)}</span>
                     </span>
                     <span class="chevron">▾</span>
@@ -574,7 +592,9 @@ function loadLesson(lessonId) {
     document.getElementById('lesson-readtime').textContent = `⏱️ ${foundLesson.readTime}`;
 
     // Renderizar contenido
-    document.getElementById('lesson-body').innerHTML = foundLesson.content;
+    const lessonBody = document.getElementById('lesson-body');
+    lessonBody.innerHTML = foundLesson.content;
+    renderMathAndEnhanceContent(lessonBody);
 
     // Renderizar caja de Flashcards de este módulo
     const modNum = parseInt(foundMod.id.split('-')[1], 10);
@@ -851,6 +871,55 @@ function setupThemeToggle() {
     }
 }
 
+function renderMathAndEnhanceContent(container) {
+    if (!container) return;
+
+    // 1. Envolver tablas de datos en contenedor con scroll horizontal para móviles
+    container.querySelectorAll('table.data-table').forEach(tbl => {
+        if (!tbl.parentElement.classList.contains('table-responsive')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-responsive';
+            tbl.parentNode.insertBefore(wrapper, tbl);
+            wrapper.appendChild(tbl);
+        }
+    });
+
+    // 2. Renderizado matemático KaTeX si la librería CDN está disponible
+    if (window.renderMathInElement) {
+        try {
+            window.renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ],
+                throwOnError: false
+            });
+            return;
+        } catch (err) {
+            console.warn('KaTeX render warning:', err);
+        }
+    }
+
+    // 3. Fallback visual para fórmulas LaTeX si KaTeX no estuviera disponible (ej. offline)
+    container.innerHTML = container.innerHTML.replace(/\$\$([\s\S]*?)\$\$/g, (m, expr) => {
+        let clean = expr
+            .replace(/\\text\{([^}]+)\}/g, '$1')
+            .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1) / ($2)')
+            .replace(/\\mathcal\{O\}\(([^)]+)\)/g, 'O($1)')
+            .replace(/\\left\(/g, '(')
+            .replace(/\\right\)/g, ')')
+            .replace(/\\times/g, '×')
+            .replace(/\\Delta/g, 'Δ')
+            .replace(/\\ge/g, '≥')
+            .replace(/\\rightarrow/g, '→')
+            .replace(/\\%/g, '%')
+            .replace(/\\/g, '');
+        return `<div class="formula-card"><span class="formula-badge">📐 Fórmula Matemática</span><div class="formula-expr">${clean.trim()}</div></div>`;
+    });
+
+    container.innerHTML = container.innerHTML.replace(/\$([A-Za-z0-9\(\)\-\+]+)\$/g, '<em>$1</em>');
+}
+
 function setupMobileSidebar() {
     const toggleBtn = document.getElementById('mobile-sidebar-toggle');
     const closeBtn = document.getElementById('mobile-sidebar-close');
@@ -858,20 +927,40 @@ function setupMobileSidebar() {
     const backdrop = document.getElementById('sidebar-backdrop');
     if (!sidebar) return;
 
-    function openSidebar() {
-        sidebar.classList.add('sidebar-open');
-        if (backdrop) backdrop.classList.add('active');
+    function isMobile() {
+        return window.innerWidth <= 840;
     }
 
-    function closeSidebar() {
+    function toggleSidebar() {
+        if (isMobile()) {
+            const isOpen = sidebar.classList.contains('sidebar-open');
+            if (isOpen) {
+                closeMobile();
+            } else {
+                sidebar.classList.add('sidebar-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        } else {
+            // Alternar colapso en escritorio para dar máximo protagonismo al contenido
+            const isCollapsed = document.body.classList.toggle('sidebar-collapsed');
+            localStorage.setItem('dian2676_sidebar_collapsed', isCollapsed ? '1' : '0');
+        }
+    }
+
+    function closeMobile() {
         sidebar.classList.remove('sidebar-open');
         if (backdrop) backdrop.classList.remove('active');
     }
 
-    if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
-    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-    if (backdrop) backdrop.addEventListener('click', closeSidebar);
-    window.closeMobileSidebar = closeSidebar;
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobile);
+    if (backdrop) backdrop.addEventListener('click', closeMobile);
+    window.closeMobileSidebar = closeMobile;
+
+    // Restaurar preferencia en escritorio si el usuario la guardó previamente
+    if (!isMobile() && localStorage.getItem('dian2676_sidebar_collapsed') === '1') {
+        document.body.classList.add('sidebar-collapsed');
+    }
 }
 
 let flashFilter = 'all';

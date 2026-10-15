@@ -2033,4 +2033,23 @@ body.dark-theme .btn-back-portal:hover {
     }
 }
 
+/* Contenedor responsivo para tablas en móviles y tablets */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 22px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.table-responsive table.data-table {
+    margin: 0 !important;
+    border: none !important;
+    min-width: 580px;
+    width: 100%;
+}
+
+
 

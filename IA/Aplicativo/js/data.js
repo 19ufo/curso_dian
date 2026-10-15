@@ -441,33 +441,92 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-5",
       "track": "funcionales",
-      "title": "ESTANDARES Y POLITICAS ESTABLECIDOS EN EL GOBIERNO DE DATOS",
+      "title": "Estándares y Políticas Establecidos en el Gobierno de Datos",
       "badge": "Funcional - DAMA-DMBOK, ISO 25012 & MDM",
       "examId": "exam-5",
       "lessons": [
         {
-          "id": "les-5",
+          "id": "les-5-1",
           "moduleId": "mod-5",
-          "title": "ESTANDARES Y POLITICAS ESTABLECIDOS EN EL GOBIERNO DE DATOS",
-          "badge": "Funcional - DAMA-DMBOK, ISO 25012 & MDM",
-          "readTime": "35 min",
-          "content": "<h2>Guía Maestra de Estudio: Estándares y Políticas en el Gobierno de Datos</h2>\n<p class=\"lead\">Esta guía desarrolla el marco internacional DAMA-DMBOK v2, el estándar de calidad ISO/IEC 25012, la definición de roles y comités de gobierno, la gestión de metadatos corporativos y su implementación en el marco del Estado colombiano.</p>\n\n<h3>Módulo 1: Marco DAMA-DMBOK v2 y la Rueda del Gobierno de Datos</h3>\n<p>El estándar mundial de facto para la gestión de datos es el <strong>DAMA-DMBOK v2</strong> (Data Management Body of Knowledge), el cual sitúa al <strong>Gobierno de Datos</strong> en el núcleo central que coordina y dirige las otras 10 áreas de conocimiento:</p>\n\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>Las 11 Áreas del DAMA Wheel</h4>\n        <ol>\n            <li><strong>Gobierno de Datos (Núcleo):</strong> Estrategia, políticas, supervisión, administración y comités.</li>\n            <li><strong>Arquitectura de Datos:</strong> Modelos globales, flujos de datos e integración empresarial.</li>\n            <li><strong>Modelado y Diseño de Datos:</strong> Esquemas conceptuales, lógicos y físicos.</li>\n            <li><strong>Almacenamiento y Operaciones:</strong> Administración de bases de datos, rendimiento y backups.</li>\n            <li><strong>Seguridad de Datos:</strong> Autenticación, autorización, privacidad y cumplimiento legal.</li>\n            <li><strong>Integración e Interoperabilidad:</strong> Movimiento, ETL/ELT, mensajería y APIs.</li>\n            <li><strong>Documentos y Contenido:</strong> Gestión documental, taxonomías y datos no estructurados.</li>\n            <li><strong>Datos Maestros y de Referencia (MDM):</strong> Identidades clave (contribuyentes) y catálogos estandarizados.</li>\n            <li><strong>Data Warehousing y Business Intelligence:</strong> Analítica, métricas y reportería.</li>\n            <li><strong>Metadatos:</strong> Catálogos, glosarios, diccionarios y linaje de datos.</li>\n            <li><strong>Calidad de Datos:</strong> Perfilamiento, métricas, saneamiento y monitoreo continuo.</li>\n        </ol>\n    </div>\n    <div class=\"arch-card\">\n        <h4>Objetivos Fundamentales del Gobierno</h4>\n        <ul>\n            <li>Habilitar la gestión del dato como un activo estratégico institucional.</li>\n            <li>Establecer reglas claras sobre quién tiene autoridad para tomar decisiones sobre los datos.</li>\n            <li>Garantizar el cumplimiento de normativas de privacidad y seguridad jurídica.</li>\n            <li>Eliminar la ambigüedad semántica y las inconsistencias entre dependencias organizacionales.</li>\n        </ul>\n    </div>\n</div>\n\n<h3>Módulo 2: Estructura Orgánica y Roles de Gobierno de Datos</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Rol de Gobierno</th>\n            <th>Ubicación Jerárquica</th>\n            <th>Responsabilidades Principales</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Comité de Gobierno de Datos</strong></td>\n            <td>Nivel Directivo / Estratégico</td>\n            <td>Aprueba políticas corporativas de datos, asigna presupuestos, dirime disputas entre áreas de negocio y alinea la estrategia de datos con los objetivos del Plan Estratégico Institucional.</td>\n        </tr>\n        <tr>\n            <td><strong>Data Owner (Propietario del Dato)</strong></td>\n            <td>Líder de Negocio / Misional (ej. Director de Fiscalización)</td>\n            <td>Tiene la autoridad y rendición de cuentas (accountability) sobre un dominio específico de datos. Define el nivel de confidencialidad, aprueba quién puede acceder y valida las definiciones conceptuales del negocio.</td>\n        </tr>\n        <tr>\n            <td><strong>Data Steward (Custodio Funcional / Gestor)</strong></td>\n            <td>Nivel Profesional / Táctico (ej. Inspector de Datos / Analista)</td>\n            <td>Traduce las directrices del Data Owner en reglas de calidad del dato, mantiene actualizado el Glosario de Negocio, perfila anomalías y resuelve discrepancias operacionales cotidianas sobre la calidad.</td>\n        </tr>\n        <tr>\n            <td><strong>Data Custodian (Custodio Técnico)</strong></td>\n            <td>Nivel Técnico / TI / Infraestructura</td>\n            <td>Administra la infraestructura física y lógica donde residen los datos. Responsable de implementar los controles de acceso definidos por el Owner, asegurar los respaldos, la encriptación, el rendimiento y la disponibilidad continua.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 3: Calidad de Datos (Data Quality) y Estándar ISO/IEC 25012</h3>\n<p>El estándar internacional <strong>ISO/IEC 25012</strong> define las dimensiones que determinan si los datos son adecuados para su uso previsto (Fitness for Purpose):</p>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Dimensión de Calidad</th>\n            <th>Definición Técnica</th>\n            <th>Ejemplo de Violación en Entornos Tributarios</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>1. Completitud (Completeness)</strong></td>\n            <td>Grado en el que todos los atributos requeridos están presentes para una entidad de datos.</td>\n            <td>Una declaración tributaria en la base de datos que tiene valores nulos (NULL) en el campo obligatorio de firma digital del contador o revisor fiscal.</td>\n        </tr>\n        <tr>\n            <td><strong>2. Exactitud (Accuracy)</strong></td>\n            <td>Grado en el que los datos representan fielmente el valor real de la entidad del mundo real.</td>\n            <td>Un NIT registrado con dígitos invertidos o un saldo a favor registrado por un monto diferente al consignado en el formulario bancario oficial.</td>\n        </tr>\n        <tr>\n            <td><strong>3. Consistencia (Consistency)</strong></td>\n            <td>Grado en el que los datos están libres de contradicciones a través de múltiples tablas o sistemas.</td>\n            <td>El sistema aduanero reporta importaciones por $1.000 millones para una empresa, pero la tabla de compras del sistema tributario del mismo periodo reporta cero operaciones.</td>\n        </tr>\n        <tr>\n            <td><strong>4. Actualidad / Oportunidad (Timeliness)</strong></td>\n            <td>Grado en el que los datos representan el estado del negocio con la frescura temporal requerida.</td>\n            <td>Un auditor evalúa la solvencia de un contribuyente con datos de patrimonio desactualizados de hace tres años porque el pipeline de carga está retrasado.</td>\n        </tr>\n        <tr>\n            <td><strong>5. Unicidad (Uniqueness)</strong></td>\n            <td>Ausencia de duplicidad de registros para una misma entidad del mundo real.</td>\n            <td>Existencia de múltiples registros para el mismo contribuyente con leves variaciones de nombre (\"S.A.S.\" vs \"SAS\"), duplicando artificialmente la base gravable.</td>\n        </tr>\n        <tr>\n            <td><strong>6. Validez (Validity)</strong></td>\n            <td>Grado en el que los datos se ajustan a dominios, reglas de formato o esquemas predefinidos.</td>\n            <td>Un código de actividad económica (CIIU) que no existe en la tabla de codificación oficial del DANE o un correo electrónico sin el carácter '@'.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 4: Gestión de Metadatos y Linaje de Datos (Data Lineage)</h3>\n<ul>\n    <li><strong>Taxonomía de Metadatos:</strong>\n        <br>• <em>Metadatos de Negocio:</em> Definición semántica de términos en el <strong>Glosario de Negocio</strong> (ej. qué constituye legalmente \"Ingreso Bruto Gravable\").\n        <br>• <em>Metadatos Técnicos:</em> Nombres de tablas, nombres de columnas, tipos de datos, llaves primarias/foráneas, índices y esquemas en el <strong>Diccionario de Datos</strong>.\n        <br>• <em>Metadatos Operacionales:</em> Frecuencia de ejecución de pipelines, duración de jobs, registros leídos, errores y timestamps de actualización.</li>\n    <li><strong>Linaje de Datos (Data Lineage):</strong> Trazabilidad auditable que registra el ciclo de vida completo de un elemento de dato: desde su sistema de origen (fuente original), pasando por todas las transformaciones, filtros y uniones intermedias, hasta su visualización en un reporte o liquidación final.\n        <br>• <em>Linaje Horizontal:</em> Recorrido a través de pipelines de datos y sistemas.\n        <br>• <em>Linaje Vertical:</em> Relación entre términos de negocio conceptuales y sus implementaciones físicas en columnas de tablas.</li>\n</ul>\n\n<h3>Módulo 5: Gestión de Datos Maestros (Master Data Management - MDM)</h3>\n<p>MDM asegura la creación y mantenimiento de una única versión confiable y autorizada de los datos críticos de la organización (el \"Golden Record\"):</p>\n<ul>\n    <li><strong>Entidad Maestra en la DIAN:</strong> El <strong>Registro Único Tributario (RUT)</strong> identifica de forma unívoca a todas las personas naturales y jurídicas con obligaciones tributarias, aduaneras y cambiarias mediante el <strong>NIT</strong>.</li>\n    <li><strong>Arquitecturas de MDM:</strong>\n        <br>• <em>Registro (Registry):</em> Solo indexa referencias a los registros en los sistemas de origen sin mover datos.\n        <br>• <em>Consolidación:</em> Agrupa periódicamente copias de los orígenes en un repositorio central para analítica.\n        <br>• <em>Coexistencia:</em> El repositorio maestro central convive con los sistemas de origen sincronizándose bidireccionalmente.\n        <br>• <em>Transaccional / Centralizado:</em> Toda creación o modificación de la entidad maestra ocurre obligatoriamente en el repositorio central.</li>\n</ul>\n\n<h3>Checklist Rápido de Estudio Previo al Examen</h3>\n<ul>\n    <li>[ ] Memorizar las 11 áreas de conocimiento del DAMA Wheel con Gobierno de Datos en el centro.</li>\n    <li>[ ] Diferenciar los roles de Data Owner (Negocio), Data Steward (Calidad/Funcional) y Data Custodian (TI).</li>\n    <li>[ ] Definir las 6 dimensiones de calidad del dato de ISO 25012 (Completitud, Exactitud, Consistencia, Actualidad, Unicidad, Validez).</li>\n    <li>[ ] Explicar la diferencia entre Glosario de Negocio (semántica) y Diccionario de Datos (técnico).</li>\n    <li>[ ] Entender por qué el Linaje de Datos es el instrumento técnico para garantizar la cadena de custodia probatoria en el Estado.</li>\n</ul>",
-          "links": [
-            {
-              "name": "DAMA International Official Guide (DMBOK v2)",
-              "url": "https://www.dama.org/"
-            },
-            {
-              "name": "ISO/IEC 25012 Data Quality Model",
-              "url": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25012"
-            },
-            {
-              "name": "MIPG Colombia - Guía de Gestión de Información",
-              "url": "https://www.funcionpublica.gov.co/eva/mipg/"
-            }
-          ]
+          "unitNumber": 1,
+          "title": "Unidad 1: Marco Conceptual DAMA-DMBOK v2 (Gobierno frente a Gestión de Datos)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 1344,
+          "content": "<p># Guía Maestra de Estudio: 05. Estándares y Políticas Establecidos en el Gobierno de Datos</p>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Propósito del Indicador en la Prueba Escrita DIAN 2676 En el empleo <strong>Inspector I (OPEC 236670)</strong> de la Subdirección de Procesamiento de Datos, el eje <strong>Estándares y Políticas Establecidos en el Gobierno de Datos</strong> evalúa tu idoneidad técnica, analítica, metodológica y jurídica para diseñar, institucionalizar, supervisar y auditar el marco de gobernanza que rige los activos de información de la administración tributaria y aduanera. La prueba escrita de la Universidad Areandina evalúa tu dominio sobre el <strong>cuerpo de conocimiento DAMA-DMBOK v2</strong> (diferenciando de forma tajante entre <em>Gobierno</em> y <em>Gestión</em> de datos), la asignación de <strong>roles y responsabilidades en la DIAN (Data Owners, Data Stewards y Data Custodians)</strong>, las <strong>dimensiones canónicas de calidad del dato (ISO/IEC 25012 y DAMA)</strong>, las técnicas de **perfilamiento (<em>Data Profiling</em>)<strong>, la gestión de </strong>metadatos corporativos, catálogos y linaje de datos de punta a punta (<em>Data Lineage</em>)<strong>, la gestión de </strong>Datos Maestros (MDM) y resolución de entidades para construir el <em>Golden Record</em> del Registro Único Tributario (RUT)<strong>, y la articulación vinculante con las políticas públicas del Estado colombiano: </strong>Documento CONPES 3920 de 2018 (Política de Big Data)<strong>, el </strong>Marco de Referencia de Arquitectura Empresarial (MRAE) del MinTIC<strong>, el </strong>MIPG<strong> y la estricta salvaguarda de la </strong>Reserva Tributaria (Art. 583 del Estatuto Tributario)<strong> y el régimen de protección de datos personales (</strong>Ley 1581 de 2012**).</p></div>\n<hr>\n<h2>Mapa de Ruta del Módulo (6 Unidades de Profundización)</h2>\n<ol><li><strong>Unidad 1:</strong> Marco Conceptual DAMA-DMBOK v2 (Gobierno frente a Gestión de Datos).</li><li><strong>Unidad 2:</strong> Estructura Orgánica y Roles de Gobierno en la DIAN (Data Owners, Data Stewards y Data Custodians).</li><li><strong>Unidad 3:</strong> Dimensiones Canónicas de Calidad del Dato y Técnicas de Perfilamiento (<em>Data Profiling</em>).</li><li><strong>Unidad 4:</strong> Gestión Integral de Metadatos, Glosario de Negocio y Linaje de Datos (<em>Data Lineage</em>).</li><li><strong>Unidad 5:</strong> Gestión de Datos Maestros (MDM) y Construcción del <em>Golden Record</em> del Contribuyente (RUT).</li><li><strong>Unidad 6:</strong> Políticas Nacionales de Datos en el Estado Colombiano (CONPES 3920, MRAE MinTIC y MIPG).</li></ol>\n<hr>\n<hr>\n<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Estándar Internacional DAMA, Taxonomía de Gobernanza y Modelos de Madurez</p>\n<h3>1.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Diferenciar con rigor metodológico los conceptos de **Gobierno de Datos (<em>Data Governance</em>)<strong> y </strong>Gestión de Datos (<em>Data Management</em>)<strong> según el estándar global </strong>DAMA-DMBOK v2**, comprender la función articuladora del Gobierno en el centro de la Rueda de DAMA, y evaluar los niveles de madurez institucional de la DIAN para pasar de silos fragmentados a una gestión gobernada y medible.</p>\n<h3>1.2. El Fundamento: ¿Por qué la Administración Tributaria requiere Gobierno de Datos?</h3>\n<p>En una entidad de la magnitud de la DIAN, que administra billones de pesos en recaudo fiscal y procesa más de 20 millones de transacciones diarias (facturas electrónicas, declaraciones aduaneras, pagos bancarios e información exógena), los datos no son simplemente subproductos de los sistemas informáticos: <strong>los datos constituyen el activo estratégico primario del Estado para garantizar la sostenibilidad fiscal de la Nación</strong>.</p>\n<p>Sin embargo, cuando una entidad carece de un marco formal de gobierno, surgen patologías institucionales crónicas:</p>\n<ul><li><strong>Silos Departamentales:</strong> Fiscalización, Recaudo y Aduanas mantienen definiciones incompatibles de términos básicos (por ejemplo, qué se considera un \"contribuyente activo\" o qué rubros componen los \"ingresos brutos\").</li><li><strong>Degradación de la Confianza:</strong> Los directivos dudan de las cifras de los tableros de control porque la información de MUISCA discrepa de los reportes consolidados en DataR.</li><li><strong>Riesgos Legales y Sancionatorios:</strong> Exposición indebida de datos reservados amparados por el Artículo 583 del Estatuto Tributario por ausencia de políticas formales de clasificación de confidencialidad.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>LA RUEDA DEL DAMA-DMBOK v2 EN LA ARQUITECTURA DIAN:\n                           +-------------------------------+\n                           | 1. Arquitectura de Datos      |\n             +-------------+-------------------------------+-------------+\n             |                                                           |\n+------------+------------+                                 +------------+------------+\n| 11. Calidad del Dato    |                                 | 2. Modelado y Diseño    |\n+------------+------------+                                 +------------+------------+\n             |                     +-----------------+                   |\n+------------+------------+        |  GOBIERNO DE    |      +------------+------------+\n| 10. Metadatos           | -----&gt; |  DATOS (NÚCLEO) | &lt;--- | 3. Almacenamiento y     |\n+------------+------------+        |  Estrategia,    |      |    Operaciones          |\n             |                     |  Políticas,     |                   |\n+------------+------------+        |  Comités y      |      +------------+------------+\n| 9. Data Warehousing/BI  |        |  Supervisión    |      | 4. Seguridad de Datos   |\n+------------+------------+        +-----------------+      +------------+------------+\n             |                                                           |\n+------------+------------+                                 +------------+------------+\n| 8. Datos Maestros (MDM) |                                 | 5. Integración e        |\n+------------+------------+                                 |    Interoperabilidad    |\n             |                                                           |\n             +-------------+-------------------------------+-------------+\n                           | 6. Documentos y Contenido     |\n                           +-------------------------------+</code></pre></div>\n<h3>1.3. La Distinción Canónica: Gobierno de Datos frente a Gestión de Datos</h3>\n<p>El estándar internacional **DAMA-DMBOK v2 (<em>Data Management Body of Knowledge</em>)** establece una separación taxativa que constituye una de las preguntas conceptuales predilectas de la Universidad Areandina en pruebas de selección pública:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>GOBIERNO DE DATOS (Data Governance)             GESTIÓN DE DATOS (Data Management)\n        [Nivel Directivo y Estratégico]                 [Nivel Operativo y Técnico]\n           ¿QUÉ SE DEBE HACER?                             ¿CÓMO SE IMPLEMENTA?\n       - Autoridad decisoria y políticas               - Ejecución de procesos y flujos\n       - Comités de gobernanza                         - Administración de bases de datos (DBAs)\n       - Definición de glosarios y reglas              - Desarrollo de pipelines ETL/ELT\n       - Asignación de responsabilidades               - Mantenimiento de clústeres y almacenamiento\n       - Supervisión del cumplimiento normativo        - Configuración de backups y afinamiento</code></pre></div>\n<ul><li>**Gobierno de Datos (<em>Data Governance</em>):<strong> Es el ejercicio de la autoridad, el control y la toma de decisiones compartidas (planificación, supervisión y aplicación) sobre la gestión de los activos de información. El gobierno define las </strong>políticas<strong>, los </strong>estándares<strong>, los </strong>principios éticos<strong>, las </strong>prioridades estratégicas de inversión<strong> y los </strong>mecanismos de resolución de disputas** entre áreas de negocio. Responde a la pregunta: <em>¿Qué decisiones se deben tomar, quién tiene la autoridad para tomarlas y cómo se garantiza su cumplimiento?</em></li><li>**Gestión de Datos (<em>Data Management</em>):** Es la ejecución práctica, operativa y técnica de los planes, prácticas y procesos necesarios para recopilar, almacenar, proteger, transformar y entregar valor a partir de los datos a lo largo de todo su ciclo de vida. Es la labor que desempeñan los ingenieros de datos, administradores de bases de datos (DBAs), arquitectos de software y científicos de datos. Responde a la pregunta: <em>¿Cómo implementamos técnicamente las directrices fijadas por el gobierno?</em></li></ul>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Regla Mnemotécnica para el Examen <em>El Gobierno de Datos asegura que los datos sean gestionados adecuadamente, pero el Gobierno no gestiona los datos directamente</em>. Si una pregunta describe actividades como \"crear índices en PostgreSQL\", \"programar un job en Airflow\" o \"restaurar un backup\", se trata de <strong>Gestión de Datos</strong>. Si describe \"aprobar una política de retención\", \"definir el término Gran Contribuyente en el glosario\" o \"establecer penalizaciones por violar la reserva tributaria\", se trata de <strong>Gobierno de Datos</strong>.</p></div>\n<h3>1.4. Matriz Comparativa: Gobierno de Datos frente a Gestión de Datos</h3>\n<table class=\"data-table\"><thead><tr><th>Criterio de Comparación</th><th>Gobierno de Datos (<em>Data Governance</em>)</th><th>Gestión de Datos (<em>Data Management</em>)</th></tr></thead><tbody><tr><td><strong>Pregunta Central</strong></td><td>¿Qué se debe hacer con los datos y quién rinde cuentas?</td><td>¿Cómo se construyen e implementan los sistemas de datos?</td></tr><tr><td><strong>Nivel Organizacional</strong></td><td>Estratégico, Político, Normativo y Directivo</td><td>Táctico, Técnico, Operativo y de Ingeniería</td></tr><tr><td><strong>Roles Principales</strong></td><td>Data Owners, Data Stewards, Comités de Gobernanza</td><td>Data Custodians, DBAs, Ingenieros de Datos, Arquitectos</td></tr><tr><td><strong>Enfoque Principal</strong></td><td>Políticas, Glosario de Negocio, Estándares, Ética y Reserva Legal</td><td>Pipelines ETL/ELT, Modelado Físico, Backups, Cómputo e Índices</td></tr><tr><td><strong>Métricas de Éxito</strong></td><td>Cumplimiento regulatorio, confianza en datos, linaje auditado</td><td>Latencia de consulta, disponibilidad del clúster, frescura (SLO)</td></tr><tr><td><strong>Ejemplo en la DIAN</strong></td><td>Aprobar la política de clasificación de reserva tributaria (Art. 583 E.T.)</td><td>Configurar el cifrado AES-256 en reposo en las tablas de DataR</td></tr></tbody></table>\n<h3>1.5. Modelo de Madurez de Gobierno de Datos</h3>\n<p>Para diagnosticar y transformar la gestión de información en la DIAN, se utiliza el modelo de madurez derivado del marco CMMI y DAMA:</p>\n<ol><li><strong>Nivel 1 (Inicial / Ad-hoc):</strong> Los datos se gestionan de forma fragmentada en proyectos aislados; no existen políticas corporativas ni roles formales; la calidad del dato es reactiva y se corrigen errores manualmente solo cuando un contribuyente reclama.</li><li><strong>Nivel 2 (Repetible / Emergente):</strong> Ciertas áreas (como Recaudo) implementan controles de calidad locales; se utilizan herramientas básicas, pero no hay interoperabilidad ni glosario compartido con Fiscalización o Aduanas.</li><li><strong>Nivel 3 (Definido):</strong> Se crea el Comité de Gobierno de Datos institucional; se formalizan políticas oficiales de calidad, metadatos y seguridad; se asignan formalmente los roles de <em>Data Owners</em> y <em>Data Stewards</em>; se cuenta con un Glosario de Negocio centralizado.</li><li><strong>Nivel 4 (Gestionado Cuantitativamente):</strong> Se monitorean métricas automatizadas de calidad (completitud, exactitud, frescura) mediante SLAs formales; los Feature Stores y pipelines MLOps operan bajo trazabilidad y linaje de punta a punta.</li><li><strong>Nivel 5 (Optimizado):</strong> Mejora continua impulsada por analítica avanzada; automatización inteligente de la gobernanza mediante catálogo activo de metadatos y detección preventiva de anomalías en tiempo real.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-5-2",
+          "moduleId": "mod-5",
+          "unitNumber": 2,
+          "title": "Unidad 2: Estructura Orgánica y Roles de Gobierno en la DIAN (Data Owners, Data Stewards y Data Custodians)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 833,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Estructura Organizacional, Gobernanza Federada y Matriz de Responsabilidades RACI</p>\n<h3>2.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la estructura orgánica de gobernanza de datos en la DIAN conforme al <strong>Decreto 1742 de 2020</strong> y la Resolución MERF 067 de 2024, diferenciando las competencias funcionales, técnicas y legales de los <strong>Data Owners (Propietarios)</strong>, <strong>Data Stewards (Gestores/Administradores)</strong> y <strong>Data Custodians (Custodios Técnicos)</strong> en el tratamiento de la información fiscal.</p>\n<h3>2.2. Modelo de Gobernanza Federado en la Administración Tributaria</h3>\n<p>En una entidad estatal con competencias tributarias, aduaneras y cambiarias de alcance nacional, un modelo de gobierno 100% centralizado asfixia la innovación y demora la toma de decisiones, mientras que un modelo 100% descentralizado reproduce el caos de los silos de información.</p>\n<p>La DIAN adopta un <strong>Modelo de Gobernanza Federado</strong>:</p>\n<ul><li><strong>Capa Estratégica Central:</strong> Define las políticas globales, directrices de seguridad de la información, arquitectura empresarial y estándares de interoperabilidad válidos para toda la institución.</li><li><strong>Capa Táctica-Operativa Descentralizada:</strong> Cada Dirección Misional (Fiscalización, Recaudo, Aduanas, Gestión Jurídica) asume la propiedad directa sobre sus dominios de datos específicos, aplicando las políticas corporativas en sus procesos diarios.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA ORGÁNICA DEL GOBIERNO DE DATOS EN LA DIAN:\n+------------------------------------------------------------------------+\n| CONSEJO ESTRATÉGICO DE GOBIERNO DE DATOS                               |\n| (Director General, Directores de Gestión, CIO / CDO)                  |\n| - Aprueba políticas institucionales, inversiones y prioridades macro   |\n+------------------------------------------------------------------------+\n                                   |\n                                   v\n+------------------------------------------------------------------------+\n| COMITÉ TÁCTICO DE GOBIERNO E INTEROPERABILIDAD                         |\n| (Subdirector de Procesamiento de Datos, Subdirectores Misionales)      |\n| - Resuelve discrepancias semánticas, aprueba contratos de datos y SLAs |\n+------------------------------------------------------------------------+\n         |                                                 |\n         v                                                 v\n+-----------------------------+           +-----------------------------+\n| DATA OWNERS (Propietarios)  |           | DATA CUSTODIANS (Custodios) |\n| (Directores de Fiscalización|           | (Subdirección Procesamiento |\n|  Recaudo, Aduanas - Negocio)|           |  Ingenieros, DBAs, Cloud)   |\n| - Autoridad legal sobre dato|           | - Custodia técnica e infra  |\n| - Aprueba accesos y reserva |           | - Rendimiento y seguridad   |\n+-----------------------------+           +-----------------------------+\n               \\                                 /\n                \\                               /\n                 v                             v\n            +---------------------------------------+\n            | DATA STEWARDS (Gestores / Enlaces)    |\n            | (Inspectores I, Analistas de Negocio) |\n            | - Definen términos del Glosario       |\n            | - Validan reglas de calidad y linaje  |\n            +---------------------------------------+</code></pre></div>\n<h3>2.3. Tríada Canónica de Roles de Gobernanza</h3>\n<h4>1. Propietario del Dato (<em>Data Owner</em>) — Autoridad de Negocio</h4>\n<p>Es un funcionario de nivel directivo que tiene la responsabilidad legal y administrativa sobre un dominio específico de información:</p>\n<ul><li><strong>Quién es en la DIAN:</strong> El Director de Gestión de Fiscalización (para datos de auditorías e investigaciones), el Director de Gestión de Recaudo y Cobranzas (para cartera, pagos y declaraciones), o el Director de Gestión de Aduanas (para manifiestos y declaraciones de importación/exportación).</li><li><strong>Responsabilidades Clave:</strong></li><li>Determina la clasificación de confidencialidad del dataset conforme a la ley: <em>Pública, Clasificada o Reservada (Art. 583 E.T.)</em>.</li><li>Autoriza o deniega formalmente las solicitudes de acceso a la información provenientes de entidades externas (Superfinanciera, Fiscalía, Contraloría) o de otras áreas de la DIAN.</li><li>Define y aprueba los requerimientos de calidad mínimos y las reglas de negocio para su dominio de información.</li></ul>\n<h4>2. Custodio Técnico del Dato (<em>Data Custodian</em>) — Custodia de Infraestructura</h4>\n<p>Es el rol técnico responsable del almacenamiento seguro, el transporte, la arquitectura física y la disponibilidad del dato:</p>\n<ul><li><strong>Quién es en la DIAN:</strong> La <strong>Subdirección de Procesamiento de Datos</strong> de la Dirección de Gestión de Innovación y Tecnología, a través de sus ingenieros de infraestructura, administradores de bases de datos (DBAs) y arquitectos de plataformas cloud/DataR.</li><li><strong>Responsabilidades Clave:</strong></li><li>Implementar los controles de seguridad física y lógica aprobados por el Data Owner (cifrado en reposo con AES-256, TLS 1.3, enmascaramiento dinámico DDM).</li><li>Garantizar la integridad física de los datos mediante planes de respaldo (<em>backups</em>), esquemas de alta disponibilidad y recuperación ante desastres (RPO y RTO).</li><li>Monitorear el rendimiento de las bases de datos transaccionales (MUISCA, SYGA) y los lagos analíticos (DataR).</li></ul>\n<h4>3. Administrador o Gestor del Dato (<em>Data Steward</em>) — El Garante Operativo</h4>\n<p>Es el rol operativo y analítico que actúa como puente indispensable entre las necesidades del negocio misional y la infraestructura tecnológica:</p>\n<ul><li><strong>Quién es en la DIAN:</strong> Funcionarios con perfil técnico-analítico y profundo conocimiento misional, como el <strong>Inspector I (OPEC 236670)</strong>.</li><li><strong>Tipologías de Data Stewards:</strong></li><li><em>Business Data Steward (Gestor de Negocio):</em> Funcionario misional que documenta el significado de las casillas de los formularios tributarios, redacta las definiciones del Glosario de Negocio y valida las reglas lógicas de validación.</li><li><em>Technical Data Steward (Gestor Técnico):</em> Ingeniero que programa los pipelines de calidad de datos, monitorea los cuadros de mando de metadatos, perfila datasets en DataR y rastrea el linaje ante discrepancias de cálculo.</li></ul>\n<h3>2.4. Matriz de Responsabilidades RACI en Decisiones de Datos</h3>\n<p>Para evitar ambigüedades operativas, la gobernanza implementa la matriz <strong>RACI</strong> (<em>Responsible, Accountable, Consulted, Informed</em>):</p>\n<table class=\"data-table\"><thead><tr><th>Actividad de Gobernanza</th><th>Data Owner (Directivo)</th><th>Data Steward (Inspector I)</th><th>Data Custodian (TI/DBA)</th><th>Oficial de Seguridad (CISO)</th></tr></thead><tbody><tr><td><strong>Definir reglas de calidad de un Formulario</strong></td><td><strong>A</strong> (Rinde cuentas)</td><td><strong>R</strong> (Ejecuta diseño)</td><td><strong>C</strong> (Consultado)</td><td><strong>I</strong> (Informado)</td></tr><tr><td><strong>Aprobar entrega de datos bajo Reserva Legal</strong></td><td><strong>A</strong> (Aprueba legalmente)</td><td><strong>C</strong> (Emite concepto)</td><td><strong>I</strong> (Informado)</td><td><strong>C</strong> (Valida seguridad)</td></tr><tr><td><strong>Implementar enmascaramiento DDM en BD</strong></td><td><strong>A</strong> (Define alcance)</td><td><strong>C</strong> (Valida campos)</td><td><strong>R</strong> (Aplica en motor)</td><td><strong>C</strong> (Audita cifrado)</td></tr><tr><td><strong>Documentar linaje y glosario en catálogo</strong></td><td><strong>A</strong> (Supervisa)</td><td><strong>R</strong> (Documenta y sube)</td><td><strong>C</strong> (Suministra logs)</td><td><strong>I</strong> (Informado)</td></tr></tbody></table>\n<p><em>Leyenda: <strong>R</strong> = Responsable de ejecutar la tarea; <strong>A</strong> = Accountable (Autoridad que aprueba y rinde cuentas finales); <strong>C</strong> = Consultado por su experiencia; <strong>I</strong> = Informado del resultado.</em></p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-5-3",
+          "moduleId": "mod-5",
+          "unitNumber": 3,
+          "title": "Unidad 3: Dimensiones Canónicas de Calidad del Dato y Técnicas de Perfilamiento (*Data Profiling*)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 930,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Estándar ISO/IEC 25012, Métricas DAMA y Automatización de Pruebas de Calidad</p>\n<h3>3.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Dominar las seis dimensiones universales de calidad de datos según <strong>DAMA International</strong> y el estándar <strong>ISO/IEC 25012</strong>, aplicar técnicas cuantitativas de perfilamiento (<em>Data Profiling</em>) para descubrir anomalías en fuentes tributarias y diseñar reglas de validación automatizadas en la ingesta hacia DataR.</p>\n<h3>3.2. Calidad como \"Aptitud para el Uso\" (<em>Fitness for Purpose</em>)</h3>\n<p>En la gestión pública, la calidad del dato no es un fin cosmético; es un imperativo de seguridad jurídica y eficiencia fiscal. Un dato tributario de mala calidad (un NIT mal digitado, un valor de retención en la fuente duplicado o una dirección inexistente en el RUT) tiene consecuencias devastadoras:</p>\n<ul><li>Genera investigaciones infundadas contra contribuyentes inocentes.</li><li>Provoca la anulación de actos administrativos en los tribunales por falta de certeza probatoria.</li><li>Degrada la efectividad de los modelos de Machine Learning (principio <em>Garbage In, Garbage Out</em>).</li></ul>\n<p>El estándar DAMA define la calidad del dato como el <strong>grado en que los datos satisfacen los requisitos y expectativas de sus usuarios para un propósito específico</strong>.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>CICLO DE VIDA DE LA GESTIÓN DE CALIDAD DEL DATO:\n+-------------------+        +--------------------+        +--------------------+\n| 1. PERFILAMIENTO  | -----&gt; | 2. DEFINICIÓN DE   | -----&gt; | 3. MONITORIZACIÓN  |\n| - Análisis nulos  |        |    REGLAS Y SLAS   |        |    CONTINUA        |\n| - Cardinalidad    |        | - ISO/IEC 25012    |        | - Tableros de      |\n| - Distribuciones  |        | - Great Expectations|       |   calidad en DataR |\n+-------------------+        +--------------------+        +--------------------+\n          ^                                                           |\n          |                  +--------------------+                   |\n          +----------------- | 4. REMEDIACIÓN EN  | &lt;-----------------+\n             Reevaluación    |    EL ORIGEN       |   Detección de\n             continua        | - Ajuste en RUT    |   desviaciones\n                             +--------------------+</code></pre></div>\n<h3>3.3. Las Seis Dimensiones Canónicas de Calidad del Dato</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>1. COMPLETITUD       ¿Están presentes todos los datos obligatorios exigidos?\n---------------------------------------------------------------------------------\n2. EXACTITUD         ¿El dato registrado coincide con la realidad fáctica del hecho?\n---------------------------------------------------------------------------------\n3. CONSISTENCIA      ¿Los valores son coherentes entre distintos sistemas y tablas?\n---------------------------------------------------------------------------------\n4. CONFORMIDAD       ¿El dato cumple con la sintaxis, estándar y rango permitido?\n---------------------------------------------------------------------------------\n5. OPORTUNIDAD       ¿La información está disponible en el momento exacto requerido?\n---------------------------------------------------------------------------------\n6. UNICIDAD          ¿Cada contribuyente o transacción existe exactamente una vez?</code></pre></div>\n<h4>1. Completitud (<em>Completeness</em>)</h4>\n<p>Mide la proporción de valores presentes en relación con los valores esperados o requeridos por el proceso de negocio:</p>\n<ul><li><strong>Fórmula:</strong> $\\text{Completitud} = \\frac{\\text{Registros con atributo poblado}}{\\text{Total de registros obligados}} \\times 100\\%$</li><li><strong>Caso DIAN:</strong> En la Facturación Electrónica UBL 2.1, el campo <code>AccountingCustomerParty/PartyIdentification/ID</code> (NIT del adquirente) debe tener una completitud del <strong>100%</strong>. Una factura con el NIT del cliente en blanco es rechazada de plano en la validación previa.</li></ul>\n<h4>2. Exactitud o Veracidad (<em>Accuracy</em>)</h4>\n<p>Mide el grado en que el dato representa fielmente la realidad objetiva del mundo real que describe:</p>\n<ul><li><em>Exactitud Sintáctica:</em> El dato respeta las reglas gramaticales (ej. un NIT tiene 9 dígitos numéricos más un dígito de verificación válido).</li><li><em>Exactitud Semántica:</em> El dato coincide con la realidad (ej. el NIT pertenece a una persona jurídica activa y no a un ciudadano fallecido hace diez años).</li></ul>\n<h4>3. Consistencia (<em>Consistency</em>)</h4>\n<p>Mide la ausencia de contradicciones lógicas o numéricas entre datos que describen el mismo hecho en diferentes sistemas, bases de datos o momentos temporales:</p>\n<ul><li><strong>Caso DIAN:</strong> Si en la declaración de Renta (Formulario 110) una sociedad reporta retenciones en la fuente a su favor por $\\$50.000.000$, pero en el consolidado de Información Exógena (Formato 1003) los agentes retenedores certificaron retenciones por solo $\\$12.000.000$, existe una <strong>inconsistencia entre fuentes</strong> que dispara de inmediato una auditoría fiscal.</li></ul>\n<h4>4. Conformidad / Validez (<em>Validity</em>)</h4>\n<p>Evalúa el apego del dato a formatos predefinidos, tipos de datos, longitudes, patrones o conjuntos de valores de referencia válidos:</p>\n<ul><li><strong>Caso DIAN:</strong> El código de actividad económica principal del contribuyente registrado en la casilla 46 del RUT debe pertenecer estrictamente a la tabla oficial de códigos <strong>CIIU Rev. 4 A.C.</strong> adoptada por el DANE y la DIAN.</li></ul>\n<h4>5. Oportunidad o Frescura (<em>Timeliness</em> / <em>Freshness</em>)</h4>\n<p>Evalúa si la información está disponible a tiempo para ser utilizada eficazmente en el proceso de toma de decisiones:</p>\n<ul><li><strong>Caso DIAN:</strong> Las facturas electrónicas de venta deben transmitirse para validación previa en tiempo real. Un retraso de 48 horas en la transmisión del documento electrónico anula su validez como soporte de costos y deducciones para el comprador (Art. 616-1 del E.T.).</li></ul>\n<h4>6. Unicidad (<em>Uniqueness</em>)</h4>\n<p>Garantiza que ninguna entidad o evento del mundo real esté duplicado en el repositorio de datos:</p>\n<ul><li><strong>Caso DIAN:</strong> Un contribuyente persona jurídica no puede poseer dos números de NIT distintos en el sistema ni aparecer registrado dos veces en la tabla maestra de RUT.</li></ul>\n<h3>3.4. Técnicas de Perfilamiento de Datos (<em>Data Profiling</em>)</h3>\n<p>El perfilamiento es el análisis cuantitativo de la estructura, contenido y relaciones de un conjunto de datos antes de incorporarlo a un repositorio gobernado:</p>\n<ul><li>**Perfilamiento de Columnas (<em>Column Profiling</em>):**</li><li>Conteo de valores nulos, blancos y valores por defecto (<em>default values</em> como <code>\"N/A\"</code>, <code>\"0\"</code>, <code>\"99999999\"</code>).</li><li>Cardinalidad: Identificar la cantidad de valores únicos de una columna (baja cardinalidad en \"Tipo de Persona\": <code>NATURAL</code> vs. <code>JURIDICA</code>; alta cardinalidad en \"NIT\").</li><li>Estadísticas descriptivas para variables numéricas (mínimo, máximo, media, mediana, percentiles 95 y 99, varianza).</li><li><strong>Perfilamiento de Dependencias y Reglas de Negocio:</strong></li><li>Validar si la presencia de un valor condiciona obligatoriamente a otro (ejemplo: si <code>Autorretenedor = 'SI'</code>, el campo <code>ResolucionAutorretencion</code> debe estar obligatoriamente poblado).</li><li><strong>Pruebas Automatizadas con Great Expectations / Soda Core:</strong> En las arquitecturas modernas de la DIAN, las reglas de calidad no se revisan a mano; se programan como <em>Expectations</em> en los pipelines de Apache Airflow y Spark: ``<code>python # Ejemplo conceptual de validación de calidad en DataR (Great Expectations) df.expect_column_values_to_not_be_null(column=\"nit_contribuyente\") df.expect_column_values_to_match_regex(column=\"codigo_ciiu\", regex=\"^[0-9]{4}$\") df.expect_column_values_to_be_between(column=\"tarifa_iva\", min_value=0.0, max_value=0.19) </code>``</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-5-4",
+          "moduleId": "mod-5",
+          "unitNumber": 4,
+          "title": "Unidad 4: Gestión Integral de Metadatos, Glosario de Negocio y Linaje de Datos (*Data Lineage*)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 656,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Catálogos de Metadatos, Linaje de Punta a Punta y Análisis de Impacto</p>\n<h3>4.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la taxonomía de los metadatos corporativos, diferenciar el **Glosario de Negocio (<em>Business Glossary</em>)<strong> del </strong>Diccionario de Datos (<em>Data Dictionary</em>)<strong>, y utilizar el </strong>Linaje de Datos (<em>Data Lineage</em>)** de punta a punta para garantizar la trazabilidad probatoria y realizar análisis de impacto técnico ante reformas de software en la DIAN.</p>\n<h3>4.2. La Taxonomía de los Metadatos en la DIAN</h3>\n<p>Los metadatos son comúnmente descritos como \"datos acerca de los datos\". En una organización con petabytes de información, los metadatos representan el mapa de navegación que permite encontrar, comprender, gobernar y confiar en los activos analíticos. DAMA-DMBOK clasifica los metadatos en tres categorías canónicas:</p>\n<ol><li>**Metadatos de Negocio (<em>Business Metadata</em>):** Proporcionan contexto humano y significado conceptual a los datos. Incluyen las definiciones de términos en el Glosario de Negocio, los dominios funcionales, las clasificaciones de confidencialidad legal (Reserva Tributaria Art. 583 E.T.), los nombres de los <em>Data Owners</em> y las reglas de negocio tributarias.</li><li>**Metadatos Técnicos (<em>Technical Metadata</em>):** Describen las propiedades físicas de los sistemas donde reposan los datos. Incluyen nombres de tablas, nombres de columnas, tipos de datos físicos (<code>VARCHAR2(100)</code>, <code>BIGINT</code>), claves primarias, índices, particiones, esquemas XML/XSD de UBL 2.1 y contratos OpenAPI/Protobuf.</li><li>**Metadatos Operacionales (<em>Operational Metadata</em>):** Registran la ejecución de los procesos informáticos y el movimiento de los datos. Incluyen la fecha y hora de la última ejecución de un job de Spark, cantidad de registros leídos y escritos, duración de los pipelines en Airflow, tasas de error y registros de auditoría de acceso (<em>Audit Trails</em>).</li></ol>\n<h3>4.3. Glosario de Negocio frente a Diccionario de Datos</h3>\n<table class=\"data-table\"><thead><tr><th>Criterio</th><th>Glosario de Negocio (<em>Business Glossary</em>)</th><th>Diccionario de Datos (<em>Data Dictionary</em>)</th></tr></thead><tbody><tr><td><strong>Audiencia Primaria</strong></td><td>Auditores, Inspectores, Directores Misionales, Abogados</td><td>Administradores de BD, Desarrolladores, Ingenieros de Datos</td></tr><tr><td><strong>Enfoque</strong></td><td>Significado semántico y conceptual del negocio tributario</td><td>Estructura técnica física y restricciones de almacenamiento</td></tr><tr><td><strong>Independencia</strong></td><td>Independiente de la tecnología o base de datos subyacente</td><td>Atado rígidamente a una base de datos o archivo específico</td></tr><tr><td><strong>Ejemplo en DIAN</strong></td><td><em>\"Gran Contribuyente: Calificación otorgada mediante resolución...\"</em></td><td><code>contribuyente_id: NUMBER(12) NOT NULL PRIMARY KEY</code></td></tr><tr><td><strong>Gobernanza</strong></td><td>Administrado y aprobado por el <strong>Data Steward</strong> y <strong>Data Owner</strong></td><td>Mantenido automáticamente por el catálogo o el <strong>Data Custodian</strong></td></tr></tbody></table>\n<h3>4.4. Linaje de Datos de Punta a Punta (<em>Data Lineage</em>)</h3>\n<p>El <strong>Linaje de Datos</strong> es la representación gráfica y técnica del ciclo de vida completo de la información: documenta de dónde proviene un dato (origen), qué transformaciones y reglas experimentó a lo largo del camino, y hacia qué sistemas, tableros o reportes finales fluyó (destino).</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>LINAJE DE DATOS DE PUNTA A PUNTA EN DataR (Hacia Adelante y Hacia Atrás):\n+-------------------+        +--------------------+        +--------------------+        +--------------------+\n| FUENTE PRIMARIA   | -----&gt; | INGESTA BRONCE     | -----&gt; | REFINAMIENTO PLATA | -----&gt; | CONSUMO ORO        |\n| Factura Electrónica|        | Tópico Kafka       |        | Tabla Limpia       |        | Modelo Riesgo ML   |\n| XML UBL 2.1       |        | facturas-raw       |        | facturas_validadas |        | Evasión de Renta   |\n+-------------------+        +--------------------+        +--------------------+        +--------------------+\n         ^                                                                                          |\n         |                                                                                          v\n         | (Backward Lineage: Auditoría Forense y Derecho a la Defensa)              +--------------------+\n         +-------------------------------------------------------------------------- | Liquidación Oficial|\n                                                                                     | de Revisión DIAN   |\n                                                                                     +--------------------+</code></pre></div>\n<h4>Modalidades Operativas de Linaje:</h4>\n<ul><li>**Linaje Hacia Adelante (<em>Forward Lineage</em> / Análisis de Impacto):** Permite evaluar el impacto de un cambio técnico antes de ejecutarlo. Si la Subdirección de Procesamiento de Datos planea modificar el tipo de dato de la columna <code>codigo_ciiu</code> en la base de datos de MUISCA, el análisis de impacto revela en segundos qué 42 pipelines de Airflow, qué 15 modelos de Machine Learning y qué 8 tableros de control se romperían con dicha modificación.</li><li>**Linaje Hacia Atrás (<em>Backward Lineage</em> / Auditoría Forense y Debido Proceso):** Fundamental para la validez jurídica de los actos administrativos. Si un contribuyente impugna judicialmente una liquidación oficial expedida por la DIAN, el linaje hacia atrás permite certificar ante el Tribunal Administrativo la cadena de custodia completa del dato: demuestra con sellos de tiempo y hashes criptográficos de qué facturas electrónicas, qué cuentas bancarias en exógena y qué transformaciones exactas se derivó el cálculo del saldo adeudado.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-5-5",
+          "moduleId": "mod-5",
+          "unitNumber": 5,
+          "title": "Unidad 5: Gestión de Datos Maestros (MDM) y Construcción del *Golden Record* del Contribuyente (RUT)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 685,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Master Data Management, Arquitecturas MDM, Entity Resolution y Registro Único Tributario</p>\n<h3>5.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la arquitectura y las metodologías de **Gestión de Datos Maestros (<em>Master Data Management - MDM</em>)<strong>, analizar los desafíos de fragmentación y duplicidad del </strong>Registro Único Tributario (RUT)<strong>, y aplicar técnicas de </strong>Resolución de Entidades (<em>Entity Resolution</em>)<strong> y reglas de supervivencia para construir el </strong>Registro Dorado (<em>Golden Record</em>)** de los obligados tributarios en la DIAN.</p>\n<h3>5.2. El Rol Estratégico de los Datos Maestros en la DIAN</h3>\n<p>Los datos de una organización se dividen fundamentalmente en dos categorías:</p>\n<ul><li><strong>Datos Transaccionales:</strong> Registran eventos puntuales que ocurren en el tiempo (una factura emitida el 12 de marzo, un pago de arancel el 4 de abril, una declaración radicada el 9 de agosto).</li><li>**Datos Maestros (<em>Master Data</em>):** Representan las entidades nucleares de negocio alrededor de las cuales giran todas las transacciones (el Contribuyente, el Funcionario Público, el Puerto Aduanero, la Cuenta Contable).</li></ul>\n<p>En la administración tributaria colombiana, el dato maestro por excelencia es el <strong>Registro Único Tributario (RUT)</strong>, consagrado en el Artículo 555-2 del Estatuto Tributario como el mecanismo único para identificar, ubicar y clasificar a todos los sujetos que tengan la calidad de contribuyentes, declarantes, agentes retenedores o usuarios aduaneros.</p>\n<h3>5.3. Arquitecturas Canónicas de Implementación de MDM</h3>\n<p>Existen cuatro estilos arquitectónicos reconocidos internacionalmente para implementar una solución de Datos Maestros:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>1. ESTILO REGISTRO (Registry)\n   - Solo guarda identificadores y claves foráneas en un índice centralizado.\n   - Rendimiento rápido, pero no consolida físicamente los atributos maestros.\n---------------------------------------------------------------------------------\n2. ESTILO CONSOLIDACIÓN (Consolidation)\n   - Extrae datos de MUISCA, Cámaras de Comercio y Registraduría hacia DataR.\n   - Construye el Golden Record exclusivamente para fines analíticos y BI.\n---------------------------------------------------------------------------------\n3. ESTILO COEXISTENCIA (Coexistence)\n   - El Golden Record se crea en el hub central y se sincroniza bidireccionalmente\n     con los sistemas transaccionales operacionales de forma paulatina.\n---------------------------------------------------------------------------------\n4. ESTILO TRANSACCIONAL / CENTRALIZADO (Transactional Hub)\n   - El hub MDM es la ÚNICA aplicación donde se crea o edita un contribuyente.\n   - Todos los sistemas (MUISCA, SYGA, Facturación) consumen datos del maestro vía API.</code></pre></div>\n<p>Para la modernización tecnológica de la DIAN, la entidad transita desde un estilo de <strong>Consolidación</strong> hacia un <strong>Hub Centralizado Coexistente</strong>: los datos del RUT se limpian y consolidan en DataR para la analítica de fiscalización, al tiempo que se sincronizan con las plataformas transaccionales mediante servicios web e interoperabilidad con la plataforma X-Road.</p>\n<h3>5.4. El Proceso de Construcción del Registro Dorado (<em>Golden Record</em>)</h3>\n<p>Un mismo contribuyente persona jurídica puede figurar registrado con leves discrepancias en distintas fuentes: en MUISCA aparece como <em>\"Comercializadora Éxito S.A.\"</em>, en Confecámaras / RUES como <em>\"ALMACENES EXITO SOCIEDAD ANONIMA\"</em>, en los bancos con una dirección desactualizada y en la Registraduría Nacional con el representante legal recién fallecido.</p>\n<p>El pipeline de **Resolución de Entidades (<em>Entity Resolution</em>)** y unificación de datos maestros opera en cuatro etapas sistemáticas:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>PIPELINE DE RESOLUCIÓN DE ENTIDADES PARA EL GOLDEN RECORD DEL RUT:\n+-------------------+        +--------------------+        +--------------------+        +--------------------+\n| 1. INGESTA Y      | -----&gt; | 2. BLOQUEO Y       | -----&gt; | 3. EMPAREJAMIENTO  | -----&gt; | 4. REGLAS DE       |\n|    ESTANDARIZACIÓN|        |    INDEXACIÓN      |        |    PROBABILÍSTICO  |        |    SUPERVIVENCIA   |\n| - Limpieza texto  |        | - Reduce espacio   |        | - Jaro-Winkler     |        | - Fuente de la     |\n| - Parseo dirección|        |   de comparación   |        | - Levenshtein      |        |   verdad por campo |\n+-------------------+        +--------------------+        +--------------------+        +--------------------+\n                                                                                                    |\n                                                                                                    v\n                                                                                         +--------------------+\n                                                                                         | GOLDEN RECORD RUT  |\n                                                                                         | Identidad Única    |\n                                                                                         | y Verificada DIAN  |\n                                                                                         +--------------------+</code></pre></div>\n<ol><li><strong>Estandarización y Normalización:</strong> Limpieza de caracteres especiales, conversión a mayúsculas sostenidas y estandarización de direcciones viales según el catálogo postal nacional (ejemplo: transformar <code>\"Clle 72 # 10 - 34 Of. 402\"</code>, <code>\"Cll 72 No 10-34\"</code>, <code>\"Calle 72 10 34\"</code> al formato único canónico: <code>CL 72 10 34 OF 402</code>).</li><li>**Emparejamiento (<em>Matching</em>):**</li><li><em>Emparejamiento Determinista:</em> Coincidencia exacta sobre identificadores duros (NIT o Cédula de Ciudadanía).</li><li><em>Emparejamiento Probabilístico:</em> Comparación difusa mediante algoritmos de distancia de cadenas (<strong>Jaro-Winkler</strong> para nombres propios o <strong>Distancia Levenshtein</strong>) para identificar empresas o personas que escribieron su nombre con erratas tipográficas.</li><li>**Reglas de Supervivencia (<em>Survivorship Rules</em>):** Determinan qué sistema tiene la máxima autoridad de veracidad (\"fuente de la verdad\") para cada atributo específico:</li><li>Para el <strong>Nombre y Supervivencia</strong>: Prevalece la Registraduría Nacional del Estado Civil (RNEC).</li><li>Para la <strong>Representación Legal y Domicilio Mercantil</strong>: Prevalece el RUES / Cámaras de Comercio.</li><li>Para el <strong>Correo Electrónico de Notificaciones Judiciales</strong>: Prevalece el buzón certificado registrado en el RUT formal de la DIAN.</li></ol>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-5-6",
+          "moduleId": "mod-5",
+          "unitNumber": 6,
+          "title": "Unidad 6: Políticas Nacionales de Datos en el Estado Colombiano (CONPES 3920, MRAE MinTIC y MIPG)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 569,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Políticas Públicas Colombianas, Arquitectura Empresarial Estatal y Gobernanza MIPG</p>\n<h3>6.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Analizar de manera articulada los instrumentos de política pública vinculantes para la gestión de datos en Colombia: el <strong>Documento CONPES 3920 de 2018 (Política de Big Data)</strong>, el <strong>Marco de Referencia de Arquitectura Empresarial (MRAE)</strong> de la Política de Gobierno Digital (MinTIC) y el <strong>Modelo Integrado de Planeación y Gestión (MIPG)</strong>.</p>\n<h3>6.2. Documento CONPES 3920 de 2018: Política Nacional de Explotación de Datos (Big Data)</h3>\n<p>Aprobado por el Consejo Nacional de Política Económica y Social (DNP), el <strong>CONPES 3920</strong> constituye la carta magna para convertir los datos del Estado en un activo dinamizador del desarrollo económico y la lucha contra la corrupción.</p>\n<h4>Diagnóstico Estructural de las Entidades Estatales en el CONPES 3920:</h4>\n<ul><li>Las entidades públicas operaban como \"islas de información\" que custodiaban datos con criterios de propiedad feudal, impidiendo el intercambio interinstitucional.</li><li>Deficiencia crítica en la calidad y estandarización de los datos abiertos y de los repositorios institucionales.</li><li>Escasez de talento humano calificado en ciencia de datos, arquitectura Big Data y gobierno de información en el servicio público.</li></ul>\n<h4>Ejes Estratégicos del CONPES 3920 Vinculantes para la DIAN:</h4>\n<ol><li><strong>Generación de Condiciones para la Explotación de Datos:</strong> Exige a las entidades públicas implementar formalmente marcos de gobierno de datos basados en estándares internacionales (como DAMA-DMBOK) y estructurar sus catálogos de metadatos.</li><li><strong>Desarrollo de Capacidades de Analítica Masiva:</strong> Fomentar el uso de Big Data, aprendizaje automático e inteligencia artificial para optimizar el recaudo tributario y detectar operaciones fraudulentas.</li><li><strong>Apertura y Reutilización Segura de Datos:</strong> Promover la apertura de datos impersonales no reservados para fomentar la transparencia y la investigación científica, respetando en todo caso los regímenes de reserva legal y habeas data.</li></ol>\n<h3>6.3. El Marco de Referencia de Arquitectura Empresarial (MRAE) - Dominio de Información</h3>\n<p>Reglamentado por el MinTIC a través del Decreto 1078 de 2015 y sus decretos modificatorios (Decreto 088 de 2022), el <strong>MRAE</strong> estructura la transformación digital del Estado en seis dominios de arquitectura: <em>Estrategia TI, Gobierno TI, Información, Sistemas de Información, Servicios Tecnológicos y Uso &amp; Apropiación</em>.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>EL DOMINIO DE INFORMACIÓN EN EL MRAE (MinTIC):\n+------------------------------------------------------------------------+\n| PRINCIPIOS RECTORES DEL DOMINIO DE INFORMACIÓN                         |\n| 1. La información como activo estratégico del Estado                   |\n| 2. Calidad de la información desde el diseño (Quality-by-Design)       |\n| 3. Seguridad y Privacidad por Diseño (Reserva Tributaria / Habeas Data)|\n| 4. Ciclo de vida gobernado e inmutable                                 |\n| 5. Interoperabilidad mediante Servicios Ciudadanos Digitales (X-Road)  |\n+------------------------------------------------------------------------+\n                                   |\n         +-------------------------+-------------------------+\n         v                                                   v\n+-----------------------------+                     +-----------------------------+\n| Gestión de Metadatos y      |                     | Servicios Ciudadanos        |\n| Catálogo de Activos         |                     | Digitales (SCD)             |\n| - Glosario común MinTIC     |                     | - Autenticación Digital     |\n| - Clasificación de seguridad|                     | - Carpeta Ciudadana         |\n| - Lenguaje Común Intercambio|                     | - Interoperabilidad X-Road  |\n+-----------------------------+                     +-----------------------------+</code></pre></div>\n<h3>6.4. Modelo Integrado de Planeación y Gestión (MIPG)</h3>\n<p>El <strong>MIPG</strong> (Decreto 1499 de 2017) es el marco operativo que coordina el direccionamiento estratégico y la gestión de las entidades públicas colombianas. En la DIAN, el Gobierno de Datos se articula directamente con dos dimensiones esenciales del MIPG:</p>\n<ul><li><strong>Dimensión 4: Gestión para el Resultado con Valores:</strong> A través de la <strong>Política de Gobierno Digital</strong> y la <strong>Política de Seguridad Digital</strong>, exigiendo la protección del sigilo fiscal y la disponibilidad de los servicios informáticos de recaudo.</li><li><strong>Dimensión 5: Información y Comunicación:</strong> Obliga a mantener canales de información interna y externa coherentes, veraces y transparentes, garantizando el archivo y la conservación del patrimonio documental y digital de la Nación (en coordinación con el Archivo General de la Nación).</li></ul>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 6,
+      "lessonMinutes": 150,
+      "studyMinutes": 150,
+      "bibliografia": {
+        "raw": "<h2>11. Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>11.1. Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>DAMA International (2017).</strong> <em>DAMA-DMBOK: Data Management Body of Knowledge</em> (2nd Ed.). Technics Publications.</li><li><strong>Por qué leerlo para el examen:</strong> Es la biblia mundial obligatoria para el indicador; define la Rueda de DAMA, los roles de gobernanza (Owners, Stewards, Custodians), la taxonomía de metadatos y las dimensiones de calidad.</li><li><strong>Loshin, D. (2010).</strong> <em>Master Data Management</em>. Morgan Kaufmann.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra cumbre para entender los cuatro estilos arquitectónicos de MDM, las técnicas de resolución de entidades y la creación del Golden Record.</li><li><strong>Redman, T. C. (2016).</strong> <em>Getting in Front on Data: Who Does What</em>. Technics Publications.</li><li><strong>Por qué leerlo para el examen:</strong> Examina la asignación práctica de responsabilidades organizacionales, matrices RACI y comités de gobierno en entidades complejas.</li><li><strong>Departamento Nacional de Planeación - DNP (2018).</strong> <em>Documento CONPES 3920: Política Nacional de Explotación de Datos (Big Data)</em>. DNP, República de Colombia.</li><li><strong>Por qué leerlo para el examen:</strong> Marco de política pública de obligatorio cumplimiento para todas las entidades públicas del Estado colombiano en materia de gestión y explotación de activos de datos.</li></ol>\n<h3>11.2. Bibliografía Técnica, Estándares y Marco Normativo (Corte: 19 de junio de 2026)</h3>\n<h4>A. Estándares Técnicos Internacionales y Literatura Canónica</h4>\n<ul><li><strong>Organización Internacional de Normalización (ISO) / Comisión Electrotécnica Internacional (IEC):</strong></li><li><em>ISO/IEC 25012:2008:</em> Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model.</li><li><em>ISO/IEC 38505-1:2017:</em> Information technology — Governance of IT — Governance of data — Part 1: Application of ISO/IEC 38500 to the governance of data.</li><li><em>ISO 8000:</em> Data quality standards series (Partes 61 a 64: Data quality management).</li><li><strong>Earley, S., &amp; Henderson, D. (Eds.). (2017).</strong> <em>The DAMA Guide to the Data Management Body of Knowledge (DAMA-DMBOK2)</em>. Technics Publications.</li><li><strong>CMMI Institute (2019).</strong> <em>Data Management Maturity (DMM) Model</em>. Information Systems Audit and Control Association (ISACA).</li></ul>\n<h4>B. Marco Normativo Colombiano e Institucional DIAN (Vigencia al 19 de junio de 2026)</h4>\n<ul><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes).</strong> <strong>Artículo 555-2</strong> (Registro Único Tributario - RUT como mecanismo único de identificación y datos maestros), <strong>Artículo 583 al 587</strong> (Reserva tributaria de las declaraciones, excepciones legales e intercambio seguro) y <strong>Artículo 616-1</strong> (Facturación Electrónica).</li><li><strong>Documento CONPES 3920 de 2018.</strong> Política Nacional de Explotación de Datos (Big Data) en Colombia.</li><li><strong>Decreto 1078 de 2015 (Decreto Único Reglamentario del Sector TIC) y Decreto 088 de 2022.</strong> Marco de Referencia de Arquitectura Empresarial (MRAE), Servicios Ciudadanos Digitales e Interoperabilidad del Estado.</li><li><strong>Decreto 1499 de 2017.</strong> Modelo Integrado de Planeación y Gestión (MIPG) — Políticas de Gobierno Digital y Gestión de la Información.</li><li><strong>Ley Estatutaria 1581 de 2012 y Decreto 1074 de 2015.</strong> Régimen General de Protección de Datos Personales en Colombia (Habeas Data).</li><li><strong>Ley Estatutaria 1712 de 2014.</strong> Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional (Índice de información clasificada y reservada).</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) — Funciones de la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos en el gobierno de la información.</li><li><strong>Resolución DIAN No. 067 de 2024 (y Resoluciones 065 y 066 de 2024).</strong> Manual Específico de Requisitos y Funciones (MERF) vigente para el empleo Inspector I en el proceso de selección DIAN 2676.</li><li><strong>Circular MinTIC No. 002 de 2019 (y guías aplicables de Gobierno Digital).</strong> Guía para la gestión y gobierno de datos en el Estado colombiano.</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-6",
@@ -2317,352 +2376,359 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-5": {
-      "title": "Examen: 5. Estándares y Políticas en Gobierno de Datos (10 Preguntas de DAMA, Calidad y Casos)",
-      "indicatorNum": 5,
+      "title": "Examen Oficial: Estándares y Políticas Establecidos en el Gobierno de Datos (10 Preguntas PJS)",
       "questions": [
         {
           "id": 501,
-          "topic": "El Marco DAMA-DMBOK v2 y el DAMA Wheel",
-          "caseText": "Una entidad estatal inicia la implementación de su programa de gestión de datos y debe establecer la estructura de gobernanza conforme a las mejores prácticas internacionales del estándar DAMA International.",
-          "statement": "¿Cuál es la posición y el rol que ocupa el 'Gobierno de Datos' (Data Governance) dentro del DAMA Wheel (la Rueda de DAMA)?",
+          "topic": "Marco Conceptual DAMA-DMBOK v2 y Estructura Decisoria",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En una reunión del Comité Técnico de la Dirección de Gestión de Innovación y Tecnología, surge una fuerte discrepancia operativa entre los desarrolladores de software y los analistas de fiscalización. Los ingenieros de infraestructura afirman que, como ellos administran el clúster de servidores de base de datos Oracle y los lagos en DataR, tienen la facultad discrecional de autorizar a una entidad bancaria privada el acceso a las tablas de declaraciones de renta de los ciudadanos para un estudio de mercadeo crediticio.",
+          "statement": "Al aplicar los principios de delimitación de competencias del DAMA-DMBOK v2 y la normatividad institucional, al Inspector I le corresponde dictaminar que",
           "options": [
             {
               "id": "A",
-              "text": "Ocupa el núcleo central (Center Hub) de la rueda, ejerciendo la supervisión, estrategia y autoridad coordinadora sobre las otras 10 áreas de conocimiento de la gestión de datos."
+              "text": "los ingenieros de infraestructura ejercen exclusivamente la **Gestión de Datos (*Data Management*)** como custodios técnicos y carecen de autoridad legal para decidir sobre el acceso; la potestad decisoria de autorizar o negar el uso de la información corresponde al **Gobierno de Datos (*Data Governance*)** en cabeza del **Data Owner (Propietario del Dato)**, quien además debe rechazar la solicitud por violar la **Reserva Tributaria (Art. 583 E.T.)**."
             },
             {
               "id": "B",
-              "text": "Es una función secundaria ubicada en el perímetro exterior que solo se activa cuando ocurre un incidente de seguridad."
+              "text": "los administradores de bases de datos son los dueños jurídicos soberanos de todos los datos que residen en los discos duros institucionales y pueden vender accesos a bancos para financiar la infraestructura de TI."
             },
             {
               "id": "C",
-              "text": "Es una disciplina puramente técnica encargada exclusivamente de la instalación de parches en bases de datos."
+              "text": "la solicitud bancaria debe aprobarse de inmediato sin consultar a nadie para promover la inclusión financiera del país."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En el marco DAMA-DMBOK v2, el Gobierno de Datos está en el centro de la rueda. No gestiona datos directamente, sino que define la estrategia, las políticas, los derechos de decisión y la rendición de cuentas para todas las demás funciones.",
+            "correct": "Es correcta. El marco canónico internacional **DAMA-DMBOK v2** separa nítidamente las responsabilidades: la administración técnica y el soporte de servidores pertenecen a la **Gestión de Datos** (*Data Custodians*), quienes ejecutan tareas operativas pero **no tienen autoridad decisoria sobre el negocio ni sobre el acceso a los datos**. La decisión de conceder accesos y clasificar la información es competencia indelegable del **Gobierno de Datos**, liderado por el **Data Owner** misional correspondiente. Adicionalmente, entregar declaraciones para mercadeo privado viola el **Artículo 583 del Estatuto Tributario** y la **Ley 1581 de 2012**.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El gobierno de datos es transversal y continuo, no un proceso reactivo perimetral."
+                "reason": "Es incorrecta. Confundir la custodia técnica de un servidor físico con la propiedad legal del dato es un error funcional gravísimo; los servidores de la DIAN custodian activos públicos protegidos por sigilo legal."
               },
               {
                 "id": "C",
-                "reason": "La administración de parches corresponde a Operaciones de BD, no a la gobernanza institucional."
+                "reason": "Es incorrecta. Aprobar accesos no autorizados a información amparada por reserva tributaria constituye delito penal y falta disciplinaria sancionada con destitución."
               }
             ]
           }
         },
         {
           "id": 502,
-          "topic": "Roles de Gobierno: Data Owner vs. Data Steward vs. Data Custodian",
-          "caseText": "Se suscita una controversia en una reunión institucional sobre la definición legal del campo 'Ingreso Neto Gravable' y quién tiene la autoridad para modificar las reglas de calidad asociadas a dicho campo.",
-          "statement": "¿A qué rol de gobierno de datos le corresponde la rendición de cuentas (accountability) y la autoridad de decisión sobre la definición conceptual de dicho dato de negocio?",
+          "topic": "Estructura Orgánica y Roles de Gobierno (Owners, Stewards y Custodians)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección Seccional de Impuestos de Medellín reporta que más de 12.000 contribuyentes del sector calzado aparecen registrados en el RUT con la casilla de \"Actividad Económica Principal\" vacía, lo que impide cruzarlos contra las declaraciones de IVA y genera traumatismos en las devoluciones automáticas. El equipo de TI argumenta que ellos son los encargados de arreglar el problema y propone ejecutar un comando SQL masivo que asigne a todos esos 12.000 contribuyentes el código de actividad de \"Fabricación de Calzado\" por defecto.",
+          "statement": "Para remediar la falla de calidad respetando la gobernanza institucional y la veracidad de la información pública, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Al Data Owner (Propietario del Dato del área misional o de negocio), quien tiene la autoridad formal sobre el dominio de datos y aprueba su semántica y clasificación."
+              "text": "rechazar la asignación arbitraria por SQL y coordinar con el **Business Data Steward** del dominio de Registro el diseño de un plan de saneamiento que identifique las fuentes fácticas (Cámaras de Comercio y facturación electrónica) para corregir el dato en el origen, notificando al **Data Owner** para que expida los actos administrativos requeridos."
             },
             {
               "id": "B",
-              "text": "Al Data Custodian (Custodio Técnico de Infraestructura de TI), porque él administra el servidor físico donde reside la tabla."
+              "text": "autorizar la ejecución del script SQL masivo asumiendo que es preferible tener un código económico inventado a tener una casilla en blanco."
             },
             {
               "id": "C",
-              "text": "Al proveedor externo que vendió los cables de red para el centro de datos."
+              "text": "borrar físicamente del sistema a los 12.000 contribuyentes para que las métricas de calidad de la base de datos alcancen el 100% de registros limpios."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Data Owner es un líder de negocio/misional responsable del ciclo de vida y significado de un dominio de datos. El Data Steward es el gestor operativo que ejecuta las directrices, y el Data Custodian es el administrador técnico de TI.",
+            "correct": "Es correcta. La modificación arbitraria de datos maestros mediante scripts directos de base de datos sin sustento fáctico vulnera la gobernanza de datos y la veracidad legal del **Registro Único Tributario (Art. 555-2 E.T.)**. Al **Data Steward (Gestor)** le corresponde analizar la regla de calidad y articular el plan de saneamiento validando fuentes legítimas de cruce (RUES / Factura Electrónica), informando al **Data Owner** para formalizar la actualización en el origen sin distorsionar la realidad tributaria del administrado.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El Data Custodian vela por el hardware, bases de datos y respaldos, no define conceptos de negocio tributario."
+                "reason": "Es incorrecta. Imputar datos económicos falsos mediante un script genera requerimientos tributarios erróneos, distorsiona la estadística macroeconómica del DNP y acarrea responsabilidades disciplinarias."
               },
               {
                 "id": "C",
-                "reason": "Los proveedores de cableado no tienen competencia en la semántica de la información estatal."
+                "reason": "Es incorrecta. Eliminar a contribuyentes reales de la base de datos destruye la memoria tributaria y anula la capacidad del Estado para recaudar impuestos legítimos."
               }
             ]
           }
         },
         {
           "id": 503,
-          "topic": "Dimensiones de Calidad ISO/IEC 25012: Completitud",
-          "caseText": "Un pipeline de carga extrae declaraciones de retención en la fuente y omite almacenar el campo de firma del contador público o revisor fiscal cuando este viene en un tag anidado, guardando el registro con dicho campo en valor nulo (NULL).",
-          "statement": "¿Qué dimensión de calidad del dato bajo el estándar ISO/IEC 25012 se encuentra deteriorada?",
+          "topic": "Dimensiones Canónicas de Calidad del Dato",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Durante la auditoría preventiva sobre la ingesta masiva de Facturación Electrónica en DataR, el Inspector I realiza un perfilamiento de datos sobre un lote de 2.000.000 de documentos XML UBL 2.1 recibidos durante el fin de semana. El informe revela que el 100% de las facturas tienen la estructura física correcta y no tienen campos nulos, pero el 18% de ellas fueron transmitidas por los emisores 15 días después de la fecha en que se realizó materialmente la venta comercial.",
+          "statement": "Al clasificar el fallo de calidad de datos identificado conforme a los estándares internacionales (ISO/IEC 25012 / DAMA), el profesional debe dictaminar que",
           "options": [
             {
               "id": "A",
-              "text": "Completitud (Completeness), porque el registro carece de un atributo obligatorio exigido por las reglas de negocio y la ley para su plena validez procesal."
+              "text": "las facturas satisfacen la dimensión de **Completitud** y **Conformidad**, pero vulneran gravemente la dimensión de **Oportunidad (*Timeliness*)**, impidiendo su uso como soporte fiscal de costos y deducciones para el adquirente de acuerdo con el Artículo 616-1 del Estatuto Tributario."
             },
             {
               "id": "B",
-              "text": "Portabilidad, porque el archivo no se puede imprimir en hojas de papel bond."
+              "text": "el lote de facturas posee una calidad perfecta porque la dimensión de Oportunidad solo aplica para la entrega de correspondencia física en papel."
             },
             {
               "id": "C",
-              "text": "Concurrencia, porque varios usuarios entraron al mismo tiempo a la base de datos."
+              "text": "el fallo corresponde a una falta de Unicidad y se debe sancionar a los compradores eliminando sus empresas del RUT."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Completitud mide la presencia de todos los valores requeridos para una entidad. En materia tributaria, la ausencia de la firma requerida vicia de ineficacia la declaración (Art. 580 E.T.), impactando directamente la completitud del dato.",
+            "correct": "Es correcta. El caso ilustra con precisión la independencia de las dimensiones de calidad del dato. El hecho de que un dataset no tenga nulos (**Completitud**) y respete la sintaxis XML (**Conformidad**) no garantiza su calidad integral. La dimensión de **Oportunidad (*Timeliness* / Frescura)** evalúa si el dato está disponible en el marco temporal normativo exigido. En el sistema de facturación electrónica (Art. 616-1 E.T. y resoluciones reglamentarias), la validación previa exige transmisión inmediata o en tiempo real; transmitir documentos con 15 días de retraso destruye la oportunidad del dato y vicia su eficacia probatoria como deducción fiscal.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La portabilidad mide la capacidad de transferir software entre entornos, no la presencia de datos."
+                "reason": "Es incorrecta. La oportunidad es una dimensión crítica universal en sistemas de datos distribuidos en tiempo real y no se restringe al correo postal tradicional."
               },
               {
                 "id": "C",
-                "reason": "La concurrencia es una propiedad de los motores transaccionales, no una dimensión de calidad de ISO 25012."
+                "reason": "Es incorrecta. La Unicidad evalúa duplicados, no la extemporaneidad en la transmisión de los eventos tributarios."
               }
             ]
           }
         },
         {
           "id": 504,
-          "topic": "Dimensiones de Calidad ISO/IEC 25012: Consistencia",
-          "caseText": "En el sistema aduanero de comercio exterior, una importación de maquinaria aparece registrada con un valor FOB de $500.000 dólares, pero en la tabla de cruces de la declaración de renta presentada por la misma empresa para el mismo año gravable, el costo de activos importados se reporta en cero pesos.",
-          "statement": "¿Qué dimensión de calidad de datos se encuentra comprometida entre ambos sistemas?",
+          "topic": "Gestión de Metadatos y Linaje de Datos de Punta a Punta",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Una corporación multinacional interpone un recurso de reconsideración y posterior demanda judicial contra una Liquidación Oficial de Revisión proferida por la DIAN, argumentando que el cálculo del mayor valor a pagar en el impuesto de renta fue \"inventado por los sistemas informáticos de la administración sin sustento probatorio\". El juez contencioso administrativo ordena a la DIAN exhibir la traza técnica verificable que demuestre con exactitud qué documentos y qué transformaciones matemáticas originaron dicha cifra.",
+          "statement": "Para responder al requerimiento judicial garantizando la legalidad del acto administrativo y la cadena de custodia probatoria, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Consistencia (Consistency), porque los datos representan contradicciones flagrantes e incoherencias semánticas entre diferentes repositorios institucionales de la misma entidad."
+              "text": "extraer del catálogo corporativo el **Linaje de Datos Hacia Atrás (*Backward Lineage*)**, aportando el grafo de metadatos técnicos y operacionales que certifica la ruta completa desde las fuentes primarias (facturación y exógena), las transformaciones intermedias en DataR y los sellos de tiempo inmutables de auditoría."
             },
             {
               "id": "B",
-              "text": "Accesibilidad, porque ambos sistemas tienen contraseñas de acceso diferentes."
+              "text": "manifestar al juez que los modelos analíticos de la DIAN operan mediante magia matemática propietaria que no puede ser revelada ni explicada ante los tribunales de la República."
             },
             {
               "id": "C",
-              "text": "Volatilidad, porque los precios cambian con el paso de los años."
+              "text": "solicitar una prórroga de cuatro años mientras se reconstruyen manualmente las facturas en hojas de cuaderno borrador."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Consistencia exige que los datos no se contradigan entre tablas o sistemas diferentes cuando describen el mismo hecho económico del mundo real. Estas inconsistencias son la base para generar programas de fiscalización.",
+            "correct": "Es correcta. En el marco del **Debido Proceso Administrativo (Art. 29 C.P.)** y la gestión pública gobernada, la DIAN debe certificar la cadena de custodia y la reproducibilidad de sus actos. El **Linaje de Datos Hacia Atrás (*Backward Lineage*)** es la capacidad técnica de los metadatos corporativos para rastrear un valor final hasta sus fuentes atómicas de origen, mostrando las tablas, scripts de transformación, fechas y autores de cada paso. Este mecanismo otorga plena certeza jurídica y valor probatorio irrefutable ante los tribunales de lo contencioso administrativo.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La accesibilidad se refiere a la facilidad de obtener el dato por usuarios autorizados."
+                "reason": "Es incorrecta. Desconocer el deber de transparencia y fundamentación probatoria acarrea la nulidad automática del acto administrativo por indebida motivación y desacato judicial."
               },
               {
                 "id": "C",
-                "reason": "La volatilidad describe la tasa de cambio temporal, no la contradicción entre fuentes simultáneas."
+                "reason": "Es incorrecta. La reconstrucción manual informal vulnera los plazos procesales y denota la ausencia de un marco formal de gobierno de datos."
               }
             ]
           }
         },
         {
           "id": 505,
-          "topic": "Glosario de Negocio vs. Diccionario de Datos",
-          "caseText": "Durante una auditoría de gobernanza, se detecta que los ingenieros de sistemas llaman 'tbl_decl_ren_v3.val_ing_brt' al dato que los abogados y fiscalizadores llaman 'Ingresos Brutos Gravables del Contribuyente'.",
-          "statement": "¿Cómo resuelve la gobernanza de metadatos esta brecha conceptual?",
+          "topic": "Linaje Hacia Adelante y Mitigación de Rupturas Operacionales",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El equipo de modernización del aplicativo MUISCA planea renombrar una columna de la base de datos de recaudo denominada `vlr_saldo_favor` a `saldo_favorable_total_neto` y cambiar su tipo de dato de `NUMBER(15,2)` a `VARCHAR2(50)`. El líder técnico de desarrollo asegura que es un cambio menor que no requiere consultar con las demás dependencias de la entidad y ordena desplegar la modificación directamente en el ambiente de producción de este fin de semana.",
+          "statement": "Al intervenir como garante de la gobernanza técnica de datos y prevenir incidentes críticos en la operación institucional, el profesional debe",
           "options": [
             {
               "id": "A",
-              "text": "Articulando el Glosario de Negocio (que define los términos conceptuales en el lenguaje del negocio) con el Diccionario de Datos (que documenta las definiciones técnicas físicas de tablas, columnas y tipos en la base de datos)."
+              "text": "frenar el despliegue no coordinado y ejecutar un **Análisis de Impacto mediante Linaje Hacia Adelante (*Forward Lineage*)** en el catálogo de metadatos, identificando qué pipelines de datos en Airflow, modelos analíticos en DataR y reportes de recaudo consumen esa columna para advertir las fallas antes de autorizar cualquier cambio de esquema."
             },
             {
               "id": "B",
-              "text": "Obligando a los abogados a hablar en código SQL y nombres técnicos de columnas."
+              "text": "felicitar al líder de desarrollo y sugerir que también cambie los nombres de las tablas de RUT sin avisar para hacer más moderno el sistema."
             },
             {
               "id": "C",
-              "text": "Cambiando diariamente los nombres de las tablas para que nadie los memorice."
+              "text": "desconectar permanentemente los sistemas de analítica de la DIAN para que ningún cambio en las bases de datos transaccionales los afecte."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Glosario de Negocio establece el lenguaje común y la semántica compartida para la organización, mientras que el Diccionario de Datos mapea esos conceptos a las estructuras físicas en los repositorios de datos.",
+            "correct": "Es correcta. Modificar esquemas de bases de datos de producción sin análisis de impacto es uno de los mayores antipatrones de ingeniería de software y gobierno de datos. El **Linaje Hacia Adelante (*Forward Lineage*)** permite rastrear las dependencias aguas abajo (*Downstream dependencies*): qué servicios, vistas materializadas, algoritmos de Machine Learning y tableros BI dependen del campo `vlr_saldo_favor`. Además, cambiar un campo numérico a texto (`VARCHAR2`) destruye la consistencia y quiebra las operaciones matemáticas de los motores analíticos de la DIAN.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los usuarios de negocio no deben forzarse a la jerga física de TI; el gobierno crea el puente semántico."
+                "reason": "Es incorrecta. Modificar estructuras maestras sin gobernanza destruye la integridad operativa de la institución y genera colapsos generalizados en los servicios tributarios."
               },
               {
                 "id": "C",
-                "reason": "Cambiar nombres de tablas rompería todos los pipelines y aplicaciones de la entidad."
+                "reason": "Es incorrecta. Desconectar los sistemas analíticos anula la capacidad del Estado para monitorear el recaudo y fiscalizar la evasión."
               }
             ]
           }
         },
         {
           "id": 506,
-          "topic": "Linaje de Datos (Data Lineage) como Cadena de Custodia Probatoria",
-          "caseText": "Un contribuyente sancionado interpone una acción de nulidad y restablecimiento del derecho ante el Consejo de Estado alegando que los datos de facturación con los que la DIAN le liquidó de aforo fueron adulterados durante el procesamiento interno en la entidad.",
-          "statement": "¿Qué instrumento de gobierno de datos permite demostrar ante el juez la trazabilidad e inalterabilidad de la cifra liquidada?",
+          "topic": "Gestión de Datos Maestros (MDM) y Resolución de Entidades",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la consolidación de macrodatos para la fiscalización del Impuesto de Renta, la DIAN descubre que un importante grupo empresarial figura en sus bases de datos bajo cinco registros diferentes: en un sistema aparece con el NIT principal, en otro con el NIT de una sucursal absorbida, en los bancos con una razón social abreviada y en aduanas con el nombre de su representante legal anterior. Esto provoca que el sistema de riesgo calcule erróneamente que cada registro corresponde a una pequeña empresa exenta de auditoría.",
+          "statement": "Para resolver la duplicidad de registros y construir una vista fidedigna y única del obligado tributario, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "El gráfico y registro de Linaje de Datos (Data Lineage), certificando el recorrido técnico auditable desde el archivo XML original firmado con CUFE hasta la tabla curada y la resolución final sancionatoria."
+              "text": "implementar una arquitectura de **Gestión de Datos Maestros (MDM)** aplicando técnicas de **Resolución de Entidades (*Entity Resolution*)**, algoritmos de coincidencia probabilística (Jaro-Winkler) y **reglas de supervivencia (*Survivorship Rules*)** para consolidar el **Registro Dorado (*Golden Record*)** del contribuyente en el RUT institucional."
             },
             {
               "id": "B",
-              "text": "Un testimonio verbal de que los ingenieros de la DIAN son personas confiables."
+              "text": "mantener los cinco registros separados y condonar las deudas tributarias de todas las empresas para evitar confusiones de digitación en los sistemas."
             },
             {
               "id": "C",
-              "text": "Una captura de pantalla de un tablero de control sin metadatos de auditoría."
+              "text": "exigir a la empresa que liquide sus operaciones mercantiles de inmediato para que la DIAN no tenga que procesar múltiples números de identificación."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Linaje de Datos proporciona la cadena de custodia técnica del dato en sistemas públicos: documenta el origen, cada transformación intermedia y el destino final con firmas y timestamps, confiriendo plena validez probatoria judicial.",
+            "correct": "Es correcta. El objetivo primordial de **Master Data Management (MDM)** es superar la fragmentación de identidades mediante la **Resolución de Entidades (*Entity Resolution*)**. Al aplicar emparejamiento probabilístico sobre razones sociales y reglas formales de supervivencia (donde el NIT validado y la composición societaria del RUES prevalecen), la DIAN unifica los cinco registros dispersos en un único **Golden Record (Registro Dorado)** en el RUT (Art. 555-2 E.T.), permitiendo evaluar la verdadera capacidad económica y patrimonial del grupo empresarial consolidado.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los testimonios verbales sin soporte técnico pericial carecen de peso probatorio frente a cargos de adulteración."
+                "reason": "Es incorrecta. Condonar deudas fiscales sin mandato legal expreso del Congreso de la República es un delito de prevaricato por omisión y detrimento patrimonial del Estado."
               },
               {
                 "id": "C",
-                "reason": "Una captura de pantalla no demuestra el historial ni la inmutabilidad de los pipelines de procesamiento."
+                "reason": "Es incorrecta. La administración tributaria no puede obligar a liquidar sociedades legítimas por limitaciones técnicas internas en sus sistemas de bases de datos."
               }
             ]
           }
         },
         {
           "id": 507,
-          "topic": "Gestión de Datos Maestros (MDM): El Registro Único Tributario (RUT)",
-          "caseText": "En la DIAN se identifican duplicidades donde una misma empresa aparece registrada en sistemas de recaudo con su razón social antigua y en aduanas con su nombre comercial, dificultando el cruce de operaciones.",
-          "statement": "¿Cuál es la estrategia de Master Data Management (MDM) que debe aplicarse?",
+          "topic": "Glosario de Negocio frente a Diccionario de Datos",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección de Gestión de Fiscalización y la Dirección de Gestión de Recaudo publican informes contradictorios sobre el estado de la cartera nacional en el mismo mes: Fiscalización reporta una deuda tributaria exigible de $\\$18$ billones, mientras que Recaudo reporta $\\$11$ billones. La auditoría interna descubre que para Fiscalización el término \"Cartera Exigible\" incluye las sanciones administrativas en trámite de apelación judicial, mientras que para Recaudo solo incluye las deudas con mandamiento de pago debidamente ejecutoriado.",
+          "statement": "Para resolver de forma definitiva esta disparidad de criterios semánticos y evitar desinformación pública, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Consolidar y gobernar al contribuyente alrededor de la entidad maestra única del Registro Único Tributario (RUT) mediante la clave maestra del NIT, generando el 'Golden Record' oficial de la entidad."
+              "text": "elevar la controversia al **Comité Táctico de Gobierno de Datos** para que los **Data Stewards** y **Data Owners** de ambas áreas unifiquen y aprueben formalmente la definición canónica del término en el **Glosario de Negocio Institucional**, estandarizando el cálculo en el catálogo de metadatos."
             },
             {
               "id": "B",
-              "text": "Crear un nuevo NIT diferente cada vez que una empresa cambie de nombre comercial."
+              "text": "promediar matemáticamente ambas cifras ($\\$14.5$ billones) y publicar ese valor en los medios de comunicación sin profundizar en las diferencias normativas."
             },
             {
               "id": "C",
-              "text": "Permitir que cada sistema continúe usando nombres diferentes sin sincronización."
+              "text": "sancionar a ambas dependencias eliminando sus computadores del centro de datos institucional."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "MDM busca unificar la entidad maestra crítica del negocio (el contribuyente) en una única versión autorizada (Golden Record) indexada por el NIT del RUT, asegurando interoperabilidad en todos los sistemas.",
+            "correct": "Es correcta. El problema descrito es una clásica **discrepancia semántica de negocio**. La solución en el marco DAMA-DMBOK exige la intervención del **Gobierno de Datos**: el Comité de Gobierno convoca a los *Data Stewards* de Recaudo y Fiscalización para armonizar la definición legal y operativa del término \"Cartera Exigible\", registrándola de forma inmutable en el **Glosario de Negocio Institucional** para que todos los algoritmos, tableros y declaraciones utilicen la misma fórmula consensuada.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Crear múltiples NITs viola la unicidad tributaria y facilitaría la evasión masiva."
+                "reason": "Es incorrecta. Promediar cifras tributarias sin base jurídica constituye una falsedad material e ideológica en documento público."
               },
               {
                 "id": "C",
-                "reason": "Mantener silos desincronizados revive el problema histórico de inconsistencia que la entidad busca eliminar."
+                "reason": "Es incorrecta. Destruir o retirar computadores de trabajo paraliza la gestión pública y desconoce el régimen disciplinario y administrativo."
               }
             ]
           }
         },
         {
           "id": 508,
-          "topic": "Perfilamiento de Datos (Data Profiling) Previo a la Ingesta",
-          "caseText": "Antes de cargar un lote masivo de 50 millones de registros de información exógena bancaria en el Lakehouse, el ingeniero de datos ejecuta un proceso sistemático para evaluar valores nulos, distribución de frecuencias, cardinalidad y valores atípicos.",
-          "statement": "¿Cómo se denomina esta práctica de gobierno y aseguramiento de calidad del dato?",
+          "topic": "Políticas Públicas Colombianas de Datos y Marco CONPES",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Durante la formulación del Plan Estratégico de Tecnologías de la Información de la DIAN, un director de área propone desmantelar el proyecto del Repositorio Único DataR y regresar al almacenamiento descentralizado en archivos de texto plano locales en cada computador seccional, alegando que la adquisición de plataformas de macrodatos Big Data y catálogos de gobierno representa un gasto innecesario para el Estado.",
+          "statement": "Al emitir el concepto técnico-jurídico con fundamento en las políticas públicas vigentes del Estado colombiano, el Inspector I debe advertir que",
           "options": [
             {
               "id": "A",
-              "text": "Perfilamiento de Datos (Data Profiling), permitiendo descubrir anomalías y evaluar la salud del conjunto de datos antes de incorporarlo a los repositorios de producción."
+              "text": "la propuesta es inviable y contraviene de manera directa el **Documento CONPES 3920 de 2018 (Política Nacional de Explotación de Datos - Big Data)**, el cual obliga a las entidades públicas a superar los silos de información, estructurar marcos de gobernanza formal y valorizar los datos como activo estratégico nacional para el control fiscal."
             },
             {
               "id": "B",
-              "text": "Criptoanálisis de datos para desencriptar claves bancarias de los ciudadanos."
+              "text": "la propuesta es excelente y debe premiarse al director por proponer el uso masivo de papel y lápiz en las declaraciones tributarias."
             },
             {
               "id": "C",
-              "text": "Desfragmentación del disco duro del servidor de base de datos."
+              "text": "los documentos CONPES son meras sugerencias académicas sin ningún valor vinculante ni pertinencia para las entidades descentralizadas."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Data Profiling es la disciplina que examina los datos disponibles en una fuente para recopilar estadísticas, detectar anomalías estructurales y evaluar si cumplen las reglas mínimas antes de promoverlos en la arquitectura.",
+            "correct": "Es correcta. El **Documento CONPES 3920 de 2018** es la política pública de obligatorio cumplimiento expedida por el Consejo Nacional de Política Económica y Social para transformar al Estado colombiano en un ecosistema impulsado por datos. Desmantelar la infraestructura centralizada de macrodatos (DataR) y retornar a archivos locales fragmentados viola flagrantemente las directrices del CONPES, que exigen a la DIAN interoperabilidad, eliminación de silos, gobierno de datos y analítica masiva para fortalecer la lucha contra la evasión fiscal.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "No tiene relación con criptoanálisis; el perfilamiento analiza estadísticas y calidad de los datos."
+                "reason": "Es incorrecta. Retroceder a métodos predigitales contraviene la Ley 1437 de 2011 (CPACA) y la política de eficiencia administrativa del Estado."
               },
               {
                 "id": "C",
-                "reason": "La desfragmentación es una tarea de mantenimiento de hardware de sistemas de archivos antiguos."
+                "reason": "Es incorrecta. Aunque los documentos CONPES son instrumentos de planeación económica y social, fijan metas y directrices obligatorias articuladas con el Plan Nacional de Desarrollo y el Marco de Arquitectura Empresarial de MinTIC."
               }
             ]
           }
         },
         {
           "id": 509,
-          "topic": "Dimensiones de Calidad ISO 25012: Actualidad y Frescura (Timeliness)",
-          "caseText": "Un auditor tributario toma una medida cautelar de embargo de cuentas bancarias basándose en un reporte de deudas que no había incorporado el pago de paz y salvo realizado por el contribuyente dos días antes en el banco.",
-          "statement": "¿Qué dimensión de calidad del dato falló en este proceso provocando un perjuicio antijurídico al administrado?",
+          "topic": "Marco de Referencia de Arquitectura Empresarial (MRAE) MinTIC",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un equipo interdisciplinario diseña una nueva aplicación móvil ciudadana para facilitar la inscripción en el RUT. En el diseño inicial, los desarrolladores configuran la base de datos de la app para que transmita y almacene en claro, sin ningún tipo de cifrado ni máscara, las contraseñas, números de cuenta bancaria y datos personales de los contribuyentes, argumentando que la seguridad y el cifrado se agregarán \"en una segunda fase dentro de dos años si el presupuesto lo permite\".",
+          "statement": "Al revisar la arquitectura técnica de conformidad con el Dominio de Información del Marco de Referencia de Arquitectura Empresarial (MRAE) del MinTIC, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Actualidad / Oportunidad (Timeliness), al utilizar datos con un retraso temporal que ya no representaban la situación jurídica real del contribuyente."
+              "text": "rechazar el lanzamiento del software y exigir la aplicación inmediata del principio de **Seguridad y Privacidad por Diseño y por Defecto (*Privacy by Design*)**, implementando cifrado robusto de extremo a extremo (TLS 1.3 y AES-256) antes de cualquier paso a producción, en cumplimiento del MRAE y la **Ley 1581 de 2012**."
             },
             {
               "id": "B",
-              "text": "Legibilidad, porque el texto estaba en una fuente tipográfica pequeña."
+              "text": "autorizar el despliegue de la app sin cifrado asumiendo que los ciudadanos son los únicos responsables si sus datos bancarios son interceptados por ciberdelincuentes."
             },
             {
               "id": "C",
-              "text": "Densidad, porque la tabla tenía demasiadas columnas vacías."
+              "text": "solicitar que los contribuyentes firmen una renuncia escrita a sus derechos fundamentales de Habeas Data antes de descargar la aplicación móvil."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Timeliness mide el grado en que los datos representan el estado actual del mundo real en el momento de la consulta. La falta de frescura en información de pagos tributarios genera embargos indebidos y responsabilidad patrimonial del Estado.",
+            "correct": "Es correcta. El **Marco de Referencia de Arquitectura Empresarial (MRAE)** de MinTIC, en su **Dominio de Información**, consagra como principio rector imperativo la **Seguridad y Privacidad por Diseño y por Defecto**: las medidas técnicas de protección (cifrado, control de acceso, enmascaramiento) deben estar integradas en la arquitectura desde el primer día de diseño y no agregarse como un parche posterior. Lanzar una aplicación pública que expone datos en claro viola la **Ley Estatutaria 1581 de 2012 (Habeas Data)** y el **Artículo 583 del E.T. (Reserva Tributaria)**, acarreando gravísimas sanciones legales para la entidad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La legibilidad tipográfica no es una dimensión de calidad de ISO 25012."
+                "reason": "Es incorrecta. El Estado es el custodio responsable de la seguridad de la información ciudadana y no puede trasladar su negligencia técnica a los administrados."
               },
               {
                 "id": "C",
-                "reason": "La densidad de columnas no explica el desfase temporal de los pagos."
+                "reason": "Es incorrecta. El derecho fundamental al Habeas Data y a la reserva legal es un derecho inalienable que no puede ser objeto de renuncia mediante contratos de adhesión digital."
               }
             ]
           }
         },
         {
           "id": 510,
-          "topic": "Gobernanza Computacional Federada en Data Mesh",
-          "caseText": "En una arquitectura descentralizada tipo Data Mesh implementada en el sector público, cada dominio de datos gestiona sus propios productos de datos de forma autónoma.",
-          "statement": "¿Cómo se garantiza que todas las dependencias cumplan las políticas de seguridad y normativas globales sin caer en el caos de silos aislados?",
+          "topic": "Modelo Integrado de Planeación y Gestión (MIPG)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la auditoría de gestión del Modelo Integrado de Planeación y Gestión (MIPG) de la DIAN, los auditores de la función pública identifican que la entidad carece de un inventario actualizado de activos de información y que no existen indicadores formales para medir la calidad y disponibilidad de los datos utilizados en los trámites tributarios y aduaneros. El equipo directivo solicita a la Subdirección de Procesamiento de Datos una estrategia inmediata de regularización.",
+          "statement": "Para responder a los requerimientos del MIPG y articular la gestión institucional con los lineamientos del DAFP y MinTIC, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "A través de la Gobernanza Computacional Federada (Federated Computational Governance), aplicando estándares globales automatizados en la plataforma de infraestructura (ej. políticas como código, control de acceso universal, estándares de metadatos interoperables)."
+              "text": "estructurar el **Catálogo Institucional de Activos de Información**, registrar los datasets conforme a la clasificación de seguridad de la Ley 1712 de 2014 y definir un cuadro de mando con **Indicadores de Calidad del Dato (Completitud, Exactitud y Oportunidad)** articulados a la Política de Gobierno Digital del MIPG."
             },
             {
               "id": "B",
-              "text": "Eliminando todas las políticas de seguridad para que cada área haga lo que prefiera sin supervisión."
+              "text": "responder a los auditores que el MIPG solo aplica para entidades que manejan expedientes físicos en papel de archivo."
             },
             {
               "id": "C",
-              "text": "Nombrando un único empleado que revise a mano todos los archivos de todas las dependencias."
+              "text": "ocultar los sistemas informáticos durante los días de la auditoría para que los inspectores no encuentren las bases de datos de la DIAN."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En Data Mesh, el pilar de Gobernanza Federada Computacional permite que la autonomía de los dominios conviva con la interoperabilidad global mediante la automatización de políticas (Policy-as-Code) en la plataforma compartida.",
+            "correct": "Es correcta. El **Modelo Integrado de Planeación y Gestión (MIPG)**, a través de sus dimensiones de *Gestión para el Resultado* e *Información y Comunicación*, exige a las entidades estatales la adopción de la **Política de Gobierno Digital** y la **Política de Gestión Documental y de Información**. La solución estructural consiste en formalizar el **Catálogo de Activos de Información** (cumpliendo con la Ley 1712 de 2014) y establecer indicadores cuantitativos de calidad del dato (completitud, exactitud, frescura), permitiendo monitorear el desempeño institucional y responder cabalmente a las auditorías del Departamento Administrativo de la Función Pública (DAFP).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Eliminar la seguridad violaría las leyes de protección de datos y la reserva legal del Estado."
+                "reason": "Es incorrecta. El MIPG rige integralmente la gestión pública moderna, priorizando los entornos digitales y la gestión de tecnologías de la información."
               },
               {
                 "id": "C",
-                "reason": "La revisión manual centralizada es inviable a escala e incompatible con los principios ágiles de Data Mesh."
+                "reason": "Es incorrecta. Ocultar información o entorpecer auditorías oficiales de control constituye una falta disciplinaria gravísima y causal de destitución."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-5",
-      "track": "funcionales"
+      ]
     },
     "exam-6": {
       "title": "Examen: 6. Estructura Organizacional de la DIAN (10 Preguntas de Estructura y Casos)",
@@ -8437,6 +8503,126 @@ window.COURSES_DATA['inspector1'] = {
       "back": "Método de explicabilidad basado en teoría de juegos que asigna a cada variable su contribución marginal exacta para justificar actos administrativos motivados.",
       "module": 4,
       "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Gobierno de Datos (DAMA)",
+      "back": "Ejercicio de la autoridad, control y toma de decisiones compartidas (políticas, directrices, supervisión) sobre los activos de información. Responde a \"¿Qué se debe hacer?\".",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Gestión de Datos (DAMA)",
+      "back": "Ejecución técnica y operativa de planes, arquitecturas y prácticas para recopilar, transformar y almacenar datos. Responde a \"¿Cómo se implementa?\".",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Rueda de DAMA (DAMA Wheel)",
+      "back": "Modelo de 11 áreas de conocimiento del DAMA-DMBOK v2 que ubica al Gobierno de Datos en el eje central articulando a las otras 10 áreas técnicas.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Data Owner (Propietario)",
+      "back": "Funcionario de nivel directivo con autoridad legal y de negocio sobre un dominio de datos; clasifica la reserva tributaria y autoriza accesos formales.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Data Custodian (Custodio)",
+      "back": "Rol técnico (Subdirección de Procesamiento de Datos / DBAs) responsable de la infraestructura, cifrado, rendimiento y respaldos físicos de las bases de datos.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Data Steward (Gestor)",
+      "back": "Rol operativo/funcional que actúa como puente entre negocio y TI; define el glosario de términos, supervisa la calidad del dato y monitorea el linaje.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Completitud (Calidad)",
+      "back": "Proporción de valores presentes en un dataset en relación con los valores requeridos y esperados por el negocio fiscal: (Poblados / Total) * 100%.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Exactitud Semántica (Calidad)",
+      "back": "Grado de coincidencia entre el dato registrado y el hecho objetivo real del contribuyente en el mundo real.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Consistencia (Calidad)",
+      "back": "Ausencia de contradicciones lógicas o numéricas entre datos que describen el mismo hecho en sistemas o declaraciones diferentes.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Oportunidad / Frescura (Calidad)",
+      "back": "Disponibilidad del dato en el instante exacto en que se requiere para la toma de decisiones o la validación tributaria.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Data Profiling (Perfilamiento)",
+      "back": "Análisis estadístico cuantitativo de la estructura, completitud, cardinalidad y frecuencias de un conjunto de datos antes de incorporarlo a un repositorio.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Metadatos de Negocio",
+      "back": "Metadatos que aportan significado humano y contextual: términos del glosario, dominios, reglas tributarias y clasificación de confidencialidad.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Metadatos Técnicos",
+      "back": "Metadatos que describen especificaciones de software y bases de datos: nombres de tablas, tipos de columnas, índices y esquemas XML/XSD.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Glosario de Negocio",
+      "back": "Catálogo de conceptos y términos de negocio definidos en lenguaje humano universal para toda la institución, independiente de la tecnología.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Diccionario de Datos",
+      "back": "Especificación técnica que documenta la estructura, tipos de datos físicos y restricciones de una base de datos o archivo particular.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Forward Lineage (Linaje hacia Adelante)",
+      "back": "Trazabilidad desde el origen hacia el destino para evaluar qué modelos, tablas o reportes se romperán si se modifica una estructura de datos.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Backward Lineage (Linaje hacia Atrás)",
+      "back": "Trazabilidad desde el resultado final hacia las fuentes primarias para auditoría forense, debida motivación y garantía del debido proceso.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Master Data Management (MDM)",
+      "back": "Disciplina y tecnologías orientadas a definir, consolidar y gobernar las entidades maestras nucleares de la organización (el Contribuyente).",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Golden Record (Registro Dorado)",
+      "back": "Versión única, depurada, confiable y verificada de un dato maestro obtenida tras la resolución de entidades y reglas de supervivencia.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "CONPES 3920 de 2018",
+      "back": "Política Nacional para la Explotación de Datos (Big Data) en Colombia que obliga al Estado a adoptar marcos de gobierno y valorizar los activos de información.",
+      "module": 5,
+      "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
     }
   ]
 };
