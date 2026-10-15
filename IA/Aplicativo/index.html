@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Preparación DIAN 2676 de 2026 | CNSC</title>
+    <!-- Google Fonts: Cormorant Garamond, Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css?v=2.2">
     <link rel="stylesheet" href="css/portal.css?v=2.2">
 </head>
@@ -247,15 +251,15 @@
             const tagGestor = document.getElementById('progress-tag-gestor2');
             if (tagGestor && gestorProg.percentage > 0) {
                 tagGestor.textContent = `${gestorProg.percentage}% completado`;
-                tagGestor.style.background = 'rgba(16, 185, 129, 0.2)';
-                tagGestor.style.color = 'var(--accent)';
+                tagGestor.style.background = 'rgba(175, 187, 152, 0.35)';
+                tagGestor.style.color = 'var(--text-primary)';
             }
 
             const inspProg = getCourseProgress('inspector1', 40);
             const tagInsp = document.getElementById('progress-tag-inspector1');
             if (tagInsp && inspProg.percentage > 0) {
                 tagInsp.textContent = `${inspProg.percentage}% completado`;
-                tagInsp.style.background = 'rgba(2, 132, 199, 0.2)';
+                tagInsp.style.background = 'rgba(70, 112, 126, 0.25)';
                 tagInsp.style.color = 'var(--accent-cyan)';
             }
 
