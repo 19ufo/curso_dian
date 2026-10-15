@@ -46,20 +46,58 @@ $$\text{Interfaces Punto a Punto} = \frac{N(N - 1)}{2} = \mathcal{O}(N^2)$$
 
 Para una institución que administra 50 componentes o subsistemas misionales, esto implica mantener hasta 1.225 interfaces independientes. Este enfoque genera el antipatrón de "arquitectura espagueti", donde cualquier cambio menor en el esquema de una base de datos o en la versión de un protocolo desencadena fallos en cascada en toda la entidad.
 
-```diagram
-INTEGRACIÓN PUNTO A PUNTO (O(N^2))           INTEGRACIÓN DESACOPLADA POR EVENTOS/BUS
-     +-------+       +-------+                    +-------+       +-------+
-     | MUISCA| <---> | SYGA  |                    | MUISCA|       | SYGA  |
-     +---^---+ \   / +---^---+                    +---^---+       +---^---+
-         |      \ /      |                            |               |
-         |       X       |                       +----v---------------v----+
-         |      / \      |                       |    CAPA DE INTEGRACIÓN   |
-     +---v---+ /   \ +---v---+                   |    (Broker / Gateway)   |
-     | DataR | <---> |Factura|                   +----^---------------^----+
-     +-------+       +-------+                        |               |
-   Antipatrón frágil, rígido                      +---v---+       +---v---+
-   y altamente acoplado                           | DataR |       |Factura|
-                                                  +-------+       +-------+
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Topología de Integración de Sistemas</span>
+        <div class="avd-title">Evolución Arquitectónica en la DIAN: Punto a Punto frente a Bus Desacoplado</div>
+    </div>
+    <div class="avd-grid">
+        <div class="avd-col avd-col-danger">
+            <div class="avd-col-header">
+                <span class="avd-tag" style="background:#fee2e2; color:#991b1b;">Antipatrón Riesgoso</span>
+                <h4>Integración Punto a Punto (Point-to-Point)</h4>
+            </div>
+            <div class="avd-topology-canvas mesh">
+                <div class="avd-system-pill"><span class="sys-icon">🏢</span> MUISCA</div>
+                <div class="avd-system-pill"><span class="sys-icon">📦</span> SYGA</div>
+                <div class="avd-spaghetti-center">
+                    <span>⚡ Complejidad Cuadrática</span>
+                    <span class="spaghetti-lines">O(N²) = N(N-1)/2 interfaces directas</span>
+                </div>
+                <div class="avd-system-pill"><span class="sys-icon">📊</span> DataR</div>
+                <div class="avd-system-pill"><span class="sys-icon">🧾</span> Facturación</div>
+            </div>
+            <div class="avd-footer-info">
+                <p><strong>Impacto:</strong> 50 sistemas requieren 1.225 interfaces. Cambios en esquema provocan efecto dominó y caídas en cascada.</p>
+            </div>
+        </div>
+        <div class="avd-col avd-col-success">
+            <div class="avd-col-header">
+                <span class="avd-tag" style="background:#dcfce7; color:#166534;">Estándar Arquitectónico</span>
+                <h4>Integración Desacoplada por Eventos / Bus</h4>
+            </div>
+            <div class="avd-topology-canvas">
+                <div class="avd-satellites-row">
+                    <div class="avd-system-pill"><span class="sys-icon">🏢</span> MUISCA</div>
+                    <div class="avd-system-pill"><span class="sys-icon">📦</span> SYGA</div>
+                </div>
+                <div class="avd-bus-hub">
+                    <div class="hub-badge">CAPA DE INTEGRACIÓN CENTRAL</div>
+                    <div class="hub-sub">Kafka Event Bus · API Gateway · DLQ</div>
+                    <div class="hub-status">Complejidad Lineal O(N) — Desacople Temporal y Espacial</div>
+                </div>
+                <div class="avd-satellites-row">
+                    <div class="avd-system-pill"><span class="sys-icon">📊</span> DataR</div>
+                    <div class="avd-system-pill"><span class="sys-icon">🧾</span> Facturación</div>
+                </div>
+            </div>
+            <div class="avd-footer-info">
+                <p><strong>Beneficio:</strong> Cada componente solo mantiene 1 contrato gobernado con la plataforma. Alta resiliencia y tolerancia a fallos.</p>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
 ### 1.3. Las Cinco Dimensiones del Acoplamiento
@@ -308,25 +346,47 @@ Para garantizar la atomicidad sin 2PC, se utiliza el patrón **Transactional Out
    ```
 2. Un proceso desacoplado de **Captura de Datos Modificados (*Change Data Capture - CDC*)** (como **Debezium** con **Kafka Connect**) lee continuamente el log transaccional de la base de datos (*Write-Ahead Log - WAL* en PostgreSQL o *Redo Log* en Oracle) y publica de forma garantizada y confiable los registros de la tabla `outbox_events` hacia el tópico de Kafka.
 
-```
-+------------------------------------------------------------------------+
-| MICROSERVICIO DE RECAUDO DIAN                                          |
-|                                                                        |
-|  [Transacción ACID Local]                                              |
-|  +------------------------+      +-------------------------------+     |
-|  | Tabla pagos_tributarios|  y   | Tabla outbox_events           |     |
-|  +------------------------+      +-------------------------------+     |
-+--------------------------------------------------|---------------------+
-                                                   |
-                                                   v (Lectura de WAL/Redo Log)
-                                        +--------------------+
-                                        | Debezium CDC Engine|
-                                        +--------------------+
-                                                   |
-                                                   v (Publicación At-Least-Once)
-                                        +--------------------+
-                                        | Apache Kafka Topic |
-                                        +--------------------+
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Patrón de Resiliencia y Consistencia</span>
+        <div class="avd-title">Patrón Transactional Outbox con Debezium CDC y Apache Kafka</div>
+    </div>
+    <div class="outbox-visual-layout">
+        <div class="ob-service-box">
+            <span class="ob-box-title">🏢 Microservicio de Recaudo DIAN</span>
+            <div class="ob-tx-zone">
+                <span class="ob-tx-badge">🔒 Transacción ACID Local Atómica</span>
+                <div class="ob-tables-grid">
+                    <div class="ob-table">
+                        <span class="ob-t-icon">📑</span>
+                        <strong>Tabla pagos_tributarios</strong>
+                        <small>Estado del Negocio</small>
+                    </div>
+                    <div class="ob-plus">+</div>
+                    <div class="ob-table highlight">
+                        <span class="ob-t-icon">📤</span>
+                        <strong>Tabla outbox_events</strong>
+                        <small>Evento a Notificar</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ob-stream-zone">
+            <div class="ob-cdc-box">
+                <span class="ob-cdc-icon">🔄</span>
+                <strong>Debezium CDC Engine</strong>
+                <small>Lectura continua de transacciones (WAL / Redo Log)</small>
+            </div>
+            <div class="ob-stream-arrow">➔</div>
+            <div class="ob-kafka-box">
+                <span class="ob-kafka-icon">⚡</span>
+                <strong>Apache Kafka Topic</strong>
+                <small>Publicación garantizada At-Least-Once hacia consumidores</small>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
 ### 4.4. Patrón Saga: Coordinación de Transacciones Distribuidas
@@ -334,14 +394,47 @@ En un sistema distribuido donde cada microservicio es dueño exclusivo de su pro
 * Cada paso $T_i$ actualiza la base de datos local de un microservicio y emite un evento o mensaje que activa el paso siguiente $T_{i+1}$.
 * Si alguno de los pasos falla (ejemplo: $T_3$ falla por fondos insuficientes o inconsistencia legal), la Saga garantiza la consistencia eventual ejecutando una serie de **transacciones compensatorias** en orden inverso ($C_2, C_1$) que deshacen semánticamente los cambios aplicados en los pasos anteriores.
 
-```diagram
-FLUJO EXITOSO DE LA SAGA:
-[T1: Registrar Solicitud] -> [T2: Validar RUT Activo] -> [T3: Debitar Saldo a Favor] (Fin)
-
-FLUJO CON FALLO Y COMPENSACIÓN:
-[T1: Registrar Solicitud] -> [T2: Validar RUT Activo] -> [T3: Fallo en Débito]
-                                       |                           |
-                               [C1: Revertir Solicitud] <-- [C2: Desbloquear RUT]
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Patrón de Consistencia Distribuida</span>
+        <div class="avd-title">Patrón Saga: Transacciones Compensatorias en Sistemas Desacoplados</div>
+    </div>
+    <div class="saga-visual-container">
+        <div class="svc-lane success">
+            <div class="svc-lane-header">
+                <span class="svc-badge-pill green">✓ Camino Feliz (Sin Fallos)</span>
+                <span>Todas las transacciones locales confirman con éxito</span>
+            </div>
+            <div class="svc-flow">
+                <div class="svc-node"><span class="svc-num">T1</span> Registrar Solicitud</div>
+                <span class="svc-conn">➔</span>
+                <div class="svc-node"><span class="svc-num">T2</span> Validar RUT Activo</div>
+                <span class="svc-conn">➔</span>
+                <div class="svc-node done"><span class="svc-num">T3</span> Debitar Saldo a Favor <small>(Éxito)</small></div>
+            </div>
+        </div>
+        <div class="svc-lane failure">
+            <div class="svc-lane-header">
+                <span class="svc-badge-pill red">⚠️ Falla en T3 y Compensación Automática</span>
+                <span>Se activan transacciones compensatorias en orden inverso</span>
+            </div>
+            <div class="svc-flow">
+                <div class="svc-node"><span class="svc-num">T1</span> Registrar Solicitud</div>
+                <span class="svc-conn">➔</span>
+                <div class="svc-node"><span class="svc-num">T2</span> Validar RUT Activo</div>
+                <span class="svc-conn">➔</span>
+                <div class="svc-node fail"><span class="svc-num">T3</span> Fallo en Débito <small>(Falta Fondos / Error)</small></div>
+            </div>
+            <div class="svc-compensate-flow">
+                <span class="svc-rev-label">↩ Transacciones Compensatorias:</span>
+                <div class="svc-node comp"><span class="svc-num">C2</span> Desbloquear RUT</div>
+                <span class="svc-conn red">➔</span>
+                <div class="svc-node comp"><span class="svc-num">C1</span> Revertir Solicitud</div>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
 #### Tipologías de Implementación de Sagas:
@@ -385,25 +478,39 @@ Apache Airflow es la plataforma estándar de código abierto para programar, orq
   * *CeleryExecutor:* Distribuye las tareas a través de un clúster de nodos Workers dedicados mediante colas de mensajería (RabbitMQ/Redis).
   * *KubernetesExecutor:* Crea un Pod independiente en el clúster de Kubernetes para cada tarea individual, garantizando aislamiento estricto de recursos (CPU, RAM), escalabilidad elástica de cero a cientos de pods y destrucción del pod al finalizar la tarea.
 
-```diagram
-TOPOLOGÍA DISTRIBUIDA DE APACHE AIRFLOW EN KUBERNETES:
-       +--------------------+      +--------------------+
-       |  Airflow Webserver |      |  Airflow Scheduler |
-       +---------+----------+      +---------+----------+
-                 |                           |
-                 v                           v
-       +------------------------------------------------+
-       |   Base de Datos de Metadatos (PostgreSQL)      |
-       +------------------------------------------------+
-                 |
-                 v (KubernetesExecutor lanza Pods bajo demanda)
-       +------------------------------------------------+
-       | KUBERNETES CLUSTER                             |
-       |  +----------------+  +----------------+        |
-       |  | Pod: Ingesta   |  | Pod: Valida    |  ...   |
-       |  | Exógena Formato|  | Calidad Reglas |        |
-       |  +----------------+  +----------------+        |
-       +------------------------------------------------+
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Orquestación de Pipelines Masivos</span>
+        <div class="avd-title">Topología Distribuida de Apache Airflow en Kubernetes (KubernetesExecutor)</div>
+    </div>
+    <div class="airflow-visual-grid">
+        <div class="af-control-plane">
+            <div class="af-box">
+                <div class="af-box-icon">🖥️</div>
+                <div class="af-box-title">Airflow Webserver</div>
+                <div class="af-box-desc">UI de observabilidad y auditoría de DAGs</div>
+            </div>
+            <div class="af-box primary">
+                <div class="af-box-icon">⚙️</div>
+                <div class="af-box-title">Airflow Scheduler</div>
+                <div class="af-box-desc">Motor de dependencias temporales y despacho</div>
+            </div>
+        </div>
+        <div class="af-meta-bar">
+            <span>🗄️ Metadatabase Relacional (PostgreSQL) — Estado global de DagRuns, Variables y Conexiones Seguras</span>
+        </div>
+        <div class="af-k8s-plane">
+            <div class="af-k8s-title">☸️ Clúster Kubernetes — KubernetesExecutor (Pods Efímeros Aislados)</div>
+            <div class="af-pods-row">
+                <div class="af-pod">📦 Pod: Ingesta Exógena</div>
+                <div class="af-pod">📦 Pod: Valida Calidad</div>
+                <div class="af-pod">📦 Pod: Transformación Spark</div>
+                <div class="af-pod">📦 Pod: Carga en DataR</div>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
 ### 5.4. Principios de Diseño de DAGs Idempotentes y Backfilling
@@ -469,18 +576,34 @@ El Estado colombiano adoptó como componente base de su plataforma de interopera
   * Solicitan un sello de tiempo electrónico inmutable (**Time-Stamping Authority - TSA**) para cada mensaje transaccionado.
 * **Autoridad de Certificación (*Certification Authority - CA*):** Entidad de certificación digital que expide y administra los certificados de firma y autenticación X.509 para todos los miembros y Security Servers de la red.
 
-```diagram
-ARQUITECTURA DE INTERCAMBIO X-ROAD:
-[Entidad Consumidora: Superfinanciera]          [Entidad Productora: DIAN]
-       |                                                    |
-       v                                                    v
-[Security Server Superfinanciera]                  [Security Server DIAN]
-       |                                                    |
-       +================== CANAL SEGURO ====================+
-       |   - mTLS Punto a Punto                             |
-       |   - Firma Digital no repudiable del mensaje        |
-       |   - Sello de Tiempo Electrónico (TSA)              |
-       |   - Registro de Auditoría Forense Criptográfico    |
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Interoperabilidad del Estado Colombiano</span>
+        <div class="avd-title">Arquitectura Federada X-Road: Intercambio Seguro y No Repudio (Ley 527/1999)</div>
+    </div>
+    <div class="xroad-visual-layout">
+        <div class="xr-entity consumer">
+            <span class="xr-tag">Entidad Consumidora</span>
+            <h4>Superfinanciera</h4>
+            <div class="xr-sec-server">🔒 Security Server Local</div>
+        </div>
+        <div class="xr-channel">
+            <div class="xr-channel-badge">CANAL CRIPTOGRÁFICO DE CONFIANZA</div>
+            <div class="xr-features">
+                <span>🔐 Autenticación Mutua mTLS</span>
+                <span>✍️ Firma Digital X.509 no repudiable</span>
+                <span>⏱️ Sello de Tiempo TSA</span>
+                <span>📜 Auditoría Forense Criptográfica</span>
+            </div>
+        </div>
+        <div class="xr-entity producer">
+            <span class="xr-tag">Entidad Productora</span>
+            <h4>DIAN (Subdirección Datos)</h4>
+            <div class="xr-sec-server">🔒 Security Server DIAN</div>
+        </div>
+    </div>
+</div>
 ```
 
 > [!LAW] No Repudio y Valor Probatorio en X-Road
@@ -510,20 +633,53 @@ La integración de las fuentes misionales hacia DataR combina distintas modalida
 * **Ingesta por Captura de Datos Modificados (CDC):** Las tablas maestras del Registro Único Tributario (RUT), los pagos recaudados por el sistema bancario y los movimientos de cuenta corriente en MUISCA se replican en tiempo real hacia DataR leyendo los logs de transacciones de los motores de bases de datos, evitando cualquier impacto sobre los tiempos de respuesta del sistema de recaudación.
 * **Ingesta Batch Programada:** Cargas masivas periódicas de gran volumen, como los archivos anuales de Información Exógena enviados por las empresas en formatos XML/CSV, orquestadas mediante pipelines de Apache Airflow y procesadas en lotes distribuidos sobre Apache Spark.
 
-```diagram
-INGESTA HETEROGÉNEA AL REPOSITORIO ÚNICO DataR:
-+-------------------+        +--------------------+
-| Factura Electrónica| -----> | Streaming (Kafka)  | -----+
-| (XML UBL 2.1)     |        +--------------------+      |
-+-------------------+                                     |
-+-------------------+        +--------------------+      |    +-------------------------+
-| MUISCA (RUT,      | -----> | CDC (Debezium/Logs)| -----> |  REPOSITORIO ÚNICO      |
-| Recaudo, Pagos)   |        +--------------------+      |  |  DataR                  |
-+-------------------+                                     |  |  (Capa Bronce ->       |
-+-------------------+        +--------------------+      |  |   Plata -> Oro)         |
-| Exógena Anual     | -----> | Batch (Airflow/    | -----+  +-------------------------+
-| (Formatos XML/CSV)|        |        Spark)      |
-+-------------------+        +--------------------+
+```html
+<div class="arch-visual-diagram-card">
+    <div class="avd-header">
+        <span class="avd-badge">Repositorio Institucional Único</span>
+        <div class="avd-title">Arquitectura de Ingesta Multimodal hacia DataR y Modelo Medallón</div>
+    </div>
+    <div class="datar-visual-layout">
+        <div class="dr-sources-col">
+            <div class="dr-source-card">
+                <span class="dr-badge streaming">Streaming</span>
+                <strong>Facturación Electrónica</strong>
+                <small>XML UBL 2.1 · Event Bus Kafka</small>
+            </div>
+            <div class="dr-source-card">
+                <span class="dr-badge cdc">CDC Logs</span>
+                <strong>MUISCA Transaccional</strong>
+                <small>RUT, Recaudo · Debezium CDC</small>
+            </div>
+            <div class="dr-source-card">
+                <span class="dr-badge batch">Batch Masivo</span>
+                <strong>Exógena Anual</strong>
+                <small>Formatos XML/CSV · Airflow & Spark</small>
+            </div>
+        </div>
+        <div class="dr-arrow-zone">
+            <span class="dr-main-arrow">➔</span>
+            <small>Pipelines de Ingesta</small>
+        </div>
+        <div class="dr-medallion-box">
+            <div class="dr-medallion-header">🏛️ Data Lakehouse Institucional DataR</div>
+            <div class="dr-layers">
+                <div class="dr-layer bronze">
+                    <span class="dr-layer-pill">🥉 Bronce</span>
+                    <div><strong>Datos Crudos Inmutables</strong> <small>(Raw Storage sin pérdida de fidelidad)</small></div>
+                </div>
+                <div class="dr-layer silver">
+                    <span class="dr-layer-pill">🥈 Plata</span>
+                    <div><strong>Datos Conformados y Limpios</strong> <small>(Calidad validada, tipados y cruzados)</small></div>
+                </div>
+                <div class="dr-layer gold">
+                    <span class="dr-layer-pill">🥇 Oro</span>
+                    <div><strong>Capa Analítica & Modelos ML</strong> <small>(Fiscalización, analítica de grafos y BI)</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
 ### 7.3. La Reserva de las Declaraciones Tributarias (Artículo 583 del Estatuto Tributario)

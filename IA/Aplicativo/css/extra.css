@@ -2087,5 +2087,466 @@ body.dark-theme .btn-back-portal:hover {
     width: 100%;
 }
 
+/* ==========================================================================
+   DIAGRAMAS VISUALES INTERACTIVOS DE ARQUITECTURA (SAGA, AIRFLOW, X-ROAD, DATAR)
+   ========================================================================== */
+
+/* 1. Patrón Saga */
+.saga-visual-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.svc-lane {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+}
+.svc-lane.success {
+    border-left: 4px solid var(--accent);
+}
+.svc-lane.failure {
+    border-left: 4px solid var(--danger);
+}
+.svc-lane-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+.svc-badge-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+.svc-badge-pill.green {
+    background: #dcfce7;
+    color: #166534;
+}
+.svc-badge-pill.red {
+    background: #fee2e2;
+    color: #991b1b;
+}
+.svc-flow, .svc-compensate-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+.svc-node {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.svc-node.done {
+    border-color: #86efac;
+    background: #f0fdf4;
+    color: #166534;
+}
+.svc-node.fail {
+    border-color: #fca5a5;
+    background: #fef2f2;
+    color: #991b1b;
+}
+.svc-node.comp {
+    border-color: #fed7aa;
+    background: #fff7ed;
+    color: #9a3412;
+}
+.svc-num {
+    background: rgba(0,0,0,0.06);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+.svc-conn {
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.svc-conn.red {
+    color: var(--danger);
+}
+.svc-compensate-flow {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+}
+.svc-rev-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #9a3412;
+}
+
+/* 2. Topología Airflow */
+.airflow-visual-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.af-control-plane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.af-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.af-box.primary {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(107, 139, 129, 0.08), var(--bg-card));
+}
+.af-box-icon {
+    font-size: 1.3rem;
+}
+.af-box-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.af-box-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.af-meta-bar {
+    background: var(--bg-surface);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+}
+.af-k8s-plane {
+    background: #142022;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+}
+.af-k8s-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #afbb98;
+    margin-bottom: 12px;
+}
+.af-pods-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+}
+.af-pod {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.76rem;
+    color: #e5edea;
+    text-align: center;
+}
+
+/* 3. X-Road Visual Layout */
+.xroad-visual-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 14px;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .xroad-visual-layout {
+        grid-template-columns: 1fr;
+    }
+}
+.xr-entity {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+}
+.xr-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.xr-entity h4 {
+    margin: 4px 0 8px 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+.xr-sec-server {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+.xr-channel {
+    background: linear-gradient(135deg, #22393c, #395c64);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+}
+.xr-channel-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #afbb98;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+}
+.xr-features {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: #e5edea;
+    text-align: left;
+}
+
+/* 4. DataR Ingest Layout */
+.datar-visual-layout {
+    display: grid;
+    grid-template-columns: 1fr auto 1.2fr;
+    gap: 14px;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .datar-visual-layout {
+        grid-template-columns: 1fr;
+    }
+    .dr-arrow-zone {
+        transform: rotate(90deg);
+        margin: 10px auto;
+    }
+}
+.dr-sources-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.dr-source-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.dr-source-card strong {
+    font-size: 0.86rem;
+    color: var(--text-primary);
+}
+.dr-source-card small {
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+}
+.dr-badge {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+.dr-badge.streaming { background: #e0e7ff; color: #3730a3; }
+.dr-badge.cdc { background: #fef3c7; color: #92400e; }
+.dr-badge.batch { background: #e0f2fe; color: #075985; }
+
+.dr-arrow-zone {
+    text-align: center;
+    color: var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.dr-arrow-zone small {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.dr-medallion-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.dr-medallion-header {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-color);
+}
+.dr-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.dr-layer {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.dr-layer.bronze { border-left: 4px solid #cd7f32; }
+.dr-layer.silver { border-left: 4px solid #94a3b8; }
+.dr-layer.gold { border-left: 4px solid #eab308; }
+.dr-layer-pill {
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+.dr-layer strong {
+    font-size: 0.84rem;
+    color: var(--text-primary);
+    display: block;
+}
+.dr-layer small {
+    font-size: 0.73rem;
+    color: var(--text-secondary);
+}
+
+/* 5. Outbox Visual Layout */
+.outbox-visual-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.ob-service-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+.ob-box-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 10px;
+}
+.ob-tx-zone {
+    background: var(--bg-surface);
+    border: 1px dashed var(--accent);
+    border-radius: 8px;
+    padding: 12px;
+}
+.ob-tx-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.ob-tables-grid {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.ob-table {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.ob-table.highlight {
+    border-color: #6ee7b7;
+    background: #f0fdf4;
+}
+.ob-table strong {
+    font-size: 0.84rem;
+    color: var(--text-primary);
+}
+.ob-table small {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+.ob-plus {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+.ob-stream-zone {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+}
+@media (max-width: 600px) {
+    .ob-stream-zone {
+        grid-template-columns: 1fr;
+    }
+    .ob-stream-arrow {
+        transform: rotate(90deg);
+        margin: 4px auto;
+    }
+}
+.ob-cdc-box, .ob-kafka-box {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+}
+.ob-cdc-box strong, .ob-kafka-box strong {
+    font-size: 0.86rem;
+    color: #e2e8f0;
+}
+.ob-cdc-box small, .ob-kafka-box small {
+    font-size: 0.74rem;
+    color: #94a3b8;
+}
+.ob-stream-arrow {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
 
 
