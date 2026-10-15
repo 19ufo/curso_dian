@@ -6,6 +6,7 @@
     "build": "node tools/compiler.js",
     "build:inspector1": "node tools/compiler.js inspector1",
     "build:gestor2": "node tools/compiler.js gestor2",
+    "deploy": "node tools/deploy.js",
     "start": "npx serve ."
   },
   "repository": {
