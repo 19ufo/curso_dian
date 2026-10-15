@@ -2550,3 +2550,6 @@ body.dark-theme .btn-back-portal:hover {
 
 
 
+
+.sidebar-track-guide-item { flex-shrink: 0; }
+

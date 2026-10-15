@@ -352,14 +352,15 @@ function renderSidebar(filterText = '') {
 
         if (search && matchingLessons.length === 0) return;
 
+        const isOpenGroup = !!search || mod.lessons.some(l => l.id === currentLessonId);
         html += `
-            <div class="module-group">
+            <div class="module-group ${isOpenGroup ? 'open' : ''}">
                 <div class="module-header" onclick="toggleModuleGroup(this)">
                     <span class="module-title-wrap">
                         <span class="module-title">${formatModuleTitle(mod.title)}</span>
                         <span class="module-meta">${mod.lessons.length} lecciones · ⏱️ ${fmtMin(mod.studyMinutes)}</span>
                     </span>
-                    <span class="chevron">▾</span>
+                    <span class="chevron">${isOpenGroup ? '▾' : '▸'}</span>
                 </div>
                 <div class="lessons-container">
                     ${(search ? matchingLessons : mod.lessons).map(les => {
@@ -388,15 +389,10 @@ function renderSidebar(filterText = '') {
 }
 
 function toggleModuleGroup(headerEl) {
-    const container = headerEl.nextElementSibling;
+    const group = headerEl.parentElement;
     const chevron = headerEl.querySelector('.chevron');
-    if (container.style.display === 'none') {
-        container.style.display = 'block';
-        chevron.textContent = '▾';
-    } else {
-        container.style.display = 'none';
-        chevron.textContent = '▸';
-    }
+    const isOpen = group.classList.toggle('open');
+    if (chevron) chevron.textContent = isOpen ? '▾' : '▸';
 }
 
 function openTrackIntro(trackId) {

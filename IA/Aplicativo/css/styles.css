@@ -379,6 +379,7 @@ body.sidebar-collapsed .sidebar-nav {
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--border-color);
+    flex: 0 0 auto;
 }
 
 .module-header {
@@ -389,7 +390,22 @@ body.sidebar-collapsed .sidebar-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
     background-color: rgba(34, 57, 60, 0.04);
+}
+
+.module-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.module-title {
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .module-header:hover {
@@ -397,8 +413,12 @@ body.sidebar-collapsed .sidebar-nav {
 }
 
 .lessons-container {
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.module-group.open > .lessons-container {
+    display: flex;
 }
 
 .lesson-item {
