@@ -24,11 +24,12 @@ assert(global.COURSES_DATA['inspector1'], "inspector1 debe existir en COURSES_DA
 assert(global.COURSES_DATA['gestor2'], "gestor2 debe existir en COURSES_DATA");
 console.log("✔ COURSES_DATA cargado correctamente con inspector1 y gestor2");
 
-// 2. Verificación de Módulos Universales (mod-1, mod-2 y mod-3 - Inspector I)
+// 2. Verificación de Módulos Universales (mod-1 a mod-4 - Inspector I)
 const modulesToTest = [
     { id: 'mod-1', examId: 'exam-1', name: 'Arquitectura Big Data', modNum: 1, units: 7 },
     { id: 'mod-2', examId: 'exam-2', name: 'Arquitectura de Datos', modNum: 2, units: 7 },
-    { id: 'mod-3', examId: 'exam-3', name: 'Arquitectura de Integración de Datos', modNum: 3, units: 7 }
+    { id: 'mod-3', examId: 'exam-3', name: 'Arquitectura de Integración de Datos', modNum: 3, units: 7 },
+    { id: 'mod-4', examId: 'exam-4', name: 'Capacidades Analíticas y Uso Estratégico', modNum: 4, units: 6 }
 ];
 
 modulesToTest.forEach(({ id, examId, name, modNum, units }) => {

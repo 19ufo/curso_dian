@@ -351,33 +351,92 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-4",
       "track": "funcionales",
-      "title": "CAPACIDADES ANALITICAS Y USO ESTRATEGICO DE LA INFORMACION",
+      "title": "Capacidades Analíticas y Uso Estratégico de la Información",
       "badge": "Funcional - Machine Learning & Analítica Avanzada",
       "examId": "exam-4",
       "lessons": [
         {
-          "id": "les-4",
+          "id": "les-4-1",
           "moduleId": "mod-4",
-          "title": "CAPACIDADES ANALITICAS Y USO ESTRATEGICO DE LA INFORMACION",
-          "badge": "Funcional - Machine Learning & Analítica Avanzada",
-          "readTime": "35 min",
-          "content": "<h2>Guía Maestra de Estudio: Capacidades Analíticas y Uso Estratégico</h2>\n<p class=\"lead\">Esta guía profundiza en la taxonomía analítica, el ciclo de vida de Machine Learning (MLOps), algoritmos de detección de anomalías, analítica de grafos para redes de fraude, métricas de evaluación y técnicas de explicabilidad algorítmica.</p>\n\n<h3>Módulo 1: Taxonomía y Niveles de Madurez Analítica (Gartner)</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Nivel Analítico</th>\n            <th>Pregunta Clave</th>\n            <th>Técnicas y Enfoque</th>\n            <th>Valor Estratégico</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>1. Descriptiva</strong></td>\n            <td>¿Qué ocurrió?</td>\n            <td>Agregaciones SQL, tableros BI (PowerBI, Tableau), cubos OLAP, reportes estáticos de recaudo mensual.</td>\n            <td>Visibilidad retrospectiva histórica.</td>\n        </tr>\n        <tr>\n            <td><strong>2. Diagnóstica</strong></td>\n            <td>¿Por qué ocurrió?</td>\n            <td>Drill-down dimensional, análisis de varianza, minería de correlaciones, análisis de causa raíz sobre caídas de tributos.</td>\n            <td>Comprensión de causales y anomalías históricas.</td>\n        </tr>\n        <tr>\n            <td><strong>3. Predictiva</strong></td>\n            <td>¿Qué va a ocurrir?</td>\n            <td>Modelos supervisados de Machine Learning, series temporales (ARIMA, Prophet), scoring predictivo de riesgo de evasión.</td>\n            <td>Anticipación y focalización proactiva de recursos de fiscalización.</td>\n        </tr>\n        <tr>\n            <td><strong>4. Prescriptiva</strong></td>\n            <td>¿Qué acción debemos tomar?</td>\n            <td>Modelos de optimización matemática, algoritmos genéticos, árboles de decisión probabilísticos con recomendación automática.</td>\n            <td>Automatización de decisiones óptimas bajo restricciones operativas.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 2: Ciclo de Vida Analítico y Fundamentos de MLOps</h3>\n<p>El desarrollo analítico sigue metodologías estructuradas como <strong>CRISP-DM</strong> (Cross-Industry Standard Process for Data Mining) articuladas con prácticas modernas de <strong>MLOps</strong> para producción:</p>\n<ul>\n    <li><strong>Comprensión del Negocio y los Datos:</strong> Definición del problema en términos medibles (ej. identificar declaraciones con alta probabilidad de inexactitud).</li>\n    <li><strong>Preparación de Datos y Feature Engineering:</strong> Limpieza, imputación de valores faltantes, codificación de variables categóricas (One-Hot, Target Encoding), escalamiento (StandardScaler, MinMax) y agregaciones temporales.</li>\n    <li><strong>Feature Stores (Tiendas de Características):</strong> Repositorios centralizados (ej. Feast) que aseguran coherencia entre las variables usadas para entrenar modelos offline y las variables consumidas por el modelo en tiempo real, evitando el fenómeno de <em>Data Leakage</em>.</li>\n    <li><strong>Monitoreo de Degradación de Modelos:</strong>\n        <br>• <em>Data Drift:</em> Cambio en la distribución estadística de los datos de entrada ($P(X)$) debido a variaciones en la economía, reformas tributarias o inflación.\n        <br>• <em>Concept Drift:</em> Cambio en la relación entre las variables de entrada y la variable objetivo ($P(Y|X)$), por ejemplo, cuando los evasores adoptan nuevas tipologías para eludir los filtros tradicionales.</li>\n</ul>\n\n<h3>Módulo 3: Algoritmos de Machine Learning para Detección de Fraude</h3>\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>1. Modelos Supervisados</h4>\n        <ul>\n            <li><strong>Regresión Logística:</strong> Modelo probabilístico lineal, interpretable, ideal como línea base (baseline).</li>\n            <li><strong>Árboles y Ensembles:</strong> <em>Random Forest</em> y algoritmos de Gradient Boosting (<strong>XGBoost, LightGBM, CatBoost</strong>). Manejan relaciones no lineales, interacciones complejas entre variables y datos heterogéneos con alta precisión predictiva.</li>\n        </ul>\n    </div>\n    <div class=\"arch-card\">\n        <h4>2. Modelos No Supervisados (Anomalías)</h4>\n        <ul>\n            <li><strong>Isolation Forest:</strong> Aísla observaciones construyendo árboles aleatorios; las anomalías requieren menos particiones para ser aisladas en comparación con puntos normales.</li>\n            <li><strong>DBSCAN:</strong> Agrupamiento basado en densidad; clasifica puntos aislados en regiones de baja densidad como ruido/outliers.</li>\n            <li><strong>Autoencoders (Deep Learning):</strong> Redes neuronales entrenadas para reconstruir datos normales; un error de reconstrucción elevado indica una transacción anómala.</li>\n        </ul>\n    </div>\n    <div class=\"arch-card\">\n        <h4>3. Analítica de Grafos y Redes</h4>\n        <ul>\n            <li>Modelado de la economía como un grafo bipartito o dirigido (nodos = contribuyentes; aristas = facturas electrónicas o relaciones societarias).</li>\n            <li><strong>Algoritmo de Louvain / InfoMap:</strong> Detección de comunidades y agrupaciones sospechosas de transacciones circulares.</li>\n            <li><strong>PageRank y Centralidad:</strong> Identificación de nodos intermediarios clave en el lavado o simulación de operaciones mercantiles.</li>\n        </ul>\n    </div>\n</div>\n\n<h3>Módulo 4: Métricas Críticas de Evaluación en Clases Desbalanceadas</h3>\n<p>En detección de fraude fiscal, el universo de evasores representa una fracción diminuta del total de declarantes (problema de <strong>clases altamente desbalanceadas</strong>, ej. 99% cumplidores vs. 1% defraudadores):</p>\n<table class=\"data-table\">\n    <thead>\n        <tr>\n            <th>Métrica</th>\n            <th>Fórmula y Concepto</th>\n            <th>¿Por qué es Crítica en Exámenes?</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Accuracy (Exactitud Global)</strong></td>\n            <td>$\frac{TP + TN}{TP + TN + FP + FN}$</td>\n            <td><span class=\"badge badge-danger\">MÉTRICA ENGAÑOSA:</span> Si un modelo predice que el 100% de los contribuyentes son honestos, tendrá un 99% de Accuracy pero habrá fallado en detectar al 100% de los evasores.</td>\n        </tr>\n        <tr>\n            <td><strong>Precision (Precisión)</strong></td>\n            <td>$\frac{TP}{TP + FP}$</td>\n            <td>De todos los que el modelo acusó de evasores, ¿cuántos lo eran realmente? Crítica para no desgastar recursos auditando contribuyentes inocentes (minimiza Falsos Positivos).</td>\n        </tr>\n        <tr>\n            <td><strong>Recall / Sensibilidad</strong></td>\n            <td>$\frac{TP}{TP + FN}$</td>\n            <td>De todos los evasores reales que existen, ¿cuántos logró capturar el modelo? Crítica para no dejar escapar fraude multimillonario (minimiza Falsos Negativos).</td>\n        </tr>\n        <tr>\n            <td><strong>F1-Score</strong></td>\n            <td>$2 \\cdot \frac{Precision \\cdot Recall}{Precision + Recall}$</td>\n            <td>Media armónica entre Precision y Recall. Es la métrica estándar balanceada para evaluar clasificadores en datos sesgados.</td>\n        </tr>\n        <tr>\n            <td><strong>ROC-AUC y PR-AUC</strong></td>\n            <td>Área bajo la curva ROC o Curva Precision-Recall.</td>\n            <td>Mide la capacidad del modelo de ordenar contribuyentes por score de riesgo independientemente del umbral de corte de decisión elegido.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 5: Explicabilidad Algorítmica y Debido Proceso (XAI)</h3>\n<p>En la administración pública, un acto administrativo fundado en un algoritmo \"caja negra\" viola el principio constitucional del debido proceso y el derecho a la defensa:</p>\n<ul>\n    <li><strong>SHAP (Shapley Additive exPlanations):</strong> Basado en la teoría de juegos cooperativos de Lloyd Shapley. Asigna a cada variable de una declaración tributaria un valor de contribución marginal exacto al score de riesgo final del contribuyente. Permite justificar pericialmente ante jueces y fiscales exactamente qué factores dispararon la alerta de fiscalización.</li>\n    <li><strong>LIME (Local Interpretable Model-agnostic Explanations):</strong> Aproxima el comportamiento local de un modelo complejo mediante un modelo lineal simple interpretable en torno a una predicción individual.</li>\n</ul>\n\n<h3>Checklist Rápido de Estudio Previo al Examen</h3>\n<ul>\n    <li>[ ] Explicar la diferencia entre analítica descriptiva, diagnóstica, predictiva y prescriptiva.</li>\n    <li>[ ] Saber por qué el Accuracy es inservible en detección de fraude y por qué se usan Precision, Recall y F1-Score.</li>\n    <li>[ ] Explicar el funcionamiento de Isolation Forest y los algoritmos de grafos (Louvain, PageRank) para detectar carruseles de facturas.</li>\n    <li>[ ] Definir qué son Data Drift y Concept Drift en la fase de monitoreo de MLOps.</li>\n    <li>[ ] Comprender el rol de SHAP y LIME para sustentar jurídicamente decisiones públicas basadas en IA.</li>\n</ul>",
-          "links": [
-            {
-              "name": "Interpretable Machine Learning Guide (Molnar)",
-              "url": "https://christophm.github.io/interpretable-ml-book/"
-            },
-            {
-              "name": "Gartner Analytics Maturity Model",
-              "url": "https://www.gartner.com/"
-            },
-            {
-              "name": "SHAP Documentation and Theory",
-              "url": "https://shap.readthedocs.io/"
-            }
-          ]
+          "unitNumber": 1,
+          "title": "Unidad 1: El Espectro de la Analítica en la Gestión Pública (Descriptiva, Diagnóstica, Predictiva y Prescriptiva)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 1275,
+          "content": "<p># Guía Maestra de Estudio: 04. Capacidades Analíticas y Uso Estratégico de la Información</p>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Propósito del Indicador en la Prueba Escrita DIAN 2676 En el empleo <strong>Inspector I (OPEC 236670)</strong> de la Subdirección de Procesamiento de Datos, el eje <strong>Capacidades Analíticas y Uso Estratégico de la Información</strong> evalúa tu idoneidad técnica, estadística, analítica y jurídica para transformar los macrodatos institucionales (<strong>DataR, MUISCA, SYGA, Facturación Electrónica UBL 2.1 e Información Exógena</strong>) en modelos predictivos, sistemas de perfilamiento de riesgo y herramientas de inteligencia artificial orientadas a la fiscalización y la facilitación tributaria y aduanera. La prueba escrita de la Universidad Areandina evalúa tu dominio sobre el <strong>espectro analítico (descriptivo a prescriptivo)</strong>, la metodología <strong>CRISP-DM</strong>, modelos de <strong>Machine Learning supervisado y no supervisado</strong> (clasificación, detección de anomalías y analítica de grafos para redes de evasión y carruseles de IVA), métricas de evaluación con <strong>costos asimétricos de error</strong> (Precision, Recall, ROC-AUC, PR-AUC), plataformas <strong>MLOps y Feature Stores</strong>, mitigación de <strong>Data Drift y Concept Drift</strong>, técnicas de <strong>Inteligencia Artificial Explicable (XAI: SHAP y LIME)</strong> y la estricta garantía del <strong>Debido Proceso Administrativo (Art. 29 de la Constitución Política)</strong> y la <strong>Reserva Tributaria (Art. 583 del Estatuto Tributario)</strong>.</p></div>\n<hr>\n<h2>Mapa de Ruta del Módulo (6 Unidades de Profundización)</h2>\n<ol><li><strong>Unidad 1:</strong> El Espectro de la Analítica en la Gestión Pública (Descriptiva, Diagnóstica, Predictiva y Prescriptiva).</li><li><strong>Unidad 2:</strong> Metodología CRISP-DM adaptada a la Fiscalización Tributaria y Aduanera.</li><li><strong>Unidad 3:</strong> Machine Learning Supervisado y No Supervisado en la DIAN (Clasificación, Detección de Anomalías y Analítica de Grafos).</li><li><strong>Unidad 4:</strong> Evaluación de Modelos, Métricas y Análisis del Costo Asimétrico de Errores en Auditorías Fiscales.</li><li><strong>Unidad 5:</strong> Ingeniería de Características, Feature Store, MLOps y Monitoreo de Data Drift y Concept Drift.</li><li><strong>Unidad 6:</strong> Ética de Datos, Inteligencia Artificial Explicable (XAI - SHAP/LIME), Mitigación de Sesgos y Debido Proceso Administrativo.</li></ol>\n<hr>\n<hr>\n<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Madurez Analítica, Toma de Decisiones Estratégica y Taxonomía Institucional</p>\n<h3>1.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Diferenciar con precisión metodológica y técnica los cuatro niveles de madurez analítica formulados por Gartner y DAMA International, identificando las preguntas que responde cada nivel, las herramientas matemáticas y tecnológicas subyacentes, y su aplicación concreta en la administración tributaria, aduanera y cambiaria de la DIAN.</p>\n<h3>1.2. La Evolución de la Madurez Analítica en la Administración Tributaria</h3>\n<p>Históricamente, las administraciones públicas operaron bajo esquemas analíticos reactivos y retrospectivos. La DIAN dependía de informes consolidados de recaudo mensual y auditorías aleatorias sobre muestras físicas de declaraciones tributarias. Sin embargo, con la masificación de la <strong>Facturación Electrónica en tiempo real</strong>, la nómina electrónica, los documentos equivalentes POS y los reportes masivos de <strong>Información Exógena</strong>, la entidad administra volúmenes de datos que superan la capacidad de inspección manual humana.</p>\n<p>El aprovechamiento estratégico de la información exige transitar desde la simple observación del pasado hacia la predicción del comportamiento del contribuyente y la optimización prescriptiva de los recursos de fiscalización.</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>LA ESCALERA DE MADUREZ ANALÍTICA DE GARTNER EN LA DIAN:\n                                                                 +-------------------+\n                                                                 | 4. PRESCRIPTIVA   |\n                                                                 | ¿Qué debemos      |\n                                                                 |    hacer?         |\n                                             +-------------------+ - Optimización    |\n                                             | 3. PREDICTIVA     |   operativa       |\n                                             | ¿Qué va a pasar?  | - Asignación de   |\n                         +-------------------+ - Machine Learning|   inspectores     |\n                         | 2. DIAGNÓSTICA    | - Scoring de      +-------------------+\n                         | ¿Por qué ocurrió? |   riesgo evasión  |\n     +-------------------+ - Minería datos   +-------------------+\n     | 1. DESCRIPTIVA    | - Causa raíz      |\n     | ¿Qué ocurrió?     | - Varianza recaudo|\n     | - Reportes SQL    +-------------------+\n     | - Tableros BI     |\n     +-------------------+\n------------------------------------------------------------------------------------&gt;\nDIFICULTAD TÉCNICA / VALOR ESTRATÉGICO INSTITUCIONAL</code></pre></div>\n<h3>1.3. Los Cuatro Niveles del Espectro Analítico</h3>\n<h4>1. Analítica Descriptiva (<em>Descriptive Analytics</em>) — ¿Qué ocurrió?</h4>\n<p>Es el nivel fundacional del análisis de datos. Su objetivo es resumir y sintetizar hechos históricos para otorgar visibilidad retrospectiva sobre el desempeño de la organización.</p>\n<ul><li><strong>Técnicas y Métodos:</strong> Agregaciones SQL (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>), tableros de Business Intelligence (Power BI, Apache Superset), cubos multidimensionales OLAP y reportes estáticos.</li><li><strong>Caso en la DIAN:</strong> Informes mensuales de recaudo bruto y neto discriminado por Dirección Seccional de Impuestos (Bogotá, Medellín, Cali) y por tipo de impuesto (Renta, IVA, Impoconsumo, Retención en la fuente). Permite saber si se cumplió la meta de recaudo del mes, pero no explica los motivos de las desviaciones.</li></ul>\n<h4>2. Analítica Diagnóstica (<em>Diagnostic Analytics</em>) — ¿Por qué ocurrió?</h4>\n<p>Busca comprender las causas fundamentales y los factores determinantes de un comportamiento o anomalía detectada en los datos descriptivos.</p>\n<ul><li><strong>Técnicas y Métodos:</strong> Desglose interactivo (<em>Drill-down</em> / <em>Roll-up</em>), análisis de varianza, análisis de correlación bivariada, minería de procesos y árboles de causa raíz.</li><li><strong>Caso en la DIAN:</strong> Al identificar que el recaudo de IVA en la seccional de Barranquilla cayó un 14% en el segundo bimestre, la analítica diagnóstica profundiza en los microdatos: cruza las declaraciones con la facturación electrónica por sectores económicos y descubre que el sector metalmecánico registró un incremento anormal del 80% en devoluciones de saldo a favor soportadas en compras a tres nuevos proveedores comunes.</li></ul>\n<h4>3. Analítica Predictiva (<em>Predictive Analytics</em>) — ¿Qué va a ocurrir?</h4>\n<p>Utiliza datos históricos y variables contextuales para construir modelos matemáticos y probabilísticos que estiman la probabilidad de ocurrencia de un evento futuro o el valor de una variable desconocida.</p>\n<ul><li><strong>Técnicas y Métodos:</strong> Algoritmos de Machine Learning supervisado (XGBoost, Random Forest, Regresión Logística), series temporales (ARIMA, Prophet, redes neuronales LSTM) y modelos de scoring crediticio/tributario.</li><li><strong>Caso en la DIAN:</strong> <strong>Modelo de Perfilamiento de Riesgo de Evasión</strong>. Antes de que un contribuyente radique su declaración de renta, el modelo evalúa su comportamiento financiero (gastos con tarjeta de crédito, compras facturadas, retenciones reportadas por terceros en exógena) y predice una probabilidad de omisión o inexactitud. Si la probabilidad supera el umbral del 85%, el sistema genera una alerta temprana o propone una declaración sugerida.</li></ul>\n<h4>4. Analítica Prescriptiva (<em>Prescriptive Analytics</em>) — ¿Qué debemos hacer?</h4>\n<p>Es el nivel más avanzado y de mayor impacto estratégico. No solo predice el futuro, sino que evalúa múltiples cursos de acción posibles y recomienda o ejecuta de forma automatizada la mejor decisión para maximizar un objetivo institucional sujeto a restricciones operativas reales.</p>\n<ul><li><strong>Técnicas y Métodos:</strong> Programación lineal y entera mixta (MILP), investigación de operaciones, simulación Monte Carlo, árboles de decisión probabilísticos y sistemas de recomendación con restricciones de recursos.</li><li><strong>Caso en la DIAN:</strong> <strong>Asignación Óptima de la Fuerza de Fiscalización</strong>. Supongamos que la Subdirección de Fiscalización Tributaria cuenta con 400 inspectores en todo el país y el modelo predictivo identificó 15.000 empresas con alto riesgo de evasión. La analítica prescriptiva formula un problema de optimización matemática: asigna a cada inspector la cartera específica de contribuyentes a auditar maximizando el valor monetario esperado de recuperación tributaria, minimizando los costos de desplazamiento y garantizando que las acciones se ejecuten antes de que opere la firmeza legal de las declaraciones (Art. 714 del Estatuto Tributario).</li></ul>\n<h3>1.4. Matriz Comparativa del Espectro Analítico en la DIAN</h3>\n<table class=\"data-table\"><thead><tr><th>Criterio</th><th>1. Descriptiva</th><th>2. Diagnóstica</th><th>3. Predictiva</th><th>4. Prescriptiva</th></tr></thead><tbody><tr><td><strong>Pregunta Central</strong></td><td>¿Qué pasó en la entidad?</td><td>¿Por qué sucedió?</td><td>¿Qué comportamiento ocurrirá?</td><td>¿Qué decisión optimiza el resultado?</td></tr><tr><td><strong>Horizonte Temporal</strong></td><td>Pasado / Retrospectivo</td><td>Pasado / Explicativo</td><td>Futuro / Probabilístico</td><td>Futuro / Estratégico y Accionable</td></tr><tr><td><strong>Tecnologías Clave</strong></td><td>Data Warehousing, SQL, BI</td><td>Drill-down OLAP, Varianza</td><td>Machine Learning, Time Series</td><td>Investigación Operativa, Simulación</td></tr><tr><td><strong>Tipo de Salida</strong></td><td>Tableros, PDFs, KPIs</td><td>Gráficos de dispersión, causas</td><td>Puntuación (<em>Score</em>), Probabilidad</td><td>Plan de acción óptimo asignado</td></tr><tr><td><strong>Impacto en DIAN</strong></td><td>Control presupuestal básico</td><td>Explicación de brechas</td><td>Focalización de la fiscalización</td><td>Maximización del recaudo neto</td></tr></tbody></table>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Trampa Típica del Examen sobre Tipologías Analíticas Areandina suele formular preguntas donde se presenta a un grupo de funcionarios analizando tableros en Power BI con gráficos de barras de los últimos tres años y se pregunta qué tipo de analítica están aplicando. Si la actividad se limita a observar totales o caídas históricas, es <strong>analítica descriptiva</strong>. Si indagan los motivos o correlaciones subyacentes, es <strong>diagnóstica</strong>. Solo se considera <strong>predictiva</strong> si calculan probabilidades futuras mediante modelos algorítmicos, y <strong>prescriptiva</strong> si el sistema sugiere la mejor acción de intervención sujeta a restricciones de personal o presupuesto.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-4-2",
+          "moduleId": "mod-4",
+          "unitNumber": 2,
+          "title": "Unidad 2: Metodología CRISP-DM adaptada a la Fiscalización Tributaria y Aduanera",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 815,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Metodología de Ciencia de Datos, Ciclo de Vida del Proyecto y Gestión Pública</p>\n<h3>2.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Dominar las seis fases del estándar internacional <strong>CRISP-DM</strong> (<em>Cross-Industry Standard Process for Data Mining</em>), comprendiendo su naturaleza cíclica e iterativa y adaptando cada fase a las particularidades procedimentales, técnicas y normativas de los proyectos de analítica de datos en la DIAN.</p>\n<h3>2.2. Fundamentos de CRISP-DM en el Sector Público</h3>\n<p>El desarrollo de soluciones analíticas en la administración tributaria fracasa frecuentemente cuando los equipos técnicos se concentran exclusivamente en el código o en entrenar algoritmos complejos sin comprender el problema misional de fondo. La metodología <strong>CRISP-DM</strong>, consolidada a nivel global como el marco rector de la ciencia de datos, establece una estructura disciplinada de seis fases interconectadas con retroalimentación continua:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>EL CICLO ITERATIVO CRISP-DM ADAPTADO A LA DIAN:\n                 +-------------------------------+\n                 | 1. Comprensión del Negocio    | &lt;--------+\n                 |    (Misionalidad / Normas)    |          |\n                 +---------------+---------------+          |\n                                 |                          | Retroalimentación\n                                 v                          | de negocio\n                 +---------------+---------------+          |\n                 | 2. Comprensión de los Datos   |          |\n                 |    (DataR, MUISCA, Exógena)   |          |\n                 +---------------+---------------+          |\n                                 |                          |\n                                 v                          |\n                 +---------------+---------------+          |\n                 | 3. Preparación de los Datos   | &lt;---+    |\n                 |    (Limpieza, Ratios, 75%)    |     |    |\n                 +---------------+---------------+     |    |\n                                 |                     |    |\n                                 v                     |    |\n                 +---------------+---------------+     |    |\n                 | 4. Modelado Algorítmico       | ----+    |\n                 |    (ML, XGBoost, Clustering)  | Ajuste de|\n                 +---------------+---------------+ variables|\n                                 |                          |\n                                 v                          |\n                 +---------------+---------------+          |\n                 | 5. Evaluación                 | ---------+\n                 |    (Técnica, Negocio, Legal)  |\n                 +---------------+---------------+\n                                 |\n                                 v (Si cumple viabilidad jurídica)\n                 +---------------+---------------+\n                 | 6. Despliegue en Producción   |\n                 |    (Sistemas Operativos DIAN) |\n                 +-------------------------------+</code></pre></div>\n<h3>2.3. Desglose Fase a Fase en el Contexto de la DIAN</h3>\n<h4>Fase 1: Comprensión del Negocio (<em>Business Understanding</em>)</h4>\n<p>Es la fase más crítica y donde se define el éxito del proyecto. Consiste en traducir un dolor misional o una meta tributaria en un problema analítico formal.</p>\n<ul><li><strong>El Problema Misional:</strong> La Dirección Seccional de Aduanas de Buenaventura detecta un incremento en el contrabando técnico por subfacturación en importaciones de textiles provenientes de Asia.</li><li><strong>La Traducción Analítica:</strong> Diseñar un modelo de clasificación supervisada y detección de anomalías que estime la probabilidad de que el valor FOB unitario declarado por kilogramo de tela esté artificialmente subvalorado en relación con los precios de referencia internacionales.</li><li><strong>Definición de Criterios de Éxito:</strong> El éxito no es un $R^2$ alto; el éxito de negocio es lograr que el porcentaje de aprehensiones efectivas en canal rojo aduanero pase del 8% al 35% sin incrementar los tiempos de nacionalización de los operadores legítimos.</li></ul>\n<h4>Fase 2: Comprensión de los Datos (<em>Data Understanding</em>)</h4>\n<p>Consiste en identificar, recolectar, explorar y evaluar la calidad y veracidad de las fuentes de datos disponibles en la entidad:</p>\n<ul><li><strong>Fuentes Identificadas en DataR:</strong> Declaraciones aduaneras de importación en <strong>SYGA</strong>, manifiestos de carga de empresas navieras, base de datos del Registro Único Tributario (<strong>RUT</strong>), facturas comerciales internacionales digitalizadas y reportes de proveedores autorizados.</li><li><strong>Exploración Inicial:</strong> Verificación de tipos de datos, cardinalidad, completitud y dispersión estadística.</li><li><strong>Detección de Sesgos:</strong> Identificar si los datos históricos de fiscalización presentan un \"sesgo de selección\" (<em>Selection Bias</em>), debido a que los inspectores aduaneros inspeccionaban tradicionalmente solo a importadores nuevos, dejando sin muestrear a grandes contribuyentes históricos.</li></ul>\n<h4>Fase 3: Preparación de los Datos (<em>Data Preparation</em>)</h4>\n<p>Demanda típicamente entre el 70% y el 80% del tiempo total del proyecto. Consiste en construir el dataset analítico final a partir de los datos crudos:</p>\n<ul><li><strong>Limpieza e Imputación:</strong> Tratamiento riguroso de valores nulos. En datos tributarios, un valor nulo en \"Otros Ingresos\" no siempre es un dato faltante; puede representar legítimamente cero pesos.</li><li>**Tratamiento de Valores Atípicos (<em>Outliers</em>):** Distinguir entre un error de digitación (ejemplo: un NIT ingresado en el campo de ingresos brutos) y un gran contribuyente legítimo con ingresos billonarios.</li><li>**Ingeniería de Características (<em>Feature Engineering</em>):** Creación de variables sintéticas con alto poder predictivo fiscal:</li><li>Ratio de Margen de Utilidad Bruta: $\\frac{\\text{Ingresos Netos} - \\text{Costo Ventas}}{\\text{Ingresos Netos}}$.</li><li>Ratio de Bancarización: $\\frac{\\text{Pagos Financieros Reportados en Exógena}}{\\text{Costos Totales Declarados}}$.</li><li>Discrepancia Facturación/Declaración: $|\\text{Ventas Factura Electrónica UBL 2.1} - \\text{Ingresos Declarados en Renta}|$.</li></ul>\n<h4>Fase 4: Modelado (<em>Modeling</em>)</h4>\n<p>Selección y entrenamiento de los algoritmos de Machine Learning apropiados para la hipótesis formulada:</p>\n<ul><li>Particionamiento estricto de los datos en conjuntos de **Entrenamiento (<em>Train</em>)<strong>, </strong>Validación (<em>Validation</em>)<strong> y </strong>Prueba (<em>Test</em>)**, utilizando técnicas de partición temporal (<em>Time-based Split</em>) para no predecir el pasado con datos del futuro.</li><li>Calibración de hiperparámetros mediante validación cruzada estratificada (<em>Stratified Cross-Validation</em>).</li></ul>\n<h4>Fase 5: Evaluación (<em>Evaluation</em>)</h4>\n<p>En la DIAN, esta fase no se limita a calcular métricas matemáticas como AUC o F1-Score; exige una <strong>Triple Evaluación</strong>:</p>\n<ol><li><strong>Evaluación Técnica:</strong> ¿El modelo generaliza adecuadamente o sufre de sobreajuste (<em>Overfitting</em>)?</li><li><strong>Evaluación de Negocio:</strong> ¿El modelo incrementa la recuperación de cartera y optimiza la capacidad instalada de inspectores?</li><li><strong>Evaluación Jurídica y Normativa:</strong> ¿El modelo respeta el debido proceso administrativo? ¿Sus predicciones están libres de sesgos discriminatorios prohibidos por la Constitución?</li></ol>\n<h4>Fase 6: Despliegue (<em>Deployment</em>)</h4>\n<p>Paso del modelo del entorno de laboratorio a los sistemas productivos de la DIAN:</p>\n<ul><li>Exposición del modelo mediante una API gRPC o microservicio en contenedores Kubernetes integrado en el flujo transaccional de MUISCA o el sistema de inspección aduanera.</li><li>Monitoreo continuo de rendimiento y establecimiento de planes de mantenimiento preventivo ante degradación.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-4-3",
+          "moduleId": "mod-4",
+          "unitNumber": 3,
+          "title": "Unidad 3: Machine Learning Supervisado y No Supervisado en la DIAN (Clasificación, Detección de Anomalías y Analítica de Grafos)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 1014,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Algoritmos de Aprendizaje Automático, Reducción de Fraude y Grafos Fiscales</p>\n<h3>3.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Dominar los algoritmos canónicos de <strong>Machine Learning supervisado</strong> (Gradient Boosting, Random Forest) y <strong>no supervisado</strong> (Isolation Forest, DBSCAN), y aplicar la <strong>Analítica de Grafos</strong> para identificar relaciones no evidentes y desmantelar estructuras de evasión como los \"carruseles de IVA\" y empresas de papel.</p>\n<h3>3.2. Aprendizaje Supervisado: Clasificación en Presencia de Desbalance Severo</h3>\n<p>En el aprendizaje supervisado, el algoritmo aprende una función de mapeo $y = f(x)$ a partir de un conjunto de datos históricos que contiene variables predictoras ($X$) y una etiqueta objetivo conocida ($y$).</p>\n<ul><li><strong>Problema Canónico DIAN:</strong> Predecir si un contribuyente incurrirá en inexactitud tributaria sancionable ($y = 1$) o si su declaración es fidedigna ($y = 0$).</li><li><strong>Algoritmos Predilectos:</strong> Modelos basados en árboles de decisión potenciados por gradiente (<strong>XGBoost, LightGBM, CatBoost</strong>). Superan a las redes neuronales profundas en datos tabulares heterogéneos gracias a su manejo nativo de valores atípicos, variables categóricas de alta cardinalidad y relaciones no lineales complejas.</li></ul>\n<h4>El Desafío del Desbalance Severo de Clases (<em>Imbalanced Data</em>)</h4>\n<p>En la administración tributaria, la inmensa mayoría de los contribuyentes presenta declaraciones razonables ($y=0$), mientras que los evasores sancionables comprobados ($y=1$) representan un porcentaje ínfimo (frecuentemente menos del 1% del total).</p>\n<ul><li><strong>El Antipatrón del Accuracy:</strong> Si un modelo predice siempre que ningún contribuyente evade ($y=0$ para todos), obtendrá un 99% de exactitud (<em>Accuracy</em>), pero será completamente inútil para la fiscalización del Estado.</li><li><strong>Estrategias de Mitigación Algorítmica:</strong></li><li>**Pesos en la Función de Pérdida (<em>Class Weights</em>):** Penalizar fuertemente al modelo cuando se equivoca en un caso de fraude (ejemplo: asignar un peso de 100 al error en la clase positiva $y=1$ frente a un peso de 1 en la clase mayoritaria).</li><li><strong>Técnicas de Remuestreo Sintético:</strong> **SMOTE (<em>Synthetic Minority Over-sampling Technique</em>)**, que crea ejemplos sintéticos de contribuyentes evasores interpolando entre vecinos cercanos en el espacio de características, o submuestreo controlado de la clase mayoritaria (<em>Random Under-Sampling</em>).</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESPACIO DE CARACTERÍSTICAS TRIBUTARIAS:\nIngresos declarados\n       ^\n       |      o   o   o   o  (o: Contribuyentes legítimos mayoritarios)\n       |    o   o   o   o\n       |      o   o   o\n       |               *  *  (*: Evasores - Minoría crítica &lt; 1%)\n       |                 *\n       +-----------------------------&gt; Deducciones por costos</code></pre></div>\n<h3>3.3. Aprendizaje No Supervisado: Detección de Anomalías y Proveedores Ficticios</h3>\n<p>En muchas situaciones fiscales, la DIAN no cuenta con etiquetas históricas de fraude porque los contribuyentes inventan nuevas tipologías delictivas no vistas antes. El aprendizaje no supervisado analiza los datos sin etiquetas para descubrir patrones intrínsecos, agrupaciones naturales y desviaciones estadísticas extremas.</p>\n<h4>A. Isolation Forest (Bosque de Aislamiento)</h4>\n<p>Algoritmo diseñado específicamente para la detección de anomalías basado en un principio matemático elegante: <strong>las anomalías son pocas y diferentes</strong>, por lo que son más fáciles de aislar que los puntos normales.</p>\n<ul><li>El algoritmo construye árboles binarios aleatorios (<em>iTrees</em>) seleccionando una característica al azar y un punto de corte aleatorio.</li><li>Los registros normales requieren muchas divisiones (profundidad alta en el árbol) para quedar aislados.</li><li>Un contribuyente anómalo (ejemplo: una empresa recién creada en garaje que factura $50.000 millones en asesorías sin reportar compras ni empleados) queda aislado en muy pocas divisiones (camino corto o profundidad baja).</li><li>Se calcula una puntuación de anomalía (<em>Anomaly Score</em>) entre 0 y 1. Registros con score cercano a 1 se remiten de inmediato a fiscalización prioritaria.</li></ul>\n<h4>B. Clustering Espacial Basado en Densidad (DBSCAN)</h4>\n<p>A diferencia de K-Means (que asume que los grupos son esféricos y fuerza a que todo punto pertenezca a un clúster), **DBSCAN (<em>Density-Based Spatial Clustering of Applications with Noise</em>)<strong> agrupa puntos que están densamente concentrados y clasifica como </strong>Ruido / Outliers** aquellos que quedan en zonas de baja densidad.</p>\n<ul><li><strong>Aplicación DIAN:</strong> Segmentación de contribuyentes por sector económico y tamaño patrimonial. Identifica automáticamente a aquellos sujetos que no encajan en ningún patrón de comportamiento económico formal del gremio.</li></ul>\n<h3>3.4. Analítica de Grafos y Redes Complejas para la Detección de Carruseles de IVA</h3>\n<p>El fraude fiscal estructurado rara vez es obra de un contribuyente aislado; opera mediante redes de complicidad corporativa y empresas de papel (<em>Shell Companies</em> o empresas fachada) diseñadas para simular operaciones comerciales y solicitar devoluciones indebidas de IVA o desviar utilidades gravables.</p>\n<p>Un modelo tabular estándar falla al analizar estas estructuras porque evalúa filas independientes de una base de datos relacional. La <strong>Analítica de Grafos</strong> modela la realidad fiscal como una red interconectada $G = (V, E)$:</p>\n<ul><li><strong>Nodos o Vértices ($V$):</strong> Personas naturales (cédulas), empresas (NIT), representantes legales, contadores públicos, revisores fiscales y cuentas bancarias.</li><li><strong>Aristas o Enlaces ($E$):</strong> Relaciones de facturación electrónica, transferencias de fondos, relaciones de parentesco o coincidencia de direcciones físicas y números telefónicos en el RUT.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA DE UN CARRUSEL DE FACTURACIÓN SIMULADA (IVA):\n   [Empresa Fachada A] ------- Factura Ficticia ------&gt; [Empresa Puente B]\n          ^                                                     |\n          |                                                     | Factura Ficticia\n          | Retorno de Fondos                                   v\n   [Empresa Beneficiaria D] &lt;-- Devolución IVA -- [Empresa Reclamante C]\n   (Retira el dinero en        (Solicita al Estado\n    efectivo del banco)         saldo a favor)</code></pre></div>\n<h4>Algoritmos de Grafos Utilizados en la DIAN:</h4>\n<ol><li>**Detección de Ciclos Dirigidos (<em>Cycle Detection</em>):** En el comercio legítimo, las mercancías fluyen hacia el consumidor final. En un \"carrusel de papel\", las facturas circulan en bucles cerrados ($A \\rightarrow B \\rightarrow C \\rightarrow A$) con el único propósito de inflar artificialmente el IVA descontable. Los algoritmos de búsqueda en profundidad (DFS) detectan estos ciclos en segundos sobre millones de transacciones.</li><li><strong>Detección de Comunidades (Algoritmo Louvain):</strong> Descubre agrupaciones densamente conectadas entre sí que tienen pocos enlaces con el resto de la economía, aislando redes corporativas clandestinas.</li><li><strong>Métricas de Centralidad (PageRank y Betweenness Centrality):</strong></li><li><em>PageRank:</em> Identifica a las empresas nodales que acumulan el mayor flujo financiero simulado.</li><li><em>Betweenness (Intermediación):</em>* Identifica a contadores o asesores tributarios que actúan como \"puentes\" obligados conectando a decenas de empresas de papel con contribuyentes reales evasores.</li></ol>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p>Artículo 671 del Estatuto Tributario (Proveedores Ficticios e Insolventes) La administración tributaria está facultada para declarar como proveedores ficticios a aquellas personas o entidades que simulen operaciones comerciales emitiendo facturas electrónicas sin que exista entrega real de bienes o prestación de servicios. Las compras facturadas por estos proveedores son legalmente desconocidas como costo o deducción en la declaración de renta y como impuesto descontable en el IVA.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-4-4",
+          "moduleId": "mod-4",
+          "unitNumber": 4,
+          "title": "Unidad 4: Evaluación de Modelos, Métricas y Análisis del Costo Asimétrico de Errores en Auditorías Fiscales",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 907,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Métricas de Rendimiento, Evaluación Estadística y Análisis Costo-Beneficio</p>\n<h3>4.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Interpretar la Matriz de Confusión en el marco de la gestión pública tributaria, diferenciar las métricas de <strong>Precisión, Recall, F1-Score, ROC-AUC y PR-AUC</strong>, y calibrar el umbral óptimo de decisión algorítmica considerando el <strong>costo asimétrico de los errores</strong> para la administración y para el ciudadano.</p>\n<h3>4.2. La Matriz de Confusión en la Fiscalización Tributaria</h3>\n<p>Para un modelo de clasificación binaria que emite dictámenes de riesgo de evasión, existen cuatro desenlaces posibles al cruzar la predicción del modelo con la realidad fiscal comprobada:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                              REALIDAD DEL CONTRIBUYENTE\n                        |   Evasor Real (1)    |   Honesto Real (0)   |\n------------------------+----------------------+----------------------+\nPREDICCIÓN  Auditar (1) | Verdadero Positivo   | Falso Positivo       |\nDEL MODELO              | (TP - Acierto Fiscal)| (FP - Inocente Acus.)|\n------------------------+----------------------+----------------------+\n            No Auditar  | Falso Negativo       | Verdadero Negativo   |\n            (0)         | (FN - Fraude Impune) | (TN - Paz y Salvo)   |\n------------------------+----------------------+----------------------+</code></pre></div>\n<h3>4.3. El Costo Asimétrico de los Errores (FP vs. FN)</h3>\n<p>En los problemas de ciencias puras, todos los errores suelen ponderarse igual. En la administración tributaria y aduanera de la DIAN, <strong>los costos de equivocarse son profundamente asimétricos y tienen consecuencias jurídicas, financieras y reputacionales muy distintas</strong>:</p>\n<h4>A. El Costo del Falso Positivo (FP - Error Tipo I)</h4>\n<p>El modelo clasifica erróneamente a un contribuyente honesto como presunto evasor de alto riesgo y ordena una fiscalización intensiva:</p>\n<ul><li><strong>Costo para la DIAN:</strong> Desperdicio de horas-hombre de inspectores tributarios y peritos auditando una contabilidad intachable, distrayendo recursos que debieron perseguir fraudes reales.</li><li><strong>Costo para el Ciudadano:</strong> Afectación a la presunción de inocencia, costos económicos en contratación de abogados y contadores para responder requerimientos, y riesgo de daño reputacional injustificado.</li></ul>\n<h4>B. El Costo del Falso Negativo (FN - Error Tipo II)</h4>\n<p>El modelo clasifica como contribuyente cumplido a un gran evasor fiscal y decide no auditarlo:</p>\n<ul><li><strong>Costo para el Estado:</strong> Pérdida definitiva de miles de millones de pesos en recaudo de impuestos que debieron financiar la salud, la educación y la infraestructura del país.</li><li><strong>Prescripción Legal:</strong> Si el fraude no se detecta antes de que la declaración adquiera <strong>firmeza legal</strong> (término general de tres años según el Art. 714 del E.T.), el Estado pierde de forma irreversible la potestad jurídica de cobrar los tributos evadidos.</li></ul>\n<h3>4.4. Métricas de Rendimiento y Cuándo Usar Cada Una</h3>\n<h4>1. Precisión (<em>Precision</em> / Valor Predictivo Positivo)</h4>\n<p>Mide la exactitud de las alarmas generadas por el modelo. Responde a la pregunta: <em>De todos los contribuyentes que el modelo marcó para auditoría, ¿cuántos eran efectivamente evasores reales?</em></p>\n<p>$$\\text{Precision} = \\frac{TP}{TP + FP}$$</p>\n<ul><li><em>Cuándo priorizarla:</em> Cuando la capacidad instalada de inspectores de la DIAN es muy limitada y no se puede permitir desperdiciar tiempo en falsas alarmas, o cuando el costo administrativo de auditar a un inocente es prohibitivo.</li></ul>\n<h4>2. Sensibilidad o Exhaustividad (<em>Recall</em> / <em>True Positive Rate</em>)</h4>\n<p>Mide la cobertura o capacidad del modelo para capturar a los infractores. Responde a la pregunta: <em>De todos los evasores reales que existen en el país, ¿qué porcentaje logró descubrir y señalar el modelo?</em></p>\n<p>$$\\text{Recall} = \\frac{TP}{TP + FN}$$</p>\n<ul><li><em>Cuándo priorizarla:</em> En áreas críticas como la lucha contra el contrabando de armas o sustancias ilegales en puertos aduaneros, donde dejar pasar un cargamento ilícito (Falso Negativo) tiene un costo de seguridad nacional incalculable.</li></ul>\n<h4>3. Puntuación F-Beta ($F_\\beta\\text{-Score}$)</h4>\n<p>Es la media armónica ponderada entre Precisión y Recall, donde el parámetro $\\beta$ ajusta la importancia relativa de una sobre la otra:</p>\n<p>$$F_\\beta = (1 + \\beta^2) \\cdot \\frac{\\text{Precision} \\cdot \\text{Recall}}{(\\beta^2 \\cdot \\text{Precision}) + \\text{Recall}}$$</p>\n<ul><li><strong>$F_1\\text{-Score}$ ($\\beta = 1$):</strong> Equilibrio perfecto entre Precisión y Recall.</li><li><strong>$F_{0.5}\\text{-Score}$ ($\\beta = 0.5$):</strong> Pondera la <strong>Precisión</strong> con el doble de peso que el Recall. Ideal en fiscalización tributaria ordinaria para asegurar que los casos remitidos a los inspectores tengan un altísimo porcentaje de sanción efectiva.</li><li><strong>$F_2\\text{-Score}$ ($\\beta = 2$):</strong> Pondera el <strong>Recall</strong> con el doble de peso que la Precisión. Ideal en filtros aduaneros de inspección física preliminar.</li></ul>\n<h4>4. Curva ROC y AUC (<em>Area Under the Receiver Operating Characteristic</em>)</h4>\n<p>Grafica la Tasa de Verdaderos Positivos (<em>Recall</em>) frente a la Tasa de Falsos Positivos ($FPR = \\frac{FP}{FP + TN}$) para todos los umbrales de decisión posibles entre 0.0 y 1.0:</p>\n<ul><li>Un modelo con $AUC = 0.5$ equivale a lanzar una moneda al aire (azar).</li><li>Un modelo con $AUC \\ge 0.85$ demuestra una excelente capacidad discriminante global.</li><li><strong>Limitación en Fraude:</strong> Cuando la clase positiva está extremadamente desbalanceada (menos del 1%), la curva ROC puede arrojar un valor optimista artificialmente alto debido al enorme volumen de Verdaderos Negativos.</li></ul>\n<h4>5. Curva Precision-Recall (PR-AUC)</h4>\n<p>Grafica la Precisión frente al Recall. <strong>Es la métrica estándar de oro recomendada por la comunidad científica y por los comités evaluadores para problemas de fraude fiscal masivo</strong>, debido a que ignora los Verdaderos Negativos y se concentra exclusivamente en el rendimiento sobre la clase infractora minoritaria.</p>\n<h3>4.5. Calibración del Umbral de Decisión (<em>Threshold Tuning</em>)</h3>\n<p>Por defecto, la mayoría de los algoritmos clasifican como positivo cualquier caso con probabilidad $\\hat{p} \\ge 0.50$. En la DIAN, este umbral debe calibrarse dinámicamente:</p>\n<ul><li>Si la Seccional de Bogotá solo tiene capacidad física para realizar 200 auditorías profundas este mes, el Inspector I no debe usar el umbral $0.50$; debe elevar el umbral (ejemplo: $\\hat{p} \\ge 0.88$) seleccionando únicamente el percentil superior con mayor certeza matemática de evasión, garantizando una precisión cercana al 95%.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-4-5",
+          "moduleId": "mod-4",
+          "unitNumber": 5,
+          "title": "Unidad 5: Ingeniería de Características, Feature Store, MLOps y Monitoreo de Data Drift y Concept Drift",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 865,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Operaciones de ML, Ciclo de Vida de Software, Almacenes de Variables y Deriva Estadística</p>\n<h3>5.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la arquitectura de un <strong>Feature Store</strong> para el reuso consistente de variables entre entrenamiento y producción, dominar el ciclo de vida <strong>MLOps</strong> en infraestructuras del Estado, e implementar monitoreo estadístico para detectar y remediar la **deriva de datos (<em>Data Drift</em>)<strong> y la </strong>deriva de concepto (<em>Concept Drift</em>)**.</p>\n<h3>5.2. El Feature Store en la Arquitectura de Datos de la DIAN</h3>\n<p>En una organización compleja, múltiples equipos analíticos (Riesgo Aduanero, Fiscalización Tributaria, Cobro Coactivo) suelen recalcular independientemente las mismas variables (ejemplo: \"promedio móvil de compras facturadas en los últimos 6 meses\"), generando duplicidad de costos de cómputo e inconsistencias semánticas.</p>\n<p>El <strong>Feature Store (Almacén de Características)</strong> es un repositorio centralizado que gobierna, almacena y sirve variables calculadas para modelos de Machine Learning, operando en dos capas:</p>\n<ol><li>**Capa Offline (<em>Offline Store</em>):** Almacenamiento analítico masivo (basado en Apache Iceberg, Delta Lake o DataR) diseñado para almacenar terabytes de series históricas de variables con consistencia temporal exacta (<em>Point-in-Time Correctness</em>), utilizado para entrenar modelos.</li><li>**Capa Online (<em>Online Store</em>):** Almacenamiento en memoria de ultra baja latencia (basado en clústeres Redis o Cassandra) que guarda exclusivamente el último valor vigente de cada variable por contribuyente, permitiendo que las APIs de scoring en tiempo real consulten los atributos en menos de 10 milisegundos.</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ARQUITECTURA DEL FEATURE STORE EN LA DIAN:\n+-------------------+        +-----------------------------------------------+\n| Fuentes de Datos  |        | FEATURE STORE CENTRALIZADO                    |\n| (Factura UBL 2.1, | -----&gt; |  +-----------------------------------------+  |\n|  MUISCA, SYGA)    |        |  | Offline Store (DataR / Tablas Iceberg)  |  |\n+-------------------+        |  | - Históricos de 5 años para Train       |  |\n                             |  +-----------------------------------------+  |\n                             |  +-----------------------------------------+  |\n                             |  | Online Store (Redis Clúster en Memoria) |  |\n                             |  | - Último estado para inferencia &lt; 10 ms |  |\n                             |  +-----------------------------------------+  |\n                             +-----------------------------------------------+\n                                     |                               |\n                   Entrenamiento de  |                               | Puntuación en\n                   modelos batch     v                               v tiempo real\n                             +---------------+               +---------------+\n                             | MLOps Training|               | API Gateway / |\n                             | Pipeline Spark|               | Aduana Scoring|\n                             +---------------+               +---------------+</code></pre></div>\n<div class=\"callout warning\"><strong class=\"callout-title\">⚠️ Cuidado / Distractor Típico</strong><p>El Antipatrón de Data Leakage (Viajes en el Tiempo) Un error clásico en ciencia de datos tributaria consiste en calcular una variable predictiva (ejemplo: <em>Patrimonio Bruto Declarado</em>) utilizando datos que se radicaron formalmente en octubre para predecir una transacción que ocurrió en mayo del mismo año. El Feature Store previene este error garantizando el <em>Point-in-Time Join</em>, asegurando que el modelo de entrenamiento solo vea los datos que estaban disponibles fácticamente en el instante exacto en que se tomó la decisión.</p></div>\n<h3>5.3. El Ciclo de Vida MLOps (Machine Learning Operations)</h3>\n<p>La disciplina <strong>MLOps</strong> extiende DevOps para gestionar las complejidades específicas de los sistemas de inteligencia artificial (donde no solo cambia el código, sino también los datos y los pesos de los modelos):</p>\n<ul><li><strong>Experimentación y Seguimiento:</strong> Uso de plataformas como <strong>MLflow</strong> para registrar parámetros, métricas, artefactos y el linaje de los datos de cada ejecución de entrenamiento.</li><li>**Empaquetado y Registro de Modelos (<em>Model Registry</em>):** Transición formal de modelos por etapas de gobernanza (<code>Development</code> $\\rightarrow$ <code>Staging</code> $\\rightarrow$ <code>Production</code>), acompañados de sus pruebas de validación técnica y jurídica.</li><li><strong>Despliegue Estratégico:</strong></li><li><em>Canary Deployment:</em> Dirigir el 5% del tráfico de contribuyentes al nuevo modelo para validar su estabilidad antes de extenderlo a nivel nacional.</li><li><em>Shadow Deployment (Modo Sombra):</em> El nuevo modelo recibe el 100% de las solicitudes reales en paralelo con el modelo vigente y calcula predicciones, pero sus dictámenes se guardan para auditoría y comparación sin afectar a los contribuyentes.</li></ul>\n<h3>5.4. Monitoreo de Degradación: Data Drift vs. Concept Drift</h3>\n<p>Una vez desplegado en producción, el rendimiento de un modelo de Machine Learning inevitablemente se degrada con el paso del tiempo debido a la dinámica económica y normativa del país. Es imperativo distinguir entre dos fenómenos estadísticos:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>                    DISTRIBUCIÓN DE ENTRADA P(X)      RELACIÓN FUNCIONAL P(Y|X)\n-------------------+--------------------------------+--------------------------------+\n1. DATA DRIFT      |   CAMBIA                       |   SE MANTIENE IGUAL            |\n   (Deriva Datos)  |   (Suben montos por inflación) |   (Fórmula de evasión idéntica)|\n-------------------+--------------------------------+--------------------------------+\n2. CONCEPT DRIFT   |   PUEDE O NO CAMBIAR           |   CAMBIA RADICALMENTE          |\n   (Deriva Concepto|                                |   (Nuevas trampas de fraude)   |\n-------------------+--------------------------------+--------------------------------+</code></pre></div>\n<h4>A. Deriva de Datos (<em>Data Drift</em> o <em>Covariate Shift</em>)</h4>\n<p>Ocurre cuando la distribución de probabilidad de las variables de entrada $P(X)$ cambia con el tiempo, aunque la relación subyacente entre esas variables y el fraude $P(Y|X)$ permanezca inalterada.</p>\n<ul><li><strong>Causa Común en Colombia:</strong> Una aceleración de la inflación incrementa drásticamente los valores nominales facturados por las empresas, o una reforma tributaria reduce el umbral de obligatoriedad para declarar renta.</li><li><strong>Detección Estadística:</strong></li><li>**Índice de Estabilidad Poblacional (<em>Population Stability Index - PSI</em>):** Compara la distribución de una variable en producción contra la distribución de referencia del entrenamiento. Un $PSI &lt; 0.10$ indica estabilidad; $0.10 \\le PSI &lt; 0.25$ sugiere cambio moderado; y $PSI \\ge 0.25$ indica una deriva severa que exige reentrenamiento inmediato.</li><li><strong>Prueba Kolmogorov-Smirnov (KS-Test):</strong> Evalúa si dos muestras continuas provienen de la misma distribución estadística.</li></ul>\n<h4>B. Deriva de Concepto (<em>Concept Drift</em>)</h4>\n<p>Ocurre cuando la relación funcional y estadística entre las variables predictoras y la variable objetivo cambia $P(Y|X)$.</p>\n<ul><li><strong>Causa Común en Colombia:</strong> Los evasores aprenden cómo opera el algoritmo de la DIAN y modifican deliberadamente sus tácticas criminales (evasión adaptativa). Por ejemplo, si el modelo detectaba fraude buscando deducciones excesivas en \"combustibles\", las organizaciones criminales migran a simular gastos en \"licencias de software intangibles en el exterior\".</li><li><strong>Solución Arquitectónica:</strong> Canales de reentrenamiento periódico automatizado disparados por alertas de degradación de métricas de negocio o por la promulgación de reformas tributarias sustanciales.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-4-6",
+          "moduleId": "mod-4",
+          "unitNumber": 6,
+          "title": "Unidad 6: Ética de Datos, Inteligencia Artificial Explicable (XAI - SHAP/LIME), Mitigación de Sesgos y Debido Proceso Administrativo",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 921,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Transparencia Algorítmica, Derechos Fundamentales y Marco Constitucional</p>\n<h3>6.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender las limitaciones constitucionales y legales de los modelos de \"caja negra\" en la administración pública, dominar las técnicas de <strong>Inteligencia Artificial Explicable (XAI)</strong> mediante <strong>valores SHAP y LIME</strong>, mitigar los <strong>sesgos algorítmicos</strong> y garantizar que todo uso de IA en la DIAN cumpla con el <strong>Debido Proceso Administrativo (Art. 29 C.P.)</strong> y la <strong>Reserva Tributaria (Art. 583 E.T.)</strong>.</p>\n<h3>6.2. El Problema de la \"Caja Negra\" frente al Debido Proceso Administrativo</h3>\n<p>En el sector privado, una plataforma de streaming puede utilizar un modelo de red neuronal profunda impenetrable para recomendar películas sin mayores implicaciones legales. En la DIAN, un algoritmo que evalúa la conducta de un ciudadano tiene implicaciones coercitivas directas sobre su patrimonio, su libertad y sus derechos civiles.</p>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p>Artículo 29 de la Constitución Política de Colombia (El Debido Proceso) <em>\"El debido proceso se aplicará a toda clase de actuaciones judiciales y administrativas... Toda persona se presume inocente mientras no se la haya declarado judicialmente culpable. Quien sea sindicado tiene derecho a la defensa y a la asistencia de un abogado... y a controvertir las pruebas que se alleguen en su contra.\"</em></p></div>\n<h4>Consecuencias Jurídicas para la Arquitectura de Datos:</h4>\n<ul><li><strong>Prohibición de Actos Administrativos Inmotivados:</strong> Si la DIAN expide un Requerimiento Especial sancionatorio o niega la devolución de un saldo a favor argumentando únicamente que <em>\"el algoritmo de inteligencia artificial arrojó un score de riesgo del 98%\"</em>, el acto administrativo es <strong>nulo de pleno derecho por falsa o indebida motivación</strong>.</li><li><strong>Derecho a Controvertir la Prueba:</strong> El administrado tiene derecho a conocer las razones fácticas y las variables específicas que originaron la sospecha fiscal para poder ejercer su derecho a la defensa y aportar pruebas en contrario.</li><li>**El Principio del Humano en el Bucle (<em>Human-in-the-Loop</em>):<strong> Los sistemas de inteligencia artificial de la DIAN operan como herramientas de </strong>soporte a la decisión**, jamás como jueces automatizados. La decisión jurídica formal de aperturar una investigación, proferir un pliego de cargos o liquidar un tributo debe ser adoptada y firmada siempre por un servidor público competente.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>FLUJO CONSTITUCIONAL DE FISCALIZACIÓN ASISTIDA POR IA:\n+-------------------+        +-----------------------------------------------+\n| Datos en DataR    | -----&gt; | Modelo de Machine Learning (XGBoost / Grafos) |\n+-------------------+        +-----------------------------------------------+\n                                                     |\n                                                     v Produce Score Probabilístico\n                             +-----------------------------------------------+\n                             | Capa XAI (Valores SHAP / Explicación Local)   |\n                             +-----------------------------------------------+\n                                                     |\n                                                     v Genera Ficha de Riesgo Explicada\n                             +-----------------------------------------------+\n                             | INSPECTOR I / AUDITOR FISCAL (Human-in-the-Loop|\n                             | - Analiza pruebas documentales                |\n                             | - Valida causalidad legal tributaria          |\n                             +-----------------------------------------------+\n                                                     |\n                                                     v Emite Acto Administrativo Motivado\n                             +-----------------------------------------------+\n                             | Requerimiento Especial con Plena Validez Legal|\n                             +-----------------------------------------------+</code></pre></div>\n<h3>6.3. Técnicas de Inteligencia Artificial Explicable (XAI)</h3>\n<p>Para transformar un modelo de caja negra en un sistema transparente y auditable, la Subdirección de Procesamiento de Datos utiliza técnicas de interpretabilidad agnósticas al modelo:</p>\n<h4>A. Valores SHAP (<em>SHapley Additive exPlanations</em>)</h4>\n<p>Basados en la teoría de juegos cooperativos formulada por el Premio Nobel Lloyd Shapley, los valores SHAP representan el estándar de oro en explicabilidad de Machine Learning.</p>\n<ul><li><strong>Principio Matemático:</strong> Considera cada variable del modelo como un \"jugador\" en un juego donde el \"pago\" es la predicción final. El valor SHAP calcula la contribución marginal de cada variable promediada sobre todas las combinaciones posibles de variables.</li><li><strong>Propiedades Únicas:</strong></li><li><strong>Eficiencia y Aditividad:</strong> La suma de los valores SHAP de todas las variables individuales es exactamente igual a la diferencia entre la predicción del contribuyente analizado $f(x)$ y la predicción promedio base de toda la población $E[f(x)]$: $$f(x) = E[f(x)] + \\sum_{j=1}^{M} \\phi_j(x)$$</li><li><strong>Interpretabilidad Local y Global:</strong> Permite explicar tanto el comportamiento global del modelo (cuáles son las variables más determinantes en el país) como la situación individual de un contribuyente específico frente a un requerimiento fiscal.</li></ul>\n<h4>Ejemplo Práctico de Explicación SHAP en la DIAN:</h4>\n<p>Un contribuyente tiene una predicción de riesgo de evasión de <strong>0.91</strong> (cuando el promedio nacional es 0.15). El sistema desglosa los valores SHAP:</p>\n<ul><li><code>Promedio Base Poblacional</code>: <strong>0.15</strong></li><li><code>Deducciones por honorarios superan 4 desviaciones estándar</code>: $\\phi_1 = \\mathbf{+0.35}$</li><li><code>Compras facturadas provienen de proveedores con RUT cancelado</code>: $\\phi_2 = \\mathbf{+0.28}$</li><li><code>Incremento patrimonial no justificado en ingresos exógena</code>: $\\phi_3 = \\mathbf{+0.18}$</li><li><code>Historial de cumplimiento oportuno en últimos 3 años</code>: $\\phi_4 = \\mathbf{-0.05}$</li><li><strong>Predicción Final:</strong> $0.15 + 0.35 + 0.28 + 0.18 - 0.05 = \\mathbf{0.91}$.</li></ul>\n<p>El inspector de la DIAN utiliza estos argumentos fácticos exactos para redactar la motivación del requerimiento administrativo, cumpliendo a cabalidad con la Constitución.</p>\n<h4>B. LIME (<em>Local Interpretable Model-agnostic Explanations</em>)</h4>\n<p>Aproxima localmente el comportamiento de cualquier modelo complejo entrenando un modelo lineal sustituto simple e interpretable alrededor de la instancia analizada, perturbando los datos y observando las variaciones en las predicciones.</p>\n<h3>6.4. Mitigación de Sesgos Algorítmicos y Equidad (<em>Fairness</em>)</h3>\n<p>El Documento <strong>CONPES 3975 de 2019 (Política Nacional para la Transformación Digital e Inteligencia Artificial)</strong> y el Marco Ético de IA del Estado colombiano obligan a garantizar que los algoritmos públicos no reproduzcan ni amplifiquen discriminaciones ilegales:</p>\n<ul><li><strong>Sesgos Geográficos:</strong> Evitar que los modelos asignen puntajes de riesgo sistemáticamente más altos a contribuyentes ubicados en departamentos históricamente marginados o zonas de frontera, simplemente por la escasez de datos formales en dichas regiones.</li><li><strong>Sesgos de Tamaño Empresarial:</strong> Impedir que los algoritmos concentren las auditorías exclusivamente en micro y pequeñas empresas debido a que sus datos son más simples de procesar, ignorando esquemas de elusión sofisticados en grandes corporaciones multinacionales.</li><li><strong>Técnicas de Desesgado:</strong> Eliminación de variables protegidas o correlacionadas (<em>Proxies</em>), balanceo equitativo de tasas de error entre grupos mediante paridad demográfica (<em>Demographic Parity</em>) e igualdad de oportunidades (<em>Equal Opportunity</em>).</li></ul>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 6,
+      "lessonMinutes": 150,
+      "studyMinutes": 150,
+      "bibliografia": {
+        "raw": "<h2>11. Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>11.1. Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>Provost, F., &amp; Fawcett, T. (2013).</strong> <em>Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking</em>. O'Reilly Media.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra fundamental para comprender la matriz de confusión, el análisis de costos asimétricos de error y la toma de decisiones basada en datos.</li><li><strong>Molnar, C. (2022).</strong> <em>Interpretable Machine Learning: A Guide for Making Black Box Models Explainable</em> (2nd Ed.). Leanpub.</li><li><strong>Por qué leerlo para el examen:</strong> Expone de manera matemática y didáctica los fundamentos de los valores SHAP, LIME y las técnicas agnósticas de explicabilidad para garantizar el debido proceso en el sector público.</li><li><strong>Burkov, A. (2020).</strong> <em>Machine Learning Engineering</em>. True Positive Inc.</li><li><strong>Por qué leerlo para el examen:</strong> Detalla los estándares de ingeniería de datos, Feature Stores, Data Leakage y ciclos de despliegue MLOps.</li><li><strong>Departamento Nacional de Planeación - DNP (2019).</strong> <em>Documento CONPES 3975: Política Nacional para la Transformación Digital e Inteligencia Artificial</em>. Consejo Nacional de Política Económica y Social, República de Colombia.</li><li><strong>Por qué leerlo para el examen:</strong> Establece las directrices y principios éticos vinculantes para el uso de algoritmos e inteligencia artificial en las entidades públicas colombianas.</li></ol>\n<h3>11.2. Bibliografía Técnica, Estándares y Marco Normativo (Corte: 19 de junio de 2026)</h3>\n<h4>A. Estándares Técnicos Internacionales y Literatura Canónica</h4>\n<ul><li><strong>Chapman, P., Clinton, J., Kerber, R., Khabaza, T., Reinartz, T., Shearer, C., &amp; Wirth, R. (2000).</strong> <em>CRISP-DM 1.0: Step-by-step data mining guide</em>. The CRISP-DM consortium.</li><li><strong>Lundberg, S. M., &amp; Lee, S. I. (2017).</strong> <em>A unified approach to interpreting model predictions</em>. Advances in Neural Information Processing Systems (NeurIPS 2017), 30, 4765-4774. <em>(Paper seminal de los valores SHAP).</em></li><li><strong>Ribeiro, M. T., Singh, S., &amp; Guestrin, C. (2016).</strong> <em>\"Why should I trust you?\": Explaining the predictions of any classifier</em>. ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD 2016), 1135-1144. <em>(Paper seminal de LIME).</em></li><li><strong>Liu, F. T., Ting, K. M., &amp; Zhou, Z. H. (2008).</strong> <em>Isolation forest</em>. IEEE International Conference on Data Mining (ICDM 2008), 413-422.</li><li><strong>DAMA International (2017).</strong> <em>DAMA-DMBOK: Data Management Body of Knowledge</em> (2nd Ed.). Technics Publications. <em>(Capítulo 14: Big Data y Ciencia de Datos).</em></li></ul>\n<h4>B. Marco Normativo Colombiano e Institucional DIAN (Vigencia al 19 de junio de 2026)</h4>\n<ul><li><strong>Constitución Política de Colombia de 1991.</strong> Especialmente <strong>Artículo 29</strong> (Derecho Fundamental al Debido Proceso y Presunción de Inocencia), <strong>Artículo 15</strong> (Habeas Data) y <strong>Artículo 363</strong> (Principios de Equidad, Eficiencia y Progresividad del Sistema Tributario).</li><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes).</strong> <strong>Artículo 583 al 587</strong> (Reserva de las declaraciones tributarias y excepciones legales), <strong>Artículo 671</strong> (Sanción a proveedores ficticios e insolventes), <strong>Artículo 684</strong> (Facultades de fiscalización e investigación) y <strong>Artículo 714</strong> (Término general de firmeza de las declaraciones tributarias).</li><li><strong>Documento CONPES 3920 de 2018.</strong> Política Nacional de Explotación de Datos (Big Data) en Colombia.</li><li><strong>Documento CONPES 3975 de 2019.</strong> Política Nacional para la Transformación Digital e Inteligencia Artificial.</li><li><strong>Ley 1437 de 2011 (Código de Procedimiento Administrativo y de lo Contencioso Administrativo - CPACA).</strong> Artículos 3, 35 y 137 (Motivación obligatoria de los actos administrativos y nulidad por falsa o indebida motivación).</li><li><strong>Ley Estatutaria 1581 de 2012 y Decreto 1074 de 2015.</strong> Régimen General de Protección de Datos Personales en Colombia.</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica de la DIAN — Funciones de la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos en el desarrollo de capacidades analíticas avanzadas.</li><li><strong>Resolución DIAN No. 067 de 2024 (y Resoluciones 065 y 066 de 2024).</strong> Manual Específico de Requisitos y Funciones (MERF) vigente para el empleo Inspector I en el concurso DIAN 2676.</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-5",
@@ -1903,352 +1962,359 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-4": {
-      "title": "Examen: 4. Capacidades Analíticas y Uso Estratégico (10 Preguntas de Analítica y Casos)",
-      "indicatorNum": 4,
+      "title": "Examen Oficial: Capacidades Analíticas y Uso Estratégico de la Información (10 Preguntas PJS)",
       "questions": [
         {
           "id": 401,
-          "topic": "Taxonomía Analítica de Gartner",
-          "caseText": "Un comité directivo de la DIAN revisa el estado de su plataforma analítica: actualmente cuentan con tableros en Power BI que muestran el recaudo del mes anterior y reportes que explican por qué cayó el recaudo del sector hotelero, pero desean que el sistema recomiende automáticamente qué auditores enviar a qué empresas para maximizar el recaudo bajo restricciones presupuestales.",
-          "statement": "¿A qué nivel de la taxonomía de madurez analítica aspira llegar la entidad?",
+          "topic": "Evaluación de Modelos y Análisis del Costo Asimétrico de Errores",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos desarrolla un modelo de clasificación para identificar contribuyentes del régimen ordinario que omiten ingresos operacionales en sus declaraciones de renta. En el histórico institucional, solo el 0.8% de los declarantes fiscalizados incurrió en esta conducta delictiva. El científico de datos líder presenta con entusiasmo un modelo preliminar que alcanza un 99.2% de exactitud (*Accuracy*), asegurando que el sistema está listo para producción. Sin embargo, al inspeccionar la matriz de confusión, se descubre que el modelo clasificó al 100% de los contribuyentes como honestos ($y=0$).",
+          "statement": "Al evaluar el rendimiento del modelo para garantizar que la solución satisfaga las metas reales de la fiscalización tributaria, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Analítica Prescriptiva, ya que utiliza modelos de optimización y algoritmos de toma de decisiones para sugerir la acción específica óptima ante un escenario dado."
+              "text": "rechazar el uso de la métrica de *Accuracy* por encontrarse sesgada por la clase mayoritaria y exigir la reevaluación del modelo utilizando el área bajo la curva de Precisión-Recall (**PR-AUC**) y la puntuación **$F_\\beta$**, ajustando pesos en la función de pérdida para penalizar los falsos negativos."
             },
             {
               "id": "B",
-              "text": "Analítica Descriptiva, porque se limita a resumir datos históricos en gráficos de barras."
+              "text": "aprobar el modelo y autorizar su despliegue nacional inmediato, argumentando que una exactitud superior al 99% supera los estándares internacionales de la OCDE."
             },
             {
               "id": "C",
-              "text": "Analítica Diagnóstica, porque busca identificar las causas de problemas pasados."
+              "text": "eliminar de la base de datos a todos los contribuyentes honestos para que la exactitud alcance el 100% perfecto."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La analítica prescriptiva (Prescriptive Analytics) trasciende el pronóstico de qué va a pasar (predictiva) y prescribe qué acciones específicas deben adoptarse para optimizar un objetivo de negocio o de política pública sujeta a restricciones.",
+            "correct": "Es correcta. En problemas de detección de fraude tributario con desbalance extremo de clases (0.8% de infractores), la métrica de **Accuracy (Exactitud)** constituye una trampa estadística clásica (*Accuracy Paradox*): predecir ciegamente que nadie evade garantiza un 99.2% de aciertos, pero la utilidad misional del modelo es nula al no detectar a ningún evasor. El Inspector I debe exigir métricas diseñadas para clases desbalanceadas como **PR-AUC** y la métrica **$F_\\beta$**, combinadas con técnicas de balanceo en la función de pérdida (*class weights*) o remuestreo sintético (SMOTE).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La descriptiva solo cuenta lo que ya pasó ('¿qué ocurrió?')."
+                "reason": "Es incorrecta. Desplegar un modelo que no detecta ningún caso de evasión paralizaría la fiscalización de la DIAN y generaría una merma catastrófica en el recaudo tributario del Estado."
               },
               {
                 "id": "C",
-                "reason": "La diagnóstica identifica causas históricas ('¿por qué ocurrió?')."
+                "reason": "Es incorrecta. Borrar datos legítimos de contribuyentes destruye la integridad del universo fiscal y viola los principios del DAMA-DMBOK y del Código de Procedimiento Administrativo."
               }
             ]
           }
         },
         {
           "id": 402,
-          "topic": "Métricas en Clases Desbalanceadas: Por qué falla el Accuracy",
-          "caseText": "Un modelo de Machine Learning entrenado para detectar facturas electrónicas fraudulentas obtiene un 99.2% de Exactitud Global (Accuracy). Sin embargo, al ponerlo en producción, se descubre que no detectó a ninguno de los mayores evasores del país.",
-          "statement": "¿Cuál es la explicación técnica de este fenómeno?",
+          "topic": "Machine Learning No Supervisado y Detección de Anomalías",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En una seccional de aduanas e impuestos se detecta la proliferación de sociedades comerciales recién constituidas que reportan direcciones en zonas residenciales populares pero emiten facturas electrónicas por miles de millones de pesos a empresas del sector de la construcción por concepto de \"servicios intangibles de consultoría\", permitiendo que los constructores descuenten costos ficticios. Al no existir denuncias previas ni sanciones históricas registradas contra estas nuevas empresas en MUISCA, el equipo analítico no dispone de etiquetas de entrenamiento ($y$) para un clasificador supervisado.",
+          "statement": "Para identificar de manera temprana y automatizada a las posibles empresas de papel en las emisiones de Facturación Electrónica UBL 2.1, el Inspector I debe",
           "options": [
             {
               "id": "A",
-              "text": "En datos con clases altamente desbalanceadas (donde el 99% de las facturas son legítimas y solo el 0.8% son fraude), un modelo ingenuo que clasifique todas las facturas como 'legítimas' alcanzará un Accuracy del 99.2% sin haber aprendido a identificar el fraude; se debió evaluar con Precision, Recall y F1-Score."
+              "text": "aplicar algoritmos de detección de anomalías no supervisados como **Isolation Forest** combinados con **DBSCAN**, analizando variables de ratio como volumen facturado frente a número de empleados y antigüedad en el RUT, para aislar observaciones con comportamientos estadísticamente atípicos."
             },
             {
               "id": "B",
-              "text": "El Accuracy es una métrica exclusiva para modelos de regresión lineal y no sirve para clasificación."
+              "text": "suspender manualmente el RUT de todas las empresas constituidas en los últimos cinco años hasta que demuestren su inocencia en una audiencia presencial."
             },
             {
               "id": "C",
-              "text": "El modelo memorizó las etiquetas pero la GPU del servidor se recalentó durante la inferencia."
+              "text": "esperar pasivamente a que opere el término de firmeza de las declaraciones tributarias de los constructores antes de iniciar cualquier análisis de datos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Accuracy es completamente engañoso ante desbalance de clases (Accuracy Paradox). En detección de fraude o evasión, la métrica crítica es Recall (capturar la mayor cantidad de evasores reales) y Precision (no acusar falsamente a contribuyentes cumplidores).",
+            "correct": "Es correcta. Cuando no se dispone de etiquetas históricas previas para entrenar clasificadores supervisados, la metodología analítica exige el uso de **Machine Learning No Supervisado para detección de anomalías**. El algoritmo **Isolation Forest** es ideal para aislar empresas de papel (cuyos patrones de facturación masiva con cero nómina y reciente creación son fácilmente aislables en pocas divisiones de árbol), y **DBSCAN** permite identificar outliers que no pertenecen a los clústeres densos de comportamiento empresarial legítimo, orientando las investigaciones del Artículo 671 del Estatuto Tributario.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Accuracy es una métrica estándar de clasificación, no de regresión."
+                "reason": "Es incorrecta. Suspender masivamente el RUT sin pruebas individualizadas ni proceso previo viola el principio de presunción de inocencia y el derecho fundamental al debido proceso (Art. 29 C.P.)."
               },
               {
                 "id": "C",
-                "reason": "Es un fallo metodológico de formulación de métricas, no un problema térmico de hardware."
+                "reason": "Es incorrecta. Esperar pasivamente a que opere la firmeza legal (Art. 714 E.T.) extingue la facultad sancionatoria de la DIAN, consolidando la evasión en perjuicio del erario."
               }
             ]
           }
         },
         {
           "id": 403,
-          "topic": "Detección No Supervisada de Anomalías: Isolation Forest",
-          "caseText": "El área de fiscalización no cuenta con datos históricos etiquetados de un nuevo tipo de tributo verde y necesita detectar comportamientos atípicos entre miles de declarantes que podrían estar ocultando emisiones.",
-          "statement": "¿Qué algoritmo no supervisado es el más adecuado y cómo opera internamente?",
+          "topic": "Analítica de Grafos y Redes Complejas en Fiscalización",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Fiscalización Tributaria investiga una red delictiva dedicada a solicitar devoluciones improcedentes de saldos a favor en el Impuesto sobre las Ventas (IVA). Las tablas relacionales tradicionales muestran que todas las empresas involucradas tienen sus libros contables al día y transmiten sus facturas electrónicas puntualmente. Sin embargo, los auditores sospechan que las transacciones comerciales son ficticias y que las mercancías nunca existieron físicamente, sino que se crearon empresas intermediarias para recircular facturas.",
+          "statement": "Para demostrar la existencia del entramado delictivo y descubrir a los beneficiarios reales del fraude, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Isolation Forest, porque aísla anomalías construyendo árboles binarios aleatorios; los puntos anómalos quedan aislados cerca de la raíz del árbol con trayectorias de particionamiento significativamente más cortas que los puntos normales."
+              "text": "modelar las transacciones de facturación electrónica y composición societaria como un **Grafo Dirigido**, aplicando algoritmos de **detección de ciclos dirigidos** para evidenciar la recirculación artificial de facturas y métricas de **centralidad (PageRank / Betweenness)** para identificar a los nodos orquestadores."
             },
             {
               "id": "B",
-              "text": "Regresión Logística, porque requiere millones de ejemplos previos etiquetados como 'fraude' por un juez penal."
+              "text": "imprimir todas las facturas en papel continuo y revisarlas hoja por hoja utilizando sellos mecánicos de ventanilla."
             },
             {
               "id": "C",
-              "text": "Clasificador Naive Bayes con supervisión estricta de variables."
+              "text": "rechazar la investigación argumentando que si las facturas cumplen con el estándar sintáctico XML UBL 2.1, es técnicamente imposible que exista fraude fiscal."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Isolation Forest se basa en que las anomalías son pocas y cuantitativamente diferentes; por ello, en cortes aleatorios de hiperplanos, las anomalías se separan del resto con una longitud de camino promedio mucho menor.",
+            "correct": "Es correcta. Las estructuras complejas de carruseles de IVA eluden la fiscalización tabular tradicional porque cada factura individual parece legítima. La **Analítica de Grafos** modela contribuyentes como nodos y transacciones como aristas; mediante algoritmos de **detección de ciclos (DFS)** se evidencia que el flujo de facturación retorna en bucles cerrados ($A \\rightarrow B \\rightarrow C \\rightarrow A$) propios de las operaciones simuladas, mientras que métricas como **Betweenness Centrality** identifican a los contadores o empresas clave que articulan el entramado para exigir las sanciones del Art. 671 del E.T.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La regresión logística es supervisada y requiere etiquetas previas (ground truth)."
+                "reason": "Es incorrecta. La revisión manual en papel es inoperante frente a millones de transacciones electrónicas y reproduce la ineficiencia de la administración predigital."
               },
               {
                 "id": "C",
-                "reason": "Naive Bayes supervisado no funciona sin datos etiquetados de entrenamiento."
+                "reason": "Es incorrecta. La validez sintáctica de un archivo XML no acredita la realidad económica ni la existencia material de la transacción comercial."
               }
             ]
           }
         },
         {
           "id": 404,
-          "topic": "Analítica de Grafos: Algoritmo de Louvain para Detección de Comunidades",
-          "caseText": "Un analista de datos modela la red de facturación electrónica como un grafo dirigido donde los nodos son empresas y las aristas son facturas de compraventa. Sospecha que existen 'carruseles de IVA' donde grupos de empresas se facturan circularmente entre sí para inflar costos deducibles.",
-          "statement": "¿Qué algoritmo de teoría de grafos permite aislar estas agrupaciones densas y circulares de actores?",
+          "topic": "Inteligencia Artificial Explicable (XAI), SHAP y Debido Proceso",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La DIAN implementa una red neuronal profunda (*Deep Learning*) para emitir de forma automatizada Emplazamientos para Declarar a ciudadanos que presuntamente omitieron el impuesto de renta. Un contribuyente sancionado interpone una acción de tutela y demanda de nulidad contra el acto administrativo, argumentando que el emplazamiento se limitó a señalar que *\"un modelo de inteligencia artificial de última generación determinó con un 97.4% de certeza matemática que usted omitió declarar\"*, sin indicar qué compras, consignaciones o bienes sustentan la acusación.",
+          "statement": "Frente al fallo judicial inminente y para corregir la arquitectura de generación de actos administrativos, el Inspector I debe dictaminar que",
           "options": [
             {
               "id": "A",
-              "text": "El Algoritmo de Louvain (o detección de comunidades por optimización de modularidad), que identifica subgrafos con alta densidad de conexiones internas y escasas conexiones hacia el resto de la economía."
+              "text": "el acto administrativo es violatorio del **Debido Proceso Administrativo (Art. 29 C.P.)** por indebida motivación; la arquitectura analítica debe integrar capas de **Inteligencia Artificial Explicable (Valores SHAP)** que traduzcan la predicción en causales fácticas concretas para que el inspector humano motive el acto."
             },
             {
               "id": "B",
-              "text": "El algoritmo de Dijkstra para encontrar el camino más corto entre dos ciudades físicas."
+              "text": "el juez constitucional incurrió en desacato técnico, ya que los modelos matemáticos de redes neuronales tienen jerarquía superior a las leyes procesales y la Constitución Política."
             },
             {
               "id": "C",
-              "text": "El algoritmo de ordenamiento Quicksort sobre los códigos postales de las empresas."
+              "text": "la DIAN debe ocultar el código fuente del algoritmo bajo reserva militar extrema para evitar que los contribuyentes conozcan las variables del modelo."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El algoritmo de Louvain maximiza la modularidad de la red, permitiendo descubrir comunidades y clústeres fuertemente cohesionados que en el contexto tributario corresponden a anillos de empresas de papel que operan de forma coordinada.",
+            "correct": "Es correcta. En el Estado de Derecho colombiano, el **Artículo 29 de la Constitución Política** prohíbe las decisiones administrativas inmotivadas o basadas en cajas negras impenetrables. Ningún acto administrativo que imponga cargas o sanciones puede sostenerse exclusivamente en un puntaje algorítmico sin hechos verificables. La arquitectura analítica debe incorporar **XAI (Valores SHAP)** para desagregar la contribución marginal de cada variable fáctica (ingresos bancarios, activos fijos), permitiendo que un funcionario público (*Human-in-the-Loop*) motive y firme legalmente el acto, garantizando el derecho de defensa del ciudadano.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Dijkstra encuentra rutas mínimas entre dos puntos, no comunidades densas o ciclos colusorios."
+                "reason": "Es incorrecta. Ningún algoritmo o desarrollo informático tiene prevalencia sobre la Constitución Política ni sobre los derechos fundamentales de los administrados."
               },
               {
                 "id": "C",
-                "reason": "Quicksort es un algoritmo de ordenamiento de listas unidimensionales, no de análisis topológico de grafos."
+                "reason": "Es incorrecta. Ocultar la fundamentación de las decisiones administrativas vulnera la Ley 1712 de 2014 (Transparencia) y constituye una flagrante violación procesal."
               }
             ]
           }
         },
         {
           "id": 405,
-          "topic": "Monitoreo en MLOps: Data Drift vs. Concept Drift",
-          "caseText": "Tras la expedición de una nueva reforma tributaria que modificó las tarifas del impuesto sobre la renta y creó nuevas exenciones para el sector tecnológico, un modelo predictivo que tenía un rendimiento sobresaliente comienza a emitir alertas falsas masivas y a degradar su F1-Score.",
-          "statement": "¿Qué fenómeno de MLOps ocurrió y cuál es la diferencia entre Data Drift y Concept Drift?",
+          "topic": "MLOps, Mantenimiento de Modelos y Deriva Estadística",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Tras la aprobación de una reforma tributaria que modificó sustancialmente las tarifas del impuesto sobre la renta, unificó cédulas y redujo a la mitad el límite máximo de rentas exentas y deducciones para personas naturales, los inspectores de la DIAN notan que el modelo predictivo de riesgo desplegado hace dos años comienza a clasificar erróneamente como \"evasores potenciales\" a casi el 70% de los asalariados del país. El análisis estadístico muestra que la distribución de la variable de deducciones cambió radicalmente en toda la población declarante.",
+          "statement": "Al diagnosticar la causa técnica del fallo del modelo y aplicar las mejores prácticas de MLOps, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Ocurrió Concept Drift (la relación matemática entre las características y la probabilidad de evasión cambió debido a las nuevas reglas legales); mientras que Data Drift se refiere al cambio en la distribución estadística de las variables de entrada sin alterar la relación con el objetivo."
+              "text": "diagnosticar la presencia de una **Deriva de Datos (*Data Drift*)** y **Deriva de Concepto**, activar el recálculo del Índice de Estabilidad Poblacional (**PSI**) y ordenar el reentrenamiento del modelo utilizando los nuevos datos alineados con el marco jurídico reformado."
             },
             {
               "id": "B",
-              "text": "El modelo sufrió un ataque de denegación de servicio por exceso de parámetros en la memoria."
+              "text": "forzar la ejecución del modelo antiguo y obligar a todos los asalariados a pagar sanciones para cumplir las metas presupuestales de la seccional."
             },
             {
               "id": "C",
-              "text": "Data Drift y Concept Drift son términos sinónimos que indican que el disco duro del clúster está lleno."
+              "text": "cambiar el hardware del clúster de servidores de base de datos asumiendo que el problema se debe a un sobrecalentamiento de los procesadores."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En Concept Drift, la función $P(Y|X)$ cambia (las características que antes denotaban fraude ahora son deducciones legítimas bajo la nueva ley). En Data Drift, cambia la distribución de entrada $P(X)$ (ej. aumento general de precios por inflación). Requiere reentrenamiento con nuevos datos.",
+            "correct": "Es correcta. Las reformas legislativas y las fluctuaciones macroeconómicas son las causas principales de **Data Drift (Deriva de Datos)** y **Concept Drift (Deriva de Concepto)** en los modelos del sector público. Al cambiar la ley tributaria, la distribución de las variables de entrada $P(X)$ y la relación jurídica $P(Y|X)$ se alteran sustancialmente. El pipeline de MLOps debe detectar este desvío mediante métricas como el **PSI (Índice de Estabilidad Poblacional)** y disparar el reentrenamiento de los algoritmos con las nuevas reglas vigentes.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La degradación por cambio normativo es un problema estadístico de representatividad, no un ataque cibernético."
+                "reason": "Es incorrecta. Sancionar a ciudadanos con base en un modelo descalibrado que desconoce la ley vigente constituye una actuación arbitraria sujeta a demandas de nulidad y restablecimiento del derecho."
               },
               {
                 "id": "C",
-                "reason": "Son fenómenos matemáticos distintos y no tienen relación con el llenado de discos duros."
+                "reason": "Es incorrecta. Los cambios en las distribuciones estadísticas de los datos no se corrigen modificando el hardware físico de los servidores."
               }
             ]
           }
         },
         {
           "id": 406,
-          "topic": "Feature Stores y Data Leakage",
-          "caseText": "Durante el desarrollo de un modelo para predecir si un contribuyente será sancionado en el año 2026, el científico de datos incluyó inadvertidamente entre las variables predictoras una columna llamada 'monto_sancion_liquidada' generada por el sistema jurídico al final del proceso sancionatorio.",
-          "statement": "¿Qué error metodológico severo se cometió y qué herramienta de MLOps previene este problema?",
+          "topic": "Feature Store, Ingeniería de Características y Consistencia Temporal",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un científico de datos diseña un modelo para predecir si un importador cometerá infracciones aduaneras en el momento en que su cargamento arriba al puerto marítimo en el mes de marzo. Durante la fase de preparación de datos en el entorno de desarrollo, el analista calcula una variable llamada `volumen_infracciones_anuales` agrupando todas las actas de aprehensión levantadas a ese mismo importador a lo largo de todo el año fiscal (incluyendo actas de agosto y noviembre). En las pruebas de laboratorio, el modelo obtiene un desempeño casi perfecto ($AUC = 0.99$), pero al ser desplegado en el puerto de Cartagena, su precisión colapsa drásticamente al 42%.",
+          "statement": "Al identificar la causa técnica del fracaso del modelo en producción, el Inspector I debe determinar que",
           "options": [
             {
               "id": "A",
-              "text": "Fuga de Datos (Data Leakage) o filtración temporal, donde el modelo tuvo acceso durante el entrenamiento a información del futuro que no estará disponible en el momento de la inferencia real; se previene utilizando un Feature Store que gestione características con consistencia temporal (Time-Travel Joins)."
+              "text": "ocurrió un fenómeno de **Fuga de Datos (*Data Leakage*)** por filtración temporal de variables futuras; se debe implementar un **Feature Store** que garantice la consistencia temporal (*Point-in-Time Correctness*), impidiendo que el modelo acceda a eventos ocurridos con posterioridad a la fecha de la predicción."
             },
             {
               "id": "B",
-              "text": "Underfitting (subajuste), que se soluciona agregando más columnas aleatorias al modelo."
+              "text": "los inspectores de aduanas en el puerto de Cartagena están operando el software de forma negligente y deben ser investigados disciplinariamente."
             },
             {
               "id": "C",
-              "text": "Data Leakage es deseable porque aumenta el Accuracy al 100% de manera permanente."
+              "text": "el lenguaje Python es inadecuado para la analítica aduanera y el modelo debe reescribirse manualmente en hojas de cálculo de Excel."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Data Leakage introduce información espuria que no existirá en producción al momento de predecir, inflando artificialmente las métricas de prueba. Los Feature Stores garantizan la consistencia temporal de características a la fecha exacta del evento.",
+            "correct": "Es correcta. El caso describe el antipatrón de **Data Leakage (Fuga de Datos o Filtración Temporal)**: el modelo de laboratorio \"hizo trampa\" entrenándose con datos de infracciones ocurridas en agosto y noviembre para predecir un hecho ocurrido en marzo. Al pasar a producción real, esa información del futuro no existe en el momento del arribo del buque. La solución arquitectónica exige un **Feature Store** que implemente uniones con corrección temporal (*Point-in-Time Joins*), asegurando que el modelo se entrene exclusivamente con el estado de los datos disponible al momento de la decisión.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El modelo sufrirá un sobreajuste engañoso y fallará estrepitosamente en producción, no es underfitting."
+                "reason": "Es incorrecta. Atribuir el fallo a los inspectores de campo ignora el grave vicio metodológico cometido por el equipo de ingeniería de datos en la formulación del dataset."
               },
               {
                 "id": "C",
-                "reason": "El Data Leakage es un error grave que invalida los modelos predictivos en el mundo real."
+                "reason": "Es incorrecta. Regresar a hojas de cálculo manuales anula las capacidades analíticas masivas de la DIAN y aumenta exponencialmente los riesgos de manipulación de datos."
               }
             ]
           }
         },
         {
           "id": 407,
-          "topic": "Explicabilidad Algorítmica con SHAP para el Debido Proceso",
-          "caseText": "La DIAN emite un emplazamiento para declarar a un contribuyente basándose en el score de un modelo ensemble XGBoost. El contribuyente demanda a la entidad ante el Tribunal Administrativo alegando indefensión por ser juzgado por una 'caja negra algorítmica'.",
-          "statement": "¿Cómo puede el área de analítica sustentar la legalidad y transparencia de la decisión administrativa?",
+          "topic": "Optimización del Umbral de Decisión y Gestión de Capacidad",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El modelo predictivo de fiscalización masiva asigna a cada contribuyente una probabilidad continua de inexactitud entre 0.0 y 1.0. Por configuración predeterminada de software, el sistema clasifica como \"sujeto a auditar\" a todo aquel con probabilidad $\\ge 0.50$, lo que genera una lista de 45.000 contribuyentes priorizados en la ciudad de Cali. No obstante, la Seccional de Cali informa a la Subdirección de Procesamiento de Datos que su planta de personal solo dispone de capacidad técnica y operativa para realizar un máximo de 800 auditorías exhaustivas durante el semestre.",
+          "statement": "Para conciliar las capacidades del modelo algorítmico con la capacidad operativa real de la entidad sin generar falsas expectativas ni expedientes represados, al profesional le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Aportando los valores SHAP (Shapley Additive exPlanations) del expediente, que descomponen matemáticamente el score final mostrando exactamente la contribución marginal positiva o negativa que cada variable tributaria tuvo en la decisión."
+              "text": "calibrar el **Umbral de Decisión (*Decision Threshold*)** del modelo, elevándolo de 0.50 al valor percentil necesario para seleccionar exclusivamente a los 800 contribuyentes con mayor probabilidad matemática y mayor impacto económico de evasión, maximizando la **Precisión** de las auditorías."
             },
             {
               "id": "B",
-              "text": "Afirmando ante el juez que los algoritmos de Machine Learning son secretos de Estado y no pueden ser explicados a los ciudadanos."
+              "text": "ordenar a los inspectores de Cali que trabajen turnos de 24 horas continuas sin descanso para completar las 45.000 auditorías ordenadas por el software."
             },
             {
               "id": "C",
-              "text": "Imprimiendo los millones de árboles de decisión en código binario para que el juez los interprete."
+              "text": "suspender el uso de modelos analíticos y seleccionar a los 800 contribuyentes mediante un sorteo de balotas al azar en la entrada de la sede seccional."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "SHAP (basado en la teoría de juegos cooperativos de Shapley) ofrece explicabilidad local rigurosa y aditiva, permitiendo justificar legalmente qué factores específicos del contribuyente justificaron la actuación de la administración.",
+            "correct": "Es correcta. El umbral estándar de 0.50 en clasificación probabilística es una convención arbitraria de software. En la gestión pública sujeta a restricciones de recursos humanos y tiempo, al Inspector I le corresponde realizar **Threshold Tuning (Calibración del Umbral)**: elevar el umbral de corte para alinear la salida del modelo con la capacidad operativa real de 800 auditorías. Al seleccionar los casos con mayor probabilidad y mayor retorno fiscal esperado, se minimizan los falsos positivos y se maximiza la efectividad del recaudo.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las decisiones públicas requieren motivación jurídica y técnica; el secreto arbitrario viola el debido proceso."
+                "reason": "Es incorrecta. Forzar jornadas laborales ilegales e inhumanas desconoce el régimen de carrera administrativa, los derechos de los trabajadores públicos y genera deserciones y demandas laborales."
               },
               {
                 "id": "C",
-                "reason": "El código crudo o pesos de árboles no constituyen una explicación comprensible ni pericialmente válida."
+                "reason": "Es incorrecta. Sustituir la inteligencia de datos por sorteos aleatorios vulnera el principio constitucional de eficiencia de la gestión tributaria consagrado en el Artículo 363 de la Carta Política."
               }
             ]
           }
         },
         {
           "id": 408,
-          "topic": "Curva ROC vs. Curva Precision-Recall en Clases Desbalanceadas",
-          "caseText": "Un equipo compara dos clasificadores para detección de facturación fraudulenta (donde la clase positiva representa el 0.5% del total). El Modelo A tiene un ROC-AUC de 0.95 y el Modelo B tiene un ROC-AUC de 0.94, pero al evaluar la curva Precision-Recall (PR-AUC), el Modelo B supera ampliamente al Modelo A.",
-          "statement": "¿Qué modelo debe elegirse para producción y por qué?",
+          "topic": "Ética de Datos, Mitigación de Sesgos y Equidad Algorítmica",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la evaluación de un modelo analítico de cobranza coactiva, se observa que el algoritmo asigna sistemáticamente la calificación de \"Riesgo Extremo de Insolvencia\" y ordena embargos preventivos masivos a pequeños comerciantes ubicados en municipios rurales apartados, mientras que empresas ubicadas en las capitales con niveles de endeudamiento financiero proporcionalmente idénticos reciben calificaciones favorables de reestructuración de deuda. El equipo descubre que el modelo utilizó indirectamente el código de municipio como variable sustituta (*proxy*).",
+          "statement": "En cumplimiento de la política de ética e inteligencia artificial del Estado colombiano (CONPES 3975 de 2019) y los principios constitucionales de equidad, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "El Modelo B, porque en conjuntos de datos fuertemente desbalanceados la curva ROC es excesivamente optimista debido a la enorme cantidad de Verdaderos Negativos (TN); la curva Precision-Recall se enfoca exclusivamente en el desempeño sobre la clase minoritaria de interés (el fraude)."
+              "text": "desestimar el modelo en su estado actual, eliminar las variables geográficas que actúan como sesgos discriminatorios indirectos y recalibrar el sistema bajo métricas de **Equidad Algorítmica (*Fairness / Equal Opportunity*)**, garantizando un trato neutral a los pequeños comerciantes."
             },
             {
               "id": "B",
-              "text": "El Modelo A, porque el ROC-AUC es la única métrica aceptada por los fabricantes de software."
+              "text": "autorizar el embargo masivo de todos los comerciantes rurales argumentando que los algoritmos matemáticos están exentos de respetar los principios constitucionales de equidad."
             },
             {
               "id": "C",
-              "text": "Ninguno, porque dos modelos nunca pueden tener métricas diferentes."
+              "text": "duplicar las sanciones a los comerciantes de municipios apartados para compensar la dificultad logística de cobrarles."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "En problemas de baja prevalencia de la clase positiva (como fraude o enfermedades raras), la métrica ROC-AUC puede ser engañosa porque la tasa de falsos positivos ($FP / (FP + TN)$) se mantiene artificialmente baja por el gran número de $TN$. PR-AUC es mucho más exigente e informativa.",
+            "correct": "Es correcta. De acuerdo con el **CONPES 3975 de 2019 (Política Nacional de Transformación Digital e IA)** y el Marco Ético de IA para el Sector Público, las soluciones algorítmicas del Estado deben estar libres de sesgos discriminatorios sistemáticos contra grupos vulnerables o regiones históricamente desfavorecidas. Si una variable geográfica opera como un *proxy* discriminatorio que distorsiona el riesgo real, el Inspector I debe intervenir el pipeline, suprimir la variable sesgada y auditar el modelo bajo métricas formales de **Equidad (*Fairness*)**, garantizando el principio de equidad tributaria (Art. 363 C.P.).",
             "distractors": [
               {
                 "id": "B",
-                "reason": "ROC-AUC no es la única métrica; la literatura científica recomienda PR-AUC para datos sesgados."
+                "reason": "Es incorrecta. Los algoritmos no operan en un vacío jurídico; toda herramienta tecnológica pública está subordinada a los derechos constitucionales a la igualdad y al debido proceso."
               },
               {
                 "id": "C",
-                "reason": "Diferentes métricas ponderan distintos aspectos de la matriz de confusión."
+                "reason": "Es incorrecta. Imponer tratos más gravosos por razones puramente geográficas constituye una abierta violación de la legalidad y la moralidad administrativa."
               }
             ]
           }
         },
         {
           "id": 409,
-          "topic": "Regularización en Modelos Lineales: L1 (Lasso) vs. L2 (Ridge)",
-          "caseText": "Se entrena un modelo de regresión con más de 2.000 variables extraídas de la información exógena tributaria. Se requiere simplificar el modelo eliminando automáticamente las variables irrelevantes para dejar solo las más influyentes (selección de características).",
-          "statement": "¿Qué técnica de regularización matemática debe aplicarse?",
+          "topic": "Niveles de Madurez Analítica — Analítica Prescriptiva",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección de Gestión de Fiscalización cuenta con modelos predictivos que le indican con gran precisión qué contribuyentes tienen mayor propensión a incurrir en evasión del Impuesto Nacional al Consumo. Sin embargo, los directores seccionales manifiestan que los listados de sospechosos no son suficientes para actuar, puesto que no saben cómo balancear la asignación de sus inspectores especializados en auditorías de campo frente a los peritos en auditorías informáticas para maximizar el cobro coactivo antes de los vencimientos legales.",
+          "statement": "Para elevar el nivel de madurez analítica de la DIAN y solucionar la necesidad de los directivos, el profesional debe proponer",
           "options": [
             {
               "id": "A",
-              "text": "Regularización L1 (Lasso), porque penaliza la suma de los valores absolutos de los coeficientes, forzando a que los coeficientes de las variables redundantes o irrelevantes se conviertan exactamente en cero."
+              "text": "evolucionar de la analítica predictiva a la **Analítica Prescriptiva**, desarrollando un modelo de **Investigación de Operaciones y Optimización Matemática** que reciba las predicciones de riesgo y prescriba de manera óptima la asignación de inspectores según sus perfiles, costos y términos de prescripción legal."
             },
             {
               "id": "B",
-              "text": "Regularización L2 (Ridge), porque reduce los coeficientes hacia cero pero nunca los hace exactamente iguales a cero."
+              "text": "regresar a la analítica descriptiva y limitarse a imprimir gráficos de barras con los montos recaudados en los últimos diez años."
             },
             {
               "id": "C",
-              "text": "Desactivar toda regularización para que el modelo se sobreajuste libremente a los datos de entrenamiento."
+              "text": "delegar en una empresa privada externa la decisión de qué contribuyentes deben ser allanados e inspeccionados por la policía fiscal."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Lasso ($L1$) produce soluciones dispersas (sparse solutions) donde los coeficientes de variables no informativas se anulan ($w_i = 0$), actuando como un método intrínseco de selección de variables. Ridge ($L2$) solo encoge los coeficientes.",
+            "correct": "Es correcta. La **Analítica Prescriptiva** es el nivel cumbre del espectro de datos, diseñado específicamente para responder a la pregunta *\"¿Qué debemos hacer?\"*. Mientras que el modelo predictivo entrega únicamente el puntaje de probabilidad de fraude, el modelo prescriptivo formula un problema de **Programación Lineal u Optimización Combinatoria**: analiza los perfiles de los inspectores, los tiempos de desplazamiento, las restricciones presupuestales y los términos de prescripción legal (Art. 714 E.T.) para generar la asignación óptima de trabajo que maximiza el recaudo institucional.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Ridge reduce la varianza y la magnitud de los pesos, pero conserva todas las 2.000 variables en la ecuación."
+                "reason": "Es incorrecta. Regresar a reportes históricos descriptivos es un retroceso metodológico que no resuelve el problema de toma de decisiones operativas complejas."
               },
               {
                 "id": "C",
-                "reason": "Sin regularización, con 2.000 variables el modelo sufriría un severo sobreajuste (overfitting)."
+                "reason": "Es incorrecta. La potestad de fiscalización y determinación de tributos es una función pública indelegable de la DIAN que no puede privatizarse ni entregarse a terceros particulares."
               }
             ]
           }
         },
         {
           "id": 410,
-          "topic": "Técnicas de Balanceo de Clases: SMOTE vs. Ajuste de Umbral",
-          "caseText": "Para entrenar un árbol de decisión con 1.000.000 de registros donde solo 2.000 son fraudes, el analista evalúa cómo mitigar el impacto del desbalance.",
-          "statement": "¿Qué técnica avanzada genera ejemplos sintéticos plausibles de la clase minoritaria en el espacio de características?",
+          "topic": "MLOps, Despliegue Seguro y Validación en Producción",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El equipo de analítica de datos de la DIAN entrena un nuevo modelo basado en **LightGBM** para reemplazar al clasificador tradicional de perfilamiento aduanero en puertos de comercio exterior. Aunque el nuevo algoritmo obtuvo mejores métricas en los datos de prueba, la Dirección de Gestión de Aduanas teme que un error imprevisto en producción detenga las operaciones de comercio exterior o genere falsos positivos masivos que congestionen los puertos nacionales.",
+          "statement": "Para validar el rendimiento y la estabilidad técnica del nuevo modelo en condiciones de tráfico real sin arriesgar la operación del país, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "SMOTE (Synthetic Minority Over-sampling Technique), que crea muestras sintéticas interpolando entre vecinos cercanos (k-NN) de la clase minoritaria en lugar de duplicar registros existentes."
+              "text": "implementar una estrategia de **Despliegue en Modo Sombra (*Shadow Deployment*)**, donde el nuevo modelo recibe el tráfico de datos en tiempo real y calcula predicciones que se registran para auditoría interna y comparación estadística, mientras que las decisiones operativas de aduana continúan siendo tomadas por el sistema vigente."
             },
             {
               "id": "B",
-              "text": "Random Undersampling extremo, eliminando 998.000 registros legítimos hasta quedar solo con 2.000 de cada clase, perdiendo valiosa información."
+              "text": "apagar de inmediato el sistema anterior y forzar que todo el comercio exterior colombiano dependa del nuevo modelo experimental a partir de las doce de la noche."
             },
             {
               "id": "C",
-              "text": "Duplicar exactamente los 2.000 registros de fraude 500 veces para inducir sobreajuste memorístico."
+              "text": "desplegar el modelo únicamente en un computador portátil desconectado de la red institucional sin acceso a datos reales."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "SMOTE genera puntos sintéticos mediante interpolación lineal entre vecinos de la clase minoritaria, enriqueciendo la región de decisión del clasificador sin el riesgo de sobreajuste por duplicación exacta de instancias.",
+            "correct": "Es correcta. En la ingeniería de MLOps para infraestructuras críticas del Estado, el **Despliegue en Modo Sombra (*Shadow Deployment*)** es la práctica estándar más segura para validar modelos antes de su lanzamiento definitivo. El nuevo modelo recibe el 100% de los datos de tráfico de producción en paralelo, pero sus resultados no se utilizan para tomar decisiones operativas reales, sino que se comparan silenciosamente con el modelo vigente. Esto permite verificar la latencia, el consumo de memoria y la precisión real sin poner en riesgo la continuidad de los servicios aduaneros de la Nación.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "El submuestreo extremo descarta el 99.8% de los datos legítimos, perdiendo patrones cruciales del negocio."
+                "reason": "Es incorrecta. Reemplazar un sistema crítico de golpe (*Big Bang Deployment*) sin validación previa en producción expone a la entidad a parálisis operacionales y millonarias demandas por lucro cesante comercial."
               },
               {
                 "id": "C",
-                "reason": "La duplicación exacta provoca memorización y sobreajuste severo en árboles de decisión."
+                "reason": "Es incorrecta. Evaluar un modelo masivo en una máquina aislada sin tráfico real impide medir su comportamiento ante la concurrencia, latencia y variabilidad de la operación aduanera."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-4",
-      "track": "funcionales"
+      ]
     },
     "exam-5": {
       "title": "Examen: 5. Estándares y Políticas en Gobierno de Datos (10 Preguntas de DAMA, Calidad y Casos)",
@@ -8251,6 +8317,126 @@ window.COURSES_DATA['inspector1'] = {
       "back": "Mecanismo de seguridad que oculta atributos sensibles o confidenciales en tiempo de respuesta según los permisos del usuario sin alterar el dato en reposo en la base de datos.",
       "module": 3,
       "category": "Arquitectura de Integración de Datos"
+    },
+    {
+      "front": "Analítica Descriptiva",
+      "back": "Nivel analítico que responde a la pregunta \"¿Qué ocurrió?\" mediante agregaciones, cubos OLAP y tableros BI basados en datos históricos.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Analítica Diagnóstica",
+      "back": "Nivel analítico que responde a \"¿Por qué ocurrió?\" utilizando técnicas de desglose multidimensional (drill-down), varianza y correlación para hallar causas raíz.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Analítica Predictiva",
+      "back": "Nivel analítico que responde a \"¿Qué va a ocurrir?\" mediante modelos estadísticos y algoritmos de Machine Learning que estiman probabilidades futuras.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Analítica Prescriptiva",
+      "back": "Nivel analítico avanzado que responde a \"¿Qué debemos hacer?\" evaluando cursos de acción y recomendando la decisión óptima mediante optimización y simulación.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "CRISP-DM",
+      "back": "Estándar metodológico internacional e iterativo para proyectos de minería de datos compuesto por 6 fases: Negocio, Datos, Preparación, Modelado, Evaluación y Despliegue.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Fase de Preparación de Datos (CRISP-DM)",
+      "back": "Fase que consume entre el 70% y el 80% del tiempo total de un proyecto analítico, enfocada en limpieza, imputación e ingeniería de características.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Desbalance Severo de Clases",
+      "back": "Condición frecuente en fraude fiscal donde los casos positivos (evasores) representan menos del 1% del total, invalidando la métrica de Accuracy.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "SMOTE",
+      "back": "Técnica de remuestreo sintético que combate el desbalance de clases creando instancias artificiales de la clase minoritaria por interpolación entre vecinos cercanos.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Isolation Forest",
+      "back": "Algoritmo no supervisado que detecta anomalías aislando observaciones en árboles binarios aleatorios; los datos atípicos se aíslan con caminos más cortos.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "DBSCAN",
+      "back": "Algoritmo de agrupamiento basado en densidad que identifica cúmulos de forma arbitraria y etiqueta como ruido u outliers a los puntos aislados en zonas dispersas.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "PageRank en Grafos Fiscales",
+      "back": "Algoritmo de centralidad que mide la importancia relativa de los nodos en una red para identificar empresas nodales en carruseles de facturación de IVA.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Falso Positivo en Fiscalización",
+      "back": "Clasificar erróneamente a un contribuyente honesto como evasor, generando desperdicio de horas de inspección y desgaste al ciudadano inocente.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Falso Negativo en Fiscalización",
+      "back": "Omitir la detección de un evasor real, provocando pérdida definitiva de recaudo para el Estado por la firmeza legal de la declaración.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Precision (Precisión)",
+      "back": "Métrica que calcula la proporción de alertas de auditoría que resultaron ser infractores reales: TP / (TP + FP).",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Recall (Sensibilidad)",
+      "back": "Métrica que calcula el porcentaje de evasores reales existentes que el modelo logró capturar: TP / (TP + FN).",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Curva Precision-Recall (PR-AUC)",
+      "back": "Métrica de evaluación preferida en problemas con clases extremadamente desbalanceadas (como fraude fiscal), superior a la curva ROC.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Feature Store",
+      "back": "Plataforma que almacena, versiona y sirve características para ML, dividida en Offline Store (datos históricos masivos) y Online Store (baja latencia en memoria).",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Data Drift (Deriva de Datos)",
+      "back": "Cambio en la distribución estadística de las variables de entrada P(X) provocado por factores económicos (como inflación) manteniendo igual la relación P(Y|X).",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Concept Drift (Deriva de Concepto)",
+      "back": "Modificación en la relación estadística P(Y|X) debida a que los evasores adaptan nuevas tácticas para burlar las reglas del modelo.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
+    },
+    {
+      "front": "Valores SHAP",
+      "back": "Método de explicabilidad basado en teoría de juegos que asigna a cada variable su contribución marginal exacta para justificar actos administrativos motivados.",
+      "module": 4,
+      "category": "Capacidades Analíticas y Uso Estratégico de la Información"
     }
   ]
 };
