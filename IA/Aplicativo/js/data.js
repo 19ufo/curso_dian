@@ -531,29 +531,80 @@ window.COURSES_DATA['inspector1'] = {
     {
       "id": "mod-6",
       "track": "funcionales",
-      "title": "ESTRUCTURA ORGANIZACIONAL DE LA DIAN",
+      "title": "Estructura Organizacional de la DIAN",
       "badge": "Funcional - Decreto 1742/2020 & Gobernanza",
       "examId": "exam-6",
       "lessons": [
         {
-          "id": "les-6",
+          "id": "les-6-1",
           "moduleId": "mod-6",
-          "title": "ESTRUCTURA ORGANIZACIONAL DE LA DIAN",
-          "badge": "Funcional - Decreto 1742/2020 & Gobernanza",
+          "unitNumber": 1,
+          "title": "Unidad 1: Naturaleza Jurídica y Régimen de Carrera Administrativa (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023)",
+          "badge": "Competencias Funcionales",
           "readTime": "25 min",
-          "content": "<h2>Guía Maestra de Estudio: Estructura Organizacional de la DIAN (Decreto 1742 de 2020)</h2>\n<p class=\"lead\">Esta guía consolida la arquitectura orgánica integral de la DIAN, delimitando con precisión técnica las competencias del Nivel Central, las 8 Direcciones de Gestión con la totalidad de sus Subdirecciones, las Oficinas Asesoras, el Nivel Desconcentrado (Seccionales y Divisiones), los Comités de Dirección y el Sistema Específico de Carrera (Decretos Ley 071/2020 y 927/2023).</p>\n\n<h3>Módulo 1: Marco Legal, Naturaleza Jurídica y Principios del Estado</h3>\n<p>La <strong>Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN)</strong> es una entidad técnica del sector descentralizado por servicios de la Rama Ejecutiva (Art. 113 C.P.), adscrita al Ministerio de Hacienda y Crédito Público. Cuenta con <strong>personería jurídica, autonomía administrativa, financiera y presupuestal y patrimonio propio</strong> (Decretos 1071 de 1999 y 1742 de 2020).</p>\n\n<p>Su función se ejerce bajo los principios constitucionales de igualdad, moralidad, eficacia, economía, celeridad, imparcialidad y publicidad (Art. 209 C.P.), mediante tres figuras administrativas esenciales:</p>\n<ul>\n    <li><strong>Descentralización:</strong> Traslado de competencias y personería jurídica propia del Estado hacia la entidad (la DIAN como persona jurídica autónoma).</li>\n    <li><strong>Desconcentración:</strong> Radicación territorial de funciones dentro de la misma persona jurídica (Direcciones Seccionales que ejecutan la fiscalización y recaudo).</li>\n    <li><strong>Delegación:</strong> Traslado transitorio y motivado de una función específica de una autoridad a otra de igual o menor nivel (actos delegados revocables).</li>\n</ul>\n\n<h3>Módulo 2: Oficinas Asesoras y de Control del Despacho del Director General</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Oficina Asesora / de Control</th><th>Competencias Institucionales Clave</th><th>Interacción con TI y Datos</th></tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Oficina de Seguridad de la Información (OSI)</strong></td><td>Define y supervisa el Sistema de Gestión de Seguridad de la Información (SGSI - ISO 27001), ciberseguridad, gestión de incidentes y custodia de activos informáticos.</td><td>Establece controles criptográficos, audita accesos al DataR y coordina la respuesta a incidentes de brechas en datos reservados.</td></tr>\n        <tr><td><strong>Oficina de Comunicaciones Institucionales</strong></td><td>Dirige la estrategia de comunicación interna y externa, relaciones con medios, cultura tributaria y política de Lenguaje Claro.</td><td>Difunde campañas de sensibilización ciudadana sobre facturación electrónica y servicios digitales.</td></tr>\n        <tr><td><strong>Oficina de Control Interno</strong></td><td>Evalúa de forma independiente el Sistema de Control Interno bajo MIPG (Tercera Línea de Defensa) y realiza auditorías de procesos y riesgos.</td><td>Audita periódicamente la trazabilidad de accesos a bases de datos y la gestión de cambios en sistemas.</td></tr>\n        <tr><td><strong>Oficina de Control Disciplinario Interno</strong></td><td>Instruye y falla en primera instancia los procesos disciplinarios contra servidores de la entidad (Ley 1952 de 2019 / Ley 2094 de 2021).</td><td>Investiga faltas disciplinarias gravísimas como la violación de reserva tributaria (Art. 583 E.T.) o alteración indebida de sistemas.</td></tr>\n        <tr><td><strong>Defensoría del Contribuyente y del Usuario Aduanero</strong></td><td>Garantiza los derechos de los usuarios y contribuyentes ante la DIAN, formula recomendaciones y atiende quejas de vulneración del debido proceso.</td><td>Monitorea incidentes tecnológicos que impidan el cumplimiento oportuno de obligaciones ciudadanas.</td></tr>\n    </tbody>\n</table>\n\n<h3>Módulo 3: Las Ocho (8) Direcciones de Gestión del Nivel Central y sus Subdirecciones</h3>\n<table class=\"data-table\">\n    <thead>\n        <tr><th>Dirección de Gestión</th><th>Subdirecciones que la Integran</th><th>Competencias Misionales y Operativas</th></tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>1. Dirección de Gestión Corporativa</strong></td>\n            <td>• Subdirección de Administración del Talento Humano<br>• Subdirección Financiera<br>• Subdirección Administrativa<br>• Subdirección de Gestión Documental<br>• Escuela de Impuestos y Aduanas Nacionales</td>\n            <td>Administra los recursos institucionales: talento humano, carrera administrativa (DL 071/2020), presupuesto, tesorería, contratación estatal, archivo y programas de capacitación y especialización técnica de los servidores.</td>\n        </tr>\n        <tr>\n            <td><strong>2. Dirección de Gestión Estratégica y de Analítica</strong></td>\n            <td>• Subdirección de Estudios Económicos<br>• Subdirección de Información y Analítica<br>• Subdirección de Planeación y Cumplimiento</td>\n            <td>Formula el plan estratégico de la DIAN, estima metas de recaudo macrofiscal, mide brechas de evasión y elusión, y diseña modelos analíticos de scoring predictivo y perfiles de riesgo fiscal y aduanero.</td>\n        </tr>\n        <tr>\n            <td><strong>3. Dirección de Gestión Jurídica</strong></td>\n            <td>• Subdirección de Normativa y Doctrina<br>• Subdirección de Representación Externa</td>\n            <td>Unifica la doctrina jurídica institucional mediante <strong>Conceptos Jurídicos obligatorios y vinculantes</strong> para todos los funcionarios de la entidad, interpreta el Estatuto Tributario, Aduanero y Cambiario, y ejerce la defensa judicial ante cortes y tribunales.</td>\n        </tr>\n        <tr>\n            <td><strong>4. Dirección de Gestión de Impuestos</strong></td>\n            <td>• Subdirección de Recaudo<br>• Subdirección de Cobranzas y Control Extensivo<br>• Subdirección de Devoluciones y Compensaciones<br>• Subdirección de Operación de Servicio</td>\n            <td>Dirige la administración del recaudo voluntario y forzoso, control de omisos e inexactos, cobranzas coactivas, devolución de saldos a favor (manuales y automáticas), y canales de servicio y atención al contribuyente.</td>\n        </tr>\n        <tr>\n            <td><strong>5. Dirección de Gestión de Aduanas</strong></td>\n            <td>• Subdirección de Registro Aduanero<br>• Subdirección de Operación Aduanera<br>• Subdirección de Técnica Aduanera<br>• Subdirección de Control de Carga<br>• Subdirección de Fiscalización Aduanera</td>\n            <td>Controla la operación aduanera nacional, calificación de usuarios y OEA, regímenes de importación/exportación/tránsito, arancel de aduanas, reglas de origen, valoración y trazabilidad de carga en puertos y aeropuertos.</td>\n        </tr>\n        <tr>\n            <td><strong>6. Dirección de Gestión de Fiscalización</strong></td>\n            <td>• Subdirección de Fiscalización Tributaria<br>• Subdirección de Fiscalización Cambiaria<br>• Subdirección de Determinación</td>\n            <td>Diseña los programas nacionales de auditoría e investigación tributaria y cambiaria, emite requerimientos especiales y profiere liquidaciones oficiales de revisión, aforo y resoluciones sancionatorias.</td>\n        </tr>\n        <tr>\n            <td><strong>7. Dirección de Gestión de Policía Fiscal y Aduanera (POLFA)</strong></td>\n            <td>Articulación con Dirección de Gestión de Aduanas y Policía Nacional</td>\n            <td>Ejecuta labores operativas de inteligencia, patrullaje, allanamientos, interdicción y aprehensión de mercancías de contrabando en vías nacionales, pasos fronterizos y centros comerciales clandestinos.</td>\n        </tr>\n        <tr>\n            <td><strong>8. Dirección de Gestión de Innovación y Tecnología (DGIT)</strong><br><em>(Hogar del Inspector I)</em></td>\n            <td><strong>• Subdirección de Procesamiento de Datos (OPEC 236670)</strong><br>• Subdirección de Soluciones y Desarrollo<br>• Subdirección de Infraestructura Tecnológica y de Operaciones<br>• Subdirección de Innovación y Proyectos</td>\n            <td>Define la arquitectura de TI, telecomunicaciones y ciberseguridad. <strong>La Subdirección de Procesamiento de Datos administra el Repositorio Único (DataR)</strong>, clústeres de Big Data (Spark, Kafka), modelado de datos, gobierno técnico, linaje y servicios de interoperabilidad estatal.</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>Módulo 4: El Nivel Desconcentrado y Estructura de las Direcciones Seccionales</h3>\n<p>El Nivel Desconcentrado ejecuta materialmente los procesos en el territorio bajo subordinación técnica y normativa del Nivel Central:</p>\n<ul>\n    <li><strong>Direcciones Seccionales de Impuestos:</strong> Jurisdicción sobre tributos internos en grandes ciudades (Bogotá, Medellín, Cali).</li>\n    <li><strong>Direcciones Seccionales de Aduanas:</strong> Control aduanero y despacho en puertos, pasos fronterizos y aeropuertos (Buenaventura, Cartagena, Bogotá Aduanas, Cúcuta).</li>\n    <li><strong>Direcciones Seccionales de Impuestos y Aduanas (Mixtas):</strong> Doble competencia tributaria y aduanera en ciudades intermedias y de frontera (Bucaramanga, Barranquilla, Pereira, Ipiales, Leticia, Arauca).</li>\n    <li><strong>Dirección Seccional de Grandes Contribuyentes:</strong> Competencia exclusiva sobre los sujetos calificados como Grandes Contribuyentes con <strong>cobertura en todo el territorio nacional</strong>.</li>\n</ul>\n\n<h4>Divisiones Operativas Internas de una Dirección Seccional:</h4>\n<p>Cada Dirección Seccional se estructura internamente en Divisiones: <em>División de Servicio al Ciudadano, División de Fiscalización y Liquidación, División de Recaudo y Cobranzas, División de Devoluciones y Compensaciones, División de Operación Aduanera, División Jurídica y División Administrativa y Financiera</em>.</p>\n\n<div class=\"callout warning\">\n    <p><strong>⚠️ Regla de Oro Institucional:</strong> Ninguna Dirección Seccional tiene competencia para crear bases de datos independientes, alterar tablas maestras en DataR ni implementar software propio que fracture la visión única del dato estatal.</p>\n</div>\n\n<h3>Módulo 5: Instancias Colegiadas y Sistema Específico de Carrera DIAN</h3>\n<ul>\n    <li><strong>Comité de Dirección:</strong> Máxima instancia de decisión directiva presidida por el Director General.</li>\n    <li><strong>Comité Institucional de Gestión y Desempeño:</strong> Responsable de la articulación y seguimiento del MIPG y las políticas de integridad.</li>\n    <li><strong>Comisión de Personal de la DIAN:</strong> Órgano bipartito y paritario que vigila la carrera administrativa y protege los derechos laborales.</li>\n    <li><strong>Sistema Específico de Carrera (Decretos Ley 071 de 2020 y 927 de 2023):</strong> Régimen especial fundamentado en el mérito y la igualdad de oportunidades administrado por la CNSC. Incluye período de prueba improrrogable de exactamente seis (6) meses y Evaluación del Desempeño Laboral (EDL) articulada con la Resolución 065 de 2024.</li>\n</ul>\n\n<h3>Módulo 6: El Empleo de Inspector I (Ficha IT-PD-3004)</h3>\n<div class=\"architecture-grid\">\n    <div class=\"arch-card\">\n        <h4>Propósito Principal del Empleo</h4>\n        <p>Analizar las necesidades de interoperabilidad de la DIAN y la plataforma de acceso y disponibilidad de datos, teniendo en cuenta las políticas de seguridad establecidas por la DIAN en el Repositorio Único (DataR).</p>\n    </div>\n    <div class=\"arch-card\">\n        <h4>Funciones Esenciales del Inspector I</h4>\n        <ul>\n            <li>Analizar y aplicar la arquitectura y modelado de datos en el DataR.</li>\n            <li>Implementar lineamientos de gobierno de datos y catálogo corporativo de metadatos.</li>\n            <li>Administrar la plataforma de procesamiento masivo y pipelines de ingesta (ETL/ELT).</li>\n            <li>Asegurar la reserva tributaria (Art. 583 E.T.), controles de seguridad y disponibilidad.</li>\n        </ul>\n    </div>\n</div>",
-          "links": [
-            {
-              "name": "Decreto 1742 de 2020 - Estructura DIAN (Función Pública)",
-              "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=154388"
-            },
-            {
-              "name": "Organigrama Oficial de la DIAN",
-              "url": "https://www.dian.gov.co/"
-            }
-          ]
+          "minutes": 25,
+          "words": 1336,
+          "content": "<p># Guía Maestra de Estudio: 06. Estructura Organizacional de la DIAN</p>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Propósito del Indicador en la Prueba Escrita DIAN 2676 En el empleo <strong>Inspector I (OPEC 236670)</strong> de la Subdirección de Procesamiento de Datos, el eje <strong>Estructura Organizacional de la DIAN</strong> evalúa tu conocimiento integral sobre el diseño orgánico, funcional y competencial del Estado colombiano y de la administración tributaria, aduanera y cambiaria. La prueba escrita de la Universidad Areandina exige dominar la naturaleza jurídica de la DIAN como Unidad Administrativa Especial (UAE) adscrita al Ministerio de Hacienda y Crédito Público (<strong>Ley 489 de 1998 y Decreto 1071 de 1999</strong>), el desglose pormenorizado del <strong>Decreto 1742 de 2020</strong> (Despacho del Director General, Oficinas Asesoras y de Control, las 8 Direcciones de Gestión y el Nivel Desconcentrado de Seccionales), el rol misional y técnico de la <strong>Dirección de Gestión de Innovación y Tecnología (DGIT)</strong> y de la <strong>Subdirección de Procesamiento de Datos</strong> en la gobernanza y explotación de <strong>DataR</strong>, el <strong>Sistema Específico de Carrera Administrativa (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023)</strong>, y la ubicación funcional del empleo Inspector I en el Manual Específico de Requisitos y Funciones (<strong>Resolución DIAN No. 067 de 2024</strong>).</p></div>\n<hr>\n<h2>Mapa de Ruta del Módulo (5 Unidades de Profundización)</h2>\n<ol><li><strong>Unidad 1:</strong> Naturaleza Jurídica y Régimen de Carrera Administrativa (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023).</li><li><strong>Unidad 2:</strong> Estructura del Nivel Central y Direcciones de Gestión (Decreto 1742 de 2020).</li><li><strong>Unidad 3:</strong> Dirección de Gestión de Innovación y Tecnología y Subdirección de Procesamiento de Datos.</li><li><strong>Unidad 4:</strong> Nivel Desconcentrado y Tipología de Direcciones Seccionales de Impuestos y Aduanas.</li><li><strong>Unidad 5:</strong> Ubicación Funcional del Empleo Inspector I en el MERF (Resolución DIAN No. 067 de 2024).</li></ol>\n<hr>\n<hr>\n<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Derecho Administrativo, Función Pública y Sistema Específico de Carrera</p>\n<h3>1.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la ubicación constitucional y administrativa de la DIAN dentro de la Rama Ejecutiva del Poder Público en Colombia, diferenciar los conceptos de descentralización, desconcentración y delegación, y dominar las normas del <strong>Sistema Específico de Carrera Administrativa</strong> de la entidad regulado por el <strong>Decreto Ley 071 de 2020</strong> y modernizado profundamente por el <strong>Decreto Ley 927 de 2023</strong>.</p>\n<h3>1.2. Ubicación de la DIAN en la Estructura del Estado Colombiano</h3>\n<p>El Estado colombiano se organiza conforme al principio de separación de poderes consagrado en el Artículo 113 de la Constitución Política (Ramas Legislativa, Ejecutiva y Judicial), junto con los órganos de control (Procuraduría, Contraloría) y la organización electoral.</p>\n<p>La Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (<strong>UAE DIAN</strong>) se ubica en la <strong>Rama Ejecutiva del Poder Público del Orden Nacional</strong>:</p>\n<ul><li><strong>Sector Administrativo:</strong> Sector de Hacienda y Crédito Público.</li><li><strong>Naturaleza Jurídica (Decreto 1071 de 1999 y Decreto 1742 de 2020):</strong> Es una <strong>Unidad Administrativa Especial (UAE)</strong> con personería jurídica, autonomía administrativa, financiera y presupuestal, y patrimonio propio, <strong>adscrita</strong> al Ministerio de Hacienda y Crédito Público.</li><li><strong>Control de Tutela Gubernamental:</strong> Al ser una entidad adscrita (y no vinculada como las empresas industriales y comerciales del Estado), el Ministerio de Hacienda ejerce un control de tutela o coordinación sobre las metas globales de recaudo y la política fiscal macroeconómica. Sin embargo, la DIAN goza de <strong>plena autonomía técnica, funcional y doctrinal</strong> para fijar la interpretación oficial de las leyes tributarias y aduaneras mediante conceptos vinculantes y para ejecutar las auditorías y cobros coactivos.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>UBICACIÓN DE LA DIAN EN LA RAMA EJECUTIVA DEL ESTADO COLOMBIANO:\n+------------------------------------------------------------------------+\n| PRESIDENCIA DE LA REPÚBLICA                                            |\n+------------------------------------------------------------------------+\n                                   |\n                                   v\n+------------------------------------------------------------------------+\n| MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO                               |\n+------------------------------------------------------------------------+\n                                   | (Control de Tutela y Coordinación)\n                                   v\n+------------------------------------------------------------------------+\n| UNIDAD ADMINISTRATIVA ESPECIAL DIAN                                    |\n| - Personería jurídica propia                                           |\n| - Autonomía administrativa, presupuestal y financiera                   |\n| - Patrimonio autónomo e independiente                                  |\n| - Jurisdicción coactiva nacional sobre tributos, aduanas y cambios     |\n+------------------------------------------------------------------------+</code></pre></div>\n<h3>1.3. Conceptos Rectores de Organización Administrativa (Ley 489 de 1998)</h3>\n<p>Para comprender la estructura de la DIAN, el Inspector I debe dominar la distinción entre tres figuras fundamentales del Derecho Administrativo colombiano:</p>\n<ol><li><strong>Descentralización por Servicios:</strong> Es la creación por ley de una persona jurídica pública con patrimonio y autonomía propios para ejercer una función técnica especializada del Estado. La DIAN es una entidad descentralizada por servicios adscrita al Ministerio de Hacienda.</li><li><strong>Desconcentración Territorial y Funcional:</strong> Es la radicación de competencias y facultades de decisión en dependencias ubicadas fuera de la sede principal (Nivel Central), sin que estas adquieran personería jurídica independiente. Las <strong>Direcciones Seccionales de Impuestos y Aduanas</strong> en todo el país (ej. Seccional Cali o Seccional Cúcuta) son dependencias desconcentradas que ejecutan las funciones de la DIAN en sus respectivas jurisdicciones territoriales.</li><li><strong>Delegación de Funciones (Art. 9 Ley 489 de 1998):</strong> Es el acto formal y administrativo mediante el cual una autoridad (como el Director General de la DIAN) traslada el ejercicio de funciones específicas a sus subalternos (Directores de Gestión, Subdirectores o Directores Seccionales) mediante resolución motivada, manteniendo la potestad de reasumir la función en cualquier momento.</li></ol>\n<h3>1.4. El Sistema Específico de Carrera Administrativa de la DIAN</h3>\n<p>El mérito es el principio rector del acceso al empleo público en Colombia (Art. 125 C.P.). Aunque la Ley 909 de 2004 regula el Sistema General de Carrera, la Constitución facultó al legislador para crear <strong>Sistemas Específicos de Carrera</strong> para entidades cuyas funciones misionales demandan alta especialización técnica, confidencialidad e integridad, como la DIAN.</p>\n<p>El régimen de carrera de la DIAN está gobernado por el <strong>Decreto Ley 071 de 2020</strong> y fue reformado integralmente por el <strong>Decreto Ley 927 de 2023</strong>:</p>\n<h4>Principios Rectores y Estructura del Empleo:</h4>\n<ul><li><strong>Mérito y Capacidad:</strong> El ingreso y el ascenso se realizan obligatoriamente mediante concursos públicos de méritos administrados por la <strong>Comisión Nacional del Servicio Civil (CNSC)</strong>.</li><li><strong>Modalidades del Concurso:</strong></li><li><strong>Concurso de Ascenso (Cerrado):</strong> Dirigido exclusivamente a servidores que ya ostentan derechos de carrera en la DIAN para permitir la movilidad vertical (ponderación: Pruebas Funcionales 60%, Comportamentales 15%, Integridad 10%, Valoración de Antecedentes 15%).</li><li><strong>Concurso de Ingreso (Abierto):</strong> Abierto a toda la ciudadanía que cumpla los requisitos de estudio y experiencia (ponderación: Pruebas Funcionales 65%, Comportamentales 15%, Integridad 10%, Antecedentes 10%).</li><li><strong>Período de Prueba:</strong> Tiene una duración de <strong>seis (6) meses</strong>. Al finalizar, el empleado es evaluado formalmente; si obtiene calificación satisfactoria, adquiere los derechos de carrera administrativa y se ordena su inscripción en el Registro Público de Carrera de la DIAN.</li><li><strong>Comisiones de Personal:</strong> Órganos colegiados paritarios (integrados por dos representantes de la administración y dos representantes de los empleados elegidos por votación directa) que vigilan el cumplimiento de las normas de carrera, atienden reclamaciones por desmejora laboral o vulneración del derecho preferente a encargo.</li></ul>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>RUTAS DE PROVISIÓN Y MOVILIDAD EN LA CARRERA DE LA DIAN:\n+------------------------------------------------------------------------+\n| CONCURSO PÚBLICO DE MÉRITOS (CNSC)                                     |\n| [Ingreso Abierto] o [Ascenso Cerrado para Servidores de Carrera]       |\n+------------------------------------------------------------------------+\n                                   |\n                                   v\n+------------------------------------------------------------------------+\n| PERÍODO DE PRUEBA (6 Meses Evaluables)                                 |\n+------------------------------------------------------------------------+\n                                   | Calificación Satisfactoria\n                                   v\n+------------------------------------------------------------------------+\n| DERECHOS DE CARRERA ADMINISTRATIVA ESPECÍFICA (Inscripción en Registro)|\n| - Inamovilidad relativa (estabilidad laboral reforzada)                 |\n| - Derecho preferente a Encargos en empleos vacantes superiores         |\n| - Movilidad y participación en concursos de ascenso cerrados           |\n+------------------------------------------------------------------------+</code></pre></div>\n<h3>1.5. Matriz Comparativa: Sistema General frente a Sistema Específico DIAN</h3>\n<table class=\"data-table\"><thead><tr><th>Criterio</th><th>Sistema General de Carrera (Ley 909 de 2004)</th><th>Sistema Específico de Carrera DIAN (Decretos Ley 071/2020 y 927/2023)</th></tr></thead><tbody><tr><td><strong>Ámbito de Aplicación</strong></td><td>Ministerios, Departamentos Administrativos y entes territoriales comunes</td><td>Exclusivo para la UAE DIAN (Personal Tributario, Aduanero y Cambiario)</td></tr><tr><td><strong>Período de Prueba</strong></td><td>Seis (6) meses con evaluación ordinaria</td><td>Seis (6) meses con evaluación estricta de competencias e integridad</td></tr><tr><td><strong>Enfoque de Competencias</strong></td><td>Competencias laborales genéricas (Decreto 815 de 2018)</td><td>Competencias misionales específicas, analíticas, tributarias y éticas</td></tr><tr><td><strong>Régimen Disciplinario</strong></td><td>Ley 1952 de 2019 / Ley 2094 de 2021 (Código General)</td><td>Régimen Disciplinario General con causales agravadas por Reserva Tributaria</td></tr><tr><td><strong>Capacitación e Inducción</strong></td><td>Planes institucionales de capacitación generales</td><td>Escuela de Impuestos y Aduanas Nacionales de la DIAN</td></tr></tbody></table>\n<div class=\"callout law\"><strong class=\"callout-title\">⚖️ Marco Normativo</strong><p>Decreto Ley 927 de 2023 (Modernización de la Carrera en la DIAN) El Decreto Ley 927 de 2023 ajustó el sistema de carrera de la DIAN fortaleciendo la movilidad vertical de los servidores, garantizando la alternancia transparente entre concursos de ascenso e ingreso, y tipificando con claridad los derechos adquiridos en la carrera frente a procesos de reestructuración tecnológica institucional.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-6-2",
+          "moduleId": "mod-6",
+          "unitNumber": 2,
+          "title": "Unidad 2: Estructura del Nivel Central y Direcciones de Gestión (Decreto 1742 de 2020)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 731,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Organigrama Institucional, Direcciones de Gestión y Dependencias Asesoras</p>\n<h3>2.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Dominar la estructura orgánica completa del Nivel Central de la DIAN establecida por el <strong>Decreto 1742 de 2020</strong>, conociendo las competencias y la misión institucional del Despacho del Director General, las Oficinas Asesoras y de Control, y las <strong>ocho (8) Direcciones de Gestión</strong> que coordinan la administración tributaria y aduanera de la Nación.</p>\n<h3>2.2. El Rediseño Institucional del Decreto 1742 de 2020</h3>\n<p>El Decreto 1742 de 2020 reestructuró de forma integral la DIAN para adaptarla a la economía digital y a la fiscalización basada en macrodatos. El rediseño agrupó las funciones de la entidad en tres niveles claramente diferenciados:</p>\n<ol><li><strong>Nivel Central (Dirección y Política):</strong> Fija las directrices, reglamentaciones, doctrina jurídica, modelos analíticos y herramientas tecnológicas unificadas para todo el territorio nacional.</li><li><strong>Nivel Desconcentrado (Operación Seccional):</strong> Ejecuta materialmente las tareas de recaudo, fiscalización en campo, control aduanero y cobranza en las regiones.</li><li><strong>Oficinas Asesoras y de Control:</strong> Asesoran directamente a la Dirección General y supervisan la integridad, legalidad y seguridad de las operaciones.</li></ol>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA GENERAL DEL NIVEL CENTRAL DE LA DIAN (Decreto 1742 de 2020):\n                                       +-----------------------------------+\n                                       |      DIRECCIÓN GENERAL DIAN       |\n                                       +-----------------+-----------------+\n                                                         |\n         +-----------------------------------------------+-----------------------------------------------+\n         |                                               |                                               |\n         v                                               v                                               v\n+-----------------------------------+   +-----------------------------------+   +-----------------------------------+\n| OFICINAS ASESORAS Y DE CONTROL    |   | 8 DIRECCIONES DE GESTIÓN CENTRAL  |   | DEFENSORÍA DEL CONTRIBUYENTE      |\n| 1. Seguridad de la Información    |   | 1. Gestión Corporativa            |   | Y DEL USUARIO ADUANERO            |\n| 2. Comunicaciones Institucionales |   | 2. Gestión Estratégica y Analítica|   | (Garantía de derechos ciudadanos) |\n| 3. Control Interno                |   | 3. Gestión Jurídica               |   +-----------------------------------+\n| 4. Control Disciplinario Interno  |   | 4. Gestión de Impuestos           |\n+-----------------------------------+   | 5. Gestión de Aduanas             |\n                                        | 6. Gestión de Fiscalización       |\n                                        | 7. Policía Fiscal y Aduanera POLFA|\n                                        | 8. Innovación y Tecnología (DGIT) |\n                                        +-----------------------------------+</code></pre></div>\n<h3>2.3. Despacho del Director General y Oficinas de Apoyo Inmediato</h3>\n<p>El <strong>Director General</strong> ejerce la representación legal de la entidad, dirige la política fiscal y aduanera en el marco de las directrices del Gobierno Nacional y expide las resoluciones de carácter general.</p>\n<p>Dependen directamente de la Dirección General:</p>\n<ul><li><strong>Oficina de Seguridad de la Información (OSI):</strong> Diseña, implementa y audita el Sistema de Gestión de Seguridad de la Información (SGSI - ISO 27001), supervisando la protección de los centros de cómputo y el estricto cumplimiento del sigilo legal y la <strong>Reserva Tributaria (Art. 583 E.T.)</strong>.</li><li><strong>Oficina de Control Disciplinario Interno:</strong> Conoce y falla en primera instancia los procesos disciplinarios contra los funcionarios de la DIAN por faltas contra la ética pública, la moralidad administrativa o la divulgación indebida de secretos oficiales.</li><li><strong>Oficina de Control Interno:</strong> Evalúa de forma independiente el sistema de control interno institucional (MIPG) y formula recomendaciones de mejora.</li><li><strong>Defensoría del Contribuyente y del Usuario Aduanero:</strong> Órgano autónomo que actúa como garante de los derechos de los ciudadanos frente a posibles abusos o demoras injustificadas de la administración.</li></ul>\n<h3>2.4. Las Ocho (8) Direcciones de Gestión del Nivel Central</h3>\n<p>El Decreto 1742 de 2020 distribuye la operación macro en ocho Direcciones de Gestión:</p>\n<h4>1. Dirección de Gestión Corporativa</h4>\n<p>Responsable de los recursos físicos, financieros y humanos:</p>\n<ul><li><em>Subdirecciones:</em> Talento Humano, Financiera, Logística, Contratación y la <strong>Escuela de Impuestos y Aduanas Nacionales</strong>.</li></ul>\n<h4>2. Dirección de Gestión Estratégica y Analítica</h4>\n<p>Formula la planeación institucional y realiza estudios económicos sobre el impacto fiscal de las políticas públicas:</p>\n<ul><li><em>Subdirecciones:</em> Planeación y Presupuesto, Estudios Económicos y Analítica de Datos.</li></ul>\n<h4>3. Dirección de Gestión Jurídica</h4>\n<p>Emite la doctrina oficial tributaria, aduanera y cambiaria mediante conceptos y oficios de obligatorio cumplimiento para los funcionarios de la entidad, y ejerce la representación judicial:</p>\n<ul><li><em>Subdirecciones:</em> Normativa y Doctrina, y Representación Externa.</li></ul>\n<h4>4. Dirección de Gestión de Impuestos</h4>\n<p>Administra el ciclo tributario de recaudo voluntario y coactivo:</p>\n<ul><li><em>Subdirecciones:</em> Recaudo, Cobranzas, Devoluciones y Servicio al Ciudadano.</li></ul>\n<h4>5. Dirección de Gestión de Aduanas</h4>\n<p>Gobierna las operaciones de comercio exterior, importación, exportación y tránsito aduanero:</p>\n<ul><li><em>Subdirecciones:</em> Operación Aduanera, Técnica Aduanera (aranceles y valoración), Registro y Riesgo Aduanero, y el Laboratorio Químico Aduanero.</li></ul>\n<h4>6. Dirección de Gestión de Fiscalización</h4>\n<p>Diseña las campañas de investigación y control sobre la evasión y la elusión fiscal:</p>\n<ul><li><em>Subdirecciones:</em> Fiscalización Tributaria, Fiscalización Aduanera y Control Cambiario.</li></ul>\n<h4>7. Dirección de Gestión de Policía Fiscal y Aduanera (POLFA)</h4>\n<p>Articula el componente de la Policía Nacional adscrito a la DIAN para ejecutar operativos de interdicción física contra el contrabando, allanamientos y control en puertos, aeropuertos y ejes viales.</p>\n<h4>8. Dirección de Gestión de Innovación y Tecnología (DGIT)</h4>\n<p>El cerebro tecnológico y de datos de la DIAN, que se analiza a profundidad en la siguiente unidad.</p>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-6-3",
+          "moduleId": "mod-6",
+          "unitNumber": 3,
+          "title": "Unidad 3: Dirección de Gestión de Innovación y Tecnología y Subdirección de Procesamiento de Datos",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 538,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Estructura de TI, Subdirección de Procesamiento de Datos y Competencias del Inspector I</p>\n<h3>3.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Analizar en detalle las funciones y la estructura interna de la <strong>Dirección de Gestión de Innovación y Tecnología (DGIT)</strong> conforme al Decreto 1742 de 2020, dominando las competencias específicas de la <strong>Subdirección de Procesamiento de Datos</strong> en la administración del Repositorio Único <strong>DataR</strong>, la Facturación Electrónica UBL 2.1 y la Información Exógena.</p>\n<h3>3.2. La Dirección de Gestión de Innovación y Tecnología (DGIT)</h3>\n<p>La DGIT es la dependencia del Nivel Central encargada de planear, diseñar, implementar y asegurar la infraestructura de tecnologías de la información, las telecomunicaciones y las plataformas de datos masivos de la DIAN.</p>\n<p>El Artículo 52 del Decreto 1742 de 2020 organiza a la DGIT en cuatro subdirecciones especializadas:</p>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>ESTRUCTURA DE LA DIRECCIÓN DE GESTIÓN DE INNOVACIÓN Y TECNOLOGÍA (DGIT):\n+------------------------------------------------------------------------+\n| DIRECCIÓN DE GESTIÓN DE INNOVACIÓN Y TECNOLOGÍA (DGIT)                 |\n+------------------------------------------------------------------------+\n                                   |\n         +-------------------------+-------------------------+\n         |                         |                         |\n         v                         v                         v\n+-------------------+     +-------------------+     +-------------------+\n| SUBDIRECCIÓN DE   |     | SUBDIRECCIÓN DE   |     | SUBDIRECCIÓN DE   |\n| SOLUCIONES DE TI  |     | INFRAESTRUCTURA Y |     | GOBIERNO Y        |\n| - Desarrollo app  |     | SERVICIOS DE TI   |     | ARQUITECTURA TI   |\n| - Mantenimiento   |     | - Centros cómputo |     | - Arquitectura    |\n|   software MUISCA |     | - Redes y cloud   |     | - Estándares TI   |\n+-------------------+     +-------------------+     +-------------------+\n                                   |\n                                   v (DEPENDENCIA DEL EMPLEO INSPECTOR I)\n                          +-----------------------------------------------+\n                          | SUBDIRECCIÓN DE PROCESAMIENTO DE DATOS        |\n                          | - Repositorio Único de Datos (DataR)          |\n                          | - Ingesta masiva Factura Electrónica UBL 2.1  |\n                          | - Consolidación de Información Exógena        |\n                          | - Modelos analíticos de riesgo y Big Data     |\n                          | - Garantía técnica de la Reserva Tributaria   |\n                          +-----------------------------------------------+</code></pre></div>\n<h3>3.3. Funciones Específicas de la Subdirección de Procesamiento de Datos (Art. 56 Decreto 1742 de 2020)</h3>\n<p>La Subdirección de Procesamiento de Datos es la unidad estratégica donde se ubica el empleo <strong>Inspector I (OPEC 236670)</strong>. Sus funciones reglamentarias son:</p>\n<ol><li><strong>Administración y Explotación del Repositorio Único de Datos (DataR):</strong> Diseñar, mantener y gobernar la infraestructura del lago de datos corporativo, garantizando la centralización y la calidad de la información proveniente de los sistemas transaccionales (<strong>MUISCA, SYGA, Facturación Electrónica</strong>).</li><li><strong>Procesamiento Masivo de Documentos Tributarios Electrónicos:</strong> Dirigir la ingesta y validación en tiempo real de los millones de archivos XML UBL 2.1 correspondientes a Facturas Electrónicas de Venta, Documentos Soporte con No Obligados, Nómina Electrónica y Documentos Equivalentes POS.</li><li><strong>Consolidación y Cruce de Información Exógena:</strong> Administrar los pipelines de recepción, validación y cruce masivo de los formatos anuales de exógena (Formatos 1001, 1002, 1003, etc.) enviados por los agentes retenedores del país.</li><li><strong>Desarrollo y Calibración de Modelos de Analítica Avanzada:</strong> Construir modelos estadísticos, redes de grafos y algoritmos de Machine Learning para el perfilamiento automático de riesgo de evasión y contrabando, sirviendo insumos a Fiscalización y Aduanas.</li><li><strong>Garantía Técnica de la Reserva Tributaria:</strong> Implementar mecanismos de seguridad criptográfica, anonimización, enmascaramiento dinámico (DDM) y auditoría inmutable para asegurar que ningún procesamiento de datos vulnere el <strong>Artículo 583 del Estatuto Tributario</strong>.</li></ol>\n<div class=\"callout exam\"><strong class=\"callout-title\">🎯 Así lo pregunta el examen</strong><p>Trampa Típica del Examen sobre Competencias de TI Es común que Areandina pregunte qué dependencia de la DIAN tiene a su cargo el desarrollo de nuevas interfaces de usuario en el aplicativo MUISCA vs. quién procesa y cruza los archivos de información exógena. El desarrollo y mantenimiento del código fuente de software corresponde a la <strong>Subdirección de Soluciones de TI</strong>; el procesamiento masivo de datos, administración de DataR y cruces analíticos corresponde privativamente a la <strong>Subdirección de Procesamiento de Datos</strong>.</p></div>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-6-4",
+          "moduleId": "mod-6",
+          "unitNumber": 4,
+          "title": "Unidad 4: Nivel Desconcentrado y Tipología de Direcciones Seccionales de Impuestos y Aduanas",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 454,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Desconcentración Territorial, Seccionales y Divisiones Operativas</p>\n<h3>4.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Comprender la organización desconcentrada territorial de la DIAN a través de sus <strong>Direcciones Seccionales</strong>, identificando la tipología de seccionales (Impuestos, Aduanas, Mixtas, Grandes Contribuyentes y Delegadas) y la estructura de sus <strong>Divisiones Operativas</strong> para entender cómo interactúan los modelos del Nivel Central con la labor de campo en las regiones.</p>\n<h3>4.2. El Principio de Desconcentración Territorial en la DIAN</h3>\n<p>Colombia cuenta con una extensión territorial diversa, con puertos marítimos de alto volumen (Buenaventura, Cartagena), fronteras terrestres complejas (Cúcuta, Ipiales) y grandes polos industriales (Bogotá, Medellín, Cali, Barranquilla).</p>\n<p>Para operar con eficacia, la DIAN no centraliza sus actuaciones en Bogotá; aplica el principio de <strong>desconcentración territorial</strong> mediante Direcciones Seccionales distribuidas en los departamentos. Estas dependencias no tienen personería jurídica propia, pero sus directores y jefes de división tienen competencia legal delegada para emitir liquidaciones oficiales, embargar cuentas bancarias, aprehender mercancías y fallar recursos administrativos en su jurisdicción.</p>\n<h3>4.3. Tipología Oficial de Direcciones Seccionales</h3>\n<div class=\"arch-blueprint-card\"><pre class=\"blueprint-code\"><code>1. DIRECCIÓN SECCIONAL DE GRANDES CONTRIBUYENTES\n   - Sede en Bogotá, pero con JURISDICCIÓN TERRITORIAL NACIONAL.\n   - Administra exclusivamente a las corporaciones de mayor peso fiscal del país.\n---------------------------------------------------------------------------------\n2. DIRECCIONES SECCIONALES DE IMPUESTOS\n   - Especializadas únicamente en recaudo, fiscalización y cobranza tributaria.\n   - Ciudades principales: Bogotá, Medellín, Cali, Barranquilla.\n---------------------------------------------------------------------------------\n3. DIRECCIONES SECCIONALES DE ADUANAS\n   - Especializadas únicamente en comercio exterior y control fronterizo/portuario.\n   - Ciudades/Puertos: Buenaventura, Cartagena, Cúcuta, Medellín Aduanas, Bogotá Aduanas.\n---------------------------------------------------------------------------------\n4. DIRECCIONES SECCIONALES DE IMPUESTOS Y ADUANAS (MIXTAS)\n   - Administran conjuntamente los tributos internos y las operaciones aduaneras.\n   - Ciudades intermedias: Ibagué, Pasto, Pereira, Manizales, Neiva, Villavicencio, Santa Marta.\n---------------------------------------------------------------------------------\n5. DIRECCIONES SECCIONALES DELEGADAS\n   - Dependencias satélite ubicadas en puertos menores o municipios fronterizos.\n   - Ejemplos: Inírida, Puerto Asís, Puerto Carreño, Tumaco, Maicao.</code></pre></div>\n<h3>4.4. Estructura Interna de las Divisiones Operativas Seccionales</h3>\n<p>Una Dirección Seccional común organiza su labor a través de divisiones funcionales operativas:</p>\n<ul><li><strong>División de Servicio al Ciudadano:</strong> Atención presencial en ventanillas, inscripción y actualización del RUT, orientación al declarante y recepción de PQRS.</li><li><strong>División de Fiscalización y Liquidación:</strong> Ejecuta las auditorías tributarias y aduaneras a partir de las listas de sospechosos enviadas por los modelos analíticos de la Subdirección de Procesamiento de Datos. Emite los Emplazamientos para Declarar, Requerimientos Especiales y Liquidaciones Oficiales de Revisión.</li><li><strong>División de Recaudo y Cobranzas:</strong> Administra el ingreso de los fondos pagados en los bancos y ejecuta los procesos de cobro coactivo (mandamientos de pago, medidas cautelares y embargos) a contribuyentes morosos.</li><li><strong>División de Operación Aduanera:</strong> Gestiona los trámites de importación, exportación, inspección física en bodegas (canal rojo) y levante de mercancías en puertos y aeropuertos.</li><li><strong>División Jurídica:</strong> Resuelve los recursos de reconsideración interpuestos por los contribuyentes contra los actos sancionatorios de la seccional y atiende las demandas judiciales locales.</li></ul>\n<hr>",
+          "links": []
+        },
+        {
+          "id": "les-6-5",
+          "moduleId": "mod-6",
+          "unitNumber": 5,
+          "title": "Unidad 5: Ubicación Funcional del Empleo Inspector I en el MERF (Resolución DIAN No. 067 de 2024)",
+          "badge": "Competencias Funcionales",
+          "readTime": "25 min",
+          "minutes": 25,
+          "words": 557,
+          "content": "<p><strong>Tiempo estimado:</strong> 25 min | <strong>Enfoque:</strong> Perfil Laboral, Propósito del Empleo, Funciones Esenciales y Competencias</p>\n<h3>5.1. ¿Qué vas a lograr en esta unidad?</h3>\n<p>Conocer la ficha técnica oficial y funcional del empleo <strong>Inspector I (Código IT-PD-3004 / OPEC 236670)</strong> en el Manual Específico de Requisitos y Funciones (<strong>Resolución DIAN No. 067 de 2024</strong>), identificando su propósito principal, sus funciones esenciales en la Subdirección de Procesamiento de Datos y las competencias comportamentales exigibles para el desempeño del cargo.</p>\n<h3>5.2. El Manual Específico de Requisitos y Funciones (Resolución 067 de 2024)</h3>\n<p>La <strong>Resolución DIAN No. 067 de 2024</strong> (que compiló y actualizó el MERF institucional tras las Resoluciones 065 y 066 de 2024) define los perfiles, requisitos de formación académica, experiencia y funciones de toda la planta de personal de la DIAN.</p>\n<h4>Ficha Técnica del Empleo Inspector I:</h4>\n<ul><li><strong>Denominación del Empleo:</strong> Inspector I.</li><li><strong>Nivel Jerárquico:</strong> <strong>Profesional</strong>.</li><li><strong>Código SIMO:</strong> IND-06 / OPEC 236670.</li><li><strong>Dependencia de Desempeño:</strong> Nivel Central — Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos (Bogotá D.C.).</li><li><strong>Propósito Principal del Empleo:</strong> &gt; <em>\"Diseñar, implementar, monitorear y optimizar los flujos de procesamiento, integración, calidad y analítica masiva de datos en las plataformas tecnológicas de la DIAN, asegurando la disponibilidad, integridad, seguridad y cumplimiento del marco legal y tributario para fortalecer la fiscalización y facilitación del cumplimiento voluntario.\"</em></li></ul>\n<h3>5.3. Funciones Esenciales del Inspector I en Datos</h3>\n<p>El Inspector I en la Subdirección de Procesamiento de Datos desempeña un rol técnico y analítico de alto nivel que incluye:</p>\n<ol><li><strong>Consolidación de Macrodatos en DataR:</strong> Desarrollar, ejecutar y supervisar los pipelines de ingesta y transformación en Apache Spark y Apache Kafka para integrar las fuentes de Facturación Electrónica UBL 2.1, Información Exógena y declaraciones de MUISCA y SYGA.</li><li><strong>Modelado y Analítica de Riesgo:</strong> Diseñar, entrenar y evaluar modelos de Machine Learning (supervisados y no supervisados) y analítica de grafos para la detección temprana de empresas de papel, proveedores ficticios (Art. 671 E.T.) y carruseles de evasión de IVA.</li><li><strong>Aseguramiento de la Calidad del Dato:</strong> Formular y programar reglas de calidad automatizadas (completitud, exactitud, conformidad y unicidad) para sanear y depurar los repositorios de información institucional.</li><li><strong>Gobierno y Linaje de Metadatos:</strong> Administrar el Catálogo de Datos corporativo, documentar los términos en el Glosario de Negocio y trazar el linaje de datos de punta a punta (<em>Forward</em> y <em>Backward Lineage</em>) para soportar con valor probatorio las liquidaciones oficiales ante jueces y tribunales.</li><li><strong>Custodia de la Reserva Tributaria:</strong> Implementar controles técnicos de enmascaramiento dinámico (DDM), tokenización y control de acceso basado en atributos (ABAC) para garantizar que los intercambios de información no infrinjan el <strong>Artículo 583 del Estatuto Tributario</strong>.</li></ol>\n<h3>5.4. Competencias Comportamentales del Nivel Profesional en la DIAN</h3>\n<p>Conforme a la metodología psicométrica de la Universidad Areandina, el Inspector I es evaluado bajo las competencias comportamentales del nivel profesional:</p>\n<ul><li><strong>Aprendizaje Continuo:</strong> Capacidad de asimilar rápidamente nuevas tecnologías de datos masivos y marcos normativos cambiantes.</li><li><strong>Trabajo en Equipo:</strong> Colaborar activamente entre ingenieros de datos y auditores fiscales misionales para resolver discrepancias de información.</li><li><strong>Orientación al Resultado:</strong> Cumplir con los plazos de procesamiento de exógena y entrega de insumos analíticos antes de los vencimientos del calendario tributario.</li><li><strong>Comportamiento Ético e Integridad:</strong> Apego absoluto a la moralidad administrativa, rechazo de cualquier conflicto de interés y custodia inquebrantable de la confidencialidad de la información tributaria ciudadana.</li></ul>\n<hr>",
+          "links": []
         }
-      ]
+      ],
+      "hasUnits": true,
+      "unidadesTotales": 5,
+      "lessonMinutes": 125,
+      "studyMinutes": 125,
+      "bibliografia": {
+        "raw": "<h2>11. Lecturas Complementarias y Bibliografía Oficial Comentada</h2>\n<h3>11.1. Lecturas Complementarias Recomendadas para Profundización</h3>\n<ol><li><strong>Departamento Administrativo de la Función Pública - DAFP (2020).</strong> <em>Estructura del Estado Colombiano y Manual de Organización del Sector Público</em>. DAFP, República de Colombia.</li><li><strong>Por qué leerlo para el examen:</strong> Explica con claridad pedagógica la diferencia entre organismos del sector central y entidades descentralizadas por servicios como las Unidades Administrativas Especiales.</li><li><strong>Younes Moreno, D. (2019).</strong> <em>Derecho Administrativo Laboral y Carrera Administrativa</em>. Editorial Temis.</li><li><strong>Por qué leerlo para el examen:</strong> Es la obra jurídica canónica para comprender los principios de mérito, estabilidad laboral, provisión mediante encargos y garantías de los sistemas específicos de carrera.</li><li><strong>DIAN (2020).</strong> <em>Memoria Justificativa de la Reestructuración Institucional: Decreto 1742 de 2020</em>. Dirección General, UAE DIAN.</li><li><strong>Por qué leerlo para el examen:</strong> Explica la motivación estratégica para crear la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos como núcleos de la modernización.</li></ol>\n<h3>11.2. Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)</h3>\n<h4>A. Marco Constitucional y Legal General de la Función Pública</h4>\n<ul><li><strong>Constitución Política de Colombia de 1991.</strong> Artículos 113 (Separación de Poderes), 122 a 130 (De la Función Pública y el Régimen de Carrera Administrativa), 209 (Principios de la Función Administrativa) y 363 (Principios de Equidad, Eficiencia y Progresividad Tributaria).</li><li><strong>Ley 489 de 1998.</strong> Estatuto básico de organización y funcionamiento de la Administración Pública Nacional (Estructura de la Rama Ejecutiva, descentralización, desconcentración y delegación).</li><li><strong>Ley 1437 de 2011 (Código de Procedimiento Administrativo y de lo Contencioso Administrativo - CPACA).</strong> Principios rectores del procedimiento administrativo, validez de los actos y derecho de petición.</li><li><strong>Ley 1952 de 2019 (modificada por la Ley 2094 de 2021).</strong> Código General Disciplinario.</li></ul>\n<h4>B. Normatividad Orgánica e Institucional DIAN (Vigencia al 19 de junio de 2026)</h4>\n<ul><li><strong>Decreto 1071 de 1999.</strong> Organización y naturaleza jurídica fundacional de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN).</li><li><strong>Decreto 1742 de 2020.</strong> Estructura orgánica y funciones de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) — Despacho del Director General, 8 Direcciones de Gestión, Subdirección de Procesamiento de Datos y Nivel Desconcentrado.</li><li><strong>Decreto Ley 071 de 2020.</strong> Régimen especial de carrera de los servidores públicos de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN).</li><li><strong>Decreto Ley 927 de 2023.</strong> Modificación y modernización del Sistema Específico de Carrera Administrativa de la UAE DIAN.</li><li><strong>Resolución DIAN No. 067 de 2024 (y antecedentes Resoluciones 065 y 066 de 2024).</strong> Manual Específico de Requisitos y Funciones (MERF) vigente para los empleos de la planta de personal de la DIAN, aplicable al concurso DIAN 2676.</li><li><strong>Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes).</strong> Artículo 555-2 (RUT), Artículos 583 a 587 (Reserva tributaria y excepciones legales) y Artículo 616-1 (Facturación Electrónica).</li></ul>",
+        "fuentes": [],
+        "complementarios": []
+      }
     },
     {
       "id": "mod-7",
@@ -2731,352 +2782,359 @@ window.COURSES_DATA['inspector1'] = {
       ]
     },
     "exam-6": {
-      "title": "Examen: 6. Estructura Organizacional de la DIAN (10 Preguntas de Estructura y Casos)",
-      "indicatorNum": 6,
+      "title": "Examen Oficial: Estructura Organizacional de la DIAN (10 Preguntas PJS)",
       "questions": [
         {
           "id": 601,
-          "topic": "Competencias del Nivel Central vs. Seccionales",
-          "caseText": "Un Director Seccional de Impuestos emite una circular ordenando a su equipo de sistemas local crear un repositorio de datos alterno para almacenar las facturas electrónicas de su ciudad, argumentando que agilizará las fiscalizaciones locales.",
-          "statement": "¿Qué principio de la estructura del Decreto 1742 de 2020 se vulnera con esta disposición?",
+          "topic": "Naturaleza Jurídica de la DIAN y Régimen Administrativo",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "El Ministro de Hacienda y Crédito Público emite una instrucción verbal dirigida al Director de Gestión de Fiscalización de la DIAN ordenándole que archive de forma inmediata y sin fórmula de juicio una investigación tributaria formal en curso contra una empresa multinacional que es aliada comercial del gobierno de turno. El Ministro argumenta que, al ser la DIAN una entidad adscrita a su despacho, él tiene jerarquía directa para ordenar el inicio o terminación de cualquier auditoría individual.",
+          "statement": "Al analizar la situación a la luz del régimen legal y la naturaleza jurídica de la DIAN (Decreto 1071 de 1999 y Ley 489 de 1998), al profesional le corresponde determinar que",
           "options": [
             {
               "id": "A",
-              "text": "El principio de centralización de la arquitectura de TI y gobierno de datos en el Nivel Central (Dirección de Gestión de Innovación y Tecnología), impidiendo la fragmentación en silos locales que fracture la verdad única del dato estatal."
+              "text": "la instrucción ministerial es jurídicamente improcedente; la DIAN es una Unidad Administrativa Especial con personería jurídica y autonomía técnica y funcional, donde el Ministerio ejerce únicamente control de tutela sobre políticas globales pero carece de facultad para intervenir en auditorías o liquidaciones tributarias individuales."
             },
             {
               "id": "B",
-              "text": "Ninguno, porque cada Director Seccional tiene autonomía técnica para implementar la arquitectura de software que considere conveniente."
+              "text": "el Director de Fiscalización debe obedecer inmediatamente la orden verbal del Ministro y destruir los expedientes tributarios sin dejar rastro informático."
             },
             {
               "id": "C",
-              "text": "El principio de libre competencia entre las ciudades del país."
+              "text": "la DIAN debe cambiar de naturaleza jurídica y convertirse en una sociedad anónima de economía mixta para desobedecer legalmente al Ministerio."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El Decreto 1742 de 2020 asigna con exclusividad la definición, diseño y gobernanza de la infraestructura tecnológica y repositorios únicos (DataR) a la Dirección de Gestión de Innovación y Tecnología del Nivel Central.",
+            "correct": "Es correcta. Conforme al **Decreto 1071 de 1999**, el **Decreto 1742 de 2020** y la **Ley 489 de 1998**, la DIAN es una **Unidad Administrativa Especial (UAE)** dotada de personería jurídica, patrimonio propio y **autonomía administrativa, presupuestal y técnica**. La figura de la *adscripción* otorga al Ministerio de Hacienda un **control de tutela** orientado a coordinar las políticas macroeconómicas y las metas agregadas de recaudo, pero no una jerarquía operativa sobre los actos administrativos particulares. Las investigaciones tributarias son regladas y están amparadas por el principio de legalidad e independencia técnica; ordenar archivar una investigación individual constituye un delito de prevaricato por acción y tráfico de influencias.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las Direcciones Seccionales son dependencias desconcentradas de ejecución operativa, no tienen facultades para alterar la arquitectura de TI."
+                "reason": "Es incorrecta. Destruir expedientes oficiales por órdenes verbales acarrea sanciones penales, destitución disciplinaria y responsabilidad fiscal por detrimento patrimonial."
               },
               {
                 "id": "C",
-                "reason": "La DIAN es una entidad pública única, no un conjunto de competidores comerciales."
+                "reason": "Es incorrecta. La naturaleza jurídica de una entidad pública solo puede ser modificada por el Congreso de la República mediante ley formal."
               }
             ]
           }
         },
         {
           "id": 602,
-          "topic": "Rol de la Dirección de Gestión de Innovación y Tecnología",
-          "caseText": "La Dirección de Gestión de Fiscalización requiere un nuevo modelo de inteligencia artificial para auditar operaciones de comercio electrónico y solicita contratar una nube independiente ajena a los estándares de la entidad.",
-          "statement": "Conforme a la estructura orgánica institucional, ¿qué dependencia tiene la competencia privativa para evaluar, aprobar e integrar dicha solución?",
+          "topic": "Estructura de la Dirección de Gestión de Innovación y Tecnología (DGIT)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la Dirección de Gestión de Innovación y Tecnología (DGIT) se presenta una discusión técnica entre dependencias. La Subdirección de Soluciones de TI insiste en que ellos deben asumir la administración directa del lago de datos DataR, procesar la Facturación Electrónica UBL 2.1 y ejecutar los modelos analíticos de detección de evasión, relegando a la Subdirección de Procesamiento de Datos a realizar únicamente mantenimiento preventivo de impresoras y formateo de computadores personales.",
+          "statement": "Con base en las competencias asignadas taxativamente por el Artículo 56 del Decreto 1742 de 2020, al Inspector I le corresponde dictaminar que",
           "options": [
             {
               "id": "A",
-              "text": "La Dirección de Gestión de Innovación y Tecnología (DGIT), como rectora de las políticas de arquitectura digital, infraestructura, plataformas y seguridad tecnológica de la DIAN."
+              "text": "la administración, gobernanza y explotación de **DataR**, así como el procesamiento masivo de la **Facturación Electrónica** y los cruces de **Información Exógena**, son competencias privativas y legales de la **Subdirección de Procesamiento de Datos**; la Subdirección de Soluciones de TI se encarga del desarrollo y mantenimiento de software."
             },
             {
               "id": "B",
-              "text": "La Dirección de Gestión Aduanera en coordinación con la Policía Fiscal y Aduanera."
+              "text": "la Subdirección de Procesamiento de Datos debe aceptar la degradación de sus funciones y dedicarse exclusivamente a repartir tóner y papel en las oficinas seccionales."
             },
             {
               "id": "C",
-              "text": "Cualquier despacho seccional que aporte los recursos del presupuesto regional."
+              "text": "ambas subdirecciones deben fusionarse sin autorización legal mediante un acuerdo verbal entre sus jefes inmediatos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La DGIT es la encargada exclusiva de definir las políticas, estándares, plataformas e interoperabilidad de tecnologías de la información de la entidad conforme al Decreto 1742 de 2020.",
+            "correct": "Es correcta. El **Artículo 56 del Decreto 1742 de 2020** consagra con absoluta claridad las funciones misionales de la **Subdirección de Procesamiento de Datos**: es la unidad encargada de administrar el Repositorio Único de Datos (**DataR**), procesar masivamente los documentos tributarios electrónicos (Facturas, Nómina, Documentos Equivalentes), cruzar la Información Exógena e implementar los modelos analíticos de Big Data para el control de la evasión. Por su parte, la **Subdirección de Soluciones de TI** tiene como función el diseño, desarrollo, pruebas y mantenimiento del código fuente de los aplicativos de software de la entidad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Aduanas tiene competencias de control de comercio exterior, no de arquitectura de TI general."
+                "reason": "Es incorrecta. Renunciar a competencias legales asignadas por decreto presidencial para asumir tareas logísticas desconoce el marco competencial de la función pública."
               },
               {
                 "id": "C",
-                "reason": "El presupuesto de inversión en TI de la entidad se gestiona a nivel central bajo lineamientos de la DGIT."
+                "reason": "Es incorrecta. Las dependencias del Nivel Central son creadas por decreto de estructura y no pueden ser fusionadas ni suprimidas de facto por acuerdos informales de sus funcionarios."
               }
             ]
           }
         },
         {
           "id": 603,
-          "topic": "Ficha del Empleo Inspector I (IT-PD-3004)",
-          "caseText": "Durante una contingencia técnica, un funcionario del área jurídica solicita al Inspector I adscrito al área de Procesamiento de Datos que emita un concepto jurídico vinculante sobre la aplicación de una tarifa de retención en la fuente.",
-          "statement": "La respuesta adecuada del Inspector I conforme a su marco de competencias laborales es:",
+          "topic": "Tipología de Direcciones Seccionales y Desconcentración Territorial",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Dirección Seccional de Impuestos de Bucaramanga inicia una auditoría tributaria y notifica un pliego de cargos contra una empresa petrolera cuyo domicilio social principal se encuentra registrado en Barrancabermeja. La empresa responde al requerimiento señalando que la Seccional de Bucaramanga carece de competencia territorial y funcional para auditarla, debido a que la Dirección General de la DIAN expidió hace seis meses una resolución formal calificando a la compañía como \"Gran Contribuyente\".",
+          "statement": "Al analizar la validez jurídica de la excepción de incompetencia formulada por la empresa contribuyente, al profesional le corresponde determinar que",
           "options": [
             {
               "id": "A",
-              "text": "Indicar que su empleo (Ficha IT-PD-3004) tiene asignadas competencias funcionales sobre administración de plataformas, disponibilidad de datos y servicios en DataR, debiendo remitir la consulta a la Dirección de Gestión Jurídica que ostenta la competencia legal para unificar doctrina."
+              "text": "la excepción de la empresa es procedente; los contribuyentes calificados por resolución como Grandes Contribuyentes quedan bajo la competencia exclusiva de la **Dirección Seccional de Grandes Contribuyentes**, cuya sede está en Bogotá pero posee **jurisdicción territorial nacional**, desplazando a las seccionales locales."
             },
             {
               "id": "B",
-              "text": "Emitir el concepto jurídico tributario inventando una interpretación personal."
+              "text": "la excepción de la empresa es infundada, ya que ninguna seccional ubicada en Bogotá puede tener competencia sobre hechos económicos ocurridos fuera de la capital del país."
             },
             {
               "id": "C",
-              "text": "Archivar la solicitud sin responder ni orientar al funcionario solicitante."
+              "text": "ambas seccionales deben cobrar simultáneamente el doble de impuestos a la empresa para resolver la disputa geográfica."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El principio de legalidad exige que cada servidor actúe estrictamente dentro del marco de su empleo (IT-PD-3004 para TI). La doctrina jurídica de la DIAN es competencia privativa de la Dirección de Gestión Jurídica.",
+            "correct": "Es correcta. En la estructura territorial desconcentrada de la DIAN (Decreto 1742 de 2020), la **Dirección Seccional de Grandes Contribuyentes** constituye una excepción al criterio geográfico departamental tradicional: tiene sede física en Bogotá, pero posee **competencia y jurisdicción en todo el territorio nacional** sobre las personas naturales y jurídicas que la Dirección General califique formalmente como Grandes Contribuyentes por su volumen de operaciones o impacto en el recaudo. Al ser calificada como Gran Contribuyente, la competencia tributaria sobre la empresa petrolera se traslada privativamente a dicha seccional especializada, perdiendo competencia la seccional de Bucaramanga.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Emitir conceptos jurídicos sin competencia vicia de nulidad los actos administrativos y acarrea sanciones disciplinarias."
+                "reason": "Es incorrecta. Desconoce la naturaleza y el alcance normativo de la Dirección Seccional de Grandes Contribuyentes fijado en el Estatuto Tributario y en la estructura orgánica de la DIAN."
               },
               {
                 "id": "C",
-                "reason": "La desatención vulnera el deber de diligencia y colaboración armónica administrativa."
+                "reason": "Es incorrecta. El doble cobro tributario viola el principio constitucional de *Non Bis in Idem* (prohibición de ser juzgado o gravado dos veces por el mismo hecho)."
               }
             ]
           }
         },
         {
           "id": 604,
-          "topic": "Subordinación Jerárquica y Vías de Escalabilidad",
-          "caseText": "Un profesional de datos detecta una vulnerabilidad crítica de seguridad en un endpoint de consulta expuesto hacia una entidad externa que podría permitir la extracción indebida de datos reservados de contribuyentes.",
-          "statement": "El conducto regular inmediato que debe seguir conforme a la estructura de la entidad es:",
+          "topic": "Sistema Específico de Carrera (Decreto Ley 927 de 2023)",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Con ocasión de la automatización masiva de los procesos analíticos en DataR, la DIAN suprime varias dependencias operativas tradicionales. Un funcionario escalafonado con derechos de carrera administrativa en el empleo de Inspector I teme ser despedido sin justa causa por la administración. El jefe de personal le informa verbalmente que los empleados de carrera en la DIAN pueden ser desvinculados libremente sin ninguna indemnización ni derecho preferente cada vez que se modernice la tecnología.",
+          "statement": "Al aplicar las garantías laborales consagradas en el Decreto Ley 071 de 2020 y el Decreto Ley 927 de 2023, el Inspector I debe advertir que",
           "options": [
             {
               "id": "A",
-              "text": "Reportar de inmediato a su superior jerárquico y activar el protocolo con el Oficial de Seguridad de la Información (CISO) de la DGIT para bloquear el vector de ataque y coordinar la mitigación formal."
+              "text": "la información verbal es falsa; los empleados con derechos de carrera gozan de **estabilidad laboral relativa reforzada** y, en caso de supresión del empleo por modernización, tienen derecho preferente a ser **reincorporados** en un empleo equivalente o a optar por una **indemnización legal tabulada**."
             },
             {
               "id": "B",
-              "text": "Publicar la vulnerabilidad en redes sociales para alertar al público."
+              "text": "el empleado debe ser despedido de inmediato sin derecho a reclamo porque la tecnología de inteligencia artificial anula los derechos constitucionales del trabajo."
             },
             {
               "id": "C",
-              "text": "Ignorar la falla asumiendo que la entidad externa es la única responsable."
+              "text": "el funcionario debe encadenarse a los servidores del centro de cómputo para impedir físicamente la modernización de los sistemas informáticos."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Los incidentes de ciberseguridad sobre datos reservados deben escalarse a través de la cadena de mando técnico y la jefatura de seguridad de la DGIT para proteger la infraestructura crítica del Estado.",
+            "correct": "Es correcta. En el **Sistema Específico de Carrera de la DIAN (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023)**, los empleados con derechos adquiridos de carrera administrativa gozan de estabilidad laboral. Ante procesos de reestructuración orgánica o modernización tecnológica que impliquen la supresión de sus cargos, la ley les confiere dos opciones excluyentes: (1) el **derecho preferente a ser reincorporados** a empleos iguales o equivalentes en la nueva planta de personal, o (2) recibir una **indemnización económica** calculada conforme a su antigüedad en la entidad. No pueden ser desvinculados de forma libre como si fueran empleados de libre nombramiento y remoción.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Divulgar vulnerabilidades de seguridad pública atenta contra la seguridad nacional e infringe el régimen disciplinario."
+                "reason": "Es incorrecta. Ninguna innovación tecnológica puede desconocer las garantías del Artículo 53 y 125 de la Constitución Política ni el debido proceso laboral."
               },
               {
                 "id": "C",
-                "reason": "Omitir el reporte de una brecha compromete la responsabilidad por omisión del servidor público."
+                "reason": "Es incorrecta. Las vías de hecho son contrarias a la legalidad administrativa y configuran faltas disciplinarias."
               }
             ]
           }
         },
         {
           "id": 605,
-          "topic": "Coordinación Interdisciplinaria con la Dirección de Fiscalización",
-          "caseText": "La Dirección de Gestión de Fiscalización define un nuevo programa de control tributario sobre contribuyentes que declaran deducciones por pérdidas en el exterior y solicita que el área de datos entregue la información cruda en archivos planos no catalogados.",
-          "statement": "Al Inspector I le corresponde actuar:",
+          "topic": "Instancias de Carrera y Comisiones de Personal",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En la Subdirección de Procesamiento de Datos queda vacante de forma definitiva un empleo de Gestor II (Nivel Profesional superior). Un Inspector I que cumple con todos los requisitos de educación y experiencia, y que obtuvo la calificación de desempeño más alta en el nivel sobresaliente durante el último año, solicita formalmente ser encargado en dicha vacante. El Subdirector decide ignorar su solicitud y nombrar en encargo a un familiar recién egresado que no pertenece a la carrera de la DIAN.",
+          "statement": "Para hacer valer su derecho preferente de carrera frente a la vulneración cometida por el superior jerárquico, al Inspector I le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "Articulando el requerimiento a través del Catálogo de Datos y habilitando vistas gobernadas en la zona Curated/Gold del DataR con enmascaramiento y trazabilidad, cumpliendo la política corporativa."
+              "text": "interponer una reclamación formal ante la **Comisión de Personal de la DIAN**, acreditando que ostenta derechos de carrera y mejor derecho preferente para ser encargado frente a personas ajenas a la carrera, solicitando que se deje sin efecto el nombramiento irregular."
             },
             {
               "id": "B",
-              "text": "Negarse a colaborar con Fiscalización alegando que TI es independiente de las metas de recaudo."
+              "text": "renunciar inmediatamente a la DIAN y retirarse de la carrera administrativa en señal de protesta."
             },
             {
               "id": "C",
-              "text": "Entregar copias directas de la zona Raw en discos duros personales sin bitácora."
+              "text": "borrar las tablas de facturación electrónica de DataR para presionar al Subdirector a cambiar de opinión."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "TI apoya la misionalidad de fiscalización pero sin violar las políticas de gobernanza: la entrega debe realizarse mediante vistas gobernadas en la zona Curated preservando la trazabilidad y la inmutabilidad de la información.",
+            "correct": "Es correcta. Conforme al **Decreto Ley 071 de 2020** y el **Decreto Ley 927 de 2023**, los empleados con derechos de carrera tienen **derecho preferente a ser encargados** en las vacantes temporales o definitivas de empleos inmediatamente superiores, siempre que cumplan el perfil y tengan evaluación del desempeño sobresaliente. La **Comisión de Personal de la DIAN** es el órgano colegiado y paritario legalmente facultado para vigilar el cumplimiento de las normas de carrera y fallar las reclamaciones cuando se vulnere este derecho, ordenando revocar encargos otorgados a terceros en detrimento de servidores escalafonados.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La tecnología de la DIAN existe para servir a la misionalidad recaudadora; negarse sin justificación viola el deber de servicio."
+                "reason": "Es incorrecta. Renunciar implica la pérdida voluntaria e innecesaria de los derechos de carrera administrativa alcanzados por concurso de méritos."
               },
               {
                 "id": "C",
-                "reason": "Extraer copias crudas sin control viola la cadena de custodia y las normas de seguridad de la información."
+                "reason": "Es incorrecta. El sabotaje informático constituye delito penal (daño en sistema informático), causal de destitución disciplinaria y responsabilidad fiscal."
               }
             ]
           }
         },
         {
           "id": 606,
-          "topic": "Unificación Doctrinaria por la Dirección de Gestión Jurídica",
-          "caseText": "La Seccional Cali y la Seccional Barranquilla aplican criterios contradictorios sobre si los datos de geolocalización de facturación electrónica constituyen prueba válida para determinar el domicilio fiscal de un contribuyente.",
-          "statement": "¿Qué mecanismo institucional resuelve la contradicción restableciendo la seguridad jurídica?",
+          "topic": "Oficinas Asesoras y de Control de la Dirección General",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Durante la implementación de un nuevo protocolo de interoperabilidad en la Subdirección de Procesamiento de Datos, un grupo de desarrolladores decide deshabilitar el cifrado de datos en reposo y abrir los puertos de red del clúster de bases de datos hacia internet para facilitar el trabajo remoto de un contratista externo. La Oficina de Seguridad de la Información (OSI) detecta la anomalía y ordena la suspensión inmediata de la conexión. Los desarrolladores alegan que la OSI es una simple oficina asesora que no puede intervenir en asuntos técnicos de procesamiento de datos.",
+          "statement": "Frente a la controversia técnica y con base en el Decreto 1742 de 2020, al profesional le corresponde determinar que",
           "options": [
             {
               "id": "A",
-              "text": "La expedición de un Concepto Jurídico unificado por parte de la Dirección de Gestión Jurídica del Nivel Central, el cual tiene carácter obligatorio y vinculante para todas las dependencias de la entidad a nivel nacional."
+              "text": "la actuación de la **Oficina de Seguridad de la Información (OSI)** es plenamente legítima y vinculante, pues tiene el mandato legal expreso de custodiar el SGSI y prevenir riesgos que vulneren la confidencialidad de la información y la **Reserva Tributaria (Art. 583 E.T.)** en cualquier dependencia de la entidad."
             },
             {
               "id": "B",
-              "text": "Una votación democrática en internet entre los directores de ambas seccionales."
+              "text": "la OSI incurrió en extralimitación de funciones, ya que en la administración pública la velocidad de entrega de los contratos prima sobre la seguridad de las bases de datos fiscales."
             },
             {
               "id": "C",
-              "text": "Dejar que cada seccional continúe aplicando su propio criterio según su conveniencia regional."
+              "text": "el contratista externo tiene jerarquía superior a los funcionarios de la DIAN y puede autorizar la apertura de puertos inseguros a su criterio."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "Conforme al Decreto 1742 de 2020, la Dirección de Gestión Jurídica es la única facultada para fijar la doctrina oficial de la DIAN mediante conceptos que garantizan la igualdad de trato jurídico en todo el país.",
+            "correct": "Es correcta. En la estructura del **Decreto 1742 de 2020**, la **Oficina de Seguridad de la Información (OSI)** depende directamente del Despacho del Director General y tiene la competencia obligatoria de formular, supervisar y hacer cumplir las políticas de seguridad de la información y ciberseguridad en todas las dependencias del Nivel Central y Seccional. Exponer datos fiscales en claro y abrir puertos hacia internet sin cifrado viola flagrantemente el SGSI y el **Artículo 583 del Estatuto Tributario**; por tanto, la OSI está plenamente facultada para suspender cualquier conexión que comprometa la seguridad de los activos de información de la Nación.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La doctrina legal del Estado no se define por votaciones informales entre directores."
+                "reason": "Es incorrecta. La seguridad de la información estatal y la reserva tributaria son mandatos de ley no negociables frente a conveniencias temporales de contratistas."
               },
               {
                 "id": "C",
-                "reason": "La disparidad de criterios viola el principio constitucional de igualdad tributaria ante la ley."
+                "reason": "Es incorrecta. Los contratistas particulares carecen de autoridad funcional para alterar las políticas de ciberseguridad del Estado."
               }
             ]
           }
         },
         {
           "id": 607,
-          "topic": "El Nivel Central y la Política de Modernización Tecnológica",
-          "caseText": "Se aprueba el Plan Estratégico Institucional de la DIAN con metas para automatizar el 100% de las declaraciones sugeridas y el control aduanero no intrusivo.",
-          "statement": "¿Qué papel juega el área de Procesamiento de Datos de la DGIT en este plan?",
+          "topic": "Relación Funcional entre DataR y Divisiones de Fiscalización Seccionales",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "La Subdirección de Procesamiento de Datos del Nivel Central detecta mediante modelos de grafos en DataR una presunta red de contrabando técnico de licores que opera en la zona aduanera de Buenaventura. El equipo del Nivel Central emite un informe analítico con la lista de contenedores sospechosos de alto riesgo para que la División de Operación Aduanera de la Seccional de Buenaventura ejecute la inspección física en muelle. El Jefe de División de Buenaventura responde que el Nivel Central no puede enviarles alertas analíticas porque las seccionales son independientes y no tienen relación funcional con los científicos de datos de Bogotá.",
+          "statement": "Al esclarecer la articulación funcional entre el Nivel Central y el Nivel Desconcentrado según el Decreto 1742 de 2020, al Inspector I le corresponde dictaminar que",
           "options": [
             {
               "id": "A",
-              "text": "Desarrollar y asegurar la escalabilidad, resiliencia y orquestación continua de los pipelines de datos masivos en DataR que alimentan los motores analíticos de declaración sugerida y control aduanero."
+              "text": "la respuesta del Jefe de División es improcedente; en el modelo de **desconcentración territorial**, el Nivel Central define las políticas, herramientas y perfiles de riesgo analíticos que son de **obligatorio cumplimiento y ejecución** para las Divisiones operativas de las Direcciones Seccionales."
             },
             {
               "id": "B",
-              "text": "Redactar los proyectos de ley de reforma tributaria que se envían al Congreso de la República."
+              "text": "las Direcciones Seccionales son pequeños estados independientes que no tienen ninguna obligación de colaborar con la Dirección General ni con las dependencias del Nivel Central."
             },
             {
               "id": "C",
-              "text": "Realizar inspecciones aduaneras físicas a contenedores en los puertos marítimos."
+              "text": "los modelos analíticos de Bogotá deben eliminarse y la aduana de Buenaventura debe inspeccionar los buques guiándose únicamente por la intuición visual de los guardas de turno."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "El área de Procesamiento de Datos es el músculo computacional que materializa las metas de modernización mediante ingeniería de datos robusta, pipelines elásticos y alta disponibilidad de información.",
+            "correct": "Es correcta. La **desconcentración territorial (Ley 489 de 1998 y Decreto 1742 de 2020)** implica que las Direcciones Seccionales son brazos operativos de una **única persona jurídica nacional (la DIAN)**. El Nivel Central tiene la función privativa de diseñar la inteligencia analítica, los modelos de riesgo aduanero en DataR y emitir los lineamientos técnicos, mientras que las Divisiones de Operación Aduanera en las regiones tienen el deber funcional de ejecutar materialmente las inspecciones basadas en dichos perfiles de riesgo unificados para proteger la economía nacional.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Los proyectos de ley corresponden al Ministerio de Hacienda y a la Dirección General/Jurídica."
+                "reason": "Es incorrecta. Confunde la desconcentración territorial administrativa con la soberanía política federal; las seccionales forman parte de la estructura jerárquica de la DIAN."
               },
               {
                 "id": "C",
-                "reason": "Las inspecciones físicas en puertos son competencia de los inspectores de aduanas en el Nivel Desconcentrado."
+                "reason": "Es incorrecta. Descartar la gestión del riesgo analítico aduanero vulnera el Estatuto Aduanero (Decreto 1165 de 2019 / Decreto 659 de 2024) y los compromisos del Convenio de Kioto Revisado de la OMA."
               }
             ]
           }
         },
         {
           "id": 608,
-          "topic": "Atribuciones de la Dirección General de la DIAN",
-          "caseText": "Un comité técnico analiza la necesidad de aplazar por fuerza mayor el calendario tributario nacional debido a una caída prolongada de la red eléctrica en el país.",
-          "statement": "¿Qué autoridad tiene la competencia legal exclusiva para declarar la contingencia y modificar los plazos generales mediante resolución?",
+          "topic": "Órganos Autónomos de Garantía Ciudadana",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un ciudadano adulto mayor se acerca a las ventanillas de la DIAN denunciando que, debido a un error de homonimia en el procesamiento de datos del RUT, el sistema informático le bloqueó indebidamente sus cuentas de ahorro bancarias confundiéndolo con un gran evasor que tiene un mandamiento de pago coactivo. El funcionario de cobranzas le manifiesta con desdén que no hay nada que hacer y que debe contratar un abogado y demandar a la DIAN ante el Consejo de Estado en un proceso que tardará diez años.",
+          "statement": "Para garantizar los derechos fundamentales del administrado y canalizar adecuadamente el caso dentro de la estructura institucional de la DIAN, al servidor le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "El Director General de la DIAN mediante resolución administrativa motivada, conforme a las facultades extraordinarias del Decreto 1742 de 2020 y el Estatuto Tributario."
+              "text": "orientar al ciudadano de inmediato ante la **Defensoría del Contribuyente y del Usuario Aduanero**, para que esta dependencia autónoma intervenga ante la Subdirección de Cobranzas y Procesamiento de Datos solicitando el levantamiento inmediato del embargo irregular y la corrección del dato maestro en el RUT."
             },
             {
               "id": "B",
-              "text": "El administrador de bases de datos que atiende el servidor local."
+              "text": "ratificar al ciudadano que la administración tributaria nunca se equivoca y exigirle que pague la deuda del tercero para poder desbloquear su cuenta de ahorros."
             },
             {
               "id": "C",
-              "text": "Cualquier contribuyente que envíe una solicitud a través de correo electrónico."
+              "text": "aconsejar al ciudadano que cambie de nombre legalmente en una notaría para que el sistema informático no lo vuelva a confundir."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La declaración formal de contingencia y la modificación de calendarios tributarios nacionales es una potestad privativa e indelegable del Director General de la entidad.",
+            "correct": "Es correcta. La **Defensoría del Contribuyente y del Usuario Aduanero** es el órgano especial creado por ley y ratificado en el **Decreto 1742 de 2020** para actuar como garante de los derechos de los ciudadanos frente a la administración tributaria. Su misión es precisamente recibir quejas, tramitar solicitudes de corrección de trámites ante actuaciones arbitrarias o errores de los sistemas informáticos y velar por el respeto de las garantías constitucionales del debido proceso y la dignidad ciudadana sin necesidad de acudir a litigios judiciales desgastantes.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Un administrador de TI reporta el diagnóstico técnico pero carece de potestad legal para expedir actos administrativos."
+                "reason": "Es incorrecta. Exigir el pago de deudas ajenas causadas por errores informáticos propios del Estado viola el debido proceso y constituye una extorsión administrativa."
               },
               {
                 "id": "C",
-                "reason": "Los particulares no tienen facultades para modificar los calendarios de obligaciones tributarias."
+                "reason": "Es incorrecta. La administración no puede imponer al ciudadano cargas desproporcionadas para encubrir fallas de calidad de datos en sus registros institucionales."
               }
             ]
           }
         },
         {
           "id": 609,
-          "topic": "Segregación Orgánica: Desarrollo vs. Producción en TI",
-          "caseText": "Un desarrollador de software de la DGIT solicita que se le asignen privilegios de administrador con acceso directo a la base de datos de producción de DataR para probar un script en caliente.",
-          "statement": "El Inspector I debe rechazar la solicitud aplicando:",
+          "topic": "Estructura Orgánica y Fuerzas de Apoyo Interinstitucional",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "En un puesto de control en el eje vial entre Cali y Buenaventura, funcionarios civiles de la División de Fiscalización Aduanera de la DIAN detectan una caravana de camiones de carga pesada que transporta mercancías de contrabando no declaradas. Al solicitar la detención, los conductores aceleran y varios escoltas armados de la organización delictiva amenazan a los inspectores tributarios civiles.",
+          "statement": "Dentro del marco orgánico del Decreto 1742 de 2020, la instancia institucional competente para coordinar y ejecutar la interdicción armada, el uso legítimo de la fuerza pública y el aseguramiento del cargamento es la",
           "options": [
             {
               "id": "A",
-              "text": "El principio de Segregación de Funciones y Aislamiento de Entornos (Desarrollo, Pruebas y Producción) exigido por la norma ISO 27001 y las directrices de la DGIT para prevenir modificaciones no autorizadas o caídas del servicio en producción."
+              "text": "**Dirección de Gestión de Policía Fiscal y Aduanera (POLFA)**, dependencia que integra las capacidades del personal de la Policía Nacional comisionado en la DIAN con facultades de policía judicial, control armado y lucha contra el contrabando."
             },
             {
               "id": "B",
-              "text": "Aprobar el acceso si el desarrollador promete no dañar ningún archivo."
+              "text": "Subdirección de Soluciones de TI, para que envíe un correo electrónico solicitando a los contrabandistas que se detengan voluntariamente."
             },
             {
               "id": "C",
-              "text": "Apagar el clúster de producción para que pueda trabajar con tranquilidad."
+              "text": "Oficina de Comunicaciones Institucionales, para que redacte un comunicado de prensa pidiendo perdón a los agresores armados."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La segregación de ambientes es un control de seguridad no negociable: los desarrolladores prueban en ambientes de staging o pruebas con datos enmascarados; el acceso a producción está restringido exclusivamente a roles operativos autorizados.",
+            "correct": "Es correcta. El Decreto 1742 de 2020 consagra a la **Dirección de Gestión de Policía Fiscal y Aduanera (POLFA)** como la dependencia del Nivel Central integrada por miembros de la Policía Nacional especializados en el control tributario y aduanero. La POLFA cuenta con atribuciones de **Policía Judicial**, porte de armas y facultades operativas coercitivas para enfrentar organizaciones criminales, ejecutar aprehensiones en carreteras, puertos y fronteras, y salvaguardar la integridad de los inspectores civiles de la entidad.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "Las promesas verbales no sustituyen los controles de acceso técnicos de ciberseguridad."
+                "reason": "Es incorrecta. La Subdirección de Soluciones de TI se encarga del software institucional y carece de cualquier competencia de seguridad u orden público."
               },
               {
                 "id": "C",
-                "reason": "Apagar el clúster suspendería el servicio público tributario en todo el país."
+                "reason": "Es incorrecta. Las situaciones de agresión armada y contrabando criminal exigen la intervención de la fuerza pública autorizada y no simples piezas comunicativas."
               }
             ]
           }
         },
         {
           "id": 610,
-          "topic": "Dirección Seccional de Grandes Contribuyentes",
-          "caseText": "En el Nivel Desconcentrado de la DIAN, una empresa minera transnacional con operaciones en todo el territorio colombiano es seleccionada para una fiscalización integral simultánea en Bogotá, Medellín y Barranquilla.",
-          "statement": "¿Qué dependencia especializada tiene la competencia unificada para administrar y fiscalizar a este sujeto económico?",
+          "topic": "Ficha Técnica del Empleo Inspector I en el MERF",
+          "level": "Profesional (Inspector I - OPEC 236670)",
+          "caseText": "Un Inspector I recién nombrado en período de prueba en la Subdirección de Procesamiento de Datos recibe de su superior inmediato la orden de dedicar el 100% de su jornada laboral a realizar labores de vigilancia física nocturna en las puertas de acceso peatonal del edificio central de la DIAN. El empleado revisa el Manual Específico de Requisitos y Funciones vigente (Resolución 067 de 2024) y constata que su cargo pertenece al Nivel Profesional y tiene como propósito el diseño, procesamiento, analítica masiva y calidad de datos en DataR.",
+          "statement": "Al responder a la asignación de tareas con fundamento en las normas del empleo público y el MERF institucional, al servidor le corresponde",
           "options": [
             {
               "id": "A",
-              "text": "La Dirección Seccional de Grandes Contribuyentes, que centraliza la administración, control y fiscalización de los sujetos pasivos calificados como de mayor impacto macroeconómico y fiscal en el país."
+              "text": "solicitar respetuosamente la reconsideración de la asignación, demostrando que las labores de vigilancia física corresponden al Nivel Asistencial y desnaturalizan las funciones esenciales de su empleo profesional consagradas en la **Resolución DIAN No. 067 de 2024**, solicitando asignación de tareas acordes con el procesamiento, calidad y analítica de datos en DataR."
             },
             {
               "id": "B",
-              "text": "La Seccional delegada con menos carga de trabajo en el momento."
+              "text": "asumir la labor de guardia nocturno de forma indefinida y abandonar por completo sus responsabilidades analíticas en la Subdirección de Procesamiento de Datos."
             },
             {
               "id": "C",
-              "text": "Una empresa de auditoría privada contratada por el contribuyente."
+              "text": "ausentarse del trabajo sin justificación legal durante varias semanas hasta que el superior cambie de opinión."
             }
           ],
           "correctAnswer": "A",
           "justification": {
-            "correct": "La Seccional de Grandes Contribuyentes ejerce competencia territorial nacional especializada sobre los agentes económicos calificados bajo esta condición mediante resolución del Director General.",
+            "correct": "Es correcta. En el régimen de función pública (Ley 909 de 2004, Decretos Ley 071/2020 y 927/2023, y **Resolución DIAN No. 067 de 2024 - MERF**), todo empleo público debe desempeñar funciones acordes con su **Nivel Jerárquico** (Directivo, Asesor, Profesional, Técnico o Asistencial) y con el **Propósito Principal** de su ficha técnica. El empleo **Inspector I (OPEC 236670)** es de **Nivel Profesional** y tiene asignadas responsabilidades técnicas y analíticas complejas sobre procesamiento de datos masivos en DataR, validación de facturación electrónica y calidad de información. Asignarle tareas de vigilancia asistencial desnaturaliza el cargo e incurre en desmejora laboral y desviación de poder, facultando al servidor para solicitar la asignación debida o acudir ante la Comisión de Personal.",
             "distractors": [
               {
                 "id": "B",
-                "reason": "La competencia tributaria es taxativa y funcional, no se asigna al azar por disponibilidad."
+                "reason": "Es incorrecta. Aceptar pasivamente la desnaturalización del cargo profesional anula el ejercicio de las competencias por las cuales fue seleccionado por mérito en el concurso DIAN 2676."
               },
               {
                 "id": "C",
-                "reason": "La potestad de fiscalización pública del Estado es indelegable a empresas privadas."
+                "reason": "Es incorrecta. El abandono del cargo sin justa causa es una causal de destitución disciplinaria y de declaratoria de vacancia por abandono de empleo."
               }
             ]
           }
         }
-      ],
-      "moduleId": "mod-6",
-      "track": "funcionales"
+      ]
     },
     "exam-7": {
       "title": "Examen: 7. Gobierno y Gestión de Servicios de Datos (10 Preguntas de DaaS, SLAs y Casos)",
@@ -8623,6 +8681,126 @@ window.COURSES_DATA['inspector1'] = {
       "back": "Política Nacional para la Explotación de Datos (Big Data) en Colombia que obliga al Estado a adoptar marcos de gobierno y valorizar los activos de información.",
       "module": 5,
       "category": "Estándares y Políticas Establecidos en el Gobierno de Datos"
+    },
+    {
+      "front": "Naturaleza Jurídica de la DIAN",
+      "back": "Unidad Administrativa Especial (UAE) con personería jurídica, autonomía administrativa y presupuestal, adscrita al Ministerio de Hacienda y Crédito Público.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Decreto 1742 de 2020",
+      "back": "Decreto que establece la estructura orgánica y funcional de la DIAN, refundando el Nivel Central en 8 Direcciones de Gestión y modernizando la tecnología.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Decreto Ley 071 de 2020 y 927 de 2023",
+      "back": "Normas con fuerza de ley que regulan el Sistema Específico de Carrera Administrativa de la planta de personal de la DIAN.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Descentralización por Servicios",
+      "back": "Creación legal de una entidad especializada con personería jurídica y autonomía propia (la DIAN frente a la administración central).",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Desconcentración Territorial",
+      "back": "Radicación de competencias operativas en dependencias geográficas (Direcciones Seccionales) sin conferirles personería jurídica propia.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Delegación de Funciones",
+      "back": "Traslado formal y revocable de competencias de un superior (Director General) a un inferior mediante acto administrativo motivado.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Oficina de Seguridad de la Información (OSI)",
+      "back": "Dependencia asesora de la Dirección General que audita y custodia el SGSI y vela por la reserva tributaria.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Defensoría del Contribuyente",
+      "back": "Órgano autónomo dependiente de la Dirección General que vela por el respeto de los derechos y garantías de los ciudadanos.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Dirección de Gestión de Innovación y Tecnología (DGIT)",
+      "back": "Dependencia del Nivel Central que gobierna la infraestructura de TI, desarrollo de software y macrodatos.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Subdirección de Procesamiento de Datos",
+      "back": "Dependencia de la DGIT donde se ubica el Inspector I, encargada de DataR, Facturación UBL 2.1 y modelos de riesgo.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Subdirección de Soluciones de TI",
+      "back": "Dependencia de la DGIT encargada del desarrollo y mantenimiento del código fuente de los aplicativos de software.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Dirección de Gestión de Grandes Contribuyentes",
+      "back": "Seccional con sede en Bogotá pero con competencia y jurisdicción territorial nacional sobre las mayores empresas.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Seccionales Mixtas (Impuestos y Aduanas)",
+      "back": "Direcciones seccionales en ciudades intermedias (como Ibagué o Pasto) que administran conjuntamente tributos y aduanas.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "División de Fiscalización y Liquidación",
+      "back": "División operativa seccional que ejecuta auditorías en campo y emite Requerimientos Especiales y Liquidaciones Oficiales.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "División de Recaudo y Cobranzas",
+      "back": "División operativa seccional que recauda los impuestos y ejecuta mandamientos de pago y embargos coactivos.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Período de Prueba en Carrera DIAN",
+      "back": "Período de seis (6) meses tras ganar el concurso de méritos para evaluar el desempeño y otorgar derechos de carrera.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Comisión de Personal de la DIAN",
+      "back": "Órgano colegiado paritario integrado por representantes de la administración y de los empleados que vigila la carrera.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Propósito del Inspector I (OPEC 236670)",
+      "back": "Diseñar, implementar, monitorear y optimizar flujos de procesamiento, integración, calidad y analítica masiva en DataR.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Resolución DIAN No. 067 de 2024",
+      "back": "Manual Específico de Requisitos y Funciones (MERF) vigente que define formalmente los perfiles del concurso DIAN 2676.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
+    },
+    {
+      "front": "Escuela de Impuestos y Aduanas",
+      "back": "Dependencia adscrita a Gestión Corporativa encargada de la capacitación continua y entrenamiento técnico de los servidores.",
+      "module": 6,
+      "category": "Estructura Organizacional de la DIAN"
     }
   ]
 };

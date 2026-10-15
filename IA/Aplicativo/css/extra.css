@@ -34,11 +34,47 @@ details.selfcheck[open] > summary::after { content: "▾ ocultar"; }
 .lesson-nav-hint { color: var(--text-muted); font-size: .85rem; margin-bottom: 10px; }
 
 /* Estudio: barra de tiempo del módulo en la lección */
-.module-timeline { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-.module-timeline .mt-step { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); font-size: .78rem; color: var(--text-secondary); cursor: pointer; background: var(--bg-surface); }
-.module-timeline .mt-step.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.module-timeline .mt-step.done { border-color: var(--accent); color: var(--accent); }
-.module-timeline .mt-total { margin-left: auto; font-size: .78rem; color: var(--text-muted); align-self: center; }
+.module-timeline { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    margin: 0 0 22px; 
+    align-items: center;
+}
+.module-timeline .mt-step { 
+    padding: 5px 12px; 
+    border-radius: 999px; 
+    border: 1px solid var(--border-color); 
+    font-size: .8rem; 
+    font-weight: 600;
+    color: var(--text-secondary); 
+    cursor: pointer; 
+    background: var(--bg-surface); 
+    transition: all .2s ease;
+    white-space: nowrap;
+}
+.module-timeline .mt-step:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+.module-timeline .mt-step.active { 
+    background: var(--grad-pine-fog); 
+    color: #fff; 
+    border-color: transparent; 
+    box-shadow: 0 2px 6px rgba(34, 57, 60, 0.2);
+}
+.module-timeline .mt-step.done { 
+    border-color: var(--accent); 
+    color: var(--accent); 
+}
+.module-timeline .mt-total { 
+    margin-left: auto; 
+    font-size: .78rem; 
+    color: var(--text-muted); 
+    align-self: center; 
+    white-space: nowrap;
+}
 
 /* Plan de estudio */
 .plan-hero { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow); margin-bottom: 24px; }

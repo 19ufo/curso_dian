@@ -593,7 +593,8 @@ function loadLesson(lessonId) {
 
     // Renderizar contenido
     const lessonBody = document.getElementById('lesson-body');
-    lessonBody.innerHTML = foundLesson.content;
+    const cleanContent = foundLesson.content.replace(/^<p>\s*#\s*[^<]+<\/p>\s*/i, '');
+    lessonBody.innerHTML = cleanContent;
     renderMathAndEnhanceContent(lessonBody);
 
     // Renderizar caja de Flashcards de este módulo
@@ -676,12 +677,20 @@ function loadLesson(lessonId) {
     const nextLesson = foundMod.lessons[currentLessonIndex + 1];
     const prevLesson = foundMod.lessons[currentLessonIndex - 1];
 
-    // Línea de tiempo del módulo (lecciones del tema + tiempo total)
+    // Línea de tiempo compacta del módulo (Stepper: Unidad 1, Unidad 2...)
     const tl = document.getElementById('module-timeline');
     if (tl) {
-        tl.innerHTML = foundMod.lessons.map(l => `
-            <span class="mt-step ${l.id === lessonId ? 'active' : ''} ${completedLessons.includes(l.id) ? 'done' : ''}" onclick="loadLesson('${l.id}')">${completedLessons.includes(l.id) ? '✓ ' : ''}${l.title} · ${l.minutes} min</span>`).join('') +
-            `<span class="mt-total">Total tema: ⏱️ ${fmtMin(foundMod.studyMinutes)}</span>`;
+        tl.innerHTML = foundMod.lessons.map((l, idx) => {
+            const uNum = l.unitNumber || (idx + 1);
+            const isActive = l.id === lessonId;
+            const isDone = completedLessons.includes(l.id);
+            return `<span class="mt-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}" 
+                         onclick="loadLesson('${l.id}')" 
+                         title="${l.title}">
+                         ${isDone ? '✓ ' : ''}Unidad ${uNum} <small>(${l.minutes}m)</small>
+                    </span>`;
+        }).join('') +
+        `<span class="mt-total">⏱️ Módulo: ${fmtMin(foundMod.studyMinutes)}</span>`;
     }
 
     // Renderizar barra de acciones al final de la lección
@@ -775,9 +784,17 @@ function loadLessonTimelineOnly() {
     const mod = getModuleOfLesson(currentLessonId);
     const tl = document.getElementById('module-timeline');
     if (!mod || !tl) return;
-    tl.innerHTML = mod.lessons.map(l => `
-        <span class="mt-step ${l.id === currentLessonId ? 'active' : ''} ${completedLessons.includes(l.id) ? 'done' : ''}" onclick="loadLesson('${l.id}')">${completedLessons.includes(l.id) ? '✓ ' : ''}${l.title.split(' ')[0]} · ${l.minutes} min</span>`).join('') +
-        `<span class="mt-total">Tema completo: ⏱️ ${fmtMin(mod.studyMinutes)}</span>`;
+    tl.innerHTML = mod.lessons.map((l, idx) => {
+        const uNum = l.unitNumber || (idx + 1);
+        const isActive = l.id === currentLessonId;
+        const isDone = completedLessons.includes(l.id);
+        return `<span class="mt-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}" 
+                     onclick="loadLesson('${l.id}')" 
+                     title="${l.title}">
+                     ${isDone ? '✓ ' : ''}Unidad ${uNum} <small>(${l.minutes}m)</small>
+                </span>`;
+    }).join('') +
+    `<span class="mt-total">⏱️ Módulo: ${fmtMin(mod.studyMinutes)}</span>`;
 }
 
 function getModuleOfLesson(lessonId) {
