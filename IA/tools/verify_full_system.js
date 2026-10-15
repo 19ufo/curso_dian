@@ -87,11 +87,68 @@ modulesToTest.forEach(({ id, examId, name, modNum, units }) => {
     console.log(`✔ Bibliografía de ${id}: ${mod.bibliografia.raw.length} caracteres HTML compilados`);
 });
 
-// 7. Verificación de Gestor II
+// 7. Verificación Exhaustiva de Gestor II
 const gestorMods = global.COURSES_DATA['gestor2'].modules;
-assert(gestorMods.length >= 19, `gestor2 debe tener al menos 19 módulos, tiene ${gestorMods.length}`);
-console.log(`✔ Gestor II verificado: ${gestorMods.length} módulos cargados`);
+assert(gestorMods.length >= 18, `gestor2 debe tener al menos 18 módulos, tiene ${gestorMods.length}`);
+console.log(`\n✔ Gestor II verificado: ${gestorMods.length} módulos cargados`);
+
+const gestorModulesToTest = [
+    { id: 'mod-1', expectedUnits: 7, name: 'Fundamentos MIPG' },
+    { id: 'mod-2', expectedUnits: 6, name: 'Modelo Planeación y Gestión MIPG' },
+    { id: 'mod-3', expectedUnits: 6, name: 'Contexto Sistema Control Interno' },
+    { id: 'mod-4', expectedUnits: 6, name: 'Evaluación Sistema Control Interno' },
+    { id: 'mod-5', expectedUnits: 6, name: 'Conceptos Gestión Pública' },
+    { id: 'mod-6', expectedUnits: 6, name: 'Indicadores Gestión' },
+    { id: 'mod-7', expectedUnits: 5, name: 'Medición Desempeño Institucional' },
+    { id: 'mod-8', expectedUnits: 5, name: 'Estrategia Rendición Cuentas' },
+    { id: 'mod-9', expectedUnits: 5, name: 'Estructura Organizacional DIAN' },
+    { id: 'mod-10', expectedUnits: 5, name: 'Misionalidad DIAN' }
+];
+
+console.log("\n======================================================");
+console.log("--- Verificando Módulos Funcionales de Gestor II ---");
+console.log("======================================================");
+
+gestorModulesToTest.forEach(({ id, expectedUnits, name }) => {
+    const modNum = parseInt(id.replace('mod-', ''));
+    const examId = `exam-${modNum}`;
+    const mod = gestorMods.find(m => m.id === id);
+
+    console.log(`\n--- Verificando Gestor II ${id} (${name}) ---`);
+    assert(mod, `${id} debe existir en gestor2.modules`);
+    assert.strictEqual(mod.lessons.length, expectedUnits, `${id} debe tener ${expectedUnits} unidades dinámicas, tiene ${mod.lessons.length}`);
+    console.log(`✔ Las ${expectedUnits} unidades dinámicas están presentes en ${id}:`);
+    mod.lessons.forEach(l => {
+        console.log(`   [Unidad ${l.unitNumber}] ${l.title} (⏱️ ${l.readTime}, ${l.content.length} caracteres HTML)`);
+    });
+
+    // Verificación de Examen PJS (10 preguntas, 3 opciones A, B y C según GOA)
+    const ex = global.COURSES_DATA['gestor2'].exams[examId];
+    assert(ex, `${examId} debe existir en gestor2.exams`);
+    assert.strictEqual(ex.questions.length, 10, `${examId} debe tener exactamente 10 preguntas PJS, tiene ${ex.questions.length}`);
+    console.log(`✔ Examen PJS ${id} contiene exactamente 10 preguntas:`);
+
+    ex.questions.forEach((q, idx) => {
+        assert(q.caseText && q.caseText.length > 50, `Pregunta ${idx+1} de ${id} debe tener caso contextualizado`);
+        assert(q.statement && q.statement.length > 10, `Pregunta ${idx+1} de ${id} debe tener enunciado`);
+        assert.strictEqual(q.options.length, 3, `Pregunta ${idx+1} de ${id} DEBE tener exactamente 3 opciones (A, B y C según GOA), tiene ${q.options.length}`);
+        assert(['A', 'B', 'C'].includes(q.correctAnswer), `Clave debe ser A, B o C (tiene ${q.correctAnswer})`);
+        assert(q.justification && q.justification.correct, `Pregunta ${idx+1} de ${id} debe tener justificación de respuesta correcta`);
+        assert(q.justification.distractors.length === 2, `Pregunta ${idx+1} de ${id} debe tener 2 justificaciones de distractores`);
+        console.log(`   [PJS ${idx+1}] ${q.topic} -> Opciones: ${q.options.map(o => o.id).join(', ')} | Clave: ${q.correctAnswer}`);
+    });
+
+    // Verificación de Flashcards
+    const flashes = global.COURSES_DATA['gestor2'].flashcards.filter(f => f.module === modNum);
+    assert.strictEqual(flashes.length, 20, `${id} debe tener exactamente 20 flashcards, tiene ${flashes.length}`);
+    console.log(`✔ Flashcards de ${id}: ${flashes.length} tarjetas mnemotécnicas compiladas`);
+
+    // Verificación de Bibliografía comentada
+    assert(mod.bibliografia && mod.bibliografia.raw, `${id} debe tener bibliografía comentada compilada`);
+    console.log(`✔ Bibliografía de ${id}: ${mod.bibliografia.raw.length} caracteres HTML compilados`);
+});
 
 console.log("\n======================================================");
 console.log("🎉 TODAS LAS PRUEBAS PASARON EXITOSAMENTE (100% OK)");
 console.log("======================================================");
+

@@ -27,7 +27,7 @@ window.COURSES_DATA['inspector1'] = {
   "tracks": [
     {
       "id": "funcionales",
-      "name": "📘 Pruebas Funcionales - 11 Indicadores (60% Eliminatoria)",
+      "name": "📘 Pruebas Funcionales (11 Módulos - 60% Eliminatoria)",
       "icon": "database"
     },
     {

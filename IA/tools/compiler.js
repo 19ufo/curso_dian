@@ -538,6 +538,16 @@ function compileCargo(cargoKey) {
         totalFlashcardsCount += parsed.flashcards.length;
     });
 
+    // Filtrar módulos funcionales obsoletos que no fueron procesados
+    if (processedModules.size > 0) {
+        courseData.modules = courseData.modules.filter(m => !(m.track === 'funcionales' && !processedModules.has(parseInt(m.id.replace('mod-', '')))));
+        const funcTrack = courseData.tracks.find(t => t.id === 'funcionales');
+        if (funcTrack) {
+            const funcCount = courseData.modules.filter(m => m.track === 'funcionales').length;
+            funcTrack.name = `📘 Pruebas Funcionales (${funcCount} Módulos - 60% Eliminatoria)`;
+        }
+    }
+
     // Guardar archivo final compilado
     const outJs = `// ARCHIVO COMPILADO AUTOMÁTICAMENTE por IA/tools/compiler.js\n` +
         `// Fuente de verdad: ${path.relative(process.cwd(), config.srcDir)}\n` +
