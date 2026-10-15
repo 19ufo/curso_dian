@@ -1,4 +1,4 @@
-﻿/* Estilos de la ampliación: autoevaluación, llamadas, código, plan de estudio, tiempos */
+/* Estilos de la ampliación: autoevaluación, llamadas, código, plan de estudio, tiempos */
 .lesson-body h4 { font-family: var(--font-serif); font-size: 1.15rem; margin: 22px 0 10px; color: var(--accent-gold); }
 .lesson-body ol { margin: 12px 0 20px 24px; }
 .lesson-body hr { border: none; border-top: 1px solid var(--border-color); margin: 28px 0; }
@@ -506,7 +506,8 @@ details.selfcheck[open] > summary::after { content: "▾ ocultar"; }
 }
 
 /* Modal de Respaldo y Restauración */
-.modal-overlay {
+.modal-overlay,
+.modal-backdrop {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(15, 23, 42, 0.72);
@@ -518,8 +519,9 @@ details.selfcheck[open] > summary::after { content: "▾ ocultar"; }
     padding: 16px;
 }
 
-.modal-overlay.active {
-    display: flex;
+.modal-overlay.active,
+.modal-backdrop.active {
+    display: flex !important;
 }
 
 .modal-card {

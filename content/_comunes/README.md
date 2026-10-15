@@ -23,6 +23,10 @@ Esta carpeta contiene la **fuente de verdad común (Single Source of Truth / DRY
    - Metodología oficial para la recolección de evidencias de desempeño, producto y testimoniales.
    - Criterios psicométricos aplicados por la Universidad Areandina en las Preguntas de Juicio Situacional (PJS).
 
+5. **Guía de Orientación al Aspirante (`04_Guia_Orientacion_Aspirante_Pruebas_Escritas_DIAN_2676.md`):**
+   - Guía oficial emitida por la CNSC y Areandina para la presentación de las pruebas escritas del 8 de noviembre de 2026.
+   - Ponderaciones (Ingreso y Ascenso), regla de corte normativo (19 de junio de 2026), formato PJS y Likert con justificaciones oficiales, logística, hojas de respuesta y protocolo de reclamaciones.
+
 ---
 
 ## 🔄 Reutilización por Cargo (DRY Architecture)

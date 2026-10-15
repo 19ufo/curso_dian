@@ -53,7 +53,7 @@
                     </button>
                 </div>
             </div>
-            <button class="btn-icon backup-header-btn" id="backup-btn" title="Guardar / Cargar Avance (Descargar o Subir archivo JSON)">
+            <button class="btn-icon backup-header-btn" id="backup-btn" onclick="window.openBackupModal ? window.openBackupModal() : (window.backupInstance && window.backupInstance.openModal())" title="Guardar / Cargar Avance (Descargar o Subir archivo JSON)">
                 <span class="btn-icon-emoji">💾</span>
                 <span class="backup-header-label">Avance</span>
             </button>
@@ -175,30 +175,45 @@
     </div>
 
     <!-- Modal de Guardar / Cargar Avance (Backup Local) -->
-    <div class="modal-backdrop" id="backup-modal" style="display: none;">
+    <div class="modal-overlay" id="backup-modal" style="display: none;">
         <div class="modal-card">
             <div class="modal-card-header">
-                <div class="modal-card-title-group">
-                    <span class="modal-card-icon">💾</span>
-                    <h3>Guardar / Cargar tu Avance</h3>
+                <div class="modal-title-wrap">
+                    <span class="modal-icon">💾</span>
+                    <div>
+                        <h3>Guardar / Cargar tu Avance</h3>
+                        <p class="modal-subtitle">Respalda tus progresos o muévelos entre tus dispositivos</p>
+                    </div>
                 </div>
                 <button class="btn-icon modal-close-btn" id="backup-modal-close" aria-label="Cerrar modal">✕</button>
             </div>
 
             <div class="modal-card-body">
+                <!-- Alerta dinámica de estado -->
+                <div id="backup-alert" class="backup-alert" style="display: none;"></div>
+
+                <!-- Resumen de estadísticas del aspirante -->
+                <div class="backup-status-box">
+                    <div class="backup-status-title">Estado de tu preparación actual:</div>
+                    <div class="backup-stats-chips" id="backup-stats-info"></div>
+                </div>
+
                 <p class="backup-intro-text">
                     Tu avance se guarda automáticamente en este navegador. Para asegurarte de nunca perderlo o continuar estudiando desde otro computador o celular, puedes <strong>descargar tu archivo de respaldo</strong> o <strong>cargar uno previo</strong>.
                 </p>
 
                 <!-- Tarjeta: Exportar -->
                 <div class="backup-action-card">
-                    <div class="backup-action-info">
+                    <div class="backup-action-header">
                         <span class="backup-action-icon">📥</span>
                         <div>
                             <h4>Descargar Copia de Seguridad</h4>
-                            <p>Descarga un archivo liviano <code>.json</code> con todas tus lecciones completadas, respuestas y estadísticas.</p>
                         </div>
+                        <span class="action-badge badge-download">Exportar</span>
                     </div>
+                    <p class="backup-action-desc">
+                        Descarga un archivo liviano <code>.json</code> con todas tus lecciones completadas, avances del plan y simulacros rendidos.
+                    </p>
                     <button class="btn btn-primary btn-block" id="btn-export-backup">
                         ⬇️ Descargar mi Avance (.json)
                     </button>
@@ -206,15 +221,15 @@
 
                 <!-- Tarjeta: Importar -->
                 <div class="backup-action-card">
-                    <div class="backup-action-info">
+                    <div class="backup-action-header">
                         <span class="backup-action-icon">📤</span>
                         <div>
                             <h4>Restaurar Copia de Seguridad</h4>
-                            <p>Carga un archivo <code>.json</code> previamente guardado para restaurar tu progreso en este dispositivo.</p>
                         </div>
+                        <span class="action-badge badge-upload">Importar</span>
                     </div>
-                    <p class="backup-note">
-                        Selecciona un archivo <code>.json</code> que hayas descargado antes para recuperar exactamente tu avance en este navegador.
+                    <p class="backup-action-desc">
+                        Carga un archivo <code>.json</code> que hayas descargado antes para recuperar exactamente tu avance en este navegador.
                     </p>
                     <input type="file" id="backup-file-input" accept=".json,application/json" style="display: none;">
                     <button class="btn btn-secondary btn-block" id="btn-trigger-import">

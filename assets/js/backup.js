@@ -47,12 +47,29 @@ class BackupManager {
         }
     }
 
+    getCourseId() {
+        if (window.currentCourseId) return window.currentCourseId;
+        try {
+            if (typeof window !== 'undefined' && window.location && window.location.search) {
+                const p = new URLSearchParams(window.location.search);
+                const c = p.get('cargo');
+                if (c) return c;
+            }
+            if (typeof localStorage !== 'undefined') {
+                const stored = localStorage.getItem('dian2676_active_course');
+                if (stored) return stored;
+            }
+        } catch(e) {}
+        return 'gestor2';
+    }
+
     openModal() {
         const modal = document.getElementById('backup-modal');
         if (!modal) return;
         this.updateModalStats();
         this.clearAlert();
         modal.classList.add('active');
+        modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
@@ -60,13 +77,14 @@ class BackupManager {
         const modal = document.getElementById('backup-modal');
         if (!modal) return;
         modal.classList.remove('active');
+        modal.style.display = 'none';
         document.body.style.overflow = '';
     }
 
     updateModalStats() {
         const statsEl = document.getElementById('backup-stats-info');
         if (!statsEl) return;
-        const currentCourse = window.currentCourseId || 'gestor2';
+        const currentCourse = this.getCourseId();
         const completed = JSON.parse(localStorage.getItem('dian2676_completed_' + currentCourse) || (currentCourse === 'inspector1' ? localStorage.getItem('dian2676_completed') : null) || '[]');
         const plan = JSON.parse(localStorage.getItem('dian2676_plan_' + currentCourse) || (currentCourse === 'inspector1' ? localStorage.getItem('dian2676_plan') : null) || '{}');
         const planDoneCount = Object.values(plan).filter(Boolean).length;
@@ -100,7 +118,7 @@ class BackupManager {
 
     exportToFile() {
         try {
-            const currentCourse = window.currentCourseId || 'gestor2';
+            const currentCourse = this.getCourseId();
             const compG = JSON.parse(localStorage.getItem('dian2676_completed_gestor2') || '[]');
             const planG = JSON.parse(localStorage.getItem('dian2676_plan_gestor2') || '{}');
             const quizG = JSON.parse(localStorage.getItem('dian2676_quiz_history_gestor2') || '{}');
