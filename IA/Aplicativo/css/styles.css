@@ -40,7 +40,7 @@
     --success-bg: rgba(175, 187, 152, 0.28);
     --warning: #9e8756;
     --warning-bg: rgba(206, 205, 185, 0.35);
-    --sidebar-width: 260px;
+    --sidebar-width: clamp(180px, 18.5vw, 240px);
     --header-height: 70px;
     --radius: 10px;
     --shadow: 0 4px 14px -2px rgba(34, 57, 60, 0.08), 0 2px 6px -1px rgba(34, 57, 60, 0.04);
@@ -256,24 +256,34 @@ body {
 
 /* Layout */
 .app-container {
-    flex: 1;
+    flex: 1 1 0%;
+    min-height: 0;
     display: flex;
     overflow: hidden;
 }
 
 /* Sidebar */
-.app-sidebar {
+.app-sidebar,
+.sidebar-nav {
     width: var(--sidebar-width);
+    max-width: 20vw;
+    min-width: 175px;
+    flex: 0 0 var(--sidebar-width);
     background-color: var(--bg-surface);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .sidebar-search {
+    flex-shrink: 0;
     padding: 10px 12px;
     border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
 }
 
 .sidebar-search input {
@@ -285,6 +295,7 @@ body {
     border-radius: var(--radius);
     font-size: 0.82rem;
     outline: none;
+    transition: border-color 0.2s ease;
 }
 
 .sidebar-search input:focus {
@@ -292,10 +303,44 @@ body {
 }
 
 .modules-list {
+    flex: 1 1 0%;
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px 8px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.modules-list::-webkit-scrollbar,
+.app-sidebar::-webkit-scrollbar,
+.sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modules-list::-webkit-scrollbar-track,
+.app-sidebar::-webkit-scrollbar-track,
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modules-list::-webkit-scrollbar-thumb,
+.app-sidebar::-webkit-scrollbar-thumb,
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 999px;
+}
+
+.modules-list::-webkit-scrollbar-thumb:hover,
+.app-sidebar::-webkit-scrollbar-thumb:hover,
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-sage);
 }
 
 .module-group {
@@ -1051,7 +1096,7 @@ body {
 /* Tablet & Mobile Screens (<= 992px) */
 @media (max-width: 992px) {
     :root {
-        --sidebar-width: 240px;
+        --sidebar-width: clamp(170px, 19vw, 210px);
     }
 
     .main-viewport {
@@ -1148,13 +1193,15 @@ body {
     }
 
     /* Barra Lateral Desplegable (Off-Canvas Drawer) */
-    .app-sidebar {
+    .app-sidebar,
+    .sidebar-nav {
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
-        width: 86%;
-        max-width: 320px;
+        width: 86% !important;
+        max-width: 320px !important;
+        min-width: 0 !important;
         height: 100%;
         height: 100dvh;
         z-index: 1000;
@@ -1164,9 +1211,11 @@ body {
         transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
+        overflow: hidden;
     }
 
-    .app-sidebar.sidebar-open {
+    .app-sidebar.sidebar-open,
+    .sidebar-nav.sidebar-open {
         transform: translateX(0);
     }
 
