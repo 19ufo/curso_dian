@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * compiler.js — Compilador Universal Multi-Cargo DIAN 2676
  * 
@@ -73,7 +73,7 @@ function inline(text) {
     t = t.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return '\u0002' + (codes.length - 1) + '\u0002'; });
     // Proteger fórmulas LaTeX ($$...$$ y $...$) para que KaTeX las procese en el navegador
     const maths = [];
-    t = t.replace(/\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g, m => { maths.push(m); return '\u0003' + (maths.length - 1) + '\u0003'; });
+    t = t.replace(/\$\$([\s\S]+?)\$\$|\$([^$\n]*[\\^_{][^$\n]*?)\$/g, m => { maths.push(m); return '\u0003' + (maths.length - 1) + '\u0003'; });
     t = esc(t);
     // Negrita (admite cursiva anidada) y luego cursiva
     t = t.replace(/\*\*(.+?)\*\*(?!\*)/g, '<strong>$1</strong>');
