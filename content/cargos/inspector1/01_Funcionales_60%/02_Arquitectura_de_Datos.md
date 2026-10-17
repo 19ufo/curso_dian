@@ -8,828 +8,998 @@ nivel: "Profesional"
 dependencia: "Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos"
 componente: "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)"
 corte_normativo: "19 de junio de 2026"
-unidades_totales: 7
-tiempo_estimado_lectura: "150 min"
+unidades_totales: 8
+tiempo_estimado_lectura: "160 min"
 ---
 
-# Guía Maestra de Estudio: 02. Arquitectura de Datos
+# Guía Maestra de Estudio: 02. Arquitectura de Datos (De Básico a Avanzado)
 
 > [!EXAM] Propósito del Indicador en la Prueba Escrita DIAN 2676
-> En el empleo **Inspector I (OPEC 236670)** de la Subdirección de Procesamiento de Datos, el eje **Arquitectura de Datos** evalúa tu capacidad para tomar decisiones técnicas, normativas y de diseño sobre el **ciclo de vida del dato**, la elección de **paradigmas arquitectónicos** (Data Warehouse, Data Lake, Lakehouse, Data Fabric, Data Mesh), el diseño en capas (**Arquitectura Medallion**), los **formatos de almacenamiento y tablas abiertas** (Parquet, Avro, ORC, Apache Iceberg, Delta Lake), las metodologías de **modelado analítico** (Kimball, Inmon, Data Vault 2.0) y la administración del **Repositorio Único de Datos de la DIAN (DataR)** bajo estricto cumplimiento de la **Reserva Tributaria (Art. 583 del Estatuto Tributario)** y el **Marco de Referencia de Arquitectura Empresarial (MRAE) del MinTIC**.
+> En el empleo **Inspector I (OPEC 236670)** de la Subdirección de Procesamiento de Datos, el eje **Arquitectura de Datos** evalúa tu capacidad para diseñar, organizar, modelar y gobernar los repositorios de información de la DIAN de principio a fin.
+> Incluso para un Científico de Datos experimentado, la Arquitectura de Datos tiene decenas de conceptos y siglas propias (`TOGAF`, `MRAE`, `3FN`, `OLTP`, `OLAP`, `CDC`, `SCD Tipo 2`, `Kimball`, `Inmon`, `Data Vault`, `Hubs/Links/Satellites`, `Data Fabric`, `Data Mesh`, `Z-Ordering`, `Copy-on-Write` vs. `Merge-on-Read`). Por ello, este módulo sigue una **progresión pedagógica estricta de cero a experto**: empezaremos entendiendo qué es un modelo de datos desde lo más simple (Conceptual, Lógico y Físico) y cómo se clasifican los datos en el Estado; luego entenderemos cómo separar la operación diaria (`OLTP` normalizado en `3FN`) del análisis (`OLAP`) y cómo mover los datos sin tumbar los servidores (`CDC basado en Logs`); compararemos los grandes paradigmas (`Data Warehouse`, `Data Lake`, `Lakehouse`, `Data Fabric` y `Data Mesh`); dominaremos paso a paso el **Modelado Dimensional de Ralph Kimball** y las **Dimensiones de Cambio Lento (`SCD Tipos 0 a 6`)**, el modelo **`Data Vault 2.0`**, la **Arquitectura Medallón** con Contratos de Datos, los secretos internos de **`Apache Iceberg` y `Delta Lake`**, y el gobierno de **`DataR`** bajo la **Reserva Tributaria (Art. 583 E.T.)**.
 
 ---
 
-## Mapa de Ruta del Módulo (7 Unidades de Profundización)
+## Mapa de Ruta del Módulo (Progresión de Básico a Avanzado)
 
-1. **Unidad 1:** Arquitectura Empresarial (TOGAF / MRAE MinTIC) y Niveles de Abstracción del Dato.
-2. **Unidad 2:** Cargas de Trabajo (OLTP vs. OLAP), Ciclo de Vida e Ingesta Moderna (ETL, ELT, Batch, Streaming y CDC).
-3. **Unidad 3:** Paradigmas Arquitectónicos (DWH, Data Lake, Lakehouse, Data Fabric y Data Mesh) y Criterios de Decisión.
-4. **Unidad 4:** Arquitectura Medallion (Bronce, Plata y Oro), Capa Semántica y Contratos de Datos.
-5. **Unidad 5:** Formatos de Archivo (Parquet, ORC, Avro) y Formatos de Tabla Abiertos (Apache Iceberg, Delta Lake, Apache Hudi).
-6. **Unidad 6:** Metodologías de Modelado Analítico e Integración (Inmon, Dimensional de Kimball, SCD y Data Vault 2.0).
-7. **Unidad 7:** Arquitectura de Referencia en la DIAN: El Repositorio Único de Datos (DataR), Seguridad por Diseño y Marco Normativo.
-
----
-
-## Unidad 1: Arquitectura Empresarial (TOGAF / MRAE MinTIC) y Niveles de Abstracción del Dato
-**Tiempo estimado:** 20 min | **Enfoque:** Conceptual y Normativo Público
-
-### 1.1. ¿Qué vas a lograr en esta unidad?
-Comprender cómo la Arquitectura de Datos se inserta dentro de la **Arquitectura Empresarial del Estado Colombiano (MRAE - MinTIC)** y el estándar **TOGAF**, diferenciando los niveles de modelado (conceptual, lógico y físico) y los artefactos de decisión que un Inspector I debe validar antes de autorizar cualquier desarrollo o integración en la DIAN.
-
-### 1.2. La Arquitectura de Datos dentro de TOGAF y el MRAE (MinTIC)
-En el sector público colombiano, ninguna base de datos o repositorio se diseña de manera aislada. El **Método de Desarrollo de Arquitectura (ADM) de TOGAF** y el **Marco de Referencia de Arquitectura Empresarial (MRAE)** de la Política de Gobierno Digital (MinTIC) estructuran la arquitectura institucional en cuatro dominios interdependientes:
-
-| Dominio Arquitectónico | Pregunta Rectora | Ejemplo aplicado en la DIAN |
-| :--- | :--- | :--- |
-| **1. Arquitectura de Negocio (Misional)** | ¿Qué procesos misionales, capacidades, trámites y actores existen? | Fiscalización tributaria, desaduanamiento de mercancías, devolución de saldos a favor, recaudo. |
-| **2. Arquitectura de Información y Datos** | ¿Qué activos de datos requiere el negocio, quién es su dueño, cómo se estructuran, integran y protegen? | Modelo único de Contribuyente (RUT), Factura Electrónica (XML), Declaraciones Tributarias, Información Exógena en **DataR**. |
-| **3. Arquitectura de Aplicaciones (Sistemas)** | ¿Qué sistemas transaccionales o analíticos producen, procesan y consumen esos datos? | Sistemas misionales (MUISCA, SYGA, Sistema de Facturación Electrónica) y motores analíticos de riesgo. |
-| **4. Arquitectura Tecnológica (Infraestructura)** | ¿Qué hardware, redes, nube híbrida, contenedores y almacenamiento soportan las aplicaciones y los datos? | Clústeres de almacenamiento de objetos (S3/ADLS), motores Spark/Trino, redes privadas, HSM de cifrado. |
-
-> [!LAW] Conexión con el MIPG y Gobierno Digital
-> En el Estado colombiano, el dominio de **Información y Datos** del MRAE obliga a las entidades públicas a definir su **Catálogo de Componentes de Información**, identificar los **Datos Maestros, Transaccionales y de Referencia**, y garantizar la interoperabilidad a través del marco de **Servicios Ciudadanos Digitales (X-Road)** sin vulnerar la reserva legal.
-
-### 1.3. Los Tres Niveles de Abstracción del Modelo de Datos
-En las pruebas de la CNSC es frecuente que presenten un escenario de cambio tecnológico (por ejemplo, migrar de un motor relacional Oracle On-Premise a un Lakehouse en la nube) y pregunten **qué nivel de modelo se debe modificar**.
-
-```
-+-------------------------------------------------------------------------+
-| 1. MODELO CONCEPTUAL (Perspectiva de Negocio / Misional)                |
-| - Qué contiene: Entidades nucleares de negocio y sus relaciones macro.  |
-| - Audiencia: Directivos, líderes funcionales de Fiscalización/Aduanas.  |
-| - Tecnología: 100% agnóstico (No hay tipos de datos, ni PK/FK técnicas).|
-| - Ejemplo DIAN: [Contribuyente] ---presenta---> [Declaración de Renta]  |
-+-------------------------------------------------------------------------+
-                                    |
-                                    v
-+-------------------------------------------------------------------------+
-| 2. MODELO LÓGICO (Perspectiva de Estructura y Reglas de Datos)          |
-| - Qué contiene: Atributos detallados, claves primarias (PK), foráneas   |
-|   (FK), cardinalidades (1:N, N:M), normalización (3FN) o dimensiones.   |
-| - Audiencia: Arquitectos de datos, analistas funcionales, ingenieros.   |
-| - Tecnología: Independiente del motor de base de datos específico.      |
-| - Ejemplo DIAN: Entidad CONTRIBUYENTE (nit_contribuyente [PK],          |
-|   razon_social, cod_ciiu [FK], fecha_inscripcion_rut).                  |
-+-------------------------------------------------------------------------+
-                                    |
-                                    v
-+-------------------------------------------------------------------------+
-| 3. MODELO FÍSICO (Perspectiva de Implementación y Rendimiento)          |
-| - Qué contiene: Tablas físicas, tipos exactos del motor (VARCHAR2(200), |
-|   BIGINT, DECIMAL(18,2)), particionamiento, clustering, índices,        |
-|   compresión (Snappy/ZSTD), tablespaces y formatos (Parquet/Iceberg).   |
-| - Audiencia: DBAs, Ingenieros de Datos, Administradores de Plataforma.  |
-| - Tecnología: Totalmente dependiente del SGBD o plataforma elegida.     |
-+-------------------------------------------------------------------------+
-```
-
-> [!EXAM] Regla de Oro para el Examen (Migración de Motores)
-> Si la DIAN decide migrar un sistema analítico de un motor propietario a una plataforma **Apache Iceberg sobre almacenamiento de objetos**, **cambia el Modelo Físico** (tipos de datos nativos, particiones ocultas, compresión columnar Parquet), pero **el Modelo Conceptual y el Modelo Lógico del negocio permanecen intactos** salvo que cambien las reglas misionales o tributarias.
-
-### 1.4. Taxonomía de los Datos en una Entidad Pública
-Un arquitecto de datos clasifica los activos de información en cinco categorías fundamentales para definir su gobierno:
-1. **Datos de Referencia (Reference Data):** Conjuntos de valores permitidos, códigos estandarizados y catálogos externos o internos que rara vez cambian. *Ejemplo DIAN:* Códigos de actividad económica **CIIU (DANE)**, códigos de países **ISO 3166**, tabla de municipios **DIVIPOLA**, subpartidas arancelarias del Arancel de Aduanas.
-2. **Datos Maestros (Master Data):** Las entidades nucleares del negocio sobre las cuales se ejecutan las transacciones; exigen una **Fuente Única de Verdad (Single Source of Truth - Golden Record)**. *Ejemplo DIAN:* El **Contribuyente / Usuario Aduanero** consolidado a través del **RUT (Registro Único Tributario)**.
-3. **Datos Transaccionales (Transactional Data):** Eventos operativos registrados con marca de tiempo (timestamp) que describen acciones del negocio. Son de alto volumen y crecimiento continuo. *Ejemplo DIAN:* Presentación del Formulario 110 (Renta), emisión de una Factura Electrónica de Venta (FEV), Declaración de Importación (Formulario 500), recibo oficial de pago en bancos (Formulario 490).
-4. **Metadatos (Metadata):** "Datos acerca de los datos" que permiten descubrirlos, comprenderlos, auditarlos y gobernarlos. Se dividen en:
-   * **Metadatos de Negocio:** Definiciones del glosario institucional, propietario del dato (*Data Owner*), reglas semánticas, clasificación de confidencialidad.
-   * **Metadatos Técnicos:** Esquemas de tablas, nombres de columnas, tipos de datos, scripts de transformación, linaje técnico (*Data Lineage*), llaves y particiones.
-   * **Metadatos Operativos:** Tiempo de ejecución de los pipelines, volumen de filas cargadas, logs de errores, marcas de auditoría de quién consultó una tabla y cuándo.
-5. **Datos No Estructurados y Semiestructurados:** Documentos en texto libre, imágenes o estructuras jerárquicas flexibles. *Ejemplo DIAN:* Archivos **XML UBL 2.1** de facturación electrónica (semiestructurado), reportes de información exógena en XML/JSON, actas de aprehensión aduanera en PDF, imágenes de escáneres de contenedores en puertos (no estructurados).
-
-### 1.5. Artefactos de Gobierno Arquitectónico: ADR y Matrices
-* **ADR (Architecture Decision Record):** Documento técnico corto e inmutable que registra una decisión de arquitectura significativa. Contiene: **Contexto / Problema**, **Opciones evaluadas**, **Decisión tomada**, **Estado** (Propuesto, Aceptado, Obsoleto) y **Consecuencias (Trade-offs)**. En una entidad sujeta a control de la Contraloría y auditorías internas, el ADR justifica técnicamente por qué se eligió un diseño sin caer en arbitrariedades.
-* **Matriz CRUD (Create, Read, Update, Delete):** Cruza **Procesos de Negocio / Aplicaciones** contra **Entidades de Datos**. Permite detectar anomalías arquitectónicas graves, como datos huérfanos (ningún proceso los crea), múltiples sistemas creando sin control la misma entidad maestra (violación de fuente única) o sistemas modificando directamente tablas que pertenecen a otro dominio.
-
-> [!NOTE] Micro-verificación de la Unidad 1
-> **Caso rápido:** Durante la modernización de un módulo de fiscalización, el equipo de arquitectura detecta que tres sistemas distintos crean y actualizan de forma independiente los datos de ubicación del contribuyente sin sincronizarse con el RUT. ¿Qué artefacto arquitectónico permite mapear formalmente qué procesos crean, leen, actualizan o eliminan cada entidad de datos para corregir la duplicidad de fuentes?
-> * **Respuesta:** La **Matriz CRUD** (Proceso vs. Entidad de Datos), complementada con la definición del RUT como Sistema de Registro (*System of Record*) para los **Datos Maestros** del contribuyente.
+* **Unidad 1 (Los Cimientos):** ¿Qué es la Arquitectura de Datos y cómo encaja en el Estado? `TOGAF`, el `MRAE` del MinTIC, los **3 Niveles de Abstracción (Conceptual, Lógico y Físico)**, la **Taxonomía de los Datos** (Referencia, Maestros, Transaccionales y Metadatos) y artefactos (`ADR` y Matriz `CRUD`).
+* **Unidad 2 (Operación vs. Analítica y Movimiento de Datos):** ¿Por qué no podemos hacer reportes sobre la base transaccional? **`OLTP` (Normalización `1FN`, `2FN`, `3FN`) vs. `OLAP`**, el Ciclo de Vida del Dato (`DAMA-DMBOK`), **`ETL` vs. `ELT`** y cómo replicar datos en tiempo real sin bloquear las tablas operacionales (**`CDC` basado en Logs vs. *Polling***).
+* **Unidad 3 (Los 5 Grandes Paradigmas Arquitectónicos):** De la bodega tradicional a la descentralización moderna: **`Data Warehouse`**, **`Data Lake`** (y el peligro del *Data Swamp*), **`Data Lakehouse`**, **`Data Fabric`** (tejido tecnológico por metadatos activos) y **`Data Mesh`** (malla socio-técnica con sus 4 principios de Zhamak Dehghani).
+* **Unidad 4 (Arquitectura Interna del Lakehouse):** ¿Cómo se organiza por dentro el repositorio `DataR`? **Arquitectura Medallón (`Bronce`, `Plata` y `Oro`)**, manejo de datos defectuosos (**Tablas de Cuarentena / *Dead-Letter***), **Contratos de Datos (*Data Contracts*)** y **Capa Semántica (*Semantic Layer*)**.
+* **Unidad 5 (Modelado Analítico Parte 1 — `Inmon` vs. `Kimball` y el Esquema en Estrella):** Cómo estructurar tablas para que las consultas vuelen: Top-Down (`Inmon`) vs. Bottom-Up (`Kimball`), declaración del **Grano (*Grain*)**, **Tablas de Hechos** (Transaccionales, Instantáneas Periódicas y Acumulativas), **Aditividad de Métricas** (Aditivas, Semi-Aditivas y No Aditivas) y **Tablas de Dimensiones** (`Surrogate Keys` vs. `Natural Keys`, Degeneradas, Basura, *Role-Playing* y Conformadas; Estrella vs. Copo de Nieve).
+* **Unidad 6 (Modelado Analítico Parte 2 — Historia con `SCD` y `Data Vault 2.0`):** ¿Qué pasa en una auditoría cuando un contribuyente se muda de ciudad o cambia de actividad económica? **Dimensiones de Cambio Lento (`SCD Tipos 0, 1, 2, 3, 4 y 6`)** explicadas con ejemplos numéricos de la DIAN, y el estándar para integración auditable masiva: **`Data Vault 2.0` (`Hubs`, `Links` y `Satellites`)**.
+* **Unidad 7 (Ingeniería Física de Tablas Abiertas):** ¿Cómo funcionan por dentro **`Apache Iceberg`**, **`Delta Lake`** y **`Apache Hudi`**? Arquitectura de metadatos, **`Copy-on-Write (CoW)` vs. `Merge-on-Read (MoR)`**, **Particionamiento Oculto (*Hidden Partitioning*)** y **Ordenamiento Multidimensional (`Z-Ordering` / *Liquid Clustering*)**.
+* **Unidad 8 (El Repositorio Único de Datos `DataR`, Seguridad y Marco Normativo):** Aterrizaje institucional en la DIAN: **`RBAC` vs. `ABAC`**, Enmascaramiento Dinámico (`DDM`) vs. Estático/Tokenización, continuidad del negocio (**`RPO` vs. `RTO`**) y cumplimiento del **Art. 583 E.T.**, `Ley 1581/2012`, `Ley 1712/2014` y `MRAE (X-Road)`.
 
 ---
 
-## Unidad 2: Cargas de Trabajo (OLTP vs. OLAP), Ciclo de Vida e Ingesta Moderna
-**Tiempo estimado:** 25 min | **Enfoque:** Ingeniería y Arquitectura de Pipelines
+## Unidad 1: Los Cimientos — Arquitectura Empresarial (`TOGAF` / `MRAE`), Niveles de Abstracción y Taxonomía del Dato
 
-### 2.1. ¿Qué vas a lograr en esta unidad?
-Distinguir con precisión quirúrgica los sistemas transaccionales (**OLTP**) de los analíticos (**OLAP**), dominar las fases del ciclo de vida del dato (DAMA-DMBOK) y elegir el patrón de ingesta e integración adecuado (**ETL vs. ELT**, **Batch vs. Streaming** y **Change Data Capture - CDC**) según las restricciones de latencia, seguridad y capacidad de cómputo del caso planteado.
+### 1.1. ¿Qué es la Arquitectura de Datos y Dónde se Ubica en una Entidad Pública?
 
-### 2.2. OLTP vs. OLAP: La Separación Estructural de Cargas de Trabajo
-Uno de los errores más penalizados en las pruebas de juicio situacional es permitir que procesos analíticos, reportes masivos o entrenamientos de modelos de riesgo se ejecuten directamente sobre las bases de datos transaccionales que atienden a los ciudadanos en tiempo real.
+Como Científico de Datos estás acostumbrado a recibir tablas o archivos para analizarlos. Pero antes de que esa tabla exista, alguien tuvo que responder preguntas fundamentales: *¿Qué datos existen en la DIAN? ¿Cómo se llaman oficialmente? ¿En qué sistema nacen? ¿Cómo se conectan el RUT, la Factura Electrónica y la Declaración de Renta sin contradecirse?*
 
-| Criterio Técnico | **OLTP (Online Transaction Processing)** | **OLAP (Online Analytical Processing)** |
-| :--- | :--- | :--- |
-| **Propósito Misional** | Soportar la operación diaria del negocio (ej. inscribir RUT, presentar y pagar declaraciones, validar una factura). | Analizar el comportamiento histórico, detectar evasión, construir indicadores y proyectar el recaudo. |
-| **Patrón de Acceso** | Miles de transacciones concurrentes por segundo (`INSERT`, `UPDATE`, `SELECT` puntuales por llave primaria). | Consultas complejas que escanean millones o miles de millones de filas agregando columnas (`SUM`, `COUNT`, `GROUP BY`). |
-| **Modelo de Datos** | **Altamente normalizado (3FN)** para evitar redundancia y garantizar integridad referencial sin anomalías de actualización. | **Desnormalizado / Dimensional** (Esquema en Estrella, Copo de Nieve o tablas anchas) para minimizar `JOINs` costosos. |
-| **Disposición Física en Disco** | **Orientado a Filas (Row-oriented):** todos los campos de un registro se guardan contiguos. Óptimo para escribir/leer una fila entera. | **Orientado a Columnas (Columnar):** todos los valores de una misma columna se guardan contiguos. Óptimo para comprimir y agregar pocas columnas. |
-| **Horizonte Temporal** | Estado actual u operacional reciente (días/meses). | Histórico profundo e inmutable (5 a 10+ años de declaraciones y operaciones). |
-| **Métrica Crítica** | Latencia de transacción en milisegundos, TPS (Transacciones por Segundo) y garantías ACID por fila. | Throughput de escaneo (GB/s), tiempos de respuesta en consultas analíticas complejas. |
+Eso es la **Arquitectura de Datos**: el plano maestro que define cómo se estructuran, almacenan, integran y gobiernan los activos de información de una organización.
 
-> [!WARNING] Anti-patrón Crítico de Examen: Consultas Analíticas en Producción OLTP
-> Si un caso del examen plantea que en temporada de vencimiento de Declaración de Renta el portal transaccional presenta bloqueos (*locks*), alta contención de I/O y caídas porque el área de fiscalización ejecuta reportes de cruces masivos cada hora sobre la base de datos operacional, **la respuesta NUNCA es agregar índices analíticos al OLTP ni pedirles a los ciudadanos que entren en otro horario**. La solución arquitectónica correcta es **desacoplar las cargas**: replicar los datos de forma asíncrona y no intrusiva (mediante **CDC basado en logs**) hacia el repositorio analítico (**DataR / OLAP**) y ejecutar allí las consultas.
+En el Estado colombiano, ninguna entidad pública diseña su tecnología al azar. Debe seguir dos marcos rectores:
+1. **`TOGAF` (*The Open Group Architecture Framework*):** El estándar mundial de Arquitectura Empresarial.
+2. **`MRAE` (*Marco de Referencia de Arquitectura Empresarial para la Gestión de TI* del MinTIC):** La norma obligatoria de la Política de Gobierno Digital en Colombia.
 
-### 2.3. El Ciclo de Vida del Dato (Estándar DAMA-DMBOK)
-Todo activo de información en la entidad atraviesa 6 fases gobernadas:
-1. **Planificación y Diseño:** Definición de esquemas, contratos de datos, privacidad por diseño y clasificación de seguridad antes de capturar el dato.
-2. **Captura / Creación / Ingesta:** Entrada del dato desde formularios web, servicios web (XML/JSON), archivos de exógena o sensores aduaneros.
-3. **Almacenamiento y Persistencia:** Ubicación en las capas de datos correspondientes con controles de cifrado en reposo (`AES-256`) y redundancia.
-4. **Procesamiento, Integración y Uso:** Limpieza, estandarización, cruce de fuentes, exposición mediante APIs o vistas analíticas para procesos misionales.
-5. **Archivado y Conservación Legal (Retención):** Paso a almacenamiento frío (*Cold Storage / Glacier*) cumpliendo las Tablas de Retención Documental (TRD) y los tiempos de firmeza de las declaraciones tributarias.
-6. **Disposición Final / Purga Segura:** Eliminación definitiva o anonimización irreversible cuando expira el mandato legal de conservación, debidamente registrada en acta de auditoría.
-
-### 2.4. Paradigmas de Transformación: ETL vs. ELT
+Tanto `TOGAF` como el `MRAE` dividen la arquitectura de una entidad como la DIAN en **4 Dominios o Pisos de un Edificio**:
 
 ```
-PATRÓN ETL (Extract -> Transform -> Load) [Clásico / Pre-Persistencia]
-[Fuentes OLTP] ---> (Extrae) ---> [Servidor Intermedio ETL] ---> (Carga limpio) ---> [Data Warehouse]
-                                  (Transforma, limpia o                               (Solo recibe el
-                                   enmascara en memoria)                               dato procesado)
+========================================================================================
+         LOS 4 DOMINIOS DE LA ARQUITECTURA EMPRESARIAL (TOGAF / MRAE MinTIC)
+========================================================================================
 
-PATRÓN ELT (Extract -> Load -> Transform) [Moderno Cloud / Lakehouse]
-[Fuentes OLTP] ---> (Extrae) ---> [Almacenamiento Destino (Lakehouse: Capa Bronce)]
-                                                   |
-                                  (Transforma in-situ con motor distribuido: Spark / SQL / dbt)
-                                                   v
-                                  [Capas Plata y Oro en el mismo Lakehouse]
+  [ PISO 4: ARQUITECTURA DE NEGOCIO / MISIONAL ]
+  ¿Qué hace la DIAN? -> Recaudar impuestos, controlar aduanas, fiscalizar evasores.
+                                       |
+                                       v (Exige información gobernada)
+  [ PISO 3: ARQUITECTURA DE INFORMACIÓN Y DATOS ]  <--- ¡NUESTRO EJE EN ESTE MÓDULO!
+  ¿Qué datos necesitamos y cómo se estructuran? -> Contribuyente (RUT), Declaraciones,
+  Factura Electrónica, Exógena, Arancel, organizados en el repositorio DataR.
+                                       |
+                                       v (Se consultan y procesan mediante...)
+  [ PISO 2: ARQUITECTURA DE APLICACIONES / SISTEMAS DE INFORMACIÓN ]
+  ¿Qué programas usan esos datos? -> MUISCA, SYGA, Gratuito de Facturación, Motores ML.
+                                       |
+                                       v (Corren físicamente sobre...)
+  [ PISO 1: ARQUITECTURA TECNOLÓGICA / INFRAESTRUCTURA ]
+  ¿En qué servidores, redes y nube vive todo? -> Nube híbrida, Kubernetes, Discos S3/ADLS.
+========================================================================================
 ```
-
-| Criterio de Comparación | **ETL (Extract, Transform, Load)** | **ELT (Extract, Load, Transform)** |
-| :--- | :--- | :--- |
-| **Dónde ocurre el cómputo de transformación** | En un servidor o clúster intermedio dedicado (ej. Informatica PowerCenter, DataStage, SSIS) **antes** de llegar al almacén destino. | Directamente dentro del motor de cómputo elástico y masivamente paralelo del destino (Spark, Trino, motores Cloud DWH con **dbt**). |
-| **Preservación del Dato Crudo (Raw)** | **No por defecto:** si la transformación falla o tiene un bug lógico, hay que volver a consultar la fuente OLTP original. | **Sí (Nativo):** el dato crudo queda persistido e inmutable en la Capa Bronce; permite reprocesar toda la historia sin tocar la fuente. |
-| **Escalabilidad** | El servidor ETL intermedio suele convertirse en cuello de botella ante picos de terabytes. | Altísima escalabilidad al aprovechar el desacople entre almacenamiento de objetos y cómputo distribuido. |
-| **Cuándo se prefiere cada uno en el examen** | Cuando una regulación estricta **prohíbe almacenar datos sensibles en crudo** en el destino y exige anonimizarlos/filtrarlos *en tránsito* antes de escribir en disco, o en sistemas legados con almacenamiento muy costoso. | En **arquitecturas modernas de Data Lakehouse (como DataR)** donde se requiere trazabilidad forense completa del dato original, agilidad de esquemas y procesamiento distribuido a gran escala. |
-
-### 2.5. Patrones de Ingesta según Latencia: Batch, Micro-batch, Streaming y CDC
-
-#### A. Procesamiento Batch (Por Lotes) vs. Streaming (Tiempo Real)
-* **Batch (Por lotes):** Procesa grandes volúmenes de datos acumulados durante un periodo (diario, semanal, mensual, anual). Prioriza el **alto rendimiento volumétrico (throughput)** sobre la latencia. *Caso DIAN:* Consolidación anual de medios magnéticos (Información Exógena) o cierres mensuales de recaudo contable.
-* **Streaming (Flujo continuo / Eventos):** Procesa cada evento individualmente a medida que ocurre (latencia de milisegundos a pocos segundos) empleando buses de eventos distribuidos como **Apache Kafka** y motores con manejo de estado (*stateful stream processing*) como **Apache Flink** o **Spark Structured Streaming**. *Caso DIAN:* Detección de anomalías y fraude en tiempo real durante la validación previa de Facturación Electrónica o alertas inmediatas de riesgo en inspecciones aduaneras portuarias.
-
-#### B. CDC (Change Data Capture): Replicación sin impactar el OLTP
-Cuando se necesita llevar los cambios (`INSERT`, `UPDATE`, `DELETE`) de una base de datos transaccional hacia el repositorio analítico, existen dos enfoques, pero **solo uno es arquitectónicamente óptimo para alta escala**:
-
-1. **CDC basado en Consultas / Triggers (Polling - NO recomendado a gran escala):**
-   * Ejecuta periódicamente `SELECT * FROM tabla WHERE fecha_actualizacion > @ultima_ejecucion` o instala *triggers* en las tablas operacionales.
-   * **Problemas graves:** Sobrecarga el CPU y el I/O del motor transaccional, degrada el rendimiento con *triggers*, **no detecta borrados físicos (`HARD DELETE`)** a menos que se implemente borrado lógico (*soft delete*), y puede perder cambios intermedios entre ventanas de consulta.
-2. **CDC basado en el Log de Transacciones (Log-based CDC - Estándar de Oro):**
-   * Lee directamente de forma secuencial el registro binario interno de transacciones del motor de base de datos (**Redo Log** en Oracle, **WAL - Write-Ahead Log** en PostgreSQL, **Binlog** en MySQL, **Transaction Log** en SQL Server) utilizando conectores como **Debezium / Kafka Connect**.
-   * **Ventajas definitivas:**
-     * **Cero impacto sobre el motor de consultas SQL** del sistema operacional (no lanza `SELECT` ni bloquea tablas).
-     * **Latencia sub-segundo** (casi tiempo real).
-     * **Captura el 100% de los eventos**, incluidos `INSERT`, todos los `UPDATE` intermedios, `DELETE` físicos y cambios de esquema (DDL).
-
-> [!NOTE] Micro-verificación de la Unidad 2
-> **Caso rápido:** El sistema transaccional de gestión aduanera presenta degradación severa cada 10 minutos porque un proceso de extracción ejecuta consultas sobre una tabla de 120 millones de declaraciones buscando registros nuevos o modificados, y además no logra identificar las declaraciones anuladas que fueron eliminadas físicamente en una contingencia. ¿Qué mecanismo debe implementar el Inspector I?
-> * **Respuesta:** Reemplazar la extracción por consultas (*polling*) por **CDC basado en la lectura del log de transacciones (Redo Log / WAL)** hacia una cola de eventos (ej. Kafka), eliminando las consultas pesadas sobre la tabla operacional y capturando nativamente las inserciones, modificaciones y eliminaciones físicas.
 
 ---
 
-## Unidad 3: Paradigmas Arquitectónicos y Criterios de Selección
-**Tiempo estimado:** 25 min | **Enfoque:** Diseño Estratégico y Toma de Decisiones
+### 1.2. Los 3 Niveles de Abstracción de un Modelo de Datos: Conceptual, Lógico y Físico
 
-### 3.1. ¿Qué vas a lograr en esta unidad?
-Dominar las diferencias arquitectónicas, fortalezas, debilidades y casos de uso ideales de los cinco grandes paradigmas de plataformas de datos (**Data Warehouse, Data Lake, Data Lakehouse, Data Fabric y Data Mesh**) para diagnosticar problemas organizacionales o técnicos en los casos del examen y elegir la solución exacta.
+Cuando vas a construir una casa, no empiezas comprando ladrillos: primero haces un **bosquejo general** para el dueño, luego los **planos arquitectónicos con medidas** y finalmente los **planos de ingeniería eléctrica y tuberías** según la marca de materiales que compraste.
+En Arquitectura de Datos ocurre exactamente igual. Todo modelo de datos pasa por **3 niveles de abstracción**, y **en el examen de la CNSC siempre preguntan cuál de los tres cambia cuando migras de tecnología**:
 
-### 3.2. Evolución y Análisis Profundo de los 5 Paradigmas
+```
+========================================================================================
+           LOS 3 NIVELES DE UN MODELO DE DATOS (DE LO HUMANO A LA MÁQUINA)
+========================================================================================
 
-#### 1. Data Warehouse (DWH - Almacén de Datos Empresarial)
-* **Definición (Bill Inmon):** Colección de datos **orientada a temas, integrada, variante en el tiempo y no volátil** para soportar la toma de decisiones gerenciales.
-* **Mecanismo clave:** **Schema-on-Write (Esquema en escritura):** antes de cargar cualquier dato, este debe limpiarse, validarse y ajustarse estrictamente a un esquema relacional/dimensional predefinido.
-* **Fortalezas:** Altísima calidad y consistencia de datos, soporte transaccional ACID completo, excelente velocidad en consultas SQL para tableros de Business Intelligence (BI) e informes regulatorios oficiales.
-* **Limitaciones:** Rígido y lento para adaptarse a nuevos tipos de datos; no soporta nativamente datos no estructurados (imágenes, PDFs, audio) ni flujos de streaming crudos a bajo costo; en arquitecturas tradicionales acopladas, escalar almacenamiento obligaba a escalar cómputo a costos muy altos.
+  1. MODELO CONCEPTUAL (Para Directivos y Líderes Misionales de Negocio)
+     - ¿Qué muestra?: Solo las grandes cajas (Entidades del negocio) y cómo se relacionan.
+     - NO tiene columnas detalladas, NI tipos de datos, NI llaves técnicas.
+     - Ejemplo: [ CONTRIBUYENTE ] ---- presenta ----> [ DECLARACIÓN TRIBUTARIA ]
+                                              |
+                                              v
+  2. MODELO LÓGICO (Para Arquitectos, Analistas y Científicos de Datos)
+     - ¿Qué muestra?: Todas las columnas (atributos), cuáles son Llaves Primarias (PK),
+       Llaves Foráneas (FK), cardinalidad (1 a muchos `1:N`) y reglas de normalización.
+     - Sigue siendo INDEPENDIENTE de la marca de la base de datos (no importa si luego
+       lo montas en Oracle, PostgreSQL o Iceberg).
+     - Ejemplo: Entidad CONTRIBUYENTE (PK: id_contribuyente, nit, razon_social, ciiu_fk).
+                                              |
+                                              v
+  3. MODELO FÍSICO (Para Ingenieros de Datos y Administradores de Bases de Datos - DBAs)
+     - ¿Qué muestra?: Cómo se escribe EXACTAMENTE en el motor tecnológico elegido:
+       nombres reales de tablas (`TBL_RUT_CONTRIB`), tipos exactos (`VARCHAR2(150)`,
+       `BIGINT`, `DECIMAL(18,2)`), particiones, índices, compresión `Snappy` y archivos `Parquet`.
+========================================================================================
+```
 
-#### 2. Data Lake (Lago de Datos)
-* **Definición:** Repositorio centralizado construido sobre almacenamiento de objetos distribuido y de bajo costo (Amazon S3, Azure Data Lake Storage - ADLS, Google Cloud Storage, HDFS) que almacena datos **en su formato nativo y crudo** (estructurados, semiestructurados como XML/JSON y no estructurados).
-* **Mecanismo clave:** **Schema-on-Read (Esquema en lectura):** el dato se guarda primero tal como llega sin imponerle un esquema relacional previo; la estructura se interpreta al momento de procesarlo o consultarlo.
-* **Fortalezas:** Escalabilidad elástica a escala de petabytes a muy bajo costo; desacopla totalmente el almacenamiento del cómputo; ideal para científicos de datos, exploración y Machine Learning.
-* **Limitaciones y Riesgo Crítico — El "Data Swamp" (Pantano de Datos):** Carece de transacciones ACID nativas (si un trabajo falla a mitad de escritura, deja archivos corruptos o incompletos; no soporta `UPDATE`/`DELETE` por registro sin reescribir archivos enteros). Si se vuelcan datos sin catálogo de metadatos, sin linaje, sin dueños (*owners*) ni controles de calidad, el Data Lake degenera en un **Data Swamp** inutilizable donde nadie confía en la información.
-
-#### 3. Data Lakehouse (El Paradigma Unificador)
-* **Definición:** Arquitectura moderna que unifica la flexibilidad, apertura y bajo costo del almacenamiento de objetos de un **Data Lake** con las capacidades de gestión, rendimiento SQL y garantías **ACID** de un **Data Warehouse** sobre **una única copia de los datos**.
-* **Mecanismo clave:** Introduce una **capa intermedia de metadatos y formato de tabla abierto (Open Table Format: Apache Iceberg, Delta Lake, Apache Hudi)** sobre archivos columnares (Apache Parquet) alojados en almacenamiento de objetos.
-* **Qué resuelve:** Elimina la arquitectura de dos niveles (donde primero se guardaba en el Data Lake y luego se duplicaba mediante ETL hacia un Data Warehouse propietario), reduciendo costos de duplicación, desfases de sincronización (*data drift*) y *vendor lock-in*. Soporta tanto BI/SQL institucional como Ciencia de Datos/IA sobre el mismo repositorio.
-
-#### 4. Data Fabric (Tejido de Datos)
-* **Definición:** Enfoque **eminentemente tecnológico y arquitectónico** que crea una capa de integración virtualizada e inteligente sobre fuentes de datos distribuidas (on-premise, múltiples nubes, bases legadas).
-* **Mecanismo clave:** Utiliza **metadatos activos**, grafos de conocimiento (*knowledge graphs*), virtualización de datos e inteligencia artificial/ML para descubrir, conectar, gobernar y recomendar datos automáticamente sin obligar a moverlos físicamente a un único sitio.
-* **Cuándo elegirlo en el examen:** Cuando el caso describe un entorno altamente heterogéneo y distribuido donde no es viable mover todos los datos físicamente en el corto plazo, y se busca automatizar la integración y el descubrimiento mediante **metadatos activos y virtualización**.
-
-#### 5. Data Mesh (Malla de Datos - Zhamak Dehghani)
-* **Definición:** Paradigma **socio-técnico y organizacional descentralizado** diseñado para grandes organizaciones con múltiples dominios de negocio complejos, donde el equipo central de datos se ha vuelto un cuello de botella hiper-saturado que no conoce a fondo la semántica de cada área.
-* **Los 4 Principios Fundamentales e Inseparables del Data Mesh:**
-  1. **Propiedad de los datos orientada por dominios (Domain-oriented decentralized data ownership):** Cada dominio misional (ej. Tributario, Aduanero, Cambiario, Recaudo) es dueño y responsable de extremo a extremo de los datos que genera y conoce.
-  2. **Los datos como un producto (Data as a Product):** Cada dominio publica sus datos analíticos como un producto con un responsable (*Data Product Owner*), contratos de interfaz claros, documentación, linaje y acuerdos de nivel de servicio (SLA). Todo producto de datos debe cumplir las propiedades **DADTS**: *Descubrible, Direccionable, Confiable (Trustworthy), Autodescriptivo, Interoperable y Seguro*.
-  3. **Plataforma de datos de autoservicio como infraestructura (Self-serve data infrastructure as a platform):** Un equipo de plataforma central provee herramientas estandarizadas y automatizadas (almacenamiento, cómputo, plantillas de pipelines, catálogos) para que los dominios creen y publiquen sus productos de datos sin tener que construir infraestructura desde cero.
-  4. **Gobernanza computacional federada (Federated computational governance):** Un comité compuesto por representantes de los dominios y expertos centrales define las reglas globales (seguridad, reserva tributaria, estándares de interoperabilidad, identificadores únicos como el NIT), las cuales se **automatizan como código (Policy-as-Code)** en la plataforma.
-
-> [!EXAM] Distinción Clave de Examen: Data Fabric vs. Data Mesh
-> * **Data Fabric** es una **solución tecnológica** centrada en metadatos activos, catálogos inteligentes y virtualización para integrar sistemas dispersos.
-> * **Data Mesh** es un **modelo organizacional y socio-técnico** que descentraliza la responsabilidad del dato hacia los dominios de negocio bajo una **gobernanza computacional federada**.
-> * **¡Trampa frecuente!** En el examen, una opción incorrecta dirá que en Data Mesh *"cada área define de forma autónoma sus propias reglas de seguridad y estándares de identificación"*. Eso es **FALSO**: en Data Mesh la seguridad, la privacidad y los estándares de interoperabilidad son **federados y globales**, ejecutados automáticamente por la plataforma.
-
-### 3.3. Matriz Comparativa de Decisión Rápida
-
-| Problema / Escenario en el Caso del Examen | Paradigma o Solución Correcta | Por qué las otras opciones fallan |
-| :--- | :--- | :--- |
-| "Se tienen petabytes de XML, JSON y tablas en almacenamiento de objetos, pero hay lecturas sucias en escrituras concurrentes, no se pueden actualizar registros por llave y se duplica información hacia un DWH aparte." | **Data Lakehouse** (con formatos de tabla abiertos como Iceberg o Delta Lake). | Un Data Lake plano no tiene transacciones ACID; mantener Lake + DWH separados duplica costos y genera inconsistencias. |
-| "El equipo central de ingeniería de datos tarda meses en entregar reportes porque tiene una cola de 20 subdirecciones y desconoce las reglas tributarias y aduaneras específicas de cada proceso." | **Data Mesh** (Propiedad por dominio + Datos como Producto + Plataforma de autoservicio + Gobernanza federada). | Contratar más ingenieros en el equipo central mantiene el cuello de botella de conocimiento del dominio. |
-| "Existen archivos acumulados durante años en almacenamiento de objetos sin catálogo, sin responsables ni reglas de calidad, y dos áreas obtienen cifras distintas." | Remediación de **Data Swamp** mediante **Gobierno de Datos** (Catálogo, Data Stewards, Linaje, Arquitectura Medallion y Capa Semántica). | Cambiar de motor tecnológico sin implementar gobierno y metadatos solo traslada el desorden a otra herramienta. |
-| "Se requiere conectar y consultar de forma transparente múltiples fuentes heterogéneas distribuidas usando metadatos activos y virtualización sin mover físicamente todos los datos." | **Data Fabric**. | Un ETL masivo tradicional requeriría mover y duplicar físicamente todos los repositorios antes de poder consultarlos. |
-
-> [!NOTE] Micro-verificación de la Unidad 3
-> **Caso rápido:** En una reunión de arquitectura de la DIAN, un consultor propone implementar Data Mesh permitiendo que la Subdirección de Fiscalización Aduanera y la de Fiscalización Tributaria construyan cada una su propia infraestructura en nubes distintas y definan autónomamente cómo estructurar el identificador del contribuyente. ¿Qué dos principios del Data Mesh está violando esta propuesta?
-> * **Respuesta:** Viola el principio de **Plataforma de Datos de Autoservicio** (la infraestructura base debe ser común y provista como plataforma para evitar duplicar esfuerzos técnicos) y el de **Gobernanza Computacional Federada** (los estándares de interoperabilidad, como el identificador único del contribuyente RUT/NIT y las políticas de seguridad, deben ser globales y transversales para permitir cruces entre dominios).
+> [!EXAM]
+> **¡Regla de Oro para el Examen CNSC!**
+> Si un caso situacional dice: *"La DIAN decide migrar su bodega de datos desde un servidor Oracle tradicional hacia un Data Lakehouse en la nube basado en Apache Iceberg y Parquet, sin que hayan cambiado las leyes ni los procesos tributarios"*, y te preguntan **qué modelo debe rediseñarse**:
+> * La respuesta es: **Se modifica únicamente el Modelo Físico** (porque cambian los tipos nativos del motor, las particiones y el formato columnar Parquet), mientras que **el Modelo Conceptual y el Modelo Lógico permanecen intactos**.
 
 ---
 
-## Unidad 4: Arquitectura Medallion (Bronce, Plata, Oro), Capa Semántica y Contratos de Datos
-**Tiempo estimado:** 20 min | **Enfoque:** Organización Interna del Lakehouse y Calidad
+### 1.3. Taxonomía Oficial de los Datos: Las 5 Categorías que Todo Inspector I Debe Distinguir
 
-### 4.1. ¿Qué vas a lograr en esta unidad?
-Estructurar el flujo interno del **Repositorio Único de Datos (DataR)** utilizando la **Arquitectura Medallion (Multi-Hop)**, comprendiendo qué transformaciones, reglas de calidad, permisos de acceso y valor probatorio corresponden a cada capa (**Bronce, Plata y Oro**), así como el rol de los **Contratos de Datos (Data Contracts)** y la **Capa Semántica**.
+En el marco **DAMA-DMBOK** y en el **MRAE del MinTIC**, no todos los datos son iguales ni se gobiernan igual. Existen 5 categorías que debes identificar al instante en cualquier pregunta:
 
-### 4.2. Desglose Técnico de la Arquitectura Medallion
-La arquitectura Medallion organiza los datos dentro del Lakehouse en tres capas lógicas de refinamiento progresivo:
-
-```
-+-----------------------------------------------------------------------------------+
-| CAPA BRONCE (Raw / Zona de Aterrizaje Histórica e Inmutable)                      |
-| - Contenido: Copia exacta y fiel del dato tal como llegó de la fuente (XML de     |
-|   factura electrónica, JSON de API, volcado CDC de tabla MUISCA/SYGA).            |
-| - Modelo y Reglas: Append-only (solo inserción) + metadatos técnicos de ingesta   |
-|   (_fecha_ingesta, _sistema_origen, _id_lote, _hash_archivo).                     |
-| - Transformaciones: NINGUNA alteración de negocio.                                |
-| - Propósito DIAN: Cadena de custodia forense, valor probatorio judicial y         |
-|   capacidad de reprocesar todo el historial desde cero si cambia una regla.       |
-| - Acceso: Restringido exclusivamente a procesos automatizados y administradores   |
-|   de plataforma. PROHIBIDO el acceso directo de analistas o auditores.            |
-+-----------------------------------------------------------------------------------+
-                                         |
-         [Validación de esquema, deduplicación, limpieza, tipado, estandarización]
-                                         v
-+-----------------------------------------------------------------------------------+
-| CAPA PLATA (Cleaned, Conformed & Enriched / Verdad Operativa Integrada)           |
-| - Contenido: Datos limpios, filtrados, deduplicados, con tipos de datos fuertes   |
-|   (FECHAS, DECIMALES) y estandarizados contra catálogos oficiales.                |
-| - Modelo y Reglas: Entidades conformadas (3FN, Data Vault o tablas atómicas       |
-|   integradas). Resolución de identidades maestras (homologación al NIT del RUT).  |
-| - Transformaciones: Eliminación de duplicados técnicos, manejo de nulos,          |
-|   validación de reglas de integridad, separación en cuarentena de registros malos.|
-| - Propósito DIAN: Fuente única integrada para ciencia de datos, entrenamiento de  |
-|   modelos de Machine Learning de fraude y consultas ad-hoc avanzadas autorizadas. |
-+-----------------------------------------------------------------------------------+
-                                         |
-         [Agregación de negocio, modelado dimensional, reglas misionales oficiales]
-                                         v
-+-----------------------------------------------------------------------------------+
-| CAPA ORO (Curated / Business-Level / Consumo Misional y Directivo)                |
-| - Contenido: Datos refinados, agregados y listos para el consumo final.           |
-| - Modelo y Reglas: Modelos Dimensionales de Kimball (Esquema en Estrella: Fact y  |
-|   Dimension Tables), Data Marts por proceso (Recaudo, Fiscalización, Aduanas).    |
-| - Transformaciones: Cálculo de KPIs oficiales, cruces precalculados de exógena vs |
-|   declaraciones, aplicación de vistas seguras y enmascaramiento por rol.          |
-| - Propósito DIAN: Alimentar tableros directivos, reportes oficiales al Ministerio |
-|   de Hacienda, sistemas expertos de selección de casos de auditoría y APIs.       |
-+-----------------------------------------------------------------------------------+
-```
-
-### 4.3. Gestión de Registros Defectuosos: Patrón de Cuarentena (Dead-Letter / Quarantine Table)
-¿Qué debe hacer un pipeline cuando pasa datos de **Bronce a Plata** y encuentra registros que violan reglas de calidad críticas (por ejemplo, una factura o reporte de exógena con un formato de fecha inválido o un valor numérico corrupto)?
-* **Lo que NO se debe hacer:**
-  * *Opción incorrecta 1:* Borrar silenciosamente el registro de la capa Bronce (destruye la trazabilidad y la evidencia de lo recibido).
-  * *Opción incorrecta 2:* Detener indefinidamente todo el pipeline nacional de millones de registros por un porcentaje mínimo de filas corruptas (si el negocio requiere continuidad), o pasar el dato corrupto directamente a la capa Oro distorsionando las cifras oficiales.
-* **Lo que SÍ se debe hacer (Patrón Arquitectónico Correcto):**
-  * Conservar el registro intacto en la **Capa Bronce**, promover los registros válidos a la **Capa Plata** y desviar los registros que fallaron las reglas de validación hacia una **Tabla o Zona de Cuarentena (Quarantine / Dead-Letter Queue)** junto con el código de error y metadatos de diagnóstico, generando una alerta al *Data Steward* y al sistema origen para su corrección y posterior reprocesamiento.
-
-### 4.4. Contratos de Datos (Data Contracts) y Capa Semántica
-1. **Contratos de Datos (Data Contracts):**
-   Son acuerdos formales, versionados y ejecutables como código entre los **productores del dato** (ej. el equipo que desarrolla el microservicio de Facturación o RUT) y los **consumidores del dato** (el equipo del repositorio analítico DataR). Un contrato de datos especifica:
-   * Esquema exacto (campos, tipos de datos, obligatoriedad).
-   * Semántica y reglas de validación de dominio (ej. `valor_iva >= 0`).
-   * Acuerdos de Nivel de Servicio (SLA) de frescura/latencia y completitud.
-   * Política de versionamiento y gestión de cambios incompatibles (*breaking changes*): impide que un desarrollador del sistema transaccional renombre o elimine una columna en producción rompiendo silenciosamente los pipelines analíticos aguas abajo.
-2. **Capa Semántica (Semantic Layer / Metrics Store):**
-   Es una capa de abstracción lógica ubicada entre la **Capa Oro** y las herramientas de consumo (Power BI, Tableau, notebooks, APIs). Define **una única vez y de manera centralizada** la fórmula matemática y las reglas de negocio de cada indicador institucional (por ejemplo, qué conceptos exactos suman y restan en el *"Recaudo Neto Tributario Efectivo"* o qué define a un *"Gran Contribuyente Activo"*). Garantiza que cualquier dependencia que consulte el indicador obtenga exactamente la misma cifra.
-
-> [!NOTE] Micro-verificación de la Unidad 4
-> **Caso rápido:** Un equipo de ingeniería de datos sugiere eliminar los archivos XML originales de la Capa Bronce 24 horas después de haber poblado la Capa Plata, argumentando que los datos ya están estructurados y que así se reduce el costo de almacenamiento en un 30%. Desde el rol de Inspector I en la DIAN, ¿es viable esta propuesta?
-> * **Respuesta:** **No es viable.** Viola el principio de inmutabilidad y trazabilidad histórica de la Capa Bronce. En la DIAN, los archivos originales constituyen el soporte técnico y probatorio ante eventuales reclamaciones administrativas o procesos contencioso-administrativos (Consejo de Estado), y además son indispensables para reconstruir la Capa Plata si se descubre un error en la lógica de transformación meses después. Para optimizar costos sin perder el dato, se aplican políticas de **ciclo de vida de almacenamiento (Storage Tiering)** pasando los datos antiguos a niveles de archivo frío (*Cold/Archive Storage*).
-
----
-
-## Unidad 5: Formatos de Archivo y Formatos de Tabla Abiertos (Open Table Formats)
-**Tiempo estimado:** 25 min | **Enfoque:** Almacenamiento Físico, Rendimiento y Transaccionalidad
-
-### 5.1. ¿Qué vas a lograr en esta unidad?
-Distinguir técnicamente entre **formatos de archivo físicos** (CSV, JSON, Apache Avro, Apache Parquet, Apache ORC) y **formatos de tabla abiertos** (Apache Iceberg, Delta Lake, Apache Hudi), entendiendo por qué Parquet por sí solo no es una tabla transaccional y cómo funcionan mecanismos como *Predicate Pushdown*, *Time Travel*, *Hidden Partitioning* y compactación.
-
-### 5.2. Formatos de Archivo: Orientados a Filas vs. Orientados a Columnas
-
-```
-ARCHIVO ORIENTADO A FILAS (Ej. CSV, Avro) -> Ideal para escritura continua / Kafka
-[Fila 1: NIT_1 | Renta | 2025 | $50M] [Fila 2: NIT_2 | IVA | 2025 | $12M] [Fila 3: NIT_3 | Renta | 2025 | $80M]
-
-ARCHIVO ORIENTADO A COLUMNAS (Ej. Parquet, ORC) -> Ideal para lectura analítica OLAP
-[Bloque Columna NIT: NIT_1, NIT_2, NIT_3] [Bloque Impuesto: Renta, IVA, Renta] [Bloque Valor: $50M, $12M, $80M]
-```
-
-| Formato de Archivo | Orientación | Esquema Embebido | Características Internas y Mecanismos de Optimización | Caso de Uso Ideal en la DIAN |
-| :--- | :--- | :--- | :--- | :--- |
-| **CSV / TSV** | Filas (Texto plano) | **No** (Inferencia costosa y propensa a errores) | Sin compresión nativa ni estadísticas; lento de parsear; problemas con delimitadores dentro de textos. | Solo para intercambio externo simple o cargas legadas pequeñas. Nunca para almacenamiento analítico interno. |
-| **JSON / XML** | Jerárquico / Filas (Texto) | Autodescriptivo (pero muy verboso) | Repite los nombres de las etiquetas en cada registro; alto consumo de espacio y CPU al parsear. | Recepción de Factura Electrónica (XML UBL 2.1), Información Exógena y payloads de APIs REST en Capa Bronce. |
-| **Apache Avro** | **Filas (Binario compacto)** | **Sí** (Cabecera en JSON + cuerpo binario; integrable con *Schema Registry*) | Serialización y deserialización ultrarrápida; excelente soporte para evolución de esquemas (*forward/backward compatibility*). | **Streaming de eventos en Apache Kafka**, ingesta CDC y aterrizaje rápido en Capa Bronce donde se leen/escriben registros completos. |
-| **Apache Parquet** | **Columnar Híbrido (Row Groups + Column Chunks)** | **Sí** (Metadatos en el *footer* del archivo) | Divide el archivo en *Row Groups*; dentro de cada grupo almacena cada columna en un *Column Chunk* contiguo. Usa codificación **RLE (Run-Length Encoding)**, **Dictionary Encoding** y compresión (**Snappy, ZSTD**). Guarda estadísticas `min/max/null_count` por bloque. | **Estándar en Capas Plata y Oro del Lakehouse** para consultas analíticas masivas (Spark, Trino, Presto, DWH). |
-| **Apache ORC** | **Columnar (Stripes)** | **Sí** (Footer + Stripe footers) | Organizado en franjas (*Stripes*) con índices ligeros cada 10.000 filas. Muy alta razón de compresión. | Ecosistemas basados intensivamente en Apache Hive y cargas analíticas específicas. |
-
-#### Dos Optimizaciones Clave de Apache Parquet que pregunta el Examen:
-1. **Projection Pushdown (Poda de Columnas):** Si una tabla de declaraciones tiene 150 columnas (casillas del formulario) pero la consulta analítica solo pide `SELECT cod_seccional, SUM(impuesto_neto) FROM declaraciones GROUP BY cod_seccional`, el motor **solo lee del disco los bloques físicos de esas 2 columnas** e ignora por completo las otras 148 columnas, reduciendo el I/O en más del 95%.
-2. **Predicate Pushdown (Empuje de Predicados / Salto de Bloques por Estadísticas):** Como cada *Row Group* en Parquet guarda en sus metadatos el valor mínimo (`min`) y máximo (`max`) de cada columna, si la consulta filtra `WHERE anio_gravable = 2025` y el metadato de un bloque indica `min = 2021, max = 2023`, el motor **salta el bloque entero sin siquiera abrirlo ni descomprimirlo**.
-
-### 5.3. ¿Por qué Parquet NO basta? El Rol de los Formatos de Tabla Abiertos (OTF)
-Un directorio lleno de archivos `.parquet` en Amazon S3 o Azure Data Lake **NO es una tabla transaccional**. Los archivos Parquet son **inmutables**:
-* Si quieres modificar el domicilio de 1 solo contribuyente (`UPDATE`) o eliminar un registro duplicado (`DELETE`), tendrías que localizar manualmente el archivo Parquet y reescribirlo completo.
-* Si un proceso de escritura falla al 80%, deja archivos huérfanos a medio escribir que corrompen las consultas de los analistas que están leyendo al mismo tiempo (no hay aislamiento ACID).
-* Cambiar el esquema de particionamiento (ej. pasar de particionar por `mes` a particionar por `dia`) obliga a reescribir físicamente todos los petabytes históricos.
-
-Para solucionar esto nacieron los **Open Table Formats (Formatos de Tabla Abiertos)**, que añaden una **capa de metadatos transaccionales sobre los archivos Parquet**:
-
-```
-                     ESTRUCTURA JERÁRQUICA DE APACHE ICEBERG
-                     
-                        [Iceberg Catalog] (Puntero atómico actual)
-                                |
-                                v
-                  [Metadata File (v1, v2...)] (Esquema, Partition Spec, Snapshots)
-                                |
-                                v
-                   [Manifest List (Snapshot)] (Lista de manifiestos de una versión)
-                          /            \
-                         v              v
-              [Manifest File 1]    [Manifest File 2] (Rutas a archivos Parquet + estadísticas por archivo)
-                 /         \              \
-                v           v              v
-         [data_01.parquet] [data_02.parquet] [data_03.parquet] (Datos físicos columnares)
-```
-
-| Característica Técnica | **Apache Iceberg** | **Delta Lake** | **Apache Hudi** |
+| Categoría de Dato | ¿Qué es en palabras sencillas? | ¿Con qué frecuencia cambia? | Ejemplo Exacto en la DIAN |
 | :--- | :--- | :--- | :--- |
-| **Arquitectura de Metadatos** | Árbol jerárquico inmutable de instantáneas: `Catalog -> Metadata File -> Manifest List -> Manifest Files -> Data Files`. | Registro transaccional secuencial en archivos JSON (`_delta_log/0001.json`) con puntos de control (*checkpoints*) periódicos en Parquet. | Línea de tiempo de eventos (*Timeline*) combinada con grupos de archivos (*File Groups*) e índices integrados a nivel de registro. |
-| **Evolución de Particiones (Partition Evolution)** | **Hidden Partitioning (Particionamiento Oculto):** Único que permite cambiar la estrategia de partición en los metadatos hacia adelante **sin reescribir los datos históricos** y sin que el usuario deba conocer la columna física de partición en su `WHERE`. | Cambiar la columna de partición requiere reescribir la tabla (aunque mitiga este problema usando *Liquid Clustering* o *Z-Ordering*). | Requiere reescritura al cambiar el esquema físico de partición base. |
-| **Manejo de `UPDATE` / `DELETE` (Copy-on-Write vs. Merge-on-Read)** | Soporta ambos: **CoW** (reescribe el archivo Parquet afectado; óptimo para lectura) y **MoR** (escribe archivos pequeños de borrado *Position/Equality Delete Files* y los une al leer; óptimo para escritura rápida). | Tradicionalmente **CoW**, y en versiones recientes soporta **Deletion Vectors** (similar a MoR) para acelerar borrados y actualizaciones sin reescribir todo el archivo de inmediato. | Diseñado desde su origen con foco en **CoW** y **MoR** para flujos intensivos de *upserts* (mutaciones frecuentes desde CDC). |
-| **Ecosistema y Neutralidad** | Estándar abierto multi-motor por excelencia (Spark, Trino, Flink, Presto, Snowflake, BigQuery, Athena). | Muy fuerte en el ecosistema Apache Spark y Databricks (abierto bajo Linux Foundation). | Muy utilizado en ingestas CDC continuas con cargas pesadas de actualización en casi tiempo real. |
+| **1. Datos de Referencia (*Reference Data*)** | Son los **catálogos, listas desplegables o códigos oficiales** que sirven para clasificar otros datos. Suelen venir de estándares nacionales o internacionales. | **Casi nunca** (muy estáticos; cambian cada varios años por decreto o resolución). | • Tabla de Municipios y Departamentos (**`DIVIPOLA`** del DANE).<br>• Códigos de Actividad Económica (**`CIIU` Rev. 4**).<br>• Códigos de Monedas (`ISO 4217`) y Países (`ISO 3166`).<br>• Subpartidas del **Arancel de Aduanas**. |
+| **2. Datos Maestros (*Master Data*)** | Son los **sustantivos o actores centrales del negocio** sobre los cuales gira toda la entidad. Exigen tener una **Fuente Única de Verdad (*Golden Record*)** sin duplicados. | **Baja / Moderada** (solo cuando el contribuyente se muda o cambia de actividad). | • **El Contribuyente / Obligado Aduanero** registrado en el **`RUT` (Registro Único Tributario)**.<br>• El catálogo maestro de **Funcionarios** o de **Direcciones Seccionales**. |
+| **3. Datos Transaccionales (*Transactional Data*)** | Son los **verbos o eventos** que ocurren todos los días con fecha, hora y monto económico. Son los más numerosos (miles de millones de filas). | **Altísima y continua** (crecen cada segundo). | • Cada **Factura Electrónica de Venta (`FEV`)** emitida.<br>• Cada **Declaración de Renta (Form. 110)** o **IVA (Form. 300)**.<br>• Cada **Recibo Oficial de Pago en Bancos (Form. 490)**.<br>• Cada **Declaración de Importación (Form. 500)**. |
+| **4. Datos Semiestructurados y No Estructurados** | Archivos con etiquetas flexibles jerárquicas o documentos/imágenes sin filas ni columnas. | Continua. | • **Semiestructurados:** Archivos `XML UBL 2.1` de facturación y `JSON`.<br>• **No Estructurados:** Expedientes en `PDF`, correos, e **imágenes de rayos X de los escáneres de contenedores** en los puertos. |
+| **5. Metadatos (*Metadata*)** | Son los **"datos acerca de los datos"**: el diccionario y las etiquetas que explican qué significa cada tabla, de dónde salió y quién la creó. | Se actualizan con cada proceso o cambio de diseño. | Se dividen en **3 subtipos** (ver recuadro abajo). |
 
-### 5.4. Cinco Capacidades Críticas de los Formatos de Tabla Abiertos para el Examen
-1. **Transacciones ACID y Aislamiento de Instantáneas (Snapshot Isolation):** Los lectores nunca ven escrituras parciales ni bloquean a los escritores. Cada confirmación (*commit*) mueve atómicamente el puntero del catálogo a un nuevo *Snapshot*.
-2. **Time Travel (Viaje en el Tiempo / Reproducibilidad Histórica):** Como los snapshots y archivos de datos anteriores se conservan hasta que se ejecute una limpieza explícita (`VACUUM` / `expire_snapshots`), un auditor de la DIAN puede ejecutar `SELECT * FROM declaraciones TIMESTAMP AS OF '2026-03-31 23:59:59'` para ver **exactamente el estado que tenía la tabla el día en que se emitió un acto administrativo o se entrenó un modelo de riesgo**, garantizando auditabilidad total.
-3. **Schema Enforcement y Schema Evolution:**
-   * *Schema Enforcement:* Rechaza escrituras que intenten introducir datos con tipos incompatibles que corromperían la tabla.
-   * *Schema Evolution:* Permite agregar, renombrar o reordenar columnas de manera segura mediante operaciones de metadatos sin reescribir petabytes de archivos Parquet.
-4. **Problema de los Archivos Pequeños (*Small Files Problem*) y Compactación (`OPTIMIZE` / `Compaction`):**
-   Cuando un pipeline de streaming o micro-batch escribe cada minuto en el Lakehouse, genera miles de archivos Parquet diminutos (de pocos kilobytes). Esto degrada drásticamente las consultas analíticas por la sobrecarga de abrir y cerrar miles de archivos en el almacenamiento de objetos. La solución es ejecutar trabajos periódicos de **Compactación (Bin-packing / `OPTIMIZE`)**, que fusionan miles de archivos pequeños en archivos óptimos (de 128 MB a 1 GB) en segundo plano sin interrumpir las lecturas.
-5. **Ordenamiento Multidimensional (Z-Ordering / Clustering):**
-   Cuando los analistas filtran frecuentemente por varias columnas de alta cardinalidad a la vez (por ejemplo, `nit_contribuyente` y `fecha_emision`), particionar por NIT crearía millones de carpetas diminutas (*over-partitioning*). La técnica correcta es particionar por una columna de baja cardinalidad (ej. `anio_mes`) y aplicar **Z-Ordering (Curvas de orden Z) o Clustering** sobre `nit_contribuyente`, agrupando físicamente valores similares en los mismos archivos Parquet para maximizar el *Data Skipping*.
-
-> [!NOTE] Micro-verificación de la Unidad 5
-> **Caso rápido:** En el repositorio analítico de la DIAN se tiene una tabla de 80 terabytes de facturación electrónica particionada por año y mes, pero los auditores filtran constantemente por `nit_emisor` y `codigo_municipio`. Si se agrega `nit_emisor` como carpeta física de partición, se generarían más de 5 millones de subdirectorios con archivos de pocos kilobytes, degradando el rendimiento. ¿Qué técnica sobre formatos de tabla abiertos debe aplicar el Inspector I?
-> * **Respuesta:** Mantener la partición gruesa temporal (`anio_mes`), ejecutar **Compactación (`OPTIMIZE`)** para evitar el problema de archivos pequeños, y aplicar **Ordenamiento Multidimensional (`Z-Ordering` o `Liquid/Iceberg Clustering`)** sobre `nit_emisor` y `codigo_municipio` para co-localizar los datos dentro de los archivos Parquet y aprovechar el salto de bloques (*Data Skipping* por estadísticas `min/max`).
+#### Los 3 Tipos de Metadatos (¡Pregunta Clásica de Examen!):
+1. **Metadatos de Negocio (*Business Metadata*):** Explican el significado en lenguaje humano y legal. *Ejemplo:* La definición oficial en el Glosario de Datos de qué es *"Patrimonio Líquido"*, quién es el Dueño del Dato (*Data Owner*: Dirección de Gestión de Fiscalización) y que la tabla tiene clasificación de *Reserva Tributaria (Art. 583 E.T.)*.
+2. **Metadatos Técnicos (*Technical Metadata*):** Explican la estructura informática. *Ejemplo:* Nombre físico de la tabla (`tbl_renta_110`), nombres de columnas, tipos (`DECIMAL(18,2)`), llaves primarias, formato (`Parquet`) y código del script de transformación (*Linaje Técnico*).
+3. **Metadatos Operativos (*Operational Metadata*):** Registran qué pasó cuando corrió el sistema. *Ejemplo:* *"El proceso ETL nocturno corrió hoy a las 02:15 a.m., tardó 14 minutos, cargó 1.450.200 filas exitosas, envió 12 filas a cuarentena y fue consultado por el usuario `jperez` a las 08:30 a.m."*.
 
 ---
 
-## Unidad 6: Metodologías de Modelado Analítico e Integración (Inmon, Kimball, SCD y Data Vault 2.0)
-**Tiempo estimado:** 30 min | **Enfoque:** Diseño Lógico y Físico de Modelos de Datos
+### 1.4. Dos Herramientas de Gobierno Arquitectónico: `ADR` y `Matriz CRUD`
 
-### 6.1. ¿Qué vas a lograr en esta unidad?
-Dominar las tres grandes escuelas de modelado analítico (**Inmon 3FN, Modelado Dimensional de Kimball y Data Vault 2.0 de Dan Linstedt**), diseñar **Esquemas en Estrella y Copo de Nieve**, elegir el tipo exacto de **Tabla de Hechos** y de **Dimensión de Cambio Lento (SCD Tipos 0 al 6)** para resolver problemas de trazabilidad histórica en auditorías tributarias y aduaneras.
-
-### 6.2. Comparativa de las 3 Escuelas de Modelado Analítico
-
-| Característica | **Enfoque Bill Inmon (CIF - Top-Down)** | **Enfoque Ralph Kimball (Dimensional - Bottom-Up)** | **Enfoque Dan Linstedt (Data Vault 2.0)** |
-| :--- | :--- | :--- | :--- |
-| **Filosofía de Construcción** | **Top-Down (De arriba hacia abajo):** Primero se construye un gran Data Warehouse Corporativo (EDW) centralizado en **3ra Forma Normal (3FN)**; luego, a partir de él, se derivan los Data Marts departamentales. | **Bottom-Up (De abajo hacia arriba):** Se construyen Data Marts dimensionales por procesos de negocio prioritarios (ej. Recaudo, Devoluciones) unidos mediante **Dimensiones Conformadas (Enterprise Bus Matrix)**. | **Híbrido enfocado en Auditoría e Integración Ágil:** Separa las claves de negocio (**Hubs**), las relaciones (**Links**) y los atributos descriptivos temporales (**Satellites**) usando claves **Hash**. |
-| **Fortaleza Principal** | Alta consistencia e integración corporativa sin redundancia en la capa central. | Rapidez de entrega de valor al negocio, simplicidad para los usuarios y **máximo rendimiento en consultas analíticas y BI**. | **Trazabilidad histórica y auditabilidad del 100%**, resiliencia extrema ante cambios en los sistemas fuente y carga en paralelo sin bloqueos. |
-| **Debilidad Principal** | Alto costo y largo tiempo inicial antes de entregar el primer reporte al usuario final; consultas complejas con muchos `JOINs`. | Si no se gobierna estrictamente la *Matriz Bus de Dimensiones Conformadas*, los Data Marts pueden volverse silos aislados. | Genera un gran número de tablas (`Hubs`, `Links`, `Satellites`), por lo que **no se expone directamente a usuarios finales**; requiere una capa dimensional (Oro) encima. |
-| **En qué capa del Lakehouse encaja mejor** | Capa Plata (Modelo corporativo normalizado). | **Capa Oro (Consumo BI, analítica misional y marts).** | **Capa Plata (Integración histórica auditable de múltiples fuentes heterogéneas).** |
-
-### 6.3. Modelado Dimensional de Ralph Kimball en Profundidad
-
-En el modelado dimensional, el diseño parte siempre de definir cuatro pasos obligatorios:
-1. **Seleccionar el proceso de negocio** (ej. Presentación de Declaraciones de Importación).
-2. **Declarar el Grano (Grain):** ¡El paso más crítico! Define exactamente **qué representa una fila individual en la tabla de hechos** (ej. *"Una fila por cada subpartida arancelaria declarada en un formulario de importación aceptado"*). Nunca se deben mezclar granos distintos en la misma tabla de hechos.
-3. **Identificar las Dimensiones** (el contexto: quién, qué, dónde, cuándo, cómo).
-4. **Identificar los Hechos / Métricas** (los valores numéricos medibles).
-
-#### A. Tablas de Hechos (Fact Tables) y Aditividad de las Métricas
-Las tablas de hechos son profundas (millones/miles de millones de filas) y estrechas (contienen **Claves Foráneas Subrogadas** hacia las dimensiones y **Métricas numéricas**).
-
-**Tipos de Métricas según su Aditividad:**
-* **Aditivas:** Se pueden sumar libremente a través de **todas** las dimensiones (Tiempo, Geografía, Contribuyente, Impuesto). *Ejemplo:* `valor_fob_usd`, `impuesto_pagado_cop`, `cantidad_unidades`.
-* **Semi-Aditivas:** Se pueden sumar a través de algunas dimensiones (ej. por seccional o por contribuyente), pero **NUNCA se deben sumar a través de la dimensión Tiempo** (sumar el saldo de enero + el saldo de febrero daría un valor falso; a través del tiempo se calcula el promedio o se toma el último corte). *Ejemplo:* `saldo_en_cuenta_corriente`, `inventario_en_zona_franca`.
-* **No Aditivas:** No se pueden sumar bajo ninguna dimensión porque son razones, porcentajes o precios unitarios. En la tabla de hechos se deben almacenar el **numerador y el denominador por separado** para calcular la razón al momento de agregar. *Ejemplo:* `tasa_de_cambio_trm`, `porcentaje_efectividad_recaudo`, `margen_utilidad`.
-
-**Los 3 Tipos de Tablas de Hechos:**
-1. **Hechos Transaccionales (Transaction Fact Table):** Una fila por cada evento atómico que ocurre en un instante puntual (ej. cada pago recibido en banco). Se inserta una vez y rara vez se modifica.
-2. **Hechos de Instantáneas Periódicas (Periodic Snapshot Fact Table):** Captura el estado acumulado o saldo en intervalos regulares fijos (ej. cierre mensual de cartera morosa por contribuyente al último día de cada mes). Usa métricas semi-aditivas.
-3. **Hechos de Instantáneas Acumulativas (Accumulating Snapshot Fact Table):** Modela procesos que tienen un **flujo de vida bien definido con múltiples hitos temporales** (pipeline o trámite). Tiene **múltiples claves foráneas de fecha** (una por cada etapa del proceso) y la fila se actualiza a medida que el trámite avanza. *Ejemplo DIAN:* El trámite de **Devolución de Saldos a Favor** (`fecha_radicacion_solicitud`, `fecha_auto_admisorio`, `fecha_visita_fiscalizacion`, `fecha_resolucion_devolucion`, `fecha_giro_tesoreria`, más métricas de `dias_en_cada_etapa`).
-
-#### B. Tablas de Dimensiones y Conceptos Especiales de Kimball
-* **Claves Subrogadas (Surrogate Keys - SK) vs. Claves Naturales de Negocio (Business Keys - NK):**
-  Las tablas de dimensiones **NUNCA** deben usar la clave natural del sistema origen (como el NIT o el código del sistema legado) como su clave primaria técnica (`PK`). Deben usar una **Clave Subrogada (SK)** (un entero secuencial o hash sin significado de negocio asignado por el almacén analítico). ¿Por qué?
-  1. Aísla el repositorio analítico de cambios o reutilización de códigos en los sistemas operacionales.
-  2. Permite integrar múltiples sistemas fuente que usan formatos de código distintos.
-  3. **Es indispensable para implementar Dimensiones de Cambio Lento Tipo 2 (SCD Tipo 2)**, ya que un mismo NIT tendrá múltiples filas históricas en la dimensión Contribuyente, cada una con una `SK` diferente.
-* **Dimensión Degenerada (Degenerate Dimension):** Un identificador de negocio operacional (como el `numero_formulario_declaracion` o el `cufe_factura_electronica`) que se almacena directamente dentro de la **Tabla de Hechos** para agrupar líneas de una misma transacción o para trazabilidad, pero que no tiene atributos descriptivos propios que justifiquen crearle una tabla de dimensión separada.
-* **Dimensión Basura (Junk Dimension):** Agrupa varios indicadores booleanos (`SI/NO`) o códigos de estado de baja cardinalidad en una sola dimensión combinada para no llenar la tabla de hechos de docenas de claves foráneas pequeñas.
-* **Role-Playing Dimension (Dimensión con Múltiples Roles):** Una única tabla física de dimensión (ej. `Dim_Fecha` o `Dim_Puerto_Aduanero`) que es referenciada varias veces desde la misma tabla de hechos con alias o vistas distintas (ej. `id_puerto_embarque`, `id_puerto_arribo`, `id_puerto_destino_final`).
-* **Dimensiones Conformadas (Conformed Dimensions):** Dimensiones maestras diseñadas una sola vez (ej. `Dim_Contribuyente`, `Dim_Tiempo`, `Dim_Direccion_Seccional`) y compartidas idénticamente entre múltiples tablas de hechos (Recaudo, Fiscalización, Aduanas). Son el pegamento que permite hacer **Drill-Across** (cruzar métricas de distintos procesos de negocio en un mismo reporte sin errores).
-
-#### C. Esquema en Estrella (Star Schema) vs. Esquema en Copo de Nieve (Snowflake Schema)
-* **Esquema en Estrella:** La tabla de hechos central se conecta directamente con un solo nivel de tablas de dimensiones **desnormalizadas** (ej. `Dim_Ubicacion` contiene en una sola tabla: `municipio`, `departamento`, `region`, `direccion_seccional`). **Ventaja:** Consultas simples con pocos `JOINs`, máximo rendimiento en motores OLAP.
-* **Esquema en Copo de Nieve:** Las tablas de dimensiones se **normalizan en múltiples subtablas jerárquicas** (`Fact -> Dim_Municipio -> Dim_Departamento -> Dim_Region`). **Desventaja:** Aumenta la complejidad de las consultas y penaliza el rendimiento de lectura por la multiplicación de `JOINs`, a cambio de un ahorro marginal de espacio en disco (que en dimensiones suele ser despreciable frente al tamaño de la tabla de hechos).
-
-### 6.4. Dimensiones de Cambio Lento (Slowly Changing Dimensions - SCD)
-En la DIAN, los atributos de un contribuyente cambian con el tiempo: cambia de dirección fiscal, cambia su actividad económica principal (CIIU), pasa de régimen ordinario a Régimen Simple (RST) o es calificado como Gran Contribuyente. ¿Cómo se gestiona ese cambio en `Dim_Contribuyente`?
-
-| Tipo de SCD | Comportamiento Técnico | ¿Preserva Historia? | Cuándo elegirlo en un Caso del Examen |
-| :--- | :--- | :--- | :--- |
-| **SCD Tipo 0** | **Retain Original (Inmutable):** El valor nunca se actualiza después de la inserción inicial. | Solo el valor original | Atributos que por naturaleza jamás cambian (ej. `fecha_constitucion_original`, `nit_original`). |
-| **SCD Tipo 1** | **Overwrite (Sobrescritura):** Reemplaza el valor antiguo por el nuevo en la misma fila. | **NO** (Destruye la historia previa; todas las declaraciones pasadas quedan asociadas al nuevo atributo). | **Solo para corregir errores tipográficos de captura** en nombres o cuando el negocio explícitamente no requiere ni permite análisis histórico del atributo. |
-| **SCD Tipo 2** | **Add New Row (Nueva Fila Versionada):** Cierra la vigencia del registro anterior e inserta una **nueva fila** con una nueva **Clave Subrogada (`SK`)**, conservando la misma clave natural (`NIT`), más columnas de control: `fecha_inicio_vigencia`, `fecha_fin_vigencia` y `es_registro_actual (true/false)`. | **SÍ (Historia completa e ilimitada con exactitud temporal).** | **El más evaluado en el examen:** Indispensable para auditoría tributaria y fiscalización, pues permite asociar una declaración de 2023 con la Dirección Seccional y la actividad económica CIIU que el contribuyente tenía vigente en 2023, y las de 2026 con su nueva actividad. |
-| **SCD Tipo 3** | **Add New Column (Nueva Columna):** Añade una columna en la misma fila (`cod_ciiu_actual`, `cod_ciiu_anterior`, `fecha_cambio`). | Solo guarda **el estado inmediatamente anterior** (1 cambio). | Cuando solo interesa comparar el estado actual contra el inmediatamente previo sin rastrear toda la vida del contribuyente. |
-| **SCD Tipo 4** | **Mini-Dimension / History Table:** Separa los atributos que cambian muy rápido (volátiles, como el puntaje de riesgo diario) en una mini-dimensión aparte o tabla histórica. | Sí | Evita que una dimensión de millones de contribuyentes crezca explosivamente en SCD Tipo 2 por un atributo que cambia cada semana. |
-| **SCD Tipo 6** | **Híbrido (1 + 2 + 3 = 6):** Crea nuevas filas como Tipo 2, pero incluye una columna con el valor actual sobrescrito (Tipo 1) en todas las filas históricas y el valor histórico del momento (Tipo 3). | Sí (Permite filtrar tanto por estado histórico como por estado actual sin `JOINs` adicionales). | Reportes analíticos avanzados que requieren comparar en la misma consulta el comportamiento histórico bajo la clasificación antigua y bajo la clasificación actual. |
-
-### 6.5. Modelado Data Vault 2.0 (Dan Linstedt)
-Cuando la DIAN necesita integrar en la **Capa Plata** información proveniente de 25 sistemas internos y externos que cambian de estructura constantemente, exigiendo **trazabilidad forense del 100% de cada cambio sin perder jamás un dato**, se utiliza **Data Vault 2.0**.
-
-Sus tres entidades constructivas son:
-1. **Hubs (Núcleos de Claves de Negocio):**
-   Almacenan únicamente una lista única de **Claves de Negocio (Business Keys)** que tienen significado misional (ej. `Hub_Contribuyente` guarda el `NIT`; `Hub_Declaracion` guarda el `num_formulario`; `Hub_Mercancia` guarda la `subpartida`). Contienen:
-   * `Hash_Key` (PK generada mediante función hash determinista MD5/SHA-256 sobre la clave de negocio, lo que permite cargas masivas en paralelo sin depender de secuencias centrales).
-   * `Business_Key` (NIT).
-   * `Load_Date_Timestamp` (Fecha y hora en que la entidad fue vista por primera vez).
-   * `Record_Source` (Sistema origen que reportó la clave por primera vez, ej. `MUISCA_RUT`).
-2. **Links (Vínculos / Relaciones Transaccionales):**
-   Representan las asociaciones o transacciones entre dos o más Hubs (siempre modeladas como relaciones muchos-a-muchos `N:M` para absorber cualquier cambio futuro en las reglas de negocio sin romper el modelo). Contienen su propio `Link_Hash_Key`, las `Hash_Keys` foráneas de los Hubs que conecta, `Load_Date` y `Record_Source`. *Ejemplo:* `Link_Presentacion_Declaracion` une `Hub_Contribuyente` + `Hub_Declaracion` + `Hub_Seccional`.
-3. **Satellites (Satélites de Contexto e Historia):**
-   Son las únicas tablas que contienen los **atributos descriptivos y las métricas temporales** de un Hub o de un Link. Funcionan bajo el principio estricto de **Append-Only (similar a SCD Tipo 2 automático)**: cada vez que cambia un atributo en el origen (ej. se detecta un cambio en el `Hash_Diff` de los atributos del contribuyente), se inserta una nueva fila en el `Satellite` con la nueva marca de tiempo (`Load_Date`) y la fuente (`Record_Source`). Nunca se sobrescribe ni se borra nada.
-
-> [!NOTE] Micro-verificación de la Unidad 6
-> **Caso rápido:** En un proceso de fiscalización del impuesto sobre la renta del año gravable 2023, un contribuyente tenía domicilio fiscal en Barranquilla y actividad económica de comercio al por mayor; en 2025 trasladó su domicilio a Bogotá y cambió su actividad a servicios de consultoría. El modelo analítico actual sobrescribió los datos en la dimensión del contribuyente, haciendo que todos los impuestos pagados en 2023 aparezcan en los reportes como recaudados en Bogotá bajo el sector de consultoría. ¿Qué error de modelado se cometió y cómo se corrige?
-> * **Respuesta:** Se aplicó erróneamente **SCD Tipo 1 (sobrescritura)** sobre atributos que requieren trazabilidad histórica. Se debe rediseñar la dimensión aplicando **SCD Tipo 2**, asignando una nueva **Clave Subrogada (`SK`)** por cada versión histórica del contribuyente con fechas de inicio y fin de vigencia (`fecha_inicio`, `fecha_fin`, `es_actual`), de modo que los hechos de 2023 apunten a la `SK` vigente en 2023 (Barranquilla / Comercio) y los hechos de 2025 apunten a la nueva `SK` (Bogotá / Consultoría).
+Cuando trabajas como arquitecto o Inspector I en la Subdirección de Procesamiento de Datos, utilizas dos documentos clave para poner orden:
+1. **`ADR` (*Architecture Decision Record* / Registro de Decisión de Arquitectura):**
+   * Es un acta técnica breve e inmutable donde queda documentado **por qué se tomó una decisión técnica importante** (por ejemplo: *"ADR-014: Por qué elegimos Apache Iceberg sobre tablas Hive tradicionales para el repositorio DataR"*). Incluye: **Contexto/Problema**, **Alternativas evaluadas**, **Decisión elegida** y **Consecuencias (*Trade-offs*)**. Así, cuando llega una auditoría de la Contraloría o un nuevo ingeniero dos años después, nadie tiene que adivinar por qué se diseñó así.
+2. **`Matriz CRUD` (*Create, Read, Update, Delete*):**
+   * Es una tabla de doble entrada que cruza en las filas los **Procesos o Sistemas de la DIAN** y en las columnas las **Entidades de Datos**, marcando con las letras **`C`** (Crea), **`R`** (Lee), **`U`** (Actualiza) y **`D`** (Elimina) qué hace cada sistema.
+   * **¿Para qué sirve en el examen?** Para detectar **enfermedades arquitectónicas graves**:
+     * Si ves que **3 sistemas distintos tienen la letra `C` y `U` sobre los datos básicos del Contribuyente** sin pasar por el `RUT`, acabas de descubrir por qué hay datos contradictorios (*violación de la Fuente Única de Verdad*). En una arquitectura sana, solo el sistema maestro (`RUT`) crea y actualiza (`C/U`) el dato maestro, y los demás sistemas solo lo leen (`R`).
 
 ---
 
-## Unidad 7: Arquitectura de Referencia en la DIAN: El Repositorio Único de Datos (DataR), Seguridad y Marco Legal
-**Tiempo estimado:** 25 min | **Enfoque:** Casos Prácticos DIAN, Normativa y Seguridad por Diseño
+### 1.5. Micro-Verificación de la Unidad 1
+* **Pregunta rápida 1:** ¿A qué categoría de la taxonomía de datos pertenece la tabla oficial de códigos de actividad económica `CIIU` y la tabla de municipios `DIVIPOLA`, y en qué se diferencia del `RUT`? *(Respuesta: `CIIU` y `DIVIPOLA` son **Datos de Referencia** —catálogos estandarizados de clasificación—, mientras que el Contribuyente en el `RUT` es un **Dato Maestro** —la entidad nuclear sobre la que recaen las operaciones de la DIAN—).*
+* **Pregunta rápida 2:** Si el registro de control indica que *"el pipeline de ingesta de Facturación Electrónica se ejecutó el 14 de mayo a las 03:00 a.m. procesando 28.400.000 documentos XML en 22 minutos"*, ¿qué tipo de metadato es ese: de Negocio, Técnico u Operativo? *(Respuesta: **Metadato Operativo**).*
 
-### 7.1. ¿Qué vas a lograr en esta unidad?
-Integrar todos los conceptos técnicos con el marco normativo colombiano vigente (hasta el corte del **19 de junio de 2026**) y con las funciones reales del empleo **Inspector I (OPEC 236670)** en la administración del **Repositorio Único de Datos de la DIAN (DataR)**.
+---
 
-### 7.2. El Repositorio Único de Datos de la DIAN (DataR) y su Rol Institucional
-De acuerdo con el **Decreto 1742 de 2020** (estructura orgánica de la DIAN) y el **Manual Específico de Requisitos y Funciones (MERF - Resolución 067 de 2024)**, la Dirección de Gestión de Innovación y Tecnología —a través de la Subdirección de Procesamiento de Datos— tiene la responsabilidad de administrar el **Repositorio Único de Datos (DataR)**.
+## Unidad 2: Operación (`OLTP` y Normalización `3FN`) vs. Analítica (`OLAP`), `ETL/ELT` y Captura de Cambios (`CDC`)
 
-#### ¿Qué problema institucional resuelve DataR?
-Históricamente, la información tributaria (MUISCA), aduanera (SYGA / sistemas aduaneros), cambiaria, de facturación electrónica y de información exógena residía en repositorios separados. Cuando las Direcciones Seccionales o las áreas de fiscalización creaban copias locales en bases de datos departamentales o archivos sueltos para hacer sus cruces:
-1. **Se rompía la Fuente Única de Verdad:** Dos áreas reportaban cifras distintas sobre el mismo contribuyente.
-2. **Se multiplicaba el riesgo de vulneración de la Reserva Tributaria (Art. 583 E.T.):** Cada copia local fuera de la plataforma central carecía de trazabilidad unificada de auditoría, enmascaramiento y controles de acceso granulares.
-3. **Se perdía la cadena de custodia probatoria (Linaje):** Un requerimiento especial o liquidación oficial de revisión podía ser demandado en nulidad si no se demostraba el linaje exacto e inalterado desde el documento electrónico original hasta el cruce analítico.
+### 2.1. ¿Por qué las Bases de Datos Operacionales (`OLTP`) se Diseñan Diferente a las Analíticas (`OLAP`)?
 
-### 7.3. Controles de Seguridad en la Arquitectura de Datos (Seguridad por Diseño)
-En el examen de la CNSC, cualquier decisión de arquitectura de datos en la DIAN debe respetar la **Reserva Tributaria (Art. 583 del Estatuto Tributario)**, la **Ley 1581 de 2012 (Protección de Datos Personales)** y la **Ley 1712 de 2014 (Transparencia y Acceso a la Información Pública - Datos Abiertos vs. Información Reservada)**.
+Como científico de datos, seguro has notado que cuando te conectas a una base de datos transaccional de producción (donde los usuarios registran compras o trámites), los datos están **partidos en 40 o 50 tablitas pequeñas** llenas de códigos numéricos (`id_tipo_doc`, `id_municipio`, `id_estado`) y para armar tu tabla de entrenamiento tienes que hacer 15 `JOINs`.
+En cambio, en el repositorio analítico, encuentras pocas tablas anchas y fáciles de cruzar. ¿Por qué existe esa diferencia?
 
-| Mecanismo Arquitectónico de Seguridad | Cómo funciona técnicamente | Caso de Uso Exacto en DataR (DIAN) |
+#### 2.1.1. ¿Qué es la Normalización (`1FN`, `2FN`, `3FN`) en `OLTP` y por qué se hace?
+En los sistemas operacionales en línea (**`OLTP` - *Online Transaction Processing***, como el sistema donde el ciudadano inscribe su RUT o paga un impuesto), el objetivo número uno es **escribir rápido fila por fila sin guardar datos repetidos que puedan contradecirse**.
+Para lograrlo, Edgar F. Codd inventó las **Formas Normales (Normalización)**:
+* **Primera Forma Normal (`1FN`):** Prohibido meter listas o varios valores dentro de una misma celda (cada celda debe tener un solo valor atómico).
+* **Segunda Forma Normal (`2FN`):** Cumple `1FN` y todo atributo que no sea llave debe depender de la **llave primaria completa** (no solo de una parte de ella).
+* **Tercera Forma Normal (`3FN`) — El estándar de oro en `OLTP`:** Cumple `2FN` y ningún atributo depende de otro atributo que no sea la llave primaria (*"todo dato depende de la llave, de toda la llave y nada más que de la llave"*).
+  * *Ejemplo sencillo:* En una tabla en `3FN` de `Declaraciones_Renta`, **NO guardamos el nombre ni la dirección ni el correo del contribuyente en cada declaración**; solo guardamos su `NIT`. El nombre y la dirección se guardan **una única vez** en la tabla `RUT`. Así, si el contribuyente cambia de correo electrónico hoy, se actualiza **1 sola fila en el RUT** en un milisegundo y no quedan correos viejos contradictorios regados en 20 tablas (*evita las Anomalías de Inserción, Actualización y Borrado*).
+
+#### 2.1.2. ¿Y por qué la `3FN` es mala para la Analítica Masiva (`OLAP`)?
+Porque cuando un analista o científico de datos quiere sumar el recaudo de los últimos 5 años por departamento, actividad económica y tipo de contribuyente sobre $500\text{ millones}$ de filas (**`OLAP` - *Online Analytical Processing***), tener los datos partidos en 30 tablas normalizadas (`3FN`) obliga al motor a hacer **30 `JOINs` gigantescos en el momento de la consulta**, consumiendo toda la memoria RAM y tardando horas.
+Por eso, en el mundo analítico **`OLAP`** **desnormalizamos** deliberadamente los datos (uniéndolos previamente en modelos dimensionales en **Estrella** o tablas anchas columnares) para que las lecturas analíticas vuelen con pocos `JOINs`.
+
+```
+========================================================================================
+      EL PECADO CAPITAL EN ARQUITECTURA DE DATOS: MEZCLAR OLTP Y OLAP EN EL MISMO MOTOR
+========================================================================================
+
+  [50.000 Ciudadanos declarando Renta en vivo] ---> +-------------------------------+
+  (Hacen INSERT / UPDATE fila por fila en ms)       |   BASE DE DATOS TRANSACCIONAL |
+                                                    |        (OLTP - MUISCA)        |
+  [Analista lanza SELECT SUM() de 5 años] --------> | 💥 ¡BLOQUEO TOTAL DE TABLAS!  |
+  (Escanea 500 millones de filas y consume 100% CPU)|    El portal web se cae (504) |
+                                                    +-------------------------------+
+
+  SOLUCIÓN ARQUITECTÓNICA OBLIGATORIA: DESACOPLAMIENTO MEDIANTE CDC BASADO EN LOGS
+  [Base OLTP (MUISCA)] --- (CDC lee el Redo Log sin tocar el CPU) ---> [DataR (OLAP)]
+  (Solo atiende ciudadanos)                                            (Aquí consultan
+                                                                        los analistas)
+========================================================================================
+```
+
+> [!EXAM]
+> **Trampa Fija en el Examen CNSC:**
+> Si un caso dice que en pleno vencimiento de declaraciones el sistema transaccional de la DIAN se pone lento o se bloquea porque las Direcciones Seccionales o los científicos de datos están ejecutando consultas de control y reportes pesados directamente sobre la base operacional, **la respuesta correcta SIEMPRE es separar y desacoplar las cargas (`OLTP` vs. `OLAP`)**, extrayendo los cambios mediante **`CDC` asíncrono basado en logs** hacia una réplica de lectura o hacia el repositorio analítico **`DataR`**.
+
+---
+
+### 2.2. El Ciclo de Vida del Dato (`DAMA-DMBOK`)
+
+Desde que un dato nace hasta que se archiva o depura, atraviesa **6 etapas oficiales** que debes conocer en orden:
+1. **Planificación y Diseño:** Definir el esquema, el contrato de datos y los controles de seguridad y privacidad (*Privacy by Design*) antes de crear la tabla.
+2. **Captura / Creación / Ingesta:** Recepción del dato (vía formulario web, API XML de Factura Electrónica o cargue de Exógena).
+3. **Almacenamiento y Mantenimiento:** Persistencia segura con cifrado en reposo (`AES-256`), copias de respaldo y control de acceso.
+4. **Uso, Procesamiento y Síntesis:** Limpieza, integración en el Lakehouse, cruces de fiscalización y entrenamiento de modelos analíticos.
+5. **Archivado / Conservación Legal (*Archiving*):** Cuando los datos ya tienen varios años y casi no se consultan en caliente, pero la ley obliga a conservarlos (por ejemplo, por los términos de firmeza de 3 a 5 años del Estatuto Tributario o por las Tablas de Retención Documental `TRD`), se mueven a **Almacenamiento Frío de Bajo Costo (*Cold Storage / Archive / Glacier*)**.
+6. **Purga / Disposición Final Segura:** Eliminación física irreversible o anonimización definitiva con acta de auditoría únicamente cuando ha vencido el plazo legal de retención documental. *(Nota: En la DIAN, los registros históricos de recaudo y catálogos tributarios se conservan como memoria histórica institucional en capas de archivo).*
+
+---
+
+### 2.3. ¿Cómo Movemos y Transformamos los Datos? `ETL` vs. `ELT` y `CDC` (*Change Data Capture*)
+
+#### 2.3.1. `ETL` (*Extract, Transform, Load*) vs. `ELT` (*Extract, Load, Transform*)
+La diferencia está en **el orden de las letras `T` (Transformar) y `L` (Cargar)**:
+
+| Criterio | `ETL` Clásico (*Extraer $\to$ Transformar $\to$ Cargar*) | `ELT` Moderno (*Extraer $\to$ Cargar $\to$ Transformar*) |
 | :--- | :--- | :--- |
-| **Control de Acceso Basado en Roles (RBAC) vs. Basado en Atributos (ABAC)** | **RBAC** asigna permisos según el rol general (`Analista_Fiscalizacion`). **ABAC** evalúa dinámicamente políticas combinando atributos del **usuario** (Seccional = Cali, Nivel = Inspector), del **dato** (Clasificación = Reserva Tributaria, Seccional_Contribuyente = Cali) y del **entorno** (Red = Intranet, Horario hábil). | Garantizar con una sola política que un funcionario solo pueda ver registros de contribuyentes asignados a su jurisdicción o expediente activo (**Row-Level Security - RLS** y **Column-Level Security - CLS**). |
-| **Enmascaramiento Dinámico de Datos (Dynamic Data Masking - DDM)** | Ofusca o transforma los datos sensibles **en tiempo de ejecución de la consulta (al vuelo)** según el perfil de quien consulta, **sin alterar jamás los datos reales almacenados en disco**. | Permitir que un equipo de soporte técnico o analistas estadísticos consulten vistas de producción viendo `NIT: ***-***-891` o rangos de ingresos en lugar del dato confidencial real. |
-| **Enmascaramiento Estático / Tokenización / Seudonimización** | Reemplaza de forma persistente los identificadores sensibles en una copia de datos antes de entregarla a un entorno externo o de pruebas. La **Tokenización** sustituye el NIT por un token reversible solo mediante una bóveda segura (*Token Vault*). | Poblar ambientes de Desarrollo y Pruebas (QA) sin llevar jamás datos reales sujetos a reserva tributaria fuera de producción. |
-| **Anonimización Irreversible y Agregación ($k$-anonimato)** | Elimina o agrega la información de tal forma que sea **matemáticamente imposible re-identificar** a una persona natural o jurídica individual, incluso cruzándola con otras bases. | Publicación de estadísticas tributarias y conjuntos de **Datos Abiertos** en `datos.gov.co` cumpliendo la Ley 1712 de 2014 sin violar el Art. 583 del E.T. |
+| **¿Cómo funciona?** | Sacas el dato de la fuente, lo metes a un **servidor intermedio de transformación**, lo limpias ahí y guardas en el destino **únicamente el resultado ya transformado**. | Sacas el dato de la fuente, **lo cargas inmediatamente tal cual viene (en crudo)** en la Capa Bronce del Data Lakehouse, y luego usas el poder de cómputo distribuido del Lakehouse (`Spark` / `dbt`) para transformarlo hacia las Capas Plata y Oro. |
+| **¿Se conserva el dato original crudo en el destino?** | **No.** Si 6 meses después descubres que la fórmula de transformación tenía un error, perdiste el dato original y tienes que volver a pedirle todo a la fuente. | **Sí (100% en la Capa Bronce).** Si cambia una regla o corriges un bug, puedes reprocesar toda la historia desde la Capa Bronce sin molestar al sistema transaccional. |
+| **¿Cuándo elegir `ETL` vs. `ELT` en el examen?** | Elige **`ETL`** cuando una norma estricta de seguridad **prohíba guardar el dato sensible en crudo** en el destino y obligue a enmascararlo o filtrarlo *en vuelo (en memoria)* antes de tocar el disco destino. | Elige **`ELT`** como **estándar general para el Data Lakehouse (`DataR`)**, donde se requiere conservar la evidencia original en Bronce y escalar transformaciones masivas con `Spark`. |
 
-### 7.4. Requisitos No Funcionales de Continuidad: RPO y RTO en Arquitectura de Datos
-* **RPO (Recovery Point Objective - Objetivo de Punto de Recuperación):** Responde a la pregunta: *¿Cuánta pérdida de datos medida en tiempo puede tolerar el negocio ante un desastre?* (Ej. Un `RPO = 0` exige replicación síncrona; un `RPO = 15 minutos` permite replicación asíncrona de logs cada 15 minutos).
-* **RTO (Recovery Time Objective - Objetivo de Tiempo de Recuperación):** Responde a la pregunta: *¿Cuánto tiempo máximo puede tardar la plataforma en volver a estar operativa y disponible después de una caída?* (Ej. Un `RTO = 1 hora` conmutando a una zona secundaria).
+#### 2.3.2. `CDC` (*Change Data Capture* / Captura de Datos de Cambio): `Log-Based` vs. `Query-Based (Polling)`
+Imagina que la tabla del `RUT` en el sistema transaccional tiene **22 millones de contribuyentes**. Hoy, solo $5.000$ contribuyentes actualizaron su dirección o actividad económica.
+Sería absurdo copiar de nuevo los 22 millones de filas completas todas las noches hacia el repositorio analítico. Solo queremos copiar **los $5.000$ cambios (`INSERT`, `UPDATE`, `DELETE`) que ocurrieron hoy**. Eso se llama **`CDC` (*Change Data Capture*)**.
 
-### 7.5. Cuadro Maestro del Marco Normativo Aplicable (Vigencia antes del 19 de junio de 2026)
+Existen **dos formas** de hacer `CDC`, y en el examen debes saber por qué la segunda es infinitamente superior a la primera:
 
-| Norma / Estándar | Artículo o Lineamiento Clave | Impacto Directo en las Preguntas del Examen |
+1. **Forma Mala / Limitada: `CDC` Basado en Consultas o *Triggers* (`Query-Based Polling`):**
+   * Cada 10 minutos un script lanza un `SELECT * FROM rut WHERE fecha_modificacion > '10:00'` sobre la base transaccional.
+   * **Por qué falla en grande:**
+     * Consume CPU y disco de la base de datos operacional (la pone lenta).
+     * Si un registro cambió 3 veces en esos 10 minutos, pierde los 2 estados intermedios.
+     * **¡Es ciego a los borrados físicos (`HARD DELETE`)!** Si una fila fue borrada con `DELETE`, ya no existe en la tabla, así que el `SELECT` jamás se entera de que fue eliminada y la fila queda "viva como un fantasma" en el repositorio analítico.
+2. **Forma Óptima (Estándar de Oro en la DIAN): `CDC` Basado en el Log Binario de Transacciones (`Log-Based CDC`, ej. *Debezium*, *Oracle GoldenGate*, *Kafka Connect*):**
+   * Toda base de datos seria (Oracle, PostgreSQL, SQL Server, MySQL), antes de tocar una tabla, anota cada cambio en un archivo interno secuencial en disco llamado **Log de Transacciones (`Redo Log` en Oracle, `WAL - Write-Ahead Log` en PostgreSQL, `Binlog` en MySQL)**.
+   * El conector `Log-Based CDC` **no le hace ninguna consulta `SELECT` al motor de base de datos**: simplemente lee en silencio ese archivo `Redo Log / WAL` a medida que se escribe y envía cada cambio en milisegundos hacia `Apache Kafka`.
+   * **Sus 3 superpoderes:** **1)** Cero impacto sobre el rendimiento de la base transaccional; **2)** Latencia en tiempo real (milisegundos); **3)** Captura absolutamente **todos** los `INSERT`, todos los `UPDATE` intermedios y **todos los `DELETE` físicos**.
+
+---
+
+### 2.4. Micro-Verificación de la Unidad 2
+* **Pregunta rápida 1:** ¿Por qué un proceso de extracción basado en consultas periódicas (`SELECT ... WHERE fecha_actualizacion > X`) no puede detectar cuando un registro fue eliminado físicamente (`DELETE`) en la base de datos origen, y qué técnica lo resuelve sin sobrecargar el motor transaccional? *(Respuesta: Porque al borrarse físicamente la fila ya no aparece en el resultado del `SELECT`; se resuelve implementando **`CDC` basado en el Log de Transacciones (`Log-Based CDC` leyendo el `Redo Log` o `WAL`)**, donde el evento `DELETE` queda explícitamente registrado).*
+* **Pregunta rápida 2:** ¿Qué Forma Normal (`1FN`, `2FN` o `3FN`) exige que en una tabla transaccional ningún atributo no-llave dependa transitivamente de otro atributo no-llave, evitando repetir los datos de contacto del contribuyente en cada una de sus declaraciones tributarias? *(Respuesta: La **Tercera Forma Normal (`3FN`)**).*
+
+---
+
+## Unidad 3: Los 5 Grandes Paradigmas Arquitectónicos — `DWH`, `Data Lake`, `Lakehouse`, `Data Fabric` y `Data Mesh`
+
+En la Unidad 2 del Módulo 1 vimos la evolución histórica de almacenamiento (`Data Warehouse` $\to$ `Data Lake` $\to$ `Data Lakehouse`). Ahora, en este módulo de **Arquitectura de Datos**, profundizaremos en los **5 paradigmas completos** que evalúa la CNSC, incluyendo los dos conceptos modernos de integración y descentralización organizacional: **`Data Fabric` (Tejido de Datos)** y **`Data Mesh` (Malla de Datos)**.
+
+---
+
+### 3.1. Los 3 Paradigmas de Repositorio Centralizado (`DWH`, `Data Lake` y `Data Lakehouse`)
+
+Repasemos rápidamente sus diferencias estructurales clave para el examen:
+1. **`Data Warehouse (DWH)`:** Bodega relacional/dimensional con **`Schema-on-Write`** (esquema rígido al escribir) y garantías `ACID`. Excelente para reportes SQL y tableros ejecutivos de BI, pero costoso para petabytes e incapaz de almacenar nativamente archivos crudos como `XML`, `PDF` o imágenes de escáneres aduaneros.
+2. **`Data Lake` (Lago de Datos):** Almacenamiento de objetos económico (`S3`, `ADLS`, `GCS`) que guarda cualquier tipo de archivo en crudo bajo **`Schema-on-Read`** (esquema al leer). Ideal para Ciencia de Datos, pero como carece de transacciones `ACID` y de catálogo gobernado, corre el riesgo de pudrirse y convertirse en un **`Data Swamp` (Pantano de Datos)** donde nadie sabe qué tabla es confiable.
+3. **`Data Lakehouse`:** Une lo mejor de ambos mundos sobre **una sola copia de los datos**: guarda los archivos en almacenamiento de objetos económico en formato columnar (`Parquet`), pero les pone encima una capa transaccional abierta (**`Apache Iceberg`**, **`Delta Lake`** o **`Hudi`**) que aporta garantías **`ACID`**, control de calidad, versionamiento (*Time Travel*) y alto desempeño SQL para BI y para Machine Learning simultáneamente.
+
+---
+
+### 3.2. `Data Fabric` (Tejido de Datos) vs. `Data Mesh` (Malla de Datos) — ¡La Distinción Reina del Examen!
+
+Cuando una entidad gigantesca como la DIAN tiene docenas de sistemas (Tributarios, Aduaneros, Cambiarios, Jurídicos, Talento Humano, Financieros) repartidos en servidores propios (*On-Premise*) y en varias nubes, surgen dos problemas distintos:
+* **Problema A (Tecnológico):** ¿Cómo conectamos, descubrimos e integramos automáticamente datos que viven en 30 bases de datos distintas sin tener que copiarlos todos manualmente cada vez? $\rightarrow$ Lo resuelve el **`Data Fabric`**.
+* **Problema B (Humano y Organizacional):** El equipo central de ingeniería de datos (la Subdirección de Procesamiento) tiene una fila de espera de 200 solicitudes porque todas las demás áreas dependen de él para armar cualquier tabla, pero los ingenieros centrales no son expertos en derecho aduanero ni en precios de transferencia. ¿Cómo descentralizamos la creación de productos de datos hacia las áreas expertas sin perder el gobierno ni la seguridad? $\rightarrow$ Lo resuelve el **`Data Mesh`**.
+
+```
+========================================================================================
+            DIFERENCIA CLAVE: DATA FABRIC (TECNOLÓGICO) vs. DATA MESH (SOCIO-TÉCNICO)
+========================================================================================
+
+  1. DATA FABRIC ("El Tejido Inteligente Automatizado" - Enfoque Tecnológico):
+     - Usa METADATOS ACTIVOS, Grafos de Conocimiento (Knowledge Graphs), IA y
+       VIRTUALIZACIÓN DE DATOS para conectar y consultar múltiples fuentes dispersas
+       como si fueran una sola red inteligente, automatizando la integración.
+
+  2. DATA MESH ("La Malla Descentralizada por Dominios" - Enfoque Organizacional):
+     - Creado por Zhamak Dehghani. Descentraliza la propiedad del dato hacia los
+       DOMINIOS DE NEGOCIO (Dominio Aduanero, Dominio Tributario, Dominio Cambiario),
+       donde cada dominio publica sus "Datos como un Producto" usando una Plataforma
+       Central de Autoservicio y respetando una Gobernanza Computacional Federada.
+========================================================================================
+```
+
+#### Los 4 Principios Inseparables del `Data Mesh` (Zhamak Dehghani)
+En el examen de la CNSC, si un caso menciona problemas de **cuello de botella en el equipo central de datos** y desconocimiento del contexto de negocio de cada área misional, la respuesta apunta a **`Data Mesh`** sustentado en sus **4 pilares**:
+
+1. **Propiedad de los Datos Orientada a Dominios (*Domain-Oriented Decentralized Ownership*):**
+   Los datos analíticos pertenecen al área misional que mejor los conoce (el Dominio de Aduanas es responsable de generar y curar los datos analíticos aduaneros; el Dominio de Fiscalización Tributaria, los suyos).
+2. **Los Datos como un Producto (*Data as a Product*):**
+   Un dominio no entrega "archivos sueltos sin documentar". Entrega un **Producto de Datos** con un responsable (*Data Product Owner*), acuerdos de nivel de servicio (`SLA`), diccionario claro, calidad verificada y contratos de interfaz. Todo producto de datos debe ser: **Descubrible, Direccionable, Confiable (*Trustworthy*), Autodescriptivo, Interoperable y Seguro**.
+3. **Plataforma de Datos de Autoservicio como Infraestructura (*Self-Serve Data Platform*):**
+   ¿Significa esto que el área de Aduanas tiene que comprar sus propios servidores y configurar su propio clúster de Spark desde cero? **¡NO!** La Subdirección de Procesamiento de Datos provee una **Plataforma Central de Autoservicio** con plantillas listas para que cada dominio cree y publique sus productos de datos fácilmente sin duplicar infraestructura.
+4. **Gobernanza Computacional Federada (*Federated Computational Governance*):**
+   ¿Significa que cada dominio inventa sus propias reglas de seguridad o su propio formato de NIT? **¡JAMÁS!** Existe un comité federado que define las reglas globales obligatorias (la **Reserva Tributaria del Art. 583 E.T.**, el **NIT como identificador único transversal**, los estándares de calidad), y esas reglas se programan automáticamente como código (**`Policy-as-Code`**) en la plataforma para que ningún dominio pueda violarlas.
+
+> [!WARNING]
+> **¡Alerta de Trampa en el Examen sobre `Data Mesh`!**
+> Si una opción de respuesta dice: *"Implementar Data Mesh para que cada Dirección Seccional o Subdirección defina de manera independiente sus propias políticas de seguridad, reserve sus datos sin compartirlos y cree su propio identificador de contribuyente distinto al RUT"*, **DESCARTE ESA OPCIÓN INMEDIATAMENTE**. Eso no es Data Mesh, eso es **Anarquía de Silos de Datos**. En Data Mesh, los identificadores maestros (como el NIT/RUT) y las políticas de seguridad/privacidad son **federadas, globales y obligatorias**.
+
+---
+
+### 3.3. Tabla Maestra de Diagnóstico: ¿Qué Paradigma Elegir en Cada Caso del Examen?
+
+| Síntoma o Problema Descrito en el Caso del Examen | Paradigma Arquitectónico Correcto |
+| :--- | :--- |
+| *"Se requiere un repositorio único que almacene tanto archivos XML/PDF crudos como tablas estructuradas en almacenamiento de objetos económico, pero garantizando transacciones `ACID`, viajes en el tiempo (`Time Travel`) y consultas SQL rápidas sin duplicar datos a una bodega aparte."* | **`Data Lakehouse`** (sobre `Apache Iceberg` o `Delta Lake`). |
+| *"Existe un lago de datos donde durante años se volcaron miles de archivos sin catálogo de metadatos, sin dueños asignados, sin linaje ni validación de calidad, por lo que nadie confía en las tablas."* | Diagnóstico: **`Data Swamp` (Pantano de Datos)**. Solución: Implementar **Gobierno de Datos, Catálogo Activo, Linaje y Arquitectura Medallón**. |
+| *"La entidad tiene decenas de fuentes heterogéneas en nube y on-premise que no pueden moverse físicamente a un solo lugar a corto plazo, y necesita una capa inteligente basada en **metadatos activos, grafos de conocimiento y virtualización** para integrarlas."* | **`Data Fabric` (Tejido de Datos)**. |
+| *"El equipo central de datos está saturado y tarda meses en responder porque no comprende las reglas de negocio profundas de los dominios Tributario, Aduanero y Cambiario; se requiere descentralizar la entrega de **Datos como Producto** por dominio sobre una plataforma común y gobierno federado."* | **`Data Mesh` (Malla de Datos)**. |
+
+---
+
+### 3.4. Micro-Verificación de la Unidad 3
+* **Pregunta rápida 1:** ¿Cuál es la diferencia fundamental entre `Data Fabric` y `Data Mesh`? *(Respuesta: **`Data Fabric`** es un enfoque **tecnológico** que usa metadatos activos, IA y virtualización para conectar fuentes dispersas; **`Data Mesh`** es un paradigma **organizacional y socio-técnico** que descentraliza la propiedad hacia los dominios de negocio tratando los **Datos como un Producto** sobre una plataforma de autoservicio y gobernanza computacional federada).*
+* **Pregunta rápida 2:** ¿Qué pasa cuando un *Data Lake* carece de catálogo de metadatos, control de calidad y gobierno de datos? *(Respuesta: Se degrada en un **`Data Swamp` —Pantano de Datos—**).*
+
+---
+
+## Unidad 4: Arquitectura Medallón (`Bronce`, `Plata`, `Oro`), Tablas de Cuarentena, Contratos de Datos y Capa Semántica
+
+### 4.1. Las 3 Capas de la Arquitectura Medallón (*Multi-Hop*) Explicadas al Detalle
+
+Dentro del **Repositorio Único de Datos (`DataR`)** de la DIAN, los datos no pasan directamente del archivo crudo que envió el contribuyente al tablero del Director General. Atraviesan un proceso de purificación industrial dividido en **3 etapas o medallas (`Bronce` $\to$ `Plata` $\to$ `Oro`)**.
+
+En el examen de Inspector I te preguntarán **qué se hace en cada capa, quién puede entrar a cada una y cómo se manejan los errores entre ellas**:
+
+| Criterio Arquitectónico | 🥉 **1. CAPA BRONCE (*Raw / Landing*)** | 🥈 **2. CAPA PLATA (*Silver / Cleansed & Conformed*)** | 🥇 **3. CAPA ORO (*Gold / Curated & Business*)** |
+| :--- | :--- | :--- | :--- |
+| **¿Qué guarda exactamente?** | **Copia cruda, intacta e inmutable** del dato tal cual llegó del sistema origen (`XML UBL 2.1` de factura, `JSON`, o evento `CDC` de MUISCA) + columnas técnicas (`_fecha_ingesta`, `_hash_sha256`, `_origen`). | Datos **limpios, filtrados, deduplicados**, con tipos de datos corregidos (`DATE`, `DECIMAL`), validados en calidad y cruzados con las llaves maestras del **`RUT`**. | Datos **agregados por reglas de negocio misionales**, modelos dimensionales en **Estrella (`Kimball`)**, indicadores `KPI/KRI` precalculados y tablas del `Feature Store`. |
+| **¿Se permite modificar o borrar datos?** | **¡PROHIBIDO!** Es estrictamente **`Append-Only` (Solo inserción)**. | Se permiten actualizaciones controladas (`MERGE / Upsert`) para reflejar el estado integrado de las entidades (3FN / Data Vault). | Se actualiza según los ciclos de negocio para servir consultas ultrarrápidas. |
+| **¿Cuál es su propósito en la DIAN?** | **Custodia Probatoria y Forense** (si un juez o auditor pide ver qué envió exactamente el contribuyente hace 3 años, está aquí) y permitir **reprocesar desde cero** si cambia una regla sin volver a tocar el sistema origen. | Ser la **Fuente Única de Verdad Operativa Integrada** donde trabajan los **Científicos de Datos** para entrenar modelos de Machine Learning y hacer cruces profundos. | Alimentar los **Tableros Directivos (Power BI)**, reportes oficiales al Ministerio de Hacienda, la **Declaración Sugerida** y los sistemas de selección de auditoría. |
+| **¿Quién tiene permiso de lectura?** | **Nadie humano en consulta libre:** Solo las cuentas de servicio automatizadas de ingesta y administradores de plataforma. | Científicos de datos, ingenieros de datos y analistas autorizados (con **enmascaramiento `DDM` / seudonimización** según rol). | Funcionarios misionales, directivos, tableros de BI y APIs de consumo (protegidos por `ABAC` y `RLS`). |
+
+---
+
+### 4.2. ¿Qué Hacemos Cuando Llega un Dato Corrupto? El Patrón de **Tabla de Cuarentena (*Quarantine / Dead-Letter Table*)**
+
+Imagina este caso real de examen:
+Estás pasando a las 02:00 a.m. un lote de **10 millones de registros de Información Exógena** desde la **Capa Bronce** hacia la **Capa Plata**. De esos 10 millones de filas, **$9.998.000$ están perfectas**, pero **$2.000$ filas vienen con un error de calidad** (por ejemplo, traen un texto inválido en la casilla de valor numérico o un NIT inexistente).
+
+**¿Qué debe hacer el pipeline arquitectónico?**
+Analicemos las 3 opciones que suelen aparecer en el examen de la CNSC:
+* ❌ *Opción Mala A (Borrar el dato):* Eliminar las 2.000 filas corruptas de la Capa Bronce y hacer como si nunca hubieran llegado. **Error grave:** Destruye la evidencia forense de lo que reportó el obligado.
+* ❌ *Opción Mala B (Pasar basura a Oro o abortar todo el país):* Dejar pasar los datos corruptos a las capas Plata y Oro (dañando los promedios nacionales y los tableros del Director) o paralizar indefinidamente los $9.998.000$ registros buenos por culpa del $0.02\%$ defectuoso.
+* ✅ **Opción Correcta (Patrón de Cuarentena / *Quarantine Table*):**
+  1. En la **Capa Bronce** quedan guardados los 10 millones de registros originales intactos.
+  2. El motor de validación de calidad en tránsito filtra y promueve los **$9.998.000$ registros válidos hacia la Capa Plata**.
+  3. Desvía automáticamente las **$2.000$ filas defectuosas hacia una `Tabla de Cuarentena` (*Quarantine / Dead-Letter Table*)**, anexándoles el código de la regla de calidad que violaron y la fecha/hora, y dispara una alerta automática al **`Data Steward`** (Custodio Funcional del Dato) para su remediación o requerimiento de corrección al reportante.
+
+```
+========================================================================================
+         FLUJO DE VALIDACIÓN Y PATRÓN DE CUARENTENA ENTRE CAPA BRONCE Y PLATA
+========================================================================================
+
+  [ CAPA BRONCE ] ---> ( Motor de Reglas de Calidad: Great Expectations / Deequ )
+  (10M registros)                    |
+                                     +---> [9.998.000 Válidos] ---> [ CAPA PLATA ]
+                                     |
+                                     +---> [2.000 Defectuosos] ---> [ TABLA DE CUARENTENA ]
+                                                                    (+ Código de Error + Alerta
+                                                                     al Data Steward para ajuste)
+========================================================================================
+```
+
+---
+
+### 4.3. Contratos de Datos (*Data Contracts*) y Capa Semántica (*Semantic Layer*)
+
+Para evitar que el Data Lakehouse se rompa o entregue números contradictorios, la arquitectura moderna incorpora dos piezas en los extremos del pipeline:
+
+#### 1. En la Entrada: **Contratos de Datos (`Data Contracts`)**
+* **¿Qué problema resuelve?** Imagina que un programador del sistema transaccional `MUISCA` decide un viernes por la tarde cambiar el nombre de la columna `val_impuesto_neto` por `impuesto_total` o cambiar su tipo de numérico a texto sin avisarle a nadie. A medianoche, todos los pipelines de la Subdirección de Procesamiento de Datos y los modelos de Machine Learning se rompen en cadena.
+* **¿Qué es un `Data Contract`?** Es un **acuerdo técnico formal codificado (en `YAML` / `JSON Schema` / `Avro`)** firmado entre el **Productor del Dato** (el sistema transaccional) y el **Consumidor del Dato** (el equipo analítico de `DataR`).
+* Define el esquema obligatorio, los tipos de datos, las reglas de negocio (`valor_iva >= 0`), los `SLAs` de puntualidad y prohíbe que el equipo de software despliegue en producción un cambio incompatible (*Breaking Change*) sin antes versionar el contrato.
+
+#### 2. En la Salida: **La Capa Semántica (`Semantic Layer` / `Metrics Store`)**
+* **¿Qué problema resuelve?** Imagina que la Oficina de Estudios Económicos calcula el *"Recaudo Bruto Efectivo"* sumando los pagos en bancos menos las devoluciones, mientras que la Dirección de Gestión de Ingresos lo calcula sin restar las devoluciones ni las compensaciones con títulos `TIDIS`. En una reunión con el Ministro de Hacienda, las dos áreas llevan dos números distintos a partir de la misma Capa Oro.
+* **¿Qué es la `Capa Semántica`?** Es una capa lógica centralizada situada **entre la Capa Oro y las herramientas de visualización/consumo** (`Power BI`, `Tableau`, `Notebooks`, `APIs`). En ella se define **una sola vez** la fórmula matemática oficial de cada métrica e indicador de la DIAN. Así, sin importar desde qué herramienta o dependencia se consulte el indicador `"Recaudo_Neto_Efectivo"`, todo el Estado obtiene exactamente el mismo número al centavo.
+
+---
+
+### 4.4. Micro-Verificación de la Unidad 4
+* **Pregunta rápida 1:** Si dos subdirecciones de la DIAN conectan sus propios tableros de Power BI a las tablas de la Capa Oro pero cada analista escribe su propia fórmula DAX de qué significa *"Deuda Gestionable en Cobro Coactivo"*, obteniendo cifras diferentes en el comité directivo, ¿qué componente arquitectónico falta implementar entre la Capa Oro y las herramientas de BI? *(Respuesta: Una **Capa Semántica (`Semantic Layer` / Repositorio Centralizado de Métricas)** que unifique y gobierne una única definición matemática oficial de cada indicador).*
+* **Pregunta rápida 2:** ¿Por qué un desarrollador del sistema transaccional de RUT no debería poder eliminar o renombrar una columna en producción sin que se valide automáticamente el impacto en los pipelines de `DataR`, y cómo se llama el mecanismo que lo previene? *(Respuesta: Porque rompería los procesos analíticos aguas abajo; el mecanismo que lo previene mediante acuerdos ejecutables de esquema, calidad y SLA entre productor y consumidor son los **Contratos de Datos (`Data Contracts`)**).*
+
+---
+
+## Unidad 5: Modelado Analítico (Parte 1) — `Inmon` vs. `Kimball`, el Esquema en Estrella, Tablas de Hechos y Dimensiones
+
+Llegamos al corazón del diseño de bodegas de datos y de la **Capa Oro** del Data Lakehouse. En el examen de la CNSC, las preguntas sobre **Bill Inmon**, **Ralph Kimball**, **Tablas de Hechos**, **Métricas Semi-Aditivas** y **Claves Subrogadas** son obligatorias. Vamos a entenderlas desde cero con claridad meridiana.
+
+---
+
+### 5.1. Las Dos Grandes Escuelas Clásicas: `Bill Inmon (Top-Down)` vs. `Ralph Kimball (Bottom-Up)`
+
+En los años 90 surgieron los dos "padres" del Data Warehousing con dos filosofías opuestas sobre cómo construir el almacén analítico de una entidad:
+
+| Criterio | Escuela de **Bill Inmon (`Top-Down` / De Arriba a Abajo)** | Escuela de **Ralph Kimball (`Bottom-Up` / De Abajo a Arriba)** |
 | :--- | :--- | :--- |
-| **Estatuto Tributario Nacional (Decreto 624 de 1989 y mod.)** | **Art. 583 a 587 (Reserva de las declaraciones tributarias)** y **Art. 616-1 (Sistema de Facturación Electrónica)**. | Las declaraciones y bases individuales tienen **reserva legal estricta**. Solo pueden usarse para control, recaudo, cobro y estadísticas impersonales. Ninguna arquitectura puede exponer datos individuales sin mandato legal ni controles técnicos. |
-| **Ley Estatutaria 1581 de 2012** | Principios de **Finalidad, Circulacón Restringida, Seguridad y Confidencialidad** en el tratamiento de datos personales. | Obliga a aplicar **Privacidad por Diseño (Privacy by Design)**, minimización de datos y controles de acceso granulares. |
-| **Ley 1712 de 2014** | Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional (**Art. 18 y 19: Excepciones por reserva legal**). | Obliga a publicar datos abiertos agregados, pero exceptúa expresamente la información protegida por **reserva tributaria** o secreto comercial/industrial. |
-| **Documento CONPES 3920 de 2018** | Política Nacional de Explotación de Datos (**Big Data**). | Define los datos de las entidades públicas como **activos estratégicos e infraestructura crítica**, exigiendo estándares de calidad, catalogación, ciclo de vida e interoperabilidad. |
-| **Decreto 1742 de 2020 y Resolución DIAN 067 de 2024 (MERF)** | Estructura orgánica de la DIAN y funciones de la Subdirección de Procesamiento de Datos (Inspector I). | Establece la administración del **Repositorio Único de Datos (DataR)** bajo políticas de Gobierno de Datos y Seguridad de la Información. |
-| **MRAE v2.0 / v3.0 (MinTIC) y Decreto 1078 de 2015** | Dominio de Información y Datos de la Política de Gobierno Digital e Interoperabilidad (**X-Road**). | Exige que el intercambio de información entre entidades públicas se realice mediante **servicios web gobernados y estandarizados**, nunca compartiendo accesos directos a tablas de bases de datos ni enviando archivos por correo sin control. |
+| **¿Cómo se construye paso a paso?** | 1. Primero diseñas y construyes un **único y gigantesco Almacén Corporativo (`EDW`) normalizado en `3FN`** que integre a toda la DIAN.<br>2. Luego, a partir de ese gran modelo central, sacas pequeñas bases por área (*Data Marts*). | 1. Empiezas construyendo modelos dimensionales (**Esquemas en Estrella**) por cada proceso de negocio prioritario (ej. primero *Recaudo*, luego *Facturación*, luego *Aduanas*).<br>2. Los unes entre sí usando **Dimensiones Conformadas (Compartidas)** a través de una matriz llamada **`Enterprise Bus Matrix`**. |
+| **Estructura de las Tablas** | Tablas **Normalizadas en `3FN`** en el repositorio central (muchas tablas unidas por llaves). | **Modelo Dimensional Desnormalizado (`Star Schema` / Esquema en Estrella):** 1 Tabla de Hechos central rodeada de Tablas de Dimensiones. |
+| **Ventaja Principal** | Máxima consistencia corporativa y cero redundancia en la base central. | **Mucho más rápido de implementar**, facilísimo de entender para analistas y **muchísimo más veloz para consultas analíticas (`OLAP`) y tableros BI**. |
+| **¿Cómo se combinan hoy en el Lakehouse de la DIAN?** | La **Capa Plata** suele seguir la filosofía de integración corporativa de **Inmon (o `Data Vault`)**, donde los datos están limpios e integrados sin duplicidad. | La **Capa Oro** sigue universalmente el **Modelado Dimensional de Kimball (Esquema en Estrella)** para que las consultas, reportes y cubos de BI vuelen. |
 
 ---
 
-## 8. Flashcards de Repaso Activo (20 Conceptos Críticos)
+### 5.2. El Modelo Dimensional de Ralph Kimball: ¿Qué es un Hecho (*Fact*) y qué es una Dimensión (*Dimension*)?
 
-- **¿Por qué nunca se deben ejecutar consultas analíticas pesadas (OLAP) sobre la base transaccional (OLTP)?** :: Porque las consultas analíticas escanean millones de filas generando bloqueos (*locks*) y saturación de CPU/I/O que degradan la atención en línea de los contribuyentes. Se debe replicar mediante CDC hacia el repositorio analítico.
-- **¿Cuál es la diferencia técnica entre CDC por Polling y CDC basado en Logs?** :: El Polling ejecuta `SELECT` periódicos sobrecargando el motor SQL y no detecta borrados físicos (`DELETE`). El CDC basado en Logs lee secuencialmente el WAL/Redo Log/Binlog en disco con impacto casi nulo en CPU, latencia en milisegundos y captura total de `INSERT`, `UPDATE` y `DELETE`.
-- **¿Cuándo se debe preferir ETL tradicional sobre ELT en el sector público?** :: Cuando una política de seguridad o regulación prohíbe estrictamente persistir el dato sensible en crudo dentro del repositorio destino, obligando a enmascararlo o filtrarlo en memoria antes de escribir en disco.
-- **¿Qué diferencia a un Data Lakehouse de un Data Lake tradicional?** :: El Lakehouse añade una capa de formato de tabla abierto (Apache Iceberg, Delta Lake, Hudi) sobre el almacenamiento de objetos, dotándolo de transacciones ACID, aislamiento de instantáneas, evolución de esquemas y *Time Travel*.
-- **¿Cuál es la diferencia esencial entre Data Fabric y Data Mesh?** :: Data Fabric es una arquitectura tecnológica centrada en metadatos activos y virtualización para conectar datos dispersos. Data Mesh es un paradigma socio-técnico y organizacional que descentraliza la propiedad del dato hacia los dominios misionales (Datos como Producto) bajo una gobernanza computacional federada.
-- **¿Cuáles son los 4 principios de Data Mesh (Zhamak Dehghani)?** :: 1) Propiedad descentralizada orientada a dominios, 2) Los datos como un producto, 3) Plataforma de datos de autoservicio como infraestructura, y 4) Gobernanza computacional federada.
-- **¿Qué es un Data Swamp y cómo se corrige arquitectónicamente?** :: Es un Data Lake deteriorado por ausencia de gobierno, metadatos y calidad. Se corrige implementando un Catálogo de Datos, asignando *Data Owners/Stewards*, definiendo linaje, aplicando reglas de calidad y estructurando capas (Bronce, Plata, Oro).
-- **¿Qué función cumple la Capa Bronce en la Arquitectura Medallion y por qué es inmutable?** :: Almacena una copia cruda, exacta e inalterada del dato original en modalidad *append-only*. En la DIAN garantiza la trazabilidad forense, el soporte probatorio judicial y la posibilidad de reprocesar todo el historial ante errores de transformación.
-- **¿Cómo se deben manejar los registros que fallan las reglas de calidad al pasar de Bronce a Plata?** :: Se conservan en Bronce, se promueven los registros válidos a Plata y los registros defectuosos se desvían a una **Tabla de Cuarentena (Quarantine / Dead-Letter)** con el detalle del error para su remediación, sin borrar evidencia ni contaminar la Capa Oro.
-- **¿Por qué se usa Apache Avro en Kafka y Apache Parquet en el Lakehouse?** :: Avro es un formato binario orientado a filas óptimo para serializar/deserializar mensajes completos con baja latencia en streaming. Parquet es un formato columnar que comprime por columna y aplica *Projection Pushdown* y *Predicate Pushdown* para consultas analíticas masivas.
-- **¿Qué es el Hidden Partitioning (Particionamiento Oculto) de Apache Iceberg?** :: Es la capacidad de gestionar las particiones en la capa de metadatos a partir de transformaciones de una columna (ej. extraer año/mes de un `timestamp`), permitiendo evolucionar el esquema de particionamiento sin reescribir los archivos históricos y sin exigir filtros adicionales al usuario.
-- **¿Qué es el problema de los archivos pequeños (Small Files Problem) y cómo se resuelve?** :: Ocurre cuando ingestas frecuentes en streaming escriben miles de archivos Parquet diminutos, degradando la lectura por exceso de operaciones de metadatos/I/O. Se resuelve ejecutando **Compactación (`OPTIMIZE` / `Bin-packing`)** periódica.
-- **¿Por qué las Tablas de Dimensiones (Kimball) deben usar Claves Subrogadas (SK) en lugar del NIT (Clave Natural)?** :: Para independizar el modelo analítico de cambios en los sistemas origen, integrar múltiples fuentes y permitir que un mismo NIT tenga múltiples filas históricas bajo **SCD Tipo 2**.
-- **¿Cuándo se usa SCD Tipo 1 vs. SCD Tipo 2 en el modelado dimensional?** :: **SCD Tipo 1** sobrescribe el valor (solo se usa para corregir errores de digitación donde no importa el pasado). **SCD Tipo 2** crea una nueva fila con `SK` nueva y fechas de vigencia (`fecha_inicio`, `fecha_fin`, `es_actual`), preservando toda la historia para auditorías.
-- **¿Qué son las métricas Semi-Aditivas y cómo se operan en el tiempo?** :: Son métricas de estado o saldo (ej. saldo de cartera morosa o inventario en zona franca) que se pueden sumar entre dependencias o contribuyentes, pero **nunca se deben sumar a lo largo de la dimensión Tiempo**.
-- **¿Qué tipo de Tabla de Hechos modela un trámite con múltiples etapas y fechas de control (ej. solicitud de devolución)?** :: Una **Tabla de Hechos de Instantáneas Acumulativas (Accumulating Snapshot Fact Table)**, que contiene una fila por trámite y múltiples claves foráneas de fecha que se actualizan conforme el trámite avanza de etapa.
-- **¿Cuáles son los 3 componentes nucleares de Data Vault 2.0?** :: **Hubs** (claves de negocio únicas e inmutables con clave Hash), **Links** (relaciones transaccionales muchos-a-muchos entre Hubs) y **Satellites** (atributos descriptivos e historial temporal en modalidad *append-only*).
-- **¿Qué diferencia hay entre el Enmascaramiento Dinámico (DDM) y el Enmascaramiento Estático?** :: **DDM** ofusca las columnas sensibles al vuelo durante la consulta según el rol/atributos del usuario sin modificar el dato en disco (ideal para producción). El **Estático** transforma y sobrescribe físicamente el dato en una copia (ideal para poblar ambientes de pruebas/QA).
-- **¿Qué exige el Artículo 583 del Estatuto Tributario frente a la Arquitectura de Datos de la DIAN?** :: Protege la **Reserva Tributaria** de las declaraciones e información individual del contribuyente; obliga a implementar control de acceso granular (ABAC/RLS/CLS), cifrado, auditoría de consultas y anonimización agregada antes de publicar estadísticas.
-- **¿Qué diferencia hay entre RPO y RTO en la continuidad de una plataforma de datos?** :: **RPO (Recovery Point Objective)** define la cantidad máxima de datos (medida en tiempo hacia atrás) que se puede perder ante un fallo. **RTO (Recovery Time Objective)** define el tiempo máximo permitido para restaurar el servicio y volver a estar disponible.
+Toda la metodología de **Kimball** se basa en dividir el mundo en dos tipos de tablas muy fáciles de distinguir:
+
+1. **Tablas de Hechos (`Fact Tables`) — "¿Cuánto se midió?" (Los Números y Eventos):**
+   * Guardan las **mediciones numéricas cuantitativas** de un evento del negocio (ej. `valor_impuesto_pagado`, `valor_fob_importacion`, `peso_bruto_kg`, `cantidad_facturas`) y las **llaves foráneas (`FK`)** que apuntan a las dimensiones.
+   * Son tablas **muy largas (millones o miles de millones de filas)** pero **angostas (pocas columnas, puros números y llaves)**.
+2. **Tablas de Dimensiones (`Dimension Tables`) — "¿Quién, Qué, Dónde, Cuándo y Cómo?" (El Contexto Descriptivo):**
+   * Guardan los **textos descriptivos, nombres, categorías y jerarquías** que usamos para filtrar y agrupar los números (ej. `Dim_Contribuyente`, `Dim_Fecha`, `Dim_Municipio`, `Dim_Subpartida_Arancelaria`, `Dim_Direccion_Seccional`).
+   * Son tablas **más cortas en filas** pero **anchas en columnas descriptivas**.
+
+```
+========================================================================================
+          ESQUEMA EN ESTRELLA (STAR SCHEMA) DE KIMBALL EN LA CAPA ORO DE LA DIAN
+========================================================================================
+
+     +------------------------+                          +------------------------+
+     |      DIM_TIEMPO        |                          |     DIM_SECCIONAL      |
+     |------------------------|                          |------------------------|
+     | PK: sk_tiempo          |                          | PK: sk_seccional       |
+     | fecha_calendario       |                          | cod_seccional          |
+     | anio_gravable          |                          | nombre_seccional       |
+     | trimestre / mes / bim  |                          | region_pais            |
+     +------------------------+                          +------------------------+
+                  \                                                 /
+                   \            +------------------------------+   /
+                    +---------> |   FACT_RECAUDO_TRIBUTARIO    | <-+
+                                |   (Tabla de Hechos Central)  |
+                    +---------> |------------------------------| <-+
+                   /            | FK: sk_tiempo                |   \
+                  /             | FK: sk_contribuyente         |    \
+     +------------------------+ | FK: sk_seccional             | +------------------------+
+     |   DIM_CONTRIBUYENTE    | | FK: sk_concepto_impuesto     | | DIM_CONCEPTO_IMPUESTO  |
+     |------------------------| | DD: num_recibo_pago_490      | |------------------------|
+     | PK: sk_contribuyente   | |------------------------------| | PK: sk_concepto        |
+     | NK: nit_contribuyente  | | $ valor_pagado_impuesto      | | nombre_impuesto (IVA)  |
+     | razon_social           | | $ valor_pagado_sancion       | | periodicidad           |
+     | cod_ciiu / tamano_emp  | | $ valor_pagado_intereses     | | tipo_obligacion        |
+     +------------------------+ +------------------------------+ +------------------------+
+========================================================================================
+```
+
+#### Los 4 Pasos Obligatorios de Kimball para Diseñar un Modelo Dimensional:
+1. **Paso 1:** Elegir el **Proceso de Negocio** a modelar (ej. *Recaudo de pagos en bancos*).
+2. **Paso 2:** **Declarar el Grano (`The Grain`) — ¡EL PASO MÁS IMPORTANTE!**:
+   * El **Grano** es el compromiso estricto de **qué representa exactamente una (1) fila física en la Tabla de Hechos** (el nivel de detalle más atómico).
+   * *Ejemplo de Grano bien definido:* *"Una fila en `FACT_IMPORTACIONES` representa cada **subpartida arancelaria individual** liquidada dentro de una Declaración de Importación aceptada"*.
+   * **Regla de Oro de Kimball:** **Siempre debes diseñar la tabla de hechos al grano más atómico (detallado) posible**, porque desde el detalle siempre puedes sumar hacia arriba (por mes, por año, por empresa), pero si guardas la tabla ya resumida por año, jamás podrás bajar a ver qué pasó un martes específico. Además, **está prohibido mezclar dos granos distintos en la misma tabla de hechos**.
+3. **Paso 3:** Identificar las **Dimensiones** que contextualizan ese grano.
+4. **Paso 4:** Identificar las **Métricas (Hechos numéricos)** que viven en ese grano.
 
 ---
 
-## 9. Simulador Oficial de Examen: 10 Preguntas de Juicio Situacional (PJS)
-> [!EXAM] Instrucciones del Simulador (Estándar Oficial GOA Areandina - Numeral 4.4)
-> De acuerdo con la Guía de Orientación al Aspirante del Proceso de Selección DIAN 2676, todas las preguntas de Competencias Funcionales utilizan el formato de **Prueba de Juicio Situacional (PJS)** compuesto por **un (1) Caso**, **un (1) Enunciado** y **tres (3) Opciones de respuesta (A, B y C)**, donde solo una es la clave correcta.
+### 5.3. Clasificación de las Métricas y de las Tablas de Hechos (¡Fijo en el Examen!)
+
+#### 5.3.1. Los 3 Tipos de Métricas según su Aditividad (¿Se pueden sumar con `SUM()`?)
+No todos los números que están en una Tabla de Hechos se pueden sumar libremente:
+
+| Tipo de Métrica | ¿Se puede sumar con `SUM()`? | Ejemplo Real en la DIAN y Regla Matemática |
+| :--- | :--- | :--- |
+| **1. Métrica Aditiva (*Fully Additive*)** | **SÍ, por TODAS las dimensiones** (por tiempo, por municipio, por impuesto, por contribuyente). | • **`valor_recaudado_pesos`**, **`cantidad_unidades_importadas`**, **`peso_neto_kg`**.<br>Puedes sumar el recaudo de enero + febrero + marzo y el resultado es totalmente válido. |
+| **2. Métrica Semi-Aditiva (*Semi-Additive*)** | Se puede sumar entre contribuyentes o seccionales, pero **¡PROHIBIDO SUMAR A TRAVÉS DEL TIEMPO!** | • **`saldo_deuda_morosa`**, **`saldo_en_cuenta_bancaria`**, **`inventario_en_zona_franca`**.<br>*¿Por qué?* Si un contribuyente debía $\$100\text{ millones}$ en enero y sigue debiendo los mismos $\$100\text{ millones}$ en febrero y en marzo, **su deuda al trimestre NO es $\$300\text{ millones}$**, sigue siendo $\$100\text{ millones}$. A través del tiempo se usa `AVG()`, `LAST_VALUE()` o corte al cierre. |
+| **3. Métrica No Aditiva (*Non-Additive*)** | **NO se puede sumar por NINGUNA dimensión.** | • **Porcentajes, Tasas, Ratios o Precios Unitarios** (ej. `tasa_efectiva_tributacion_%`, `margen_utilidad_%`, `tasa_de_cambio_TRM`).<br>*Regla:* No puedes sumar un margen del $10\%$ de una empresa + el $20\%$ de otra y decir que el margen del sector es $30\%$. En la tabla de hechos debes guardar el **Numerador (`impuesto`)** y el **Denominador (`ingresos`)** por separado y dividir al final: $\frac{\sum \text{Impuesto}}{\sum \text{Ingresos}}$. |
+
+#### 5.3.2. Los 3 Tipos de Tablas de Hechos en Kimball
+1. **Tabla de Hechos Transaccional (*Transaction Fact Table*):**
+   * Guarda eventos puntuales que ocurren en un instante (ej. cada pago en el banco o cada factura emitida). Cuando el evento ocurre, se inserta la fila y no se vuelve a tocar.
+2. **Tabla de Hechos de Instantáneas Periódicas (*Periodic Snapshot Fact Table*):**
+   * Toma una "fotografía" del estado o saldo en intervalos fijos regulares (ej. **el último día de cada mes** guarda una fila por cada deudor moroso mostrando cuánto debe al cierre de ese mes). Contiene **métricas semi-aditivas**.
+3. **Tabla de Hechos de Instantáneas Acumulativas (*Accumulating Snapshot Fact Table*) — ¡Muy preguntada!:**
+   * Sirve para medir la velocidad y cuellos de botella de **un proceso o trámite que tiene principio, etapas intermedias y fin** (un *workflow* o tubería de trámite).
+   * **¿Cómo la reconoces al instante?** Porque una sola fila representa el trámite completo y tiene **varias columnas de fecha distintas** (una por cada etapa del trámite) que se van llenando y actualizando a medida que el expediente avanza:
+   * *Ejemplo en la DIAN (Trámite de Devolución de Saldos a Favor):* En una misma fila tienes: `fk_fecha_radicacion` $\to$ `fk_fecha_auto_admisorio` $\to$ `fk_fecha_inicio_auditoria` $\to$ `fk_fecha_resolucion` $\to$ `fk_fecha_giro_tesoreria`, junto con los días transcurridos entre cada etapa para controlar el término legal de 50 días del Art. 855 E.T.
 
 ---
 
-### Pregunta PJS 1: Desacople OLTP/OLAP e Ingesta por CDC
-**Eje Temático:** Arquitectura de Datos — Ciclo de Vida e Ingesta sin Impacto Operacional  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### 5.4. Conceptos Clave de las Tablas de Dimensiones y Estrella vs. Copo de Nieve
 
-**Caso:**  
-Durante la semana de vencimientos para la presentación de la Declaración de Renta de Personas Jurídicas, el sistema transaccional de recaudo y declaraciones experimenta una degradación severa en sus tiempos de respuesta y bloqueos de tablas. Al diagnosticar el incidente en la Subdirección de Procesamiento de Datos, se identifica que un proceso de extracción ejecutado cada 15 minutos lanza consultas `SELECT` masivas con uniones complejas sobre las tablas operacionales para alimentar los tableros de seguimiento de recaudo y, adicionalmente, no está detectando las declaraciones que fueron eliminadas físicamente tras un procedimiento de contingencia técnica. Se designa al Inspector I para rediseñar el mecanismo de integración hacia el repositorio analítico institucional (DataR) sin afectar la operación en línea.
+1. **Llave Subrogada (`Surrogate Key - SK`) vs. Llave Natural de Negocio (`Natural / Business Key - NK`):**
+   * La **Llave Natural (`NK`)** es el identificador que viene del mundo real o del sistema transaccional (en la DIAN, el **`NIT`** del contribuyente).
+   * La **Llave Subrogada (`SK`)** es un número entero simple (`1, 2, 3...` o un *Hash* técnico) creado internamente por la bodega de datos sin ningún significado tributario, que actúa como la verdadera **Llave Primaria (`PK`) de la Dimensión**.
+   * **¿Por qué NUNCA debemos usar el `NIT` directamente como Llave Primaria única de `Dim_Contribuyente` en el modelo dimensional?**
+     * ¡Porque si el contribuyente cambia de dirección o de actividad económica 3 veces en la historia, necesitaremos guardar **3 filas para el mismo NIT** en la dimensión (`SCD Tipo 2`)! Cada una de esas 3 filas históricas tendrá el mismo `NIT`, pero tendrá una **Llave Subrogada (`SK`) diferente** (`SK = 101`, `SK = 450`, `SK = 890`). Además, un entero de 4 u 8 bytes hace los `JOINs` mucho más rápidos que un texto largo.
+2. **Dimensión Degenerada (*Degenerate Dimension - DD*):**
+   * Es un número de documento o código operacional (como el **`numero_formulario`** de la declaración o el **`CUFE`** de la factura) que **se guarda directamente adentro de la Tabla de Hechos** porque ya le sacamos todos sus atributos a otras dimensiones y no tendría sentido crear una tabla de dimensión aparte solo para guardar ese número solito.
+3. **Dimensión con Múltiples Roles (*Role-Playing Dimension*):**
+   * Cuando **una sola tabla física de dimensión** (por ejemplo, `Dim_Fecha` o `Dim_Puerto_Aduanero`) se conecta **varias veces a la misma tabla de hechos** cumpliendo papeles distintos (ej. en `FACT_IMPORTACIONES` nos conectamos 3 veces a `Dim_Puerto`: una como `fk_puerto_origen`, otra como `fk_puerto_arribo` y otra como `fk_puerto_destino`).
+4. **Dimensiones Conformadas (*Conformed Dimensions*):**
+   * Son dimensiones maestras estandarizadas (`Dim_Contribuyente`, `Dim_Tiempo`, `Dim_Seccional`) que son **compartidas exactamente igual por todas las tablas de hechos de la DIAN** (Renta, IVA, Aduanas, Cobro). Permiten cruzar métricas de tablas de hechos distintas en un mismo reporte (**operación `Drill-Across`**).
+5. **Esquema en Estrella (*Star Schema*) vs. Esquema en Copo de Nieve (*Snowflake Schema*):**
+   * **Estrella:** Cada dimensión es **una sola tabla desnormalizada** conectada directamente a la tabla de hechos (ej. `Dim_Ubicacion` tiene ahí mismo el Municipio, el Departamento y la Región). **Es el preferido en OLAP porque requiere menos `JOINs` y es más rápido.**
+   * **Copo de Nieve:** Normaliza las dimensiones partiéndolas en sub-tablas encadenadas (`Fact` $\to$ `Dim_Municipio` $\to$ `Dim_Departamento` $\to$ `Dim_Region`). Hace las consultas más lentas y complejas por agregar más `JOINs`.
 
-**Enunciado:**  
-Para resolver de raíz la degradación del sistema transaccional y garantizar la captura íntegra y oportuna de los eventos hacia el repositorio analítico, al profesional le corresponde
+---
 
-**Opciones de respuesta:**  
-- **A.** implementar un mecanismo de captura de datos modificados (CDC) basado en la lectura directa del log de transacciones del motor origen hacia una capa de mensajería distribuida, desacoplando las consultas analíticas hacia el repositorio DataR.
-- **B.** crear índices compuestos adicionales sobre las columnas de fecha de actualización en las tablas transaccionales de producción y programar la ejecución de las consultas `SELECT` de extracción en intervalos de 30 minutos.
-- **C.** configurar un procedimiento almacenado con disparadores (*triggers* `AFTER INSERT/UPDATE/DELETE`) dentro de la base de datos operacional para que copie sincrónicamente cada cambio en una tabla de auditoría dentro del mismo servidor.
+### 5.5. Micro-Verificación de la Unidad 5
+* **Pregunta rápida 1:** En una tabla de hechos que registra el cierre mensual de la cartera morosa de la DIAN, ¿qué tipo de métrica es el `saldo_total_deuda_morosa` (Aditiva, Semi-Aditiva o No Aditiva) y por qué? *(Respuesta: **Semi-Aditiva**, porque puedes sumar los saldos de distintos contribuyentes o seccionales en un mismo mes, pero **nunca puedes sumar el saldo de enero más el de febrero más el de marzo**, ya que estarías triplicando artificialmente la misma deuda).*
+* **Pregunta rápida 2:** Si necesitas modelar el flujo del proceso de fiscalización de un expediente desde que se abre el Auto de Apertura, pasa por el Requerimiento Especial, llega a la Liquidación Oficial de Revisión y termina en el Fallo del Recurso de Re reconsideración, midiendo cuántos días tarda en pasar de una etapa a otra, ¿qué tipo de Tabla de Hechos debes elegir? *(Respuesta: Una **Tabla de Hechos de Instantáneas Acumulativas (`Accumulating Snapshot Fact Table`)**).*
+
+---
+
+## Unidad 6: Modelado Analítico (Parte 2) — Cómo Guardar la Historia con `SCD (Tipos 0 al 6)` y `Data Vault 2.0`
+
+### 6.1. El Problema de la Historia en la DIAN: ¿Qué son las Dimensiones de Cambio Lento (`SCD - Slowly Changing Dimensions`)?
+
+Imagina este caso real en la DIAN:
+* La empresa **Comercializadora del Caribe SAS (`NIT 900.555.111`)** estuvo ubicada en **Barranquilla** desde el año **2021 hasta el 2024** dedicándose a *"Venta de textiles"* (`CIIU 4641`). Durante esos años presentó declaraciones y pagó impuestos en la Seccional de Barranquilla.
+* En **enero de 2025**, la empresa se mudó a **Bogotá** y cambió su actividad en el RUT a *"Consultoría informática"* (`CIIU 6202`).
+
+Si en nuestra tabla `Dim_Contribuyente` simplemente **borramos `"Barranquilla"` y escribimos `"Bogotá"` encima** (como se hace en una base de datos normal), ocurre un **desastre histórico y fiscal**:
+1. Cuando el Director de la DIAN pida un reporte del recaudo histórico del año **2022**, todos los impuestos que esa empresa pagó en Barranquilla en 2022 aparecerán mágicamente como si hubieran sido recaudados en **Bogotá** y por el sector de software.
+2. Si un auditor investiga el año gravable **2023**, el sistema habrá perdido por completo qué dirección y qué actividad económica tenía la empresa en ese año.
+
+Para manejar cómo cambian los atributos de una dimensión a lo largo del tiempo, Ralph Kimball definió las **Dimensiones de Cambio Lento (`SCD - Slowly Changing Dimensions`)**, numeradas del **Tipo 0 al Tipo 6**:
+
+#### Tabla Comparativa de todos los Tipos de `SCD` (¡Memorizar para el Examen!)
+
+| Tipo de `SCD` | Nombre Técnico y Acción | ¿Guarda Historia? | Ejemplo Práctico en la DIAN |
+| :--- | :--- | :--- | :--- |
+| **`SCD Tipo 0`** | **Retener el Original (*Retain Original*):** Nunca jamás se modifica después de insertarse por primera vez. | Solo el dato inicial | Atributos que por ley o naturaleza nunca cambian (ej. `fecha_inscripcion_inicial_rut`, `nit_original`). |
+| **`SCD Tipo 1`** | **Sobrescribir (*Overwrite*):** Reemplaza el valor viejo por el valor nuevo en la misma fila. **Destruye el valor pasado**. | **NO (Cero historia)** | **Únicamente para corregir errores de digitación** (ej. el nombre decía `"Comercialisadora"` con `"s"` y se corrige a `"Comercializadora"` con `"z"`). **¡Prohibido usarlo para cambios de domicilio, régimen o CIIU!** |
+| **`SCD Tipo 2`** | **Agregar Nueva Fila Versionada (*Add New Row*):** Deja intacta la fila vieja (cerrándole su fecha de vigencia) e **inserta una fila nueva** con una **nueva Llave Subrogada (`SK`)**. | **SÍ (100% de toda la historia ilimitada)** | **EL ESTÁNDAR DE ORO EN AUDITORÍA DIAN:** Permite saber exactamente qué CIIU, qué régimen y qué Seccional tenía el NIT en cada día de la historia (ver diagrama abajo). |
+| **`SCD Tipo 3`** | **Agregar Nueva Columna (*Add New Attribute*):** En la misma fila tiene dos columnas: `ciiu_actual` y `ciiu_anterior`. | **Parcial (Solo recuerda el último cambio)** | Si el contribuyente cambia 5 veces de actividad, pierde las 3 primeras. Solo sirve cuando únicamente importa comparar el estado hoy vs. el inmediatamente anterior. |
+| **`SCD Tipo 4`** | **Mini-Dimensión (*Mini-Dimension*):** Saca los atributos que cambian demasiado rápido (cada día o semana) a una tabla pequeña aparte. | **Sí** (Evita inflar la tabla principal) | Si el `score_riesgo_morosidad` o la `banda_ingresos` de 20 millones de NITs cambia cada semana, meterlo en `SCD Tipo 2` crearía mil millones de filas. Se separa en una `Dim_Perfil_Riesgo` pequeña. |
+| **`SCD Tipo 6`** | **Híbrido (`1 + 2 + 3 = 6`):** Inserta nueva fila como Tipo 2, guarda el atributo histórico en una columna (Tipo 2/3) y sobrescribe el atributo actual en todas las filas del NIT (Tipo 1). | **Sí (Total + Estado Actual en cada fila)** | Permite en una sola consulta ver las ventas históricas agrupadas tanto por la Seccional que tenía en ese año como por la Seccional que tiene hoy en día. |
+
+#### Ejemplo Visual Exacto de `SCD Tipo 2` en `Dim_Contribuyente`:
+Observa cómo el mismo `NIT 900.555.111` tiene **dos filas** con **distinta Llave Subrogada (`sk_contribuyente`)**:
+
+```
+========================================================================================
+         CÓMO FUNCIONA SCD TIPO 2 EN LA TABLA DIM_CONTRIBUYENTE DE LA DIAN
+========================================================================================
+ sk_contrib | nit_natural | ciudad_seccional | cod_ciiu | fecha_inicio | fecha_fin  | es_actual
+ -----------+-------------+------------------+----------+--------------+------------+----------
+    1045    |  900555111  |   Barranquilla   |   4641   |  2021-01-01  | 2024-12-31 |   FALSE
+    8920    |  900555111  |      Bogotá      |   6202   |  2025-01-01  | 9999-12-31 |   TRUE
+========================================================================================
+ * Las declaraciones de Renta de 2021 a 2024 quedan apuntando a `sk_contrib = 1045` (Barranquilla).
+ * Las declaraciones de Renta de 2025 en adelante apuntan a `sk_contrib = 8920` (Bogotá).
+ * ¡Cero pérdida de historia y atribución fiscal 100% exacta!
+```
+
+---
+
+### 6.2. Modelado `Data Vault 2.0` (Dan Linstedt) — El Estándar para Integración Masiva y Auditoría Forense
+
+Cuando en la **Capa Plata** del Data Lakehouse necesitas integrar datos que vienen de **30 sistemas distintos** (MUISCA, SYGA, Facturación, Exógena, Registraduría, Cámaras de Comercio, Bancos) que cambian sus columnas cada mes, y además la Contraloría o un juez te exige **100% de trazabilidad auditable de qué sistema envió cada dato y en qué segundo exacto**, el modelo tradicional en `3FN` (Inmon) o el modelo en Estrella (Kimball) sufren porque alterar sus tablas cuando cambian 30 fuentes es doloroso.
+
+Para resolver esto nació **`Data Vault 2.0`**, una metodología de modelado diseñada específicamente para **Escalabilidad Masiva, Flexibilidad ante Cambios y Auditoría Forense Total**.
+
+#### Las 3 Piezas de Lego de `Data Vault 2.0`: `Hubs`, `Links` y `Satellites`
+
+Imagina que desarmas cualquier tabla del mundo en **3 componentes separados**:
+
+```
+========================================================================================
+              ARQUITECTURA DE UN MODELO DATA VAULT 2.0 EN LA CAPA PLATA DIAN
+========================================================================================
+
+   [ SAT_CONTRIBUYENTE_RUT ]                          [ SAT_DECLARACION_RENTA ]
+   (Atributos e Historia SCD2)                        (Montos, Casillas e Historia)
+   - PK/FK: hk_contribuyente                          - PK/FK: hk_declaracion
+   - PK:    load_date (Fecha carga)                   - PK:    load_date
+   - razon_social, direccion, ciiu                    - ingresos_brutos, impuesto_neto
+   - hash_diff, record_source                         - hash_diff, record_source
+                |                                                  |
+                v                                                  v
+     +-----------------------+      +-----------------------+      +-----------------------+
+     |   HUB_CONTRIBUYENTE   |      |  LINK_PRESENTACION    |      |    HUB_DECLARACION    |
+     | (Solo Llave Negocio)  | <--- | (Relación / Evento)   | ---> | (Solo Llave Negocio)  |
+     |-----------------------|      |-----------------------|      |-----------------------|
+     | PK: hk_contrib (Hash) |      | PK: hk_link (Hash)    |      | PK: hk_declar (Hash)  |
+     | NK: nit_contribuyente |      | FK: hk_contrib        |      | NK: num_formulario    |
+     | load_date             |      | FK: hk_declar         |      | load_date             |
+     | record_source (MUISCA)|      | load_date / source    |      | record_source (MUISCA)|
+     +-----------------------+      +-----------------------+      +-----------------------+
+========================================================================================
+```
+
+Entendamos qué guarda cada una de las 3 piezas:
+1. **`Hubs` (Núcleos de Claves de Negocio):**
+   * Guardan **ÚNICAMENTE las llaves naturales del negocio** (ej. el `NIT` en `Hub_Contribuyente`, el `num_formulario` en `Hub_Declaracion`).
+   * **NO tienen atributos descriptivos** (ni nombre, ni dirección, ni montos). Solo tienen 4 columnas:
+     1. **`Hash Key` (`PK`):** Un código `MD5` o `SHA-256` calculado directamente sobre el `NIT`. *(¿Por qué un Hash en vez de un número secuencial `1, 2, 3`? Porque como `SHA256("900123456")` da siempre el mismo resultado en cualquier computador sin tener que preguntar qué número sigue, puedes cargar 100 tablas en paralelo a máxima velocidad).*
+     2. **`Business Key` (`NK`):** El `NIT` real.
+     3. **`Load Date`:** Fecha y hora exacta en que la DIAN vio ese NIT por primera vez.
+     4. **`Record Source`:** Qué sistema reportó ese NIT (ej. `"MUISCA_RUT"`).
+2. **`Links` (Enlaces o Relaciones):**
+   * Conectan dos o más `Hubs` entre sí para representar una relación o transacción (ej. `Link_Presentacion` une a `Hub_Contribuyente` con `Hub_Declaracion`).
+   * Todas las relaciones en Data Vault se modelan como **muchos a muchos (`N:M`)**. Así, si mañana la ley cambia, nunca hay que reestructurar las llaves de las tablas existentes.
+3. **`Satellites` (Satélites de Contexto e Historia):**
+   * Aquí es donde viven **todos los atributos descriptivos y valores que cambian con el tiempo** (nombres, direcciones, saldos, casillas).
+   * Son tablas **`Insert-Only` (funcionan exactamente como un `SCD Tipo 2` automático)**: nunca se sobrescribe nada. Cada vez que cambia un atributo del contribuyente, se inserta una fila nueva en el `Satellite` con la fecha de carga (`load_date`) y la fuente (`record_source`).
+   * Si mañana un sistema nuevo añade 10 columnas nuevas sobre el contribuyente, ¡no tocas nada de lo que ya existe! Simplemente creas un nuevo satélite (`Sat_Contribuyente_Facturacion`) conectado al mismo `Hub_Contribuyente`.
+
+---
+
+### 6.3. Micro-Verificación de la Unidad 6
+* **Pregunta rápida 1:** Un auditor necesita que al consultar las declaraciones de renta del año 2022 de un contribuyente, el reporte muestre la Dirección Seccional a la que pertenecía el contribuyente en el año 2022, aunque hoy en 2026 ese contribuyente pertenezca a otra Dirección Seccional. ¿Qué tipo de `SCD` debe aplicarse en `Dim_Contribuyente`? *(Respuesta: **`SCD Tipo 2`**, creando una nueva fila con nueva llave subrogada `SK` y fechas de vigencia `fecha_inicio` / `fecha_fin`).*
+* **Pregunta rápida 2:** En un modelo `Data Vault 2.0`, ¿en cuál de sus tres componentes (`Hub`, `Link` o `Satellite`) se almacenan los atributos descriptivos que cambian con el tiempo (como la razón social, el código CIIU o el patrimonio declarado)? *(Respuesta: En los **`Satellites` —Satélites—**, mientras que los `Hubs` guardan solo las claves de negocio y los `Links` las relaciones entre `Hubs`).*
+
+---
+
+## Unidad 7: Ingeniería Física de Tablas Abiertas — `Apache Iceberg`, `Delta Lake`, `CoW` vs. `MoR` y `Z-Ordering`
+
+En el Módulo 1 aprendimos qué es `Apache Parquet` y por qué encima de `Parquet` colocamos formatos de tabla abiertos (**`Apache Iceberg`**, **`Delta Lake`** o **`Apache Hudi`**). En esta unidad del módulo de **Arquitectura de Datos**, vamos un paso más allá para dominar los **mecanismos internos de lectura/escritura y particionamiento** que distinguen a un arquitecto senior en el examen de la CNSC.
+
+---
+
+### 7.1. El Dilema al Actualizar o Borrar en un Lakehouse: `Copy-on-Write (CoW)` vs. `Merge-on-Read (MoR)`
+
+Recuerda una verdad física: **los archivos `Apache Parquet` en el disco duro son inmutables** (no puedes abrir un archivo Parquet de $500\text{ MB}$ y cambiarle un numerito en la fila $14.320$ sin tocar el resto).
+Entonces, cuando llega una corrección de una declaración tributaria (`UPDATE` / `MERGE`) o una orden de borrado (`DELETE`), ¿cómo hacen **`Apache Iceberg`**, **`Delta Lake`** y **`Apache Hudi`** para actualizar el dato?
+
+Tienen **dos estrategias físicas** y tú puedes elegir cuál usar según el caso de uso de la DIAN:
+
+```
+========================================================================================
+      COPY-ON-WRITE (CoW) vs. MERGE-ON-READ (MoR) EN APACHE ICEBERG / DELTA / HUDI
+========================================================================================
+
+  CASO: Tienes un archivo Parquet de 500 MB (1 millón de filas) y cambia 1 SOLA FILA.
+
+  1. ESTRATEGIA COPY-ON-WRITE (CoW - Copiar al Escribir):
+     - En el momento del UPDATE, lee el archivo de 500 MB y escribe un ARCHIVO PARQUET
+       NUEVO COMPLETO de 500 MB con la fila actualizada.
+     - Ventaja:  ¡Las LECTURAS (SELECT) son rapidísimas! (No hay que cruzar nada al leer).
+     - Desventaja: Las ESCRITURAS/UPDATES frecuentes son lentas y costosas.
+
+  2. ESTRATEGIA MERGE-ON-READ (MoR - Fusionar al Leer / Deletion Vectors):
+     - En el momento del UPDATE, ¡NO toca el archivo de 500 MB! Solo escribe al instante
+       un archivito diminuto aparte ("Delete File" + fila nueva de 1 KB).
+     - Cuando alguien hace un SELECT, el motor une al vuelo el archivo grande + el cambio
+       (hasta que en la noche un proceso de Compactación los une en silencio).
+     - Ventaja:  ¡Las ESCRITURAS / CDC en Streaming son instantáneas!
+========================================================================================
+```
+
+| Criterio de Selección en el Examen | Cuándo elegir **`Copy-on-Write (CoW)`** | Cuándo elegir **`Merge-on-Read (MoR)`** *(o Deletion Vectors)* |
+| :--- | :--- | :--- |
+| **Patrón de Carga en la DIAN** | Tablas de la **Capa Oro** donde se escribe por lotes pocas veces al día, pero **miles de analistas y tableros de Power BI hacen consultas `SELECT` todo el día**. | Tablas de la **Capa Plata** que reciben **actualizaciones continuas cada segundo vía `CDC` en Streaming** (ej. cambios constantes del RUT o estados de facturas). |
+| **¿Qué prioriza?** | **Velocidad máxima de Lectura (`Read-Heavy`)**. | **Velocidad máxima de Escritura y Actualización (`Write/Update-Heavy`)**. |
+
+---
+
+### 7.2. El Superpoder de `Apache Iceberg`: Particionamiento Oculto (`Hidden Partitioning`) y Evolución de Partición
+
+En los Data Lakes antiguos basados en *Apache Hive*, las particiones eran carpetas físicas rígidas (por ejemplo: `/declaraciones/anio=2025/mes=08/`). Eso tenía dos problemas graves:
+1. Si el analista hacía una consulta filtrando por `WHERE fecha_presentacion = '2025-08-15'` pero **olvidaba poner también en el `WHERE` `AND anio = 2025 AND mes = 08`**, el motor se volvía loco y **escaneaba todos los años de toda la historia (*Full Table Scan*)**.
+2. Si querías cambiar la partición de `mensual` a `diaria`, tenías que **reescribir físicamente todos los terabytes históricos**.
+
+**`Apache Iceberg` resolvió ambos problemas con el Particionamiento Oculto (`Hidden Partitioning`):**
+* Iceberg guarda en sus metadatos la relación matemática entre la columna `fecha_presentacion` y la partición.
+* El analista solo escribe `WHERE fecha_presentacion = '2025-08-15'` y Iceberg deduce automáticamente qué partición leer sin exigir columnas extras.
+* Además, permite **Evolución de Particiones (*Partition Evolution*)**: puedes cambiar hoy la regla de particionamiento de `por mes` a `por día` como una simple actualización de metadatos en 1 segundo **sin reescribir ni un solo archivo Parquet antiguo**.
+
+---
+
+### 7.3. ¿Qué pasa cuando filtras por muchas columnas a la vez? Ordenamiento Multidimensional (`Z-Ordering` / *Liquid Clustering*)
+
+Imagina una tabla de **80 Terabytes de Facturación Electrónica** particionada por `anio_mes`.
+Los auditores de las Direcciones Seccionales siempre hacen consultas filtrando por **`nit_emisor`** y **`nit_adquirente`**.
+* **¿Por qué NO podemos crear una carpeta de partición física por cada `nit_emisor`?**
+  * ¡Porque en Colombia hay millones de NITs! Crearías **10 millones de carpetas con archivos diminutos de $5\text{ KB}$** (*Over-partitioning* + *Small File Problem*), colapsando por completo el almacenamiento de objetos.
+* **La Solución de Arquitectura Avanzada (`Z-Ordering` / Curvas de Orden Z o *Clustering*):**
+  * Dejas la partición física grande por fecha (`anio_mes`), pero aplicas **`Z-Ordering`** sobre las columnas de alta cardinalidad (`nit_emisor`, `nit_adquirente`).
+  * `Z-Ordering` es una técnica matemática (basada en curvas que llenan el espacio de Morton) que **ordena y agrupa físicamente las filas de NITs cercanos dentro de los mismos archivos `Parquet`**.
+  * Así, cuando un auditor busca un NIT específico, gracias a las estadísticas `min/max` de cada bloque `Parquet` (**`Data Skipping`**), el motor se salta el $99\%$ de los archivos en milisegundos sin haber creado millones de carpetas.
+
+---
+
+### 7.4. Micro-Verificación de la Unidad 7
+* **Pregunta rápida 1:** Tienes una tabla en la Capa Plata que recibe $5.000$ actualizaciones (`UPDATE` / `DELETE`) por minuto desde el `CDC` del sistema transaccional. Si quieres que esas actualizaciones se escriban casi al instante sin tener que reescribir archivos Parquet de $500\text{ MB}$ en cada minuto, ¿debes configurar la tabla en modo `Copy-on-Write (CoW)` o `Merge-on-Read (MoR)`? *(Respuesta: **`Merge-on-Read (MoR)`**, porque escribe únicamente pequeños archivos diferenciales de borrado/cambio al instante y difiere la fusión pesada a un proceso de compactación en segundo plano).*
+* **Pregunta rápida 2:** ¿Por qué es un error grave particionar físicamente en carpetas una tabla de Lakehouse por una columna de **alta cardinalidad** como el `NIT` o el `CUFE`, y qué técnica se debe usar en su lugar? *(Respuesta: Porque genera millones de directorios con archivos diminutos —*Over-partitioning* y *Small File Problem*—; en su lugar se debe particionar por una columna de baja cardinalidad como `anio_mes` y aplicar **`Z-Ordering` o `Clustering`** sobre el `NIT`).*
+
+---
+
+## Unidad 8: El Repositorio Único de Datos (`DataR`), Seguridad por Diseño (`ABAC`, `DDM`) y Marco Normativo
+
+Cerramos el módulo aterrizando todos los componentes en la operación real de la **Subdirección de Procesamiento de Datos de la DIAN** bajo las normas vigentes al corte del 19 de junio de 2026.
+
+---
+
+### 8.1. ¿Por qué existe `DataR` como Repositorio Único de Datos de la DIAN?
+
+De acuerdo con el **Decreto 1742 de 2020 (Arts. 39 y 42)** y la **Resolución DIAN 067 de 2024**, la Subdirección de Procesamiento de Datos administra el **Repositorio Único Institucional de Datos (`DataR`)**.
+En las preguntas situacionales de la CNSC, cualquier propuesta donde una Dirección Seccional o una Subdirección quiera armar su propia "basecita de datos aparte en Excel, Access o en un servidor paralelo" debe ser **rechazada de inmediato** por tres razones técnicas y legales:
+1. **Destruye la Fuente Única de Verdad (*Single Source of Truth*):** Genera silos con cifras contradictorias frente a los reportes oficiales de la entidad.
+2. **Rompe la Cadena de Custodia y el Linaje Probatorio (*Data Lineage*):** Todo hallazgo que sustente un acto administrativo de fiscalización debe tener trazabilidad auditable desde la Capa Oro hasta el documento original inmutable en la Capa Bronce de `DataR`.
+3. **Viola la Reserva Tributaria (`Art. 583 del Estatuto Tributario`):** Los archivos sueltos descargados por fuera del repositorio central carecen de gobierno de acceso, cifrado y auditoría centralizada.
+
+---
+
+### 8.2. Seguridad Arquitectónica del Dato: `RBAC` vs. `ABAC` y Enmascaramiento (`DDM` vs. Tokenización)
+
+¿Cómo permite `DataR` que $5.000$ funcionarios de la DIAN consulten la misma plataforma sin que nadie vea lo que no le corresponde según la **Reserva Tributaria (Art. 583 E.T.)** y la **Ley 1581 de 2012**?
+
+#### 1. Control de Acceso: `RBAC` vs. `ABAC` (¡Distinción clave!)
+* **`RBAC` (*Role-Based Access Control* / Control Basado en Roles):** Da permisos según el cargo general (ej. *"Rol = Auditor_Tributario"*). **Su limitación:** Si hay 34 Direcciones Seccionales y 5 tipos de impuestos, tendrías que crear cientos de roles combinados (`Auditor_Cali_IVA`, `Auditor_Medellin_Renta`, etc.).
+* **`ABAC` (*Attribute-Based Access Control* / Control Basado en Atributos) — El Estándar en `DataR`:**
+  Evalúa una sola regla inteligente en tiempo real cruzando **3 tipos de atributos**:
+  1. **Atributos del Usuario:** `usuario.seccional = 'Medellín'`, `usuario.proceso = 'Fiscalización'`, `usuario.expedientes_asignados`.
+  2. **Atributos del Dato (Etiquetas del Catálogo):** `tabla.clasificacion = 'Reserva_Tributaria'`, `fila.seccional_contribuyente`.
+  3. **Atributos del Contexto/Entorno:** `red = 'Intranet_Segura_DIAN'`, `hora = 'Horario_Laboral'`.
+  * Mediante `ABAC` se aplican automáticamente dos filtros invisibles sobre las tablas:
+    * **`RLS` (*Row-Level Security* / Seguridad a Nivel de Fila):** El auditor de Medellín hace `SELECT * FROM declaraciones` y el motor le muestra **únicamente las filas de los contribuyentes asignados a su jurisdicción o expediente**.
+    * **`CLS` (*Column-Level Security* / Seguridad a Nivel de Columna):** Oculta o restringe columnas altamente sensibles para usuarios que no tienen autorización expresa.
+
+#### 2. Protección de Identificadores: Enmascaramiento Dinámico (`DDM`) vs. Enmascaramiento Estático y Tokenización
+
+| Técnica de Protección | ¿Cómo actúa sobre el dato? | ¿Modifica el dato real en el disco? | ¿En qué caso del examen se debe elegir? |
+| :--- | :--- | :---: | :--- |
+| **1. Enmascaramiento Dinámico (`DDM` - *Dynamic Data Masking*)** | Cuando un usuario sin privilegios completos hace una consulta en producción, el motor **transforma el dato al vuelo en la pantalla** (ej. muestra `NIT: ***-***-456` o `Correo: j***@empresa.com`), mientras que un auditor autorizado ve el dato completo. | **NO** (El dato real sigue intacto en disco). | Para proteger consultas en vivo sobre **ambientes de producción / Capa Plata y Oro** según el perfil de quien consulta. |
+| **2. Enmascaramiento Estático (*Static Data Masking - SDM*)** | Crea una **copia física separada** donde los nombres, NITs y valores sensibles han sido reemplazados permanentemente por datos ficticios realistas. | **SÍ** (En la copia entregada). | **Para entregar bases de datos a ambientes de Desarrollo y Pruebas (`Dev / QA`)**, donde está prohibido usar datos reales sujetos a Reserva Tributaria. |
+| **3. Seudonimización / Tokenización** | Reemplaza el `NIT` real por un identificador sustituto consistente (`Token` o `Hash SHA-256 + Salt`). Permite cruzar tablas por ese token sin saber quién es la persona real; solo es reversible con una llave custodiada en una bóveda segura (*Token Vault*). | **SÍ** (En la vista o entorno analítico). | **Para equipos de Ciencia de Datos (`Sandboxes ML`)** que necesitan cruzar Renta, IVA y Exógena del mismo individuo para entrenar modelos sin conocer su identidad real. |
+| **4. Anonimización Irreversible ($k$-Anonimato y Agregación)** | Destruye cualquier vínculo con el individuo y agrupa los datos de modo que sea **matemáticamente imposible re-identificar** a ningún contribuyente. | **SÍ** (Irreversible). | **Para publicar estadísticas y Datos Abiertos al público ciudadano (`datos.gov.co`)** cumpliendo la **Ley 1712 de 2014** sin violar el **Art. 583 del E.T.** |
+
+---
+
+### 8.3. Continuidad del Negocio en Arquitectura de Datos (`RPO` vs. `RTO`) e Interoperabilidad (`X-Road`)
+
+1. **`RPO` (*Recovery Point Objective*) vs. `RTO` (*Recovery Time Objective*):**
+   * **`RPO` (Mira hacia el PASADO — ¿Cuántos DATOS puedo perder?):** Mide la cantidad máxima de tiempo de datos recientes que la entidad tolera perder si explota un centro de datos. Si el examen pide **`RPO = 0` (Cero pérdida de transacciones tributarias)**, estás obligado a implementar **Replicación Síncrona** entre dos zonas o centros de datos.
+   * **`RTO` (Mira hacia el FUTURO — ¿Cuánto TIEMPO puedo estar caído?):** Mide cuántos minutos u horas máximas puede tardar el sistema en volver a estar en línea después de un desastre. Un `RTO` cercano a cero exige arquitectura **Activo-Activo (*Active-Active*) o *Hot Standby*** con conmutación automática (*Failover*).
+2. **Interoperabilidad Estatal (`MRAE MinTIC` y Servicios Ciudadanos Digitales `X-Road`):**
+   * Cuando otra entidad del Estado (ej. la UGPP, la Contraloría o un Ministerio con habilitación legal expresa del Art. 583 E.T.) requiere intercambiar información con la DIAN, **está prohibido darle usuario y contraseña directa a las tablas internas de la base de datos o enviarle discos duros/correos sin control**.
+   * La arquitectura correcta exigida por el **MRAE del MinTIC** es exponer **Servicios Web / APIs gobernadas y cifradas a través de la plataforma de interoperabilidad del Estado (`X-Road`)**, entregando únicamente los campos autorizados por el convenio legal y dejando traza de auditoría.
+
+---
+
+### 8.4. Micro-Verificación de la Unidad 8
+* **Pregunta rápida 1:** Si el equipo de ingenieros de software necesita una base de datos para hacer pruebas funcionales de una nueva pantalla del portal web en el ambiente de Pruebas (`QA`), ¿qué técnica debes aplicar antes de poblar ese ambiente para no violar el Artículo 583 del Estatuto Tributario: Enmascaramiento Dinámico (`DDM`) conectado a producción o Enmascaramiento Estático (`SDM`) / generación de datos sintéticos? *(Respuesta: **Enmascaramiento Estático (`SDM`) o generación de datos sintéticos**, porque a los ambientes de Desarrollo y Pruebas jamás deben llevarse ni conectarse los datos reales sujetos a Reserva Tributaria).*
+* **Pregunta rápida 2:** ¿Cuál es la diferencia exacta entre `RPO` y `RTO` ante un desastre tecnológico? *(Respuesta: **`RPO` —Recovery Point Objective—** mide la **pérdida máxima aceptable de datos** hacia atrás en el tiempo, lo que define la frecuencia de backups o replicación; **`RTO` —Recovery Time Objective—** mide el **tiempo máximo aceptable de caída del servicio** hacia adelante antes de restaurar la operación).*
+
+---
+
+## Flashcards de Repaso Mnemotécnico
+
+- **Los 4 Dominios del MRAE (MinTIC) y TOGAF** :: 1) **Arquitectura Misional/Negocio** (procesos y trámites). 2) **Arquitectura de Información y Datos** (activos de datos, modelos, DataR y gobierno). 3) **Arquitectura de Aplicaciones/Sistemas** (MUISCA, SYGA, motores analíticos). 4) **Arquitectura Tecnológica/Infraestructura** (nube, redes, servidores, almacenamiento).
+- **Los 3 Niveles del Modelo de Datos (Conceptual, Lógico y Físico)** :: **Conceptual**: Entidades macro de negocio y sus relaciones (sin columnas ni tipos). **Lógico**: Atributos detallados, llaves `PK/FK`, cardinalidad y normalización (independiente de la marca del motor). **Físico**: Implementación exacta en el motor elegido (`BIGINT`, `Parquet`, particiones, compresión). *Al cambiar de motor tecnológico solo cambia el Modelo Físico*.
+- **Taxonomía de Datos: Referencia vs. Maestros vs. Transaccionales** :: **Datos de Referencia**: Catálogos y códigos estandarizados casi estáticos (`CIIU`, `DIVIPOLA`, `ISO`). **Datos Maestros**: Entidades centrales del negocio que exigen una Fuente Única de Verdad o *Golden Record* (el Contribuyente en el **`RUT`**). **Datos Transaccionales**: Eventos continuos con fecha y monto (Declaraciones, Facturas Electrónicas, Pagos).
+- **Los 3 Tipos de Metadatos (Negocio, Técnicos y Operativos)** :: **De Negocio**: Definiciones del glosario, dueño del dato (*Data Owner*) y clasificación de Reserva Tributaria. **Técnicos**: Esquemas físicos, tipos de datos, llaves y código de linaje. **Operativos**: Estadísticas de ejecución en tiempo real (hora de corrida del pipeline, filas procesadas, errores y logs de acceso).
+- **Para qué sirven el ADR y la Matriz CRUD en Arquitectura de Datos** :: El **`ADR` (*Architecture Decision Record*)** documenta formalmente el contexto, opciones y justificación de una decisión técnica. La **Matriz `CRUD`** cruza Procesos vs. Entidades de Datos para detectar si varios sistemas están creando o modificando un dato maestro sin control.
+- **OLTP (Normalizado 3FN) vs. OLAP (Desnormalizado Dimensional)** :: **`OLTP`** soporta la operación transaccional en línea con tablas normalizadas en **`3FN`** para evitar redundancia y anomalías al insertar/actualizar fila por fila. **`OLAP`** soporta consultas analíticas masivas sobre años de historia usando modelos desnormalizados (**Estrella**) y almacenamiento columnar. *Jamás deben correrse reportes OLAP sobre la base OLTP*.
+- **CDC Basado en Consultas (Polling) vs. CDC Basado en Logs (Log-Based)** :: El **Polling** lanza `SELECT` periódicos sobrecargando el motor transaccional y **no detecta borrados físicos (`HARD DELETE`)**. El **`Log-Based CDC`** lee directamente el log binario de transacciones (`Redo Log` / `WAL` / `Binlog`) sin impactar el CPU, en milisegundos y capturando el 100% de `INSERT`, `UPDATE` y `DELETE`.
+- **Diferencia entre ETL y ELT en el Data Lakehouse** :: En **`ETL`** se transforma en un servidor intermedio antes de cargar (útil cuando una norma prohíbe guardar el dato sensible crudo en el destino). En **`ELT`** se extrae y se carga inmediatamente el dato crudo en la **Capa Bronce** del Lakehouse, transformándolo después hacia Plata y Oro con motores distribuidos (`Spark`), garantizando trazabilidad forense total.
+- **Data Fabric vs. Data Mesh (¡Distinción Clave!)** :: **`Data Fabric`** es una solución **tecnológica** que usa metadatos activos, grafos de conocimiento y virtualización para integrar fuentes dispersas. **`Data Mesh`** es un paradigma **organizacional y socio-técnico** que descentraliza la propiedad hacia los dominios misionales (**Datos como Producto**) sobre una plataforma común y gobernanza federada.
+- **Los 4 Principios del Data Mesh (Zhamak Dehghani)** :: 1) Propiedad descentralizada orientada por **Dominios** (Tributario, Aduanero, Cambiario). 2) **Los Datos como un Producto** (con SLA, calidad y dueño). 3) **Plataforma de Datos de Autoservicio** como infraestructura común. 4) **Gobernanza Computacional Federada** (reglas globales de seguridad y NIT único ejecutadas como código).
+- **Arquitectura Medallón (Bronce, Plata, Oro) y Tabla de Cuarentena** :: **Bronce**: Copia cruda e inmutable (*append-only*) con valor probatorio. **Plata**: Datos limpios, deduplicados y cruzados con RUT (para Ciencia de Datos). **Oro**: Modelos dimensionales en Estrella e indicadores listos para BI. Los registros que fallan calidad entre Bronce y Plata no se borran: se desvían a una **Tabla de Cuarentena (*Dead-Letter*)**.
+- **Contratos de Datos (Data Contracts) y Capa Semántica** :: Los **Contratos de Datos** son acuerdos ejecutables entre el sistema productor y el consumidor que impiden cambios sorpresivos de esquema (*breaking changes*). La **Capa Semántica** centraliza una única fórmula oficial de cada indicador entre la Capa Oro y las herramientas de BI para que toda la entidad reporte la misma cifra.
+- **Modelado de Bill Inmon (Top-Down 3FN) vs. Ralph Kimball (Bottom-Up Dimensional)** :: **Inmon** construye primero un almacén corporativo central normalizado en `3FN` y luego deriva *Data Marts* (ideal para Capa Plata). **Kimball** construye modelos dimensionales (**Esquema en Estrella**) por proceso de negocio unidos por **Dimensiones Conformadas** (ideal para Capa Oro y consultas rápidas en BI).
+- **Métricas Aditivas, Semi-Aditivas y No Aditivas en Kimball** :: **Aditivas**: Se suman por todas las dimensiones (ej. `impuesto_pagado`). **Semi-Aditivas**: Son saldos o fotografías de estado (ej. `saldo_deuda_morosa`, `inventario`); se suman entre contribuyentes, pero **PROHIBIDO sumarlas a través del Tiempo**. **No Aditivas**: Porcentajes, tasas o precios unitarios; se debe guardar numerador y denominador por separado.
+- **Los 3 Tipos de Tablas de Hechos (Transaccional, Instantánea Periódica e Instantánea Acumulativa)** :: **Transaccional**: 1 fila por evento puntual (un pago). **Instantánea Periódica (*Periodic Snapshot*)**: Fotografía de saldos en cierres fijos (cartera mensual). **Instantánea Acumulativa (*Accumulating Snapshot*)**: Modela un trámite con múltiples etapas temporales teniendo **varias columnas de fecha en la misma fila** (ej. el flujo de una solicitud de devolución de saldos a favor).
+- **Por qué usar Claves Subrogadas (SK) en lugar del NIT (Clave Natural) en Dimensiones** :: La **Clave Subrogada (`SK`)** es un entero técnico asignado por la bodega que independiza el modelo de cambios en la fuente, acelera los `JOINs` y **permite guardar múltiples filas históricas para el mismo NIT cuando cambia de atributos en `SCD Tipo 2`**.
+- **Dimensiones de Cambio Lento: SCD Tipo 1 vs. SCD Tipo 2 vs. SCD Tipo 3** :: **SCD Tipo 1**: Sobrescribe el dato destruyendo la historia (solo para errores ortográficos). **SCD Tipo 2**: Inserta una **nueva fila** con nueva `SK` y fechas de vigencia (`fecha_inicio`, `fecha_fin`, `es_actual`), preservando el 100% de la historia para auditorías. **SCD Tipo 3**: Añade una columna para guardar únicamente el valor inmediatamente anterior.
+- **Las 3 Entidades de Data Vault 2.0 (Hubs, Links y Satellites)** :: **Hubs**: Guardan únicamente las claves de negocio únicas (`NIT`) y su `Hash Key`. **Links**: Modelan las relaciones o transacciones entre Hubs (`N:M`). **Satellites**: Guardan todos los atributos descriptivos y su evolución histórica en modalidad *append-only* (como un `SCD Tipo 2` automático con trazabilidad total de fuente y fecha).
+- **Copy-on-Write (CoW) vs. Merge-on-Read (MoR) en Apache Iceberg / Delta / Hudi** :: **CoW** reescribe el archivo Parquet completo al actualizar (óptimo para **lecturas rápidas en Capa Oro**). **MoR** escribe los cambios/borrados en archivos diferenciales pequeños sin reescribir el Parquet grande en el momento (óptimo para **escrituras y actualizaciones frecuentes por `CDC` en Capa Plata**).
+- **Hidden Partitioning y Z-Ordering en el Data Lakehouse** :: **Hidden Partitioning (Iceberg)** gestiona las particiones en metadatos permitiendo cambiar la estrategia de partición sin reescribir datos históricos. **Z-Ordering** ordena multidimensionalmente columnas de alta cardinalidad (como el `NIT`) dentro de los archivos Parquet para saltar bloques (`Data Skipping`) sin crear millones de carpetas físicas.
+- **Seguridad en DataR: ABAC, Enmascaramiento Dinámico (DDM), Estático (SDM) y RPO/RTO** :: **ABAC** filtra filas (`RLS`) y columnas (`CLS`) combinando atributos del usuario, del dato y del entorno. **DDM** ofusca datos al vuelo en producción sin tocar el disco; **SDM** enmascara copias físicas para ambientes de pruebas (`QA`). **RPO** mide cuánta pérdida de datos hacia el pasado se tolera; **RTO** mide cuánto tiempo máximo puede tardar en recuperarse el servicio.
+
+---
+
+## Simulador Oficial de Examen: 10 Preguntas de Juicio Situacional (PJS)
+
+### Pregunta PJS 1: Desacoplamiento de Cargas `OLTP` vs. `OLAP` e Implementación de `CDC` Basado en Logs
+**Caso Situacional:**
+Usted se desempeña como **Inspector I (OPEC 236670)** en la Subdirección de Procesamiento de Datos de la DIAN. Durante la semana de vencimientos para la presentación de declaraciones de renta y pagos electrónicos, el sistema transaccional misional (`OLTP`) experimenta bloqueos severos de tablas (*database locks*), uso de CPU al $100\%$ y caídas intermitentes del portal web ciudadano. Al diagnosticar el incidente junto con los administradores de bases de datos, usted descubre dos causas concurrentes: primero, un grupo de analistas de fiscalización está ejecutando directamente sobre la base de datos transaccional consultas SQL de agregación histórica que escanean $150\text{ millones}$ de registros; y segundo, un proceso de extracción lanza cada 5 minutos una consulta `SELECT * FROM declaraciones WHERE fecha_modificacion > ...` (*Polling*) sobre las tablas vivas, el cual además no está detectando las transacciones temporales que fueron eliminadas físicamente (`DELETE`) tras reversiones bancarias.
+
+**Enunciado:**
+Desde los principios de la Arquitectura de Datos, ¿qué solución estructural debe ordenar usted para restablecer la estabilidad del portal ciudadano y garantizar una sincronización analítica completa y en tiempo real?
+
+- **A.** Aislar y desacoplar estrictamente las cargas de trabajo prohibiendo la ejecución de consultas analíticas (`OLAP`) sobre la base de datos operacional (`OLTP`), redirigiendo a los analistas hacia el **Repositorio Único de Datos (`DataR`)**, y reemplazar el proceso de extracción por consultas (*Polling*) por un mecanismo de **Captura de Datos de Cambio basado en el Log de Transacciones (`Log-Based CDC`)** que lea secuencialmente el archivo binario de transacciones (`Redo Log` / `WAL`) hacia `Apache Kafka`, logrando impacto casi nulo en el motor transaccional y capturando el $100\%$ de los eventos `INSERT`, `UPDATE` y `DELETE`.
+- **B.** Desnormalizar la base de datos transaccional eliminando la Tercera Forma Normal (`3FN`), agregar cincuenta índices compuestos adicionales a las tablas de recepción de pagos para acelerar los reportes de los analistas y duplicar la frecuencia del `SELECT` de extracción a cada segundo.
+- **C.** Suspender la recepción de declaraciones tributarias de los ciudadanos entre las 8:00 a.m. y las 5:00 p.m. para que la base de datos transaccional se dedique exclusivamente a procesar las consultas de los analistas de fiscalización.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. En la arquitectura de datos moderna y bajo los lineamientos de disponibilidad y rendimiento del Marco de Referencia de Arquitectura Empresarial (MRAE - MinTIC), las cargas analíticas (OLAP) deben separarse estrictamente de las transaccionales (OLTP). El patrón **CDC (Change Data Capture) basado en logs** (lectura secuencial del Redo Log / WAL / Binlog) captura inserciones, actualizaciones y borrados físicos (`DELETE`) directamente desde el registro de transacciones en disco sin ejecutar consultas SQL adicionales ni generar bloqueos sobre las tablas operacionales, enviando el flujo hacia el repositorio único **DataR** con latencia mínima.
-* **Justificación B (Incorrecta):** Es incorrecta. Agregar más índices sobre tablas de alta concurrencia transaccional en temporada de vencimientos penaliza el rendimiento de las operaciones de escritura (`INSERT`/`UPDATE`) que realizan los contribuyentes. Además, espaciar el *polling* a 30 minutos mantiene el acoplamiento directo sobre el motor OLTP y sigue sin resolver la incapacidad de las consultas `SELECT` para detectar registros eliminados físicamente.
-* **Justificación C (Incorrecta):** Es incorrecta. El uso de *triggers* síncronos en tablas operacionales de alto tráfico introduce sobrecarga directa dentro de la misma transacción del usuario (aumentando la latencia de cada declaración presentada) y guarda los datos en el mismo servidor físico, por lo que las consultas de los tableros seguirían compitiendo por CPU, memoria e I/O con la operación misional.
+* **Por qué la A es la clave correcta:** Resuelve de raíz los dos problemas arquitectónicos planteados:
+  1. **Separación `OLTP` vs. `OLAP`:** Los motores transaccionales (`OLTP`, diseñados en `3FN` para miles de escrituras cortas concurrentes con garantías `ACID`) jamás deben mezclarse con escaneos analíticos masivos (`OLAP`), pues los bloqueos de lectura y la saturación de *I/O* tumban la operación misional.
+  2. **`Log-Based CDC` sobre `Polling`:** La lectura directa del log binario de transacciones (`Redo Log` en Oracle / `WAL` en PostgreSQL) no ejecuta consultas SQL sobre el motor operacional, transmite los cambios en milisegundos y es el único método que captura de forma nativa los **borrados físicos (`HARD DELETE`)** registrados en el log.
+* **Por qué la B es incorrecta (Distractor técnico grave):** Agregar decenas de índices analíticos a una tabla `OLTP` degrada aún más cada `INSERT` y `UPDATE` de los ciudadanos (porque cada escritura tendría que actualizar 50 árboles de índices simultáneamente), y aumentar el *Polling* empeoraría el bloqueo sin detectar los `DELETE`.
+* **Por qué la C es incorrecta:** Apagar el servicio público de recaudo en horario hábil vulnera la misionalidad de la DIAN y los plazos legales de los contribuyentes.
 
 ---
 
-### Pregunta PJS 2: Arquitectura Medallion, Trazabilidad Probatoria y Gestión de Calidad
-**Eje Temático:** Arquitectura de Datos — Arquitectura Medallion y Cadena de Custodia en DataR  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 2: Modelado Dimensional de Kimball y Trazabilidad Histórica con `SCD Tipo 2`
+**Caso Situacional:**
+En el diseño de la **Capa Oro** del repositorio analítico `DataR`, su equipo modela el esquema en estrella para el análisis histórico de fiscalización tributaria (`FACT_DECLARACIONES_RENTA` conectada a `DIM_CONTRIBUYENTE`). Durante una auditoría de control de calidad, la Dirección de Gestión de Fiscalización reporta un grave error en los tableros históricos: cuando una sociedad comercial traslada su domicilio fiscal de Cali a Bogotá o cambia en el RUT su actividad económica principal (`Código CIIU`) en el año **2026**, el pipeline actual actualiza la fila de `DIM_CONTRIBUYENTE` sobrescribiendo el valor anterior (`SCD Tipo 1`). Como consecuencia, todas las declaraciones de renta que esa sociedad presentó entre **2021 y 2025** cuando operaba en Cali aparecen ahora en los estudios económicos como si hubieran pertenecido siempre a Bogotá y a la nueva actividad económica, distorsionando los modelos de selección de auditoría.
 
-**Caso:**  
-En el proceso de ingesta diaria de archivos XML de información exógena tributaria hacia el repositorio único de datos (DataR), estructurado bajo una arquitectura Lakehouse en capas (Bronce, Plata y Oro), se detecta que el 1,5% de los registros remitidos contienen inconsistencias en el código de municipio o valores numéricos con formato inválido. Un ingeniero del equipo propone modificar el pipeline para que descarte definitivamente de la capa Bronce los archivos con errores y sobrescriba con ceros los campos defectuosos directamente al cargar la capa Oro, con el fin de ahorrar almacenamiento y evitar retrasos en los tableros de fiscalización.
+**Enunciado:**
+Como Inspector I responsable de la arquitectura del modelo de datos, ¿qué rediseño debe aplicar sobre `DIM_CONTRIBUYENTE` y su relación con la tabla de hechos para preservar la exactitud histórica de la fiscalización?
 
-**Enunciado:**  
-Frente a la propuesta planteada y en cumplimiento de los principios de arquitectura y gobierno de datos de la entidad, al Inspector I le corresponde
-
-**Opciones de respuesta:**  
-- **A.** conservar de manera íntegra e inmutable la totalidad de los archivos recibidos en la capa Bronce, promover únicamente los registros validados y estandarizados hacia la capa Plata y desviar los registros inconsistentes a una tabla de cuarentena para su trazabilidad y remediación.
-- **B.** autorizar la depuración y eliminación de los registros defectuosos directamente en la capa Bronce antes de su persistencia en disco, asegurando que en el repositorio institucional solo se almacene información 100% libre de errores.
-- **C.** permitir el paso de todos los registros sin validación hacia la capa Oro para no detener el flujo de datos y delegar en cada analista de las Direcciones Seccionales la aplicación de filtros manuales en sus reportes locales.
+- **A.** Reemplazar el uso del `NIT` (Clave Natural) como llave primaria única de la dimensión por una **Clave Subrogada técnica (`Surrogate Key - SK`)**, e implementar la estrategia de **Dimensión de Cambio Lento Tipo 2 (`SCD Tipo 2`)** que ante cada cambio de domicilio o actividad económica cierre la vigencia del registro anterior e inserte una **nueva fila versionada** para ese NIT con una nueva `SK` y atributos de control temporal (`fecha_inicio_vigencia`, `fecha_fin_vigencia`, `es_registro_actual`), vinculando cada hecho tributario a la `SK` vigente en la fecha exacta del periodo gravable.
+- **B.** Aplicar una **Dimensión de Cambio Lento Tipo 0 (`SCD Tipo 0`)** bloqueando para siempre cualquier actualización del RUT en el repositorio analítico, de modo que ningún contribuyente del país pueda registrar cambios de dirección ni de actividad económica después de su creación.
+- **C.** Eliminar por completo la tabla `DIM_CONTRIBUYENTE` y guardar únicamente el promedio nacional de impuestos sin identificar a qué contribuyente, municipio ni sector económico corresponde cada declaración.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. En la **Arquitectura Medallion**, la **Capa Bronce (Raw)** actúa como el registro histórico inmutable y fidedigno del dato tal como ingresó desde la fuente (*append-only*), lo cual es indispensable en la DIAN para garantizar el linaje técnico, la auditoría forense y el valor probatorio de las actuaciones administrativas. Al pasar a la **Capa Plata**, se aplican las reglas de validación de esquema y conformidad: los registros válidos avanzan y los que presentan anomalías se aíslan en una **zona o tabla de cuarentena (Dead-Letter / Quarantine)** con metadatos del error para su gestión con el *Data Steward*, evitando contaminar las capas analíticas sin destruir la evidencia original.
-* **Justificación B (Incorrecta):** Es incorrecta. Eliminar o alterar datos en la Capa Bronce destruye la fidelidad del origen (*Raw Fidelity*) e impide demostrar qué reportó exactamente el obligado en caso de un litigio o reclamación, además de imposibilitar el reprocesamiento histórico si el error se debía a un fallo en la regla de lectura y no en el archivo original.
-* **Justificación C (Incorrecta):** Es incorrecta. Propagar datos corruptos hasta la Capa Oro vulnera el propósito de una fuente única de verdad gobernada y traslada la lógica de limpieza a los consumidores finales, generando cifras inconsistentes entre dependencias y riesgos de decisiones administrativas erróneas.
+* **Por qué la A es la clave correcta:** En la metodología dimensional de **Ralph Kimball**, cuando es indispensable conservar la historia exacta de los atributos de una dimensión para asociar los hechos pasados con el contexto real que tenían cuando ocurrieron (requisito obligatorio en fiscalización tributaria dado el término de firmeza de las declaraciones), se debe implementar **`SCD Tipo 2`**. Esto exige que la llave primaria de la dimensión sea una **Clave Subrogada (`SK`)** y que la clave de negocio (`NIT`) pueda repetirse en varias filas con intervalos de vigencia `[fecha_inicio, fecha_fin]` mutuamente excluyentes.
+* **Por qué la B es incorrecta:** `SCD Tipo 0` ignora todos los cambios reales ocurridos en el RUT, dejando las declaraciones nuevas de 2026 con datos obsoletos de hace años.
+* **Por qué la C es incorrecta:** Eliminar la dimensión del contribuyente hace imposible realizar perfilamiento de riesgo individual o cruzar información por jurisdicción y sector CIIU.
 
 ---
 
-### Pregunta PJS 3: Modelado Dimensional (Kimball) y Trazabilidad Histórica con SCD Tipo 2
-**Eje Temático:** Arquitectura de Datos — Modelado Dimensional y Dimensiones de Cambio Lento  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 3: Selección entre `Data Fabric` y `Data Mesh` ante Cuellos de Botella por Dominio
+**Caso Situacional:**
+En un comité de modernización de la Dirección de Gestión de Innovación y Tecnología de la DIAN, se analiza una problemática organizacional y operativa crítica: el equipo centralizado de ingeniería de datos tiene una cola de espera de más de ocho meses para atender los requerimientos de creación de conjuntos de datos analíticos solicitados por las áreas de **Fiscalización Tributaria**, **Operación Aduanera**, **Control Cambiario** y **Cobranzas**. Cada vez que cambia una regulación aduanera o cambiaria, los ingenieros centrales tardan semanas en entender la semántica del negocio, produciendo errores de interpretación en las transformaciones. Se propone adoptar el paradigma de **Malla de Datos (`Data Mesh`)**, pero uno de los asistentes sugiere que bajo `Data Mesh` cada subdirección debería comprar su propia nube independiente y definir libremente sus propias reglas de Reserva Tributaria y su propio formato de identificación del contribuyente sin coordinarse con el resto de la entidad.
 
-**Caso:**  
-La Subdirección de Análisis Operacional solicita revisar el modelo dimensional del Data Mart de Fiscalización Tributaria ubicado en la capa Oro. Al ejecutar un estudio comparativo del recaudo por actividad económica (CIIU) y Dirección Seccional entre los años 2022 y 2025, los analistas observan que los pagos realizados en 2022 por contribuyentes que cambiaron de domicilio o de actividad económica en 2025 aparecen ahora imputados en su totalidad a la nueva seccional y al nuevo código CIIU, distorsionando el análisis histórico de las auditorías de vigencias anteriores.
+**Enunciado:**
+A la luz de los cuatro principios arquitectónicos del **Data Mesh** (Zhamak Dehghani) y la normativa de la DIAN, ¿cuál debe ser su postura técnica frente a este escenario?
 
-**Enunciado:**  
-Para corregir el diseño del modelo dimensional de modo que las transacciones históricas conserven el contexto exacto vigente en la fecha en que ocurrieron, al profesional le corresponde
-
-**Opciones de respuesta:**  
-- **A.** rediseñar la dimensión de contribuyentes aplicando la técnica de Dimensión de Cambio Lento Tipo 2 (SCD Tipo 2), generando una nueva fila con clave subrogada propia y fechas de inicio y fin de vigencia ante cada actualización en el RUT.
-- **B.** configurar la tabla de dimensión de contribuyentes bajo el esquema de Dimensión de Cambio Lento Tipo 1 (SCD Tipo 1), utilizando el NIT como clave primaria única para garantizar que no existan registros repetidos del mismo obligado.
-- **C.** eliminar la tabla de dimensión de contribuyentes y duplicar todos los atributos descriptivos del RUT (razón social, dirección, teléfono, correo y CIIU) directamente como columnas de texto dentro de la tabla de hechos de pagos.
+- **A.** Respaldar la adopción de los principios de **`Data Mesh`** para descentralizar la **propiedad del dato hacia los dominios misionales** (Tributario, Aduanero, Cambiario) para que cada uno publique sus **Datos como un Producto (*Data as a Product*)** con acuerdos de nivel de servicio (`SLA`), pero corregir la propuesta aclarando que todos los dominios deben operar sobre una **Plataforma de Datos de Autoservicio común** (provista por la Subdirección de Procesamiento de Datos) y someterse a una **Gobernanza Computacional Federada** que imponga globalmente como código (`Policy-as-Code`) la Reserva Tributaria (Art. 583 E.T.) y el estándar único del `RUT/NIT` para garantizar la interoperabilidad.
+- **B.** Aprobar que cada subdirección compre su propia infraestructura aislada y elimine el `NIT` como llave común, ya que el principio central de `Data Mesh` consiste en prohibir cualquier estándar compartido o regla de seguridad transversal en la entidad.
+- **C.** Prohibir que los expertos de los dominios Tributario y Aduanero participen en la definición semántica de los datos, obligando a que toda regla legal sea interpretada exclusivamente por administradores de hardware sin conocimiento tributario.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. Según la metodología de modelado dimensional de **Ralph Kimball**, cuando se requiere preservar el historial completo de cambios de atributos descriptivos (como la Dirección Seccional o el código CIIU) para asociar los hechos pasados con la realidad vigente en el momento del evento, se debe implementar **SCD Tipo 2 (Slowly Changing Dimension Type 2)**. Esta técnica asigna una **Clave Subrogada (`SK`)** distinta a cada versión temporal del contribuyente junto con atributos de control (`fecha_inicio_vigencia`, `fecha_fin_vigencia`, `indicador_actual`), permitiendo que la tabla de hechos de 2022 apunte a la `SK` de 2022 y la de 2025 a la nueva `SK`.
-* **Justificación B (Incorrecta):** Es incorrecta. **SCD Tipo 1** sobrescribe el valor anterior y usa una única fila por clave natural, que es exactamente la causa del error descrito en el caso, pues destruye la historia previa y reasigna retroactivamente todos los hechos históricos al estado actual.
-* **Justificación C (Incorrecta):** Es incorrecta. Incrustar decenas de atributos textuales descriptivos directamente en una tabla de hechos de cientos de millones de filas viola los principios del modelado dimensional (solo las *Dimensiones Degeneradas*, como el número de documento o factura, van en la tabla de hechos), provocando redundancia masiva, degradación del almacenamiento columnar e imposibilidad de gestionar dimensiones conformadas entre distintos procesos.
+* **Por qué la A es la clave correcta:** El caso describe exactamente el dolor organizacional que dio origen al **`Data Mesh`**: el cuello de botella de un equipo central monolítico que desconoce la semántica profunda de múltiples dominios complejos. La respuesta articula de forma impecable los **4 pilares inseparables del Data Mesh**: **1)** Propiedad por Dominios, **2)** Datos como un Producto, **3)** Plataforma de Autoservicio común (evitando duplicar infraestructura en cada área) y **4)** Gobernanza Computacional Federada (que garantiza que las políticas de seguridad, la Reserva Tributaria del Art. 583 E.T. y los identificadores maestros como el NIT sean estándares globales automatizados).
+* **Por qué la B es incorrecta (Trampa clásica de examen):** Confunde la descentralización por dominios con la anarquía de silos tecnológicos; violar los estándares globales de identificación e infraestructura destruye los pilares 3 y 4 del Data Mesh e impide cruzar datos tributarios con aduaneros.
+* **Por qué la C es incorrecta:** Perpetúa el cuello de botella y desconoce la figura de los dueños y custodios funcionales del dato (*Data Owners / Data Product Owners*) de cada dominio misional.
 
 ---
 
-### Pregunta PJS 4: Selección de Paradigma Arquitectónico (Data Mesh y Gobernanza Federada)
-**Eje Temático:** Arquitectura de Datos — Paradigmas (Data Mesh vs. Arquitectura Centralizada)  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 4: Arquitectura Medallón, Inmutabilidad en Capa Bronce y Patrón de Cuarentena
+**Caso Situacional:**
+En el pipeline diario que procesa los reportes de Información Exógena y Facturación Electrónica dentro del **Repositorio Único de Datos (`DataR`)**, estructurado bajo la **Arquitectura Medallón (`Bronce`, `Plata` y `Oro`)**, se detecta que durante el cargue nocturno un $0.05\%$ de los registros provenientes de una fuente externa contienen errores de validación de esquema y valores numéricos negativos inválidos en la casilla de base gravable. Un ingeniero junior propone dos medidas: primero, programar un script que borre definitivamente esos registros defectuosos de la **Capa Bronce** para "mantener limpio el historial crudo"; y segundo, eliminar también de la **Capa Bronce** todos los archivos XML originales que tengan más de 30 días de antigüedad, argumentando que sus datos ya fueron resumidos en la Capa Oro.
 
-**Caso:**  
-En el comité de arquitectura institucional se analiza un cuello de botella recurrente: las áreas misionales de Impuestos, Aduanas, Control Cambiario y Facturación Electrónica dependen de un único equipo central para transformar y documentar todos sus conjuntos de datos analíticos. Como consecuencia, los tiempos de entrega superan los seis meses y se presentan errores de interpretación sobre las reglas de negocio específicas de cada dominio. Se propone adoptar un enfoque de **Data Mesh** (Malla de Datos), pero surge la inquietud de cómo evitar que cada área cree silos incompatibles o vulnere la reserva tributaria.
+**Enunciado:**
+Como Inspector I garante de la arquitectura del Lakehouse y de la trazabilidad probatoria de la DIAN, ¿qué decisión debe tomar frente a las dos propuestas del ingeniero junior?
 
-**Enunciado:**  
-Para implementar correctamente el paradigma Data Mesh garantizando tanto la agilidad de las áreas misionales como la integridad y seguridad institucional, al profesional le corresponde
-
-**Opciones de respuesta:**  
-- **A.** descentralizar la propiedad de los datos como productos hacia cada dominio misional sobre una plataforma tecnológica común de autoservicio, estableciendo un modelo de gobernanza computacional federada que automatice las políticas globales de seguridad e interoperabilidad.
-- **B.** otorgar autonomía total a cada subdirección misional para que adquiera su propia infraestructura de nube independiente y defina de manera aislada sus propios estándares de identificación de contribuyentes y reglas de control de acceso.
-- **C.** mantener la totalidad del modelado y entendimiento funcional centralizado en el equipo técnico de infraestructura, limitando la participación de las áreas de negocio únicamente a la recepción de reportes cerrados al final del proceso.
+- **A.** Rechazar ambas propuestas toda vez que la **Capa Bronce** debe ser estrictamente **inmutable (`Append-Only`)** para preservar la cadena de custodia forense, el valor probatorio judicial del documento electrónico original y la capacidad de reprocesamiento histórico; ordenando en su lugar que al pasar de Bronce a Plata los registros válidos avancen a la **Capa Plata** y el $0.05\%$ de registros defectuosos se desvíe automáticamente a una **Tabla de Cuarentena (*Quarantine / Dead-Letter Table*)** para su diagnóstico y remediación, mientras que la optimización de costos de los archivos antiguos en Bronce se gestione mediante políticas de **almacenamiento por niveles (*Storage Tiering* a capas frías/archivo)** sin destruir la evidencia.
+- **B.** Aprobar el borrado inmediato de los registros con error y la destrucción mensual de todos los archivos XML originales de la Capa Bronce, dado que una vez calculado un promedio en la Capa Oro la DIAN nunca vuelve a necesitar los soportes individuales para auditorías ni procesos judiciales.
+- **C.** Ordenar que los registros con bases gravables negativas corruptas pasen sin ningún filtro directamente a la **Capa Oro** para que se sumen en los tableros oficiales del Ministerio de Hacienda sin activar alertas de calidad.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El paradigma **Data Mesh** articula cuatro pilares inseparables: (1) propiedad descentralizada por dominios (quienes conocen la regla tributaria o aduanera producen y responden por el dato), (2) gestión de los **datos como producto** con acuerdos de calidad (SLA), (3) una **plataforma de datos de autoservicio** común que evita duplicar esfuerzos de infraestructura, y (4) **gobernanza computacional federada**, mediante la cual los estándares globales (como el identificador único RUT, la Reserva Tributaria del Art. 583 del E.T. y las políticas de acceso ABAC) se definen conjuntamente y se aplican automáticamente como código en toda la entidad.
-* **Justificación B (Incorrecta):** Es incorrecta. Permitir que cada área contrate infraestructura aislada y defina sus propios identificadores y reglas de seguridad destruye la interoperabilidad institucional, multiplica costos y genera silos ingobernables que vulneran el principio de fuente única de verdad y las políticas de seguridad de la información de la DIAN.
-* **Justificación C (Incorrecta):** Es incorrecta. Mantener el modelo monolítico centralizado perpetúa exactamente el cuello de botella cognitivo y operativo descrito en el caso, donde el equipo técnico central carece del conocimiento profundo de cada dominio misional.
+* **Por qué la A es la clave correcta:** En la **Arquitectura Medallón**, la **Capa Bronce** es la zona de aterrizaje histórica e inmutable: alterar o borrar archivos allí destruye la evidencia de lo que transmitió el contribuyente (indispensable en litigios ante la Jurisdicción Contencioso-Administrativa y dentro de los 3 a 5 años de firmeza tributaria del Art. 714 E.T.) e impide reconstruir las capas superiores si se descubre un bug. Asimismo, el manejo estándar de errores entre Bronce y Plata es el **Patrón de Cuarentena (*Quarantine Table*)**, que aísla las filas defectuosas con sus metadatos de error sin contaminar la Capa Plata ni borrar la evidencia de Bronce.
+* **Por qué la B es incorrecta:** Destruir los documentos electrónicos originales antes de los términos de firmeza y retención documental deja a la DIAN sin pruebas legales para sustentar liquidaciones oficiales o sanciones.
+* **Por qué la C es incorrecta:** Permitir que datos corruptos lleguen a la Capa Oro vulnera las dimensiones de exactitud, validez y consistencia de la información oficial.
 
 ---
 
-### Pregunta PJS 5: Formatos de Archivo y Tablas Abiertas (Parquet + Apache Iceberg / Time Travel)
-**Eje Temático:** Arquitectura de Datos — Formatos de Tabla Abiertos y Auditoría Histórica  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 5: Modelado de Trámites con Etapas Temporales y Aditividad de Métricas en Kimball
+**Caso Situacional:**
+Usted está liderando el modelado dimensional de dos nuevos requerimientos analíticos en la Capa Oro de `DataR`:
+1. **Requerimiento 1 (Seguimiento al Ciclo de Devoluciones y Compensaciones):** Se necesita una tabla de hechos donde cada fila represente una solicitud de devolución de saldo a favor y permita medir exactamente cuántos días hábiles transcurren entre cada uno de los hitos obligatorios del trámite (`Fecha de Radicación` $\to$ `Fecha de Auto Admisorio` $\to$ `Fecha de Envío a Fiscalización` $\to$ `Fecha de Resolución de Devolución` $\to$ `Fecha de Giro en Tesorería`) para controlar el término legal de 50 días del Artículo 855 del Estatuto Tributario.
+2. **Requerimiento 2 (Control Mensual de Saldos de Cartera Morosa):** Se tiene una tabla de cierre mensual con la columna `saldo_capital_deuda` por cada contribuyente al día 30 de cada mes, y un analista pretende calcular la deuda del año sumando con `SUM(saldo_capital_deuda)` los doce cierres mensuales de un mismo contribuyente.
 
-**Caso:**  
-Con ocasión de un proceso ante la jurisdicción de lo contencioso administrativo, la oficina jurídica requiere que la Subdirección de Procesamiento de Datos certifique y reproduzca exactamente el estado de los datos consolidados en el repositorio analítico con los cuales el modelo de perfilamiento de riesgo seleccionó a un usuario aduanero en una fecha específica de hace ocho meses. Actualmente, esa zona del repositorio almacena archivos planos en formato CSV que son sobrescritos cada noche por un proceso por lotes, lo que impide reconstruir la foto exacta de aquel momento sin restaurar cintas completas de respaldo.
+**Enunciado:**
+Según la metodología de modelado dimensional de Ralph Kimball, ¿qué tipo de Tabla de Hechos debe diseñar para el **Requerimiento 1** y cómo debe clasificar y operar la métrica del **Requerimiento 2**?
 
-**Enunciado:**  
-Para modernizar la capa de almacenamiento de modo que soporte consultas analíticas de alto rendimiento y permita reproducir de forma inmediata el estado exacto de la tabla en cualquier punto histórico del tiempo, al profesional le corresponde
-
-**Opciones de respuesta:**  
-- **A.** migrar el almacenamiento a archivos columnares Apache Parquet gestionados bajo un formato de tabla abierto como Apache Iceberg o Delta Lake, aprovechando el control de instantáneas (snapshots) para ejecutar consultas de viaje en el tiempo (*Time Travel*).
-- **B.** convertir los archivos CSV a documentos de texto en formato JSON sin esquema y programar la creación manual de una copia completa duplicada de toda la base de datos en carpetas diarias independientes.
-- **C.** almacenar los registros históricos únicamente en colas de mensajería volátiles en memoria RAM para evitar la sobrescritura de archivos en el almacenamiento de objetos.
+- **A.** Para el **Requerimiento 1**, diseñar una **Tabla de Hechos de Instantáneas Acumulativas (*Accumulating Snapshot Fact Table*)** conectada mediante múltiples llaves foráneas a la dimensión Fecha (*Role-Playing Dimension*) que se actualiza a medida que el trámite supera cada hito; y para el **Requerimiento 2**, definir `saldo_capital_deuda` como una **métrica Semi-Aditiva**, la cual puede sumarse entre distintos contribuyentes o seccionales en un mismo corte, pero **jamás puede sumarse a través de la dimensión Tiempo** (donde debe usarse el valor de cierre del periodo o promedio).
+- **B.** Para el Requerimiento 1, usar una dimensión basura (*Junk Dimension*) sin fechas; y para el Requerimiento 2, clasificar el saldo de deuda como una métrica totalmente aditiva para que si un contribuyente debe cien millones durante doce meses seguidos, el reporte oficial diga que su deuda creció a mil doscientos millones de pesos.
+- **C.** Modelar ambos requerimientos en una sola tabla en Primera Forma Normal sin llaves foráneas y sumar los porcentajes de las tasas de interés moratorio mediante la función `SUM()` a través de todos los municipios.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La combinación del formato físico columnar **Apache Parquet** (que optimiza la compresión y el escaneo analítico mediante *Projection* y *Predicate Pushdown*) con un **Formato de Tabla Abierto (Open Table Format)** como **Apache Iceberg** o **Delta Lake** añade una capa de metadatos transaccionales con garantías ACID y gestión de **Snapshots (instantáneas inmutables)**. Esta arquitectura habilita de forma nativa la funcionalidad de **Time Travel (Viaje en el Tiempo)** mediante consultas por versión o marca temporal (`AS OF TIMESTAMP`), permitiendo auditar y reproducir con validez probatoria el estado exacto de los datos en la fecha en que se tomó la decisión administrativa sin duplicar toda la tabla cada día.
-* **Justificación B (Incorrecta):** Es incorrecta. El formato JSON es textual y orientado a filas (ineficiente para escaneos analíticos masivos) y duplicar físicamente toda la base de datos cada noche genera un crecimiento exponencial e insostenible de costos de almacenamiento sin brindar garantías transaccionales ACID.
-* **Justificación C (Incorrecta):** Es incorrecta. La memoria RAM es volátil y costosa, y las colas de mensajería están diseñadas para el transporte transitorio de eventos en streaming, no como repositorio analítico persistente ni auditable a largo plazo.
+* **Por qué la A es la clave correcta:**
+  1. **Instantánea Acumulativa (*Accumulating Snapshot*):** Es el patrón específico de Kimball para modelar tuberías de procesos o trámites con inicio, etapas definidas y fin (como el flujo de una devolución, una importación o un expediente de cobro). Utiliza una misma fila por trámite con múltiples llaves foráneas hacia `Dim_Tiempo` (actuando como **Dimensión con Múltiples Roles / *Role-Playing Dimension***) y métricas de duración (*lag*) entre etapas.
+  2. **Métrica Semi-Aditiva:** Todo saldo de cuenta, cartera o inventario tomado en una **Instantánea Periódica (*Periodic Snapshot*)** es **semi-aditivo**: es válido sumar los saldos de todos los deudores de Bogotá el 31 de marzo, pero sumar el saldo del 31 de enero + el del 28 de febrero + el del 31 de marzo multiplica falsamente la misma deuda por tres.
+* **Por qué la B es incorrecta:** Confunde la naturaleza de las métricas de saldo (generando una inflación contable absurda de 12 veces la cartera real) y desconoce las tablas de hechos acumulativas.
+* **Por qué la C es incorrecta:** Las tasas de interés y porcentajes son métricas **No Aditivas** (jamás se suman con `SUM()`).
 
 ---
 
-### Pregunta PJS 6: Seguridad por Diseño, Reserva Tributaria y Enmascaramiento Dinámico (DDM)
-**Eje Temático:** Arquitectura de Datos — Seguridad, Reserva Tributaria (Art. 583 E.T.) y Control de Acceso  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 6: Estrategias `Copy-on-Write (CoW)` vs. `Merge-on-Read (MoR)` y `Z-Ordering` en el Lakehouse
+**Caso Situacional:**
+En la administración física de las tablas **`Apache Iceberg`** del repositorio `DataR`, usted enfrenta dos retos de optimización de rendimiento:
+* **Reto 1:** Una tabla de 40 Terabytes en la **Capa Plata** recibe flujos continuos de actualizaciones y correcciones (`UPSERT / MERGE`) cada 30 segundos provenientes del `CDC` de los sistemas transaccionales. Actualmente está configurada en modo **`Copy-on-Write (CoW)`**, lo que obliga al clúster a reescribir archivos `Parquet` completos de $512\text{ MB}$ cada 30 segundos aunque solo haya cambiado una fila, saturando la escritura en el almacenamiento de objetos.
+* **Reto 2:** Una tabla histórica en la **Capa Oro** está particionada físicamente por `anio_gravable`, pero las consultas de los auditores filtran siempre por `nit_contribuyente` y `codigo_subpartida`. Si se particionara físicamente en carpetas por `nit_contribuyente`, se crearían millones de carpetas con archivos de pocos kilobytes (*Small File Problem*).
 
-**Caso:**  
-Un equipo de analistas cuantitativos y desarrolladores de tableros de gestión necesita consultar las vistas de la capa Oro del repositorio DataR para validar el comportamiento agregado de los tiempos de atención y los montos declarados por región. Sin embargo, por su rol funcional no están autorizados para visualizar la identificación individual (NIT/Cédula), la razón social ni el detalle privado sujeto a reserva tributaria de los contribuyentes, mientras que los inspectores de fiscalización asignados al caso sí requieren ver el dato real completo sobre la misma tabla.
+**Enunciado:**
+¿Qué ajustes de ingeniería física sobre el formato de tabla abierto debe aplicar usted para resolver el **Reto 1** y el **Reto 2**, respectivamente?
 
-**Enunciado:**  
-Para atender la necesidad de ambos perfiles sobre la misma fuente de datos sin duplicar tablas ni alterar la información almacenada en producción, al Inspector I le corresponde
-
-**Opciones de respuesta:**  
-- **A.** implementar políticas de control de acceso basado en atributos (ABAC) combinadas con Enmascaramiento Dinámico de Datos (DDM) a nivel de columna y seguridad a nivel de fila (RLS), ofuscando en tiempo de consulta los campos reservados según el rol del usuario.
-- **B.** ejecutar una sentencia `UPDATE` sobre las tablas de la capa Oro en producción para reemplazar los números de NIT y nombres por cadenas de asteriscos mientras el equipo de analistas realiza sus validaciones.
-- **C.** exportar las tablas completas con los datos reales en archivos planos a una carpeta compartida y solicitar a los analistas que oculten manualmente las columnas de identificación en sus herramientas de visualización.
+- **A.** Para el **Reto 1**, cambiar la configuración de actualización de la tabla en Capa Plata al modo **`Merge-on-Read (MoR)`** (escribiendo archivos ligeros de borrado posicional/igualdad *Delete Files* al instante y programando compactaciones periódicas en segundo plano); y para el **Reto 2**, conservar la partición gruesa por `anio_gravable` y aplicar **Ordenamiento Multidimensional (`Z-Ordering` / *Clustering*)** sobre `nit_contribuyente` y `codigo_subpartida` para agrupar valores similares en los mismos archivos `Parquet` y maximizar el salto de bloques (*Data Skipping* por estadísticas `min/max`).
+- **B.** Para el Reto 1, mantener `Copy-on-Write` pero obligar a que cada actualización de 1 fila reescriba simultáneamente toda la base de datos de 40 Terabytes; y para el Reto 2, crear 15 millones de carpetas físicas anidadas por NIT, día, hora, minuto y segundo.
+- **C.** Convertir ambas tablas de `Apache Iceberg` a archivos planos `.CSV` sin comprimir y eliminar todos los metadatos estadísticos de los archivos.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. En cumplimiento del **Artículo 583 del Estatuto Tributario (Reserva Tributaria)**, la **Ley 1581 de 2012** y el principio de **Seguridad y Privacidad por Diseño**, el **Enmascaramiento Dinámico de Datos (Dynamic Data Masking - DDM)** junto con políticas **ABAC / RLS / CLS** intercepta la consulta en la capa de servicio de datos y transforma al vuelo las columnas confidenciales (mostrando valores ofuscados o nulos a los roles no autorizados y el dato íntegro a los funcionarios facultados), **sin modificar el dato físico persistido en disco** ni crear copias redundantes.
-* **Justificación B (Incorrecta):** Es incorrecta. Ejecutar un `UPDATE` en producción sobrescribiendo los identificadores reales destruye la integridad de los datos institucionales e impide que los sistemas y funcionarios autorizados de fiscalización puedan operar.
-* **Justificación C (Incorrecta):** Es incorrecta. Entregar los datos reservados en archivos planos sin enmascarar y confiar en que el usuario oculte columnas en el cliente constituye una vulneración directa de la **Reserva Tributaria (Art. 583 E.T.)** y genera una fuga de información fuera del gobierno del repositorio único DataR.
+* **Por qué la A es la clave correcta:**
+  1. **`Merge-on-Read (MoR)` para cargas intensivas de `CDC`/escritura:** En lugar de reescribir un archivo Parquet de $512\text{ MB}$ cada 30 segundos (`CoW`), el modo `MoR` escribe instantáneamente un pequeño archivo de borrado (*Delete File*) y el nuevo registro, reduciendo la latencia de ingesta de minutos a segundos, mientras un trabajo asíncrono de compactación fusiona los archivos más tarde.
+  2. **`Z-Ordering` contra el *Over-partitioning*:** Cuando se necesita filtrar rápidamente por múltiples columnas de alta cardinalidad (`NIT`, `subpartida`), nunca se crean millones de carpetas físicas; se aplica **`Z-Ordering`** para co-localizar espacialmente los datos dentro de los bloques Parquet, permitiendo que el motor salte el $99\%$ de los archivos leyendo sus estadísticas `min/max`.
+* **Por qué la B es incorrecta:** Reescribir 40 TB en cada transacción es físicamente inviable y crear 15 millones de carpetas produce un colapso severo por *Small File Problem*.
+* **Por qué la C es incorrecta:** Pasar a `.CSV` elimina las garantías `ACID`, la compresión columnar y el *Predicate Pushdown*.
 
 ---
 
-### Pregunta PJS 7: Optimización Física en el Lakehouse (Archivos Pequeños, Compactación y Particionamiento)
-**Eje Temático:** Arquitectura de Datos — Rendimiento Físico y Gestión de Metadatos en Lakehouse  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 7: Integración Histórica Auditable de Múltiples Fuentes mediante `Data Vault 2.0`
+**Caso Situacional:**
+La Subdirección de Procesamiento de Datos debe construir el modelo central de integración en la **Capa Plata** de `DataR` para consolidar la información de **Beneficiarios Finales y Grupos Empresariales**, la cual proviene de **18 fuentes internas y externas heterogéneas** (RUT, RUB, Información Exógena Societaria, Cámaras de Comercio, Superintendencia de Sociedades, Superintendencia Financiera y registros aduaneros). Los esquemas de estas 18 fuentes cambian con frecuencia cuando las entidades externas agregan nuevos campos, y por mandato de auditoría forense la DIAN necesita garantizar el **$100\%$ de trazabilidad histórica** de qué fuente exacta reportó cada vínculo societario y en qué fecha/hora fue cargado, permitiendo además cargar las 18 fuentes en paralelo sin bloqueos de secuencias numéricas.
 
-**Caso:**  
-En el repositorio DataR se configuró un flujo de ingesta continua que escribe micro-lotes de eventos de validación de documentos electrónicos cada 30 segundos en una tabla Apache Iceberg. Además, el diseñador definió como clave física de particionamiento el número de identificación del emisor (`nit_emisor`). Tras tres meses de operación, las consultas analíticas de las áreas misionales tardan horas en responder debido a que el motor de consulta debe listar y abrir más de doce millones de directorios que contienen archivos Parquet de apenas 15 kilobytes cada uno.
+**Enunciado:**
+¿Qué metodología de modelado de datos está diseñada específicamente para cumplir estos requerimientos de integración ágil multi-fuente, paralelismo por llaves Hash y auditoría forense en la Capa Plata?
 
-**Enunciado:**  
-Para corregir la degradación de lectura y optimizar la disposición física de los datos en el almacenamiento del Lakehouse, al profesional le corresponde
-
-**Opciones de respuesta:**  
-- **A.** redefinir la estrategia de particionamiento hacia una granularidad temporal adecuada (como año y mes), aplicar ordenamiento multidimensional (*clustering / Z-Order*) sobre el identificador del emisor y programar trabajos periódicos de compactación de archivos pequeños.
-- **B.** agregar además el número consecutivo de cada factura como un subnivel adicional de partición física de carpetas para que cada archivo contenga únicamente un registro individual.
-- **C.** desactivar la compresión columnar de Apache Parquet y transformar toda la tabla histórica a un único archivo gigante en formato de texto CSV sin particiones.
+- **A.** Implementar el modelado **`Data Vault 2.0` (Dan Linstedt)**, estructurando las claves de negocio únicas (`NIT`, `ID_Persona`) en **`Hubs`** identificados por llaves **`Hash` (`SHA-256`/`MD5`)**, las relaciones societarias y transaccionales en **`Links`** muchos-a-muchos, y los atributos descriptivos temporales de cada fuente en **`Satellites`** de solo inserción (*Append-Only*) con marcas obligatorias de `Load_Date` y `Record_Source`.
+- **B.** Implementar una única tabla plana en `SCD Tipo 1` que sobrescriba diariamente los datos de las 18 fuentes sin guardar de qué entidad provino el dato ni qué valores tenía en años anteriores.
+- **C.** Obligar a las Cámaras de Comercio y a las Superintendencias a apagar sus sistemas propios y digitar manualmente sus datos dentro del formulario de declaración de IVA de la DIAN.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El caso describe dos antipatrones clásicos en arquitecturas Lakehouse: el **sobre-particionamiento (*Over-partitioning*)** por usar una columna de altísima cardinalidad (`nit_emisor`) como partición física y el **problema de los archivos pequeños (*Small Files Problem*)** derivado de escrituras frecuentes en streaming. La solución técnica consiste en: (1) particionar por una columna de cardinalidad controlada (ej. `anio_mes`), (2) usar **Clustering / Z-Ordering** por `nit_emisor` para aprovechar las estadísticas `min/max` (*Data Skipping*) sin crear millones de carpetas, y (3) ejecutar tareas automatizadas de **Compactación (`OPTIMIZE` / `rewrite_data_files`)** que agrupen los archivos de pocos KB en bloques óptimos (128 MB – 512 MB).
-* **Justificación B (Incorrecta):** Es incorrecta. Particionar por el número único de factura llevaría al extremo el sobre-particionamiento (un directorio y un archivo por cada fila), colapsando por completo el catálogo de metadatos y las operaciones de listado del almacenamiento de objetos.
-* **Justificación C (Incorrecta):** Es incorrecta. Convertir petabytes de datos a un único archivo CSV elimina el paralelismo de lectura, la poda de columnas (*Projection Pushdown*), el salto de bloques (*Predicate Pushdown*) y la compresión columnar, haciendo inviable el rendimiento analítico.
+* **Por qué la A es la clave correcta:** **`Data Vault 2.0`** fue concebido exactamente para este escenario:
+  1. Al separar **Claves de Negocio (`Hubs`)**, **Relaciones (`Links`)** y **Atributos Descriptivos/Temporales (`Satellites`)**, si mañana la Superintendencia de Sociedades añade 15 columnas nuevas, simplemente se añade un nuevo `Satellite` sin alterar ni romper las tablas existentes.
+  2. El uso de **`Hash Keys`** deterministas sobre las claves de negocio permite cargar los `Hubs`, `Links` y `Satellites` de las 18 fuentes **totalmente en paralelo** sin esperar secuencias autoincrementables.
+  3. Todo registro lleva obligatoriamente `Load_Date` y `Record_Source` en modalidad *Append-Only*, garantizando una auditoría forense inobjetable.
+* **Por qué la B es incorrecta:** `SCD Tipo 1` destruye el historial y omitir el `Record_Source` viola el requisito de linaje y trazabilidad probatoria.
+* **Por qué la C es incorrecta:** Es jurídica y operativamente absurdo; la integración interinstitucional se realiza manteniendo la autonomía de las fuentes y consolidando en el Lakehouse.
 
 ---
 
-### Pregunta PJS 8: Modelado Data Vault 2.0 para Integración Auditable de Múltiples Fuentes
-**Eje Temático:** Arquitectura de Datos — Modelado Data Vault 2.0 (Hubs, Links y Satellites)  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 8: Niveles de Abstracción del Modelo de Datos y Gobierno con `Contratos de Datos` y `Capa Semántica`
+**Caso Situacional:**
+Durante la evolución tecnológica del repositorio analítico de la DIAN se presentan dos situaciones:
+1. **Situación 1:** Se decide migrar físicamente un conjunto de tablas analíticas desde un motor relacional propietario hacia tablas abiertas **`Apache Iceberg` sobre archivos `Parquet`**, sin que haya cambiado ninguna ley tributaria ni ningún atributo de negocio de los formularios. El líder del proyecto pregunta cuáles de los tres niveles del modelo de datos (**Conceptual, Lógico y Físico**) deben modificarse.
+2. **Situación 2:** Se observa que cada vez que el equipo de desarrollo del sistema transaccional de Facturación cambia el nombre de un campo en su base de datos, rompe por sorpresa los pipelines nocturnos de `DataR`; y además, en la punta final, tres subdirecciones calculan el indicador de *"Brecha de Incumplimiento de IVA"* con fórmulas distintas en sus respectivos tableros de visualización.
 
-**Caso:**  
-La DIAN adelanta un proyecto en la capa Plata del repositorio DataR para consolidar información de operaciones de comercio exterior proveniente simultáneamente de declaraciones aduaneras internas, reportes de puertos, ventanilla única de comercio exterior (VUCE) y convenios de intercambio internacional. Los esquemas de estas fuentes cambian con frecuencia agregando nuevos campos descriptivos, y la oficina de control interno exige un modelo de integración que permita cargar las fuentes en paralelo, auditar exactamente de qué sistema y en qué fecha provino cada dato, y absorber nuevos atributos sin tener que reconstruir las tablas existentes.
+**Enunciado:**
+Como Inspector I en función de Arquitecto de Datos, ¿cuál es su respuesta técnica para la **Situación 1** y qué dos componentes debe implementar para resolver la **Situación 2**?
 
-**Enunciado:**  
-Para satisfacer los requerimientos de integración ágil, escalabilidad y trazabilidad de auditoría en esta capa del repositorio, al profesional le corresponde diseñar el modelo aplicando la metodología
-
-**Opciones de respuesta:**  
-- **A.** Data Vault 2.0, separando las claves de negocio inmutables en *Hubs*, las relaciones transaccionales en *Links* y los atributos descriptivos con su historial temporal y fuente de origen en *Satellites* mediante llaves *Hash*.
-- **B.** Esquema en Estrella plano con sobreescritura directa (SCD Tipo 1), unificando las claves de negocio, las relaciones y todos los atributos de las cuatro fuentes dentro de una única tabla desnormalizada sin registro de sistema origen.
-- **C.** Archivos planos desvinculados por cada entidad externa sin llaves de integración, dejando que los usuarios finales realicen cruces manuales mediante hojas de cálculo.
+- **A.** En la **Situación 1**, únicamente debe modificarse el **Modelo Físico** (tipos nativos del motor, formato columnar `Parquet`, particionamiento y compresión), manteniendo intactos el **Modelo Conceptual y el Modelo Lógico**; y en la **Situación 2**, se deben implementar **Contratos de Datos (*Data Contracts*)** en la ingesta para bloquear cambios de esquema incompatibles desde el origen, y una **Capa Semántica (*Semantic Layer* / *Metrics Store*)** sobre la Capa Oro para centralizar una única definición matemática oficial del indicador para todas las herramientas de BI.
+- **B.** En la Situación 1, se debe destruir el Modelo Conceptual de la DIAN cambiando las leyes tributarias cada vez que se cambie de disco duro; y en la Situación 2, se debe prohibir el uso de indicadores en la entidad.
+- **C.** En la Situación 1, solo cambia el Modelo Conceptual pero el Modelo Físico de Oracle funciona idéntico sin cambios en archivos Parquet; y en la Situación 2, basta con enviar un correo electrónico anual pidiendo precaución.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. **Data Vault 2.0 (Dan Linstedt)** está diseñado específicamente para la integración empresarial auditable de múltiples fuentes heterogéneas y cambiantes. Al separar los **Hubs** (identificadores únicos de negocio como NIT o declaración con su `Hash Key`), los **Links** (relaciones flexibles `N:M`) y los **Satellites** (atributos descriptivos e históricos en modalidad *append-only* con `Load_Date` y `Record_Source`), permite cargas masivas en paralelo, garantiza el 100% de trazabilidad de qué sistema aportó cada versión del dato y permite añadir un nuevo *Satellite* cuando una fuente agrega columnas sin alterar ni bloquear las tablas existentes.
-* **Justificación B (Incorrecta):** Es incorrecta. Un modelo desnormalizado único con SCD Tipo 1 es rígido ante cambios estructurales frecuentes de múltiples fuentes, genera bloqueos en cargas concurrentes, sobrescribe el historial y pierde la trazabilidad de auditoría exigida por control interno.
-* **Justificación C (Incorrecta):** Es incorrecta. Mantener archivos aislados sin integración ni llaves conformadas reproduce los silos de datos y fomenta el procesamiento fuera de la plataforma gobernada DataR.
+* **Por qué la A es la clave correcta:**
+  1. **Independencia de los niveles de abstracción:** El **Modelo Conceptual** (entidades de negocio) y el **Modelo Lógico** (atributos, llaves y relaciones) son agnósticos a la tecnología; al cambiar únicamente el motor de almacenamiento de Oracle a Iceberg/Parquet, solo cambia el **Modelo Físico**.
+  2. **`Data Contracts` + `Semantic Layer`:** Los **Contratos de Datos** blindan la frontera entre los sistemas productores (`OLTP`) y el Lakehouse validando esquemas y `SLAs` en los pipelines `CI/CD`; mientras que la **Capa Semántica** blinda la frontera entre la Capa Oro y los consumidores (`Power BI`, reportes), garantizando una sola fórmula institucional por indicador.
+* **Por qué la B y la C son incorrectas:** Invierten erróneamente los niveles de abstracción del modelado de datos y carecen de mecanismos técnicos automatizados para gobernar esquemas y métricas.
 
 ---
 
-### Pregunta PJS 9: Tablas de Hechos de Instantáneas Acumulativas vs. Transaccionales
-**Eje Temático:** Arquitectura de Datos — Tipos de Tablas de Hechos en Modelado Dimensional  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 9: Seguridad por Diseño (`ABAC`, `RLS`, `DDM` vs. `SDM`) y Cumplimiento de Reserva Tributaria (`Art. 583 E.T.`)
+**Caso Situacional:**
+En el marco de la administración de `DataR`, usted debe diseñar la arquitectura de seguridad de datos para atender tres necesidades simultáneas sin vulnerar el **Artículo 583 del Estatuto Tributario (Reserva Tributaria)** ni la **Ley 1581 de 2012**:
+1. **Caso 1:** Los auditores tributarios de las 34 Direcciones Seccionales consultan la misma tabla nacional `oro.declaraciones_renta`, pero por regla de competencia cada auditor solo puede ver las filas de los contribuyentes pertenecientes a su respectiva Dirección Seccional.
+2. **Caso 2:** Los ingenieros de soporte de plataforma en producción necesitan ejecutar consultas de verificación sobre tablas operativas sin poder leer los dígitos reales del teléfono, correo ni cuenta bancaria del contribuyente.
+3. **Caso 3:** Una firma externa contratada para desarrollar un nuevo módulo de software necesita datos de prueba en el ambiente de **Calidad (`QA`)** que tengan la misma estructura de las declaraciones reales.
 
-**Caso:**  
-La Subdirección de Gestión de Devoluciones requiere construir un modelo analítico en la capa Oro para monitorear la eficiencia y los cuellos de botella del proceso de solicitudes de devolución y/o compensación de saldos a favor. Cada solicitud atraviesa una secuencia fija de hitos institucionales: fecha de radicación en el sistema, fecha de auto admisorio, fecha de asignación a verificación, fecha de acto administrativo que decide la solicitud y fecha de giro efectivo, necesitando medir con exactitud los días transcurridos entre cada etapa por cada expediente.
+**Enunciado:**
+¿Qué combinación exacta de controles arquitectónicos de seguridad debe implementar usted para el **Caso 1**, el **Caso 2** y el **Caso 3**?
 
-**Enunciado:**  
-Para modelar eficientemente el ciclo de vida de cada solicitud y facilitar el cálculo de los tiempos de permanencia entre sus hitos, al profesional le corresponde implementar una
-
-**Opciones de respuesta:**  
-- **A.** Tabla de Hechos de Instantáneas Acumulativas (*Accumulating Snapshot Fact Table*), definiendo una fila por solicitud que contenga múltiples claves foráneas hacia la dimensión de fecha por cada hito del trámite y métricas de duración entre etapas.
-- **B.** Tabla de Dimensiones Basura (*Junk Dimension*) como única estructura del modelo, almacenando allí tanto los valores monetarios devueltos como las fechas de los expedientes sin utilizar tablas de hechos.
-- **C.** Tabla de Hechos de Instantáneas Periódicas Anuales que tome únicamente una foto agregada cada 31 de diciembre, descartando las fechas intermedias de radicación, admisión y resolución de cada expediente individual.
+- **A.** Para el **Caso 1**, implementar **Control de Acceso Basado en Atributos (`ABAC`)** con políticas de **Seguridad a Nivel de Fila (`RLS` - *Row-Level Security*)** que filtren dinámicamente por el atributo de jurisdicción del funcionario; para el **Caso 2**, aplicar **Enmascaramiento Dinámico de Datos (`DDM` - *Dynamic Data Masking*)** que ofusque los campos sensibles al vuelo en la consulta sin alterar el dato en disco; y para el **Caso 3**, aplicar **Enmascaramiento Estático de Datos (`SDM`) o generación de datos sintéticos** para que jamás salgan datos reales amparados por reserva tributaria hacia ambientes de pruebas (`QA`).
+- **B.** Crear 34 copias físicas separadas de toda la base de datos en servidores locales sin cifrar para el Caso 1, dar permisos de superadministrador sin restricción a los ingenieros de soporte en el Caso 2, y copiar la base de producción real con NITs y patrimonios verdaderos al ambiente de pruebas de los contratistas en el Caso 3.
+- **C.** Publicar la tabla completa `oro.declaraciones_renta` con todos los NITs y cuentas bancarias en el portal público `datos.gov.co` para que tanto los auditores como los contratistas la consulten sin necesidad de autenticación.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. En la metodología dimensional de Kimball, cuando el objetivo es analizar la velocidad de un flujo de trabajo o trámite administrativo que tiene un inicio, hitos intermedios definidos y un cierre (*workflow / pipeline*), el patrón exacto es la **Tabla de Hechos de Instantáneas Acumulativas (Accumulating Snapshot Fact Table)**. En ella, el grano es una fila por expediente/solicitud, cuenta con múltiples claves foráneas hacia la dimensión `Dim_Fecha` (aplicando *Role-Playing Dimension* para cada etapa: radicación, admisión, resolución, giro) y actualiza la fila conforme el trámite supera cada hito, permitiendo calcular directamente los tiempos de ciclo (`lagmetrics`).
-* **Justificación B (Incorrecta):** Es incorrecta. Una *Junk Dimension* sirve únicamente para agrupar banderas (*flags*) o indicadores textuales de baja cardinalidad, jamás para almacenar métricas cuantitativas ni para sustituir una tabla de hechos.
-* **Justificación C (Incorrecta):** Es incorrecta. Una instantánea periódica anual agregada pierde la granularidad del expediente individual y elimina las marcas de tiempo de las etapas intermedias, haciendo imposible medir los días transcurridos entre cada fase del proceso de devolución.
+* **Por qué la A es la clave correcta:** Aplica con precisión técnica el principio de **Seguridad y Privacidad por Diseño** exigido por el Art. 583 del E.T. y el MSPI:
+  1. **`ABAC` + `RLS` (Caso 1):** Permite mantener **una sola tabla física nacional** gobernada en `DataR`, filtrando automáticamente las filas que ve cada funcionario según su atributo de `seccional` y `rol`.
+  2. **Enmascaramiento Dinámico `DDM` (Caso 2):** Ofusca en tiempo real el resultado del `SELECT` para roles técnicos en producción sin modificar el dato original almacenado.
+  3. **Enmascaramiento Estático `SDM` / Datos Sintéticos (Caso 3):** Es una regla de seguridad inquebrantable que **los ambientes no productivos (`Dev` / `QA`) jamás pueden contener datos reales sujetos a Reserva Tributaria**.
+* **Por qué la B y la C son incorrectas:** Exponer datos reales en ambientes de prueba de contratistas o en portales de datos abiertos constituye una violación directa de la Reserva Tributaria (Art. 583 E.T.), sancionada penal y disciplinariamente.
 
 ---
 
-### Pregunta PJS 10: Gobernanza del Repositorio Único (DataR), Capa Semántica y Anti-patrón de Silos
-**Eje Temático:** Arquitectura de Datos — Repositorio Único (DataR), Capa Semántica e Interoperabilidad  
-**Nivel:** Profesional (Inspector I - OPEC 236670)
+### Pregunta PJS 10: Interoperabilidad Estatal (`MRAE` / `X-Road`) y Continuidad del Negocio (`RPO` vs. `RTO`)
+**Caso Situacional:**
+Se presentan dos requerimientos de arquitectura empresarial en la Subdirección de Procesamiento de Datos:
+1. **Requerimiento de Interoperabilidad:** Otra entidad del orden nacional, expresamente facultada por una ley de la República dentro de las excepciones del Artículo 583 del Estatuto Tributario para cruzar determinados datos tributarios con fines de control parafiscal, solicita acceso a la información de la DIAN. Un funcionario sugiere crearles un usuario directo (`db_admin`) sobre el motor de base de datos interno de la DIAN o enviarles mensualmente un disco duro externo por mensajería física.
+2. **Requerimiento de Continuidad:** Para el repositorio crítico de recepción transaccional de declaraciones y pagos, el comité directivo establece que ante una caída del centro de datos principal **no se puede perder ni una sola transacción confirmada (`pérdida de datos = 0 segundos`)** y el servicio debe restablecerse en **máximo 10 minutos**.
 
-**Caso:**  
-Durante una auditoría a los reportes institucionales, se evidencia que la Subdirección de Recaudo y la Subdirección de Fiscalización presentan cifras discrepantes frente al indicador de *"Cartera Morosa Recuperable"* del último trimestre. Al indagar la causa técnica, el Inspector I encuentra que una de las dependencias descargó copias parciales de las tablas hacia una base de datos local en su área y programó su propia fórmula de cálculo en sus tableros, excluyendo conceptos de intereses y sanciones que la otra dependencia sí incluye.
+**Enunciado:**
+Conforme al **Marco de Referencia de Arquitectura Empresarial (`MRAE` del MinTIC)** y a la ingeniería de alta disponibilidad, ¿cómo debe instrumentarse el intercambio interinstitucional y cómo se traducen técnicamente las dos métricas de continuidad exigidas?
 
-**Enunciado:**  
-Para eliminar la discrepancia de cifras, erradicar los silos de datos locales y garantizar una única fuente de verdad gobernada en la entidad, al profesional le corresponde
-
-**Opciones de respuesta:**  
-- **A.** centralizar el consumo sobre el Repositorio Único de Datos (DataR) eliminando las copias departamentales aisladas, e implementar una Capa Semántica gobernada que estandarice y publique una única definición de cálculo del indicador para todas las herramientas analíticas.
-- **B.** autorizar que cada subdirección mantenga su propia base de datos local independiente y promediar aritméticamente los dos resultados distintos al momento de entregar el informe oficial a la Dirección General.
-- **C.** bloquear el acceso de todas las subdirecciones a los tableros de visualización y exigir que los cálculos de indicadores se realicen manualmente en hojas de cálculo individuales antes de cada reunión directiva.
+- **A.** Rechazar la entrega de credenciales directas a la base de datos o discos físicos y, en cumplimiento del **MRAE y los Servicios Ciudadanos Digitales**, instrumentar el intercambio a través de la plataforma de **Interoperabilidad del Estado (`X-Road`)** mediante servicios web seguros, cifrados y con contrato de datos que expongan únicamente los campos autorizados por la ley; asimismo, traducir la exigencia de continuidad en un **`RPO = 0` (*Recovery Point Objective* mediante replicación síncrona entre sitios para cero pérdida de datos)** y un **`RTO = 10 minutos` (*Recovery Time Objective* mediante conmutación automática *Failover* a sitio alterno)**.
+- **B.** Entregar la contraseña maestra de la base de datos interna de la DIAN por correo electrónico a la otra entidad, y definir un `RPO = 30 días` con copias en cinta magnética manual que implican perder un mes entero de declaraciones tributarias.
+- **C.** Invertir las definiciones técnicas estableciendo que el `RTO` mide los gigabytes de disco duro y el `RPO` mide la velocidad del ventilador del procesador, sin implementar replicación entre centros de datos.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El caso ilustra dos antipatrones graves de arquitectura: la creación de **silos de datos locales** (que vulneran el mandato del **Repositorio Único de Datos - DataR** y aumentan la superficie de riesgo sobre información reservada) y la **duplicación de lógica de negocio en la capa de presentación**. La solución arquitectónica consiste en consolidar los datos en la Capa Oro de **DataR** y exponerlos a través de una **Capa Semántica (Semantic Layer)** vinculada al Glosario de Negocio del Gobierno de Datos, donde la métrica *"Cartera Morosa Recuperable"* se codifica y gobierna una sola vez para que cualquier tablero o usuario consuma exactamente el mismo cálculo oficial.
-* **Justificación B (Incorrecta):** Es incorrecta. Mantener bases locales duplica costos, viola el principio de fuente única de verdad y promediar dos cálculos metodológicamente distintos carece de rigor técnico, contable y jurídico en una administración tributaria.
-* **Justificación C (Incorrecta):** Es incorrecta. Trasladar el procesamiento a hojas de cálculo manuales elimina la automatización, la trazabilidad del linaje de datos, los controles de seguridad y aumenta drásticamente el riesgo de error humano.
+* **Por qué la A es la clave correcta:**
+  1. **Interoperabilidad Segura (`MRAE` MinTIC / `X-Road`):** El Lineamiento de Interoperabilidad de la Política de Gobierno Digital prohíbe acoplar bases de datos internas entre entidades públicas o intercambiar medios físicos inseguros; exige el uso de servicios web gobernados sobre el bus de interoperabilidad estatal (**`X-Road`**) con cifrado mutuo, no repudio, auditoría de cada consulta y minimización de datos (entregar solo los atributos amparados por la habilitación legal).
+  2. **Exactitud en `RPO` y `RTO`:** **`RPO = 0`** (*Recovery Point Objective*) significa cero pérdida de datos hacia el pasado (lo cual exige replicación síncrona antes de confirmar la transacción), y **`RTO = 10 min`** (*Recovery Time Objective*) significa que el tiempo máximo de recuperación hacia adelante para volver a operar es de 10 minutos.
+* **Por qué la B y la C son incorrectas:** Violan las políticas de seguridad del MSPI, exponen el corazón de las bases de datos de la DIAN a terceros y confunden o incumplen las métricas de continuidad del negocio.
 
 ---
 
-## 10. Checklist de Autoevaluación Final del Módulo
-Antes de dar por completado este eje temático en la plataforma, verifica que puedes responder afirmativamente a cada punto:
+## Lecturas Complementarias y Bibliografía Oficial Comentada
 
-- [ ] Ubico el dominio de Datos dentro de **TOGAF** y del **MRAE (MinTIC)** y distingo qué cambia en una migración entre el modelo **conceptual, lógico y físico**.
-- [ ] Sé explicar por qué jamás se ejecutan cargas **OLAP** sobre el **OLTP** y por qué el **CDC basado en logs** es superior al *polling* y a los *triggers*.
-- [ ] Distingo los casos de uso de **ETL vs. ELT** y de **Data Warehouse, Data Lake, Lakehouse, Data Fabric y Data Mesh** (con sus 4 principios).
-- [ ] Domino las responsabilidades de las capas **Bronce, Plata y Oro (Medallion)**, el patrón de **Cuarentena**, los **Contratos de Datos** y la **Capa Semántica**.
-- [ ] Diferencio técnicamente **Avro vs. Parquet/ORC** y explico cómo funcionan **Apache Iceberg y Delta Lake** (*ACID, Time Travel, Hidden Partitioning, Compaction y Z-Ordering*).
-- [ ] Aplico el **Modelado Dimensional de Kimball** (Grano, Hechos Transaccionales / Periódicos / Acumulativos, Claves Subrogadas y **SCD Tipos 1, 2, 3 y 6**) y **Data Vault 2.0** (*Hubs, Links, Satellites*).
-- [ ] Conecto cada decisión técnica con el **Repositorio Único de Datos (DataR)**, el **Enmascaramiento Dinámico (DDM)**, el control **ABAC** y la **Reserva Tributaria (Art. 583 del E.T.)**.
-
-## 11. Lecturas Complementarias y Bibliografía Oficial Comentada
-
-### 11.1. Lecturas Complementarias Recomendadas para Profundización
-1. **Armbrust, M., Ghodsi, A., Xin, R., & Zaharia, M. (2021).** *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics*. CIDR 2021.
-   * **Por qué leerlo para el examen:** Explica por qué la arquitectura de dos niveles (Data Lake + DWH separados) falla en consistencia y costos, y cómo los formatos de tabla abiertos unifican BI e IA en un solo repositorio como **DataR**.
-2. **MinTIC (2023).** *Marco de Referencia de Arquitectura Empresarial (MRAE) - Guía Técnica del Dominio de Información y Datos*. Gobierno de Colombia.
-   * **Por qué leerlo para el examen:** Es el estándar obligatorio para todas las entidades del Estado colombiano; define cómo se clasifican los componentes de información (Datos Maestros, Transaccionales y de Referencia) y el ciclo de vida oficial.
-3. **Centro Interamericano de Administraciones Tributarias - CIAT (2022).** *Manual sobre Gestión de Riesgos de Incumplimiento para Administraciones Tributarias y Gobierno de Datos*.
-   * **Por qué leerlo para el examen:** Aterriza cómo una administración tributaria cruza facturación electrónica, declaraciones y reportes de terceros (exógena) manteniendo la trazabilidad jurídica.
-
-### 11.2. Bibliografía Técnica, Estándares y Marco Normativo (Corte: 19 de junio de 2026)
-
-#### A. Estándares Internacionales y Libros Canónicos
-* **DAMA International (2017).** *DAMA-DMBOK: Data Management Body of Knowledge* (2nd Ed.). Technics Publications. *(Capítulos 3: Gobierno de Datos, 4: Arquitectura de Datos, 5: Modelado y Diseño, 8: Integración e Interoperabilidad, 11: Data Warehousing y BI).*
-* **Kimball, R., & Ross, M. (2013).** *The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling* (3rd Ed.). Wiley. *(Referencia oficial para tablas de hechos, grano, dimensiones conformadas y técnicas SCD Tipos 0 a 6).*
-* **Linstedt, D., & Olschimke, M. (2015).** *Building a Scalable Data Warehouse with Data Vault 2.0*. Morgan Kaufmann. *(Referencia oficial para modelado de Hubs, Links, Satellites y claves Hash en la capa Plata).*
-* **Dehghani, Z. (2022).** *Data Mesh: Delivering Data-Driven Value at Scale*. O'Reilly Media. *(Referencia oficial para los 4 principios del Data Mesh y gobernanza computacional federada).*
-* **Kleppmann, M. (2017).** *Designing Data-Intensive Applications (DDIA)*. O'Reilly Media. *(Capítulos sobre almacenamiento columnar vs. filas, codificación Avro/Parquet, replicación y CDC basado en logs).*
-* **The Open Group (2022).** *The TOGAF® Standard, 10th Edition — Architecture Development Method (ADM), Phase C: Information Systems Architectures (Data Architecture)*.
-* **Apache Software Foundation (2025).** *Apache Iceberg Table Spec v2/v3 & Apache Parquet Format Specification*. Documentación técnica oficial.
-
-#### B. Marco Normativo Colombiano e Institucional DIAN (Vigencia hasta el 19 de junio de 2026)
-* **Estatuto Tributario Nacional (Decreto 624 de 1989 y modificaciones vigentes).** Especialmente **Artículo 583 al 587** (Reserva de las declaraciones tributarias y usos permitidos de la información) y **Artículo 616-1** (Sistema de Facturación Electrónica).
-* **Ley Estatutaria 1581 de 2012 y Decreto 1074 de 2015.** Régimen General de Protección de Datos Personales (Principios de finalidad, circulación restringida, seguridad y confidencialidad).
-* **Ley Estatutaria 1712 de 2014.** Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional (Datos Abiertos vs. Información pública reservada).
-* **Documento CONPES 3920 de 2018.** Política Nacional de Explotación de Datos (Big Data) del Estado Colombiano.
-* **Decreto 1742 de 2020.** Por el cual se modifica la estructura de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (DIAN) — Funciones de la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos.
-* **Resolución DIAN No. 067 de 2024 (y Resoluciones 065 y 066 de 2024).** Manual Específico de Requisitos y Funciones (MERF) vigente para el Proceso de Selección DIAN 2676.
+1. **Marco de Referencia de Arquitectura Empresarial del Estado Colombiano (`MRAE` - MinTIC) y Política de Gobierno Digital (Decreto 1078 de 2015 / Decreto 767 de 2022):**
+   * **Dominio de Información y Datos:** Lineamientos obligatorios para el diseño del Catálogo de Componentes de Información (Datos Maestros, de Referencia, Transaccionales), ciclo de vida del dato, arquitectura de referencia e interoperabilidad mediante **Servicios Ciudadanos Digitales (`X-Road`)**.
+2. **Normativa Tributaria, de Transparencia y Protección de Datos (Vigencia a junio de 2026):**
+   * **Artículos 583 a 587 del Estatuto Tributario:** Régimen de **Reserva Tributaria** de las declaraciones e información fiscal y condiciones estrictas para el intercambio interinstitucional.
+   * **Ley Estatutaria 1581 de 2012 y Ley 1712 de 2014:** Principios de seguridad, confidencialidad, circulación restringida, privacidad por diseño y armonización entre Datos Abiertos agregados y Reserva Legal.
+   * **Decreto 1742 de 2020 (Arts. 39 y 42) y Resolución DIAN 067 de 2024 (MERF):** Funciones de la Subdirección de Procesamiento de Datos en el diseño, modelado y administración del **Repositorio Único de Datos (`DataR`)**.
+3. **Literatura Técnica Canónica de Arquitectura y Modelado de Datos:**
+   * **DAMA International (2017):** *DAMA-DMBOK: Data Management Body of Knowledge (2nd Edition)*. Capítulos de Arquitectura de Datos, Modelado y Diseño de Datos, Almacenamiento y Operaciones, e Integración e Interoperabilidad.
+   * **Kimball, R., & Ross, M. (2013):** *The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling (3rd Edition)*. Wiley. La biblia del modelado dimensional: declaración del Grano, Tablas de Hechos (Transaccionales, Periódicas y Acumulativas), métricas Semi-Aditivas, Claves Subrogadas y Dimensiones de Cambio Lento (`SCD Tipos 0 a 6`).
+   * **Linstedt, D., & Olschimke, M. (2015):** *Building a Scalable Data Warehouse with Data Vault 2.0*. Morgan Kaufmann. Referencia oficial del modelado `Hubs`, `Links` y `Satellites` para integración auditable a gran escala.
+   * **Dehghani, Z. (2022):** *Data Mesh: Delivering Data-Driven Value at Scale*. O'Reilly Media. Los 4 principios socio-técnicos de la malla de datos descentralizada y la gobernanza computacional federada.
