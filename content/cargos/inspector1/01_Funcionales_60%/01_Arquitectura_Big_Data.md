@@ -799,15 +799,30 @@ En cambio, **`Cassandra` y `HBase` usan una estructura llamada `LSM-Tree` (*Log-
 ========================================================================================
 ```
 
-**Diferencia crítica entre `Apache Cassandra` y `Apache HBase` para el examen:**
-* **`Apache Cassandra`:** Arquitectura **sin maestro (*Masterless / Peer-to-Peer*)** en anillo donde todos los nodos son iguales. Según el Teorema CAP/PACELC es **`AP` (`PA/EL`)**: prioriza disponibilidad continua y baja latencia (aunque permite configurar consistencia por quórum: $R + W > N$).
-* **`Apache HBase`:** Arquitectura **Maestro-Esclavo (*HMaster + RegionServers*)** construida sobre `HDFS` y coordinada por `ZooKeeper`. Según el Teorema CAP/PACELC es **`CP` (`PC/EC`)**: garantiza **Consistencia Fuerte (Linealizable)** en cada lectura y escritura.
+#### Diferencia Crítica entre `Apache Cassandra` y `Apache HBase` y la Ecuación de Quórum ($R + W > N$)
+* **`Apache Cassandra` (Arquitectura *Masterless Peer-to-Peer* — `PA/EL`):**
+  * Todos los nodos forman un anillo simétrico con **Hashing Consistente (*Consistent Hashing*)** sin un nodo maestro único que pueda convertirse en cuello de botella.
+  * Aunque por defecto prioriza disponibilidad y baja latencia (`AP`), permite **Consistencia Sintonizable (*Tunable Consistency*)** por operación mediante la desigualdad matemática de quórum:
+    $$R + W > N$$
+    Donde $N$ es el **Factor de Replicación** (ej. $N = 3$ copias del dato), $W$ es cuántos nodos deben confirmar la **escritura** antes de responder éxito, y $R$ es cuántos nodos se consultan en la **lectura**:
+    * Si configuras $W = \text{QUORUM} (2)$ y $R = \text{QUORUM} (2)$, entonces $2 + 2 = 4 > 3$, lo que **garantiza matemáticamente Consistencia Fuerte** (porque el conjunto de nodos donde escribiste y el conjunto donde leíste siempre se traslapan en al menos 1 nodo que tiene el último dato).
+    * Si configuras $W = 1$ (`ONE`) y $R = 1$ (`ONE`), entonces $1 + 1 = 2 \ngtr 3$, obteniendo velocidad máxima pero **Consistencia Eventual**.
+* **`Apache HBase` (Arquitectura *Master-Slave* sobre HDFS — `PC/EC`):**
+  * Opera con un coordinador `HMaster` y servidores de datos `RegionServers`, donde cada rango de llaves (`Region`) es atendido exclusivamente por **un único `RegionServer` a la vez**. Por eso garantiza **Consistencia Fuerte inmediata** sin necesidad de quórum de lectura, a costa de unos segundos de indisponibilidad de esa región si el `RegionServer` falla y debe reasignarse.
 
-#### 7.2.4. Familia 4: Motores de Grafos Nativos (`Neo4j` / `JanusGraph`)
+#### 7.2.4. Familia 4: Motores de Grafos Nativos (`Neo4j` / `JanusGraph`) y Consultas de Redes de Evasión
 * **¿Por qué en SQL un cruce de 6 niveles de socios/facturas explota y en `Neo4j` tarda milisegundos?**
-  * En una base de datos relacional SQL, pasar del Socio $\to$ Empresa A $\to$ Empresa B $\to$ Empresa C $\to$ Empresa D exige hacer **6 `JOIN` recursivos** calculando tablas intermedias gigantescas cada vez.
-  * En una base de datos de grafos nativa (`Neo4j`), se utiliza **Adyacencia Libre de Índices (`Index-Free Adjacency`)**: cada nodo guarda el **puntero físico directo en memoria** hacia sus nodos vecinos. Saltar de una empresa a otra toma un tiempo constante $O(1)$ sin importar si la base tiene 1 millón o 10.000 millones de nodos.
-* **¿Para qué se usa en la DIAN?** Para descubrir **Carruseles de IVA, Proveedores Ficticios (Art. 671 E.T.), Beneficiarios Finales ocultos (RUB) y redes de testaferrato**.
+  * En una base de datos relacional SQL, pasar del Socio $\to$ Empresa A $\to$ Empresa B $\to$ Empresa C $\to$ Empresa D exige hacer **6 `JOIN` recursivos** ($O(\log N)$ por salto más el producto combinatorio de tablas intermedias).
+  * En una base de datos de grafos nativa (`Neo4j`), se utiliza **Adyacencia Libre de Índices (`Index-Free Adjacency`)**: cada nodo guarda el **puntero físico directo en memoria RAM** hacia sus nodos vecinos. Saltar de una empresa a otra toma un tiempo constante $\mathcal{O}(1)$ sin importar si el grafo total tiene 1 millón o 10.000 millones de nodos.
+* **Ejemplo Práctico de Consulta en Lenguaje `Cypher` (`Neo4j`) para Detectar un Carrusel de IVA en la DIAN:**
+  ```cypher
+  // Detecta ciclos cerrados de facturación ficticia (Carrusel de IVA de 3 a 6 saltos)
+  // donde el dinero/crédito fiscal sale de la Empresa A y regresa a la misma Empresa A:
+  MATCH camino_carrusel = (e1:Contribuyente)-[:EMITE_FACTURA*3..6]->(e1)
+  WHERE e1.estado_rut = 'ACTIVO'
+    AND ALL(f IN relationships(camino_carrusel) WHERE f.valor_iva > 50000000)
+  RETURN camino_carrusel, length(camino_carrusel) AS saltos;
+  ```
 
 ---
 
@@ -824,14 +839,24 @@ En cambio, **`Cassandra` y `HBase` usan una estructura llamada `LSM-Tree` (*Log-
 ---
 
 ### 7.4. Micro-Verificación de la Unidad 7
-* **Pregunta rápida 1:** En un motor columnar ancho como `Cassandra` o `HBase` basado en árboles `LSM-Tree`, ¿qué estructura probabilística en memoria RAM permite saber con un $100\%$ de certeza que un NIT **NO** se encuentra dentro de un archivo `SSTable` en disco, evitando abrir el archivo innecesariamente? *(Respuesta: El **Filtro de Bloom (`Bloom Filter`)**).*
-* **Pregunta rápida 2:** ¿Qué característica física de almacenamiento hace que `Neo4j` pueda recorrer 7 niveles de relaciones entre empresas fachada sin sufrir la degradación de los `JOINs` relacionales? *(Respuesta: La **Adyacencia Libre de Índices (`Index-Free Adjacency`)**, donde cada nodo almacena punteros directos a sus nodos conectados).*
+
+::: q
+En un motor columnar ancho como `Cassandra` o `HBase` basado en árboles `LSM-Tree`, ¿qué estructura probabilística en memoria RAM permite saber con un $100\%$ de certeza que un NIT **NO** se encuentra dentro de un archivo `SSTable` en disco, evitando abrir el archivo innecesariamente?
+---
+El **Filtro de Bloom (`Bloom Filter`)**: una estructura de bits compacta en memoria RAM que nunca produce falsos negativos (si dice que el NIT no está en esa `SSTable`, es $100\%$ seguro que no está y se ahorra la lectura de disco).
+:::
+
+::: q
+En un clúster de `Apache Cassandra` con Factor de Replicación $N = 3$, ¿qué condición matemática deben cumplir los niveles de consistencia de lectura ($R$) y escritura ($W$) para garantizar Consistencia Fuerte, y qué propiedad física hace que `Neo4j` recorra 6 niveles de sociedades fachada sin sufrir el costo de los `JOINs` relacionales?
+---
+En Cassandra se debe cumplir la desigualdad de quórum **$R + W > N$** (por ejemplo, `QUORUM` en escritura $W=2$ y `QUORUM` en lectura $R=2$, pues $2+2 > 3$). En `Neo4j`, la velocidad en múltiples saltos se debe a la **Adyacencia Libre de Índices (`Index-Free Adjacency`)**, donde cada nodo almacena punteros físicos directos ($\mathcal{O}(1)$) hacia sus nodos adyacentes.
+:::
 
 ---
 
 ## Unidad 8: Arquitectura Big Data Aplicada en la DIAN — Facturación Electrónica, Exógena, `DataR` y Marco Legal
 
-En esta última unidad conectamos todas las piezas tecnológicas (Kafka, Spark, Parquet, Iceberg, NoSQL) para ver cómo operan integradas dentro de la **Dirección de Gestión de Innovación y Tecnología** y la **Subdirección de Procesamiento de Datos de la DIAN**, bajo las leyes colombianas vigentes a junio de 2026.
+En esta última unidad conectamos todas las piezas tecnológicas (`Kafka`, `Spark`, `Parquet`, `Iceberg`, `NoSQL`) para ver cómo operan integradas dentro de la **Dirección de Gestión de Innovación y Tecnología** y la **Subdirección de Procesamiento de Datos de la DIAN**, bajo las leyes colombianas vigentes a junio de 2026.
 
 ---
 
@@ -874,19 +899,56 @@ El ecosistema de Facturación Electrónica de la DIAN (que incluye Factura Elect
 ```
 
 #### Conceptos Técnicos Misionales de Facturación Electrónica que debes dominar:
-* **`XML UBL 2.1` (*Universal Business Language*):** Es el estándar internacional adoptado por la DIAN para estructurar electrónicamente todas las facturas, notas débito y notas crédito en etiquetas jerárquicas estandarizadas.
-* **`CUFE` (*Código Único de Factura Electrónica*) / `CUDE` / `CUNE`:** Es la huella digital única e irrepetible de cada factura, calculada mediante una función criptográfica **`SHA-384`** que concatena el número de factura, fecha, hora, valor antes de impuestos, IVA, NIT del emisor, NIT del adquirente y la clave técnica. En la arquitectura Big Data de la DIAN, **el `CUFE` actúa como la llave primaria natural de deduplicación e idempotencia**.
+* **`XML UBL 2.1` (*Universal Business Language*):** Es el estándar internacional OASIS adoptado por la DIAN para estructurar electrónicamente todas las facturas, notas débito y notas crédito en etiquetas jerárquicas estandarizadas (`cac:AccountingSupplierParty`, `cac:AccountingCustomerParty`, `cac:TaxTotal`, `cac:LegalMonetaryTotal`, `cac:InvoiceLine`).
+* **`CUFE` (*Código Único de Factura Electrónica*) / `CUDE` / `CUNE`:** Es la huella digital única e irrepetible de cada documento electrónico, calculada mediante una función criptográfica **`SHA-384`** que concatena el número de factura, fecha, hora, valor antes de impuestos, IVA, INC, NIT del emisor, NIT del adquirente y la clave técnica de numeración. En la arquitectura Big Data de la DIAN, **el `CUFE` actúa como la llave primaria natural de deduplicación e idempotencia en todas las capas de `DataR`**.
+
+```python
+# ==============================================================================
+# EJEMPLO REAL EN PYSPARK STRUCTURED STREAMING: INGESTA DE FACTURAS DESDE KAFKA
+# CON EVENT TIME, WATERMARK, DEDUPLICACIÓN POR CUFE Y ESCRITURA ACID EN ICEBERG
+# ==============================================================================
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, window
+
+spark = SparkSession.builder \
+    .appName("DIAN-DataR-Ingesta-FEV") \
+    .config("spark.sql.adaptive.enabled", "true") \
+    .config("spark.sql.adaptive.skewJoin.enabled", "true") \
+    .getOrCreate()
+
+# 1. Lectura en Streaming desde el tópico gobernado de Apache Kafka
+df_stream_fev = spark.readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "kafka-dian-01:9092,kafka-dian-02:9092") \
+    .option("subscribe", "fev-validadas-avro") \
+    .option("startingOffsets", "latest") \
+    .load()
+
+# 2. Definición de Watermark (15 min) sobre Event Time (fecha_emision_xml)
+#    y deduplicación idempotente en flujo usando la llave criptográfica CUFE
+df_limpio_idempotente = df_deserializado \
+    .withWatermark("fecha_emision_xml", "15 minutes") \
+    .dropDuplicates(["cufe", "fecha_emision_xml"])
+
+# 3. Escritura Transaccional Exactly-Once hacia Capa Plata (Apache Iceberg)
+query = df_limpio_idempotente.writeStream \
+    .format("iceberg") \
+    .outputMode("append") \
+    .option("checkpointLocation", "s3://datar-checkpoints/fev_plata_ckpt/") \
+    .option("fanout-enabled", "true") \
+    .toTable("datar_plata.facturas_electronicas")
+```
 
 ---
 
-### 8.2. El Cruce Masivo de Información Exógena Tributaria en `Apache Spark`
+### 8.2. El Cruce Masivo de Información Exógena Tributaria (`Art. 631 E.T.`) en `Apache Spark`
 
-Cada año, en cumplimiento del **Artículo 631 del Estatuto Tributario**, los bancos, empresas, cámaras de comercio, notarías y entidades públicas envían a la DIAN la **Información Exógena** (Formatos `1001` pagos y abonos en cuenta, `1003` retenciones practicadas, `1005` IVA descontable, `1006` IVA generado, `1007` ingresos recibidos, `1008` cuentas por cobrar, `1009` cuentas por pagar, `1019` movimientos en cuentas corrientes y de ahorros).
+Cada año, en cumplimiento del **Artículo 631 del Estatuto Tributario**, los bancos, grandes empresas, cámaras de comercio, notarías y entidades públicas envían a la DIAN la **Información Exógena Tributaria** (Formatos `1001` pagos o abonos en cuenta y retenciones practicadas a terceros, `1003` retenciones que le practicaron, `1005` IVA descontable, `1006` IVA generado, `1007` ingresos brutos recibidos, `1008` saldo de cuentas por cobrar, `1009` saldo de cuentas por pagar, `1019` movimiento en cuentas corrientes y de ahorros, `1035/1036` vinculados económicos).
 
-**¿Cómo procesa la Subdirección de Procesamiento de Datos este monstruo de información?**
-1. **Aterrizaje en Capa Bronce:** Los millones de archivos XML reportados por los obligados se almacenan inmutables en almacenamiento de objetos.
-2. **Estandarización en Capa Plata con `Spark`:** Un pipeline distribuido de **Apache Spark** parsea los XML, los convierte a tablas **`Apache Iceberg` sobre `Parquet`**, valida la estructura contra el **RUT** y aplica reglas de calidad y deduplicación (por ejemplo, descartando reportes anteriores que fueron reemplazados por una corrección posterior del mismo reportante).
-3. **Mitigación de `Data Skew` en los Cruces:** Como los grandes bancos reportan decenas de millones de cuentas en el Formato 1019, los cruces (`.join()`) aplican **`Adaptive Query Execution (AQE)`**, **`Salting`** en claves masivas y **`Broadcast Joins`** para tablas de referencia, consolidando en la **Capa Oro** la ficha integral de terceros de cada ciudadano colombiano (base de la **Declaración Sugerida** y de los programas de fiscalización de **Omisos e Inexactos**).
+**¿Cómo procesa la Subdirección de Procesamiento de Datos este volumen masivo en el Lakehouse `DataR`?**
+1. **Aterrizaje en Capa Bronce:** Los millones de archivos XML reportados por los obligados se almacenan inmutables en almacenamiento de objetos junto con su firma digital y metadatos de radicación.
+2. **Estandarización y Deduplicación Temporal en Capa Plata con `Spark`:** Un pipeline distribuido de **Apache Spark** parsea los XML, los convierte a tablas **`Apache Iceberg` sobre `Parquet`**, valida la estructura contra el **RUT** y aplica una función de ventana (`ROW_NUMBER() OVER (PARTITION BY nit_informante, formato, concepto, nit_informado ORDER BY fecha_radicacion DESC) = 1`) para quedarse **únicamente con la última versión vigente** cuando un reportante ha presentado reemplazos o correcciones de su archivo de Exógena.
+3. **Mitigación de `Data Skew` en los Cruces Nacionales:** Como las grandes entidades financieras reportan decenas de millones de cuentahabientes en el Formato 1019, los cruces (`.join()`) aplican **`Adaptive Query Execution (AQE)`**, **`Salting`** en claves asimétricas y **`Broadcast Hash Joins`** para catálogos de referencia, consolidando en la **Capa Oro** la ficha integral de terceros de cada ciudadano colombiano (insumo directo de la **Declaración Sugerida de Renta e IVA** y de los programas de fiscalización de **Omisos e Inexactos**).
 
 ---
 
@@ -905,8 +967,18 @@ En la prueba escrita de Inspector I, ninguna decisión de Arquitectura Big Data 
 ---
 
 ### 8.4. Micro-Verificación de la Unidad 8
-* **Pregunta rápida 1:** En el pipeline de Facturación Electrónica de la DIAN, ¿qué formato estándar internacional tienen los archivos XML transmitidos por los facturadores y qué atributo criptográfico único sirve como llave primaria para evitar duplicados en el Data Lakehouse? *(Respuesta: El formato estándar es **`XML UBL 2.1`** y su llave única criptográfica (calculada con `SHA-384`) es el **`CUFE` —Código Único de Factura Electrónica—**).*
-* **Pregunta rápida 2:** Según el **Artículo 583 del Estatuto Tributario**, si un equipo de científicos de datos necesita entrenar modelos predictivos sobre tablas de la Capa Plata del Data Lakehouse, ¿pueden trabajar con los NITs y nombres reales en texto claro en sus entornos de experimentación? *(Respuesta: **NO**. Por mandato de la Reserva Tributaria y Privacidad por Diseño, se debe aplicar **Enmascaramiento Dinámico (`DDM`)** o **Seudonimización mediante Hash con Sal (`SHA-256 + Salt`)** junto con control de acceso basado en atributos `ABAC`).*
+
+::: q
+En el pipeline de Facturación Electrónica de la DIAN, ¿qué formato estándar internacional tienen los archivos XML transmitidos por los facturadores y qué atributo criptográfico único sirve como llave primaria para evitar duplicados en el Data Lakehouse?
+---
+El formato estándar internacional adoptado por la DIAN es **`XML UBL 2.1`** (*Universal Business Language*) y su llave única criptográfica (calculada mediante **`SHA-384`**) es el **`CUFE` (Código Único de Factura Electrónica)**, el cual se utiliza junto con `Watermarks` e idempotencia para descartar reintentos duplicados.
+:::
+
+::: q
+Cuando un obligado a reportar Información Exógena (Art. 631 E.T.) envía en mayo un archivo Formato 1001 y en julio envía un archivo de reemplazo corrigiendo los montos reportados, ¿cómo debe procesarse ese cambio entre la Capa Bronce y la Capa Plata de `DataR`?
+---
+En la **Capa Bronce** se conservan inmutables ambos archivos XML originales para preservar la trazabilidad probatoria forense; pero en la **Capa Plata**, el proceso de Apache Spark debe aplicar deduplicación temporal por ventana (`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY fecha_radicacion DESC) = 1`) o un `MERGE INTO` sobre la tabla `Apache Iceberg` para exponer hacia la Capa Oro únicamente la última versión vigente de cada registro.
+:::
 
 ---
 

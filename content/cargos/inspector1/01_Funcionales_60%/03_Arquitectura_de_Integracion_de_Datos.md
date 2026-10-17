@@ -210,29 +210,53 @@ En una API RESTful, cada verbo HTTP tiene dos propiedades matemáticas que el ex
 #### ¿Cómo convertimos un `POST` peligroso en una operación 100% Idempotente en la DIAN?
 Imagina que un ciudadano da clic en *"Pagar Impuesto de Renta por $\$5.000.000$"* (`POST /v1/pagos`). El servidor de la DIAN procesa el pago con éxito, pero justo cuando va a devolver el mensaje `"Pago Exitoso"`, el Wi-Fi del ciudadano se cae un segundo. La aplicación reintenta automáticamente el `POST`.
 Para evitar que se le descuenten $\$10.000.000$ (doble pago), implementamos el patrón de **Llave de Idempotencia (`Idempotency-Key`)**:
-1. Antes de enviar la petición, el cliente genera un código único universal (`UUID`, ej. `Idempotency-Key: 9f8e7d6c-1234...`) y lo manda en el encabezado HTTP.
-2. El **`API Gateway`** o el microservicio revisa en una memoria ultrarrápida (**`Redis`**) si esa llave ya existe:
-   * **Si es la primera vez que llega:** Guarda la llave en `Redis`, ejecuta el cobro una sola vez y guarda la respuesta exitosa asociada a esa llave.
-   * **Si llega un segundo reintento con la misma `Idempotency-Key` mientras el primero aún se está procesando:** Devuelve `HTTP 409 Conflict` para bloquear condiciones de carrera (*Race Conditions*).
-   * **Si llega el reintento cuando el primero ya terminó:** **NO vuelve a tocar la base de datos ni vuelve a cobrar**; simplemente le devuelve al ciudadano el mismo recibo exitoso que ya estaba guardado en `Redis`.
+1. Antes de enviar la petición, el cliente genera un código único universal (`UUID v4`, ej. `Idempotency-Key: 9f8e7d6c-1234-4a5b-8c9d-0123456789ab`) y lo manda en el encabezado HTTP junto con el cuerpo de la transacción.
+2. El **`API Gateway`** o el microservicio ejecuta una operación atómica (`SET key value NX EX 86400` en **`Redis`**) para verificar si esa llave ya existe:
+   * **Escenario A — Primera vez que llega la llave:** Guarda la llave en `Redis` con estado `IN_PROGRESS` y un `hash SHA-256` del cuerpo de la petición, ejecuta el cobro una sola vez en la base de datos y actualiza el registro en `Redis` con el código `201 Created` y el JSON del recibo oficial de pago (con tiempo de expiración `TTL` de 24 a 72 horas).
+   * **Escenario B — Llega un segundo reintento con la misma `Idempotency-Key` mientras el primero aún se está procesando (milisegundos después):** Devuelve inmediatamente **`HTTP 409 Conflict`** (o `425 Too Early`) para bloquear condiciones de carrera (*Race Conditions*).
+   * **Escenario C — Llega el reintento cuando el primero ya terminó:** **NO vuelve a tocar la base de datos ni vuelve a cobrar**; simplemente le devuelve al ciudadano exactamente el mismo recibo exitoso (`201 Created`) que ya estaba guardado en `Redis`.
+   * **Escenario D — Reutilización accidental o maliciosa de la misma llave con otro monto distinto:** El servidor compara el `hash SHA-256` del cuerpo nuevo contra el original guardado en `Redis`; al ver que cambiaron los parámetros, rechaza la petición con **`HTTP 422 Unprocessable Entity`**.
+
+#### 2.2.1. Comparativa Estructural de Payloads y Contratos (`SOAP` vs. `REST` vs. `GraphQL` vs. `gRPC`)
+
+Para que como Científico de Datos visualices la diferencia exacta en el alambre (*on the wire*) cuando integras servicios en la Subdirección de Procesamiento de Datos, observa cómo viaja la misma consulta de un contribuyente en los 4 estilos:
+
+| Criterio Técnico | `SOAP 1.2` (`WSDL / XML`) | `RESTful Nivel 2/3` (`OpenAPI 3.1 / JSON`) | `GraphQL` (`Schema SDL / JSON`) | `gRPC` (`HTTP/2 + Protobuf Binario`) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Protocolo de Transporte** | HTTP POST (también admite SMTP / JMS). | HTTP/1.1 o HTTP/2 nativo (todos los verbos). | HTTP POST hacia un único endpoint (`/graphql`). | **HTTP/2 obligatorio** (multiplexación y *streams* binarios). |
+| **Formato del Mensaje** | Texto `XML` verboso con sobre `<soap:Envelope>`. | Texto `JSON` legible por humanos y navegadores. | Consulta tipada y respuesta `JSON` a la medida. | **Binario serializado (`Protocol Buffers`)** no legible a simple vista. |
+| **Tamaño Típico del Payload** | Muy alto ($\sim 4\text{ KB}$ a $50\text{ KB}$ por etiquetas repetidas). | Medio ($\sim 1\text{ KB}$ a $5\text{ KB}$). | Bajo (solo viajan los campos explícitamente pedidos). | **Ultraligero ($\sim 150\text{ Bytes}$, hasta 80% menor que JSON).** |
+| **Contrato Formal (*Contract-First*)** | Archivo `.wsdl` + Esquema `.xsd`. | Archivo `openapi.yaml` + `JSON Schema`. | Archivo `schema.graphql` fuertemente tipado. | Archivo `.proto` compilado a código nativo (`protoc`). |
+| **Seguridad del Mensaje** | **`WS-Security`** (firma y cifrado dentro del XML mismo). | Transporte `TLS / mTLS` + cabeceras `OAuth2 / JWT`. | Transporte `TLS` + `JWT` + **Límite de Profundidad (*Depth Limit*)**. | `mTLS` nativo sobre HTTP/2 + *Token Call Credentials*. |
+| **Caso de Uso Ideal en la DIAN** | Recepción formal de **Facturación Electrónica (`UBL 2.1`)** con firma digital embebida. | APIs interinstitucionales en **`X-Road`**, portales web y consultas estándar del RUT. | Aplicaciones móviles de inspectores en campo y tableros compuestos con redes lentas. | **Invocación en tiempo real ($< 10\text{ ms}$) de modelos de Machine Learning** y comunicación interna entre microservicios. |
 
 ---
 
 ### 2.3. Micro-Verificación de la Unidad 2
-* **Pregunta rápida 1:** Una aplicación móvil de fiscalización en campo sufre lentitud en zonas de baja cobertura celular porque al consultar el endpoint REST `/contribuyentes/{nit}` descarga un JSON con 95 atributos cuando en la pantalla solo muestra 3 datos, y además debe hacer 5 llamadas distintas para traer las obligaciones y representantes legales. ¿Qué tecnología de API resuelve simultáneamente ese *Over-fetching* y *Under-fetching*? *(Respuesta: **`GraphQL`**).*
-* **Pregunta rápida 2:** ¿Qué mecanismo técnico impide que un reintento de red sobre una petición `POST` duplique una transacción de pago o radicación tributaria? *(Respuesta: El envío de un encabezado **`Idempotency-Key` (UUID único por operación)** validado de forma atómica en una caché en memoria como **`Redis`**).*
+
+::: q
+Una aplicación móvil de fiscalización aduanera en puertos presenta alta latencia porque al consultar el endpoint REST `/importadores/{nit}` descarga un JSON con 95 columnas cuando en pantalla solo muestra 3 datos, y además requiere 5 llamadas adicionales para traer las declaraciones de importación y alertas de riesgo. ¿Qué arquitectura de API resuelve simultáneamente ese *Over-fetching* y *Under-fetching*, y qué control de seguridad obligatorio debe configurarse en su servidor?
+---
+Se debe implementar **`GraphQL`**, que permite al cliente solicitar en una sola petición exactamente los 3 atributos del importador y las listas anidadas requeridas. Como control de seguridad obligatorio en el servidor se debe configurar **Limitación de Profundidad de Consulta (*Query Depth Limiting*)** y **Análisis de Complejidad/Costo de Consulta (*Query Cost Analysis*)** para impedir ataques de denegación de servicio (DoS) mediante consultas circulares profundamente anidadas.
+:::
+
+::: q
+Un contribuyente envía una petición `POST /v1/pagos` para cancelar su declaración de IVA; debido a una micro-caída de red, su navegador reintenta automáticamente el envío 2 segundos después. ¿Cómo evita la arquitectura de la DIAN que se ejecute un doble cobro?
+---
+Mediante el patrón de **Receptor Idempotente con `Idempotency-Key`**: el cliente genera un `UUID` único en el encabezado HTTP y el **`API Gateway`** valida atómicamente esa llave en **`Redis`**. Al detectar que la llave ya fue procesada exitosamente hace 2 segundos, devuelve la misma respuesta almacenada en caché sin volver a ejecutar la transacción bancaria ni insertar un segundo pago.
+:::
 
 ---
 
 ## Unidad 3: Seguridad Perimetral y Resiliencia — `API Gateway`, `mTLS`, `OAuth 2.0`, `JWT (RS256)`, `Rate Limiting` y `Circuit Breaker`
 
-Las APIs de la DIAN están expuestas a internet para recibir millones de peticiones de contribuyentes, bancos y otras entidades del Estado. ¿Cómo las blindamos contra hackers, suplantaciones, sobrecargas en días de vencimiento y caídas en cascada?
+Las APIs de la DIAN están expuestas a internet para recibir millones de peticiones de contribuyentes, bancos, proveedores tecnológicos de facturación y otras entidades del Estado. ¿Cómo las blindamos contra hackers, suplantaciones, sobrecargas en días de vencimiento tributario y caídas en cascada?
 
 ---
 
-### 3.1. El Guardián de la Puerta Principal: El `API Gateway`
+### 3.1. El Guardián de la Puerta Principal: El `API Gateway` y el Patrón `BFF` (*Backend For Frontend*)
 
-Nunca jamás se permite que un usuario externo en internet se conecte directamente a los microservicios internos de la DIAN. En la frontera (Zona Desmilitarizada o `DMZ`) se coloca un **`API Gateway`** (como *Kong*, *Apigee*, *AWS API Gateway* o *Azure API Management*).
+Nunca jamás se permite que un usuario externo en internet se conecte directamente a los microservicios internos ni a los nodos de `DataR`. En la frontera perimetral (Zona Desmilitarizada o `DMZ`) se coloca un **`API Gateway`** empresarial:
 
 ```
 ========================================================================================
@@ -258,52 +282,68 @@ Nunca jamás se permite que un usuario externo en internet se conecte directamen
 ========================================================================================
 ```
 
+#### ¿Qué responsabilidades transversales (*Cross-Cutting Concerns*) centraliza el `API Gateway`?
+1. **Terminación `TLS / mTLS`:** Descifra y valida los certificados digitales en la puerta para quitarle esa carga matemática de CPU a los microservicios internos.
+2. **Autenticación y Autorización Perimetral:** Verifica que el token `JWT` sea auténtico, no haya expirado (`exp`) y tenga el permiso (`scope`) requerido antes de dejar pasar el paquete a la red interna.
+3. **Enrutamiento Dinámico, Versionamiento (`/v1/`, `/v2/`) y Despliegues *Canary*:** Permite enviar el $95\%$ del tráfico a la versión estable de un servicio y el $5\%$ a la versión nueva para probarla en vivo sin riesgo.
+4. **Transformación de Protocolos:** Puede recibir una petición externa en `REST/JSON` y traducirla internamente a una llamada ultrarrápida en **`gRPC/Protobuf`** hacia los microservicios de la DIAN.
+5. **Patrón `BFF` (*Backend For Frontend*):** Cuando la DIAN tiene clientes muy distintos (por ejemplo, la App Móvil de ciudadanos vs. el Portal Web MUISCA de escritorio vs. la pasarela de Grandes Contribuyentes), se crean adaptadores específicos por tipo de cliente detrás del Gateway para agregar y formatear los datos exactamente como los necesita cada interfaz.
+
 ---
 
 ### 3.2. Las 3 Capas de Seguridad Criptográfica en Integración: `mTLS`, `OAuth 2.0` y `JWT (RS256 vs. HS256)`
 
-En el examen de la CNSC es fundamental no confundir qué hace cada una de estas tres siglas:
+En el examen de la CNSC es fundamental no confundir qué hace cada una de estas tres siglas y cómo se combinan en una arquitectura de **Confianza Cero (*Zero Trust Architecture*)**:
 
-#### 1. `mTLS` (*Mutual TLS* / TLS Mutuo) — Autenticación de Máquinas en la Capa de Transporte
-* **¿Qué es el `TLS` normal (el candadito verde del navegador)?** Cuando entras a `www.dian.gov.co`, tu navegador verifica el certificado digital de la DIAN para saber que no es una página falsa, pero el servidor de la DIAN aún no sabe quién eres tú a nivel de certificado de red.
-* **¿Qué es `mTLS` (*Mutual TLS*)?** Es una validación **en ambas direcciones (doble vía)**:
+#### 1. `mTLS` (*Mutual TLS* / TLS Mutuo) — Autenticación de Máquinas en la Capa de Transporte (Capa 4/7)
+* **¿Qué es el `TLS` normal (el candadito del navegador)?** Cuando entras a `www.dian.gov.co`, tu navegador verifica el certificado digital de la DIAN para saber que no es una página falsa, pero el servidor de la DIAN aún no sabe quién eres tú a nivel de certificado de red.
+* **¿Qué es `mTLS` (*Mutual TLS*)?** Es una validación criptográfica **en ambas direcciones (doble vía)** durante el saludo inicial (*TLS Handshake*):
   1. El servidor de la DIAN le presenta su certificado digital **`X.509`** al servidor del Banco o de la Registraduría.
-  2. **Y el servidor del Banco también está obligado a presentarle su propio certificado digital `X.509`** firmado por una Entidad de Certificación autorizada (`CA` / `ONAC`), verificando que no esté revocado (`OCSP` / `CRL`).
-  * Si un hacker intenta conectarse a la API interinstitucional desde un computador que no tiene instalado el certificado criptográfico privado del Banco, la conexión es rechazada en el primer milisegundo antes siquiera de poder enviar una contraseña.
+  2. **Y el servidor del Banco también está obligado a presentarle su propio certificado digital `X.509`** emitido por una Entidad de Certificación autorizada (`CA` / `ONAC`), demostrando matemáticamente que posee la llave privada correspondiente y verificando en línea que el certificado no haya sido revocado (**`OCSP`** — *Online Certificate Status Protocol* o **`CRL`** — *Certificate Revocation List*).
+  * Si un atacante intenta conectarse a la API interinstitucional desde un servidor que no posee el certificado privado del Banco, la conexión es rechazada en el primer milisegundo en la capa de red antes siquiera de poder enviar una petición HTTP.
 
-#### 2. `OAuth 2.0` (*Open Authorization*) — El Protocolo de Autorización Delegada
-* Es el estándar para otorgar permisos de acceso temporales (**`Access Tokens`**) con alcances específicos (**`Scopes`**, ej. `scope: "rut:consultar"`) sin tener que andar enviando el usuario y la contraseña maestra en cada llamada.
-* Cuando se comunican **dos servidores entre sí sin intervención humana** (por ejemplo, el servidor de un Proveedor Tecnológico enviando facturas al servidor de la DIAN, comunicación *Machine-to-Machine M2M*), el flujo de OAuth 2.0 que se utiliza se llama **`Client Credentials Grant`**.
+#### 2. `OAuth 2.0` (*Open Authorization*) y `OIDC` (*OpenID Connect*) — Autorización e Identidad
+* **`OAuth 2.0`** es el estándar para otorgar permisos de acceso temporales (**`Access Tokens`**) con alcances granulares (**`Scopes`**, ej. `scope: "rut:lectura exogena:radicacion"`) sin compartir contraseñas maestras.
+* **¿Qué flujo (*Grant Type*) de OAuth 2.0 se usa en cada caso en la DIAN?**
+  * **Entre dos servidores sin intervención humana (*Machine-to-Machine M2M*, ej. Servidor del Banco $\leftrightarrow$ Servidor DIAN):** Se usa exclusivamente **`Client Credentials Grant`**.
+  * **Cuando un ciudadano o funcionario humano inicia sesión en una aplicación web o móvil:** Se usa **`Authorization Code Grant with PKCE` (*Proof Key for Code Exchange*)** combinado con **`OpenID Connect (OIDC)`**, que añade un `ID Token` con la identidad verificada de la persona.
 
-#### 3. `JWT` (*JSON Web Token*) y la Regla Crítica: `RS256` (Asimétrico) vs. `HS256` (Simétrico)
-Un **`JWT`** es un carnet digital compacto dividido en 3 partes separadas por puntos (`Header.Payload.Signature`):
-1. **`Header`:** Dice qué algoritmo criptográfico se usó para firmarlo (`"alg": "RS256"`).
-2. **`Payload (Claims)`:** Trae los datos del titular: quién lo emitió (`iss`), quién es el NIT (`sub`), cuándo vence (`exp`) y qué permisos tiene (`scope`). *(¡Ojo! El Payload va codificado en Base64 legible por cualquiera, por eso **nunca debes meter contraseñas ni datos secretos adentro de un JWT**).*
-3. **`Signature` (Firma Criptográfica):** Garantiza que nadie haya alterado ni una letra del Payload (si alguien cambia su rol de `"contribuyente"` a `"administrador_dian"`, la firma se invalida automáticamente).
+#### 3. `JWT` (*JSON Web Token* — RFC 7519) y la Regla Crítica: `RS256` (Asimétrico) vs. `HS256` (Simétrico)
+Un **`JWT`** es una credencial digital autocontenida dividida en 3 partes separadas por puntos (`Header.Payload.Signature`):
+1. **`Header` (Encabezado):** Indica el algoritmo criptográfico y el identificador de la llave pública (`{"alg": "RS256", "typ": "JWT", "kid": "dian-key-2026-01"}`).
+2. **`Payload` (Cuerpo de *Claims* o Afirmaciones):** Contiene los atributos verificables del titular:
+   * `iss` (*Issuer*): Quién emitió el token (ej. `https://identidad.dian.gov.co`).
+   * `sub` (*Subject*): Identificador del sujeto o NIT (`"900123456"`).
+   * `aud` (*Audience*): Para qué servicio exacto fue emitido el token (ej. `"api-facturacion-dian"`). Si alguien intenta usar un token emitido para el servicio A dentro del servicio B, el servicio B lo rechaza al validar `aud`.
+   * `exp` (*Expiration Time*) y `iat` (*Issued At*): Ventana corta de vida del token (ej. 15 minutos) para reducir la ventana de exposición.
+   * `jti` (*JWT ID*): Identificador único del token para poder revocarlo en una lista negra en `Redis` si se detecta robo.
+   *(¡Cuidado! El Payload solo está codificado en `Base64URL`, NO está cifrado; cualquiera que intercepte el token puede decodificar y leer el Payload, por lo que **jamás se deben incluir contraseñas ni datos sujetos a reserva tributaria dentro de un JWT**).*
+3. **`Signature` (Firma Criptográfica):** Garantiza integridad total; si alguien modifica un solo carácter del Payload (ej. cambiar su NIT o agregar un permiso de administrador), la firma matemática deja de coincidir y el `API Gateway` rechaza el token de inmediato (`HTTP 401 Unauthorized`).
 
 > [!EXAM]
 > **¡Pregunta de Oro en el Examen CNSC!: ¿Por qué en la DIAN se exige firmar los `JWT` con `RS256` (Asimétrico) y NO con `HS256` (Simétrico)?**
-> * **`HS256` (Simétrico — Peligroso en arquitecturas grandes):** Usa **la misma llave secreta** tanto para **crear/firmar** el token como para **verificarlo**. Si tienes 40 microservicios que necesitan verificar tokens, tendrías que copiar la llave secreta en los 40 microservicios. Si un atacante vulnera el microservicio menos importante, roba la llave secreta y **puede fabricar tokens falsos de Superadministrador para toda la DIAN**.
-> * **`RS256` (Asimétrico — Estándar Seguro en la DIAN):** Usa un par de llaves matemáticas:
->   * La **Llave Privada** vive guardada bajo siete llaves **únicamente en el Servidor Central de Identidad (*Identity Provider*)**, que es el único del mundo que puede **firmar** tokens.
->   * A los 40 microservicios y al API Gateway solo se les entrega la **Llave Pública**, la cual sirve únicamente para **verificar** que la firma sea auténtica, pero jamás sirve para fabricar un token falso.
+> * **`HS256` (`HMAC + SHA-256` — Criptografía Simétrica):** Utiliza **exactamente la misma cadena secreta** tanto para **crear/firmar** el token como para **verificarlo**. Si en la DIAN existen 40 microservicios que necesitan validar tokens, habría que distribuir esa misma llave secreta en los 40 microservicios. Si un atacante vulnera cualquiera de esos 40 servicios (o un desarrollador filtra esa variable de entorno), el atacante obtiene la llave secreta y **puede fabricar y firmar tokens falsos de Superadministrador para toda la entidad**.
+> * **`RS256` (`RSA + SHA-256` — Criptografía Asimétrica de Llave Pública/Privada):** Utiliza un par de llaves matemáticas vinculadas:
+>   * La **Llave Privada (*Private Key*)** permanece custodiada en un módulo de seguridad de hardware (`HSM`) **exclusivamente dentro del Servidor Central de Identidad (*Identity Provider - IdP*)**, quien es el único en toda la DIAN que puede **firmar** tokens.
+>   * El `API Gateway` y los 40 microservicios solo descargan la **Llave Pública (*Public Key*)** mediante el endpoint estándar **`JWKS` (*JSON Web Key Set*)**. Con la llave pública cualquiera puede **verificar** que un token fue emitido por el IdP de la DIAN, pero es matemáticamente imposible fabricar un token nuevo con ella.
 
 ---
 
-### 3.3. Los 2 Patrones de Resiliencia: `Rate Limiting (Token Bucket)` y `Circuit Breaker`
+### 3.3. Los 3 Patrones de Resiliencia y Estabilidad: `Rate Limiting`, `Circuit Breaker` y `Bulkhead`
 
-#### 3.3.1. `Rate Limiting` (Limitación de Tasa con el Algoritmo *Token Bucket*)
-Imagina que un proveedor tecnológico mal programado entra en un ciclo infinito (`while True`) y empieza a lanzar $50.000\text{ peticiones por segundo}$ a la API de consulta del RUT, amenazando con dejar sin servicio al resto de Colombia.
-Para impedirlo, el `API Gateway` aplica **`Rate Limiting`** mediante el algoritmo del **Balde de Fichas (`Token Bucket`)**:
-* A cada cliente se le asigna un balde virtual al que le caen, por ejemplo, **10 fichas por segundo** (con un tope máximo de ráfaga de 50 fichas).
-* Cada petición que hace el cliente gasta **1 ficha**.
-* Si el cliente hace 50 peticiones en un segundo, se vacía su balde: la petición número 51 es **bloqueada inmediatamente en la puerta por el API Gateway** devolviendo el código estándar **`HTTP 429 Too Many Requests`** junto con el encabezado `Retry-After: 10`, protegiendo al 100% los servidores internos de la DIAN.
+#### 3.3.1. `Rate Limiting` y `Throttling` (Algoritmo Matemático de *Token Bucket* vs. *Leaky Bucket*)
+Imagina que un proveedor tecnológico mal programado entra en un ciclo infinito (`while True`) y empieza a lanzar $50.000\text{ peticiones por segundo}$ a la API de consulta del RUT en pleno día de vencimiento de Renta, amenazando con tumbar el portal para todo el país.
+Para impedirlo, el `API Gateway` aplica **Limitación de Tasa (`Rate Limiting`)** por NIT o por certificado cliente mediante el algoritmo del **Balde de Fichas (`Token Bucket`)**:
+* A cada consumidor se le asigna en memoria (`Redis`) un balde con capacidad máxima $B$ (ej. $B = 50\text{ fichas}$, que define la **ráfaga máxima instantánea o *Burst***) que se recarga continuamente a una velocidad constante $R$ (ej. $R = 10\text{ fichas por segundo}$, que define la **tasa sostenida promedio**).
+* Cada petición entrante consume **1 ficha**:
+  * Si en el balde hay al menos 1 ficha disponible ($\text{tokens} \ge 1$), se descuenta 1 ficha y la petición pasa en menos de 1 milisegundo.
+  * Si el consumidor lanza una ráfaga de 51 peticiones en un segundo, agota las 50 fichas y la petición 51 es **rechazada inmediatamente en la puerta del `API Gateway`** devolviendo el código estándar **`HTTP 429 Too Many Requests`** junto con los encabezados `Retry-After: 5` y `X-RateLimit-Remaining: 0`, protegiendo al $100\%$ las bases de datos internas de la DIAN.
 
-#### 3.3.2. Patrón `Circuit Breaker` (Interruptor de Circuito / Taco Eléctrico)
-En una casa, cuando un electrodoméstico hace cortocircuito, el "taco" (*breaker*) salta y corta la corriente para que no se incendie toda la instalación eléctrica de la casa.
-En sistemas distribuidos ocurre lo mismo: imagina que el **Microservicio de Facturación** llama a un **Servicio Externo de Validación** que de repente se cuelga y tarda 60 segundos en responder. Si no hay protección, miles de hilos de ejecución se quedan esperando esos 60 segundos, se agota toda la memoria RAM y **se caen en cascada todos los sistemas de la DIAN**.
+#### 3.3.2. Patrón `Circuit Breaker` (Interruptor de Circuito / Taco Eléctrico) y `Bulkhead` (Mamparos de Barco)
+En una casa, cuando un electrodoméstico hace cortocircuito, el "taco" (*breaker*) salta y corta la corriente de ese cuarto para que no se incendie toda la instalación eléctrica de la casa.
+En sistemas distribuidos ocurre lo mismo: imagina que el **Microservicio de Devoluciones** invoca a un **Servicio de Consulta Externa** que de repente se degrada y tarda 60 segundos en dar *Timeout*. Sin protección, miles de peticiones se quedan esperando esos 60 segundos, agotan todos los hilos (*threads*) y la memoria RAM del servidor, y **provocan una caída en cascada (*Cascading Failure*) de toda la plataforma de la DIAN**.
 
-El patrón **`Circuit Breaker`** envuelve esa llamada y funciona con **3 estados exactos**:
+El patrón **`Circuit Breaker`** envuelve esa llamada remota y opera como una máquina de estados con **3 estados exactos**:
 
 ```
 ========================================================================================
@@ -313,12 +353,12 @@ El patrón **`Circuit Breaker`** envuelve esa llamada y funciona con **3 estados
   1. [ CLOSED (Cerrado - Todo Normal) ]
      El cable está conectado: las peticiones pasan normalmente al servicio destino.
      |
-     | (¡Peligro!: Más del 50% de las llamadas fallan o dan Timeout en 10 segundos)
+     | (¡Peligro!: Más del 50% de las llamadas fallan o dan Timeout en una ventana de 10 s)
      v
   2. [ OPEN (Abierto - ¡Saltó el Taco!) ]
      Se corta el paso hacia el servicio caído. Durante ej. 30 segundos, cualquier llamada
-     nueva se rechaza en 1 milisegundo (Fast-Fail) o responde con un valor por defecto
-     (Fallback), dándole un respiro al servidor caído para que se recupere sin ahogarlo.
+     nueva se rechaza en 1 milisegundo (Fast-Fail) o responde con un valor contingente
+     (Fallback / Caché), dándole un respiro al servidor caído para que se recupere.
      |
      | (Pasan los 30 segundos de enfriamiento -> El interruptor prueba suerte)
      v
@@ -329,17 +369,30 @@ El patrón **`Circuit Breaker`** envuelve esa llamada y funciona con **3 estados
 ========================================================================================
 ```
 
+* **Complemento: El Patrón `Bulkhead` (Compartimentos Estancos de un Barco):**
+  Así como el casco de un barco está dividido en compartimentos separados para que, si se inunda uno, el barco no se hunda, el patrón **`Bulkhead`** asigna grupos de hilos y conexiones (*Connection Pools*) separados para cada servicio destino. Así, si el servicio lento A consume sus 10 hilos asignados, los servicios B y C siguen teniendo sus propios 40 hilos intactos y jamás se ven afectados.
+
 ---
 
 ### 3.4. Micro-Verificación de la Unidad 3
-* **Pregunta rápida 1:** ¿Por qué en el ecosistema de microservicios de la DIAN los tokens `JWT` deben firmarse con el algoritmo asimétrico `RS256` en lugar del simétrico `HS256`? *(Respuesta: Porque con **`RS256`** solo el servidor central de identidad posee la **Llave Privada** para firmar tokens, mientras que los microservicios solo tienen la **Llave Pública** para verificarlos, evitando que el compromiso de un microservicio permita falsificar tokens).*
-* **Pregunta rápida 2:** Cuando un cliente supera su cuota de peticiones por segundo en el `API Gateway` bajo el algoritmo *Token Bucket*, ¿qué código de estado HTTP exacto debe devolver el servidor? *(Respuesta: **`HTTP 429 Too Many Requests`**).*
+
+::: q
+¿Por qué en el ecosistema de microservicios de la DIAN los tokens `JWT` deben firmarse con el algoritmo asimétrico `RS256` en lugar del algoritmo simétrico `HS256`?
+---
+Porque con **`RS256`** únicamente el Servidor Central de Identidad (*IdP*) posee la **Llave Privada** capaz de firmar y emitir tokens, mientras que el `API Gateway` y los microservicios internos solo utilizan la **Llave Pública (`JWKS`)** para verificar la autenticidad de la firma. Con `HS256`, todos los microservicios tendrían que conocer el mismo secreto compartido y si uno solo fuera vulnerado, el atacante podría fabricar tokens falsos para toda la entidad.
+:::
+
+::: q
+Cuando un servicio destino falla repetidamente superando el umbral de errores y el patrón `Circuit Breaker` pasa del estado `Closed` al estado `Open`, ¿qué ocurre con las nuevas peticiones durante la ventana de enfriamiento y cómo se comprueba después si el servicio ya se recuperó?
+---
+En estado **`Open`**, el interruptor corta las llamadas hacia el servicio degradado y responde de inmediato (**`Fast-Fail`** o respuesta de contingencia **`Fallback`**) sin esperar *Timeouts*, evitando agotar los hilos del sistema y dándole tiempo de recuperación al servidor caído. Al cumplirse el tiempo de enfriamiento, pasa al estado **`Half-Open`**, donde deja pasar un número reducido de peticiones de prueba: si tienen éxito, vuelve a **`Closed`**; si fallan, regresa de inmediato a **`Open`**.
+:::
 
 ---
 
 ## Unidad 4: Arquitectura Orientada a Eventos (`EDA`), `Transactional Outbox`, Patrón `Saga` y `Dead-Letter Queues (DLQ)`
 
-En esta unidad resolvemos los tres problemas más difíciles de la integración asíncrona distribuida, los cuales aparecen recurrentemente en casos situacionales de nivel profesional:
+En esta unidad resolvemos los tres problemas más difíciles de la integración asíncrona distribuida, los cuales aparecen recurrentemente en las preguntas de juicio situacional de nivel profesional:
 
 ---
 
@@ -347,15 +400,15 @@ En esta unidad resolvemos los tres problemas más difíciles de la integración 
 
 Imagina este escenario cotidiano en la DIAN:
 Un ciudadano paga su deuda tributaria. El **Microservicio de Pagos** tiene que hacer **dos cosas**:
-1. Guardar el pago en su base de datos propia (`PostgreSQL` / `Oracle`): `INSERT INTO pagos...`
-2. Avisarle a **`Apache Kafka`** (publicar el evento `"PagoRealizado"`) para que el sistema de Cobranzas le levante el embargo al ciudadano y `DataR` actualice el tablero.
+1. Guardar el pago en su base de datos transaccional propia (`PostgreSQL` / `Oracle`): `INSERT INTO pagos...`
+2. Publicar un evento en **`Apache Kafka`** (tópico `"pagos-confirmados"`) para que el sistema de Cobranzas le levante el embargo bancario al ciudadano y el repositorio `DataR` actualice el estado de cuenta.
 
-**¿Qué pasa si el programador escribe en su código primero el paso 1 y debajo el paso 2 (*Escritura Dual / Dual-Write*)?**
-* Supón que el Paso 1 (`INSERT` en la base de datos) funciona perfecto, pero **un milisegundo antes de ejecutar el Paso 2 se va la luz o parpadea la red hacia Kafka**.
-* **Resultado catastrófico:** En la base de datos de Pagos el ciudadano ya pagó, pero como el mensaje jamás llegó a Kafka, **el sistema de Cobranzas nunca se enteró y le mantiene embargada la cuenta bancaria al ciudadano**. Los dos sistemas quedaron desincronizados para siempre.
+**¿Qué pasa si el programador escribe en su código primero el paso 1 y en la línea siguiente el paso 2 (*Escritura Dual / Dual-Write*)?**
+* Supón que el Paso 1 (`COMMIT` en la base de datos) funciona perfecto, pero **un milisegundo antes de ejecutar el Paso 2 parpadea la red hacia Kafka o se reinicia el contenedor**.
+* **Resultado catastrófico:** En la base de datos de Pagos el ciudadano ya pagó, pero como el evento jamás llegó a Kafka, **el sistema de Cobranzas nunca se enteró y mantiene embargada la cuenta bancaria del ciudadano**. Y si inviertes el orden (publicar primero en Kafka antes de hacer `COMMIT` en la base de datos) es igual de grave: si el `COMMIT` falla por una restricción de base de datos, ya habrás emitido un evento falso diciendo que el ciudadano pagó y le levantarás el embargo sin haber recibido el dinero (*Evento Fantasma*).
 
-#### La Solución de Ingeniería: El Patrón `Transactional Outbox` (Bandeja de Salida Transaccional)
-¿Cómo garantizamos al $100\%$ que si se guarda el pago en la base de datos, **siempre** salga el evento hacia Kafka sin usar bloqueos lentos (`2PC`)?
+#### La Solución de Ingeniería: El Patrón `Transactional Outbox` (Bandeja de Salida Transaccional) + `CDC`
+¿Cómo garantizamos al $100\%$ que si se guarda el pago en la base de datos, **siempre** salga el evento hacia Kafka sin usar bloqueos distribuidos lentos (`2PC`)?
 
 ```
 ========================================================================================
@@ -380,59 +433,74 @@ Un ciudadano paga su deuda tributaria. El **Microservicio de Pagos** tiene que h
 ========================================================================================
 ```
 
-1. El microservicio **NO intenta hablar directamente con Kafka**.
-2. Dentro de la **misma transacción local `ACID`** de su propia base de datos, inserta el pago en la tabla `pagos` e inserta el mensaje pendiente en una tabla vecina llamada **`outbox_events` (Bandeja de Salida)** y hace `COMMIT`. Por ley `ACID`, es imposible que se guarde uno sin el otro.
-3. Un conector **`CDC` basado en logs (como `Debezium`)** vigila la tabla `outbox_events` leyendo el log de la base de datos y empuja cada evento hacia `Apache Kafka` hasta asegurarse de que llegue.
+1. El microservicio **NO intenta hablar directamente con Kafka por red dentro de la transacción del usuario**.
+2. Dentro de la **misma transacción local `ACID`** de su propia base de datos, inserta el pago en la tabla `pagos` e inserta el mensaje del evento en una tabla vecina llamada **`outbox_events` (Bandeja de Salida)** y ejecuta `COMMIT`. Por ley de Atomicidad (`ACID`), es matemáticamente imposible que se guarde el pago sin que quede registrado el evento en `outbox_events`.
+3. Un conector **`CDC` basado en logs (como `Debezium`)** vigila el log transaccional (`WAL` / `Redo Log`) de la tabla `outbox_events` y publica asíncronamente cada evento hacia `Apache Kafka` con reintentos garantizados (*At-Least-Once*), mientras los consumidores procesan el evento de forma idempotente usando el `id_evento`.
 
 ---
 
-### 4.2. El Patrón `Saga`: ¿Cómo Hacemos una Transacción entre 4 Microservicios Distintos si Uno Falla al Final?
+### 4.2. ¿Por qué NO Usamos `2PC` (*Two-Phase Commit*) en Microservicios y Cómo Funciona el Patrón `Saga`?
 
-Cuando tenías una sola base de datos monolítica, hacer 4 pasos era facilísimo: si el paso 4 fallaba, hacías `ROLLBACK` y la base de datos deshacía los pasos 1, 2 y 3 automáticamente.
-Pero hoy en día, el **Paso 1** ocurre en la base de datos del *Servicio de Solicitudes*, el **Paso 2** en la base de datos del *Servicio de RUT*, el **Paso 3** en la base de datos de *Cuenta Corriente* y el **Paso 4** en el *Servicio de Tesorería Bancaria*. Cada uno ya hizo su propio `COMMIT` local.
+Cuando un proceso de negocio abarca **4 microservicios distintos** con 4 bases de datos independientes (por ejemplo: *1. Solicitudes $\to$ 2. RUT $\to$ 3. Cuenta Corriente $\to$ 4. Giro en Tesorería*), podrías preguntarte: *¿Por qué no usamos el protocolo clásico de **Confirmación en Dos Fases (`2PC / XA Transactions`)** para bloquear las 4 bases de datos al mismo tiempo hasta que todas confirmen?*
 
-¿Qué hacemos si los pasos 1, 2 y 3 salieron bien, pero el **Paso 4 falla**?
-Usamos el **Patrón `Saga`**: una secuencia de transacciones locales donde, si un paso intermedio falla, el sistema ejecuta en orden inverso una cadena de **Transacciones Compensatorias (*Compensating Transactions*)** que deshacen contable y semánticamente lo que habían hecho los pasos anteriores:
+* **Por qué `2PC` es inviable en arquitecturas modernas de alto volumen:** Porque `2PC` es un protocolo **síncrono bloqueante** que mantiene bloqueadas (*locked*) las filas de las 4 bases de datos mientras espera respuestas por red. Si uno solo de los 4 servicios se demora o el coordinador falla, las bases de datos quedan bloqueadas y el rendimiento cae a cero (además de que tecnologías como Kafka o motores NoSQL ni siquiera soportan transacciones `XA`).
+
+#### La Alternativa Moderna: El Patrón `Saga` y las Transacciones Compensatorias
+En lugar de un bloqueo global, el **Patrón `Saga`** divide la operación en una secuencia de **transacciones locales independientes ($T_1 \to T_2 \to T_3 \to T_4$)** donde cada microservicio confirma (`COMMIT`) y libera su base de datos de inmediato.
+¿Y qué hacemos si $T_1, T_2$ y $T_3$ salieron bien, pero el último paso **$T_4$ falla**?
+La Saga ejecuta en **orden inverso ($C_3 \to C_2 \to C_1$)** una cadena de **Transacciones Compensatorias (*Compensating Transactions*)** que deshacen semántica y contablemente el efecto de lo que habían hecho los pasos anteriores:
 
 ```
 ========================================================================================
         EJEMPLO DEL PATRÓN SAGA EN UNA COMPENSACIÓN / DEVOLUCIÓN TRIBUTARIA
 ========================================================================================
 
-  AVANCE NORMAL:
+  AVANCE NORMAL (Transacciones Locales T1 -> T2 -> T3 -> T4):
   [T1: Radica Solicitud] ---> [T2: Reserva Saldo] ---> [T3: Cruza Deuda] ---> [T4: Giro Banco 💥 ¡FALLA!]
                                                                                       |
   RETROCESO POR TRANSACCIONES COMPENSATORIAS (En orden inverso: C3 -> C2 -> C1):      |
-  [C1: Anula Solicitud]  <--- [C2: Libera Saldo]  <--- [C3: Revierte Cruce] <---------+
+  [C1: Anula Solicitud]  <--- [C2: Libera Saldo]  <--- [C3: Nota Crédito Reversión] <-+
 ========================================================================================
 ```
 
-#### Las 2 Formas de Coordinar una `Saga`: Coreografía vs. Orquestación
-1. **Saga por Coreografía (*Choreography* — Como bailarines sin director):**
-   * No hay un jefe central. El Servicio 1 emite un evento, el Servicio 2 lo escucha y actúa, y así sucesivamente.
-   * *Cuándo usarla:* Solo cuando el flujo es muy cortico y simple (2 o 3 pasos). Si hay 10 microservicios, nadie sabe en qué paso va el trámite y se vuelve un caos de eventos circulares.
-2. **Saga por Orquestación (*Orchestration* — Con un Director de Orquesta Central):**
-   * Existe un componente central llamado **Orquestador de Saga (Máquina de Estados)** que le ordena paso por paso a cada microservicio qué hacer y, si el Paso 4 falla, el Orquestador le ordena explícitamente al Paso 3, 2 y 1 ejecutar sus transacciones compensatorias.
-   * *Cuándo usarla:* **Es la preferida en trámites críticos y auditables de la DIAN** porque en todo segundo sabes exactamente en qué estado se encuentra el expediente.
+#### Comparativa Arquitectónica: Saga por Coreografía vs. Saga por Orquestación
+
+| Característica | Saga por Coreografía (*Choreography*) | Saga por Orquestación (*Orchestration*) |
+| :--- | :--- | :--- |
+| **¿Cómo se coordina?** | **Sin coordinador central:** cada servicio escucha eventos en Kafka, hace su parte y emite un nuevo evento para el siguiente servicio. | **Con un Orquestador Central (Máquina de Estados):** un componente director envía comandos explícitos a cada servicio y recibe sus respuestas. |
+| **Ventaja Principal** | Muy simple y desacoplada cuando solo participan **2 o 3 microservicios**. | **Visibilidad total, auditoría centralizada y fácil manejo de compensaciones** cuando el flujo tiene **4 o más pasos**. |
+| **Riesgo / Desventaja** | Con muchos servicios se vuelve inmanejable seguir la pista del trámite y pueden crearse **dependencias cíclicas de eventos**. | El orquestador debe diseñarse en alta disponibilidad para no convertirse en un cuello de botella. |
+| **Recomendación en la DIAN** | Notificaciones simples post-evento (ej. enviar correo y actualizar caché tras actualizar el RUT). | **Trámites misionales críticos y auditables** (Devoluciones, Compensaciones, Acuerdos de Pago, Desembargos). |
 
 ---
 
 ### 4.3. Manejo de Fallos Asíncronos: *Exponential Backoff with Jitter*, *Poison Pills* y `Dead-Letter Queues (DLQ)`
 
-Cuando un consumidor lee mensajes de una cola o de Kafka y ocurre un error al procesarlos, existen **dos tipos de errores** que deben tratarse de forma totalmente distinta:
+Cuando un consumidor lee mensajes de una cola o de `Apache Kafka` y ocurre un error al procesarlos, existen **dos tipos de errores** que deben tratarse de forma totalmente distinta:
 
-1. **Error Transitorio (*Transient Fault* — Ej. un parpadeo de red de 1 segundo o un bloqueo momentáneo):**
-   * **Solución:** Reintentar la operación aplicando **Retroceso Exponencial con Variación Aleatoria (`Exponential Backoff with Jitter`)**.
-   * *¿Qué significa esto?* En vez de reintentar mil veces en el mismo segundo (lo cual tumbaría al servidor que está tratando de revivir —fenómeno de *estampida o Thundering Herd*—), el primer reintento espera $2\text{ seg}$, el segundo espera $4\text{ seg}$, el tercero $8\text{ seg}$, sumándole unos milisegundos al azar (*Jitter*) para que todos los clientes no golpeen al mismo tiempo.
-2. **Error Permanente / "Píldora Venenosa" (*Poison Pill* — Ej. un archivo XML corrupto o una división por cero):**
-   * Por más que reintentes 10.000 veces ese mensaje, **siempre va a fallar** porque el dato viene dañado. Si el consumidor se queda intentando procesarlo para siempre, **tapona toda la tubería y detiene los millones de facturas buenas que vienen detrás**.
-   * **Solución:** Después de $N$ intentos fallidos (ej. 3 intentos), el consumidor saca automáticamente la "píldora venenosa" de la tubería principal y la envía a una **Cola de Mensajes Muertos (`DLQ` - *Dead-Letter Queue*)** junto con el motivo del error, permitiendo que el tráfico nacional siga fluyendo sin interrupción mientras los ingenieros inspeccionan la `DLQ`.
+1. **Error Transitorio (*Transient Fault* — Ej. un parpadeo de red de 1 segundo o un límite temporal de conexiones):**
+   * **Solución:** Reintentar la operación aplicando **Retroceso Exponencial con Variación Aleatoria (`Exponential Backoff with Jitter`)**:
+     $$T_{\text{espera}} = \min\left(T_{\max},\; T_{\text{base}} \times 2^{\text{intento}}\right) + \text{ Uniform}(0, \text{Jitter})$$
+   * *¿Por qué es vital el `Jitter` (aleatoriedad)?* Imagina que 1.000 consumidores fallan a las `10:00:00` por un micro-corte de red. Si todos reintentan exactamente a los $2.000\text{ ms}$, a los $4.000\text{ ms}$ y a los $8.000\text{ ms}$ al unísono, golpearán como un martillo sincronizado al servidor que intenta levantarse (**fenómeno de estampida o *Thundering Herd***). Al sumarle a cada uno unos milisegundos aleatorios (*Jitter*), los reintentos se esparcen suavemente en el tiempo.
+2. **Error Permanente / "Píldora Venenosa" (*Poison Pill* — Ej. un archivo XML truncado, un esquema inválido o una división por cero):**
+   * Por más que reintentes $10.000\text{ veces}$ ese mensaje, **siempre va a fallar** porque el dato viene corrupto de origen. Si el consumidor se queda intentando procesarlo infinitamente, **tapona toda la partición de Kafka y detiene los millones de facturas válidas que vienen detrás (*Head-of-Line Blocking*)**.
+   * **Solución:** Después de un número acotado de intentos fallidos (ej. 3 intentos), el consumidor desvía automáticamente la "píldora venenosa" hacia una **Cola de Mensajes Muertos (`DLQ` - *Dead-Letter Queue* / *Dead-Letter Topic*)** adjuntando en las cabeceras el motivo del error (`Exception Stacktrace`), el `offset` original y el `timestamp`. Así el flujo nacional sigue avanzando sin detenerse mientras el equipo de soporte analiza la `DLQ` y corrige o reprocesa los casos aislados.
 
 ---
 
 ### 4.4. Micro-Verificación de la Unidad 4
-* **Pregunta rápida 1:** ¿Qué patrón arquitectónico evita que un microservicio guarde un registro en su base de datos local pero falle al publicar el evento correspondiente en Apache Kafka (*Dual-Write Problem*)? *(Respuesta: El patrón **`Transactional Outbox`** combinado con **`CDC` basado en logs**).*
-* **Pregunta rápida 2:** En una arquitectura de microservicios donde cada servicio tiene su propia base de datos independiente, ¿cómo revierte el **Patrón `Saga`** los cambios ya confirmados en los primeros microservicios cuando falla el último paso del proceso? *(Respuesta: Ejecutando en orden inverso una secuencia de **Transacciones Compensatorias** que revierten semánticamente el efecto de las operaciones previas).*
+
+::: q
+¿Qué patrón arquitectónico evita que un microservicio confirme un registro en su base de datos relacional local pero falle al publicar el evento correspondiente en Apache Kafka (*Dual-Write Problem*)?
+---
+El patrón **`Transactional Outbox` (Bandeja de Salida Transaccional)** combinado con **`CDC` basado en logs (`Debezium`)**: el microservicio inserta el registro de negocio y el evento en una tabla `outbox_events` dentro de la **misma transacción `ACID` local**, y luego el conector `CDC` lee el log transaccional de la base de datos y publica el evento en Kafka con entrega garantizada.
+:::
+
+::: q
+En una arquitectura de microservicios donde cada servicio tiene su propia base de datos independiente, ¿cómo revierte el **Patrón `Saga`** los cambios ya confirmados en los primeros microservicios cuando falla el último paso del proceso, y por qué se prefiere la **Saga por Orquestación** en trámites fiscales complejos?
+---
+El patrón **`Saga`** ejecuta en **orden inverso** una cadena de **Transacciones Compensatorias** que deshacen semántica y contablemente el efecto de las transacciones locales previas. Se prefiere la **Saga por Orquestación** en trámites fiscales complejos porque un coordinador central (máquina de estados) mantiene la trazabilidad exacta del estado del expediente, evita ciclos de eventos entre servicios y gobierna de forma auditable la ejecución de las compensaciones.
+:::
 
 ---
 
@@ -448,11 +516,24 @@ Pero en el mundo real ocurre esto todos los días:
 * Un informante en Exógena digitó mal un número del NIT (`"900123465"` — invirtió el `5` y el `6`) y escribió el nombre como `"INVERCIONES DEL CARIVE SAS"` con dirección `"CL 72 # 10 - 34 BOGOTA"`.
 
 Si haces un cruce simple exacto en SQL (`ON a.nit = b.nit`), ese registro quedará huérfano y la DIAN dejará de cruzar miles de millones de pesos en ingresos o compras de ese contribuyente.
-Para resolver esto, la Arquitectura de Integración de Datos utiliza técnicas de **Estandarización y Resolución de Entidades (`Entity Resolution` / `Record Linkage` / `Deduplicación`)**.
+Para resolver esto, la Arquitectura de Integración de Datos utiliza el **Modelo Canónico de Datos (`CDM`)**, el **Cálculo del Dígito de Verificación (Módulo 11 DIAN)** y técnicas matemáticas de **Resolución de Entidades (`Entity Resolution` / `Record Linkage` / `Deduplicación`)**.
 
 ---
 
-### 5.2. Las 4 Etapas Técnicas de la Resolución de Entidades (*Record Linkage*) en Big Data
+### 5.2. El Modelo Canónico de Datos (`CDM`) y la Validación Matemática del NIT (Módulo 11)
+
+Antes de intentar algoritmos complejos de similitud de texto, el primer filtro de integración analítica en la DIAN consiste en **traducir todas las fuentes a un único Diccionario Común (`Modelo Canónico de Datos`)** y verificar matemáticamente la integridad del `NIT`:
+
+1. **¿Qué hace el Modelo Canónico de Datos (`CDM`) en la Capa Plata de `DataR`?**
+   * En el sistema legado `MUISCA` el tipo de documento Cédula de Ciudadanía puede llamarse `cod_tip_doc = 13`, en el sistema aduanero `SYGA` puede venir como `'CC'`, y en un reporte internacional `CRS` como `'TIN_PERSON'`.
+   * Si intentas cruzar las fuentes directamente, tendrías que programar decenas de condicionales `CASE WHEN` en cada reporte. El **`CDM`** establece una única representación institucional canónica (alineada con el **Lenguaje Común de Intercambio del MinTIC** y las tablas referenciales del **RUT**) a la cual se traduce cada fuente **en el momento mismo de entrar a la Capa Plata**.
+2. **Validación Algorítmica del Dígito de Verificación (`DV` — Algoritmo Módulo 11 de la DIAN):**
+   * En Colombia, el último dígito después del guion de un NIT (`900.123.456 - 8`) no es un número al azar: se calcula multiplicando cada dígito del NIT (de derecha a izquierda) por la secuencia oficial de números primos de la DIAN ($3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71$), sumando los productos y calculando el residuo de dividir entre $11$ ($\text{residuo} = S \bmod 11$; si el residuo es $0$ o $1$, el `DV` es ese mismo valor; de lo contrario, $\text{DV} = 11 - \text{residuo}$).
+   * Cuando un tercero reporta en Exógena un NIT cuyo dígito de verificación **no coincide con la fórmula Módulo 11**, el pipeline de integración detecta instantáneamente que hubo un **error de digitación o transposición de dígitos** y envía ese registro al motor de **Resolución de Entidades (*Record Linkage*)**.
+
+---
+
+### 5.3. Las 4 Etapas Matemáticas de la Resolución de Entidades (*Record Linkage*) en Big Data
 
 ¿Cómo unimos dos bases de datos de $50\text{ millones}$ de personas y empresas cuando las llaves vienen sucias o incompletas? Seguimos un pipeline matemático de 4 pasos:
 
@@ -461,76 +542,101 @@ Para resolver esto, la Arquitectura de Integración de Datos utiliza técnicas d
          PIPELINE DE RESOLUCIÓN DE ENTIDADES (RECORD LINKAGE) EN LA DIAN
 ========================================================================================
 
-  [PASO 1: Limpieza y Canonización]
+  [PASO 1: Limpieza, Canonización y Fonética]
   - Quitar puntos, guiones y dígito de verificación al NIT ("900.123.456-8" -> "900123456").
-  - Pasar textos a MAYÚSCULAS, quitar tildes y estandarizar abreviaturas de direcciones
-    ("Calle", "Cll", "CL" -> "CL" según estándar de geocodificación).
+  - Pasar textos a MAYÚSCULAS, quitar tildes, eliminar sufijos societarios ("S.A.S.", "LTDA")
+    y estandarizar direcciones ("Calle", "Cll", "CL" -> "CL" según geocodificador IGAC/DANE).
                    |
                    v
   [PASO 2: Bloqueo / Indexación (Blocking) — ¡Evita explotar el clúster!]
   - Si comparas 50M contra 50M todos contra todos, son 2.5 x 10^15 comparaciones (Imposible).
-  - Agrupamos ("Bloqueamos") solo candidatos plausibles: ej. mismo Código Municipio +
-    primeros 4 dígitos del NIT o código fonético del nombre (Soundex / Metaphone).
+  - Agrupamos ("Bloqueamos") solo candidatos plausibles: ej. mismo Código Municipio DANE +
+    primeros 4 dígitos del NIT o código fonético del nombre (Soundex / Metaphone en Español).
                    |
                    v
   [PASO 3: Comparación de Similitud Difusa (Fuzzy Matching)]
   - Calculamos distancias matemáticas entre textos dentro de cada bloque:
-    * Distancia de Levenshtein (Edición)
+    * Distancia de Levenshtein / Damerau-Levenshtein (Edición y transposición)
     * Similitud de Jaro-Winkler (Ideal para nombres propios y razones sociales)
-    * Similitud de Jaccard / Coseno por N-Gramas (Tokens)
+    * Similitud de Jaccard / Coseno por N-Gramas y TF-IDF (Tokens desordenados)
                    |
                    v
   [PASO 4: Clasificación de Enlace (Modelo Probabilístico de Fellegi-Sunter)]
-  - Puntaje Alto (> Umbral Superior)  ---> ENLACE AUTOMÁTICO (Son el mismo contribuyente).
-  - Puntaje Medio (Zona Gris)         ---> REVISIÓN MANUAL / REGLA DE DESEMPATE.
-  - Puntaje Bajo (< Umbral Inferior)  ---> NO COINCIDEN (Son personas distintas).
+  - Puntaje Compuesto > Umbral Superior (T_u)  ---> ENLACE AUTOMÁTICO (Mismo contribuyente).
+  - Puntaje Medio (Entre T_l y T_u: Zona Gris) ---> COLA DE CURADURÍA / REGLA DE DESEMPATE.
+  - Puntaje Compuesto < Umbral Inferior (T_l)  ---> NO COINCIDEN (Personas distintas).
 ========================================================================================
 ```
 
-#### Desglose de los Algoritmos de Similitud que Pregunta el Examen:
-1. **Técnica de Bloqueo (*Blocking*):**
-   * Si tienes dos tablas de $10\text{ millones}$ de filas cada una y haces un cruce de "todos contra todos" ($N \times M$), tendrías que calcular $10^{14}$ ($100\text{ billones}$) de distancias de texto. Ningún clúster termina eso a tiempo.
-   * El **`Blocking`** crea una "llave de bloque" rápida (por ejemplo: `codigo_municipio + primeras_3_letras_apellido` o `primeros_5_digitos_documento`) y **solo ejecuta la comparación difusa entre registros que caigan dentro del mismo bloque**, reduciendo el trabajo en un $99.99\%$.
-2. **Distancia de `Levenshtein` (*Edit Distance*):**
-   * Cuenta el **número mínimo de operaciones individuales (insertar, borrar o sustituir una letra)** necesarias para transformar una palabra en otra.
-   * *Ejemplo:* Entre `"DIAN"` y `"DINA"` hay distancia de Levenshtein = $2$ (sustituir dos letras; en la variante *Damerau-Levenshtein* que incluye transposición de letras vecinas, la distancia es $1$).
-3. **Similitud de `Jaro-Winkler`:**
-   * Da un puntaje de $0$ a $1$ y **premia especialmente a las cadenas que coinciden desde el principio (el prefijo)**. Es el algoritmo estadísticamente más efectivo para cruzar **nombres de personas naturales, apellidos y razones sociales**.
-4. **Enlace Determinístico vs. Enlace Probabilístico (*Fellegi-Sunter*):**
-   * **Determinístico (*Exact / Rule-based Matching*):** Exige que coincidan exactamente la llave única (`NIT`) o una combinación estricta de campos. Tiene alta precisión pero bajo *Recall* cuando hay errores de digitación.
-   * **Probabilístico (*Fellegi-Sunter*):** Calcula pesos de verosimilitud para cada atributo (coincidir en un apellido raro como *"Urdaneta"* suma muchos más puntos de probabilidad de ser la misma persona que coincidir en un apellido común como *"Rodríguez"* o en la ciudad *"Bogotá"*).
+#### Desglose Matemático de los Algoritmos que Pregunta el Examen:
+
+1. **Técnica de Bloqueo (*Blocking* / *Canopy Clustering* / *LSH*):**
+   * Si tienes una tabla externa $A$ de $20\text{ millones}$ de filas y la tabla del `RUT` $B$ de $22\text{ millones}$ de filas, un cruce de "todos contra todos" ($|A| \times |B|$) obligaría a calcular $4.4 \times 10^{14}$ ($440\text{ billones}$) de distancias de texto. Ningún clúster de Spark termina eso en una noche.
+   * El **`Blocking`** genera una o varias **"llaves de bloque" (*Blocking Keys*)** (por ejemplo: `cod_municipio_dane + primeras_3_letras_razon_social` o `primeros_5_digitos_nit`) y ejecuta un `JOIN` exacto únicamente por la llave de bloque, **calculando la distancia difusa solo entre los pares candidatos que cayeron en el mismo cajón**, reduciendo el costo computacional en más de un $99.98\%$.
+
+2. **Distancia de `Levenshtein` y `Damerau-Levenshtein` (*Edit Distance*):**
+   * Mide el **número mínimo de operaciones elementales sobre caracteres (inserción, eliminación o sustitución)** necesarias para transformar la cadena $s_1$ en la cadena $s_2$.
+   * La variante **`Damerau-Levenshtein`** añade como cuarta operación elemental la **transposición de dos caracteres adyacentes** (el error humano más común al digitar rápido en un teclado, como escribir `"900123465"` en vez de `"900123456"` o `"INVERCIONES"`), contando ese intercambio como **1 sola operación** en vez de 2.
+
+3. **Similitud de `Jaro-Winkler` (La Reina para Nombres y Razones Sociales):**
+   * Primero calcula la similitud base de **Jaro** ($sim_j \in [0, 1]$) en función de los caracteres coincidentes $m$ y las transposiciones $t$:
+     $$sim_j = \frac{1}{3}\left(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m - t}{m}\right)$$
+   * Y luego la corrección de **Winkler** le otorga un **bono adicional si ambas palabras coinciden en sus primeras $\ell$ letras (el prefijo, hasta 4 caracteres)**:
+     $$sim_{jw} = sim_j + \ell \cdot p \cdot (1 - sim_j)$$
+   * *¿Por qué es la mejor para nombres de personas y empresas?* Porque cuando alguien escribe mal un apellido o una empresa, casi nunca se equivoca en las primeras 3 letras (`"RODRIGUEZ"` vs. `"RODRIGUES"`), sino al final.
+
+4. **Similitud por Tokens (`Jaccard` / `TF-IDF Cosine`) para Palabras en Distinto Orden:**
+   * ¿Qué pasa si en una base dice `"COMERCIALIZADORA DE CAFE DEL HUILA"` y en otra `"CAFE DEL HUILA COMERCIALIZADORA"`? Las métricas de caracteres fallan porque las palabras cambiaron de posición. Aquí partimos el texto en palabras (*Tokens* o *N-gramas*) y medimos qué porcentaje de palabras comparten (**Índice de Jaccard** $J(A,B) = \frac{|A \cap B|}{|A \cup B|}$), dándole menos peso a palabras muy repetidas como `"COMERCIALIZADORA"` y mucho más peso a palabras únicas como `"HUILA"` (**`TF-IDF`**).
+
+5. **El Modelo Probabilístico de `Fellegi-Sunter` (Pesos de Acuerdo y Desacuerdo):**
+   * En lugar de dar el mismo valor a todas las columnas, **Fellegi-Sunter** calcula para cada campo $i$ dos probabilidades:
+     * $m_i = P(\text{campo } i \text{ coincide} \mid \text{sí son la misma persona})$ (sensibilidad frente a errores de digitación).
+     * $u_i = P(\text{campo } i \text{ coincide por pura casualidad} \mid \text{son dos personas distintas})$.
+   * El peso matemático cuando el campo $i$ coincide es $w_i^+ = \log_2\left(\frac{m_i}{u_i}\right)$:
+     * Si dos registros coinciden en `ciudad = "BOGOTA"` ($u_i$ muy alto porque millones viven en Bogotá), el puntaje sube muy poquito.
+     * Si dos registros coinciden en `fecha_nacimiento = "1978-11-23"` y `primer_apellido = "ZUBIETA"` ($u_i$ pequeñísimo), el logaritmo dispara el puntaje hacia arriba confirmando que son el mismo contribuyente incluso si el documento tenía un dígito malo.
 
 ---
 
-### 5.3. Micro-Verificación de la Unidad 5
-* **Pregunta rápida 1:** Si necesitas cruzar una base externa de 20 millones de registros sin NIT limpio contra los 22 millones de registros del RUT usando algoritmos de similitud de texto (*Fuzzy Matching*), ¿qué paso técnico debes ejecutar **antes** de calcular las distancias de texto para evitar un producto cartesiano de $4.4 \times 10^{14}$ comparaciones? *(Respuesta: Aplicar una estrategia de **Bloqueo (`Blocking`)**, agrupando candidatos que compartan atributos base como municipio, código fonético o prefijo del documento).*
-* **Pregunta rápida 2:** ¿Qué métrica de similitud de cadenas otorga mayor peso a las coincidencias en los primeros caracteres (prefijo) y es ideal para comparar nombres y apellidos de contribuyentes con errores ortográficos? *(Respuesta: La similitud de **`Jaro-Winkler`**).*
+### 5.4. Micro-Verificación de la Unidad 5
+
+::: q
+Si necesitas cruzar en Apache Spark una base externa de 20 millones de registros con errores tipográficos contra los 22 millones de registros del RUT aplicando similitud de texto (*Fuzzy Matching*), ¿qué paso técnico debes ejecutar **antes** de calcular las distancias de texto para evitar un producto cartesiano inviable de $4.4 \times 10^{14}$ comparaciones?
+---
+Se debe aplicar una etapa de **Bloqueo (`Blocking`) o Indexación de Candidatos**, agrupando únicamente los pares que compartan una llave de bloque común (por ejemplo, mismo código DANE de municipio combinado con el código fonético del apellido o los primeros dígitos del documento). De esta forma, las funciones costosas de similitud (`Jaro-Winkler` o `Levenshtein`) solo se evalúan dentro de cada bloque reducido.
+:::
+
+::: q
+En el modelo probabilístico de resolución de entidades de **Fellegi-Sunter**, ¿por qué la coincidencia en un atributo poco frecuente (como un apellido inusual o una fecha exacta de constitución) aporta mucho más peso al puntaje de enlace que la coincidencia en un atributo muy común (como residir en Bogotá o ser sociedad `S.A.S.`)?
+---
+Porque el peso de acuerdo $w_i^+ = \log_2(m_i / u_i)$ es inversamente proporcional a la probabilidad $u_i$ de que dos registros distintos coincidan por simple azar. Un valor muy común tiene un $u_i$ alto (aporta poca información discriminante), mientras que un valor raro tiene un $u_i$ cercano a cero, elevando drásticamente la razón de verosimilitud de que ambos registros pertenezcan a la misma entidad real.
+:::
 
 ---
 
 ## Unidad 6: Orquestación de Flujos Masivos con `Apache Airflow`, `DAGs` Idempotentes, `Backfilling` y `DataOps`
 
-### 6.1. ¿Por qué Necesitamos un Orquestador como `Apache Airflow`?
+### 6.1. ¿Por qué Necesitamos un Orquestador como `Apache Airflow` en lugar de `Cron`?
 
 Imagina el proceso nocturno que construye las tablas de fiscalización en la Subdirección de Procesamiento de Datos:
-1. Primero hay que esperar a que llegue el archivo de pagos de los bancos (**Tarea A**).
-2. Solo cuando la Tarea A termine sin errores, se debe lanzar el trabajo en `Apache Spark` que cruza esos pagos con las declaraciones (**Tarea B**).
-3. Solo si pasan las pruebas de calidad de datos (**Tarea C**), se actualiza la tabla en la Capa Oro (**Tarea D**) y se recalcula el puntaje del modelo de Machine Learning (**Tarea E**).
-4. Si la Tarea B falla a las 03:00 a.m., el sistema debe reintentar 2 veces esperando 5 minutos, y si vuelve a fallar, debe enviar una alerta inmediata al ingeniero de turno sin ejecutar las Tareas C, D ni E.
+1. Primero hay que esperar a que llegue el archivo de pagos de las entidades autorizadas para recaudar (**Tarea A — Sensor**).
+2. Solo cuando la Tarea A termine sin errores, se debe lanzar el trabajo distribuido en `Apache Spark` que cruza esos pagos con las declaraciones tributarias (**Tarea B — Transformación Plata**).
+3. Solo si pasan las pruebas automáticas de calidad de datos (**Tarea C — Data Quality Gate**), se actualiza la tabla en la Capa Oro (**Tarea D**) y se recalcula el puntaje del modelo de Machine Learning (**Tarea E**).
+4. Si la Tarea B falla a las 03:00 a.m., el sistema debe reintentar 2 veces esperando 5 minutos, y si vuelve a fallar, debe enviar una alerta inmediata al ingeniero de turno y **detener las Tareas C, D y E** para no publicar datos corruptos.
 
-Si intentas hacer eso con tareas sueltas programadas por reloj en Linux (`cron jobs`), ocurre un desastre: si la Tarea A se atrasó 10 minutos, la Tarea B arranca a ciegas a las 02:00 a.m. sobre datos incompletos y corrompe toda la base de datos.
-Para gobernar dependencias complejas usamos **`Apache Airflow`**: el orquestador de flujos de trabajo (*Workflows*) programados como código Python mediante **`DAGs` (*Directed Acyclic Graphs* / Grafos Acíclicos Dirigidos)**.
+Si intentas hacer eso con tareas sueltas programadas por reloj en Linux (`cron jobs`), ocurre un desastre: si la Tarea A se atrasó 15 minutos porque un banco demoró el envío, la Tarea B arranca a ciegas a las 02:00 a.m. sobre datos incompletos y corrompe los tableros de recaudo nacional.
+Para gobernar dependencias complejas usamos **`Apache Airflow`**: el orquestador estándar de flujos de trabajo (*Workflows as Code*) programados en Python mediante **`DAGs` (*Directed Acyclic Graphs* / Grafos Acíclicos Dirigidos)**.
 
 > [!NOTE]
 > **¿Por qué el grafo de Airflow TIENE que ser "Acíclico" (`DAG`)?**
-> * **Dirigido (*Directed*):** Las flechas tienen dirección ($A \to B \to C$: primero va $A$, luego $B$, luego $C$).
-> * **Acíclico (*Acyclic* — Sin ciclos cerrados):** Jamás puede existir un ciclo donde $A$ dependa de $B$, $B$ dependa de $C$ y $C$ dependa de $A$ ($A \to B \to C \to A$), porque si existiera un ciclo, ninguna tarea podría empezar nunca (*bloqueo mutuo o Deadlock infinito*).
+> * **Dirigido (*Directed*):** Las dependencias tienen dirección explícita ($A \gg B \gg C$: primero debe completarse $A$, luego $B$, luego $C$).
+> * **Acíclico (*Acyclic* — Sin bucles cerrados):** Jamás puede existir un ciclo donde $A$ dependa de $B$, $B$ dependa de $C$ y $C$ dependa de $A$ ($A \to B \to C \to A$), porque si existiera un ciclo, ninguna tarea alcanzaría jamás la condición para iniciar (*bloqueo mutuo o Deadlock lógico*).
 
 ---
 
-### 6.2. Arquitectura Interna de `Apache Airflow` (Componentes y `KubernetesExecutor`)
+### 6.2. Arquitectura Interna de `Apache Airflow` (Componentes, `Sensors` y `KubernetesExecutor`)
 
-En el examen de la CNSC debes distinguir claramente qué hace cada pieza de Airflow y cuál es el error más común al escribir código dentro de él:
+En el examen de la CNSC debes distinguir claramente qué función cumple cada componente interno de Airflow y cómo se despliega sobre contenedores:
 
 ```
 ========================================================================================
@@ -539,84 +645,127 @@ En el examen de la CNSC debes distinguir claramente qué hace cada pieza de Airf
 
   +-------------------------+          +-----------------------------------------------+
   | 1. AIRFLOW WEBSERVER    |          | 2. AIRFLOW SCHEDULER ("El Cerebro Planificador")|
-  | - Pantalla web (UI)     |          | - Lee los archivos .py de los DAGs.           |
-  |   para ver cajas verdes |          | - Revisa qué tarea ya cumplió sus requisitos  |
-  |   (éxito) o rojas (fallo|          |   y la envía a ejecutar.                      |
+  | - Interfaz web (UI/API) |          | - Analiza el grafo de dependencias y el reloj.|
+  |   para monitorear DAGs, |          | - Revisa qué tarea ya cumplió sus requisitos  |
+  |   ver logs y relanzar.  |          |   y solicita su ejecución al Executor.        |
   +-------------------------+          +-----------------------------------------------+
                \                                       /               |
                 v                                     v                | (Crea 1 Pod efímero
   +---------------------------------------------------------+          |  aislado por Tarea)
-  | 3. METADATABASE (Base de Datos PostgreSQL)              |          v
-  | - Guarda el historial de ejecuciones (DagRuns), estado  |   +-----------------------------+
-  |   de cada tarea, Conexiones cifradas y Variables.       |   | 4. KUBERNETES EXECUTOR      |
+  | 3. METADATABASE (Base de Datos Relacional PostgreSQL)   |          v
+  | - Guarda el historial de ejecuciones (DagRuns,          |   +-----------------------------+
+  |   TaskInstances), XComs, Conexiones cifradas y Estado.  |   | 4. KUBERNETES EXECUTOR      |
   +---------------------------------------------------------+   | [Pod Tarea A] [Pod Tarea B] |
                                                                 | (Corre y se destruye al fin)|
                                                                 +-----------------------------+
 ========================================================================================
 ```
 
-1. **`Scheduler` (El Planificador):** Es el motor que vigila el reloj y las dependencias: cuando ve que la Tarea A terminó en estado `SUCCESS`, ordena lanzar la Tarea B.
-2. **`Webserver`:** Es la interfaz visual para monitorear los pipelines, ver logs y relanzar tareas.
-3. **`Metadatabase` (`PostgreSQL`):** Es la memoria donde Airflow anota qué corrió, cuándo corrió y si salió bien o mal.
-4. **`Executor` y `Workers` (`CeleryExecutor` vs. `KubernetesExecutor`):**
-   * En arquitecturas modernas de la DIAN se prefiere el **`KubernetesExecutor`**: por cada tarea que debe correr, Airflow crea un contenedor aislado (**`Pod` de Kubernetes**) con la memoria y CPU exactos que necesita esa tarea, y apenas termina la tarea **destruye el Pod**, liberando el $100\%$ de los recursos del clúster.
+1. **`Scheduler` (El Planificador) y `DAG Processor`:** Es el corazón que evalúa continuamente el estado de las tareas y los horarios; cuando confirma que los padres de una tarea están en estado `SUCCESS`, la pasa a cola de ejecución.
+2. **`Webserver`:** Provee la interfaz gráfica y la API REST de monitoreo, inspección de logs y control de acceso basado en roles (`RBAC`).
+3. **`Metadatabase` (`PostgreSQL`):** Almacena el estado de todos los `DagRuns`, `TaskInstances`, variables, conexiones cifradas (con llave `Fernet`) y pequeños metadatos intercambiados entre tareas (**`XComs` — *Cross-Communications***).
+4. **`KubernetesExecutor` vs. `CeleryExecutor`:**
+   * Con `CeleryExecutor`, tienes un grupo fijo de servidores *Workers* encendidos las 24 horas (incluso cuando no hay tareas corriendo) y todas las tareas comparten las mismas librerías instaladas.
+   * Con **`KubernetesExecutor`** (el estándar moderno en la nube e infraestructura de la DIAN), por cada tarea individual que debe correr, Airflow solicita al clúster de Kubernetes crear un **`Pod` efímero independiente** con la imagen Docker, CPU y memoria RAM exactos para esa tarea; apenas la tarea termina, **el Pod se destruye automáticamente**, logrando aislamiento total de dependencias y cero desperdicio de recursos.
+5. **`Deferrable Operators` y `Triggerer` (Sensores Asíncronos que no bloquean recursos):**
+   * Cuando una tarea debe esperar 2 horas a que llegue un archivo de un banco (`S3KeySensor` / `FileSensor`), un sensor clásico en modo `poke` mantendría ocupado un Worker entero durante 2 horas sin hacer nada. En Airflow moderno se usa `mode="reschedule"` o **Operadores Diferibles (*Deferrable Operators*)** a través del componente **`Triggerer`** (basado en `asyncio` de Python), que libera el Worker por completo mientras espera el evento externo.
 
 > [!WARNING]
-> **¡Regla de Oro de Examen sobre Airflow!: Airflow es un ORQUESTADOR, NO un motor de procesamiento de Big Data**
-> Un error gravísimo de novato es meter un `pd.read_csv()` de $80\text{ GB}$ para cruzar datos **adentro del propio nodo Worker de Airflow** (eso revienta inmediatamente la memoria RAM de Airflow).
-> **Lo correcto:** Airflow solo actúa como el "director de orquesta": envía la orden (`SparkSubmitOperator` / `DatabricksRunNowOperator` / `LivyOperator`) para que el trabajo pesado de $80\text{ GB}$ se ejecute **en el clúster de `Apache Spark`** y Airflow simplemente espera a que Spark le avise que ya terminó.
+> **¡Regla de Oro de Examen sobre Airflow e `XComs`!: Airflow es un ORQUESTADOR, NO un motor de procesamiento de datos**
+> * **Prohibido procesar datos masivos dentro del Worker de Airflow:** Nunca cargues un DataFrame de Pandas de $50\text{ GB}$ dentro de un `PythonOperator` de Airflow, porque reventarás por `OutOfMemory (OOMKilled)` el contenedor de Airflow. Airflow solo debe lanzar la orden (`SparkSubmitOperator`, `SparkKubernetesOperator`, `DatabricksSubmitRunOperator`) para que el procesamiento pesado ocurra en el clúster de **`Apache Spark`**.
+> * **Prohibido pasar tablas de datos por `XComs`:** Los `XComs` se guardan en la base de datos interna `PostgreSQL` de Airflow y sirven **únicamente para pasar metadatos diminutos** entre una tarea y otra (por ejemplo, la ruta `s3://datar-plata/lote_2026_05.parquet` o el conteo de filas `rows_processed = 1450200`), ¡jamás para pasar los datos en sí!
 
 ---
 
 ### 6.3. Cómo Diseñar `DAGs` Deterministas, Idempotentes y con Capacidad de `Backfilling`
 
-Imagina que el pipeline diario que consolida el recaudo del día anterior falló el viernes, el sábado y el domingo, o descubres hoy que la fórmula de enero de 2025 tenía un error y necesitas **volver a correr los 31 días de enero de 2025 (`Backfilling`)**.
+Imagina que el pipeline diario que consolida el recaudo nacional del día anterior falló el viernes, el sábado y el domingo, o que la Dirección de Gestión de Fiscalización descubre hoy que un parámetro tributario de enero de 2025 cambió y necesitas **reprocesar automáticamente los 31 días de enero de 2025 (`Backfilling`)**.
 
-Para que puedas reejecutar cualquier día del pasado sin dañar ni duplicar la base de datos, tu `DAG` debe cumplir **dos leyes sagradas**:
+Para que puedas reejecutar cualquier día del pasado sin dañar, mezclar ni duplicar la base de datos, tu `DAG` debe cumplir **dos leyes sagradas**:
 
-#### Ley 1: Prohibido usar `datetime.now()` o `CURRENT_DATE` — Usa siempre `logical_date` (`data_interval_start`)
-* Si dentro de tu script SQL escribes `WHERE fecha_pago = CURRENT_DATE` y el lunes vuelves a correr la tarea que falló el viernes, tu script consultará por error los datos del **lunes** en vez de los del **viernes**.
-* En Airflow, toda tarea recibe como parámetro la **Fecha Lógica del Periodo (`logical_date` / `data_interval_start` y `data_interval_end`)**. Así, si en el año 2026 ordenas un **`Backfill`** del día `'2025-01-15'`, Airflow le inyecta a la tarea la fecha `'2025-01-15'` y el pipeline procesa exactamente ese día histórico con precisión matemática (**Determinismo**).
+```python
+# ==============================================================================
+# EJEMPLO DE BUENA PRÁCTICA vs. ANTIPATRÓN EN UN DAG DE APACHE AIRFLOW (DIAN)
+# ==============================================================================
 
-#### Ley 2: Escritura Idempotente por Partición (`INSERT OVERWRITE PARTITION` o `MERGE`)
-* Si una tarea corre dos veces para el día `'2025-01-15'` y usas un `INSERT INTO` simple, **duplicarás todos los pagos del 15 de enero**.
-* Para que el `DAG` sea **Idempotente**, la escritura debe sobrescribir limpiamente la partición de esa fecha específica (`INSERT OVERWRITE TABLE recaudo PARTITION (fecha = '2025-01-15')`) o hacer un `MERGE` por llave primaria. Así, correr el `DAG` 1 vez o 10 veces para el 15 de enero deja exactamente el mismo resultado limpio.
+# ❌ ANTIPATRÓN MORTAL (NO Determinista y NO Idempotente):
+# Si relanzas el lunes la tarea que falló el viernes, CURRENT_DATE tomará la fecha
+# del lunes (mezclando días) y el INSERT INTO duplicará las filas si corre 2 veces.
+sql_malo = """
+INSERT INTO datar_oro.recaudo_diario
+SELECT nit, sum(valor) FROM datar_plata.pagos
+WHERE fecha_pago = CURRENT_DATE
+GROUP BY nit;
+"""
+
+# ✅ DISEÑO CORRECTO PARA EXAMEN CNSC (Determinista + Idempotente + Backfill-Ready):
+# 1. Usa {{ data_interval_start | ds }} (logical_date) inyectado por Airflow.
+# 2. Usa INSERT OVERWRITE sobre la partición exacta (o MERGE INTO) en Apache Spark.
+sql_correcto_idempotente = """
+INSERT OVERWRITE TABLE datar_oro.recaudo_diario
+PARTITION (fecha_recaudo = '{{ data_interval_start | ds }}')
+SELECT nit, SUM(valor) AS total_pagado
+FROM datar_plata.pagos
+WHERE fecha_pago >= '{{ data_interval_start | ds }}'
+  AND fecha_pago <  '{{ data_interval_end | ds }}'
+GROUP BY nit;
+"""
+```
+
+1. **Ley 1 — Determinismo Temporal (`logical_date` / `data_interval_start`):** Jamás uses `datetime.now()` ni `CURRENT_DATE`. Al usar la ventana lógica del intervalo (`data_interval_start` y `data_interval_end`), si en octubre de 2026 ejecutas un `airflow dags backfill --start-date 2025-01-01 --end-date 2025-01-31`, cada una de las 31 corridas recibirá exactamente su fecha histórica correspondiente.
+2. **Ley 2 — Escritura Atómica e Idempotente por Partición:** Al usar `INSERT OVERWRITE PARTITION` (con `spark.sql.sources.partitionOverwriteMode = dynamic` sobre `Apache Iceberg` / `Delta Lake`) o `MERGE INTO`, puedes ejecutar la tarea del 15 de enero 1 vez o 20 veces seguidas y el resultado final en `DataR` será exactamente el mismo, con **cero registros duplicados**.
 
 ---
 
-### 6.4. Prácticas `DataOps` y Linaje Automatizado (`OpenLineage`)
+### 6.4. Prácticas `DataOps`, *Data Quality Gates* (`Circuit Breaker` de Datos) y Linaje (`OpenLineage`)
 
-**`DataOps`** es llevar la disciplina de ingeniería de software (`DevOps`) a las tuberías de datos:
-1. **Control de Versiones (`Git`) y `CI/CD` de Pipelines:** Todo `DAG` de Airflow y script de transformación (`dbt` / `Spark`) pasa por pruebas unitarias automáticas antes de subir a producción.
-2. **Pruebas de Calidad en el Pipeline (*Data Quality Gates*):** Antes de publicar una tabla en la Capa Oro, una tarea automática de Airflow (usando *Great Expectations*, *Soda* o *Deequ*) verifica que no haya llaves primarias duplicadas ni nulos ilegales; si falla la prueba, detiene el paso a Oro (*Circuit Breaker de Datos*) antes de que un dato falso llegue al tablero del Director.
-3. **Linaje Operativo Automatizado (`OpenLineage` / `Marquez` / `Purview`):** Cada vez que corre un `DAG`, registra automáticamente en el catálogo institucional qué tablas leyó, qué versión del código ejecutó y qué tabla produjo, garantizando trazabilidad total.
+**`DataOps`** aplica los principios ágiles y de ingeniería de software (`DevOps`) al ciclo de vida de los pipelines de datos bajo el patrón **Write-Audit-Publish (`WAP`)**:
+1. **Write (Escribir en rama o tabla de *Staging*):** El trabajo de Spark procesa los datos y los escribe primero en una zona temporal o rama aislada de `Iceberg` sin que los usuarios finales los vean aún.
+2. **Audit (Auditar con *Data Quality Gates*):** Una tarea automática de Airflow ejecuta validaciones estadísticas y de reglas de negocio (usando frameworks como *Great Expectations*, *Soda Core* o *AWS Deequ*):
+   * ¿El número de filas cayó más de un $50\%$ respecto al promedio móvil?
+   * ¿Existen `NITs` nulos o valores de impuesto negativos?
+   * ¿La suma total de recaudo en Oro cuadra al centavo con la suma en Plata?
+   * Si alguna validación crítica falla, el **Interruptor de Calidad (*Data Circuit Breaker*)** aborta el pipeline inmediatamente e impide que el dato corrupto contamine la Capa Oro.
+3. **Publish (Publicar Atómicamente):** Solo cuando el $100\%$ de las pruebas de calidad pasan en verde, se hace el `COMMIT` atómico publicando la tabla hacia los tableros directivos y registrando el linaje técnico extremo a extremo mediante el estándar **`OpenLineage`**.
 
 ---
 
 ### 6.5. Micro-Verificación de la Unidad 6
-* **Pregunta rápida 1:** Si necesitas reprocesar en Airflow todos los cierres diarios del mes pasado (*Backfilling*) porque cambió una regla de validación, ¿por qué tu script debe filtrar los datos usando la variable de contexto `logical_date` (`data_interval_start`) en lugar de la función del reloj del sistema `datetime.now()`? *(Respuesta: Porque `datetime.now()` devolvería siempre la fecha y hora del día de hoy en que se lanza el reproceso, mientras que `logical_date` inyecta la fecha exacta de cada día histórico que se está reprocesando, garantizando que el pipeline sea **determinista**).*
-* **Pregunta rápida 2:** ¿Deben los cálculos pesados sobre cientos de gigabytes de Facturación Electrónica ejecutarse dentro de la memoria local del proceso `Scheduler` o `Worker` de Airflow? *(Respuesta: **NO**. Airflow es un orquestador de flujo de control; debe delegar el procesamiento pesado de datos mediante operadores hacia motores distribuidos como **`Apache Spark`** o el motor del Data Lakehouse).*
+
+::: q
+Si necesitas reprocesar en Apache Airflow todos los cierres diarios del mes pasado (**`Backfilling`**) porque cambió una regla tributaria, ¿por qué tu script debe filtrar los datos usando las variables de contexto `data_interval_start` (`logical_date`) y `data_interval_end` en lugar de la función del reloj del sistema `datetime.now()` o `CURRENT_DATE`?
+---
+Porque `datetime.now()` y `CURRENT_DATE` devuelven siempre la fecha y hora actuales del momento en que se ejecuta el reproceso (mezclando los datos de hoy con los del mes pasado), mientras que **`data_interval_start` (`logical_date`)** inyecta de forma **determinista** la fecha exacta de cada día histórico que se está reprocesando. Combinado con `INSERT OVERWRITE PARTITION` o `MERGE INTO`, garantiza un reprocesamiento **idempotente** sin duplicados.
+:::
+
+::: q
+¿Por qué es un antipatrón crítico en Apache Airflow transferir un DataFrame con millones de registros de una tarea a otra utilizando `XComs` o procesarlo en memoria dentro de un `PythonOperator`?
+---
+Porque **Airflow es un orquestador de flujo de control y no un motor de procesamiento de datos**: los `XComs` se almacenan en la base de datos transaccional interna (`Metadatabase PostgreSQL`) y están diseñados únicamente para pasar metadatos pequeños (como rutas de archivos en el Data Lake o conteos de control). Cargar gigabytes en `XComs` o en el `PythonOperator` satura la base de datos de Airflow y provoca fallos por agotamiento de memoria (`OOMKilled`) en los Pods.
+:::
 
 ---
 
 ## Unidad 7: Marco de Interoperabilidad del Estado Colombiano (`MRAE MinTIC`), Servicios Ciudadanos Digitales y Plataforma `X-Road`
 
-Esta unidad es **obligatoria y decisiva** en cualquier concurso de méritos para el área de tecnología y datos de una entidad pública colombiana. Aquí estudiamos cómo ordena la ley colombiana que se conecten las entidades del Estado entre sí.
+Esta unidad es **obligatoria y decisiva** en cualquier concurso de méritos para el área de tecnología y datos de una entidad pública colombiana. Aquí estudiamos cómo ordena la normatividad vigente del **MinTIC** que se conecten e intercambien información las entidades del Estado colombiano.
 
 ---
 
-### 7.1. ¿Qué son los Servicios Ciudadanos Digitales y el Marco de Interoperabilidad del `MRAE`?
+### 7.1. Política de Gobierno Digital, Servicios Ciudadanos Digitales y Principio de `Once-Only` ("Solo Una Vez")
 
-Bajo la **Política de Gobierno Digital (Decreto 1078 de 2015, Decreto 620 de 2020 y Decreto 088 de 2022)** liderada por el **MinTIC** y operada articuladamente con la **Agencia Nacional Digital (`AND`)**, el Estado colombiano creó los **Servicios Ciudadanos Digitales**:
-1. **Autenticación Digital Ciudadana:** Un solo inicio de sesión seguro del ciudadano ante las entidades del Estado.
-2. **Carpeta Ciudadana Digital:** El espacio donde el ciudadano consulta sus documentos y certificados públicos.
-3. **Servicio de Interoperabilidad del Estado:** La autopista oficial segura por la cual las entidades públicas (DIAN, Registraduría, UGPP, MinSalud, IGAC, Superfinanciera, Rama Judicial) intercambian datos automáticamente para cumplir sus funciones y no pedirle al ciudadano papeles que otra entidad del Estado ya tiene (**Principio de `Once-Only` / No pedir dos veces lo mismo — Decreto Ley Antitrámites 019 de 2012 y Decreto 2106 de 2019**).
+Bajo la **Política de Gobierno Digital (Decreto 1078 de 2015 — DUR del Sector TIC, actualizado por los Decretos 620 de 2020 y 088 de 2022)** y el **Marco de Referencia de Arquitectura Empresarial (`MRAE`) del MinTIC**, articulado operativamente por la **Agencia Nacional Digital (`AND`)**, el Estado colombiano estructuró los **Servicios Ciudadanos Digitales Base**:
+
+1. **Servicio de Autenticación Digital:** Permite a los ciudadanos autenticarse con una identidad digital única y segura ante los portales estatales.
+2. **Servicio de Carpeta Ciudadana Digital:** Espacio donde el ciudadano accede a sus documentos, registros y respuestas generadas por las entidades públicas.
+3. **Servicio de Interoperabilidad:** Es la plataforma y conjunto de estándares que permite a las entidades públicas (DIAN, Registraduría Nacional, UGPP, Cámaras de Comercio, IGAC, Superintendencia Financiera, MinSalud, Rama Judicial) **intercambiar datos e información automáticamente de máquina a máquina**.
+   * **El Mandato Legal Antitrámites (`Principio de Solo Una Vez / Once-Only` — Decreto Ley 019 de 2012, Ley 1955 de 2019 y Decreto 2106 de 2019):** Las entidades públicas tienen **prohibido exigirle al ciudadano que aporte certificados, paz y salvos o documentos que ya reposen en las bases de datos de la misma entidad o de otra entidad del Estado**; es obligación de las entidades interoperar internamente para consultarlos (siempre que exista habilitación legal o autorización cuando se trate de datos semiprivados, privados o reservados).
 
 ---
 
 ### 7.2. Las 4 Dimensiones del Marco de Interoperabilidad de MinTIC (¡Fijo en el Examen!)
 
-Para que la DIAN pueda conectarse e intercambiar datos con otra entidad del Estado, el **Marco de Interoperabilidad del MRAE** exige cumplir **4 dimensiones en orden**:
+Para que la DIAN pueda conectarse e intercambiar datos con otra entidad del Estado, el **Marco de Interoperabilidad del MRAE** exige cumplir **4 dimensiones en estricto orden**:
 
 ```
 ========================================================================================
@@ -624,19 +773,19 @@ Para que la DIAN pueda conectarse e intercambiar datos con otra entidad del Esta
 ========================================================================================
 
   1. DIMENSIÓN LEGAL / JURÍDICA ("¿Nos permite la ley compartir este dato?")
-     - Verifica la norma habilitante, el convenio interadministrativo, la Ley 1581/2012
-       y las excepciones taxativas de la Reserva Tributaria (Art. 583 del E.T.).
+     - Verifica la norma habilitante, el acto o convenio interadministrativo, la Ley
+       1581/2012 y las excepciones taxativas de la Reserva Tributaria (Art. 583 E.T.).
                                        |
                                        v
   2. DIMENSIÓN ORGANIZACIONAL ("¿Cómo se coordinan nuestros procesos y acuerdos?")
-     - Alinea los procesos de negocio de ambas entidades, define roles responsables y
-       firma los Acuerdos de Nivel de Servicio (SLA) de disponibilidad y soporte.
+     - Alinea los procesos de negocio de ambas entidades, define líderes funcionales y
+       técnicos, y suscribe los Acuerdos de Nivel de Servicio (SLA) de operación.
                                        |
                                        v
   3. DIMENSIÓN SEMÁNTICA ("¿Entendemos exactamente lo mismo por cada palabra y campo?")
-     - Aplica el LENGUAJE COMÚN DE INTERCAMBIO DE INFORMACIÓN del MinTIC (estándar gel-XML
-       / JSON Schema oficial) para que "TipoDocumento", "Municipio" o "Ingreso" tengan el
-       mismo código y significado en todas las entidades del país.
+     - Aplica el LENGUAJE COMÚN DE INTERCAMBIO DE INFORMACIÓN del MinTIC (diccionario
+       de datos estándar XSD / JSON Schema) para que "TipoDocumento", "MunicipioDANE"
+       o "ActividadCIIU" tengan el mismo código, formato y significado en todo el país.
                                        |
                                        v
   4. DIMENSIÓN TÉCNICA ("¿Por qué cable y protocolo seguro viajan los bytes?")
@@ -646,19 +795,19 @@ Para que la DIAN pueda conectarse e intercambiar datos con otra entidad del Esta
 ```
 
 > [!EXAM]
-> **¿Cómo pregunta Areandina las 4 Dimensiones de Interoperabilidad?**
-> * Si el caso dice que la DIAN y una Alcaldía ya conectaron sus servidores técnicamente, pero el cruce falla porque la Alcaldía envía el municipio como `"BOGOTÁ D.C."` y el tipo de documento como `"Cédula"`, mientras la DIAN espera el código DANE `"11001"` y el código `"13"`, el fallo está en la **Dimensión Semántica** y se resuelve adoptando el **Lenguaje Común de Intercambio de Información del MinTIC**.
-> * Si el caso dice que otra entidad pide datos de declaraciones de renta sin tener facultad legal para ver datos reservados, el bloqueo está en la **Dimensión Jurídica / Legal (Art. 583 E.T.)**.
+> **¿Cómo pregunta Areandina las 4 Dimensiones de Interoperabilidad en los Casos Situacionales?**
+> * **Caso A (Fallo en la Dimensión Semántica):** La DIAN y una entidad territorial ya firmaron el convenio legal y conectaron sus servidores en `X-Road`, pero el cruce automático rechaza los registros porque la Alcaldía envía el municipio como `"MEDELLÍN"` y la fecha como `"31/12/2025"`, mientras la DIAN espera el código DANE `"05001"` y formato ISO 8601 `"2025-12-31"`. $\rightarrow$ El problema pertenece a la **Dimensión Semántica** y se soluciona adoptando los elementos del **Lenguaje Común de Intercambio de Información del MinTIC**.
+> * **Caso B (Bloqueo en la Dimensión Jurídica):** Un ministerio solicita consumir en tiempo real el detalle individual de ingresos y patrimonio de las declaraciones de Renta de todos los colombianos sin contar con una ley que levante la Reserva Tributaria para ese fin. $\rightarrow$ El impedimento pertenece a la **Dimensión Jurídica / Legal (Art. 583 del Estatuto Tributario)**; no se puede habilitar el servicio de datos nominativos individuales, sino únicamente ofrecer estadísticas agregadas y anonimizadas.
 
 ---
 
-### 7.3. ¿Cómo Funciona por Dentro la Plataforma `X-Road` en Colombia?
+### 7.3. Arquitectura Criptográfica y Operativa de la Plataforma `X-Road` en Colombia
 
-El Estado colombiano adoptó como plataforma tecnológica oficial de interoperabilidad el estándar **`X-Road`** (el mismo sistema descentralizado con el que funciona Estonia, líder mundial en gobierno digital).
+El Estado colombiano adoptó como infraestructura tecnológica oficial de interoperabilidad el ecosistema **`X-Road`** (desarrollado originalmente en Estonia y mantenido por el instituto NIIS).
 
-**La característica más importante de `X-Road` (¡Cuidado con esta trampa en el examen!):**
-* En `X-Road`, **los datos de los ciudadanos NUNCA pasan por un servidor central del MinTIC ni se guardan en una base de datos central externa**.
-* Los datos viajan **directamente de punto a punto cifrados** entre el **Servidor de Seguridad (`Security Server`) de la Entidad A** y el **Servidor de Seguridad (`Security Server`) de la DIAN**. El Servidor Central de la Agencia Nacional Digital solo actúa como el "directorio telefónico y certificador" de quiénes son miembros válidos de la red.
+**La característica arquitectónica más importante de `X-Road` (¡Trampa frecuente en el examen!):**
+* **`X-Road` NO es un bus centralizado por donde pasan todos los datos del país.** El **Servidor Central (`Central Server`)** administrado por la Agencia Nacional Digital **NUNCA ve, procesa ni almacena los datos transmitidos entre las entidades**.
+* El intercambio de datos ocurre **directamente de punto a punto (Peer-to-Peer)** a través de un túnel criptográfico entre el **Servidor de Seguridad (`Security Server`) de la Entidad Consumidora** y el **Servidor de Seguridad (`Security Server`) instalado en la DIAN**.
 
 ```
 ========================================================================================
@@ -686,50 +835,82 @@ El Estado colombiano adoptó como plataforma tecnológica oficial de interoperab
 ========================================================================================
 ```
 
-#### ¿Qué hace automáticamente el `Security Server` de `X-Road` instalado en la DIAN?
-1. **Autenticación Mutua (`mTLS`):** Verifica que el servidor que pide el dato sea realmente el servidor oficial certificado de la otra entidad pública.
-2. **Firma Digital Automática (`X.509`) y Sellado de Tiempo (`TSA - Time-Stamping Authority`):** Cada petición y cada respuesta queda firmada digitalmente y sellada con la hora oficial legal.
-3. **Garantía Jurídica de `No Repudio` (Ley 527 de 1999):** Como todo mensaje queda guardado y firmado en el registro criptográfico (*Message Log*), ninguna entidad ni funcionario puede negar ante un juez o ante la Procuraduría qué dato exacto solicitó o entregó y en qué segundo ocurrió.
+#### ¿Qué componentes intervienen en una transacción sobre `X-Road`?
+| Componente de `X-Road` | Ubicación / Responsable | Función Exacta en la Transacción |
+| :--- | :--- | :--- |
+| **1. `Central Server` (Servidor Central)** | Agencia Nacional Digital (`AND`) / MinTIC | Mantiene el registro oficial de las entidades miembro, los subsistemas registrados y la configuración global de confianza. **No interviene en el tráfico de datos.** |
+| **2. `Security Server` (Servidor de Seguridad)** | Desplegado en la red perimetral de **cada entidad** (ej. uno en la DIAN y otro en la UGPP) | Empaqueta la petición, establece el canal **`mTLS`**, **firma digitalmente** cada mensaje saliente, verifica la firma del mensaje entrante, solicita el **estampado cronológico (`TSA`)** y guarda la evidencia en el **`Message Log`**. |
+| **3. `CA` (Autoridad de Certificación) + `OCSP`** | Entidad de Certificación Digital acreditada (`ONAC`) | Emite los certificados digitales **`X.509`** de autenticación y firma, y responde en línea vía **`OCSP`** que el certificado sigue vigente y no ha sido revocado. |
+| **4. `TSA` (*Time-Stamping Authority* / Sellado de Tiempo)** | Autoridad de Estampado Cronológico Oficial | Certifica criptográficamente la hora, minuto y segundo exactos en que se firmó el mensaje, otorgando **pleno valor probatorio y garantía de No Repudio conforme a la Ley 527 de 1999**. |
 
 ---
 
 ### 7.4. Micro-Verificación de la Unidad 7
-* **Pregunta rápida 1:** En la arquitectura de interoperabilidad del Estado colombiano basada en `X-Road`, ¿las declaraciones o datos que la DIAN comparte con otra entidad autorizada quedan almacenados dentro del Servidor Central de la Agencia Nacional Digital / MinTIC? *(Respuesta: **NO**. El Servidor Central de `X-Road` solo administra el directorio de miembros y políticas de seguridad; el intercambio de datos viaja de forma directa y cifrada con `mTLS` de extremo a extremo entre el **`Security Server`** de la DIAN y el **`Security Server`** de la entidad autorizada).*
-* **Pregunta rápida 2:** Cuando dos entidades públicas usan nombres, formatos y códigos distintos para representar el mismo concepto (como el tipo de documento de identidad o el código de actividad económica), ¿cuál de las 4 dimensiones de interoperabilidad del MRAE está fallando y qué instrumento del MinTIC la soluciona? *(Respuesta: Falla la **Dimensión Semántica**, y se soluciona implementando el **Lenguaje Común de Intercambio de Información** del MinTIC).*
+
+::: q
+En la arquitectura de interoperabilidad del Estado colombiano basada en `X-Road`, ¿las declaraciones o registros del RUT que la DIAN comparte con otra entidad autorizada pasan a través del Servidor Central de la Agencia Nacional Digital / MinTIC o quedan almacenados allí?
+---
+**NO.** El **Servidor Central (`Central Server`)** de `X-Road` únicamente administra el directorio de entidades miembro y las políticas de configuración global. Los datos viajan **directamente punto a punto** a través de un túnel cifrado con **`mTLS`**, firma digital **`X.509`** y sellado de tiempo (**`TSA`**) entre el **`Security Server`** de la DIAN y el **`Security Server`** de la entidad consumidora.
+:::
+
+::: q
+Cuando dos entidades públicas ya conectaron sus servidores en `X-Road`, pero la integración falla porque usan nombres, formatos y catálogos distintos para representar el tipo de documento de identidad y el código de municipio, ¿cuál de las 4 dimensiones de interoperabilidad del MRAE está fallando y qué instrumento del MinTIC la soluciona?
+---
+Está fallando la **Dimensión Semántica**, y se soluciona adoptando el estándar del **Lenguaje Común de Intercambio de Información** del MinTIC, que unifica el diccionario de datos, tipos, longitudes y tablas de referencia oficiales (como la codificación `DIVIPOLA` del DANE).
+:::
 
 ---
 
-## Unidad 8: Integración sobre `DataR` y Régimen Estricto de Reserva Tributaria en Intercambios (`Art. 583 a 587 E.T.`)
+## Unidad 8: Integración sobre `DataR`, Reconciliación Contable y Régimen Estricto de Reserva Tributaria (`Art. 583 a 587 E.T.`)
 
-Cerramos el módulo integrando las reglas jurídicas del **Estatuto Tributario Colombiano** que todo **Inspector I** debe aplicar cuando otra entidad o dependencia solicita integrarse con los datos de la DIAN.
+Cerramos el módulo integrando la ingeniería de cuadratura y reconciliación de datos en **`DataR`** con las reglas jurídicas del **Estatuto Tributario Colombiano** que todo **Inspector I** debe aplicar cuando otra entidad o dependencia solicita integrarse con los datos de la DIAN.
 
 ---
 
-### 8.1. Integración Multimodal hacia el Repositorio Único de Datos (`DataR`)
+### 8.1. Integración Multimodal y Reconciliación Contable Automatizada hacia `DataR`
 
 Como vimos a lo largo de los primeros tres módulos, `DataR` consolida toda la información de la DIAN combinando **3 patrones de integración** según la naturaleza de cada fuente:
 1. **Patrón 1 — *Streaming Event-Driven* (`Apache Kafka` + `Avro` + `Schema Registry`):** Para los documentos electrónicos en línea (**Facturación Electrónica `XML UBL 2.1`**, Nómina Electrónica, Documentos Equivalentes POS).
 2. **Patrón 2 — *Log-Based CDC* (`Redo Log / WAL` $\to$ `Debezium` $\to$ `Kafka` $\to$ `Iceberg MoR`):** Para replicar en tiempo real los cambios de las bases transaccionales internas (**`MUISCA`**, **`RUT`**, **`SYGA`**, **Cuenta Corriente y Pagos**) sin afectar el rendimiento de los portales ciudadanos.
-3. **Patrón 3 — *Batch Orquestado e Idempotente* (`Apache Airflow` + `Apache Spark` + `Record Linkage`):** Para los grandes volúmenes periódicos como la **Información Exógena Tributaria (Art. 631 E.T.)** y convenios internacionales masivos (**`FATCA` y `CRS`** de intercambio automático de cuentas financieras con la OCDE y EE. UU.).
+3. **Patrón 3 — *Batch Orquestado e Idempotente* (`Apache Airflow` + `Apache Spark` + `Record Linkage`):** Para los grandes volúmenes periódicos como la **Información Exógena Tributaria (Art. 631 E.T.)** y los convenios internacionales masivos de intercambio automático de información financiera (**`FATCA`** con el IRS de Estados Unidos y **`CRS` — *Common Reporting Standard*** con más de 100 jurisdicciones de la OCDE).
+
+#### ¿Cómo Garantizamos que no se Pierda ni un Peso en el Camino? (Cuadratura y Reconciliación Automatizada)
+En una entidad recaudadora como la DIAN, no basta con que un pipeline de integración termine en verde (`SUCCESS`); debemos demostrar matemáticamente mediante **Controles de Reconciliación Automatizada** que los datos que salieron del sistema origen son idénticos a los que quedaron consolidados en `DataR`:
+
+| Nivel de Control de Reconciliación | ¿Qué Verifica Exactamente el Pipeline de `DataR`? | Acción Automática si Detecta Descuadre |
+| :--- | :--- | :--- |
+| **1. Control Volumétrico (*Row Count Check*)** | Verifica que $\text{Filas}_{\text{Origen}} - \text{Filas}_{\text{DLQ}} = \text{Filas}_{\text{Destino}}$ para la ventana de tiempo (`logical_date`). | Dispara alerta operativa e identifica por llave primaria (`CUFE` / `num_formulario`) cuáles registros faltan para reinyectarlos. |
+| **2. Cuadratura Financiera (*Financial Checksum / Control Totals*)** | Verifica al centavo que la suma de las columnas monetarias coincida: $\sum \text{Valor\_Recaudo}_{\text{MUISCA}} == \sum \text{Valor\_Recaudo}_{\text{DataR\_Oro}}$. | Bloquea la publicación de la tabla en la Capa Oro (**patrón `WAP`**) para evitar que salgan reportes oficiales descuadrados. |
+| **3. Integridad Criptográfica (*Hash Verification*)** | En intercambios por lotes (`Exógena`, `Bancos`, `FATCA/CRS`), recalcula el **`SHA-256`** del archivo recibido y lo compara contra el manifiesto firmado enviado por el originador. | Rechaza inmediatamente el lote corrupto o alterado en tránsito antes de descomprimirlo en la Zona de Aterrizaje (*Landing Zone*). |
 
 ---
 
 ### 8.2. Reglas Legales Estrictas para Compartir Datos de la DIAN (`Art. 583 a 587 del Estatuto Tributario`)
 
-En la prueba escrita, muchos casos situacionales te pondrán a prueba con solicitudes de acceso o integración provenientes de alcaldías, ministerios, universidades o empresas privadas. Debes aplicar esta matriz legal sin dudar:
+En la prueba escrita de la CNSC, múltiples casos situacionales te pondrán a prueba con solicitudes de acceso o integración provenientes de alcaldías, gobernaciones, ministerios, universidades o empresas privadas. Debes aplicar esta matriz legal sin dudar:
 
 | ¿Quién pide integrarse con los datos de la DIAN? | ¿Qué dice el Estatuto Tributario (Arts. 583 a 587) y la Ley 1581/2012? | ¿Cómo debe diseñarse técnicamente la integración? |
 | :--- | :--- | :--- |
-| **1. Autoridades Judiciales Penales / Fiscalía / Jueces y Entes de Control con facultad legal expresa (Art. 583 y 584 E.T.)** | **SÍ tienen acceso**, únicamente dentro de investigaciones formales y respecto a los sujetos investigados. | Entrega segura mediante servicio o canal cifrado auditado con firma digital, dejando registro inmutable en bitácora de quién solicitó, bajo qué número de expediente judicial y qué datos exactos se entregaron. |
-| **2. Secretarías de Hacienda Departamentales y Municipales (Art. 585 E.T.)** | **SÍ se permite el intercambio recíproco**, pero **ÚNICAMENTE para efectos de liquidación y control de impuestos territoriales** (ej. ICA) y mediante convenio vigente. | Exposición de servicios web en **`X-Road`** aplicando **Minimización de Datos (Principio de Finalidad)**: se exponen exclusivamente las casillas de ingresos/identificación pertinentes para el control tributario territorial, exigiendo a la alcaldía garantizar la misma **Reserva Tributaria**. |
-| **3. Otras Entidades Públicas para fines estadísticos, política económica o Ciudadanos (Ley 1712 de 2014)** | **PROHIBIDO entregar datos individuales con NIT o nombre** (salvo autorización legal expresa o consentimiento del titular). Solo pueden entregarse **estadísticas agregadas e impersonales**. | Publicación de servicios o conjuntos de **Datos Abiertos** previamente sometidos a **Anonimización Irreversible ($k$-Anonimato y agregación macroeconómica)** donde sea imposible identificar a un contribuyente individual. |
-| **4. Solicitudes de conexión directa a la Base de Datos (`Shared DB`) o envío por correo electrónico sin cifrar** | **TERMINANTEMENTE PROHIBIDO EN TODOS LOS CASOS**, incluso si la entidad solicitante tiene facultad legal. | Toda integración interinstitucional autorizada legalmente debe realizarse a través de **APIs gobernadas / `X-Road` / transferencia segura cifrada (`SFTP/mTLS`)** con Contratos de Datos, `Rate Limiting` y auditoría de no repudio. |
+| **1. Autoridades Judiciales Penales / Fiscalía / Jueces y Entes de Control con facultad legal expresa (Art. 583 y 584 E.T.)** | **SÍ tienen acceso**, únicamente dentro de procesos e investigaciones formales y respecto a los sujetos investigados. | Entrega segura mediante servicio o canal cifrado auditado con firma digital, dejando registro inmutable en bitácora de quién solicitó, bajo qué número de expediente judicial y qué datos exactos se entregaron. |
+| **2. Secretarías de Hacienda Departamentales, Distritales y Municipales (Art. 585 E.T.)** | **SÍ se permite el intercambio recíproco de información tributaria**, pero **ÚNICAMENTE para efectos de liquidación y control de impuestos nacionales, departamentales o municipales** (ej. ICA, Predial) y mediante acto/convenio vigente. | Exposición de servicios web en **`X-Road`** aplicando **Minimización de Datos (Principio de Finalidad)**: se exponen exclusivamente las casillas de ingresos/identificación pertinentes para el control tributario territorial, exigiendo a la entidad territorial garantizar la misma **Reserva Tributaria**. |
+| **3. Otras Entidades Públicas para fines estadísticos, política económica o Ciudadanos (Ley 1712 de 2014)** | **PROHIBIDO entregar datos individuales con NIT o nombre** (salvo autorización legal expresa o consentimiento del titular). Solo pueden entregarse **estadísticas agregadas e impersonales**. | Publicación de servicios o conjuntos de **Datos Abiertos** previamente sometidos a **Anonimización Irreversible ($k$-Anonimato, supresión de cuasi-identificadores y agregación macroeconómica)** donde sea imposible re-identificar a un contribuyente individual. |
+| **4. Solicitudes de conexión directa a la Base de Datos (`Shared DB`) o envío de archivos en texto plano por correo electrónico** | **TERMINANTEMENTE PROHIBIDO EN TODOS LOS CASOS**, incluso si la entidad solicitante tiene facultad legal para conocer el dato. | Toda integración interinstitucional autorizada legalmente debe realizarse a través de **APIs gobernadas / `X-Road` / transferencia segura cifrada (`SFTP/mTLS` + cifrado de archivo `PGP/AES-256`)** con Contratos de Datos, `Rate Limiting` y auditoría de no repudio. |
 
 ---
 
 ### 8.3. Micro-Verificación de la Unidad 8
-* **Pregunta rápida 1:** Una Secretaría de Hacienda Municipal suscribe un convenio legal con la DIAN al amparo del **Artículo 585 del Estatuto Tributario** para cruzar los ingresos brutos declarados en Renta con las declaraciones del impuesto de Industria y Comercio (ICA). ¿Puede la Subdirección de Procesamiento de Datos entregarle copia completa de todas las tablas internas de la DIAN incluyendo datos que no tienen relación con el ICA, o darle acceso directo por red a la base de datos de producción? *(Respuesta: **NO**. Por el principio de **Minimización de Datos y Finalidad** y el lineamiento `MRAE`, solo debe exponer mediante un servicio web seguro en **`X-Road`** exclusivamente los campos estrictamente necesarios y autorizados por el convenio para el control del impuesto territorial, sin dar jamás acceso directo al motor de base de datos interno).*
-* **Pregunta rápida 2:** ¿Qué ley colombiana otorga pleno valor probatorio y garantía de **No Repudio** a los mensajes firmados digitalmente con certificados de entidad de certificación y sellado de tiempo cronológico (`TSA`) en las integraciones de la DIAN? *(Respuesta: La **Ley 527 de 1999** —Ley de Comercio Electrónico y Firmas Digitales—).*
+
+::: q
+Una Secretaría de Hacienda Municipal suscribe un convenio legal con la DIAN al amparo del **Artículo 585 del Estatuto Tributario** para cruzar los ingresos brutos declarados en Renta con las declaraciones del impuesto de Industria y Comercio (ICA). ¿Puede la Subdirección de Procesamiento de Datos entregarle copia completa de todas las tablas internas de la DIAN incluyendo datos que no tienen relación con el ICA, o darle un usuario con conexión directa (`JDBC`) a la base de datos de producción?
+---
+**NO.** Por el principio legal de **Minimización de Datos y Finalidad** y los lineamientos de arquitectura del **`MRAE`**, nunca se debe dar acceso directo al motor de base de datos interno ni entregar tablas completas indiscriminadas. La integración debe exponerse mediante un servicio seguro en la plataforma **`X-Road`** (o transferencia segura gobernada), entregando **exclusivamente los campos estrictamente necesarios y autorizados en el convenio** para la liquidación y control del impuesto territorial, manteniendo la obligación legal de Reserva Tributaria en la entidad receptora.
+:::
+
+::: q
+Durante el cargue nocturno de pagos bancarios hacia la Capa Oro de `DataR`, el job de Apache Spark finaliza sin errores técnicos de código (`SUCCESS`), pero el control automático de cuadratura financiera detecta una diferencia de $\$450\text{ millones}$ entre la suma de los recibos en origen y la tabla consolidada. Bajo el patrón `DataOps Write-Audit-Publish (WAP)`, ¿qué debe hacer el pipeline de integración?
+---
+Bajo el patrón **`Write-Audit-Publish (WAP)`**, la escritura inicial ocurre en una zona o rama aislada de *Staging*; al fallar la etapa de **Auditoría (*Financial Checksum*)**, el **Interruptor de Calidad (*Data Circuit Breaker*)** debe **bloquear automáticamente la etapa de Publicación (`Publish`)**, impidiendo que la tabla descuadrada reemplace la versión productiva de la Capa Oro, y disparar una alerta inmediata al equipo de ingeniería de datos.
+:::
 
 ---
 

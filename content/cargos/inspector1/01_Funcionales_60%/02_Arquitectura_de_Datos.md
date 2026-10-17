@@ -600,14 +600,24 @@ Entendamos qué guarda cada una de las 3 piezas:
 ---
 
 ### 6.3. Micro-Verificación de la Unidad 6
-* **Pregunta rápida 1:** Un auditor necesita que al consultar las declaraciones de renta del año 2022 de un contribuyente, el reporte muestre la Dirección Seccional a la que pertenecía el contribuyente en el año 2022, aunque hoy en 2026 ese contribuyente pertenezca a otra Dirección Seccional. ¿Qué tipo de `SCD` debe aplicarse en `Dim_Contribuyente`? *(Respuesta: **`SCD Tipo 2`**, creando una nueva fila con nueva llave subrogada `SK` y fechas de vigencia `fecha_inicio` / `fecha_fin`).*
-* **Pregunta rápida 2:** En un modelo `Data Vault 2.0`, ¿en cuál de sus tres componentes (`Hub`, `Link` o `Satellite`) se almacenan los atributos descriptivos que cambian con el tiempo (como la razón social, el código CIIU o el patrimonio declarado)? *(Respuesta: En los **`Satellites` —Satélites—**, mientras que los `Hubs` guardan solo las claves de negocio y los `Links` las relaciones entre `Hubs`).*
+
+::: q
+Un auditor necesita que al consultar las declaraciones de renta del año 2022 de un contribuyente, el reporte muestre la Dirección Seccional a la que pertenecía el contribuyente en el año 2022, aunque hoy en 2026 ese contribuyente pertenezca a otra Dirección Seccional. ¿Qué tipo de `SCD` debe aplicarse en `Dim_Contribuyente`?
+---
+Se debe aplicar **`SCD Tipo 2` (Dimensión de Cambio Lento Tipo 2)**, utilizando una **Clave Subrogada (`SK`)** como llave primaria e insertando una nueva fila versionada ante cada cambio con columnas de vigencia (`fecha_inicio`, `fecha_fin`, `es_actual`), de modo que los hechos de 2022 queden enlazados a la `SK` vigente en 2022.
+:::
+
+::: q
+En un modelo `Data Vault 2.0`, ¿en cuál de sus tres componentes (`Hub`, `Link` o `Satellite`) se almacenan los atributos descriptivos que cambian con el tiempo (como la razón social, el código CIIU o el patrimonio declarado) y por qué se usan `Hash Keys` en lugar de secuencias numéricas?
+---
+Los atributos descriptivos y su historia se almacenan exclusivamente en los **`Satellites` (Satélites)** en modalidad *insert-only*. Se utilizan **`Hash Keys` (`SHA-256` / `MD5`)** calculadas determinísticamente sobre la llave de negocio (`NIT`) porque permiten cargar en paralelo `Hubs`, `Links` y `Satellites` desde múltiples nodos sin depender de un generador secuencial centralizado ni hacer *lookups* previos.
+:::
 
 ---
 
 ## Unidad 7: Ingeniería Física de Tablas Abiertas — `Apache Iceberg`, `Delta Lake`, `CoW` vs. `MoR` y `Z-Ordering`
 
-En el Módulo 1 aprendimos qué es `Apache Parquet` y por qué encima de `Parquet` colocamos formatos de tabla abiertos (**`Apache Iceberg`**, **`Delta Lake`** o **`Apache Hudi`**). En esta unidad del módulo de **Arquitectura de Datos**, vamos un paso más allá para dominar los **mecanismos internos de lectura/escritura y particionamiento** que distinguen a un arquitecto senior en el examen de la CNSC.
+En el Módulo 1 aprendimos qué es `Apache Parquet` y por qué encima de `Parquet` colocamos formatos de tabla abiertos (**`Apache Iceberg`**, **`Delta Lake`** o **`Apache Hudi`**). En esta unidad del módulo de **Arquitectura de Datos**, vamos un paso más allá para dominar los **mecanismos internos de lectura/escritura, control de concurrencia optimista (`OCC`) y particionamiento multidimensional** que distinguen a un arquitecto senior en el examen de la CNSC.
 
 ---
 
@@ -616,7 +626,7 @@ En el Módulo 1 aprendimos qué es `Apache Parquet` y por qué encima de `Parque
 Recuerda una verdad física: **los archivos `Apache Parquet` en el disco duro son inmutables** (no puedes abrir un archivo Parquet de $500\text{ MB}$ y cambiarle un numerito en la fila $14.320$ sin tocar el resto).
 Entonces, cuando llega una corrección de una declaración tributaria (`UPDATE` / `MERGE`) o una orden de borrado (`DELETE`), ¿cómo hacen **`Apache Iceberg`**, **`Delta Lake`** y **`Apache Hudi`** para actualizar el dato?
 
-Tienen **dos estrategias físicas** y tú puedes elegir cuál usar según el caso de uso de la DIAN:
+Tienen **dos estrategias físicas** y tú debes saber elegir cuál configurar según el caso de uso de la DIAN:
 
 ```
 ========================================================================================
@@ -629,7 +639,7 @@ Tienen **dos estrategias físicas** y tú puedes elegir cuál usar según el cas
      - En el momento del UPDATE, lee el archivo de 500 MB y escribe un ARCHIVO PARQUET
        NUEVO COMPLETO de 500 MB con la fila actualizada.
      - Ventaja:  ¡Las LECTURAS (SELECT) son rapidísimas! (No hay que cruzar nada al leer).
-     - Desventaja: Las ESCRITURAS/UPDATES frecuentes son lentas y costosas.
+     - Desventaja: Las ESCRITURAS/UPDATES frecuentes son lentas y costosas (Write Amplification).
 
   2. ESTRATEGIA MERGE-ON-READ (MoR - Fusionar al Leer / Deletion Vectors):
      - En el momento del UPDATE, ¡NO toca el archivo de 500 MB! Solo escribe al instante
@@ -640,9 +650,15 @@ Tienen **dos estrategias físicas** y tú puedes elegir cuál usar según el cas
 ========================================================================================
 ```
 
+#### Profundización en `Apache Iceberg v2`: *Positional Deletes* vs. *Equality Deletes*
+Dentro de `Merge-on-Read (MoR)`, `Apache Iceberg` maneja dos tipos de archivos de borrado diferencial que pueden aparecer en preguntas técnicas avanzadas:
+1. **`Positional Delete Files` (Borrado por Posición):** El archivo diferencial guarda la ruta exacta del archivo Parquet y el número de fila exacto que fue invalidado (ej. `file_a.parquet, row_pos = 4812`). Es rapidísimo al leer porque el lector simplemente salta esa posición, pero exige que el escritor sepa en qué archivo estaba la fila. *(En `Delta Lake` este mismo mecanismo se denomina **`Deletion Vectors`**, almacenando un mapa de bits `RoaringBitmap` de las filas borradas).*
+2. **`Equality Delete Files` (Borrado por Igualdad de Llave):** El archivo diferencial guarda la condición lógica de negocio (ej. `nit = 900123456 AND periodo = 2025`). El escritor en Streaming ni siquiera tiene que buscar dónde estaba la fila vieja: escribe el cambio en 1 milisegundo, aunque exige más trabajo al lector hasta que corra la compactación (`rewrite_data_files`).
+
 | Criterio de Selección en el Examen | Cuándo elegir **`Copy-on-Write (CoW)`** | Cuándo elegir **`Merge-on-Read (MoR)`** *(o Deletion Vectors)* |
 | :--- | :--- | :--- |
-| **Patrón de Carga en la DIAN** | Tablas de la **Capa Oro** donde se escribe por lotes pocas veces al día, pero **miles de analistas y tableros de Power BI hacen consultas `SELECT` todo el día**. | Tablas de la **Capa Plata** que reciben **actualizaciones continuas cada segundo vía `CDC` en Streaming** (ej. cambios constantes del RUT o estados de facturas). |
+| **Patrón de Carga en la DIAN** | Tablas de la **Capa Oro** donde se escribe por lotes pocas veces al día, pero **miles de analistas y tableros de Power BI hacen consultas `SELECT` todo el día**. | Tablas de la **Capa Plata** que reciben **actualizaciones continuas cada segundo vía `CDC` en Streaming** (ej. cambios constantes del RUT, cuenta corriente o estados de facturas). |
+| **Amplificación** | **Amplificación de Escritura (*Write Amplification*):** alta en `UPDATE/DELETE`, cero penalización al leer. | **Amplificación de Lectura (*Read Amplification*):** mínima latencia al escribir, pequeña sobrecarga al leer que se elimina tras la **Compactación asíncrona**. |
 | **¿Qué prioriza?** | **Velocidad máxima de Lectura (`Read-Heavy`)**. | **Velocidad máxima de Escritura y Actualización (`Write/Update-Heavy`)**. |
 
 ---
@@ -654,32 +670,72 @@ En los Data Lakes antiguos basados en *Apache Hive*, las particiones eran carpet
 2. Si querías cambiar la partición de `mensual` a `diaria`, tenías que **reescribir físicamente todos los terabytes históricos**.
 
 **`Apache Iceberg` resolvió ambos problemas con el Particionamiento Oculto (`Hidden Partitioning`):**
-* Iceberg guarda en sus metadatos la relación matemática entre la columna `fecha_presentacion` y la partición.
+* Iceberg guarda en sus metadatos la transformación matemática entre la columna `fecha_presentacion` y la partición (`years(ts)`, `months(ts)`, `days(ts)`, `hours(ts)`, `bucket(16, nit)`, `truncate(4, ciiu)`).
 * El analista solo escribe `WHERE fecha_presentacion = '2025-08-15'` y Iceberg deduce automáticamente qué partición leer sin exigir columnas extras.
-* Además, permite **Evolución de Particiones (*Partition Evolution*)**: puedes cambiar hoy la regla de particionamiento de `por mes` a `por día` como una simple actualización de metadatos en 1 segundo **sin reescribir ni un solo archivo Parquet antiguo**.
+* Además, permite **Evolución de Particiones (*Partition Evolution* / *In-place Partition Evolution*)**: puedes cambiar hoy la regla de particionamiento de `months(fecha)` a `days(fecha)` como una simple operación de metadatos en 1 segundo **sin reescribir ni mover ni un solo archivo Parquet histórico**.
 
 ---
 
-### 7.3. ¿Qué pasa cuando filtras por muchas columnas a la vez? Ordenamiento Multidimensional (`Z-Ordering` / *Liquid Clustering*)
+### 7.3. Ordenamiento Multidimensional (`Z-Ordering` / *Liquid Clustering*) y Control de Concurrencia (`OCC`)
 
 Imagina una tabla de **80 Terabytes de Facturación Electrónica** particionada por `anio_mes`.
 Los auditores de las Direcciones Seccionales siempre hacen consultas filtrando por **`nit_emisor`** y **`nit_adquirente`**.
 * **¿Por qué NO podemos crear una carpeta de partición física por cada `nit_emisor`?**
   * ¡Porque en Colombia hay millones de NITs! Crearías **10 millones de carpetas con archivos diminutos de $5\text{ KB}$** (*Over-partitioning* + *Small File Problem*), colapsando por completo el almacenamiento de objetos.
-* **La Solución de Arquitectura Avanzada (`Z-Ordering` / Curvas de Orden Z o *Clustering*):**
+* **La Solución de Arquitectura Avanzada (`Z-Ordering` / Curvas de Orden Z o *Liquid Clustering*):**
   * Dejas la partición física grande por fecha (`anio_mes`), pero aplicas **`Z-Ordering`** sobre las columnas de alta cardinalidad (`nit_emisor`, `nit_adquirente`).
-  * `Z-Ordering` es una técnica matemática (basada en curvas que llenan el espacio de Morton) que **ordena y agrupa físicamente las filas de NITs cercanos dentro de los mismos archivos `Parquet`**.
-  * Así, cuando un auditor busca un NIT específico, gracias a las estadísticas `min/max` de cada bloque `Parquet` (**`Data Skipping`**), el motor se salta el $99\%$ de los archivos en milisegundos sin haber creado millones de carpetas.
+  * `Z-Ordering` es una técnica matemática (basada en curvas que llenan el espacio de Morton intercalando los bits de las coordenadas $X$ y $Y$) que **co-localiza físicamente los valores cercanos de múltiples columnas dentro de los mismos archivos `Parquet`**.
+  * Así, cuando un auditor busca un `nit_emisor` o un `nit_adquirente` específico, gracias a las estadísticas `min/max` del pie de página (*Footer*) de cada archivo `Parquet` (**`Data Skipping`**), el motor descarta el $99\%$ de los archivos en milisegundos sin haber creado millones de carpetas.
+
+```sql
+-- ==============================================================================
+-- EJEMPLO SQL DE INGENIERÍA DE TABLAS ABIERTAS EN DATAR (ICEBERG / DELTA LAKE)
+-- ==============================================================================
+
+-- 1. Creación de tabla en Capa Plata con Merge-on-Read (MoR) y Partición Oculta
+CREATE TABLE datar_plata.facturas_electronicas (
+    cufe STRING,
+    nit_emisor BIGINT,
+    nit_adquirente BIGINT,
+    fecha_emision TIMESTAMP,
+    valor_total DECIMAL(18, 2)
+)
+USING iceberg
+PARTITIONED BY (months(fecha_emision), bucket(32, nit_emisor))
+TBLPROPERTIES (
+    'format-version' = '2',
+    'write.update.mode' = 'merge-on-read',
+    'write.delete.mode' = 'merge-on-read',
+    'write.merge.mode'  = 'merge-on-read'
+);
+
+-- 2. Mantenimiento nocturno: Compactación + Ordenamiento Multidimensional Z-Order
+OPTIMIZE datar_plata.facturas_electronicas
+ZORDER BY (nit_emisor, nit_adquirente);
+```
+
+* **Control de Concurrencia Optimista (`OCC` — *Optimistic Concurrency Control*):**
+  ¿Qué pasa si dos trabajos de Spark intentan escribir en la misma tabla al mismo tiempo? `Iceberg` y `Delta Lake` usan **`OCC`** con niveles de aislamiento **`Serializable`** o **`WriteSerializable` (*Snapshot Isolation*)**: ambos trabajos preparan sus archivos en paralelo sin bloquear a los lectores; el primero hace un *atomic swap* del puntero de metadatos, y el segundo verifica si sus archivos entran en conflicto real con las filas tocadas por el primero; si tocan particiones distintas, confirma de inmediato sin fallar.
 
 ---
 
 ### 7.4. Micro-Verificación de la Unidad 7
-* **Pregunta rápida 1:** Tienes una tabla en la Capa Plata que recibe $5.000$ actualizaciones (`UPDATE` / `DELETE`) por minuto desde el `CDC` del sistema transaccional. Si quieres que esas actualizaciones se escriban casi al instante sin tener que reescribir archivos Parquet de $500\text{ MB}$ en cada minuto, ¿debes configurar la tabla en modo `Copy-on-Write (CoW)` o `Merge-on-Read (MoR)`? *(Respuesta: **`Merge-on-Read (MoR)`**, porque escribe únicamente pequeños archivos diferenciales de borrado/cambio al instante y difiere la fusión pesada a un proceso de compactación en segundo plano).*
-* **Pregunta rápida 2:** ¿Por qué es un error grave particionar físicamente en carpetas una tabla de Lakehouse por una columna de **alta cardinalidad** como el `NIT` o el `CUFE`, y qué técnica se debe usar en su lugar? *(Respuesta: Porque genera millones de directorios con archivos diminutos —*Over-partitioning* y *Small File Problem*—; en su lugar se debe particionar por una columna de baja cardinalidad como `anio_mes` y aplicar **`Z-Ordering` o `Clustering`** sobre el `NIT`).*
+
+::: q
+Tienes una tabla en la Capa Plata que recibe $5.000$ actualizaciones (`UPDATE` / `DELETE`) por minuto desde el `CDC` del sistema transaccional. Si quieres que esas actualizaciones se escriban casi al instante sin tener que reescribir archivos Parquet de $500\text{ MB}$ en cada minuto, ¿debes configurar la tabla en modo `Copy-on-Write (CoW)` o `Merge-on-Read (MoR)`?
+---
+Se debe configurar en modo **`Merge-on-Read (MoR)`** (con *Positional/Equality Delete Files* en Iceberg o *Deletion Vectors* en Delta Lake), porque registra las actualizaciones y borrados en pequeños archivos diferenciales al instante (baja amplificación de escritura) y difiere la reescritura pesada de los archivos `Parquet` base a un proceso asíncrono de compactación.
+:::
+
+::: q
+¿Por qué es un error grave particionar físicamente en carpetas una tabla de Lakehouse por una columna de **alta cardinalidad** como el `NIT` o el `CUFE`, y qué técnica se debe usar en su lugar?
+---
+Porque particionar físicamente por una columna con millones de valores únicos genera millones de directorios con archivos diminutos (**Over-partitioning** y **Small File Problem**), degradando severamente las lecturas y saturando los metadatos. En su lugar se debe particionar por una columna de baja cardinalidad (ej. `months(fecha)`) o *bucketing*, y aplicar **`Z-Ordering` (o *Liquid Clustering*)** sobre las columnas de alta cardinalidad (`NIT`, `CUFE`) para habilitar **`Data Skipping`** mediante estadísticas `min/max`.
+:::
 
 ---
 
-## Unidad 8: El Repositorio Único de Datos (`DataR`), Seguridad por Diseño (`ABAC`, `DDM`) y Marco Normativo
+## Unidad 8: El Repositorio Único de Datos (`DataR`), Seguridad por Diseño (`ABAC`, `DDM`) y Continuidad (`RPO / RTO`)
 
 Cerramos el módulo aterrizando todos los componentes en la operación real de la **Subdirección de Procesamiento de Datos de la DIAN** bajo las normas vigentes al corte del 19 de junio de 2026.
 
@@ -695,46 +751,97 @@ En las preguntas situacionales de la CNSC, cualquier propuesta donde una Direcci
 
 ---
 
-### 8.2. Seguridad Arquitectónica del Dato: `RBAC` vs. `ABAC` y Enmascaramiento (`DDM` vs. Tokenización)
+### 8.2. Seguridad Arquitectónica del Dato: `RBAC` vs. `ABAC` y Enmascaramiento (`DDM`, `SDM` y Tokenización)
 
 ¿Cómo permite `DataR` que $5.000$ funcionarios de la DIAN consulten la misma plataforma sin que nadie vea lo que no le corresponde según la **Reserva Tributaria (Art. 583 E.T.)** y la **Ley 1581 de 2012**?
 
 #### 1. Control de Acceso: `RBAC` vs. `ABAC` (¡Distinción clave!)
-* **`RBAC` (*Role-Based Access Control* / Control Basado en Roles):** Da permisos según el cargo general (ej. *"Rol = Auditor_Tributario"*). **Su limitación:** Si hay 34 Direcciones Seccionales y 5 tipos de impuestos, tendrías que crear cientos de roles combinados (`Auditor_Cali_IVA`, `Auditor_Medellin_Renta`, etc.).
+* **`RBAC` (*Role-Based Access Control* / Control Basado en Roles):** Da permisos según el cargo general (ej. *"Rol = Auditor_Tributario"*). **Su limitación:** Si hay 34 Direcciones Seccionales, 5 tipos de impuestos y niveles de confidencialidad distintos, tendrías que crear cientos de roles combinados (`Auditor_Cali_IVA`, `Auditor_Medellin_Renta`, etc.), fenómeno conocido como **Explosión de Roles (*Role Explosion*)**.
 * **`ABAC` (*Attribute-Based Access Control* / Control Basado en Atributos) — El Estándar en `DataR`:**
   Evalúa una sola regla inteligente en tiempo real cruzando **3 tipos de atributos**:
-  1. **Atributos del Usuario:** `usuario.seccional = 'Medellín'`, `usuario.proceso = 'Fiscalización'`, `usuario.expedientes_asignados`.
-  2. **Atributos del Dato (Etiquetas del Catálogo):** `tabla.clasificacion = 'Reserva_Tributaria'`, `fila.seccional_contribuyente`.
-  3. **Atributos del Contexto/Entorno:** `red = 'Intranet_Segura_DIAN'`, `hora = 'Horario_Laboral'`.
-  * Mediante `ABAC` se aplican automáticamente dos filtros invisibles sobre las tablas:
-    * **`RLS` (*Row-Level Security* / Seguridad a Nivel de Fila):** El auditor de Medellín hace `SELECT * FROM declaraciones` y el motor le muestra **únicamente las filas de los contribuyentes asignados a su jurisdicción o expediente**.
-    * **`CLS` (*Column-Level Security* / Seguridad a Nivel de Columna):** Oculta o restringe columnas altamente sensibles para usuarios que no tienen autorización expresa.
+  1. **Atributos del Sujeto (Usuario):** `usuario.seccional = 'Medellín'`, `usuario.proceso = 'Fiscalización'`, `usuario.expedientes_asignados`.
+  2. **Atributos del Objeto (Dato / Etiquetas del Catálogo):** `tabla.clasificacion = 'Reserva_Tributaria'`, `fila.seccional_contribuyente`.
+  3. **Atributos del Contexto/Entorno:** `red = 'Intranet_Segura_DIAN'`, `hora = 'Horario_Laboral'`, `dispositivo_administrado = True`.
+  * Mediante `ABAC` se aplican automáticamente dos filtros invisibles en el motor del catálogo (*Unity Catalog / Apache Ranger / Lake Formation*):
+    * **`RLS` (*Row-Level Security* / Seguridad a Nivel de Fila):** El auditor de Medellín hace `SELECT * FROM declaraciones` y el motor le filtra transparentemente **únicamente las filas de los contribuyentes asignados a su jurisdicción o expediente activo**.
+    * **`CLS` (*Column-Level Security* / Seguridad a Nivel de Columna):** Restringe o enmascara columnas altamente sensibles para usuarios que no tienen necesidad de conocerlas (*Need-to-Know*).
 
-#### 2. Protección de Identificadores: Enmascaramiento Dinámico (`DDM`) vs. Enmascaramiento Estático y Tokenización
+```sql
+-- ==============================================================================
+-- EJEMPLO DE POLÍTICA SQL DE SEGURIDAD A NIVEL DE FILA (RLS) Y ENMASCARAMIENTO (DDM)
+-- ==============================================================================
+
+-- 1. Función de Enmascaramiento Dinámico (DDM) para proteger el NIT en pantalla
+CREATE FUNCTION datar_seguridad.mask_nit(nit_real STRING)
+RETURNS CASE
+  WHEN IS_ACCOUNT_GROUP_MEMBER('Rol_Fiscalizador_Autorizado') THEN nit_real
+  ELSE CONCAT('***-***-', RIGHT(nit_real, 3))
+END;
+
+-- 2. Función de Filtro de Filas (RLS) basada en atributos de Jurisdicción (ABAC)
+CREATE FUNCTION datar_seguridad.rls_por_seccional(cod_seccional_fila INT)
+RETURNS IS_ACCOUNT_GROUP_MEMBER('Nivel_Central_Autorizado')
+     OR cod_seccional_fila = CURRENT_USER_ATTRIBUTE('cod_seccional_asignada');
+
+-- 3. Vinculación nativa a la tabla gobernada en DataR
+ALTER TABLE datar_oro.declaraciones_renta
+  ALTER COLUMN nit SET MASK datar_seguridad.mask_nit;
+
+ALTER TABLE datar_oro.declaraciones_renta
+  SET ROW FILTER datar_seguridad.rls_por_seccional ON (cod_seccional);
+```
+
+#### 2. Matriz Comparativa de Protección de Identificadores (`DDM` vs. `SDM` vs. `Tokenización` vs. `Anonimización`)
 
 | Técnica de Protección | ¿Cómo actúa sobre el dato? | ¿Modifica el dato real en el disco? | ¿En qué caso del examen se debe elegir? |
 | :--- | :--- | :---: | :--- |
-| **1. Enmascaramiento Dinámico (`DDM` - *Dynamic Data Masking*)** | Cuando un usuario sin privilegios completos hace una consulta en producción, el motor **transforma el dato al vuelo en la pantalla** (ej. muestra `NIT: ***-***-456` o `Correo: j***@empresa.com`), mientras que un auditor autorizado ve el dato completo. | **NO** (El dato real sigue intacto en disco). | Para proteger consultas en vivo sobre **ambientes de producción / Capa Plata y Oro** según el perfil de quien consulta. |
+| **1. Enmascaramiento Dinámico (`DDM` - *Dynamic Data Masking*)** | Cuando un usuario sin privilegios completos hace una consulta en producción, el motor **transforma el dato al vuelo en la respuesta** (ej. muestra `NIT: ***-***-456`), mientras que un auditor autorizado ve el dato completo. | **NO** (El dato real sigue intacto en disco). | Para proteger consultas en vivo sobre **ambientes de producción / Capa Plata y Oro** según el perfil de quien consulta. |
 | **2. Enmascaramiento Estático (*Static Data Masking - SDM*)** | Crea una **copia física separada** donde los nombres, NITs y valores sensibles han sido reemplazados permanentemente por datos ficticios realistas. | **SÍ** (En la copia entregada). | **Para entregar bases de datos a ambientes de Desarrollo y Pruebas (`Dev / QA`)**, donde está prohibido usar datos reales sujetos a Reserva Tributaria. |
-| **3. Seudonimización / Tokenización** | Reemplaza el `NIT` real por un identificador sustituto consistente (`Token` o `Hash SHA-256 + Salt`). Permite cruzar tablas por ese token sin saber quién es la persona real; solo es reversible con una llave custodiada en una bóveda segura (*Token Vault*). | **SÍ** (En la vista o entorno analítico). | **Para equipos de Ciencia de Datos (`Sandboxes ML`)** que necesitan cruzar Renta, IVA y Exógena del mismo individuo para entrenar modelos sin conocer su identidad real. |
-| **4. Anonimización Irreversible ($k$-Anonimato y Agregación)** | Destruye cualquier vínculo con el individuo y agrupa los datos de modo que sea **matemáticamente imposible re-identificar** a ningún contribuyente. | **SÍ** (Irreversible). | **Para publicar estadísticas y Datos Abiertos al público ciudadano (`datos.gov.co`)** cumpliendo la **Ley 1712 de 2014** sin violar el **Art. 583 del E.T.** |
+| **3. Seudonimización / Tokenización Determinística (`FPE` / `HMAC`)** | Reemplaza el `NIT` real por un identificador sustituto consistente (`Token` o `HMAC-SHA256` con llave en bóveda `HSM`). Permite hacer `JOIN` entre múltiples tablas usando el mismo token sin saber quién es la persona real. | **SÍ** (En la vista o entorno analítico). | **Para equipos de Ciencia de Datos (`Sandboxes ML`)** que necesitan cruzar Renta, IVA y Exógena del mismo individuo para entrenar modelos sin conocer su identidad real. |
+| **4. Anonimización Irreversible ($k$-Anonimato, $\ell$-Diversidad y Agregación)** | Destruye cualquier vínculo con el individuo y agrupa los datos de modo que cada combinación de cuasi-identificadores tenga al menos $k$ individuos indistinguibles. | **SÍ** (Irreversible). | **Para publicar estadísticas y Datos Abiertos al público ciudadano (`datos.gov.co`)** cumpliendo la **Ley 1712 de 2014** sin violar el **Art. 583 del E.T.** |
 
 ---
 
-### 8.3. Continuidad del Negocio en Arquitectura de Datos (`RPO` vs. `RTO`) e Interoperabilidad (`X-Road`)
+### 8.3. Continuidad del Negocio en Arquitectura de Datos (`RPO` vs. `RTO`) y Topologías de Recuperación
 
-1. **`RPO` (*Recovery Point Objective*) vs. `RTO` (*Recovery Time Objective*):**
-   * **`RPO` (Mira hacia el PASADO — ¿Cuántos DATOS puedo perder?):** Mide la cantidad máxima de tiempo de datos recientes que la entidad tolera perder si explota un centro de datos. Si el examen pide **`RPO = 0` (Cero pérdida de transacciones tributarias)**, estás obligado a implementar **Replicación Síncrona** entre dos zonas o centros de datos.
-   * **`RTO` (Mira hacia el FUTURO — ¿Cuánto TIEMPO puedo estar caído?):** Mide cuántos minutos u horas máximas puede tardar el sistema en volver a estar en línea después de un desastre. Un `RTO` cercano a cero exige arquitectura **Activo-Activo (*Active-Active*) o *Hot Standby*** con conmutación automática (*Failover*).
-2. **Interoperabilidad Estatal (`MRAE MinTIC` y Servicios Ciudadanos Digitales `X-Road`):**
-   * Cuando otra entidad del Estado (ej. la UGPP, la Contraloría o un Ministerio con habilitación legal expresa del Art. 583 E.T.) requiere intercambiar información con la DIAN, **está prohibido darle usuario y contraseña directa a las tablas internas de la base de datos o enviarle discos duros/correos sin control**.
-   * La arquitectura correcta exigida por el **MRAE del MinTIC** es exponer **Servicios Web / APIs gobernadas y cifradas a través de la plataforma de interoperabilidad del Estado (`X-Road`)**, entregando únicamente los campos autorizados por el convenio legal y dejando traza de auditoría.
+En el examen de la CNSC suelen presentar escenarios de caída de un centro de datos para evaluar si dominas las métricas **`RPO`** y **`RTO`** y qué topología técnica exige cada una:
+
+```
+========================================================================================
+         LÍNEA DE TIEMPO DE UN DESASTRE TECNOLÓGICO: RPO vs. RTO
+========================================================================================
+
+   Último Backup /                         💥 MOMENTO DEL               Sistema vuelve
+   Replicación Exitosa                      INCIDENTE (Caída)           a estar en línea
+          |                                        |                           |
+  --------+----------------------------------------+---------------------------+------->
+          |<------------ RPO --------------------->|<---------- RTO ---------->| Tiempo
+          |   (Mira al PASADO: ¿Cuántos DATOS      |  (Mira al FUTURO: ¿Cuánto |
+          |    recientes puedo tolerar perder?)    |   TIEMPO puedo estar caído|
+========================================================================================
+```
+
+| Topología de Recuperación (*Disaster Recovery*) | `RPO` (Pérdida de Datos) | `RTO` (Tiempo de Caída) | Costo | Aplicación en la DIAN |
+| :--- | :---: | :---: | :---: | :--- |
+| **1. *Backup & Restore* (Copia en frío)** | Horas (ej. 24 h) | Horas o Días | Bajo | Archivos históricos no críticos. |
+| **2. *Pilot Light* / *Warm Standby* (Réplica Asíncrona pasiva)** | Segundos a Minutos | Minutos (15–60 min) | Medio | Repositorios analíticos y tableros internos. |
+| **3. *Multi-Site Active-Active* con Replicación Síncrona** | **`RPO = 0` (Cero pérdida de bytes)** | **`RTO ≈ 0` (Conmutación automática instantánea)** | Alto | **Sistemas misionales críticos de Recepción de Declaraciones, Facturación Electrónica y Recaudo Tributario.** |
 
 ---
 
 ### 8.4. Micro-Verificación de la Unidad 8
-* **Pregunta rápida 1:** Si el equipo de ingenieros de software necesita una base de datos para hacer pruebas funcionales de una nueva pantalla del portal web en el ambiente de Pruebas (`QA`), ¿qué técnica debes aplicar antes de poblar ese ambiente para no violar el Artículo 583 del Estatuto Tributario: Enmascaramiento Dinámico (`DDM`) conectado a producción o Enmascaramiento Estático (`SDM`) / generación de datos sintéticos? *(Respuesta: **Enmascaramiento Estático (`SDM`) o generación de datos sintéticos**, porque a los ambientes de Desarrollo y Pruebas jamás deben llevarse ni conectarse los datos reales sujetos a Reserva Tributaria).*
-* **Pregunta rápida 2:** ¿Cuál es la diferencia exacta entre `RPO` y `RTO` ante un desastre tecnológico? *(Respuesta: **`RPO` —Recovery Point Objective—** mide la **pérdida máxima aceptable de datos** hacia atrás en el tiempo, lo que define la frecuencia de backups o replicación; **`RTO` —Recovery Time Objective—** mide el **tiempo máximo aceptable de caída del servicio** hacia adelante antes de restaurar la operación).*
+
+::: q
+Si el equipo de ingenieros de software necesita una base de datos para hacer pruebas funcionales de una nueva pantalla del portal web en el ambiente de Pruebas (`QA`), ¿qué técnica debes aplicar antes de poblar ese ambiente para no violar el Artículo 583 del Estatuto Tributario: Enmascaramiento Dinámico (`DDM`) conectado a producción o Enmascaramiento Estático (`SDM`) / generación de datos sintéticos?
+---
+Se debe aplicar **Enmascaramiento Estático de Datos (`SDM`) o generación de datos sintéticos**, ya que en los ambientes no productivos (`Desarrollo / Pruebas / QA`) está estrictamente prohibido almacenar o conectar bases de datos con información real de contribuyentes sujeta a Reserva Tributaria. El Enmascaramiento Dinámico (`DDM`) se usa sobre consultas en producción porque el dato real permanece en el almacenamiento subyacente.
+:::
+
+::: q
+¿Cuál es la diferencia exacta entre `RPO` y `RTO` ante un desastre tecnológico, y qué arquitectura se requiere cuando la DIAN exige `RPO = 0` en el sistema de recaudo?
+---
+**`RPO` (*Recovery Point Objective*)** mide hacia el pasado la cantidad máxima de datos recientes (expresada en tiempo) que la entidad tolera perder, mientras que **`RTO` (*Recovery Time Objective*)** mide hacia el futuro el tiempo máximo que el servicio puede permanecer fuera de línea antes de restablecerse. Exigir **`RPO = 0`** obliga a implementar **Replicación Síncrona** entre centros de datos o zonas de disponibilidad para que ninguna transacción confirmada se pierda.
+:::
 
 ---
 

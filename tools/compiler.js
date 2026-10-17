@@ -282,12 +282,20 @@ function parseUniversalModule(filePath, defaultModuleNum = 1) {
             unitBody = introPreamble + '\n\n---\n\n' + unitBody;
         }
 
-        // Extraer tiempo estimado
-        const timeMatch = unitBody.match(/\*\*Tiempo estimado:\*\*\s*(\d+)\s*min/i);
-        const words = countWords(unitBody);
-        const minutes = timeMatch ? parseInt(timeMatch[1], 10) : Math.max(12, Math.round(words / 150));
+        // Limpiar etiquetas manuales fijas de tiempo estimado para evitar valores artificiales
+        unitBody = unitBody.replace(/^\s*>\s*\*\*Tiempo estimado:\*\*[^\n]*\n?/gim, '');
+        unitBody = unitBody.replace(/^\s*\*\*Tiempo estimado:\*\*[^\n]*\n?/gim, '');
 
-        const htmlContent = renderMarkdown(unitBody);
+        const stats = { questions: 0 };
+        const htmlContent = renderMarkdown(unitBody, stats);
+
+        // Cálculo pedagógico real de estudio técnico (sin piso artificial de 12 min):
+        // 100 palabras/min en lectura técnica profunda + 1.5 min por tabla + 1.5 min por diagrama/código + 1 min por autoevaluación
+        const words = countWords(unitBody);
+        const tablesCount = (htmlContent.match(/<table\b/gi) || []).length;
+        const codeAndDiagramsCount = (htmlContent.match(/<pre\b/gi) || []).length;
+        const questionsCount = stats.questions || 0;
+        const minutes = Math.max(3, Math.round((words / 100) + (tablesCount * 1.5) + (codeAndDiagramsCount * 1.5) + (questionsCount * 1.0)));
 
         lessons.push({
             id: `les-${modNum}-${unitNum}`,
