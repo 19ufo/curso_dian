@@ -1,796 +1,1008 @@
 ---
-titulo: "07. Gobierno y Gestión de los Servicios de Datos"
-modulo: 7
-componente: "Funcional - Servicios de Datos & Gestión de TI (60%)"
-cargo: "Inspector I (OPEC 236670 - Nivel Profesional)"
+id_eje: "07_gobierno_y_gestion_servicios_datos"
+codigo_simo: "IND-07"
+titulo: "Gobierno y Gestión de los Servicios de Datos"
+opec_aplicables: ["236670"]
+denominacion: "Inspector I"
+nivel: "Profesional"
 dependencia: "Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos"
-operador: "Universidad de San Buenaventura / Areandina"
+componente: "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)"
 corte_normativo: "19 de junio de 2026"
-total_preguntas: 10
-total_flashcards: 20
+unidades_totales: 8
 ---
 
-# Guía de Estudio e Inmersión Técnica: Gobierno y Gestión de los Servicios de Datos
+# Guía Maestra de Estudio: 07. Gobierno y Gestión de los Servicios de Datos (De Básico a Avanzado)
 
-**Concurso de Méritos:** DIAN 2676 de 2026 — Comisión Nacional del Servicio Civil (CNSC)  
-**Operador Académico:** Universidad de San Buenaventura / Areandina  
-**Cargo Objetivo:** Inspector I (OPEC 236670 - Nivel Profesional)  
-**Dependencia Asignada:** Subdirección de Procesamiento de Datos (Dirección de Gestión de Innovación y Tecnología - Nivel Central)  
-**Eje Temático Funcional:** 07. Gobierno y Gestión de los Servicios de Datos  
-**Ponderación en Prueba de Competencias Funcionales:** 60%  
-**Corte Normativo y Técnico Oficial:** 19 de junio de 2026  
+> [!EXAM] Propósito del Eje en la Prueba Escrita DIAN 2676 (Inspector I - OPEC 236670)
+> En el ecosistema moderno de la DIAN (**Decreto 1742 de 2020, Artículo 56**), la **Subdirección de Procesamiento de Datos** no se limita a guardar tablas estáticas en una bodega; su misión es operar una verdadera **fábrica de Servicios de Datos Gobernados (*Data-as-a-Service* - DaaS y *Data-as-a-Product* - DaaP)** que alimenta en tiempo real y por lotes a Fiscalización, Aduanas, Impuestos, Estudios Económicos, Analítica y entidades externas del Estado (UIAF, Fiscalía, Contraloría, Municipios).
+>
+> En este módulo aprenderás **de cero a nivel experto** cómo se diseña, gobierna, asegura, monitorea y opera un servicio de datos institucional: partiremos desde los conceptos fundamentales de **Gestión de Servicios (ITIL v4 e ISO/IEC 20000)** y **Virtualización de Datos**, pasaremos por el diseño de **Contratos de Datos (*Data Contracts*)** y **Versionamiento Semántico (SemVer)**, dominaremos las matemáticas de **Confiabilidad (SLI, SLO, SLA y Presupuesto de Error)**, la **Observabilidad de Datos (*Data Observability*)**, los procesos operativos de **Incidentes, Problemas y Control de Cambios**, la seguridad **Zero Trust (mTLS, OAuth 2.0, Token Bucket)**, el marco de **Interoperabilidad Estatal X-Road MinTIC (Art. 585 E.T.)** y cerraremos con **Gestión de Capacidad y FinOps** sobre el Lakehouse **DataR**.
 
 ---
 
-## Unidad 1: De Silos de Datos a Servicios Gobernados (*Data-as-a-Service* sobre DataR)
+## Mapa de Ruta Pedagógica Progresiva (8 Unidades de Aprendizaje)
 
-### 1.1 La Crisis del Modelo Tradicional de Acceso a Datos en la DIAN
-Durante décadas, la Dirección de Impuestos y Aduanas Nacionales (DIAN) gestionó su infraestructura de información a través de silos transaccionales verticales y aislados. Sistemas operacionales emblemáticos como el **MUISCA** (Modelo Único de Ingresos, Servicio y Control Automatizado, sustentado sobre motores relacionales de base de datos), el **SYGA** (Sistema de Información y Gestión Aduanera), el sistema de Facturación Electrónica (UBL 2.1) y los servidores de recepción de Información Exógena operaban como islas computacionales con sus propios esquemas, reglas de almacenamiento y protocolos de acceso propietarios.
+1. **Unidad 1:** Fundamentos de Gestión de Servicios (ITIL v4 e ISO/IEC 20000) y la Transición de Silos al Paradigma *Data-as-a-Service* (DaaS) y Virtualización sobre DataR.
+2. **Unidad 2:** Catálogo de Servicios de Datos, Contratos de Datos (*Data Contracts*), Diseño *Contract-First* y Versionamiento Semántico (*SemVer 2.0*).
+3. **Unidad 3:** Ingeniería de Confiabilidad (SRE) Aplicada a Servicios de Datos — SLIs, SLOs, SLAs, OLAs y Matemáticas del Presupuesto de Error (*Error Budget*).
+4. **Unidad 4:** Observabilidad de Datos (*Data Observability*), Detección Proactiva de Anomalías y el Patrón *Circuit Breaker* de Datos (*Write-Audit-Publish*).
+5. **Unidad 5:** Prácticas Operativas de Gestión de Servicios (ITIL v4) en Procesamiento de Datos — Gestión de Incidentes, Problemas (RCA/KEDB) y Control de Cambios (CAB).
+6. **Unidad 6:** Seguridad *Zero Trust* en Servicios de Datos (mTLS, OAuth 2.0/JWT, RLS/CLS), Cuotas de Tráfico (*Token Bucket*) y Auditoría Forense Inmutable (Art. 583 E.T.).
+7. **Unidad 7:** Interoperabilidad del Estado Colombiano (Marco MinTIC, Plataforma X-Road, Lenguaje Común) y Protocolo Legal de Intercambio de Información (Art. 585 E.T.).
+8. **Unidad 8:** Gestión de Capacidad, Aislamiento de Cargas (*Noisy Neighbor*) y Prácticas *FinOps* en Plataformas Analíticas de la DIAN.
 
-En este paradigma legado, cuando un área de negocio —por ejemplo, la Dirección de Gestión de Fiscalización, la Dirección de Gestión de Aduanas o una Dirección Seccional— requería cruzar información para detectar omisiones en el Impuesto sobre las Ventas (IVA) o incongruencias en el valor en aduana de mercancías importadas, se implementaban dos mecanismos altamente ineficientes y riesgosos:
+---
 
-1. **Conexiones directas a bases de datos transaccionales (ODBC/JDBC directo):** Auditores o analistas ejecutaban consultas analíticas complejas (`SELECT` masivos con múltiples `JOIN` y agregaciones) contra las bases de datos de producción. Esto provocaba bloqueo de tablas transaccionales (*table locking*), agotamiento del pool de conexiones y severa degradación en la radicación de declaraciones de los contribuyentes.
-2. **Pipelines ETL punto a punto desgobernados (*Point-to-Point Spaghetti*):** Para evitar la degradación del sistema operacional, los equipos de TI desarrollaban extracciones periódicas a medida que copiaban tablas enteras hacia servidores locales o bases de datos departamentales. Esta proliferación descontrolada de réplicas generaba inconsistencia de cifras (tres dependencias distintas reportaban tres valores diferentes de recaudo para el mismo periodo fiscal), fuga de información sensible y una flagrante imposibilidad de auditar la custodia de los datos protegidos por **Reserva Tributaria (Artículo 583 del Estatuto Tributario)**.
+## Unidad 1: Fundamentos de Gestión de Servicios (ITIL v4 e ISO/IEC 20000) y la Transición de Silos al Paradigma *Data-as-a-Service* (DaaS)
 
-```diagram
-ARQUITECTURA DE INTEGRACIÓN TRADICIONAL (SILOS DESGOBERNADOS)
+### 1.1. ¿Qué es un "Servicio de Datos" explicado desde Cero? (Marco ITIL v4 e ISO/IEC 20000)
+Como Científico de Datos, estás acostumbrado a trabajar con *datasets* (archivos CSV, Parquet o tablas SQL). Pero cuando una tabla de **DataR** es consumida diariamente por el motor de Devoluciones Automáticas de IVA o por 800 auditores tributarios de las Direcciones Seccionales, deja de ser un simple archivo y se convierte en un **Servicio de Datos**.
 
-[MUISCA Transaccional] ----(ETL a medida)----> [Base Departamental Fiscalización]
-       |                                             |
-       |---(ODBC Directo - Bloqueo de Tablas)        |--(Consultas manuales sin log)
-       v                                             v
-[Auditores Seccionales]                        [Informes Inconsistentes]
-       ^                                             ^
-       |---(Copia en plano sin encriptar)            |--(Riesgo Fuga de Reserva Art. 583)
-[SYGA Aduanero] -----------------------------> [Bases de Datos Locales]
+Según los estándares internacionales de Gestión de Servicios Tecnológicos (**ITIL v4** e **ISO/IEC 20000-1**), un **Servicio** se define como:
+> *"Un medio para habilitar la co-creación de valor al facilitar los resultados que los clientes desean lograr, sin que el cliente tenga que gestionar los costos y riesgos específicos asociados"*.
+
+Para que un Servicio de Datos entregue verdadero **Valor Público** en la DIAN, ITIL v4 establece que debe cumplir simultáneamente dos condiciones inseparables (**Ecuación del Valor del Servicio**):
+
+1. **Utilidad (*Utility* — "¿Qué hace el servicio?" / *Fit for Purpose*):** Es la funcionalidad que ofrece el servicio de datos para satisfacer una necesidad misional.
+   * *Ejemplo en la DIAN:* Un servicio de datos que entrega el consolidado de ingresos facturados electrónicamente vs. ingresos declarados en IVA por bimestre tiene **Utilidad** porque le sirve al auditor de Fiscalización para detectar omisión de ingresos.
+2. **Garantía (*Warranty* — "¿Cómo se desempeña el servicio?" / *Fit for Use*):** Es la seguridad de que el servicio funcionará conforme a los niveles acordados en cuatro dimensiones:
+   * **Disponibilidad:** ¿Está activo cuando el auditor o el sistema lo consulta?
+   * **Capacidad y Rendimiento:** ¿Responde en milisegundos/segundos sin colapsar bajo carga?
+   * **Seguridad de la Información:** ¿Protege la Reserva Tributaria (Art. 583 E.T.) mediante cifrado y enmascaramiento?
+   * **Continuidad:** ¿Se recupera ante un fallo de servidor sin perder datos?
+
+> [!IMPORTANT] Regla Lógica de ITIL v4 para el Examen CNSC
+> En la creación de valor de un servicio de datos opera una compuerta lógica **AND (`Y`)**:
+> $$\text{Valor del Servicio de Datos} = \text{Utilidad (Datos exactos y pertinentes)} \land \text{Garantía (Disponible, rápido, seguro y continuo)}$$
+> Si construyes una tabla en **DataR** con un cruce tributario brillante (**Alta Utilidad**), pero la consulta tarda 4 horas en responder, se cae en quincena o expone en texto plano datos reservados sin control de acceso (**Cero Garantía**), el servicio **NO genera valor institucional** y es inviable en producción.
+
+---
+
+### 1.2. De los Silos Transaccionales y el "Espagueti ETL" al Paradigma *Data-as-a-Service* (DaaS)
+Históricamente, en las administraciones tributarias existían dos malas prácticas (antipatrones) cuando un área de negocio necesitaba datos de sistemas transaccionales como **MUISCA** (tributario), **SYGA** (aduanero) o **Facturación Electrónica**:
+
+* **Antipatrón 1 — Consultas Analíticas Directas contra Bases Transaccionales (OLTP):** Permitir que analistas o reportes se conecten por JDBC/ODBC directo a la base de datos operacional de MUISCA para correr un `SELECT ... JOIN ... GROUP BY` sobre 50 millones de filas. **Consecuencia:** Bloqueo de tablas (*Table Locks*), agotamiento de memoria RAM y caída del portal transaccional mientras los ciudadanos intentan presentar su declaración de renta.
+* **Antipatrón 2 — Copias Manuales y *Pipelines* Punto a Punto Desgobernados (*Data Silos*):** Extraer archivos planos o dumps de SQL a medida para cada subdirección y enviarlos a servidores departamentales o carpetas compartidas. **Consecuencia:** Pérdida total de la **Única Fuente de Verdad (*Single Source of Truth*)** —tres subdirecciones reportan cifras distintas de recaudo al Ministro de Hacienda— y altísimo riesgo de fuga de **Reserva Tributaria (Art. 583 E.T.)**.
+
+#### La Solución Arquitectónica en la Subdirección de Procesamiento de Datos: *Data-as-a-Service* (DaaS) y *Data-as-a-Product* (DaaP)
+Bajo el modelo **DaaS** implementado sobre el repositorio unificado **DataR**, los datos se exponen a través de una **Capa de Servicios Gobernados y Virtualización de Datos**:
+
+```
+========================================================================================
+       ARQUITECTURA GOBERNADA DATA-AS-A-SERVICE (DaaS) SOBRE EL ECOSISTEMA DATAR
+========================================================================================
+
+  [ CONSUMIDORES INTERNOS Y EXTERNOS ]
+  - Fiscalización / Aduanas / Impuestos   - Subd. Analítica (Modelos ML/Grafos)
+  - Tableros Ejecutivos BI                - Entidades Externas (UIAF, Municipios via X-Road)
+                                     |
+                                     | Petición Estandarizada (REST / GraphQL / gRPC / JDBC Seguro)
+                                     v
+  +------------------------------------------------------------------------------------+
+  | 1. CAPA DE EXPOSICIÓN Y SEGURIDAD (API GATEWAY / PROXY DE SERVICIOS DE DATOS)      |
+  |    - Autenticación Mutua (mTLS 1.3) + OAuth 2.0 / Tokens JWT                       |
+  |    - Control de Cuotas y Tráfico (Rate Limiting - Algoritmo Token Bucket)          |
+  |    - Registro de Auditoría Forense Inmutable (Cumplimiento Art. 583 E.T.)          |
+  +------------------------------------------------------------------------------------+
+                                     |
+                                     v
+  +------------------------------------------------------------------------------------+
+  | 2. CAPA SEMÁNTICA, DE VIRTUALIZACIÓN Y POLÍTICAS (Trino / Starburst / Denodo)      |
+  |    - Vistas Lógicas Canónicas (Desacopla el esquema físico del consumo de negocio) |
+  |    - Políticas Centralizadas ABAC: Row-Level Security (RLS) + Dynamic Masking (DDM)|
+  |    - Optimizador de Consultas Distribuido (Cost-Based Optimizer + Pushdown)        |
+  +------------------------------------------------------------------------------------+
+                                     |
+                   +-----------------+-----------------+
+                   |                                   |
+                   v                                   v
+  +----------------------------------+   +----------------------------------+
+  | 3A. LAKEHOUSE DATAR (CAPA GOLD)  |   | 3B. RÉPLICAS / FUENTES FEDERADAS |
+  | - Tablas Delta Lake / Iceberg    |   | - Réplicas de lectura (Read      |
+  | - Modelos Dimensionales y        |   |   Replicas) desacopladas del     |
+  |   Feature Stores de Analítica    |   |   OLTP primario MUISCA / SYGA    |
+  +----------------------------------+   +----------------------------------+
+========================================================================================
 ```
 
-### 1.2 El Paradigma *Data-as-a-Service* (DaaS) y la Virtualización de Datos sobre DataR
-Para erradicar estos silos y habilitar la transformación digital de la DIAN contemplada en el Decreto 1742 de 2020, la Dirección de Gestión de Innovación y Tecnología y la Subdirección de Procesamiento de Datos estructuraron el **Repositorio Único Institucional DataR**. Sin embargo, la simple centralización física de los datos en un Data Lake o Lakehouse masivo no resuelve por sí sola el problema del acceso. Se requiere elevar los datos a la categoría de **Servicios de Datos Gobernados (*Data-as-a-Service* - DaaS)**.
+---
 
-Bajo el paradigma DaaS, los datos ya no se consideran archivos planos o tablas estáticas de una base de datos a las que cualquiera se conecta, sino **productos de software de alta calidad expuestos mediante interfaces de programación de aplicaciones (APIs) estandarizadas, seguras y versionadas**. 
+### 1.3. ¿Cómo funciona técnicamente la Virtualización de Datos? (*Predicate Pushdown* y Federación)
+Un término técnico que suele aparecer en preguntas avanzadas de ingeniería de datos es **Virtualización de Datos (*Data Virtualization*)** y **Empuje de Predicados (*Predicate Pushdown*)**. Entendámoslo con claridad total:
 
-La arquitectura DaaS sobre DataR incorpora una **Capa Semántica y de Virtualización de Datos** (utilizando motores de consulta distribuida como Trino, Starburst o Denodo). Esta capa desacopla por completo la representación física del dato (archivos Apache Iceberg o Parquet almacenados en almacenamiento de objetos en la nube) de su consumo analítico u operacional:
+* **¿Qué es la Virtualización de Datos?** Es una capa intermedia de abstracción que permite consultar datos ubicados en múltiples repositorios heterogéneos (por ejemplo, unir una tabla de **Delta Lake** en DataR con una tabla de referencia en **PostgreSQL/Oracle**) presentándolos al usuario como si fueran una sola base de datos lógica, **sin necesidad de copiar ni mover físicamente todos los datos a un tercer lugar antes de consultarlos**.
+* **¿Qué es el *Predicate Pushdown* (Empuje de Filtros hacia la Fuente)?**
+  * Imagina que un auditor consulta el servicio virtualizado pidiendo las facturas del contribuyente `NIT = '900123456'` emitidas en `anio = 2025`.
+  * Si el motor de virtualización fuera ingenuo, traería por la red los **10.000 millones de facturas de todo el país** hacia la memoria del servidor de virtualización y allí aplicaría el filtro `WHERE`. ¡Eso saturaría la red en segundos!
+  * Con **Predicate Pushdown**, el optimizador de consultas (*Cost-Based Optimizer*) reescribe el plan de ejecución y **"empuja" la cláusula `WHERE nit = '900123456' AND anio = 2025` directamente hacia el motor de almacenamiento subyacente** (aprovechando el particionamiento por año y los índices *Z-Order* / *Min-Max* de Parquet en DataR), de modo que por la red solo viajan las 45 filas que cumplen la condición.
 
-* **Abstracción Total de Fuentes:** Los consumidores de datos (aplicaciones de fiscalización, modelos de Machine Learning, tableros de BI en Power BI o consultas de entidades externas) interactúan con una vista lógica universal del contribuyente, sin necesidad de saber si el dato original provino de un topic de Kafka, una tabla relacional de MUISCA o un bucket de almacenamiento masivo.
-* **Gobierno y Políticas Centralizadas:** Las reglas de enmascaramiento dinámico (*Dynamic Data Masking*), control de acceso basado en atributos (ABAC) y verificación de reserva tributaria se ejecutan centralizadamente en la capa del servicio, impidiendo cualquier bypass directo al almacenamiento físico.
-* **Cero Duplicación Innecesaria:** En lugar de replicar físicamente gigabytes de información exógena en cada dependencia, la virtualización ejecuta consultas federadas empujando el cómputo hacia las fuentes (*pushdown predicates*), reduciendo drásticamente los costos de almacenamiento y transferencia.
-
-```blueprint
-ARQUITECTURA GOBERNADA DATA-AS-A-SERVICE (DaaS) SOBRE DataR
-
-+-----------------------------------------------------------------------------------+
-|                            CONSUMIDORES DE DATOS                                  |
-|   [Fiscalización]    [Aduanas]    [Modelos MLOps]    [UIAF / Convenios Externos]  |
-+-----------------------------------------------------------------------------------+
-                                        | (HTTPS / mTLS / REST / GraphQL / gRPC)
-                                        v
-+-----------------------------------------------------------------------------------+
-|               CAPA DE SERVICIOS GOBERNADOS & API GATEWAY                          |
-|   * Autenticación OAuth 2.0 / JWT     * Rate Limiting (Token Bucket)              |
-|   * Column & Row-Level Security (RLS)  * Dynamic Data Masking (DDM)                |
-|   * Trazabilidad y Log Forense Art. 583 E.T.                                      |
-+-----------------------------------------------------------------------------------+
-                                        |
-                                        v
-+-----------------------------------------------------------------------------------+
-|                 CAPA SEMÁNTICA Y DE VIRTUALIZACIÓN DE DATOS                       |
-|   * Vistas Lógicas Institucionales     * Catálogo de Datos y Métricas de Negocio  |
-|   * Optimizador de Consultas Federadas (Trino / Virtualización)                   |
-+-----------------------------------------------------------------------------------+
-                                        |
-                   +--------------------+--------------------+
-                   |                                         |
-                   v                                         v
-+-------------------------------------+   +-------------------------------------+
-|        DataR - LAKEHOUSE            |   |       SISTEMAS OPERACIONALES        |
-|  * Formatos Abiertos: Iceberg/Parquet|   |  * MUISCA (Relacional)              |
-|  * Capas Medallion (Bronce, Plata,  |   |  * Factura Electrónica (UBL 2.1)    |
-|    Oro - Vistas 360 del Contribuyente|  |  * SYGA Aduanas                     |
-+-------------------------------------+   +-------------------------------------+
-```
-
-### 1.3 Tabla Comparativa: Paradigmas de Acceso a la Información
-La siguiente matriz detalla las diferencias arquitectónicas, operativas y legales entre el acceso heredado y el ecosistema gobernado de Servicios de Datos:
-
-| Criterio de Comparación | Acceso Directo a BD (Silos) | Pipelines ETL Punto a Punto | Servicios de Datos Gobernados (DaaS sobre DataR) |
+| Característica Técnica y Legal | Acceso Directo a BD Transaccional (OLTP) | Extracción Manual / ETL Punto a Punto (Silos) | Servicio de Datos Gobernado (DaaS + Virtualización sobre DataR) |
 | :--- | :--- | :--- | :--- |
-| **Grado de Acoplamiento** | **Extremadamente alto:** El consumidor depende del esquema físico de tablas, llaves y tipos de datos del sistema operacional. | **Medio-Alto:** Cambios en el origen rompen el script de extracción periódica. | **Desacoplado:** El contrato de la API aísla los cambios físicos de la capa de consumo. |
-| **Impacto en Sistemas Transaccionales** | **Severo:** Bloqueo de tablas y competencia por memoria/CPU en producción con riesgo de caída de MUISCA. | **Moderado:** Impacto concentrado en las ventanas de tiempo en que corre el batch de extracción. | **Nulo en Operacional:** Las consultas se resuelven contra DataR o réplicas analíticas optimizadas. |
-| **Gobernanza y Linaje de Datos** | **Inexistente:** No se registra quién transformó el dato ni qué lógica aplicó. | **Fragmentada:** La lógica de transformación queda dispersa en decenas de scripts no documentados. | **Centralizada:** El catálogo de datos registra el linaje de punta a punta, el propietario y la definición de negocio. |
-| **Protección de Reserva Legal (Art. 583 E.T.)** | **Vulnerable:** El usuario con acceso a la tabla puede ver datos confidenciales de contribuyentes ajenos al caso. | **Muy Crítica:** Múltiples copias en texto plano o bases intermedias sin cifrado en reposo. | **Blindada:** Políticas RLS y CLS aseguran que solo se devuelvan los registros amparados por expediente activo. |
-| **Consistencia de Cifras Institucionales** | **Pésima:** Cada consulta SQL armada por un auditor produce subtotales discrepantes. | **Baja:** Desfases temporales de sincronización generan desfases en los reportes diarios. | **Única Fuente de Verdad (*Single Source of Truth*):** Las reglas de agregación residen en la capa semántica. |
-| **Auditoría Forense y Trazabilidad** | **Básica/Nula:** Solo se audita el inicio de sesión a la base de datos, no el predicado de búsqueda exacto. | **Limitada:** Registros de ejecución del proceso, pero sin detalle de quién consumió los archivos resultantes. | **Total e Inmutable:** Cada llamada a la API queda registrada con identidad, timestamp, parámetros y volumen entregado. |
+| **Acoplamiento con el esquema físico** | **Total:** Si cambia el nombre de una columna en MUISCA, se rompen todas las consultas de los usuarios. | **Alto:** Cada cambio físico rompe decenas de scripts ETL repartidos por las áreas. | **Desacoplado:** El consumidor consulta la vista semántica/API; la capa lógica absorbe cambios físicos. |
+| **Riesgo sobre la operación transaccional (MUISCA/SYGA)** | **Crítico:** Riesgo de *locks* y caída del servicio ciudadano en vencimientos tributarios. | **Medio:** Sobrecarga en las ventanas nocturnas de extracción masiva. | **Nulo:** El consumo se sirve desde el Lakehouse DataR o réplicas analíticas aisladas. |
+| **Cumplimiento de Reserva Tributaria (Art. 583 E.T.)** | **Muy Vulnerable:** Quien tiene credencial de BD suele ver tablas completas sin filtro por expediente. | **Peligroso:** Archivos CSV/Excel descargados en equipos locales fuera de control. | **Blindado por Diseño:** Se aplican filtros automáticos RLS/CLS/DDM y log forense por cada petición. |
 
-> [!EXAM]
-> **Alerta de Examen CNSC / Areandina:**  
-> En las preguntas de juicio situacional para la Subdirección de Procesamiento de Datos, la opción que sugiera otorgar conexiones directas (JDBC/ODBC) a las bases operacionales de MUISCA o generar scripts ETL manuales hacia carpetas compartidas para resolver una necesidad de fiscalización es **SIEMPRE INCORRECTA**. La respuesta técnicamente alineada con el modelo DaaS de la DIAN consiste en diseñar o habilitar un **Servicio de Datos Gobernado** en la capa de virtualización de DataR, protegido mediante contrato de interfaz y políticas de control de acceso.
-
-> [!LAW]
-> **Fundamento Jurídico - Artículo 583 del Estatuto Tributario:**  
-> *"La información tributaria respecto de las bases gravables y la determinación privada de los impuestos que figuren en las declaraciones tributarias, tendrá el carácter de información reservada..."*  
-> En la arquitectura DaaS, el incumplimiento de la reserva tributaria no es solo una falta disciplinaria gravisima según el régimen de carrera (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023), sino un riesgo penal. Los servicios de datos son el mecanismo técnico mandatado para garantizar que la información reservada nunca se exponga sin mandato legal expreso.
+::: q
+La Dirección de Gestión de Fiscalización necesita que sus auditores en las 34 Direcciones Seccionales consulten diariamente el cruce consolidado entre las declaraciones de IVA presentadas en MUISCA y los XML de Facturación Electrónica UBL 2.1. Un ingeniero propone crearle a cada auditor un usuario directo de lectura sobre el motor de base de datos transaccional de producción donde los ciudadanos están presentando sus declaraciones en línea, para evitar el trabajo de exponer un servicio en DataR. A la luz de las buenas prácticas de arquitectura DaaS y las funciones de la Subdirección de Procesamiento de Datos (Art. 56 Decreto 1742 de 2020), esta propuesta debe:
+- [x] Rechazarse categóricamente, dado que conectar cargas analíticas concurrentes directamente al motor transaccional (OLTP) genera contención de recursos, bloqueo de tablas y riesgo de indisponibilidad de los servicios ciudadanos, además de exponer datos sin aislamiento de Reserva Tributaria; la solución correcta es aprovisionar un Servicio de Datos Gobernado (DaaS) sobre la capa analítica de DataR con controles granulares de acceso (RLS/CLS) y cuotas de consumo.
+- [ ] Aprobarse de inmediato, ya que el acceso directo a la base de datos transaccional elimina la latencia de red y ahorra el almacenamiento de la capa Gold de DataR.
+- [ ] Reemplazarse por el envío diario de un archivo comprimido `.zip` con toda la base nacional de declaraciones de IVA al correo electrónico institucional de los 800 auditores del país.
+---
+**Explicación Técnica y Normativa:**
+En arquitectura de datos e ingeniería de servicios (ITIL v4 / DAMA-DMBOK), jamás se mezclan cargas analíticas pesadas (*OLAP*) directamente sobre el motor transaccional en línea (*OLTP*) por el riesgo inminente de degradación y bloqueo de transacciones ciudadanas. Tampoco es legal ni técnico enviar copias masivas por correo electrónico (lo cual infringe los principios de necesidad, circulación restringida y **Reserva Tributaria del Art. 583 E.T.**). La arquitectura oficial de la Subdirección de Procesamiento de Datos consiste en exponer la información mediante **Servicios de Datos Gobernados (DaaS)** sobre **DataR**, aplicando *Row-Level Security*, enmascaramiento dinámico y auditoría inmutable.
+:::
 
 ---
 
-## Unidad 2: Ciclo de Vida y Versionamiento de Servicios de Datos (*Contract-First*)
+## Unidad 2: Catálogo de Servicios de Datos, Contratos de Datos (*Data Contracts*), Diseño *Contract-First* y Versionamiento Semántico (*SemVer 2.0*)
 
-### 2.1 El Enfoque *Contract-First* frente al Enfoque *Code-First*
-En la gestión de servicios de datos moderna, la aproximación tradicional era el enfoque *Code-First*: los ingenieros de datos construían la consulta SQL o el pipeline en Spark, exponían un endpoint REST rápidamente y luego documentaban lo que la API devolvía. Este enfoque genera fricción extrema en organizaciones del tamaño de la DIAN, pues cualquier modificación imprevista en un tipo de dato (por ejemplo, cambiar un valor numérico a alfanumérico en el campo `codigo_actividad_economica`) destruye los pipelines aguas abajo que alimentan los modelos predictivos de fiscalización.
+### 2.1. El Catálogo de Servicios de Datos (ITIL v4) en la DIAN
+En **ITIL v4**, la práctica de **Gestión del Catálogo de Servicios (*Service Catalogue Management*)** asegura que exista una fuente única y actualizada de información consistente sobre todos los servicios de datos activos y disponibles para los usuarios autorizados. En la Subdirección de Procesamiento de Datos, el Catálogo de Servicios presenta **dos vistas complementarias**:
 
-Por el contrario, la Subdirección de Procesamiento de Datos implementa el paradigma **Contract-First (El Contrato Primero)**:
-1. **Negociación y Diseño Previo:** Antes de escribir una sola línea de código, los equipos productores de datos (ej. Facturación Electrónica) y los consumidores (ej. Analítica Tributaria o UIAF) definen formalmente el **Contrato de Datos (*Data Contract*)**.
-2. **Independencia Tecnológica:** El contrato actúa como un compromiso jurídico y técnico independiente de las herramientas subyacentes. Si el almacenamiento físico migra de un sistema a otro, el contrato de consumo no sufre alteraciones.
-3. **Mocks y Desarrollo Paralelo:** Los consumidores pueden comenzar a desarrollar sus aplicaciones y algoritmos utilizando un servidor simulado (*mock server*) que valida las respuestas contra el contrato acordado, reduciendo drásticamente el tiempo de puesta en producción.
-
-```blueprint
-FLUJO CONTRACT-FIRST EN LA GESTIÓN DE SERVICIOS DataR
-
-[Consumidores: Fiscalización] <--- Negociación y Diseño ---> [Productores: Subd. Datos]
-                                            |
-                                            v
-                             +-----------------------------+
-                             |   DATA CONTRACT ESTRICTO    |
-                             |  * Schema (JSON Schema)     |
-                             |  * Semántica & Reglas       |
-                             |  * SLAs (Frescura/Latencia) |
-                             +-----------------------------+
-                                     /             \
-                                    /               \
-                                   v                 v
-                 [Desarrollo Paralelo Consumo]   [Implementación Servicio DaaS]
-                 (Mock Server de Pruebas)         (DataR / Trino / API Gateway)
-                                   \                 /
-                                    \               /
-                                     v             v
-                                  +-------------------+
-                                  | VALIDACIÓN CI/CD  |
-                                  | Test de Contrato  |
-                                  +-------------------+
-                                            |
-                                            v
-                                  [Despliegue a Producción]
-```
-
-### 2.2 Anatomía Integral de un Contrato de Datos (*Data Contract*)
-Un contrato de datos robusto en el ecosistema DataR de la DIAN se compone de cuatro dimensiones obligatorias:
-
-1. **Definición de Esquema Físico y Tipos de Datos:** Especificado en estándares abiertos como **JSON Schema**, **OpenAPI 3.1**, **Apache Avro** o **Protocol Buffers**. Detalla cada atributo, si es obligatorio o nulo, rangos válidos (expresiones regulares para validar el formato de un NIT colombiano con su dígito de verificación) y tipos de datos precisos.
-2. **Semántica y Clasificación de Seguridad:** Mapeo de cada campo contra el Glosario de Negocio institucional. Cada atributo debe clasificarse según la Ley 1712 de 2014 y la Ley 1581 de 2012: *Dato Público*, *Dato Privado*, *Dato Semiprivado* o *Dato Reservado/Sensible*.
-3. **Garantías de Calidad y Expectativas:** Reglas medibles como completitud mínima del 99.9% en el campo `total_impuesto_iva`, unicidad del identificador UUID de la factura electrónica, y tasa de duplicados tolerada igual a cero.
-4. **Términos de Servicio y Acuerdos de Nivel de Servicio (SLA):** Frecuencia de actualización, frescura máxima permitida y latencia del servicio bajo carga concurrente nominal.
-
-### 2.3 Versionamiento Semántico (SemVer) en Servicios de Datos
-Para evolucionar los servicios sin perjudicar a los consumidores, se adopta el estándar de **Versionamiento Semántico 2.0 (SemVer: MAJOR.MINOR.PATCH)** adaptado al dominio de datos:
-
-* **Versión PATCH (Parche - v1.0.0 -> v1.0.1):** Cambios internos de optimización, corrección de bugs en el motor de virtualización o indexación de tablas subyacentes que mejoran el rendimiento de la consulta sin alterar el esquema ni la semántica de los datos devueltos.
-* **Versión MINOR (Menor - v1.0.0 -> v1.1.0):** Cambios compatibles hacia atrás (*backward-compatible*). Incluye la adición de nuevos campos opcionales en la respuesta de la API (ej. agregar el campo `departamento_expedicion_rut` manteniendo los campos existentes) o la ampliación de filtros opcionales de búsqueda. No rompe a los consumidores existentes.
-* **Versión MAJOR (Mayor - v1.0.0 -> v2.0.0):** **Cambios disruptivos (*Breaking Changes*)**. Modificaciones que rompen la compatibilidad previa:
-  * Eliminación o renombrado de un campo existente (ej. cambiar `nit_contribuyente` por `numero_identificacion_tributaria`).
-  * Cambio en el tipo primitivo de datos (ej. cambiar un valor numérico a cadena de texto).
-  * Alteración en las unidades de medida o en la semántica de negocio (ej. un valor que se entregaba en pesos colombianos brutos y ahora se calcula neto de retenciones).
-  * Modificación de las restricciones de obligatoriedad (hacer mandatorio un parámetro de consulta que antes era opcional).
-
-```diagram
-ESTRATEGIA DE VERSIONAMIENTO SEMÁNTICO Y CICLO DE VIDA (SUNSETTING)
-
-           v1.0.0 (Lanzamiento)
-              |
-              +---> v1.1.0 (Adición de campo opcional - Backward Compatible)
-                       |
-                       +---> [v2.0.0 Breaking Change] ===> Coexistencia Temporal
-                                  |                                  |
-                                  v                                  v
-                            [Canal Activo]                    [Canal Deprecado]
-                             (v2.0.0 Principal)                (v1.1.0 con cabecera Sunset)
-                                  |                                  |
-                                  |                         (Ventana de Gracia 6 Meses)
-                                  |                                  |
-                                  v                                  v
-                         [Consumo Estándar]                   [Retiro Definitivo]
-```
-
-### 2.4 Ciclo de Vida del Servicio y Políticas de Deprecación
-En la administración pública, un cambio disruptivo no puede aplicarse de manera unilateral o inmediata. La Subdirección de Procesamiento de Datos establece un ciclo de vida compuesto por cuatro fases:
-
-1. **Borrador (*Draft* / Experimental):** El servicio se publica en el catálogo para pruebas internas con datos sintéticos. No ofrece garantías de SLA.
-2. **Activo (*Active* / GA - General Availability):** Servicio plenamente operativo, con SLA garantizado y monitoreo de producción.
-3. **Deprecado (*Deprecated*):** Se anuncia oficialmente que la versión será retirada. El API Gateway inyecta en las respuestas las cabeceras HTTP estándar `Deprecation: @<timestamp>` y `Sunset: <fecha_limite>`. Se abre una **ventana de transición obligatoria (típicamente entre 6 y 12 meses)** para que las dependencias migren a la versión mayor más reciente.
-4. **Retirado (*Retired* / Sunset):** El endpoint se desactiva definitivamente. Las peticiones a dicha versión retornan el código de estado `HTTP 410 Gone` o `HTTP 301 Moved Permanently`.
-
-> [!WARNING]
-> **Alerta de Operación Técnica:**  
-> La introducción de un cambio que altere el tipo de dato de una métrica financiera en un servicio consumido por el área de Recaudo sin incrementar la versión MAJOR ni otorgar la ventana de deprecación constituye una falla crítica de gestión. El Inspector I debe velar por que ningún pipeline en producción sufra caídas por desalineación de contratos de datos.
+1. **Vista de Negocio / Usuario Misional (Orientada a Fiscalización, Aduanas, Impuestos y Analítica):** Describe en lenguaje claro qué información entrega el servicio (ej. *"Servicio de Consulta de Operaciones de Comercio Exterior e Inconsistencias Cambiarias"*), quién es el Propietario de los Datos (*Data Owner*), qué nivel de reserva legal tiene, cuál es su frescura prometida (SLA) y cuál es el flujo de aprobación para solicitar acceso.
+2. **Vista Técnica / Ingeniería (Orientada a Desarrolladores, Científicos de Datos y Sistemas M2M):** Especifica el protocolo de conexión (`REST API OpenAPI 3.1`, `gRPC`, `Vista Virtualizada SQL`), la URL del *endpoint*, la estructura del **Contrato de Datos (*Data Contract*)**, los métodos de autenticación (`mTLS + OAuth 2.0`), los límites de tasa (*Rate Limits*) y el linaje técnico hacia las tablas de **DataR**.
 
 ---
 
-## Unidad 3: Acuerdos de Nivel de Servicio (SLA, SLO, SLI de Frescura y Latencia)
+### 2.2. ¿Qué es un Contrato de Datos (*Data Contract*) y por qué se diseña bajo el enfoque *Contract-First*?
+En muchos proyectos de datos ocurre un desastre recurrente: el equipo que administra un sistema origen (por ejemplo, el aplicativo que captura el RUT) decide un viernes por la tarde cambiar el nombre de la columna `cod_actividad_ciiu` por `ciiu_principal_v4`, o cambiar el tipo de dato de `INTEGER` a `STRING` sin avisarle a nadie. El lunes a las 6:00 a.m., todos los pipelines de **DataR** y los modelos de *Machine Learning* de detección de evasión se rompen en cadena.
 
-### 3.1 La Jerarquía SRE Aplicada a la Gestión de Datos: SLI, SLO y SLA
-Para administrar los servicios de datos con rigor ingenieril, la Subdirección de Procesamiento de Datos adopta el marco conceptual de *Site Reliability Engineering* (SRE) desarrollado originalmente para infraestructura pero adaptado a la economía del dato:
+Para erradicar este problema, la ingeniería de datos moderna aplica los **Contratos de Datos (*Data Contracts*)** bajo la metodología **Contract-First (Primero el Contrato, luego el Código)**:
 
-```diagram
-JERARQUÍA SRE: SLI -> SLO -> SLA
+* **Enfoque *Code-First* (Incorrecto en entornos críticos):** Primero se escribe el código del pipeline o de la API a criterio del programador y al final se genera automáticamente la documentación de lo que salió. Si el programador cambia el código, cambia la salida y rompe a los consumidores.
+* **Enfoque *Contract-First* (Estándar en Servicios de Datos Gobernados):**
+  1. Antes de programar el pipeline o exponer la vista/API en **DataR**, el **Productor de Datos** (Subdirección de Procesamiento de Datos) y el **Consumidor de Datos** (ej. Subdirección de Analítica o Subdirección de Devoluciones) acuerdan y firman digitalmente una especificación formal legible por máquina (en formato **YAML, JSON Schema, OpenAPI 3.1, Apache Avro o Protocol Buffers**).
+  2. Ese archivo de contrato se integra en el pipeline de **CI/CD (Integración y Despliegue Continuo)**: si un ingeniero intenta desplegar un cambio en el código de Spark o SQL que viole el esquema, los tipos de datos o las reglas de calidad pactadas en el *Data Contract*, el despliegue se bloquea automáticamente antes de llegar a producción.
 
-+---------------------------------------------------------------------------------+
-| SLA (Service Level Agreement - Acuerdo de Nivel de Servicio)                   |
-| Compromiso formal/institucional con consecuencias operacionales o legales.      |
-| Ejemplo: "Disponibilidad mensual de la API del 99.5% y Frescura < 4 horas".     |
-+---------------------------------------------------------------------------------+
-                                        ^
-                                        | (Margen de Seguridad / Error Budget)
-+---------------------------------------------------------------------------------+
-| SLO (Service Level Objective - Objetivo de Nivel de Servicio)                   |
-| Meta técnica interna del equipo de ingeniería (más estricta que el SLA).        |
-| Ejemplo: "Mantener 99.9% de disponibilidad y Frescura < 2 horas".               |
-+---------------------------------------------------------------------------------+
-                                        ^
-                                        | (Medición Continua)
-+---------------------------------------------------------------------------------+
-| SLI (Service Level Indicator - Indicador de Nivel de Servicio)                  |
-| La métrica cuantitativa exacta observada en tiempo real.                         |
-| Ejemplo: (Peticiones exitosas HTTP 200 en <500ms) / (Total de peticiones)      |
-+---------------------------------------------------------------------------------+
+#### Anatomía de un Contrato de Datos (*Data Contract*) en la DIAN
+Veamos un ejemplo real y explicativo de cómo luce un **Contrato de Datos** en formato YAML para un servicio de la Subdirección de Procesamiento de Datos:
+
+```yaml
+# EJEMPLO DE CONTRATO DE DATOS (DATA CONTRACT) - SUBDIRECCIÓN DE PROCESAMIENTO DE DATOS DIAN
+dataContractSpecification: 1.0.0
+id: urn:dian:datar:servicio:resumen-facturacion-iva-v1
+info:
+  title: Servicio Consolidado de Facturación Electrónica e IVA Descontable
+  version: 1.2.0 # Versionamiento Semántico (MAJOR.MINOR.PATCH)
+  owner: Subdirección de Procesamiento de Datos (DGIT - Art. 56 Dec. 1742/2020)
+  businessSteward: Subdirección de Factura Electrónica y Soluciones Operativas (DGI)
+  classification: RESERVADO_ART_583_ET # Sujeto a Reserva Tributaria Estricta
+
+schema:
+  type: object
+  required: [nit_adquiriente, anio_gravable, bimestre, total_iva_facturado_ubl, fecha_corte_procesamiento]
+  properties:
+    nit_adquiriente:
+      type: string
+      pattern: "^[0-9]{8,10}$"
+      description: "NIT del contribuyente sin dígito de verificación, normalizado contra tabla maestra RUT."
+      pii: true
+    anio_gravable:
+      type: integer
+      minimum: 2020
+      maximum: 2030
+    bimestre:
+      type: integer
+      enum: [1, 2, 3, 4, 5, 6]
+    total_iva_facturado_ubl:
+      type: number
+      precision: 18
+      scale: 2
+      minimum: 0.00
+      description: "Sumatoria en COP de IVA válido en facturas electrónicas UBL 2.1 con evento de aceptación."
+     puntaje_confiabilidad_proveedor:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      nullable: true # Campo opcional agregado en la versión MINOR 1.2.0
+
+qualityRules:
+  - metric: completeness
+    column: nit_adquiriente
+    mustBe: 100.0%
+  - metric: uniqueness
+    compositeKey: [nit_adquiriente, anio_gravable, bimestre]
+    mustBe: 100.0%
+  - metric: referentialIntegrity
+    column: nit_adquiriente
+    referenceTable: datar_gold.dim_rut_vigente.nit
+
+serviceLevels (SLA):
+  availability: 99.9% # Mensual
+  freshnessMaxHours: 6 # Actualización cada 6 horas
+  latencyP95Ms: 450 # El 95% de las peticiones responde en <= 450 ms
 ```
-
-### 3.2 Indicadores Críticos (SLIs) en Servicios de Datos Institucionales
-A diferencia de un servicio web tradicional donde solo importa la disponibilidad del servidor, en un servicio de datos gobernado se evalúan dos dimensiones complementarias: **la salud del servicio (transporte)** y **la salud de la información (contenido)**.
-
-#### A. Métricas de Salud del Servicio (Transporte)
-1. **Disponibilidad (*Uptime* / Success Rate):**
-   $$\text{SLI}_{\text{disp}} = \frac{\sum \text{Peticiones HTTP Exitosas (2xx/3xx)}}{\sum \text{Total de Peticiones Válidas}} \times 100$$
-2. **Latencia de Consulta (*Query Latency*):** Medida en percentiles ($p50$, $p95$, $p99$) y no en promedios, para evitar que valores atípicos oculten la degradación sufrida por los usuarios más exigentes. Un SLO típico establece: *"El 95% de las consultas analíticas del servicio de verificación de RUT deben responder en menos de 350 milisegundos ($p95 < 350\text{ms}$)"*.
-3. **Rendimiento (*Throughput*):** Capacidad del servicio para sostener un volumen determinado de consultas por segundo (QPS - *Queries Per Second*) sin encolamiento ni timeouts.
-
-#### B. Métricas de Salud del Dato (Frescura y Calidad)
-1. **Frescura del Dato (*Data Freshness / Currency*):** Es el tiempo transcurrido desde el momento en que se produjo el evento transaccional en el mundo real hasta que dicho registro está disponible para su consumo a través de la API en DataR:
-   $$\text{Frescura} = T_{\text{consulta}} - T_{\text{emisión\_evento}}$$
-   *Para el servicio de Facturación Electrónica consumido por el modelo de riesgo en frontera, el SLO puede fijar una frescura máxima de 15 minutos; mientras que para el servicio de Información Exógena anual, el SLO de frescura puede ser de 24 horas.*
-2. **Tasa de Completitud de Esquema:** Porcentaje de filas devueltas que contienen valores no nulos en atributos críticos para la determinación fiscal.
-3. **Tasa de Duplicidad No Deseada:** Porcentaje de registros repetidos sobre la misma clave primaria transaccional (CUFE de la factura, número de formulario y año gravable).
-
-### 3.3 Presupuestos de Error (*Error Budgets*) y Consecuencias del Incumplimiento
-El concepto de **Presupuesto de Error (*Error Budget*)** define la cantidad de fallas o degradación que un servicio de datos puede tolerar durante una ventana temporal determinada (ej. un mes calendario) antes de detener nuevas implementaciones funcionales:
-
-$$\text{Error Budget} = 100\% - \text{SLO}$$
-
-*Si el SLO de disponibilidad de la API de Consulta de Salarios y Retenciones es de 99.9% mensual, el Error Budget disponible para el equipo de desarrollo es del 0.1% (aproximadamente 43 minutos de indisponibilidad o degradación al mes).*
-
-Si el presupuesto de error se agota a mitad de mes debido a fallas en pipelines de Spark o bloqueos en la base de datos, la política de gobernanza congela los despliegues de nuevas características funcionales y redirige el 100% del esfuerzo del equipo de ingeniería a tareas de estabilidad, optimización de consultas, depuración de índices y resiliencia.
-
-### 3.4 Perfiles de SLA en la DIAN según el Tipo de Consumidor
-
-| Perfil de Consumo | Casos de Uso Típicos | SLO Latencia ($p95$) | SLO Frescura | Tolerancia a Falla |
-| :--- | :--- | :--- | :--- | :--- |
-| **Operacional en Línea** | Validación de RUT en ventanillas, autorización de paso en aduanas. | $< 150\text{ ms}$ | $< 5\text{ minutos}$ | Mínima (SLO 99.95%) |
-| **Analítico Táctico** | Cruces masivos de fiscalización, modelos antifraude, analítica de grafos. | $< 5\text{ segundos}$ | $< 6\text{ horas}$ | Moderada (SLO 99.5%) |
-| **Estratégico / Regulatorio** | Reportes macroeconómicos para el DANE, Banco de la República o Minhacienda. | Batch / Asíncrono | $< 24\text{ horas}$ | Alta (SLO 99.0%) |
-
-> [!NOTE]
-> **Diferencia Clave en Exámenes CNSC:**  
-> El **SLI** es la medida observada en los logs del sistema. El **SLO** es la meta interna que el equipo de tecnología busca alcanzar para no tener problemas. El **SLA** es el compromiso institucional que, de violarse, genera escalamiento formal ante la Dirección General, sanciones contractuales a proveedores o investigación por parte de entes de control como la Contraloría General de la República.
 
 ---
 
-## Unidad 4: Observabilidad de Datos (*Data Observability*) y Detección Proactiva de Anomalías
+### 2.3. Versionamiento Semántico (*SemVer 2.0*: `MAJOR.MINOR.PATCH`) en Servicios de Datos
+Los servicios de datos en la DIAN no son estáticos: una reforma tributaria del Congreso puede crear un nuevo impuesto o agregar una casilla al formulario de Renta. ¿Cómo evolucionamos un servicio de datos sin romper las aplicaciones de las Direcciones Seccionales ni los modelos de *Machine Learning* que ya lo están consumiendo?
 
-### 4.1 De la Observabilidad de Infraestructura a la Observabilidad de Datos
-Tradicionalmente, los equipos de TI monitoreaban el estado de las aplicaciones mediante herramientas de *Application Performance Monitoring* (APM) como Datadog, Prometheus o Grafana, centradas en métricas de infraestructura: uso de CPU, memoria RAM consumida por el pod de Kubernetes, saturación de disco y códigos HTTP devueltos por el servidor web.
+Aplicando rigurosamente el estándar de **Versionamiento Semántico (`vMAJOR.MINOR.PATCH`, por ejemplo `v2.4.1`)**:
 
-Sin embargo, en el procesamiento de datos del Estado se presenta con frecuencia el fenómeno de las **Fallas Silenciosas de Datos (*Silent Data Corruption* / Data Downtime)**: la API responde con un código impecable `HTTP 200 OK` en 50 milisegundos, los servidores operan con baja carga de CPU, pero el cuerpo de la respuesta contiene datos vacíos, campos en cero o valores corruptos debido a un error lógico en el pipeline de transformación nocturno.
+| Dígito de Versión | ¿Cuándo se incrementa? | ¿Es Compatible hacia Atrás (*Backward Compatible*)? | Ejemplos Concretos en Servicios de Datos de la DIAN |
+| :--- | :--- | :--- | :--- |
+| **1. `PATCH` (`v1.0.0` $\rightarrow$ `v1.0.1`)** | Correcciones internas de defectos (*bugfixes*) u optimizaciones de rendimiento que **NO cambian el esquema ni agregan/quitan campos**. | **SÍ (100% Compatible).** Los consumidores no necesitan tocar su código. | Optimizar el particionamiento en Delta Lake para bajar la latencia de `400 ms` a `120 ms`, o corregir un error de redondeo en el último decimal interno. |
+| **2. `MINOR` (`v1.0.1` $\rightarrow$ `v1.1.0`)** | Adición de nueva funcionalidad o **nuevos campos opcionales** sin eliminar ni alterar los campos existentes. | **SÍ (*Backward Compatible*).** Los sistemas antiguos siguen leyendo los campos que conocían e ignoran el campo nuevo. | Agregar al final del JSON o de la vista SQL una columna nueva opcional `indicador_regimen_simple` manteniendo intactas todas las columnas anteriores. |
+| **3. `MAJOR` (`v1.1.0` $\rightarrow$ `v2.0.0`)** | **Cambios Disruptivos (*Breaking Changes*)** que rompen la compatibilidad con los consumidores actuales. | **NO (*Incompatible*).** Exige coexistencia de versiones (`v1` y `v2`) y ventana de migración. | 1) Eliminar o renombrar una columna (`nit` $\rightarrow$ `id_tributario`);<br>2) Cambiar el tipo de dato (`INT` $\rightarrow$ `STRING`);<br>3) Cambiar la unidad o semántica del dato (ej. pasar de expresar montos en Pesos a expresarlos en UVT);<br>4) Hacer obligatorio un parámetro de entrada que antes era opcional. |
 
-La **Observabilidad de Datos (*Data Observability*)** es la capacidad de inferir la salud interna de los datos y de los pipelines a lo largo de todo su ciclo de vida, basándose en la telemetría recolectada de la información en sí misma.
+#### Protocolo Oficial ante un Cambio `MAJOR` (*Sunsetting / Deprecación Controlada*)
+Cuando una reforma legal o técnica obliga a lanzar una versión **`v2.0.0`** incompatible con la **`v1.x.x`**:
+1. **Nunca se apaga de golpe la versión `v1` en producción.**
+2. Se despliega `v2` en paralelo (`/api/v2/facturacion`) mientras `v1` (`/api/v1/facturacion`) pasa a estado **Deprecado (*Deprecated*)**.
+3. El API Gateway inyecta en las respuestas de `v1` las cabeceras estándar `Deprecation: true` y `Sunset: <Fecha_Fin_Soporte>` notificando a los equipos consumidores (ej. ventana de transición de 3 a 6 meses).
+4. Solo cuando la telemetría del API Gateway confirma que el tráfico legítimo sobre `v1` llegó a cero tras la migración de los consumidores, se retira `v1` devolviendo el código `HTTP 410 Gone`.
 
-```blueprint
-LOS 5 PILARES CANÓNICOS DE LA OBSERVABILIDAD DE DATOS (DATA OBSERVABILITY)
-
-           +-------------------------------------------------------+
-           |       FRESCURA (Freshness): ¿Están los datos al día?  |
-           |       Monitoreo de latencia y ventanas de ingesta.   |
-           +-------------------------------------------------------+
-                                      |
-           +-------------------------------------------------------+
-           |       DISTRIBUCIÓN (Distribution): ¿Son valores válidos?
-           |       Deriva estadística, medias, nulos, outliers.    |
-           +-------------------------------------------------------+
-                                      |
-           +-------------------------------------------------------+
-           |       VOLUMEN (Volume): ¿Llegó la cantidad esperada?  |
-           |       Recuentos de filas, anomalías por día de corte. |
-           +-------------------------------------------------------+
-                                      |
-           +-------------------------------------------------------+
-           |       ESQUEMA (Schema): ¿Cambió la estructura física?  |
-           |       Columnas eliminadas, tipos alterados, drift.    |
-           +-------------------------------------------------------+
-                                      |
-           +-------------------------------------------------------+
-           |       LINEAGE (Linaje): ¿De dónde vino y quién lo usa? |
-           |       Rastreo de impacto aguas arriba y aguas abajo.  |
-           +-------------------------------------------------------+
-```
-
-### 4.2 Los Cinco Pilares Canónicos de la Observabilidad de Datos
-1. **Frescura (*Freshness*):** Verifica si las tablas y servicios se están actualizando con la periodicidad establecida en el contrato. Si la tabla de declaraciones aduaneras no ha recibido nuevos registros en las últimas 3 horas hábiles, se dispara una alarma de severidad alta.
-2. **Distribución (*Distribution*):** Examina si los valores observados en las variables numéricas o categóricas caen dentro de las distribuciones estadísticas esperadas. Por ejemplo, si el porcentaje de facturas con `IVA = 0` suele ser del 12% y súbitamente se eleva al 85%, el sistema detecta una anomalía de distribución que sugiere un error de parseo en el pipeline de ingesta.
-3. **Volumen (*Volume*):** Rastrea si la cantidad de registros recibidos o servidos coincide con el comportamiento histórico. Si en el último día de plazo para la presentación de declaraciones tributarias el volumen de transacciones procesadas cae en un 70% frente a la misma fecha del año anterior, existe una interrupción no reportada en los canales de recepción.
-4. **Esquema (*Schema*):** Detecta cualquier modificación no autorizada o silenciosa en los metadatos: adición, eliminación o renombrado de campos, o variaciones en la precisión decimal de los montos recaudados.
-5. **Linaje (*Lineage*):** En caso de presentarse una falla en un servicio de datos expuesto, el linaje bidireccional permite aislar en cuestión de minutos qué tabla base, script de dbt o archivo crudo en el Lakehouse originó el error (análisis de causa raíz - RCA), e identificar qué otros servicios o reportes institucionales están consumiendo ese dato corrupto (análisis de impacto aguas abajo).
-
-### 4.3 Detección Automatizada de Anomalías en los Sistemas de la DIAN
-Para implementar observabilidad a escala en DataR, el Inspector I se apoya en marcos de pruebas automatizadas y monitoreo algorítmico continuo:
-* **Pruebas de Afirmación Declarativa (como *Great Expectations* o *Soda Core*):** Reglas ejecutadas antes de que los datos sean publicados en las capas Plata y Oro de DataR:
-  * `expect_column_values_to_not_be_null(column="numero_nit")`
-  * `expect_column_values_to_be_between(column="tarifa_iva", min_value=0, max_value=0.19)`
-  * `expect_table_row_count_to_be_between(min_value=100000, max_value=500000)`
-* **Modelos Estadísticos Dinámicos de Detección de Anomalías:** Algoritmos basados en series de tiempo que ajustan dinámicamente los umbrales de alerta considerando la estacionalidad tributaria (días hábiles vs. fines de semana, quincenas, semanas de vencimiento según el último dígito del NIT). Esto evita la fatiga de alertas (*alert fatigue*) ocasionada por umbrales fijos estáticos.
-
-> [!TIP]
-> **Buena Práctica de Ingeniería en la DIAN:**  
-> Cuando se detecta una anomalía en un servicio de datos crítico, el sistema de observabilidad debe aplicar un **disyuntor de datos (*Circuit Breaker de Datos*)**: suspender temporalmente la actualización de las vistas de consumo analítico y activar el fallback a la última versión limpia conocida (*Last Known Good Version*), emitiendo una notificación prioritaria al canal de soporte de la Subdirección de Procesamiento de Datos.
+::: q
+La Subdirección de Procesamiento de Datos administra el servicio `v1.3.0` de consulta de Declaraciones de Importación en DataR, el cual entrega el atributo `valor_fob_mercancia` expresado en Dólares Estadounidenses (USD) como tipo numérico decimal (`DECIMAL(18,2)`). Por solicitud de una dependencia, se requiere que dicho atributo pase a entregarse expresado en Pesos Colombianos (COP) y además se renombre el campo a `valor_fob_cop`. De acuerdo con las reglas de Contratos de Datos y Versionamiento Semántico (SemVer 2.0), la forma correcta de gestionar este cambio es:
+- [x] Catalogar la modificación como un cambio disruptivo (*Breaking Change* tanto sintáctico por el renombrado del atributo como semántico por el cambio de divisa de USD a COP), publicar una nueva versión mayor (`v2.0.0`) bajo un nuevo contrato de datos, y mantener temporalmente en coexistencia la versión `v1.3.0` en estado deprecado durante una ventana de transición acordada para no interrumpir los modelos analíticos ni los sistemas aduaneros que dependen del contrato original.
+- [ ] Aplicar el cambio directamente sobre el endpoint `v1.3.0` en producción un viernes en la noche y actualizar la versión a `v1.3.1` (PATCH), dado que los datos siguen siendo numéricos.
+- [ ] Incrementar únicamente la versión menor a `v1.4.0` (MINOR) y reemplazar de inmediato el campo antiguo sin previo aviso, puesto que los cambios de moneda de USD a COP son compatibles hacia atrás.
+---
+**Explicación Técnica y Normativa:**
+En el estándar **SemVer 2.0** aplicado a **Contratos de Datos (*Data Contracts*)**, existen dos tipos de *Breaking Changes* (cambios que obligan a incrementar la versión **MAJOR** a `v2.0.0`):
+1. **Cambio Disruptivo de Esquema (Sintáctico):** Renombrar o eliminar el campo `valor_fob_mercancia` hará que cualquier script SQL o consumidor JSON que busque esa llave falle con `ColumnNotFound / KeyError`.
+2. **Cambio Disruptivo de Significado (Semántico):** Aun si no se cambiara el nombre del campo, cambiar la unidad monetaria de USD a COP multiplica los valores por ~4.000, corrompiendo silenciosamente todos los cálculos de los modelos de valoración aduanera aguas abajo. Por tanto, exige publicar `v2.0.0` (o bien agregar `valor_fob_cop` como un campo *adicional* sin tocar ni alterar `valor_fob_usd` si se quisiera mantener compatibilidad en una versión `MINOR v1.4.0`).
+:::
 
 ---
 
-## Unidad 5: Seguridad, Cuotas de Consumo y Auditoría de Servicios
+## Unidad 3: Ingeniería de Confiabilidad (SRE) Aplicada a Servicios de Datos — SLIs, SLOs, SLAs, OLAs y Matemáticas del Presupuesto de Error (*Error Budget*)
 
-### 5.1 Arquitectura de Seguridad en Capas para Servicios de Datos
-La exposición de servicios de datos que contienen información tributaria, aduanera y cambiaria requiere una postura de seguridad basada en el principio de **Confianza Cero (*Zero Trust: Never Trust, Always Verify*)**. Ningún usuario, servidor o proceso interno se considera confiable por el simple hecho de encontrarse dentro de la red privada de la entidad.
+### 3.1. Desglosando la Sopa de Letras de los Niveles de Servicio: SLI, SLO, SLA, OLA y UC
+En los exámenes de competencias funcionales para grados profesionales de tecnología (como **Inspector I**), es fundamental distinguir cinco siglas que provienen de **ITIL v4**, **ISO/IEC 20000** y **SRE (*Site Reliability Engineering*)**:
 
-```blueprint
-FLUJO DE AUTENTICACIÓN, AUTORIZACIÓN Y AUDITORÍA EN API GATEWAY
+```
+========================================================================================
+         PIRÁMIDE Y ECOSISTEMA DE NIVELES DE SERVICIO EN PROCESAMIENTO DE DATOS
+========================================================================================
 
-[Consumidor: Aplicación Externa / Auditor]
-                    |
-                    | 1. Petición HTTPS con Certificado de Cliente (mTLS)
-                    v
-    +-----------------------------------------------+
-    |         API GATEWAY INSTITUCIONAL             |
-    |                                               |
-    | 2. Validación mTLS y Token JWT (OAuth 2.0)    |
-    | 3. Evaluación de Cuotas (Token Bucket)        |
-    +-----------------------------------------------+
-                    |
-                    | 4. Contexto de Identidad y Roles
-                    v
-    +-----------------------------------------------+
-    |       MOTOR DE POLÍTICAS DE ACCESO            |
-    |                                               |
-    | * Role-Based Access Control (RBAC)            |
-    | * Attribute-Based Access Control (ABAC)       |
-    | * Inyección de Filtros RLS (Row-Level)         |
-    | * Enmascaramiento Dinámico CLS (Column-Level) |
-    +-----------------------------------------------+
-                    |
-                    | 5. Consulta Filtrada y Protegida
-                    v
-    +-----------------------------------------------+
-    |         MOTOR DE VIRTUALIZACIÓN / DataR       |
-    |                                               |
-    | * Ejecuta consulta sobre almacén cifrado      |
-    +-----------------------------------------------+
-                    |
-                    | 6. Generación de Registro Inmutable
-                    v
-    +-----------------------------------------------+
-    |      SISTEMA DE AUDITORÍA FORENSE (Art. 583)  |
-    |                                               |
-    | * Almacena: Usuario, NIT, Justificación,      |
-    |   Campos consultados, Timestamp, Hash Cripto  |
-    +-----------------------------------------------+
+   [1. SLI (Service Level Indicator)]  ---> "¿Qué medimos exactamente?" (Fórmula/Métrica)
+       Ej.: Latencia p95 = 280 ms | Disponibilidad observada = 99.94% | Frescura = 45 min
+                                       |
+                                       v
+   [2. SLO (Service Level Objective)]  ---> "¿Cuál es nuestra meta técnica interna?"
+       Ej.: Meta interna del equipo de Procesamiento de Datos: Disponibilidad >= 99.90%
+                                       |
+                                       v (Margen de seguridad preventivo)
+   [3. SLA (Service Level Agreement)]  ---> "¿Qué le prometimos formalmente al Usuario?"
+       Ej.: Acuerdo firmado con la Dirección de Fiscalización: Disponibilidad >= 99.50%
+            +----------------------+----------------------+
+            | (Para cumplir el SLA hacia afuera,          |
+            |  necesitamos acuerdos de soporte adentro)   |
+            v                                             v
+   [4. OLA (Operational Level Agreement)]       [5. UC (Underpinning Contract)]
+       Acuerdo INTERNO entre subdirecciones         Contrato EXTERNO jurídicamente
+       de la misma entidad (DIAN):                  vinculante con un Proveedor Tercero:
+       Ej.: OLA entre la Subd. de Procesamiento     Ej.: Contrato con el proveedor de
+       de Datos (Art. 56) y la Subd. de             Nube Pública o telecomunicaciones
+       Infraestructura y Servicios (Art. 55)        que garantiza un uptime de red y
+       para reparar fallas de red en <= 30 min.     storage del 99.99%.
+========================================================================================
 ```
 
-### 5.2 Mecanismos de Autenticación y Autorización Criptográfica
-* **mTLS (Mutual TLS):** Autenticación bidireccional a nivel de capa de transporte (TLS 1.3). Tanto el cliente que consume el servicio como el servidor de la DIAN presentan certificados digitales X.509 válidos emitidos por una Autoridad de Certificación (CA) de confianza. Impide ataques de hombre en el medio (*Man-in-the-Middle*) y suplantación de identidad en intercambios máquina a máquina (M2M).
-* **OAuth 2.0 y Tokens JWT (JSON Web Tokens):** Flujo de concesión de credenciales de cliente (*Client Credentials Grant*) para servicios backend. Los tokens JWT deben estar firmados criptográficamente (algoritmos asimétricos como RS256 o ES256) e incluir en sus declaraciones (*claims*) el identificador del sistema, el rol asignado, el propósito del tratamiento y la vigencia temporal (máximo 15 a 60 minutos con renovación vía refresh tokens).
-
-### 5.3 Control de Acceso Granular: RBAC, ABAC, RLS y CLS
-La autorización no se limita a otorgar o negar el acceso a un endpoint completo, sino que desciende a la granularidad de registro y celda:
-* **RBAC (Control Basado en Roles):** El usuario recibe permisos según su perfil institucional (ej. *Auditor Fiscal de Grandes Contribuyentes* vs. *Operador de Servicio al Ciudadano*).
-* **ABAC (Control Basado en Atributos):** Modelo dinámico que evalúa variables contextuales: identidad del sujeto, tipo de dato solicitado, dirección IP de origen, horario laboral y **existencia de un expediente administrativo formal abierto**.
-* **Row-Level Security (RLS - Seguridad a Nivel de Fila):** Inyección transparente de predicados en la consulta. Si un auditor de la Seccional Medellín consulta el servicio de facturación, el motor inyecta automáticamente el filtro `WHERE seccional_domicilio = '02'` (Medellín), bloqueando la visualización de contribuyentes de otras jurisdicciones a menos que exista comisión especial de servicios.
-* **Column-Level Security (CLS) y Dynamic Data Masking (DDM):** Si un funcionario requiere consultar datos transaccionales para análisis estadístico, el servicio enmascara en tiempo real los atributos sensibles:
-  * El número de tarjeta o cuenta bancaria se muestra como `****-****-****-1234`.
-  * La dirección de residencia y el correo electrónico se ofuscan mediante funciones hash unidireccionales con sal (*salted hash*).
-  * Los ingresos brutos se agregan en rangos decílicos para impedir la individualización económica protegida por la Reserva Tributaria.
-
-### 5.4 Gestión de Concurrencia y Cuotas de Consumo (Algoritmo Token Bucket)
-Para proteger la infraestructura de DataR frente a saturación, ataques de denegación de servicio (DoS) o scripts mal optimizados desarrollados por entidades externas, el API Gateway implementa políticas de limitación de tasa (*Rate Limiting*) y cuotas basadas en el **Algoritmo de Cubeta de Fichas (*Token Bucket*)**:
-
-```diagram
-FUNCIONAMIENTO DEL ALGORITMO TOKEN BUCKET EN RATE LIMITING
-
-   [Recarga Constante de Tokens] ---> (ej. 100 tokens/segundo)
-                                             |
-                                             v
-                                  +---------------------+
-                                  |     CUBETA LLENA    |
-                                  | (Capacidad: 500 max)|
-                                  +---------------------+
-                                             |
-     [Petición Entrante] --------------------+
-                                             |
-                               +-------------+-------------+
-                               | ¿Hay tokens disponibles?  |
-                               +---------------------------+
-                              /                             \
-                          SÍ /                               \ NO
-                            v                                 v
-               [Consume 1 Token y Pasa]           [Rechaza Inmediatamente]
-                  HTTP 200 / 206                     HTTP 429 Too Many Requests
-                                                     (Cabecera Retry-After: N)
-```
-
-* Cada consumidor dispone de una cubeta con una capacidad máxima y una tasa de reabastecimiento constante.
-* Cada petición a un servicio de datos consume uno o más tokens (las consultas analíticas pesadas consumen más tokens que una consulta puntual por llave primaria).
-* Si la cubeta se queda sin tokens, las peticiones subsiguientes se rechazan inmediatamente con el código de error **HTTP 429 (Too Many Requests)**, acompañadas de la cabecera estándar `Retry-After: <segundos>`.
-
-### 5.5 Auditoría Forense Inmutable y Trazabilidad del Artículo 583 E.T.
-Cada invocación a un servicio de datos gobernado que involucre información protegida por reserva tributaria debe quedar registrada de manera obligatoria en un **Registro de Auditoría Inmutable (Log Forense Criptográficamente Sellado)**. El log almacena:
-1. Identificador unívoco del funcionario o sistema peticionario (Cédula / ID de Aplicación).
-2. Número de radicado del expediente de fiscalización, cobro o aduanas que justifica legalmente el acceso.
-3. Fecha, hora exacta con precisión de milisegundos y servidor de origen.
-4. Parámetros exactos de la consulta y predicados ejecutados.
-5. Hash criptográfico de la respuesta entregada para demostrar que los datos aportados al expediente probatorio no fueron alterados con posterioridad (*Cadena de Custodia Digital*).
-
-> [!LAW]
-> **Régimen Sancionatorio - Violación de Reserva y Abuso de Acceso:**  
-> Según el Artículo 585 del Estatuto Tributario y las faltas disciplinarias del régimen específico de la DIAN (Decreto Ley 071 de 2020 y Decreto Ley 927 de 2023), el funcionario que consulte, extraiga o divulgue información tributaria reservada sin que medie un auto de investigación o expediente asignado incurre en **destitución e inhabilidad general**, además de las penas privativas de la libertad consagradas en el Código Penal por violación de datos personales y divulgación de secreto.
+> [!WARNING] Regla de Oro de Coherencia Arquitectónica entre SLA, SLO y OLA
+> 1. **El SLO interno siempre debe ser más estricto (exigente) que el SLA prometido al usuario ($\text{SLO} \ge \text{SLA}$):** Si le prometes a la Dirección de Gestión de Aduanas un **SLA** de disponibilidad del `99.5%`, tu **SLO** interno en la Subdirección de Procesamiento de Datos debe configurarse en `99.9%`. Así, cuando el indicador (**SLI**) baje a `99.8%`, se dispara tu alerta interna y corriges el problema **antes** de incumplir el acuerdo con Aduanas.
+> 2. **Un SLA nunca puede prometer tiempos mejores que los OLAs y UCs que lo soportan:** No puedes firmar un SLA prometiendo recuperar un servicio de datos caído en **1 hora** si el **OLA** con la Subdirección de Infraestructura y Servicios establece que ellos tardan **4 horas** en restaurar el servidor base (*Antipatrón de "SLA Sandía": verde por fuera en los reportes, pero rojo por dentro*).
 
 ---
 
-## Unidad 6: Gestión de Solicitudes de Información Interna y Externa en la DIAN
+### 3.2. Matemáticas de los SLIs en Servicios de Datos: ¿Por qué se usan Percentiles ($p_{50}, p_{95}, p_{99}$) y no Promedios?
+Supongamos que el Servicio de Validación de RUT en línea recibe 100 peticiones en un minuto:
+* 99 peticiones responden súper rápido, en **10 milisegundos ($10\text{ ms}$)** cada una.
+* 1 petición sufre un bloqueo de lectura y tarda **50.000 milisegundos ($50\text{ segundos}$)**.
 
-### 6.1 Clasificación Jurídica y Técnica de los Sujetos Peticionarios
-La Subdirección de Procesamiento de Datos no atiende las solicitudes de información como un simple intercambio de archivos informales por correo electrónico. Cada solicitud se enmarca dentro de un protocolo estandarizado según la naturaleza jurídica del peticionario:
+Si calculas el **Promedio Aritmético (Media)** de latencia:
+$$\text{Media} = \frac{(99 \times 10\text{ ms}) + (1 \times 50.000\text{ ms})}{100} = \frac{50.990\text{ ms}}{100} \approx 510\text{ ms}$$
+¡El promedio miente! Dice que el servicio tarda medio segundo para todos, ocultando tanto el hecho de que el 99% vuela en $10\text{ ms}$ como el hecho de que el 1% de las peticiones en horas pico está sufriendo *timeouts* catastróficos de $50\text{ segundos}$ (*Tail Latency* o Latencia de Cola).
 
-```blueprint
-MATRIZ DE ATENCIÓN DE SOLICITUDES DE INFORMACIÓN EN LA DIAN
+Por eso, en Ingeniería de Servicios de Datos los SLIs y SLOs de latencia **SIEMPRE se expresan en Percentiles**:
+* **$p_{50}$ (Mediana):** El tiempo máximo en el que responde el 50% de las peticiones más rápidas (el caso típico).
+* **$p_{95}$ (Percentil 95):** El tiempo máximo en el que responde el **95% de las peticiones** (solo el 5% más lento supera este umbral).
+* **$p_{99}$ (Percentil 99):** El tiempo máximo en el que responde el **99% de las peticiones** (captura el comportamiento de las consultas más complejas o pesadas).
 
-                               [SOLICITUD DE INFORMACIÓN]
+#### Los 4 SLIs Fundamentales que debe monitorear el Inspector I en DataR:
+1. **SLI de Disponibilidad (*Availability*):**
+   $$\text{SLI}_{\text{Disponibilidad}} = \left( \frac{\text{Peticiones Válidas Exitosas (HTTP 2xx / Sin Error 5xx)}}{\text{Total de Peticiones Válidas Recibidas}} \right) \times 100\%$$
+   *(Nota técnica: Los rechazos por culpa del cliente como `HTTP 400 Bad Request` o `HTTP 401 Unauthorized` no descuentan disponibilidad del servidor; los errores `HTTP 500/502/503/504` sí descuentan disponibilidad).*
+2. **SLI de Frescura del Dato (*Data Freshness / Lag*):**
+   $$\text{SLI}_{\text{Frescura}} = t_{\text{disponible\_en\_Gold}} - t_{\text{ocurrencia\_evento\_origen}}$$
+   Mide cuán desactualizado está el dato que ve el consumidor respecto de la realidad transaccional.
+3. **SLI de Completitud y Validez de Entrega (*Data Quality Rate*):**
+   $$\text{SLI}_{\text{Calidad}} = \left( \frac{\text{Registros que superan todas las reglas del Data Contract}}{\text{Total de Registros Procesados en la Ventana}} \right) \times 100\%$$
+4. **SLI de Latencia de Respuesta ($p_{95}$ y $p_{99}$):** Fracción de consultas que retornan dentro del umbral objetivo de milisegundos o segundos.
+
+---
+
+### 3.3. Cálculo del Presupuesto de Error (*Error Budget*) y Disponibilidad Compuesta
+En un mes estándar de 30 días hay exactamente:
+$$30\text{ días} \times 24\text{ horas} \times 60\text{ minutos} = 43.200\text{ minutos/mes}$$
+
+El **Presupuesto de Error (*Error Budget*)** es el margen máximo de indisponibilidad o falla permitido por el SLO:
+$$\text{Error Budget} = 1 - \text{SLO}$$
+
+| Nivel de SLO ("Los Nueves") | Porcentaje de Disponibilidad | Presupuesto de Error (*Error Budget*) Mensual (base 43.200 min) | Aplicación Típica en la DIAN |
+| :--- | :--- | :--- | :--- |
+| **Dos nueves (`99%`)** | $99.0\%$ | **$432\text{ minutos/mes}$** ($7.2\text{ horas/mes}$) | Entornos de laboratorio / Sandboxes analíticos de prueba. |
+| **Dos nueves y medio (`99.5%`)** | $99.5\%$ | **$216\text{ minutos/mes}$** ($3.6\text{ horas/mes}$) | Tableros BI y reportes batch de actualización diaria. |
+| **Tres nueves (`99.9%`)** | $99.9\%$ | **$43.2\text{ minutos/mes}$** | Servicios de datos tácticos en DataR para Fiscalización y Devoluciones. |
+| **Cuatro nueves (`99.99%`)** | $99.99\%$ | **$4.32\text{ minutos/mes}$** | Servicios críticos en línea 24/7 (Validación previa de Factura Electrónica y Selectividad Aduanera en puertos). |
+
+#### ¿Cómo se calcula la Disponibilidad Compuesta de un Pipeline o Servicio con múltiples componentes?
+* **Componentes en SERIE (Si falla uno, falla todo el servicio):**
+  $$A_{\text{total\_serie}} = A_1 \times A_2 \times \dots \times A_n$$
+  *Ejemplo:* Si un servicio de datos depende en serie de: (1) un API Gateway con disponibilidad del $99.9\%$ ($0.999$) y (2) un motor de base de datos sin redundancia con disponibilidad del $99.0\%$ ($0.99$), la disponibilidad total del servicio cae a $0.999 \times 0.99 = 0.98901 \approx \mathbf{98.9\%}$ (siempre es **menor** que el eslabón más débil).
+* **Componentes en PARALELO / REDUNDANCIA ACTIVO-ACTIVO (Solo falla si caen ambos al mismo tiempo):**
+  $$A_{\text{total\_paralelo}} = 1 - \left[ (1 - A_1) \times (1 - A_2) \right]$$
+  *Ejemplo:* Si colocamos dos nodos de consulta de DataR en paralelo en zonas distintas, cada uno con disponibilidad del $99.0\%$ ($0.99$, probabilidad de fallo $0.01$):
+  $$A_{\text{total}} = 1 - (0.01 \times 0.01) = 1 - 0.0001 = 0.9999 = \mathbf{99.99\%\text{ (Cuatro nueves)}}$$
+
+::: q
+La Subdirección de Procesamiento de Datos opera un servicio de datos en línea para el perfilamiento de riesgo en el proceso de Devoluciones de IVA, cuyo Objetivo de Nivel de Servicio (SLO) de disponibilidad está fijado en el 99.9% mensual (sobre un mes de 30 días = 43.200 minutos). Durante la primera quincena del mes, debido a tres despliegues defectuosos de código, el servicio acumuló 45 minutos de indisponibilidad (errores HTTP 503). Conforme a la disciplina de Ingeniería de Confiabilidad de Servicios (SRE) y gobierno de servicios de datos, el diagnóstico matemático y la decisión operativa procedente son:
+- [x] El Presupuesto de Error (*Error Budget*) mensual del servicio era de 43.2 minutos ($43.200 \times 0.001$); al haber acumulado 45 minutos de caída, el presupuesto de error se ha agotado al 104.1%, por lo cual procede congelar temporalmente el despliegue de nuevas funcionalidades no urgentes y priorizar las acciones correctivas de estabilidad, pruebas automatizadas de contrato y resiliencia del servicio antes de que se vulnere el SLA institucional.
+- [ ] El servicio aún cuenta con más de 387 minutos disponibles de margen de error en el mes, por lo que se pueden seguir realizando cambios experimentales directamente en producción sin restricción.
+- [ ] Procede reducir unilateralmente y en secreto el SLA firmado con la Subdirección de Devoluciones al 85% para que los indicadores del tablero mensual aparezcan en color verde.
+---
+**Explicación Técnica y Normativa:**
+Con un **SLO del 99.9%**, el porcentaje de error tolerado es $100\% - 99.9\% = 0.1\% = 0.001$. Multiplicado por los $43.200\text{ minutos}$ de un mes de 30 días, el **Presupuesto de Error (*Error Budget*)** es exactamente de **$43.2\text{ minutos}$**. Al registrar $45\text{ minutos}$ de indisponibilidad en los primeros 15 días, el presupuesto mensual se agotó por completo. La regla de gobierno SRE establece que cuando se consume el *Error Budget*, se detienen los lanzamientos de nuevas características funcionales (salvo parches de seguridad o corrección del fallo) hasta estabilizar la plataforma y proteger el SLA comprometido con el área misional.
+:::
+
+---
+
+## Unidad 4: Observabilidad de Datos (*Data Observability*), Detección Proactiva de Anomalías y el Patrón *Circuit Breaker* de Datos (*Write-Audit-Publish*)
+
+### 4.1. ¿Por qué el Monitoreo Tradicional de TI no detecta las "Fallas Silenciosas de Datos" (*Silent Data Corruption*)?
+Imagina esta situación real en la Subdirección de Procesamiento de Datos:
+* A las 2:00 a.m. se ejecuta el job de Apache Spark que actualiza la tabla `gold_ingresos_exogena` en **DataR**.
+* El servidor tiene **CPU al 30%**, **Memoria RAM libre al 60%**, el job de Spark termina con estado **`SUCCEEDED` (Verde)** y el API Gateway responde **`HTTP 200 OK` en 80 milisegundos**.
+* Para las herramientas tradicionales de monitoreo de infraestructura (*Infra Monitoring* como Nagios o Zabbix), **todo está perfecto**.
+* Sin embargo, debido a un filtro `LEFT JOIN` mal configurado o a que un banco envió el archivo con codificación errónea, **el 80% de los contribuyentes quedó con `ingresos_brutos = 0.00`** en la tabla Gold. A las 8:00 a.m., el sistema de Declaraciones Sugeridas de Renta les envía a dos millones de ciudadanos un borrador oficial de declaración en ceros.
+
+Eso se llama **Corrupción Silenciosa de Datos (*Silent Data Corruption* o *Data Downtime*)**: la infraestructura está viva, pero los datos adentro están muertos o envenenados. Para evitarlo nació la **Observabilidad de Datos (*Data Observability*)**.
+
+---
+
+### 4.2. Los 5 Pilares Canónicos de la Observabilidad de Datos en DataR
+La Observabilidad de Datos monitorea continuamente la **salud interna de los datos** a través de cinco pilares complementarios:
+
+```
+========================================================================================
+          LOS 5 PILARES DE LA OBSERVABILIDAD DE DATOS (DATA OBSERVABILITY)
+========================================================================================
+
+  1. FRESCURA (Freshness)      ---> "¿Cuándo se actualizó por última vez la tabla?"
+                                    Detecta jobs colgados, retrasos en CDC o particiones
+                                    diarias que no llegaron a tiempo según el SLA.
+
+  2. VOLUMEN (Volume)          ---> "¿Llegó la cantidad esperada de filas y bytes?"
+                                    Detecta caídas abruptas (ej. llegaron 500 facturas en
+                                    vez de 5 millones) o explosiones por producto cartesiano.
+
+  3. DISTRIBUCIÓN (Distribution)--> "¿Los valores estadísticos tienen sentido de negocio?"
+                                    Monitorea % de Nulos, medias, desviación estándar,
+                                    cuantiles y deriva de datos (Data Drift / PSI).
+
+  4. ESQUEMA (Schema)          ---> "¿Alguien alteró la estructura física de la tabla?"
+                                    Detecta columnas agregadas, eliminadas, renombradas o
+                                    cambios de precisión decimal (Schema Drift).
+
+  5. LINAJE (Lineage)          ---> "¿De qué fuente nació el error y a quién afecta?"
+                                    Conecta los 4 pilares anteriores con el grafo de
+                                    dependencias Upstream (causa raíz) y Downstream (impacto).
+========================================================================================
+```
+
+#### Detección Inteligente de Anomalías con Estacionalidad Tributaria
+En la DIAN no sirven los umbrales fijos estáticos para monitorear el **Volumen**. ¿Por qué? Porque un domingo a las 3:00 a.m. se radican muy pocas declaraciones de IVA, mientras que el martes de vencimiento del último dígito del NIT a las 4:00 p.m. se radican cientos de miles por hora.
+Por ello, la Subdirección de Procesamiento de Datos calibra sus monitores de observabilidad con **bandas dinámicas estacionales** (modelos de series de tiempo tipo ARIMA / Prophet o puntuación $Z$ estacional $\text{Z-Score} = \frac{x_t - \mu_{\text{esperada}}}{\sigma_{\text{esperada}}}$ que incorporan el **Calendario Tributario Oficial** de la DIAN).
+
+---
+
+### 4.3. El Patrón Arquitectónico *Write-Audit-Publish (WAP)* y el *Circuit Breaker* de Datos
+¿Qué debe ocurrir automáticamente cuando los monitores de Observabilidad detectan una anomalía grave en la noche (por ejemplo, la tasa de nulos en `nit_informado` subió del $0.01\%$ al $35\%$)?
+
+Si primero publicas los datos en la tabla `Gold` de producción y luego corres las pruebas de calidad, **ya es demasiado tarde**, porque los consumidores que consulten la API en esos minutos leerán datos corruptos.
+
+Por eso se implementa el patrón **Write-Audit-Publish (WAP — Escribir, Auditar y Publicar)** que actúa como un **Interruptor Automático o Disyuntor de Datos (*Data Circuit Breaker*)**:
+
+```
+========================================================================================
+     PATRÓN WRITE-AUDIT-PUBLISH (WAP) Y CIRCUIT BREAKER DE DATOS EN DATAR (DELTA/ICEBERG)
+========================================================================================
+
+ [1. WRITE (Escritura Aislada)]
+     El pipeline de Spark procesa el lote nuevo y lo escribe en una rama/partición de
+     preparación aislada (Staging / Audit Branch), INVISIBLE para los usuarios finales.
                                            |
-                +--------------------------+--------------------------+
-                |                                                     |
-                v                                                     v
-      [PETICIONARIO EXTERNO]                                [PETICIONARIO INTERNO]
-                |                                                     |
-       +--------+--------+                                  +---------+---------+
-       |                 |                                  |                   |
-       v                 v                                  v                   v
-[Entidad Pública]  [Ciudadano / Obligado]              [Operacional]       [Analítico/Investigación]
- (Convenio MRAE)   (Ley 1712 / Derecho Pet.)          (MUISCA/Aduanas)    (Fiscalización/Cobro)
-       |                 |                                  |                   |
-       | Vía API mTLS    | Vía Portal Ciudadano             | Vía DaaS DataR    | Vía DataR Sandbox
-       | Con Contrato    | Solo Datos Públicos o            | Perfil Transacc.  | Amparado en Expediente
-       | y Cifrado PGP   | Propios del Titular              | Cuota Estándar    | Auditoría Forense Reforzada
+                                           v
+ [2. AUDIT (Compuerta Automática de Observabilidad y Calidad - Data Quality Gate)]
+     Se ejecutan automáticamente los chequeos de los 5 Pilares:
+     - ¿Volumen dentro de banda esperada?
+     - ¿Completitud de llaves = 100%?
+     - ¿Cuadre contable de sumas de control (Checksums) = OK?
+                                           |
+                      +--------------------+--------------------+
+                      |                                         |
+            [ SÍ PASA AUDITORÍA ]                     [ NO PASA AUDITORÍA ]
+                      |                                         |
+                      v                                         v
+ [3A. PUBLISH (Publicación Atómica)]       [3B. CIRCUIT BREAKER ABIERTO (Disparo)]
+      Se hace el commit atómico del             - Se ABORTA la publicación en Gold.
+      puntero en el catálogo de                 - Los consumidores siguen leyendo la
+      metadatos. Los consumidores ven             última versión íntegra conocida
+      los datos nuevos al instante.               (Last Known Good Version via Time Travel).
+                                                - Se envía alerta P1 al Inspector I con
+                                                  el linaje exacto del fallo.
+========================================================================================
 ```
 
-### 6.2 Protocolo para Entidades Públicas y Convenios Interinstitucionales
-Las entidades del Estado que requieren información de la DIAN (como la **UIAF - Unidad de Información y Análisis Financiero**, la **Fiscalía General de la Nación**, la **Contraloría General de la República**, el **DANE** o las **Secretarías de Hacienda Distritales y Departamentales**) deben surtir el siguiente procedimiento formal:
+::: q
+El pipeline diario que actualiza el Servicio de Datos de "Ingresos y Retenciones para Declaración Sugerida de Renta" finaliza su ejecución en el clúster de Spark sin errores de código (`Exit Code 0`). Sin embargo, debido a un error en el archivo origen de una entidad reportante, el 42% de los registros procesados en la corrida de hoy presenta valores negativos ilógicos en el campo `total_retenciones_practicadas`. Si la Subdirección de Procesamiento de Datos aplica la arquitectura de Observabilidad de Datos y el patrón *Write-Audit-Publish* (WAP), el comportamiento automático que debe ejecutar la plataforma es:
+- [x] Detectar la anomalía estadística en el pilar de Distribución/Validez durante la fase de Auditoría (*Audit*) previa a la exposición, activar el *Circuit Breaker* de datos bloqueando la promoción del lote defectuoso hacia la vista productiva de la capa Gold, mantener servida para los ciudadanos la última versión íntegra validada (*Last Known Good Snapshot*) y generar una alerta crítica con trazabilidad de linaje hacia el equipo de ingeniería de datos.
+- [ ] Publicar inmediatamente los datos negativos en el portal de Declaraciones Sugeridas porque el job de Spark terminó con `Exit Code 0`, y esperar a que los ciudadanos presenten quejas ante la Defensoría del Contribuyente para revisar la tabla.
+- [ ] Apagar por completo todo el portal web de la DIAN y borrar el histórico de declaraciones de los últimos cinco años.
+---
+**Explicación Técnica y Normativa:**
+Este caso ilustra por qué el éxito técnico de un contenedor o job (`Exit Code 0`) no garantiza la integridad de los datos (*Silent Data Corruption*). Mediante el pilar de **Distribución y Validez de la Observabilidad de Datos** integrado en un flujo **Write-Audit-Publish (WAP)**, las aserciones de calidad evalúan el lote en una zona o rama de auditoría antes de actualizar el puntero de producción. Al detectar que el 42% de las retenciones son negativas (violando la regla del contrato `minimum: 0.00`), el **Circuit Breaker de Datos** impide contaminar la capa Gold, preserva la continuidad del servicio sobre el último *snapshot* sano y alerta proactivamente al Inspector I.
+:::
 
-1. **Sustento Legal y Excepción Expresa a la Reserva:** La entidad peticionaria debe fundamentar su solicitud en una norma legal de rango de ley que la faculte de manera explícita para acceder a datos tributarios amparados por reserva (ej. Ley 526 de 1999 para la UIAF, o las facultades de policía judicial de la Fiscalía para procesos penales específicos). Si no existe mandato legal expreso, la solicitud es rechazada de plano en virtud del Artículo 583 del Estatuto Tributario.
-2. **Suscripción de Convenio de Intercambio de Información:** Se formaliza un acuerdo interinstitucional que establece el principio de **Reserva Legal Compartida (*Traslado de la Reserva*)**: la entidad receptora queda obligada a guardar el mismo grado de confidencialidad que la DIAN.
-3. **Formalización del Contrato de Datos de Interoperabilidad:** Se define el esquema técnico alineado con el **Marco de Referencia de Arquitectura Empresarial (MRAE)** de MinTIC y los estándares de los Servicios Ciudadanos Digitales.
-4. **Habilitación de Canal Técnico Seguro:**
-   * **Consumo Sincrónico:** A través de APIs REST seguras en el API Gateway gubernamental (con autenticación mTLS e intercambio de llaves públicas).
-   * **Transferencia Masiva Asincrónica (*Batch*):** Mediante canales seguros SFTP o buckets de almacenamiento en la nube protegidos con **cifrado asimétrico PGP/GPG**, donde el archivo solo puede ser descifrado por la llave privada de la entidad receptora.
-
-### 6.3 Atención de Solicitudes Ciudadanas y Transparencia Pasiva (Ley 1712 de 2014)
-Cuando un ciudadano, medio de comunicación u organización de la sociedad civil invoca el derecho de acceso a la información pública mediante derecho de petición, la DIAN debe aplicar el **Test de Daño y de Proporcionalidad** previsto en la Ley 1712 de 2014:
-* **Información Pública:** Estadísticas agregadas de recaudo por actividad económica, cifras globales de comercio exterior desestacionalizadas o normatividad institucional. Estos datos se disponen en el portal de Datos Abiertos de la DIAN.
-* **Información Reservada e Inaccesible:** Cualquier dato que permita identificar o deducir las bases gravables, compras, ventas, márgenes de utilidad o proveedores de un contribuyente individual o grupo reducido de empresas. La DIAN está legalmente obligada a negar la entrega invocando el Artículo 583 del E.T. y el Artículo 19 de la Ley 1712 de 2014 (excepción de información reservada para proteger derechos económicos y comerciales).
-* **Derecho del Titular (Habeas Data):** Un contribuyente solo puede solicitar y recibir a través de los servicios de datos su propia información fiscal o aduanera, previa validación estricta de su identidad mediante autenticación biométrica o Certificado de Firma Digital en el sistema del RUT.
-
-### 6.4 Matriz de Gestión por Tipo de Solicitante
-
-| Tipo de Solicitante | Fundamento Jurídico | Canal Técnico Autorizado | Mecanismo de Seguridad | Alcance del Dato Entregado |
-| :--- | :--- | :--- | :--- | :--- |
-| **Auditor de Fiscalización DIAN** | Art. 684 E.T. (Facultades de Investigación) | API Interna DataR / Vistas Virtualizadas | RBAC + ABAC + Vinculación obligatoria a número de expediente | Dato detallado individual y transaccional del investigado |
-| **UIAF (Inteligencia Financiera)** | Ley 526 de 1999 (Excepción a la Reserva) | API Gateway M2M dedicado o SFTP cifrado | Certificado digital X.509 + mTLS + IP fija autorizada | Cruce de transacciones de alto valor y declaraciones |
-| **Secretarías de Hacienda Territoriales** | Art. 585 E.T. (Convenios de Reciprocidad) | API Interinstitucional con cuotas de consumo | OAuth 2.0 (Client Credentials) + Token Bucket | Datos de contribuyentes con domicilio en su jurisdicción |
-| **Ciudadano Particular / Veeduría** | Ley 1712 de 2014 (Transparencia Activa) | Portal de Datos Abiertos / Catálogo Público | Protocolo HTTPS estándar sin autenticación | Agregados macro, tablas de frecuencia, promedios sectoriales |
 
 ---
 
-## Flashcards Mnemotécnicas (20 Conceptos Clave)
+## Unidad 5: Prácticas Operativas de Gestión de Servicios (ITIL v4) en Procesamiento de Datos — Gestión de Incidentes, Problemas (RCA/KEDB) y Control de Cambios (CAB)
 
-- **Data-as-a-Service (DaaS) ::** Paradigma que transforma los repositorios de datos estáticos en servicios de software consumibles bajo demanda a través de interfaces bien definidas (APIs), abstrayendo el almacenamiento físico y centralizando la gobernanza.
-- **Data Contract (Contrato de Datos) ::** Acuerdo formal entre productores y consumidores de datos que define el esquema técnico, la semántica de negocio, los estándares de calidad y los SLAs del servicio.
-- **Contract-First ::** Principio de diseño donde el contrato de datos y su especificación OpenAPI/JSON Schema se acuerdan formalmente antes de escribir el código de implementación o de extracción.
-- **Versionamiento Semántico (SemVer) ::** Esquema de numeración MAJOR.MINOR.PATCH. En servicios de datos, un incremento en MAJOR indica cambios disruptivos (breaking changes) que rompen los pipelines de los consumidores.
-- **Breaking Change en Servicios de Datos ::** Modificación que elimina un campo, altera su tipo primitivo, modifica las unidades de medida o cambia la lógica semántica de cálculo preexistente.
-- **Ventana de Sunset (Deprecación) ::** Periodo de gracia temporal (típicamente 6 a 12 meses) en el que una versión antigua de una API coexiste con la nueva versión, permitiendo a los consumidores migrar antes de su retiro definitivo.
-- **Service Level Indicator (SLI) ::** Métrica cuantitativa observable en tiempo real que mide la salud o calidad del servicio (ej. porcentaje de respuestas exitosas en menos de 200ms).
-- **Service Level Objective (SLO) ::** Meta técnica interna que el equipo de ingeniería se compromete a alcanzar para un SLI determinado (ej. $99.9\%$ de disponibilidad mensual).
-- **Service Level Agreement (SLA) ::** Compromiso formal entre el proveedor del servicio y los clientes que estipula las consecuencias operacionales, contractuales o legales en caso de incumplir el SLO.
-- **Data Freshness (Frescura del Dato) ::** Tiempo transcurrido desde el momento en que se genera la transacción en el sistema de origen hasta que está disponible para consulta a través del servicio de datos.
-- **Error Budget (Presupuesto de Error) ::** Porcentaje de tolerancia al fallo $(100\% - \text{SLO})$. Si se agota en una ventana de medición, se congelan los despliegues funcionales para priorizar la estabilidad.
-- **Data Observability (Observabilidad de Datos) ::** Capacidad de comprender y monitorear la salud intrínseca de los datos a través de cinco pilares: Frescura, Distribución, Volumen, Esquema y Linaje.
-- **Silent Data Corruption (Falla Silenciosa) ::** Condición donde la infraestructura y la API responden exitosamente (HTTP 200 OK), pero el contenido de los datos devueltos está vacío, incompleto o erróneo.
-- **Circuit Breaker de Datos ::** Mecanismo de seguridad que suspende la propagación de datos hacia las capas de consumo cuando se detecta una anomalía crítica, activando la última versión limpia conocida.
-- **Role-Based Access Control (RBAC) ::** Modelo de seguridad que restringe el acceso a los servicios de datos con base en el cargo o rol formal que desempeña el funcionario en la organización.
-- **Attribute-Based Access Control (ABAC) ::** Modelo dinámico que evalúa atributos del usuario, del dato y del contexto (como el número de radicado del expediente de investigación) para autorizar una consulta.
-- **Dynamic Data Masking (DDM) ::** Técnica que ofusca o anonimiza en tiempo real datos sensibles (como números de cuenta bancaria o correos) según el perfil del consumidor sin alterar el dato en disco.
-- **Token Bucket (Cubeta de Fichas) ::** Algoritmo de limitación de tasa (*Rate Limiting*) que acumula fichas a velocidad constante y rechaza con error HTTP 429 las peticiones que superan la capacidad de la cubeta.
-- **Reserva Legal Compartida ::** Principio jurídico por el cual una entidad externa autorizada que recibe datos reservados de la DIAN asume la obligación estricta de mantener el mismo deber de reserva (Art. 583 E.T.).
-- **Cadena de Custodia Digital en DataR ::** Registro forense inmutable sellado criptográficamente que almacena quién, cuándo y con qué justificación accedió a un registro tributario amparado por reserva.
+### 5.1. La Gran Confusión en Exámenes de TI: ¿Incidente vs. Problema vs. Evento vs. Solicitud de Servicio?
+En el marco **ITIL v4** e **ISO/IEC 20000**, cuando algo ocurre en la operación de **DataR** o de los servicios de datos de la DIAN, tiene un nombre y un flujo técnico exacto. Si en el examen confundes un **Incidente** con un **Problema**, elegirás la opción equivocada. Aprendámoslos desde cero con ejemplos reales de la Subdirección de Procesamiento de Datos:
+
+| Concepto ITIL v4 | Definición Exacta | Objetivo Principal de la Práctica | Ejemplo Real en la Subdirección de Procesamiento de Datos (DIAN) |
+| :--- | :--- | :--- | :--- |
+| **1. Evento (*Event*)** | Cualquier cambio de estado que tiene importancia para la gestión de un servicio o activo de datos. | Detectar y clasificar notificaciones (Informativas, Advertencias o Excepciones). | Una alerta automática de observabilidad informa que el disco del nodo 4 del clúster llegó al 80% de ocupación. |
+| **2. Incidente (*Incident*)** | **Una interrupción no planificada de un servicio de datos, o una reducción en la calidad del mismo.** | **Restaurar la operación normal del servicio lo más rápido posible** (minimizar el **MTTR**), aunque sea mediante una solución temporal (*Workaround*). | A las 10:00 a.m., el Servicio de Consulta de Exógena en DataR cae y devuelve `HTTP 503 Service Unavailable` a las Direcciones Seccionales. |
+| **3. Problema (*Problem*)** | **La causa, o causa potencial, de uno o más incidentes.** | **Encontrar la Causa Raíz (*Root Cause Analysis - RCA*)** para eliminarla definitivamente y prevenir que el incidente vuelva a ocurrir. | Investigar por qué todos los lunes a las 10:00 a.m. se cae el servicio de Exógena y descubrir un *memory leak* en el driver JDBC cuando procesa caracteres `UTF-8` especiales. |
+| **4. Error Conocido (*Known Error*)** | Un **Problema** que ya ha sido analizado, tiene su **Causa Raíz identificada** y cuenta con una **Solución Temporal (*Workaround*)** documentada en la Base de Datos de Errores Conocidos (**KEDB**), mientras se desarrolla el cambio definitivo. | Acelerar la recuperación de futuros incidentes idénticos sin tener que investigar desde cero. | Documentar en la **KEDB**: *"Si el servicio falla por el bug del driver JDBC con caracteres especiales, ejecutar el script de limpieza de caché y reiniciar el pool toma 2 minutos mientras llega el parche v2.1"*. |
+| **5. Solicitud de Servicio (*Service Request*)** | Una petición formal de un usuario para algo que hace parte de la entrega normal del servicio (no es una falla). | Atender requerimientos estándar preaprobados en tiempos predecibles. | Un Director Seccional solicita habilitar el permiso de consulta a un nuevo auditor sobre la vista de Facturación Electrónica adjuntando la resolución de asignación. |
+
+---
+
+### 5.2. Matriz de Priorización de Incidentes (`Impacto x Urgencia`) y Métricas MTBF / MTTR / MTTD
+Cuando ocurre un **Incidente** en un servicio de datos de la DIAN, no todos se atienden en orden de llegada (*FIFO*), sino según su **Prioridad**, calculada mediante la matriz:
+$$\text{Prioridad del Incidente} = \text{Impacto} \times \text{Urgencia}$$
+
+* **Impacto (*Impact*):** Mide la magnitud del daño al negocio misional (¿Cuántos usuarios, procesos críticos de recaudo/aduanas o cuántos millones de pesos están afectados?).
+  * *Ejemplo de Alto Impacto:* Caída del servicio de selectividad de riesgo aduanero que paraliza el levante de contenedores en todos los puertos del país.
+* **Urgencia (*Urgency*):** Mide la velocidad con la que el negocio necesita que se resuelva el incidente antes de que el daño se vuelva irreversible (sensibilidad al tiempo).
+  * *Ejemplo de Alta Urgencia:* Falla en el servicio de Declaración Sugerida faltando 4 horas para el vencimiento legal del plazo de declaración de Renta.
+
+#### Las 3 Métricas Clave de Gestión de Incidentes en Servicios de Datos:
+1. **MTTD (*Mean Time To Detect* — Tiempo Medio de Detección):** Cuánto tiempo pasa desde que empieza la falla hasta que nuestros monitores de observabilidad se dan cuenta.
+2. **MTTR (*Mean Time To Restore / Recover* — Tiempo Medio de Restauración):** Cuánto tiempo tardamos en devolver el servicio a su operación normal tras el incidente (mide la eficacia de la **Gestión de Incidentes**).
+3. **MTBF (*Mean Time Between Failures* — Tiempo Medio Entre Fallos):** Cuánto tiempo opera el servicio de forma continua sin volver a fallar (mide la confiabilidad y la eficacia de la **Gestión de Problemas**).
+
+---
+
+### 5.3. Habilitación y Control de Cambios (*Change Enablement*) y Configuración (CMDB)
+La estadística mundial de ingeniería de datos demuestra que **más del 75% de las caídas severas en producción no son causadas por ataques externos, sino por cambios mal probados desplegados por los propios equipos técnicos**.
+
+Por eso, en la Dirección de Gestión de Innovación y Tecnología (DGIT) de la DIAN está **estrictamente prohibido** conectarse a producción y modificar en caliente un script de Spark, alterar una tabla de **DataR** (`ALTER TABLE ... DROP COLUMN`) o cambiar una regla de enmascaramiento sin pasar por la práctica de **Habilitación / Control de Cambios (*Change Enablement*)**:
+
+1. **Cambio Estándar (*Standard Change*):** Cambio de **bajo riesgo, repetitivo, bien comprendido y preautorizado** que sigue un procedimiento documentado y automatizado (por ejemplo, agregar una nueva partición diaria rutinaria o dar de alta un usuario que ya cumplió las validaciones automáticas). No requiere reunión del Comité de Cambios cada vez.
+2. **Cambio Normal (*Normal Change*):** Cambio no rutinario (por ejemplo, desplegar la versión `v2.0.0` de un pipeline de cruce de Información Exógena o migrar el motor de consulta de DataR). Requiere registrar una **Solicitud de Cambio (*RFC - Request for Change*)**, evaluar riesgos de impacto utilizando el grafo de linaje y la **CMDB (*Configuration Management Database*)**, adjuntar evidencia de pruebas en ambiente de *Staging/QA*, documentar un **Plan de Reversión (*Rollback Plan*)** y obtener la autorización de la autoridad de cambios o **Comité Asesor de Cambios (*CAB - Change Advisory Board*)**.
+3. **Cambio de Emergencia (*Emergency Change*):** Cambio que debe introducirse lo antes posible para **resolver un incidente crítico de Prioridad 1 (P1) en producción** o **parchar una vulnerabilidad crítica de seguridad (Zero-Day)** detectada por la Oficina de Seguridad de la Información (OSI).
+   * *¡Atención Examen CNSC!* Un **Cambio de Emergencia** tiene un flujo de evaluación acelerado (*Emergency CAB - ECAB*), pero **JAMÁS significa hacer cambios a ciegas ni sin registro**: igual exige prueba mínima de no regresión, plan de *rollback* y documentación completa en el registro de cambios (inmediatamente o justo después de conjurar la emergencia).
+
+::: q
+Todos los viernes a las 11:30 p.m., el proceso masivo de actualización de la vista materializada de "Saldos en Mora para Cobro Coactivo" en DataR falla por agotamiento de memoria de intercambio (*Out-Of-Memory / Spill to Disk*), dejando sin servicio a la Subdirección de Cobranzas el sábado en la mañana. El ingeniero de turno descubre que reiniciando manualmente el clúster y relanzando el job con un parámetro temporal, el servicio vuelve a estar operativo en 15 minutos, pero el viernes siguiente vuelve a ocurrir exactamente lo mismo. A la luz de las prácticas de ITIL v4 en la Subdirección de Procesamiento de Datos, la distinción y actuación técnica correcta es:
+- [x] El reinicio del clúster que restaura el servicio en 15 minutos constituye una Solución Temporal (*Workaround*) dentro de la Gestión de Incidentes (cuyo fin es minimizar el MTTR), pero la recurrencia semanal exige abrir un registro en la práctica de Gestión de Problemas, realizar un Análisis de Causa Raíz (RCA) sobre el particionamiento y sesgo de datos (*Data Skew*) de la consulta, registrarlo en la Base de Datos de Errores Conocidos (KEDB) y tramitar mediante Habilitación de Cambios (RFC) la optimización definitiva del código en producción.
+- [ ] Dar por cerrado definitivamente el caso cada viernes como un éxito rotundo, ya que la Gestión de Problemas en ITIL v4 prohíbe investigar las causas técnicas si el incidente dura menos de una hora.
+- [ ] Modificar directamente en caliente el código fuente de producción sin pruebas previas, sin Solicitud de Cambio (RFC) y sin plan de reversión (*Rollback*), borrando las tablas históricas de cobro coactivo para que el job consuma menos memoria.
+---
+**Explicación Técnica y Normativa:**
+Esta pregunta evalúa la diferencia medular entre **Gestión de Incidentes** y **Gestión de Problemas** en **ITIL v4**:
+* La **Gestión de Incidentes** se enfoca en restaurar el servicio rápidamente aplicando un *Workaround* (reiniciar y relanzar en 15 minutos).
+* Sin embargo, como la falla se repite cada viernes, existe un **Problema** subyacente no resuelto. La **Gestión de Problemas** debe investigar la **Causa Raíz (RCA)** (por ejemplo, un *Data Skew* en el `JOIN` de cobro coactivo), documentar el *Workaround* en la **KEDB** para que cualquier operador de turno sepa cómo actuar mientras tanto, y gestionar un **Cambio Normal (RFC)** con pruebas y plan de *rollback* para corregir definitivamente el pipeline.
+:::
+
+---
+
+## Unidad 6: Seguridad *Zero Trust* en Servicios de Datos (mTLS, OAuth 2.0/JWT, RLS/CLS), Cuotas de Tráfico (*Token Bucket*) y Auditoría Forense Inmutable
+
+### 6.1. Arquitectura de Confianza Cero (*Zero Trust*) en la Exposición de Servicios de Datos
+En el pasado se creía en la "seguridad perimetral" (*Castillo y Foso*): si una petición venía desde adentro de la red local (LAN) de un edificio de la DIAN, se confiaba ciegamente en ella. Hoy sabemos que las amenazas internas, credenciales comprometidas o consultas no autorizadas ocurren dentro del propio perímetro.
+
+Por ello, en coordinación con los lineamientos de la **Oficina de Seguridad de la Información (OSI — Art. 9 Decreto 1742 de 2020)**, los servicios de datos de la **Subdirección de Procesamiento de Datos (Art. 56)** operan bajo el paradigma **Zero Trust (*"Nunca confíes por defecto, verifica siempre cada petición"*)**:
+
+```
+========================================================================================
+      CADENA DE DEFENSA EN PROFUNDIDAD (ZERO TRUST) EN UN SERVICIO DE DATOS DE LA DIAN
+========================================================================================
+
+ [Petición del Consumidor]
+            |
+            v
+ +------------------------------------------------------------------------------------+
+ | CAPA 1: TRANSPORTE CRIPTOGRÁFICO MUTUO (mTLS 1.3 - Mutual TLS)                     |
+ | - El servidor de la DIAN presenta su certificado digital X.509 al cliente, Y       |
+ |   el cliente (aplicación/entidad) presenta su propio certificado X.509 firmado     |
+ |   por una Autoridad de Certificación (PKI) autorizada.                             |
+ | - Todo el tráfico viaja cifrado de extremo a extremo.                              |
+ +------------------------------------------------------------------------------------+
+            |
+            v
+ +------------------------------------------------------------------------------------+
+ | CAPA 2: AUTENTICACIÓN Y AUTORIZACIÓN DE IDENTIDAD (OAuth 2.0 / OIDC + Token JWT)   |
+ | - Se verifica la firma criptográfica asimétrica (RS256/ES256) del JSON Web Token,  |
+ |   su fecha de expiración corta (exp), la audiencia (aud), los permisos (scopes) y  |
+ |   los atributos contextuales (ej. id_expediente_fiscalizacion activo).             |
+ +------------------------------------------------------------------------------------+
+            |
+            v
+ +------------------------------------------------------------------------------------+
+ | CAPA 3: CONTROL DE TRÁFICO Y CUOTAS (Rate Limiting / Throttling - Token Bucket)    |
+ | - Impide extracción masiva abusiva (Data Scraping) o saturación del clúster DataR. |
+ | - Si supera la cuota: devuelve HTTP 429 Too Many Requests + cabecera Retry-After.  |
+ +------------------------------------------------------------------------------------+
+            |
+            v
+ +------------------------------------------------------------------------------------+
+ | CAPA 4: SEGURIDAD GRANULAR EN EL MOTOR DE DATOS (ABAC + RLS + CLS/DDM)             |
+ | - Row-Level Security (RLS): Filtra automáticamente las filas permitidas.           |
+ | - Column-Level Security (CLS) y Enmascaramiento Dinámico (DDM): Oculta o tokeniza  |
+ |   columnas sujetas a Reserva Tributaria (Art. 583 E.T.) según el rol del usuario.  |
+ +------------------------------------------------------------------------------------+
+            |
+            v
+ +------------------------------------------------------------------------------------+
+ | CAPA 5: REGISTRO DE AUDITORÍA FORENSE INMUTABLE (WORM - Write Once, Read Many)     |
+ | - Guarda quién consultó, desde qué IP, bajo qué expediente, qué NITs se entregaron |
+ |   y el Hash SHA-256 de la respuesta (Cadena de Custodia Digital ISO/IEC 27037).    |
+ +------------------------------------------------------------------------------------+
+========================================================================================
+```
+
+---
+
+### 6.2. ¿Cómo funciona por dentro un Token JWT (`Header.Payload.Signature`) en un Servicio de Datos de la DIAN?
+Para que no tengas ninguna duda técnica sobre cómo viaja la autorización desde el API Gateway hasta el motor de **DataR**, desarmemos un **JSON Web Token (JWT — RFC 7519)**. Un JWT consta de tres partes separadas por puntos (`AAAAA.BBBBB.CCCCC`):
+
+1. **`Header` (Cabecera):** Indica el algoritmo criptográfico de firma (nunca usar `none` ni claves simétricas débiles en entornos multi-servicio; usar algoritmos asimétricos como `RS256` o `ES256` con par de llaves pública/privada).
+2. **`Payload` (Carga útil de *Claims* o Declaraciones):** Contiene los atributos verificados del funcionario o sistema que hace la consulta:
+   ```json
+   {
+     "sub": "cc_80123456_inspector_fiscalizacion",
+     "iss": "https://idp.dian.gov.co",
+     "aud": "urn:dian:datar:api:cruces-exogena",
+     "rol": "AUDITOR_TRIBUTARIO_SECCIONAL",
+     "seccional_id": "05_MEDELLIN",
+     "expediente_activo": "EXP-2026-05-009812",
+     "nits_autorizados": ["900456789"],
+     "exp": 1793668800
+   }
+   ```
+3. **`Signature` (Firma Criptográfica):** Firmada por el Proveedor de Identidad central de la DIAN (IdP). Si un usuario malicioso intenta editar el `Payload` para cambiar `"seccional_id": "05_MEDELLIN"` por `"00_NACIONAL"` o agregar otro NIT a `"nits_autorizados"`, la firma criptográfica se invalida al instante y el API Gateway rechaza la petición con **`HTTP 401 Unauthorized` / `HTTP 403 Forbidden`** y envía una alerta inmediata al **SIEM / CSIRT de la Oficina de Seguridad de la Información**.
+
+---
+
+### 6.3. Algoritmos de Control de Tráfico (*Rate Limiting*): *Token Bucket* vs. *Leaky Bucket*
+Cuando exponemos un servicio de datos de **DataR** a aplicaciones internas o a entidades externas, debemos proteger los nodos de cómputo mediante **Limitación de Tasa (*Rate Limiting*)**. Existen dos algoritmos clásicos que debes distinguir:
+
+* **Algoritmo *Token Bucket* (Cubeta de Fichas — El más utilizado en API Gateways):**
+  * Imagina una cubeta con capacidad máxima de $B = 100\text{ fichas}$ que se recarga a una velocidad constante de $R = 10\text{ fichas por segundo}$.
+  * Cada petición que llega consume $1\text{ ficha}$ (o $k\text{ fichas}$ según la complejidad de la consulta).
+  * **Ventaja clave:** Permite **ráfagas cortas legítimas (*Bursts*)** hasta de $100\text{ peticiones}$ simultáneas si la cubeta estaba llena, pero limita la velocidad sostenida a $10\text{ req/s}$. Si la cubeta se vacía, rechaza las peticiones excedentes con el código estándar **`HTTP 429 Too Many Requests`** y la cabecera `Retry-After: 5`.
+* **Algoritmo *Leaky Bucket* (Cubeta con Goteo Constante):**
+  * Las peticiones entran a una cola (cubeta) y salen hacia la base de datos a un ritmo **estrictamente constante y uniforme** (sin permitir ráfagas hacia el backend), suavizando por completo los picos de tráfico (*Traffic Shaping*). Si la cola se llena, las nuevas peticiones se descartan.
+
+::: q
+Un sistema automatizado de una entidad externa autorizada por convenio comienza a realizar un barrido masivo (*scraping*) de 50.000 peticiones por minuto contra el Servicio de Consulta de Datos Tributarios de la DIAN debido a un bucle infinito (`while True`) mal programado por dicha entidad, amenazando con saturar el pool de conexiones de DataR. Para proteger la disponibilidad del servicio sin apagar el acceso a las demás entidades ni alterar los datos, el mecanismo estándar que debe activar el API Gateway de la Subdirección de Procesamiento de Datos es:
+- [x] Aplicar la política de *Rate Limiting* (basada en algoritmos como *Token Bucket* por credencial de cliente/certificado mTLS), rechazando las peticiones que excedan la cuota pactada en el Contrato de Servicio mediante el código de estado estándar `HTTP 429 Too Many Requests` acompañado de la cabecera `Retry-After`, y registrando el evento anómalo en el monitoreo de seguridad.
+- [ ] Devolver el código `HTTP 200 OK` con datos inventados al azar para engañar al bucle infinito de la entidad externa.
+- [ ] Eliminar las tablas de la capa Gold de DataR para que las consultas terminen más rápido y no consuman CPU.
+---
+**Explicación Técnica y Normativa:**
+En la arquitectura de servicios gobernados (REST / API Gateway), el control de cuotas y limitación de tasa (*Rate Limiting / Throttling*) mediante algoritmos como **Token Bucket** aísla el abuso o error de un consumidor individual (*Tenant Isolation*). Cuando el consumidor agota los tokens asignados en su ventana de tiempo según el SLA, el API Gateway corta el paso antes de tocar la base de datos y responde con el código estándar del protocolo HTTP para exceso de peticiones: **`HTTP 429 Too Many Requests`** (RFC 6585), indicando en `Retry-After` cuántos segundos debe esperar antes de reintentar.
+:::
+
+---
+
+## Unidad 7: Interoperabilidad del Estado Colombiano (Marco MinTIC, Plataforma X-Road, Lenguaje Común) y Protocolo Legal de Intercambio de Información (Art. 585 E.T.)
+
+### 7.1. El Marco Legal del Intercambio de Información en la DIAN: ¿Cuándo se puede compartir información sujeta a Reserva Tributaria?
+Como vimos en los módulos anteriores, el **Artículo 583 del Estatuto Tributario** establece que la información respecto de las bases gravables y la determinación privada de los impuestos que figuren en las declaraciones tributarias tiene **carácter de información reservada**.
+
+Sin embargo, el propio Estatuto Tributario y la ley establecen **excepciones taxativas y estrictamente regladas** donde la DIAN, a través de los servicios de datos de la **Subdirección de Procesamiento de Datos**, puede y debe intercambiar información con otras autoridades:
+
+1. **Procesos Penales, Disciplinarios y de Control Fiscal (Art. 583 E.T. y Constitución Política):** Jueces penales, Fiscalía General de la Nación, Procuraduría General de la Nación, Contraloría General de la República y **UIAF** (para prevención y detección de lavado de activos y financiación del terrorismo) en el ejercicio estricto de sus funciones constitucionales y legales.
+2. **Intercambio con Municipios, Distritos y Departamentos con Fines Exclusivamente Tributarios (Artículo 585 del Estatuto Tributario — ¡Pregunta Fija de Examen!):**
+   * El **Artículo 585 del E.T.** autoriza a la DIAN a intercambiar información sobre los datos de las declaraciones de los contribuyentes con las **Secretarías de Hacienda Municipales, Distritales y Departamentales**, **única y exclusivamente para efectos de la liquidación y control de los impuestos nacionales, departamentales o municipales** (por ejemplo, cruzar los ingresos declarados en Renta ante la DIAN contra los ingresos declarados en el Impuesto de Industria y Comercio — ICA ante un municipio).
+   * **Regla de Traslado de la Reserva Legal:** Cuando un municipio o departamento recibe estos datos a través del servicio de información de la DIAN, **la información NO se vuelve pública**: el municipio receptor queda sometido a la misma obligación legal de guardar la **Reserva Tributaria (Art. 583 E.T.)** bajo las mismas sanciones penales y disciplinarias.
+3. **Principios Constitucionales del Intercambio de Datos entre Entidades Públicas (Corte Constitucional y Ley 1581 de 2012 / Ley 1712 de 2014):**
+   * **Principio de Finalidad y Competencia Funcional:** La entidad solicitante debe demostrar qué norma legal le otorga competencia para requerir el dato.
+   * **Principio de Necesidad, Proporcionalidad y Minimización (*Data Minimization*):** La Subdirección de Procesamiento de Datos **jamás entrega "toda la declaración de renta con sus 120 casillas"** si el municipio o entidad solo necesita legalmente 4 campos (NIT, razón social, actividad CIIU e ingresos brutos). Se entregan únicamente los campos estrictamente necesarios para la finalidad legal.
+   * **Principio de Circulación Restringida y Seguridad:** La transmisión nunca se hace en archivos planos sin cifrar ni por correo electrónico; debe realizarse mediante servicios web seguros de interoperabilidad o canales criptográficos autenticados.
+
+---
+
+### 7.2. El Marco de Interoperabilidad para el Gobierno Digital de MinTIC y la Plataforma X-Road
+En Colombia, el **Decreto 767 de 2022 (Política de Gobierno Digital)** y el **Marco de Interoperabilidad para el Gobierno Digital** expedido por **MinTIC** (y operado con el apoyo de la Agencia Nacional Digital - AND) obligan a las entidades públicas del orden nacional (como la DIAN) a estandarizar el intercambio de información dentro de los **Servicios Ciudadanos Digitales Base**.
+
+El Marco de Interoperabilidad de MinTIC se estructura en **cuatro (4) dominios** que todo **Inspector I** debe dominar:
+
+| Dominio de Interoperabilidad (MinTIC) | ¿Qué resuelve este Dominio? | Aplicación Concreta en los Servicios de Datos de la DIAN |
+| :--- | :--- | :--- |
+| **1. Dominio Político-Legal** | Garantiza que el intercambio de datos tenga sustento normativo, convenios o actos administrativos vigentes y cumpla la Reserva Tributaria (Arts. 583/585 E.T.) y la Ley 1581 de 2012. | Verificar que exista mandato legal o convenio interadministrativo vigente y protocolo de confidencialidad antes de habilitar el consumo del servicio. |
+| **2. Dominio Organizacional** | Alinea los procesos interinstitucionales, define los roles responsables en cada entidad y pacta los **Acuerdos de Nivel de Servicio (SLA)** del intercambio. | Definir entre la Subdirección de Procesamiento de Datos de la DIAN y la entidad consumidora los horarios, cuotas, contacto técnico y gestión de incidentes. |
+| **3. Dominio Semántico** | Garantiza que el dato enviado tenga **exactamente el mismo significado, formato y codificación** para quien lo envía y para quien lo recibe, utilizando el **Lenguaje Común de Intercambio de Información (MinTIC)**. | Estandarizar los nombres de elementos, catálogos de tipos de documento, códigos DANE (DIVIPOLA) y CIIU conforme al estándar del **Lenguaje Común de Intercambio**. |
+| **4. Dominio Técnico** | Define la infraestructura tecnológica, protocolos de red, cifrado y estándares de transporte para conectar los sistemas de información de las entidades. | Desplegar y exponer el servicio web (REST/SOAP) a través del nodo **Security Server** de la plataforma de interoperabilidad estatal **X-Road**. |
+
+#### ¿Cómo funciona la arquitectura técnica de X-Road en el Estado Colombiano?
+La plataforma de interoperabilidad adoptada por el Estado colombiano se basa en el estándar **X-Road** (el modelo estonio de intercambio seguro descentralizado):
+* **No es una base de datos centralizada donde todas las entidades copian sus datos.** Los datos de la DIAN permanecen siempre bajo custodia de la DIAN en **DataR**.
+* Cada entidad instala un nodo criptográfico llamado **Servidor de Seguridad (*Security Server*)**.
+* Cuando una entidad autorizada (ej. UGPP o Registraduría) consume un servicio de datos de la DIAN a través de **X-Road**, los dos *Security Servers* establecen un túnel directo ** punto a punto con mTLS**, firman digitalmente el mensaje, le aplican **Sellado de Tiempo Criptográfico (*Time-Stamping*)** y guardan un registro probatorio de no repudio (*Non-Repudiation Log*), garantizando que nadie pudo interceptar ni adulterar el mensaje en tránsito.
+
+::: q
+Una Secretaría de Hacienda Municipal solicita formalmente a la DIAN, al amparo del Artículo 585 del Estatuto Tributario, acceder a la información de ingresos brutos declarados por los comerciantes domiciliados en su jurisdicción municipal para cruzarlos con el Impuesto de Industria y Comercio (ICA). El Alcalde solicita además que la DIAN le incluya en el archivo la historia clínica médica de los representantes legales, las declaraciones de renta de ciudadanos de otros departamentos donde ese municipio no tiene jurisdicción, y que le autorice publicar el listado completo con nombres e ingresos en la página web de la Alcaldía. Conforme al Artículo 585 del Estatuto Tributario y al Marco de Interoperabilidad de MinTIC, la determinación que debe aplicar la DIAN es:
+- [x] Suministrar a través de un servicio de intercambio seguro y cifrado (bajo convenio y estándares de interoperabilidad) única y exclusivamente los datos tributarios pertinentes de los contribuyentes de la jurisdicción de dicho municipio necesarios para la liquidación y control de sus tributos municipales (principios de finalidad, jurisdicción y minimización), negando datos ajenos a su jurisdicción y advirtiendo formalmente que la Alcaldía queda obligada a mantener la estricta Reserva Tributaria (Art. 583 y 585 E.T.), siéndole prohibido publicar la información individual en portales abiertos.
+- [ ] Entregar por correo electrónico sin cifrar la base de datos nacional de los 50 millones de colombianos y autorizar al Alcalde a publicarla en redes sociales, porque el Artículo 585 del Estatuto Tributario elimina la Reserva Tributaria cuando el receptor es una Alcaldía.
+- [ ] Negar absolutamente cualquier intercambio de información tributaria con los municipios del país, argumentando que la Constitución prohíbe la colaboración entre la DIAN y las entidades territoriales.
+---
+**Explicación Técnica y Normativa:**
+El **Artículo 585 del Estatuto Tributario** faculta el intercambio de información tributaria entre la DIAN y las Secretarías de Hacienda municipales y departamentales, pero sujeto a tres límites infranqueables:
+1. **Finalidad y Jurisdicción:** Solo para efectos de liquidación y control de impuestos nacionales, departamentales o municipales dentro de su respectiva competencia territorial.
+2. **Minimización y Proporcionalidad:** Solo los atributos tributarios estrictamente necesarios (jamás datos sensibles ajenos como historias clínicas, ni contribuyentes de otros departamentos sin vínculo).
+3. **Traslado de la Reserva Tributaria:** La entidad territorial receptora está obligada legalmente a garantizar el sigilo de la **Reserva Tributaria (Art. 583 E.T.)**; divulgarla al público constituye delito y falta disciplinaria gravísima.
+:::
+
+---
+
+## Unidad 8: Gestión de Capacidad, Aislamiento de Cargas (*Noisy Neighbor*) y Prácticas *FinOps* en Plataformas Analíticas de la DIAN
+
+### 8.1. Gestión de la Capacidad y el Rendimiento (ITIL v4) frente a los Picos del Calendario Tributario
+A diferencia de una empresa con tráfico plano todo el año, la carga de trabajo de la Subdirección de Procesamiento de Datos de la DIAN presenta **picos extremos y altamente predecibles** determinados por el **Calendario Tributario y Aduanero**:
+* Semanas de vencimiento de presentación de **Información Exógena** (abril–mayo): millones de archivos XML pesados entrando simultáneamente.
+* Vencimientos de **Declaración de Renta de Personas Naturales** (agosto–octubre): millones de consultas concurrentes al servicio de Declaración Sugerida y Exógena para Consulta del Ciudadano.
+* Días de alto flujo comercial (`Black Friday`, temporada navideña, cierres de mes): picos de **Facturación Electrónica UBL 2.1** superando cientos de documentos por segundo.
+
+Si aprovisionáramos servidores físicos fijos para el pico máximo del año, el 80% de esa capacidad quedaría ociosa diez meses al año (despilfarro de recursos públicos); y si aprovisionáramos para el promedio, la plataforma colapsaría en cada vencimiento tributario.
+
+#### Solución Arquitectónica 1: Desacoplamiento de Almacenamiento y Cómputo + *Auto-Scaling* Predictivo y Reactivo
+En la arquitectura Lakehouse moderna de **DataR**:
+1. **El Almacenamiento (*Storage* en objetos Parquet/Delta/Iceberg)** escala de forma independiente y económica por Terabyte almacenado.
+2. **El Cómputo (*Compute Clusters* en Spark / Motores SQL distribuidos)** escala horizontalmente (*Horizontal Auto-Scaling*): añade nodos *Workers* automáticamente cuando la cola de consultas o el uso de CPU/Memoria supera el umbral (ej. $70\%$) o de forma programada antes del inicio de un vencimiento tributario, y **apaga los nodos adicionales (*Scale-In / Auto-Termination*)** cuando baja la demanda nocturna.
+
+---
+
+### 8.2. El Problema del "Vecino Ruidoso" (*Noisy Neighbor*) y el Aislamiento de Cargas de Trabajo (*Workload Isolation*)
+Imagina que en un mismo clúster compartido de **DataR** están corriendo al mismo tiempo dos procesos:
+1. **Proceso Crítico en Línea (Prioridad 1):** El servicio de datos que alimenta la validación de riesgo de **Devoluciones Automáticas** y consultas de auditores seccionales (requiere latencia $p_{95} < 400\text{ ms}$).
+2. **Proceso Analítico Exploratorio Pesado (*Ad-Hoc*):** Un Científico de Datos lanza un experimento entrenando un modelo o haciendo un `CROSS JOIN` accidental sobre 10 años de historia de Facturación Electrónica (50 Terabytes).
+
+Si ambos procesos comparten el mismo clúster de cómputo sin aislamiento, el query exploratorio del Científico de Datos consumirá el 100% de la memoria RAM y CPU del clúster, **congelando y tumbando el servicio crítico en línea**. En ingeniería de plataformas de datos, este fenómeno se denomina **Efecto del Vecino Ruidoso (*Noisy Neighbor Effect*)**.
+
+#### ¿Cómo erradica el Inspector I el efecto *Noisy Neighbor* en DataR?
+Mediante **Aislamiento de Cargas de Trabajo (*Workload Isolation* y *Multi-Cluster Shared Data Architecture*)**:
+* Todos los usuarios leen los **mismos datos únicos** almacenados en la capa de almacenamiento de **DataR** (cero copias duplicadas), pero utilizan **Clústeres de Cómputo Virtuales (*Virtual Warehouses / Compute Pools*) físicamente separados por tipo de carga**:
+  * **Pool/Clúster 1 (Ingesta y ETL Crítico):** Dedicado exclusivamente a recibir y procesar Exógena, Factura Electrónica y CDC de MUISCA/SYGA.
+  * **Pool/Clúster 2 (Servicios DaaS Operacionales de Baja Latencia):** Dedicado a responder las APIs de consulta de las Direcciones Seccionales y sistemas misionales.
+  * **Pool/Clúster 3 (Ciencia de Datos y Exploración *Sandbox*):** Dedicado a entrenamientos de *Machine Learning* y consultas *ad-hoc*, con límites estrictos de memoria (*Resource Governors*), *Query Timeout* máximo (ej. cancelar automáticamente consultas que superen 30 minutos sin autorización) y topes de escaneo de datos (*Max Bytes Scanned Quota*).
+
+---
+
+### 8.3. Prácticas *FinOps* (Ingeniería Financiera de Datos en la Nube) y Eficiencia del Gasto Público
+Como servidor público sujeto a los principios de **economía, eficiencia y planeación fiscal** (Ley 80 de 1993, Ley 1474 de 2011 y MIPG), el **Inspector I** debe aplicar prácticas de **FinOps** para optimizar el costo por cada consulta y por cada Terabyte procesado en **DataR**:
+
+| Práctica Técnica de *FinOps* en DataR | ¿Cómo reduce el consumo de cómputo/almacenamiento y acelera el servicio? | Impacto en Costos y Rendimiento |
+| :--- | :--- | :--- |
+| **1. Particionamiento Inteligente y *Z-Ordering / Liquid Clustering*** | Evita el escaneo completo de tablas (*Full Table Scan*). Si una tabla de 20 TB está particionada por `anio_gravable` y `mes` y ordenada por `nit`, una consulta lee solo 50 MB en vez de 20 TB (*Partition & File Pruning*). | Reduce hasta en un **95%** el costo de bytes escaneados y baja la latencia de minutos a milisegundos. |
+| **2. Prohibición de `SELECT *` en formatos columnares (Parquet/Delta)** | En almacenamiento columnar, el motor solo lee del disco las columnas solicitadas (*Column Projection Pushdown*). Pedir 5 columnas de una tabla de 100 columnas lee $20\times$ menos datos que hacer `SELECT *`. | Ahorro directo de I/O de red, memoria RAM y unidades de cómputo (DBUs / vCores). |
+| **3. Vistas Materializadas y Caché de Resultados para Consultas Repetitivas** | Si 500 tableros consultan cada mañana el mismo indicador agregado de recaudo nacional por seccional, no se recalcula 500 veces sobre los datos crudos; se sirve desde una **Vista Materializada** precalculada en la capa Gold. | Elimina el cómputo redundante y ofrece latencia sub-segundo. |
+| **4. Ciclo de Vida del Almacenamiento (*Storage Tiering*) y *VACUUM*** | Mover automáticamente archivos crudos antiguos (según la TRD) de almacenamiento *Hot* (SSD rápido) a almacenamiento *Cool / Cold / Archive*, y ejecutar `VACUUM` en Delta Lake para purgar archivos huérfanos fuera de la ventana de *Time Travel*. | Reduce entre **60% y 80%** el costo mensual de almacenamiento en nube. |
+| **5. Etiquetado de Costos (*Cost Allocation Tagging*) y *Auto-Suspend*** | Etiquetar cada clúster y job con metadatos (`dependencia=fiscalizacion`, `proyecto=exogena_2026`, `ambiente=prod`) y configurar apagado automático (*Auto-Suspend* tras 10 minutos de inactividad en clústeres de desarrollo/exploración). | Permite trazabilidad transparente del gasto tecnológico por proceso y elimina el pago por servidores ociosos en la noche y fines de semana. |
+
+::: q
+En la plataforma analítica DataR se observa que todos los miércoles entre las 2:00 p.m. y las 4:00 p.m., cuando el equipo de Científicos de Datos ejecuta entrenamientos pesados de grafos sobre 5 años de historia de Facturación Electrónica, el Servicio de Datos en línea que atiende las consultas de las Divisiones de Servicio al Ciudadano y Fiscalización sufre una degradación severa, pasando su latencia $p_{95}$ de 300 milisegundos a 45 segundos. Ambos procesos están ejecutándose sobre el mismo clúster de cómputo compartido. Desde la ingeniería de Gestión de Capacidad, Rendimiento y FinOps de la Subdirección de Procesamiento de Datos, la solución arquitectónica definitiva es:
+- [x] Eliminar el efecto de "Vecino Ruidoso" (*Noisy Neighbor*) implementando Aislamiento de Cargas de Trabajo (*Workload Isolation*) bajo una arquitectura de datos compartidos y cómputo separado (*Multi-Cluster Shared Data*): asignar un pool de cómputo exclusivo con alta prioridad para los servicios operacionales DaaS en línea y un clúster independiente con auto-escalado, límites de cuota (*Resource Governor*) y auto-suspensión para las cargas de entrenamiento de Ciencia de Datos, manteniendo una única copia física de los datos en el almacenamiento de DataR.
+- [ ] Duplicar físicamente todas las tablas de Facturación Electrónica en diez servidores locales distintos y prohibir definitivamente el uso de modelos de Machine Learning en la DIAN.
+- [ ] Apagar el servicio de atención al ciudadano todos los miércoles por la tarde para que los entrenamientos de grafos tengan toda la memoria RAM disponible.
+---
+**Explicación Técnica y Normativa:**
+El caso describe el clásico antipatrón del **Vecino Ruidoso (*Noisy Neighbor*)**: mezclar cargas analíticas pesadas (*batch / ML training*) y cargas de servicios interactivos de baja latencia en el mismo pool de cómputo sin aislamiento de recursos. Aprovechando el **desacoplamiento entre almacenamiento y cómputo** de las arquitecturas Lakehouse modernas (Delta Lake / Iceberg sobre almacenamiento de objetos), la solución no requiere duplicar los datos físicos (lo cual sería costoso y rompería la única fuente de verdad), sino separar los **clústeres virtuales de cómputo (*Workload Isolation*)** con políticas independientes de escalado y *Resource Governors*.
+:::
+
+---
+
+## Flashcards de Repaso Mnemotécnico (22 Conceptos Clave de Alto Rendimiento)
+
+- **Definición de Servicio y Co-creación de Valor (ITIL v4)** :: Un medio para habilitar la co-creación de valor al facilitar los resultados que los usuarios/áreas misionales desean lograr, sin que estos tengan que gestionar los costos y riesgos técnicos subyacentes.
+- **Utilidad vs. Garantía de un Servicio de Datos (ITIL v4)** :: **Utilidad (*Fit for Purpose*)** es "lo que hace el servicio" (entregar el cruce o dato requerido); **Garantía (*Fit for Use*)** es "cómo se desempeña" en disponibilidad, capacidad/latencia, seguridad y continuidad. Ambas son obligatorias (`AND`) para generar valor.
+- **Paradigma Data-as-a-Service (DaaS) sobre DataR** :: Exponer activos de datos gobernados, limpios y estandarizados como servicios consumibles mediante APIs o vistas virtualizadas seguras, eliminando las conexiones directas a bases transaccionales (MUISCA/SYGA) y las copias manuales en silos.
+- **Virtualización de Datos y Predicate Pushdown** :: Capa de abstracción lógica que federa consultas sin copiar previamente los datos; mediante *Predicate Pushdown* empuja los filtros (`WHERE`) directamente al motor de almacenamiento origen para minimizar el tráfico de red.
+- **Enfoque Contract-First vs. Code-First** :: En *Contract-First*, el Productor y el Consumidor acuerdan primero una especificación formal ejecutable (**Data Contract** en YAML/JSON Schema/OpenAPI) con esquema, semántica, reglas de calidad y SLA antes de programar o desplegar el pipeline.
+- **Versionamiento Semántico (SemVer 2.0: MAJOR.MINOR.PATCH)** :: `PATCH` (`1.0.x`): correcciones internas u optimizaciones sin tocar esquema; `MINOR` (`1.x.0`): adición de campos opcionales compatibles hacia atrás; `MAJOR` (`x.0.0`): cambios disruptivos (*Breaking Changes* sintácticos o semánticos) que exigen coexistencia de versiones y ventana de deprecación (*Sunsetting*).
+- **Diferencia entre SLI, SLO y SLA** :: **SLI** es la métrica cuantitativa observada (ej. latencia $p_{95}$ real); **SLO** es la meta técnica interna del equipo de datos (siempre más estricta: $\text{SLO} \ge \text{SLA}$); **SLA** es el acuerdo formal comprometido con el área usuaria o entidad externa.
+- **Diferencia entre OLA y UC (ITIL v4 / ISO 20000)** :: **OLA (*Operational Level Agreement*)** es un acuerdo interno entre dependencias de la misma entidad (ej. Procesamiento de Datos con Infraestructura TI); **UC (*Underpinning Contract*)** es un contrato jurídico con un proveedor externo (ej. proveedor de nube).
+- **Por qué usar Percentiles ($p_{50}, p_{95}, p_{99}$) en vez de Promedios en SLIs de Latencia** :: El promedio aritmético oculta los valores extremos (*outliers* / *Tail Latency*); el percentil $p_{95}$ garantiza el tiempo máximo de respuesta experimentado por el 95% de las peticiones reales.
+- **Presupuesto de Error (*Error Budget* SRE)** :: $\text{Error Budget} = 100\% - \text{SLO}$. Con un SLO del $99.9\%$ mensual ($43.200\text{ min}$), el presupuesto de error es de **$43.2\text{ minutos/mes}$**. Si se agota, se congelan despliegues no críticos para priorizar la estabilidad.
+- **Corrupción Silenciosa de Datos (*Silent Data Corruption*)** :: Falla en la cual la infraestructura y el job técnico reportan éxito (`Exit Code 0` / `HTTP 200 OK`), pero el contenido de los datos está vacío, duplicado, desactualizado o estadísticamente corrupto.
+- **Los 5 Pilares de la Observabilidad de Datos (*Data Observability*)** :: 1) Frescura (*Freshness*); 2) Volumen (*Volume*); 3) Distribución estadística (*Distribution*); 4) Esquema (*Schema*); y 5) Linaje (*Lineage*).
+- **Patrón Write-Audit-Publish (WAP) y Circuit Breaker de Datos** :: Escribir primero en una zona/rama aislada (*Write*), ejecutar validaciones automáticas de calidad y observabilidad (*Audit*), y solo si aprueban hacer el commit atómico a producción (*Publish*); si fallan, el *Circuit Breaker* bloquea la publicación y mantiene la última versión íntegra.
+- **Incidente vs. Problema vs. Error Conocido (ITIL v4)** :: **Incidente** es la interrupción no planificada del servicio (objetivo: restaurar rápido con un *Workaround*, reduciendo el **MTTR**); **Problema** es la causa subyacente de uno o más incidentes (objetivo: hallar la Causa Raíz **RCA**); **Error Conocido** es un problema con causa raíz y *workaround* documentados en la **KEDB**.
+- **Tipos de Cambios en Habilitación de Cambios (ITIL v4)** :: 1) **Cambio Estándar** (bajo riesgo, repetitivo y preautorizado); 2) **Cambio Normal** (requiere RFC, análisis de impacto/linaje, plan de *Rollback* y aprobación del **CAB**); y 3) **Cambio de Emergencia** (para resolver incidentes críticos P1 o brechas de seguridad urgentes vía ECAB).
+- **Autenticación mTLS 1.3 + OAuth 2.0 / JWT en Servicios de Datos** :: **mTLS** autentica criptográficamente tanto al servidor como al cliente con certificados X.509 en la capa de transporte; **JWT** transporta los *claims* firmados de identidad, rol, seccional y expediente activo para autorización granular.
+- **Algoritmo Token Bucket y Código HTTP 429** :: Algoritmo de *Rate Limiting* donde una cubeta de fichas se recarga a tasa constante, permitiendo ráfagas controladas pero rechazando excesos de tráfico con **`HTTP 429 Too Many Requests`** y cabecera `Retry-After`.
+- **Artículo 585 del Estatuto Tributario (Intercambio con Entidades Territoriales)** :: Autoriza el intercambio de información tributaria con municipios y departamentos exclusivamente para liquidación y control de impuestos, trasladando al ente territorial receptor la obligación estricta de **Reserva Tributaria (Art. 583 E.T.)**.
+- **Los 4 Dominios del Marco de Interoperabilidad de MinTIC** :: 1) Político-Legal; 2) Organizacional; 3) Semántico (**Lenguaje Común de Intercambio de Información**); y 4) Técnico (Plataforma **X-Road** con *Security Servers*).
+- **Efecto Vecino Ruidoso (*Noisy Neighbor*) y Workload Isolation** :: Degradación de servicios críticos en línea causada por consultas analíticas pesadas que compiten por la misma RAM/CPU; se soluciona aislando los clústeres de cómputo (*Multi-Cluster Shared Data*) sobre el mismo almacenamiento de DataR.
+- **Prácticas FinOps en Plataformas Lakehouse** :: Desacoplamiento cómputo/almacenamiento, particionamiento y *Z-Ordering* (*File Pruning*), proyección columnar (evitar `SELECT *`), *Auto-Suspend* de clústeres inactivos, *Storage Tiering* y etiquetado de costos (*Cost Allocation Tags*).
+- **Métricas MTTD, MTTR y MTBF** :: **MTTD**: Tiempo Medio de Detección de la falla; **MTTR**: Tiempo Medio de Restauración del servicio (eficacia ante incidentes); **MTBF**: Tiempo Medio Entre Fallos (confiabilidad e ingeniería de problemas).
 
 ---
 
 ## Simulador Oficial de Examen: 10 Preguntas de Juicio Situacional (PJS)
+*Formato Oficial Areandina / CNSC (Numeral 4.4 de la GOA): Casos situacionales extensos del rol de Inspector I (OPEC 236670) con exactamente 3 opciones de respuesta (`A`, `B` y `C`) y justificación técnica y jurídica triple.*
 
-### Pregunta PJS 1: Integración Masiva de Datos para Fiscalización y Selección de Paradigma
-**Eje Temático:** Servicios de Datos Gobernados (DaaS) y Reserva Tributaria  
+---
+
+### Pregunta PJS 1: Ecuación de Valor del Servicio (Utilidad vs. Garantía en ITIL v4) y Arquitectura DaaS
+**Eje Temático:** Unidad 1 — Fundamentos de Gestión de Servicios (ITIL v4) y DaaS sobre DataR  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-La Dirección de Gestión de Fiscalización de la DIAN requiere cruzar diariamente la información de Facturación Electrónica con las declaraciones del Impuesto sobre la Renta presentadas en MUISCA para detectar de forma automatizada deducciones ficticias de costos y gastos. El equipo de auditores tributarios solicita a la Subdirección de Procesamiento de Datos que les entregue las credenciales maestras de la base de datos de producción de MUISCA y del repositorio de facturación, o en su defecto, que se configure un proceso que copie todas las noches las tablas completas a un servidor local de la dependencia. Como Inspector I de la Subdirección de Procesamiento de Datos asignado al proyecto, usted debe emitir el concepto técnico arquitectónico correspondiente.
+El equipo de la Subdirección de Procesamiento de Datos construye un nuevo Servicio de Datos en **DataR** que cruza en detalle las declaraciones de Retención en la Fuente (Formulario 350) contra los certificados de ingresos y retenciones reportados en Exógena. Los auditores de la Dirección de Gestión de Fiscalización validan las columnas y confirman que la lógica tributaria del cruce es exacta y responde exactamente a lo que necesitan para detectar agentes retenedores omisos. Sin embargo, al poner el servicio en producción, el endpoint se cae tres veces al día, carece de enmascaramiento para usuarios no autorizados y cada consulta individual tarda más de 18 minutos en responder, impidiendo su uso real en las auditorías.
 
 **Enunciado:**  
-¿Cuál es la decisión técnica y de gobernanza que garantiza la estabilidad de los sistemas misionales, la gobernanza de la información y el cumplimiento estricto de la Reserva Tributaria?
+Al evaluar este servicio bajo el marco conceptual del Sistema de Valor del Servicio de ITIL v4 e ISO/IEC 20000, el diagnóstico técnico que debe emitir el Inspector I es que el servicio
 
 **Opciones de respuesta:**  
-- **A.** Diseñar y exponer un Servicio de Datos Gobernado (*Data-as-a-Service*) sobre el Repositorio Único DataR, utilizando una capa de virtualización que agregue las fuentes y aplique políticas de control de acceso granular y auditoría inmutable.
-- **B.** Autorizar la concesión de credenciales de solo lectura (*Read-Only*) directas a las bases de producción de MUISCA en horarios nocturnos para evitar bloqueos transaccionales durante la jornada laboral.
-- **C.** Crear un pipeline de extracción física periódica (ETL) que copie las tablas completas a un repositorio departamental exclusivo de Fiscalización, deshabilitando los registros de auditoría para mejorar la velocidad de transferencia.
+- **A.** cumple con la dimensión de **Utilidad** (*Fit for Purpose*, porque la lógica funcional del cruce responde a la necesidad misional), pero falla críticamente en la dimensión de **Garantía** (*Fit for Use*, integrada por la disponibilidad, capacidad/rendimiento, seguridad de la información y continuidad), por lo cual no logra co-crear valor hasta que se optimice su arquitectura de entrega en la capa de servicios de DataR.
+- **B.** cumple plenamente con la dimensión de Garantía pero carece por completo de Utilidad, debiendo eliminarse la lógica tributaria del cruce y entregarse una tabla vacía pero rápida.
+- **C.** debe conectarse directamente por cable de red a la base de datos transaccional de recepción de pagos bancarios de MUISCA sin pasar por el API Gateway para evitar las validaciones de seguridad que consumen milisegundos.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La opción A aplica fielmente el modelo DaaS sobre DataR, permitiendo el consumo seguro mediante una capa semántica de virtualización sin afectar los motores transaccionales operacionales y garantizando la trazabilidad obligatoria exigida por el Artículo 583 del Estatuto Tributario.
-* **Justificación B (Incorrecta):** Es incorrecta. Las consultas analíticas pesadas por ODBC/JDBC directo degradan el pool de conexiones y compiten por memoria y CPU, además de permitir la extracción masiva de datos fuera de expediente.
-* **Justificación C (Incorrecta):** Es incorrecta. Reproduce el modelo de silos y fragmentación de datos, crea copias desgobernadas sin control de versiones e incumple la ley al deshabilitar los registros de auditoría forense indispensables para la custodia de la información tributaria reservada.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. En **ITIL v4**, la co-creación de valor exige la presencia conjunta (`AND`) de **Utilidad** (*Utility*: qué hace el servicio y si sus datos son exactos y pertinentes para el propósito del negocio) y **Garantía** (*Warranty*: cómo se desempeña el servicio en términos de disponibilidad, capacidad/latencia, seguridad y continuidad). En el caso planteado, el cruce tributario es funcionalmente exacto (**tiene Utilidad**), pero al caerse constantemente, tardar 18 minutos por consulta y carecer de controles de seguridad (**carece de Garantía**), no es apto para el uso (*Not Fit for Use*) y no materializa valor público.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque invierte los conceptos de Utilidad y Garantía definidos en ITIL v4.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque conectar cargas analíticas directo al OLTP transaccional y eliminar controles de seguridad viola tanto la arquitectura DaaS como la Reserva Tributaria (Art. 583 E.T.).
 
 ---
 
-### Pregunta PJS 2: Evolución de Contratos de Datos y Gestión de Breaking Changes
-**Eje Temático:** Ciclo de Vida y Versionamiento de Servicios de Datos (*Contract-First*)  
+### Pregunta PJS 2: Contratos de Datos (*Data Contracts*), Evolución de Esquema y Versionamiento Semántico (SemVer)
+**Eje Temático:** Unidad 2 — Diseño *Contract-First* y Gestión del Ciclo de Vida de Versiones  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-El equipo de ingeniería de datos responsable de la ingesta de transacciones aduaneras en DataR necesita optimizar el almacenamiento y decide modificar el servicio `ServicioDeclaracionesAduanas_v1`. La modificación implica renombrar el atributo `monto_fob_dolares` por `valor_fob_usd` y transformar el campo de fecha de formato `DD/MM/YYYY` a timestamp estándar ISO 8601 en milisegundos. Si este cambio se aplica directamente en producción, se interrumpirá la ejecución de los modelos de Machine Learning de la Subdirección de Análisis de Riesgo que procesan las importaciones en tiempo real en los puertos. Como Inspector I, se le solicita definir el plan de versionamiento y despliegue del servicio.
+El Servicio de Datos `urn:dian:datar:operaciones-cambio-v1` (actualmente en versión `v1.4.2`) es consumido diariamente de forma automatizada por los sistemas de la Subdirección de Fiscalización Cambiaria y de la Subdirección de Analítica. Debido a una actualización normativa del Banco de la República, la Subdirección de Procesamiento de Datos necesita incorporar en la respuesta del servicio dos nuevos atributos opcionales (`codigo_propósito_endudamiento` y `moneda_negociacion_iso`), sin eliminar, renombrar ni alterar el tipo de dato ni el significado de ninguno de los 18 campos existentes. Un mes después, para un segundo requerimiento distinto, se proyecta eliminar el campo `valor_pesos_declarado` y sustituirlo por una estructura anidada obligatoria incompatible con el esquema actual.
 
 **Enunciado:**  
-De acuerdo con las mejores prácticas de *Data Contracts* y versionamiento semántico, ¿qué acción debe instruir para implementar la modificación?
+De acuerdo con el estándar de Versionamiento Semántico (*SemVer 2.0*) y la gobernanza de Contratos de Datos (*Data Contracts*), la gestión correcta de versiones para el primer y el segundo requerimiento es:
 
 **Opciones de respuesta:**  
-- **A.** Incrementar la versión mayor a `v2.0.0`, publicar la nueva versión en el API Gateway manteniendo `v1.0.0` activa y definir una ventana de transición con cabecera de deprecación antes del retiro definitivo de la versión anterior.
-- **B.** Aplicar los cambios directamente sobre el endpoint existente `v1.0.0` y notificar por correo electrónico a los analistas de riesgo para que ajusten sus scripts en los próximos tres días.
-- **C.** Incrementar únicamente la versión menor a `v1.1.0` argumentando que no se eliminó información sustancial sino que se optimizó la estructura de los nombres y formatos técnicos.
+- **A.** el primer requerimiento (adición de dos campos opcionales manteniendo intactos los existentes) es un cambio compatible hacia atrás (*Backward-Compatible*) que debe publicarse incrementando la versión **MINOR** a `v1.5.0`; mientras que el segundo requerimiento (eliminación de un campo y cambio estructural obligatorio) constituye un cambio disruptivo (*Breaking Change*) que exige publicar una nueva versión **MAJOR** (`v2.0.0`) y mantener `v1.5.0` en estado deprecado durante una ventana de transición acordada.
+- **B.** ambos requerimientos deben aplicarse sobrescribiendo silenciosamente la versión `v1.4.2` sin cambiar el número de versión ni avisar a las subdirecciones consumidoras.
+- **C.** el primer requerimiento obliga a crear una versión mayor `v2.0.0` apagando de inmediato el servicio anterior, mientras que el segundo requerimiento se maneja como un simple parche `v1.4.3` (PATCH).
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El cambio propuesto altera nombres de atributos y formatos de tipos de datos, lo cual constituye un *Breaking Change* (cambio disruptivo). Bajo SemVer y gobierno de datos, los cambios disruptivos exigen incrementar la versión MAJOR (`v2.0.0`), mantener la versión anterior en coexistencia con cabecera `Sunset` y respetar la ventana de transición pactada para no romper los procesos operativos misionales.
-* **Justificación B (Incorrecta):** Es incorrecta. Desplegar cambios disruptivos en el mismo endpoint sin retrocompatibilidad colapsa los modelos de riesgo en frontera y paraliza la inspección aduanera.
-* **Justificación C (Incorrecta):** Es incorrecta. Clasifica erróneamente un cambio disruptivo como versión menor (`MINOR`), desconociendo que las versiones menores están estrictamente reservadas para cambios compatibles hacia atrás (*backward-compatible*).
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Aplica con exactitud las reglas de **SemVer 2.0 (`MAJOR.MINOR.PATCH`)** sobre Contratos de Datos:
+  1. Agregar campos opcionales (*nullable*) sin alterar ni borrar los campos preexistentes es una evolución **compatible hacia atrás (*Backward-Compatible*)**, por lo que corresponde incrementar el dígito **MINOR** (`v1.4.2` $\rightarrow$ `v1.5.0`).
+  2. Eliminar un atributo existente o cambiar su estructura a un objeto anidado obligatorio rompe los clientes que esperan el contrato `v1`, constituyendo un **Breaking Change** que exige incrementar el dígito **MAJOR** (`v2.0.0`) y aplicar el protocolo de coexistencia y deprecación (*Sunsetting*).
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque modificar contratos en producción sin control de versiones provoca fallas en cascada en los pipelines de Fiscalización y Analítica.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque invierte por completo el significado técnico de las versiones `MAJOR` y `PATCH`.
 
 ---
 
-### Pregunta PJS 3: Desfase Crítico en el Indicador de Frescura de Facturación Electrónica
-**Eje Temático:** Acuerdos de Nivel de Servicio (SLI/SLO de Frescura y Latencia)  
+### Pregunta PJS 3: Coherencia entre SLA, SLO, OLA y Cálculo de Disponibilidad Compuesta en Serie
+**Eje Temático:** Unidad 3 — Ingeniería de Confiabilidad (SRE), SLAs y OLAs  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Durante la semana previa al vencimiento bimestral del IVA, el modelo predictivo de analítica fiscal de la DIAN genera alertas erróneas informando que cientos de grandes contribuyentes han dejado de facturar sus ventas. Al revisar los sistemas, el Inspector I observa que la API de servicios de datos de facturación responde con código HTTP 200 OK y latencia de 120 ms; sin embargo, al inspeccionar el indicador de nivel de servicio (SLI) de Frescura del Dato (*Data Freshness*), se constata que la información disponible en el Lakehouse presenta un retraso de 38 horas respecto a la emisión real de las facturas en el sistema transaccional.
+Se está diseñando el Acuerdo de Nivel de Servicio (**SLA**) para un nuevo Servicio de Datos de Consulta de Antecedentes Aduaneros en **DataR**. La arquitectura propuesta conecta en **serie** (sin redundancia paralela) tres componentes internos: (1) el API Gateway con una disponibilidad garantizada del $99.9\%$, (2) el motor de virtualización con una disponibilidad del $99.5\%$, y (3) un servidor de base de datos legado cuyo Acuerdo de Nivel Operacional (**OLA**) con la Subdirección de Infraestructura y Servicios solo garantiza una disponibilidad mensual del $98.0\%$ y un tiempo de restauración de 8 horas ante caídas. A pesar de ello, un coordinador propone firmar con la Dirección de Gestión de Aduanas un **SLA** prometiendo una disponibilidad total del servicio del $99.95\%$ y un tiempo máximo de recuperación de 15 minutos.
 
 **Enunciado:**  
-¿Cómo debe clasificar y gestionar técnicamente esta situación el Inspector I en la Subdirección de Procesamiento de Datos?
+Al evaluar matemáticamente y bajo el marco ITIL v4 / SRE la viabilidad del SLA propuesto, al Inspector I le corresponde advertir que
 
 **Opciones de respuesta:**  
-- **A.** Identificar la falla como un problema de corrupción silenciosa de datos (*Data Downtime*) por quiebre del SLO de frescura, detener la ingesta a la capa de consumo y alertar al equipo de ingeniería de pipelines para corregir el encolamiento en el procesamiento distribuido.
-- **B.** Cerrar el incidente como falso positivo dado que el API Gateway reporta disponibilidad del 100% y tiempos de respuesta óptimos (HTTP 200 en 120 ms).
-- **C.** Solicitar a la Dirección de Fiscalización que flexibilice sus modelos estadísticos para que acepten datos con desfase de hasta 72 horas sin emitir reportes de inconsistencia.
+- **A.** el SLA propuesto de $99.95\%$ es técnica y matemáticamente incumplible con la arquitectura actual, dado que en un sistema en serie la disponibilidad compuesta es el producto de sus componentes ($0.999 \times 0.995 \times 0.980 \approx 97.41\%$), siendo siempre inferior al eslabón más débil ($98.0\%$); por tanto, antes de comprometer un SLA del $99.95\%$, es obligatorio eliminar el punto único de fallo replicando los datos en el Lakehouse de alta disponibilidad o renegociar el OLA con Infraestructura implementando redundancia activo-activo.
+- **B.** el SLA propuesto es plenamente viable porque en una arquitectura en serie las disponibilidades de los componentes se promedian y los tiempos de respuesta de los OLAs internos no afectan el servicio final.
+- **C.** basta con fijar un Objetivo de Nivel de Servicio (SLO) interno del $90.0\%$ para garantizar automáticamente que el SLA externo llegue al $99.95\%$.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La observabilidad de datos va más allá del estado de la infraestructura o el código de respuesta HTTP. Un retraso de 38 horas en un servicio cuyo SLO exige datos casi en tiempo real constituye una falla silenciosa (*Data Downtime*) atribuible a la frescura, lo que distorsiona las decisiones de fiscalización y amerita la contención inmediata del consumo y el reprocesamiento del pipeline.
-* **Justificación B (Incorrecta):** Es incorrecta. Ignora la dimensión de contenido de la observabilidad de datos, confundiendo la salud del servidor web con la veracidad y oportunidad de los datos que viajan en la carga útil (*payload*).
-* **Justificación C (Incorrecta):** Es incorrecta. Traslada la ineficiencia técnica al área de negocio, obligando a los auditores a tomar decisiones a ciegas sobre información desactualizada, lo que afecta la efectividad del control fiscal del Estado.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. En ingeniería de confiabilidad (SRE e ISO/IEC 20000), cuando varios componentes operan en **serie** (donde el fallo de cualquiera interrumpe el servicio extremo a extremo), la disponibilidad total es el producto de las disponibilidades individuales:
+  $$A_{\text{serie}} = 0.999 \times 0.995 \times 0.980 = 0.9741299 \approx \mathbf{97.41\%}$$
+  Además, conforme a **ITIL v4**, ningún **SLA** comprometido con el área de negocio puede ser superior a la capacidad real soportada por los **Acuerdos de Nivel Operacional (OLAs)** internos que lo sustentan. Para alcanzar un SLA de $99.95\%$, se debe desacoplar la lectura del servidor legado mediante ingesta hacia tablas replicadas en **DataR** o implementar clústeres redundantes en paralelo.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque la disponibilidad en serie jamás se calcula promediando porcentajes, sino multiplicando probabilidades independientes.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque el **SLO** interno siempre debe ser más estricto que el **SLA** ($\text{SLO} \ge \text{SLA}$), nunca inferior.
 
 ---
 
-### Pregunta PJS 4: Definición de Indicadores y Presupuesto de Error para la API de Registro Único Tributario
-**Eje Temático:** Presupuestos de Error (Error Budget) y Disponibilidad Institucional  
+### Pregunta PJS 4: Observabilidad de Datos (*Data Observability*) y Prevención de Corrupción Silenciosa mediante WAP
+**Eje Temático:** Unidad 4 — Los 5 Pilares de Observabilidad y el Patrón *Write-Audit-Publish*  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-La Subdirección de Procesamiento de Datos está estructurando el Acuerdo de Nivel de Servicio (SLA) para la nueva API institucional de validación del RUT, consumida por las Direcciones Seccionales, notarias y entidades financieras para verificar la inscripción y responsabilidades tributarias de los contribuyentes. Se ha establecido una meta interna (SLO) de disponibilidad del 99.9% mensual. El equipo de desarrollo propone planificar tres ventanas de mantenimiento técnico al mes que implicarán 4 horas acumuladas de indisponibilidad del servicio.
+Durante el procesamiento nocturno de los formatos de Información Exógena en **DataR**, una actualización en el script de extracción modifica por error la condición de un `LEFT JOIN`, provocando un producto cartesiano parcial que multiplica por seis el número de filas de los pagos en cuenta de mil grandes empresas y eleva artificialmente la media nacional de ingresos brutos en un 480%. Como el job de Apache Spark no tuvo errores de sintaxis ni de memoria, finalizó con estado exitoso (`SUCCEEDED`). El Inspector I debe evitar que este tipo de "corrupción silenciosa de datos" llegue a ser consumida a primera hora de la mañana por los modelos de la Subdirección de Analítica y los auditores de Fiscalización.
 
 **Enunciado:**  
-Como Inspector I, al realizar el cálculo del Presupuesto de Error (*Error Budget*) mensual, ¿cuál es su concepto técnico sobre la viabilidad de la propuesta del equipo de desarrollo?
+La arquitectura técnica de ingeniería de datos que previene de forma automatizada y determinística este incidente en producción consiste en implementar
 
 **Opciones de respuesta:**  
-- **A.** Rechazar la propuesta, puesto que un SLO del 99.9% mensual otorga un presupuesto de error de tan solo 43.2 minutos de indisponibilidad al mes, y las 4 horas planeadas agotarían y violarían el SLA institucional en más de un 500%.
-- **B.** Aprobar la propuesta, debido a que las ventanas de mantenimiento programadas están exentas del cómputo del presupuesto de error según los estándares de ingeniería de confiabilidad.
-- **C.** Aumentar arbitrariamente el SLA prometido al 99.99% para compensar las horas de indisponibilidad mediante compensación algorítmica de latencia en los días restantes.
+- **A.** el patrón **Write-Audit-Publish (WAP)** acoplado a monitores de **Observabilidad de Datos** sobre los pilares de **Volumen** (conteo de filas y unicidad de llaves compuestas) y **Distribución** (control de desviación estadística sobre las sumas de control de ingresos), de modo que el lote se escriba inicialmente en una rama/partición de auditoría aislada y el *Circuit Breaker* aborte automáticamente su publicación en la capa Gold al detectar la anomalía.
+- **B.** un incremento de memoria RAM y procesadores (CPU) en el clúster de Spark, dado que los errores lógicos de producto cartesiano se corrigen solos cuando hay más hardware disponible.
+- **C.** una política que obligue a los 800 auditores de las Direcciones Seccionales a revisar manualmente con calculadora cada fila antes de usar los servicios de DataR.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El cálculo matemático del Error Budget para un SLO del 99.9% sobre un mes de 30 días (43.200 minutos) es: $43.200 \times (1 - 0.999) = 43.2 \text{ minutos}$. Una ventana de indisponibilidad de 4 horas (240 minutos) sobrepasa holgadamente el margen de fallo tolerado, lo que representa un incumplimiento flagrante del SLA acordado con consecuencias operativas institucionales.
-* **Justificación B (Incorrecta):** Es incorrecta. Desde la perspectiva de los consumidores del servicio (notarías, seccionales), la indisponibilidad programada interrumpe los trámites de igual manera que una falla imprevista, por lo que debe consumirse del presupuesto o ejecutarse mediante despliegues sin tiempo de inactividad (*Zero-Downtime Blue/Green Deployments*).
-* **Justificación C (Incorrecta):** Es incorrecta. Aumentar el SLO a 99.99% restringe aún más el margen de error tolerado a solo 4.3 minutos al mes, haciendo la propuesta aún más inviable.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Las fallas lógicas de datos (*Silent Data Corruption*) no arrojan excepciones de infraestructura, por lo que solo son detectadas por los pilares de **Observabilidad de Datos (*Volume*, *Distribution*, *Freshness*, *Schema*, *Lineage*)**. Al integrar estas aserciones dentro del patrón **Write-Audit-Publish (WAP)** sobre formatos transaccionales como Delta Lake o Apache Iceberg, los datos transformados se evalúan antes de hacerse visibles: el chequeo de unicidad y el chequeo de distribución estadística detectan la explosión de filas y el salto del 480% en la media, disparando el **Circuit Breaker de Datos** para impedir el *commit* en producción y mantener intacta la última versión válida.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque añadir más hardware solo hará que el producto cartesiano erróneo se ejecute más rápido, sin corregir la corrupción de los datos.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque trasladar la validación de calidad de macrodatos al usuario final manual destruye la garantía del servicio y es inviable a escala de millones de registros.
 
 ---
 
-### Pregunta PJS 5: Solicitud de Información Tributaria Reservada por parte de un Ente Territorial
-**Eje Temático:** Gestión de Solicitudes Externas y Convenios Interinstitucionales (Art. 585 E.T.)  
+### Pregunta PJS 5: Gestión de Incidentes vs. Gestión de Problemas vs. Control de Cambios (ITIL v4)
+**Eje Temático:** Unidad 5 — Prácticas Operativas de Gestión de Servicios en la DGIT  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-La Secretaría de Hacienda de un municipio de categoría especial remite una solicitud formal a la Subdirección de Procesamiento de Datos de la DIAN requiriendo la entrega masiva en archivos Excel de la información de ingresos operacionales, compras registradas y saldos bancarios de todos los contribuyentes con domicilio en su jurisdicción para los años gravables 2024 y 2025. El peticionario alega que los datos son indispensables para actualizar el censo de contribuyentes del impuesto municipal de Industria y Comercio (ICA).
+A las 9:15 a.m. de un día pico de vencimientos aduaneros, el Servicio de Datos de Consulta de Certificados de Origen y Valoración en **DataR** sufre una caída total (Prioridad 1 - Crítica), bloqueando las validaciones en las Direcciones Seccionales de Aduanas de Cartagena y Buenaventura. El Inspector I revisa la telemetría y advierte que la caída fue provocada por el despliegue de un índice corrupto hace 20 minutos; además, recuerda que un fallo similar ocurrió el mes pasado en otro módulo. Para actuar con rigor bajo el marco **ITIL v4** adoptado por la DGIT, se deben ejecutar acciones inmediatas y posteriores en el orden correcto.
 
 **Enunciado:**  
-Conforme al marco legal colombiano y las políticas de gestión de servicios de información, ¿qué trámite debe impartir el Inspector I a esta solicitud?
+La secuencia de actuación técnica que cumple estrictamente con las prácticas de Gestión de Incidentes, Habilitación de Cambios y Gestión de Problemas de ITIL v4 es:
 
 **Opciones de respuesta:**  
-- **A.** Exigir la existencia previa de un Convenio de Intercambio de Información suscrito entre la DIAN y el municipio bajo el marco del Artículo 585 del E.T., y canalizar el suministro mediante un servicio de datos gobernado con autenticación segura y traslado de la reserva legal.
-- **B.** Negar categóricamente la entrega de la información manifestando que el Artículo 583 del Estatuto Tributario prohíbe de manera absoluta y sin excepción compartir datos de contribuyentes con cualquier otra entidad pública.
-- **C.** Enviar de inmediato los archivos requeridos mediante correo electrónico institucional protegido por contraseña, considerando que ambas entidades hacen parte del Estado y administran tributos.
+- **A.** primero, dentro de la **Gestión de Incidentes**, restaurar de inmediato la operación normal del servicio ejecutando el Plan de Reversión (*Rollback*) o un Cambio de Emergencia controlado para minimizar el **MTTR** en los puertos; y segundo, una vez estabilizado el servicio, abrir un expediente en la **Gestión de Problemas** para realizar el Análisis de Causa Raíz (**RCA**) del defecto recurrente en la creación de índices, documentarlo en la **KEDB** e implementar la corrección definitiva en el pipeline de CI/CD.
+- **B.** dejar caído el servicio en los puertos marítimos durante cuatro días mientras se redacta un ensayo académico sobre la historia del motor de base de datos, negándose a aplicar cualquier *Rollback* o *Workaround* temporal.
+- **C.** borrar los registros del incidente del sistema de tickets de la Mesa de Servicio para que no se afecte el indicador mensual de disponibilidad de la Subdirección de Procesamiento de Datos.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El Artículo 585 del Estatuto Tributario consagra una excepción legal expresa para el intercambio de información tributaria con los entes territoriales con fines de control y fiscalización del impuesto de Industria y Comercio, siempre que medie convenio formal de reciprocidad, se garantice la reserva tributaria compartida y se empleen mecanismos técnicos seguros.
-* **Justificación B (Incorrecta):** Es incorrecta. El Artículo 583 no es absoluto y el mismo Estatuto Tributario (Arts. 584 y 585) y leyes especiales facultan el intercambio interinstitucional bajo condiciones estrictas de convenio.
-* **Justificación C (Incorrecta):** Es incorrecta. Enviar información tributaria en hojas de cálculo por correo electrónico viola las políticas de protección de datos, anula la auditoría forense y expone a los funcionarios a responsabilidad penal y disciplinaria.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. En **ITIL v4**, ante una interrupción crítica en producción (Incidente P1), la prioridad absoluta e inmediata de la **Gestión de Incidentes** es **restaurar el servicio lo antes posible (minimizar el MTTR)** utilizando el plan de reversión (*Rollback Plan*) del cambio recién desplegado o un *Workaround* / Cambio de Emergencia autorizado. Una vez conjurada la urgencia operativa y restablecido el servicio para las aduanas, entra en acción la **Gestión de Problemas** para investigar sin la presión del sistema caído la **Causa Raíz (RCA)**, actualizar la Base de Datos de Errores Conocidos (**KEDB**) y prevenir su repetición (aumentando el **MTBF**).
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque confunde la Gestión de Incidentes con la Gestión de Problemas, prolongando injustificadamente el tiempo de caída (MTTR) de un servicio misional crítico.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque ocultar o destruir registros operativos vulnera los principios de transparencia, control interno y comportamiento ético.
 
 ---
 
-### Pregunta PJS 6: Detección de Anomalías Estadísticas mediante Observabilidad de Datos
-**Eje Temático:** Observabilidad de Datos (*Data Observability*) y Disyuntores de Calidad  
+### Pregunta PJS 6: Seguridad *Zero Trust*, Validación de Tokens JWT y Prevención de Escalada de Privilegios (ABAC / RLS)
+**Eje Temático:** Unidad 6 — Seguridad en Servicios de Datos y Reserva Tributaria (Art. 583 E.T.)  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-El sistema de observabilidad de datos de DataR genera una alerta automática de severidad crítica en el pipeline que procesa la información exógena del Formato 1001 (Pagos o abonos en cuenta y retenciones practicadas). La alerta señala que la media de retenciones en la fuente reportadas disminuyó en un 80% respecto a la línea base histórica, y que el 45% de los registros presentan valor nulo en el campo `concepto_pago`, a pesar de que el número total de filas recibidas es idéntico al del periodo anterior.
+La Subdirección de Procesamiento de Datos expone una API RESTful sobre **DataR** para que los auditores de las Direcciones Seccionales consulten el detalle de las facturas electrónicas de los contribuyentes que tienen asignados por auto de apertura de investigación. Un usuario interno con conocimientos técnicos intercepta su propia petición HTTP en el navegador, decodifica en Base64 el *Payload* de su **Token JWT**, modifica manualmente el atributo `"seccional_id": "04_CALI"` por `"seccional_id": "ALL_NATIONAL"` y agrega en el parámetro de la URL el NIT de una empresa competidora que no hace parte de su expediente, enviando la petición modificada al servicio de datos.
 
 **Enunciado:**  
-¿Cuál es la causa técnica identificada por los pilares de observabilidad y cuál es la medida de mitigación inmediata?
+Bajo una arquitectura de seguridad **Zero Trust** correctamente implementada en el API Gateway y en la capa de virtualización de DataR, el resultado técnico de esta tentativa debe ser:
 
 **Opciones de respuesta:**  
-- **A.** Se identifica una anomalía en los pilares de Distribución y Esquema (*Data Drift / Null Spikes*); se debe activar el disyuntor de datos (*Circuit Breaker*) para evitar contaminar la capa Oro de DataR y revisar el parser de transformación.
-- **B.** Se clasifica como un comportamiento tributario normal atribuible a la reactivación económica del país, por lo que debe actualizarse la línea base para apagar la alerta.
-- **C.** Se trata de una falla exclusiva del pilar de Volumen, por lo que se debe forzar una duplicación sintética de los registros para restaurar la media calculada.
+- **A.** el API Gateway rechaza inmediatamente la petición en la primera línea de defensa con código `HTTP 401 Unauthorized` / `HTTP 403 Forbidden` al fallar la verificación criptográfica de la firma asimétrica (`Signature` RS256/ES256) del token JWT adulterado, y adicionalmente la política **ABAC / Row-Level Security (RLS)** valida en el motor de datos que cualquier NIT consultado esté vinculado en la tabla de control a un expediente activo asignado al funcionario, disparando una alerta en el log forense inmutable hacia la Oficina de Seguridad de la Información.
+- **B.** el servidor acepta el cambio de `"seccional_id"` porque los tokens JWT están codificados en Base64 y cualquier modificación del texto en el cliente actualiza automáticamente los permisos en la base de datos.
+- **C.** el servicio entrega todas las facturas del país pero envía un mensaje de advertencia pidiéndole al usuario que prometa no divulgar los datos.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La alteración drástica de la media (80%) y el incremento abrupto de valores nulos (45%) sin variación en el recuento de filas evidencian un problema en los pilares de Distribución y Calidad de Esquema (típicamente una falla en las reglas de parseo o mapeo de datos). La respuesta técnica correcta es aislar el consumo mediante un *Circuit Breaker* para no contaminar los modelos de fiscalización con datos truncados.
-* **Justificación B (Incorrecta):** Es incorrecta. Una caída del 80% en retenciones acompañada de 45% de nulos en un campo obligatorio es un síntoma inequívoco de corrupción de datos y no de comportamiento macroeconómico.
-* **Justificación C (Incorrecta):** Es incorrecta. Generar datos sintéticos duplicados para maquillar una métrica estadística constituye falsedad en documento público y destruye la integridad probatoria de la DIAN.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Demuestra el funcionamiento de la defensa en profundidad (**Zero Trust**):
+  1. Aunque el `Header` y el `Payload` de un **JWT** están codificados en `Base64Url` (legibles), el tercer segmento (`Signature`) es una firma criptográfica generada con la llave privada del Proveedor de Identidad (IdP) sobre el contenido exacto del `Header.Payload`. Si se altera un solo bit del `Payload`, la verificación matemática con la llave pública falla en el API Gateway y el token es rechazado en el acto.
+  2. Incluso si un usuario usara su token original sin adulterar e intentara pasar por parámetro de consulta (`?nit=...`) un NIT ajeno, el motor de **Control de Acceso Basado en Atributos (ABAC) y Row-Level Security (RLS)** cruza en tiempo real la identidad del funcionario contra la tabla de asignación de expedientes activos, bloqueando cualquier acceso no autorizado para blindar la **Reserva Tributaria (Art. 583 E.T.)**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque confunde codificación (`Base64`) con firma criptográfica (`RS256/ES256`); un JWT firmado jamás puede ser modificado por el cliente sin invalidar su firma.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque entregar datos reservados sin competencia ni expediente activo constituye una violación grave del Artículo 583 del Estatuto Tributario.
 
 ---
 
-### Pregunta PJS 7: Control de Acceso y Enmascaramiento Dinámico de Datos para Analítica
-**Eje Temático:** Seguridad, Control de Acceso Granular y Enmascaramiento Dinámico (DDM)  
+### Pregunta PJS 7: Interoperabilidad Estatal en X-Road y los 4 Dominios del Marco MinTIC
+**Eje Temático:** Unidad 7 — Marco de Interoperabilidad de Gobierno Digital (MinTIC) y X-Road  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Un grupo de científicos de datos contratados por la Dirección de Gestión de Innovación y Tecnología requiere consumir los datos del servicio de Facturación Electrónica en DataR para entrenar una red neuronal que agrupe tipologías de compras por sectores económicos. Para este objetivo analítico, los contratistas no requieren conocer la identidad de los compradores ni los números de cuenta bancaria donde se realizaron las transferencias.
+La DIAN y la Unidad de Gestión Pensional y Parafiscales (UGPP) suscriben un convenio legal para intercambiar información de ingresos y nómina electrónica con el fin de detectar evasión conjunta en el Impuesto sobre la Renta y en los aportes a la Seguridad Social. Ya se firmó el convenio jurídico (Dominio Político-Legal), se acordaron los procesos y SLAs entre ambas entidades (Dominio Organizacional) y se instalaron los nodos *Security Server* en la plataforma **X-Road** (Dominio Técnico). Sin embargo, al realizar las primeras pruebas de integración, el sistema de la UGPP rechaza los mensajes porque la DIAN envía el tipo de documento "Cédula de Ciudadanía" con el código numérico `13`, mientras que el sistema de la UGPP espera el código alfabético `CC`, y los campos de ingresos tienen definiciones contables distintas.
 
 **Enunciado:**  
-¿Qué técnica de seguridad a nivel de servicio de datos debe implementar el Inspector I para cumplir estrictamente con el principio de minimización de datos (Ley 1581 de 2012) y la Reserva Tributaria (Art. 583 E.T.)?
+De acuerdo con el Marco de Interoperabilidad para el Gobierno Digital de MinTIC, la falla descrita se ubica específicamente en el:
 
 **Opciones de respuesta:**  
-- **A.** Configurar políticas de Enmascaramiento Dinámico de Datos (*Dynamic Data Masking* - DDM) y Seguridad a Nivel de Columna (CLS) en la capa de virtualización, entregando identificadores seudonimizados mediante funciones hash con sal y ofuscando datos financieros.
-- **B.** Entregar la base de datos completa sin modificar bajo la condición de que los contratistas firmen un acuerdo de confidencialidad en papel.
-- **C.** Denegar la solicitud de analítica por considerar que ninguna técnica tecnológica permite procesar datos en la DIAN sin violar la reserva tributaria.
+- **A.** **Dominio Semántico de Interoperabilidad**, cuya solución exige alinear el servicio de datos con el estándar del **Lenguaje Común de Intercambio de Información** de MinTIC y el catálogo de metadatos/transformación canónica para garantizar que el formato, codificación y significado exacto de cada dato intercambiado sea comprendido de manera inequívoca por ambas entidades.
+- **B.** **Dominio Político-Legal**, por lo que debe anularse el convenio interadministrativo y solicitar al Congreso de la República una reforma constitucional sobre cables de fibra óptica.
+- **C.** **Dominio Físico de Climatización**, dado que las diferencias entre códigos numéricos (`13`) y alfabéticos (`CC`) se deben al voltaje eléctrico de los servidores de X-Road.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El principio de minimización de datos exige que solo se entregue la información estrictamente necesaria para la finalidad legítima perseguida. La aplicación de DDM y CLS garantiza que los científicos de datos puedan entrenar los modelos sobre patrones matemáticos sin tener acceso a la identidad tributaria individual de los sujetos económicos.
-* **Justificación B (Incorrecta):** Es incorrecta. La firma de un acuerdo de confidencialidad no exime de la obligación de aplicar controles técnicos de enmascaramiento frente a terceros.
-* **Justificación C (Incorrecta):** Es incorrecta. Desconoce las capacidades modernas de ingeniería de datos y paraliza las funciones de innovación contempladas en el Decreto 1742 de 2020.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. En el **Marco de Interoperabilidad para el Gobierno Digital de MinTIC (Decreto 767 de 2022)**, el **Dominio Semántico** es aquel que garantiza que la información intercambiada entre dos o más entidades públicas tenga exactamente el mismo significado, vocabulario, estructura de datos y tablas de referencia estandarizadas, utilizando como instrumento rector el **Lenguaje Común de Intercambio de Información**. Cuando dos sistemas logran conectarse técnicamente (Dominio Técnico superado en X-Road), pero no entienden los códigos de dominio (`13` vs. `CC`) o las definiciones de los campos, el problema es estrictamente de **Interoperabilidad Semántica**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque el sustento jurídico y el convenio ya están perfeccionados; es un problema de estandarización de datos y vocabulario común.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta y absurda desde el punto de vista técnico.
 
 ---
 
-### Pregunta PJS 8: Protección de Servicios mediante Rate Limiting frente a Saturación
-**Eje Temático:** Gestión de Concurrencia y Políticas de Rate Limiting (Token Bucket)  
+### Pregunta PJS 8: Optimización de Consultas Columnar y *FinOps* en Servicios de Datos sobre DataR
+**Eje Temático:** Unidad 8 — Gestión de Rendimiento, Particionamiento y Prácticas *FinOps*  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Una entidad pública conectada al servicio de consulta de obligaciones tributarias en DataR despliega un script automatizado mal configurado que ejecuta millones de peticiones concurrentes por segundo, consumiendo la totalidad del pool de hilos del API Gateway y elevando la latencia de respuesta para las Direcciones Seccionales de la DIAN a más de 15 segundos.
+Un servicio de datos interno consulta una tabla histórica de **Facturación Electrónica** en la capa Silver/Gold de **DataR** almacenada en formato columnar **Apache Parquet / Delta Lake**, la cual tiene un tamaño total de **40 Terabytes**, cuenta con **120 columnas** por registro y está particionada actualmente solo por una columna de auditoría llamada `id_lote_carga_secuencial`. El servicio únicamente necesita devolver 3 columnas (`nit_emisor`, `fecha_emision` y `valor_total_factura`) filtrando por un rango de fechas de una semana (`WHERE fecha_emision BETWEEN '2026-03-01' AND '2026-03-07'`). Sin embargo, el desarrollador programó la consulta como `SELECT * FROM tabla WHERE CAST(fecha_emision AS STRING) LIKE '2026-03-0%'`, lo que ocasiona que cada consulta escanee los **40 Terabytes completos**, tarde 14 minutos y dispare el costo mensual de cómputo en la nube.
 
 **Enunciado:**  
-¿Qué mecanismo de gestión de concurrencia debió estar configurado en el API Gateway para mitigar automáticamente este impacto sin afectar a los demás consumidores?
+Como Inspector I de la Subdirección de Procesamiento de Datos, ¿qué combinación de refactorización técnica y de *FinOps* debe aplicar para reducir en más del 98% el volumen de datos escaneados y bajar la latencia a pocos segundos?
 
 **Opciones de respuesta:**  
-- **A.** Implementar una política de cuotas y limitación de tasa (*Rate Limiting*) basada en el algoritmo *Token Bucket* por consumidor, respondiendo a la entidad causante con error HTTP 429 (*Too Many Requests*) al superar su umbral.
-- **B.** Aumentar ilimitadamente la memoria RAM y CPU del cluster de servidores para absorber cualquier volumen de peticiones sin importar su origen.
-- **C.** Desconectar físicamente los servidores de DataR de la red interna para proteger los datos frente a una posible fuga de información.
+- **A.** (1) Reestructurar el particionamiento físico de la tabla por una columna de fecha de negocio (`anio_mes` / `fecha_emision`) aplicando ordenamiento multidimensional (*Z-Ordering* / *Liquid Clustering*) por `nit_emisor`; (2) eliminar la función `CAST(... AS STRING)` sobre la columna filtrada para habilitar el **Partition Pruning** y **Predicate Pushdown**; y (3) reemplazar el `SELECT *` por la proyección explícita de las 3 columnas requeridas (`SELECT nit_emisor, fecha_emision, valor_total_factura`) para aprovechar la lectura selectiva del formato columnar Parquet.
+- **B.** Mantener el `SELECT *` y la función `CAST` en el `WHERE`, pero convertir los 40 Terabytes de formato Parquet a un único archivo de texto plano `.csv` sin comprimir.
+- **C.** Prohibir las consultas por rangos de fechas en la DIAN y obligar a los usuarios a descargar los 40 Terabytes en sus computadores portátiles.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El algoritmo *Token Bucket* garantiza el aislamiento de consumidores en arquitecturas multi-tenant. Al superar la cuota contratada, el API Gateway descarta las peticiones excedentes con el código HTTP 429, protegiendo los recursos computacionales para los consumidores críticos institucionales.
-* **Justificación B (Incorrecta):** Es incorrecta. El escalamiento vertical ilimitado es inviable económicamente (FinOps) y no resuelve el problema de fondo frente a bucles infinitos de consumo descontrolado.
-* **Justificación C (Incorrecta):** Es incorrecta. Representa una medida desproporcionada que genera una denegación de servicio total a nivel nacional, interrumpiendo las operaciones de la DIAN por falta de controles de tráfico a nivel de software.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Reúne las tres reglas de oro de optimización de ingeniería de datos y **FinOps** sobre motores Lakehouse (Spark / Trino / Delta Lake):
+  1. **Particionamiento y *Z-Ordering* alineado con los patrones de acceso:** Particionar por `id_lote_carga` no sirve si las consultas filtran por `fecha_emision` y `nit_emisor`. Al particionar por fecha y aplicar *Z-Order* por NIT, el motor descarta el 99% de los archivos sin abrirlos (*Partition & File Pruning*).
+  2. **Predicados *SARGable* (Sin funciones que envuelvan la columna filtrada):** Aplicar `CAST(fecha_emision AS STRING)` desactiva las estadísticas *Min/Max* de los metadatos de Parquet/Delta y obliga a leer fila por fila (*Full Scan*). Usar comparación nativa de tipo `DATE` habilita el **Predicate Pushdown**.
+  3. **Proyección de Columnas (*Column Projection Pushdown*):** En un archivo columnar de 120 columnas, pedir solo las 3 columnas necesarias lee únicamente $\approx 3/120$ ($2.5\%$) de los bloques de disco, reduciendo drásticamente I/O, memoria y costo por TB escaneado.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque pasar de Parquet columnar comprimido a CSV plano multiplica por 5 a 10 veces el tamaño en disco y obliga a leer todas las columnas de cada fila.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta tanto técnica como legalmente.
 
 ---
 
-### Pregunta PJS 9: Solicitud Ciudadana bajo la Ley de Transparencia (Ley 1712 de 2014)
-**Eje Temático:** Transparencia Pasiva y Límites de la Reserva Tributaria (Ley 1712 de 2014)  
+### Pregunta PJS 9: Atención de Solicitudes Ciudadanas (Ley 1712 de 2014 y Ley 1581 de 2012) vs. Reserva Tributaria (Art. 583 E.T.)
+**Eje Temático:** Unidades 6 y 7 — Clasificación de Sujetos Peticionarios y Servicios de Datos Abiertos vs. Reservados  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Un periodista presenta un derecho de petición ante la DIAN exigiendo que, en virtud del principio de máxima publicidad y la Ley 1712 de 2014, se le entregue a través de una API o en archivos planos el listado individual de los 1.000 mayores declarantes de renta del país, detallando el NIT, la razón social, el patrimonio líquido declarado y el impuesto neto pagado en el último año gravable.
+Un centro de investigación económica de una universidad privada radica un derecho de petición invocando la **Ley 1712 de 2014 (Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional)**, solicitando que la Subdirección de Procesamiento de Datos le habilite acceso directo a una API de **DataR** que entregue el listado nominal con nombre completo, NIT, dirección, ingresos netos, patrimonio líquido e impuesto a cargo de cada uno de los 5 millones de declarantes de Renta personas naturales del último año gravable. Alternativamente, señala que si existe restricción legal sobre el detalle individual, requiere las estadísticas agregadas de recaudo y patrimonio agrupadas por departamento, sector económico CIIU (a 2 dígitos) y decil de ingreso.
 
 **Enunciado:**  
-Como Inspector I llamado a proyectar el concepto técnico para la respuesta jurídica, ¿cuál es el fundamento aplicable a este requerimiento?
+Al evaluar técnica y jurídicamente la solicitud para definir qué servicio de datos puede aprovisionarse conforme al Artículo 583 del Estatuto Tributario, la Ley 1712 de 2014 y la Ley 1581 de 2012, la decisión procedente es
 
 **Opciones de respuesta:**  
-- **A.** Conceptuar que la solicitud debe ser denegada por estar cobijada bajo la excepción de información reservada del Artículo 19 de la Ley 1712 de 2014 en concordancia con el Artículo 583 del E.T., ofreciendo en su lugar las estadísticas agregadas y anonimizadas disponibles.
-- **B.** Conceptuar que la información debe entregarse inmediatamente, pues al tratarse de un medio de comunicación prima el derecho ciudadano a la información pública sobre cualquier reserva tributaria.
-- **C.** Proponer la entrega de la lista eliminando únicamente la razón social, pero dejando visibles el NIT y las cifras exactas de patrimonio e impuestos pagados.
+- **A.** denegar de manera motivada el acceso a la base de datos nominal individualizada, por cuanto las bases gravables y la determinación privada de los impuestos están protegidas por la excepción legal expresa de **Reserva Tributaria (Art. 583 E.T. en concordancia con el Art. 19 de la Ley 1712 de 2014)**, y en su lugar suministrar o redireccionar al servicio de **Datos Abiertos / Estadísticas Agregadas y Anonimizadas** (en coordinación con la Subdirección de Estudios Económicos), aplicando controles de $k$-anonimato (supresión de celdas con baja frecuencia) para impedir cualquier reidentificación indirecta de contribuyentes.
+- **B.** habilitar el acceso total a la base nominal con NIT, dirección y patrimonio individual de los 5 millones de ciudadanos, argumentando que la Ley de Transparencia (Ley 1712 de 2014) derogó el Artículo 583 del Estatuto Tributario para las universidades.
+- **C.** negar incluso la entrega de cifras macroeconómicas agregadas nacionales, declarando secreto de Estado el monto total del recaudo anual del país.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El derecho de acceso a la información pública no es absoluto. El Artículo 19 de la Ley 1712 de 2014 exceptúa expresamente la información reservada consagrada en la Constitución y la ley, como la Reserva Tributaria (Art. 583 E.T.), diseñada para proteger la intimidad económica y los secretos comerciales de los contribuyentes.
-* **Justificación B (Incorrecta):** Es incorrecta. La actividad periodística no constituye una causal de levantamiento de la reserva tributaria en Colombia.
-* **Justificación C (Incorrecta):** Es incorrecta. El NIT es la clave unívoca del RUT y permite la identificación inmediata y certera del contribuyente, vulnerando de forma directa la reserva legal.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. El **Artículo 19 de la Ley 1712 de 2014** respeta expresamente las reservas legales preexistentes, entre ellas la **Reserva Tributaria del Artículo 583 del Estatuto Tributario** y el régimen de datos personales (**Ley 1581 de 2012**). Ningún particular, periodista ni universidad privada tiene derecho a conocer las bases gravables o declaraciones individuales de terceros sin autorización expresa del titular. Sin embargo, bajo el principio de máxima divulgación y datos abiertos, la información **estadística agregada e irreversiblemente anonimizada** (donde se aplican técnicas como $k$-anonimato para evitar que en un municipio pequeño con una sola empresa de cierto sector CIIU se deduzca su renta individual) sí es pública y de interés general.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque la Ley 1712 de 2014 no derogó la Reserva Tributaria; entregar la base nominal constituiría violación ilícita de reserva legal.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque las estadísticas agregadas y anónimas de recaudo fiscal son información pública activa conforme a la Ley 1712 de 2014.
 
 ---
 
-### Pregunta PJS 10: Auditoría Forense y Trazabilidad de Consultas en Servicios de Datos
-**Eje Temático:** Auditoría Forense Inmutable y Trazabilidad del Artículo 583 del E.T.  
+### Pregunta PJS 10: Caso Integrador de Gobierno y Gestión de Servicios de Datos en un Vencimiento Crítico Nacional
+**Eje Temático:** Integración de las Unidades 1 a 8 — Operación Integral de Servicios de Datos en DataR  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-La Oficina de Control Interno Disciplinario de la DIAN adelanta una investigación por presunta extorsión y fuga de información reservada de un reconocido empresario. Se sospecha que un funcionario consultó sin autorización su declaración de renta y activos en el exterior para vender dicha información a terceros. La Subdirección de Procesamiento de Datos es requerida para aportar la evidencia digital del acceso.
+Durante la semana pico de vencimientos de presentación de la Declaración de Renta de Personas Naturales, el **Servicio de Datos de Consulta de Información Reportada por Terceros (Exógena para Declaración Sugerida)** expuesto desde **DataR** presenta tres desafíos simultáneos:
+1. El tráfico legítimo de ciudadanos consultando su información se cuadruplica entre las 9:00 a.m. y las 11:00 a.m., acercando la latencia $p_{95}$ al límite superior del **SLO** interno ($400\text{ ms}$), aunque sin superar aún el **SLA** ($800\text{ ms}$).
+2. Un banco reportante transmite un archivo extemporáneo de corrección del Formato 1019 (movimientos en cuentas corrientes) con un cambio no autorizado en el formato de tres columnas numéricas que vienen con símbolos de moneda (`$`), lo que rompería el esquema de la vista productiva si se cargara directamente.
+3. Un funcionario de otra área pide que, para acelerar las consultas hoy, se desactive temporalmente el filtro de seguridad que valida que cada ciudadano autenticado solo pueda ver los registros asociados a su propio NIT y el registro de auditoría en el API Gateway.
 
 **Enunciado:**  
-¿Qué componentes del registro de auditoría forense del servicio de datos gobernado debe extraer el Inspector I para sustentar la investigación con plena validez probatoria?
+Integrando las competencias del Inspector I en la Subdirección de Procesamiento de Datos (Art. 56 Decreto 1742 de 2020 y MERF Resolución 067 de 2024), el plan de acción técnico y normativo que resuelve correctamente los tres frentes es:
 
 **Opciones de respuesta:**  
-- **A.** El log forense inmutable que certifique la identidad digital del usuario (JWT/credencial), timestamp exacto, IP de origen, parámetros de búsqueda y la ausencia de un número de radicado de expediente válido asociado a la consulta.
-- **B.** El informe mensual de consumo de memoria y CPU del servidor donde corrió la base de datos durante el mes del incidente.
-- **C.** Un certificado emitido por el jefe inmediato del funcionario investigado indicando que confía plenamente en la ética y honorabilidad de su subordinado.
+- **A.** (1) Activar el escalamiento horizontal elástico (*Auto-Scaling*) y el caché de lectura en el pool de cómputo dedicado al servicio DaaS al haberse alcanzado el umbral preventivo del **SLO**, protegiendo así el cumplimiento del **SLA**; (2) aplicar el patrón **Write-Audit-Publish (WAP)** y las reglas del **Contrato de Datos**, enviando a la tabla de cuarentena (*Dead-Letter Table*) o normalizando en la capa Silver el archivo bancario con símbolos `$` antes de permitir su paso a la capa Gold; y (3) rechazar de plano la desactivación de los filtros **RLS/ABAC** y de los logs de auditoría, por cuanto la garantía de **Reserva Tributaria (Art. 583 E.T.)** y privacidad (**Ley 1581 de 2012**) es innegociable bajo cualquier condición de carga.
+- **B.** (1) Esperar sin hacer nada hasta que el servicio colapse por completo y se incumpla el SLA durante varios días; (2) cargar directamente en la capa Gold el archivo corrupto con símbolos `$` para que falle la API; y (3) desactivar la autenticación y el filtro por NIT para que cualquier ciudadano pueda ver la información bancaria de sus vecinos más rápido.
+- **C.** Apagar el servicio de consulta ciudadana durante toda la semana de vencimientos tributarios para ahorrar presupuesto de nube y evitar incidentes.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La trazabilidad inmutable y el principio de responsabilidad demostrada (*Accountability*) exigen que cada transacción sobre datos reservados registre unívocamente al actor, el contexto temporal y la justificación administrativa (número de expediente). La ausencia de expediente asociado al acceso demuestra el uso indebido de los privilegios informáticos con fines personales o delictivos.
-* **Justificación B (Incorrecta):** Es incorrecta. Aporta datos de rendimiento de infraestructura que no guardan relación con la individualización del usuario que ejecutó la consulta.
-* **Justificación C (Incorrecta):** Es incorrecta. Carece de valor técnico y probatorio dentro de un proceso disciplinario o penal, donde la evidencia digital debe ser objetiva, verificable e inalterable.
-
----
-
-## Checklist de Verificación y Buenas Prácticas para el Inspector I
-- [ ] Todo nuevo acceso a datos de los sistemas de la DIAN debe estructurarse como un Servicio Gobernado (DaaS) y nunca como conexión directa a bases operacionales.
-- [ ] Los contratos de datos deben formalizarse bajo el enfoque *Contract-First* antes de iniciar desarrollos en la capa de consumo.
-- [ ] Todo cambio disruptivo (*Breaking Change*) debe incrementar la versión MAJOR y respetar una ventana de deprecación mínima de 6 meses.
-- [ ] Las métricas de nivel de servicio deben descomponerse estrictamente en SLI, SLO y SLA, monitoreando tanto latencia como frescura del dato.
-- [ ] Las anomalías en los cinco pilares de observabilidad deben activar disyuntores de datos (*Circuit Breakers*) para evitar la corrupción de datos aguas abajo.
-- [ ] Las políticas de seguridad deben combinar RBAC, ABAC, RLS y Dynamic Data Masking en el API Gateway.
-- [ ] Las consultas sobre datos amparados por el Artículo 583 del E.T. deben registrarse en un log de auditoría forense inmutable con justificación obligatoria.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Articula magistralmente todos los pilares del módulo:
+  1. **SRE y Gestión de Capacidad (Unidades 3 y 8):** Precisamente para eso el **SLO** ($400\text{ ms}$) se diseña más estricto que el **SLA** ($800\text{ ms}$): para disparar proactivamente el *Auto-Scaling* del clúster de cómputo aislado antes de que el ciudadano sufra degradación.
+  2. **Contratos de Datos y Observabilidad WAP (Unidades 2 y 4):** La compuerta de calidad intercepta el archivo con error de formato (`$`), evitando una caída o corrupción silenciosa en la capa Gold.
+  3. **Seguridad *Zero Trust* y Reserva Tributaria (Unidad 6):** Ninguna urgencia de rendimiento justifica deshabilitar el control de acceso a nivel de fila (*Row-Level Security*) ni el registro forense de auditoría exigidos por el **Artículo 583 del Estatuto Tributario** y la **Ley 1581 de 2012**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque viola las reglas de SRE, calidad de datos y expone ilegalmente información sujeta a reserva tributaria y bancaria.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque apagar injustificadamente un servicio misional crítico durante los vencimientos vulnera los principios de eficacia administrativa y servicio al ciudadano.
 
 ---
 
 ## Lecturas Complementarias y Bibliografía Oficial Comentada
 
-### Lecturas Complementarias Recomendadas para Profundización
-1. **Moses, B., Gavish, L., & Deng, D. (2022).** *Data Quality Fundamentals: A Practitioner's Guide to Building Trustworthy Data Pipelines*. O'Reilly Media.
-   * **Por qué leerlo para el examen:** Es la obra de referencia que definió formalmente los cinco pilares de la observabilidad de datos (Frescura, Distribución, Volumen, Esquema y Linaje) y las estrategias para erradicar el tiempo de inactividad de datos (*Data Downtime*).
-2. **Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016).** *Site Reliability Engineering: How Google Runs Production Systems*. O'Reilly Media.
-   * **Por qué leerlo para el examen:** Desarrolla con rigor matemático la definición de Indicadores (SLI), Objetivos (SLO), Acuerdos (SLA) y Presupuestos de Error (*Error Budgets*), indispensables para la gestión de servicios de misión crítica.
-3. **DAMA International (2017).** *DAMA-DMBOK: Data Management Body of Knowledge (2nd Edition)*. Technics Publications.
-   * **Por qué leerlo para el examen:** Establece las funciones de gobierno de servicios de datos, seguridad, control de acceso, catálogos y gestión de datos maestros para entidades de gran escala.
-
-### Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)
-
-#### A. Marco Legal Colombiano y Reserva Tributaria
-* **Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes al 19 de junio de 2026).** Artículo 583 (Reserva de la declaración tributaria), Artículo 584 (Excepciones procesales a la reserva), Artículo 585 (Intercambio de información con entidades territoriales y reciprocidad), Artículo 684 (Facultades de fiscalización e investigación) y Artículo 616-1 (Facturación electrónica).
-* **Ley 1581 de 2012.** Por la cual se dictan disposiciones generales para la protección de datos personales (Habeas Data, principios de finalidad, circulación restringida, seguridad y confidencialidad).
-* **Ley 1712 de 2014.** Ley de Transparencia y del Derecho de Acceso a la Información Pública Nacional (Artículos 18 y 19: Excepciones de información clasificada y reservada).
-* **Decreto 1742 de 2020.** Estructura orgánica de la UAE DIAN — Funciones de la Dirección de Gestión de Innovación y Tecnología y de la Subdirección de Procesamiento de Datos (Art. 56).
-* **Decretos Ley 071 de 2020 y 927 de 2023.** Régimen especial de carrera administrativa, deberes, prohibiciones y faltas disciplinarias por violación de la reserva tributaria en la DIAN.
-* **Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC).** *Marco de Referencia de Arquitectura Empresarial (MRAE).* Dominio de Información, Interoperabilidad y Servicios Ciudadanos Digitales.
-
-#### B. Estándares Internacionales de Arquitectura y Gobernanza de APIs
-* **OpenAPI Initiative (2021).** *OpenAPI Specification Version 3.1.0*. Linux Foundation.
-* **National Institute of Standards and Technology (NIST).** *NIST SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations*. Controles de acceso AC-3, AC-6 y auditoría AU-2.
-* **Internet Engineering Task Force (IETF).** *RFC 6749 (The OAuth 2.0 Authorization Framework)* y *RFC 7519 (JSON Web Token - JWT)*.
-* **Semantic Versioning Specification (SemVer 2.0.0).** *Evolución de software y contratos de datos backward-compatible*.
+1. **AXELOS / PeopleCert — *ITIL® Foundation: ITIL 4 Edition* e ISO/IEC 20000-1:2018 (*Information technology — Service management*):** Marcos internacionales rectores para la Gestión de Servicios Tecnológicos y de Datos: Sistema de Valor del Servicio (SVS), co-creación de valor (**Utilidad $\land$ Garantía**), Gestión del Catálogo de Servicios, Gestión de Niveles de Servicio (**SLA, SLO, SLI, OLA, UC**), Gestión de Incidentes vs. Problemas (**RCA / KEDB**), Habilitación de Cambios (**CAB**) y Gestión de la Capacidad y el Rendimiento.
+2. **Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (Google) — *Site Reliability Engineering (SRE): How Google Runs Production Systems*:** Referencia técnica fundamental sobre el diseño y cálculo de **SLIs** (percentiles $p_{50}, p_{95}, p_{99}$), **SLOs**, **SLAs** y administración basada en **Presupuestos de Error (*Error Budgets*)**.
+3. **Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC) — *Marco de Interoperabilidad para el Gobierno Digital*, *Lenguaje Común de Intercambio de Información* y *Decreto 767 de 2022*:** Normativa oficial colombiana sobre los 4 dominios de interoperabilidad (Político-Legal, Organizacional, Semántico y Técnico) y la arquitectura de intercambio seguro mediante **X-Road** (Servicios Ciudadanos Digitales Base).
+4. **DAMA International — *DAMA-DMBOK2 (Data Management Body of Knowledge, 2nd Edition)*, Capítulos de Integración e Interoperabilidad, Seguridad de Datos y Calidad:** Fundamentos de arquitecturas **Data-as-a-Service (DaaS)**, **Virtualización de Datos**, Contratos de Datos y Observabilidad.
+5. **Estatuto Tributario Nacional (Artículos 583 a 587), Ley 1712 de 2014 (Ley de Transparencia) y Ley 1581 de 2012 (Protección de Datos Personales):** Régimen jurídico estricto sobre la **Reserva Tributaria**, sus excepciones taxativas y el protocolo de intercambio de información tributaria con municipios y departamentos (**Art. 585 E.T.**).
+6. **Decreto 1742 de 2020 (Artículos 9 y 56) y Resolución DIAN No. 067 de 2024 (MERF):** Competencias legales de la **Subdirección de Procesamiento de Datos** en el aprovisionamiento, integración, calidad y disponibilidad de servicios de datos institucionales y de la **Oficina de Seguridad de la Información (OSI)** en la supervisión del SGSI.
