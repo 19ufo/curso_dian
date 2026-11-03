@@ -1,709 +1,1001 @@
 ---
-titulo: "08. Misionalidad de la DIAN"
-modulo: 8
-componente: "Funcional - Servicios de Datos & Gestión de TI (60%)"
-cargo: "Inspector I (OPEC 236670 - Nivel Profesional)"
+id_eje: "08_misionalidad_dian"
+codigo_simo: "IND-08"
+titulo: "Misionalidad de la DIAN"
+opec_aplicables: ["236670"]
+denominacion: "Inspector I"
+nivel: "Profesional"
 dependencia: "Dirección de Gestión de Innovación y Tecnología / Subdirección de Procesamiento de Datos"
-operador: "Universidad de San Buenaventura / Areandina"
+componente: "Competencias Funcionales (Carácter Eliminatorio - Mínimo 70.00 pts)"
 corte_normativo: "19 de junio de 2026"
-total_preguntas: 10
-total_flashcards: 20
+unidades_totales: 8
 ---
 
-# Guía de Estudio e Inmersión Técnica: Misionalidad de la DIAN
+# Guía Maestra de Estudio: 08. Misionalidad de la DIAN (De Básico a Avanzado)
 
-**Concurso de Méritos:** DIAN 2676 de 2026 — Comisión Nacional del Servicio Civil (CNSC)  
-**Operador Académico:** Universidad de San Buenaventura / Areandina  
-**Cargo Objetivo:** Inspector I (OPEC 236670 - Nivel Profesional)  
-**Dependencia Asignada:** Subdirección de Procesamiento de Datos (Dirección de Gestión de Innovación y Tecnología - Nivel Central)  
-**Eje Temático Funcional:** 08. Misionalidad de la DIAN  
-**Ponderación en Prueba de Competencias Funcionales:** 60%  
-**Corte Normativo y Técnico Oficial:** 19 de junio de 2026  
+> [!EXAM] Propósito del Eje en la Prueba Escrita DIAN 2676 (Inspector I - OPEC 236670)
+> Como Científico o Ingeniero de Datos en la **Subdirección de Procesamiento de Datos**, cada tabla que procesas en **DataR**, cada regla de validación que programas en Apache Spark y cada cruce masivo que entregas tiene una razón de ser jurídica y económica: **la Misionalidad Tributaria, Aduanera y Cambiaria (TAC) de la DIAN**.
+>
+> En las pruebas escritas de la CNSC, un error común de los perfiles tecnológicos es no dominar los conceptos del negocio misional (por ejemplo, no saber diferenciar un bien *exento* de uno *excluido* de IVA al programar un cruce de devoluciones, confundir un *Requerimiento Especial* con una *Liquidación de Aforo*, no saber cómo se calcula la base gravable del IVA en una importación aduanera, o desconocer qué operaciones cambiarias vigila la DIAN frente a la Superfinanciera y Supersociedades).
+>
+> En este módulo construiremos ese dominio **desde cero hasta nivel avanzado**, explicando cada figura tributaria, aduanera y cambiaria con lenguaje claro, fórmulas matemáticas exactas y su traducción directa a las tablas y mallas de cruces de **DataR**.
 
 ---
 
-## Unidad 1: Objeto Misional y Seguridad Fiscal del Estado Colombiano
+## Mapa de Ruta Pedagógica Progresiva (8 Unidades de Aprendizaje)
 
-### 1.1 Fundamento Constitucional de la Potestad Tributaria y la UAE DIAN
-La Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN) es la institución del Estado colombiano encargada de administrar y garantizar la **Seguridad Fiscal del Estado**, entendida como el bien jurídico tutelado que asegura la recaudación efectiva y oportuna de los recursos necesarios para financiar el gasto público, sostener el Estado Social de Derecho y garantizar la inversión social consagrada en la Constitución Política de 1991.
+1. **Unidad 1:** Fundamentos Constitucionales de la Misionalidad de la DIAN, Seguridad Fiscal del Estado, Principios Tributarios (Arts. 95-9, 338 y 363 C.P.) y la UVT.
+2. **Unidad 2:** Teoría General del Tributo — Obligación Sustancial vs. Formal, los 5 Elementos del Tributo y el Mecanismo de Retención en la Fuente.
+3. **Unidad 3:** Catálogo de Impuestos Nacionales Administrados por la DIAN y su Lógica Matemática en DataR (Renta, IVA [Gravados vs. Exentos vs. Excluidos], INC, GMF, Patrimonio, RST e Impuestos Saludables/Ambientales).
+4. **Unidad 4:** El Ciclo de Procedimiento Tributario de Punta a Punta — Firmeza (Art. 714 E.T.), Fiscalización de Omisos vs. Inexactos, Liquidación Oficial, Discusión y Cobro Coactivo.
+5. **Unidad 5:** Misionalidad Aduanera Parte I — Territorio Aduanero (TAN), Zonas Primaria/Secundaria/Franca, Regímenes Aduaneros y Liquidación Matemática de Tributos Aduaneros (Decreto 1165 de 2019).
+6. **Unidad 6:** Misionalidad Aduanera Parte II — Las 3 Fases del Control Aduanero, Régimen de Aprehensión y Decomiso (Decreto Ley 920 de 2023) y Delitos de Contrabando.
+7. **Unidad 7:** Misionalidad Cambiaria de Competencia de la DIAN — Mercado Regulado, Cuentas de Compensación, Exógena Cambiaria y Régimen Sancionatorio (Decreto Ley 2245 de 2011).
+8. **Unidad 8:** Convergencia Misional en la Subdirección de Procesamiento de Datos — Las 5 Grandes Mallas de Triangulación Analítica 360° (Tributario + Aduanero + Cambiario + RUB) sobre DataR.
 
-El sustento constitucional de la misionalidad de la DIAN emana de tres mandatos superiores:
+---
 
-1. **El Deber Ciudadano de Contribuir (Artículo 95, Numeral 9 de la Constitución Política):** Establece como deber fundamental de toda persona en el territorio nacional *"contribuir al financiamiento de los gastos e inversiones del Estado dentro de conceptos de justicia y equidad"*. La DIAN es el brazo ejecutor y facilitador de esta obligación superior.
-2. **Los Principios del Sistema Tributario (Artículo 363 de la Constitución Política):** El sistema tributario se fundamenta en los principios de **equidad**, **eficiencia** y **progresividad**:
-   * *Equidad:* Trato igual a quienes están en idéntica situación económica (equidad horizontal) y carga tributaria diferenciada para quienes poseen mayor capacidad contributiva (equidad vertical).
-   * *Eficiencia:* Los tributos deben diseñarse y recaudarse con el menor costo administrativo posible para el Estado y la mínima carga operativa o fricción para el ciudadano cumplidor.
-   * *Progresividad:* A mayor nivel de ingreso, riqueza o patrimonio, mayor es la proporción de aporte fiscal requerida, mitigando la desigualdad socioeconómica.
-   * *Irretroactividad:* Las leyes tributarias no pueden aplicarse a hechos acaecidos con anterioridad a su promulgación (Art. 363, inciso 2).
-3. **El Criterio de Sostenibilidad Fiscal (Acto Legislativo 03 de 2011 - Art. 334 C.P.):** La sostenibilidad fiscal orienta la política económica del Estado para garantizar que el recaudo tributario y aduanero respalde el cumplimiento de las metas del Presupuesto General de la Nación (PGN) y el Marco Fiscal de Mediano Plazo (MFMP).
+## Unidad 1: Fundamentos Constitucionales de la Misionalidad de la DIAN, Seguridad Fiscal del Estado, Principios Tributarios y la UVT
 
-```diagram
-FUNDAMENTO CONSTITUCIONAL DE LA MISIONALIDAD DE LA DIAN
+### 1.1. ¿Cuál es el Objeto Misional de la DIAN explicado desde Cero? (Artículo 1 Decreto 1071 de 1999 y Artículo 3 Decreto 1742 de 2020)
+Si alguien te pregunta: *"¿Para qué existe la DIAN en Colombia?"*, la respuesta corta parece ser *"para cobrar impuestos"*. Pero en el examen de la CNSC, la respuesta técnica y legal es mucho más profunda y consta de **dos bienes jurídicos superiores** consagrados en el **Artículo 3 del Decreto 1742 de 2020**:
 
-                 [CONSTITUCIÓN POLÍTICA DE COLOMBIA (1991)]
-                                      |
-         +----------------------------+----------------------------+
-         |                                                         |
-         v                                                         v
- [Art. 95 Num. 9 C.P.]                                     [Art. 363 C.P.]
- Deber de Contribuir al                                    Principios del Sistema:
- Financiamiento del Estado                                 * Equidad
-                                                           * Eficiencia
-                                                           * Progresividad
-                                                           * Irretroactividad
-         \                                                         /
-          \                                                       /
-           +--------------------------+--------------------------+
-                                      |
-                                      v
-                       [UAE DIAN - DECRETO 1742 DE 2020]
-                       Misionalidad Tridimensional:
-                       1. Administración Tributaria Nacional
-                       2. Administración del Sistema Aduanero
-                       3. Control Cambiario de Comercio Exterior
-                                      |
-                                      v
-                       [SEGURIDAD FISCAL DEL ESTADO]
-                       Financiación del Gasto Social e Inversión Pública
+1. **Coadyuvar a garantizar la Seguridad Fiscal del Estado Colombiano:** Asegurar que el Estado recaude de manera efectiva, íntegra y oportuna los recursos financieros que necesita el Presupuesto General de la Nación (PGN) para sostener el Estado Social de Derecho (financiar hospitales, escuelas, infraestructura, justicia, defensa y programas sociales).
+2. **La Protección del Orden Público Económico Nacional:** Impedir que el contrabando, el lavado de activos, la evasión fiscal y la competencia ilegal destruyan la industria formal, el empleo y la estabilidad macroeconómica del país.
+
+#### ¿Qué administra y controla exactamente la DIAN para cumplir ese objeto? (Los 4 Ámbitos del Art. 3 Decreto 1742/2020)
+1. **Obligaciones Tributarias del Orden Nacional:** Impuestos internos nacionales (Renta, IVA, Consumo, GMF, Patrimonio, etc.). *(Nota de examen: La DIAN NO administra impuestos departamentales como el impuesto de vehículos o licores, ni municipales como el Predial o el ICA, salvo la recaudación unificada del ICA dentro del Régimen Simple de Tributación - RST que luego se transfiere a los municipios).*
+2. **Obligaciones Aduaneras:** El ingreso, permanencia, traslado y salida de mercancías hacia y desde el Territorio Aduanero Nacional (TAN), y la facilitación del comercio exterior lícito.
+3. **Obligaciones Cambiarias de su competencia:** El control sobre las operaciones de cambio internacional derivadas de importaciones y exportaciones de bienes, servicios asociados y profesionales de compra y venta de divisas en efectivo.
+4. **Derechos de Explotación y Gastos de Administración sobre Juegos de Suerte y Azar:** Aquellos explotados por entidades públicas del nivel nacional (en articulación con Coljuegos).
+
+```
+========================================================================================
+         ARQUITECTURA CONSTITUCIONAL Y MISIONAL DE LA UAE DIAN (C.P. + Dec. 1742)
+========================================================================================
+
+  [ DEBER CONSTITUCIONAL DE CONTRIBUIR (Art. 95 Num. 9 C.P.) ]
+  "Contribuir al financiamiento de los gastos e inversiones del Estado dentro de
+   conceptos de justicia y equidad"
+                                        |
+                                        v
+  [ PRINCIPIOS DEL SISTEMA TRIBUTARIO (Arts. 338 y 363 C.P.) ]
+  1. Legalidad (Reserva de Ley)   2. Equidad (Horizontal/Vertical)   3. Eficiencia
+  4. Progresividad                5. Irretroactividad de la Ley Tributaria
+                                        |
+                                        v
+  +------------------------------------------------------------------------------------+
+  |            OBJETO MISIONAL DE LA UAE DIAN (Art. 3 Decreto 1742 de 2020)            |
+  |    "Garantizar la SEGURIDAD FISCAL DEL ESTADO y la protección del ORDEN PÚBLICO    |
+  |     ECONÓMICO NACIONAL mediante la Facilitación y el Control en 4 Frentes:"        |
+  +------------------------------------------------------------------------------------+
+          |                         |                         |                    |
+          v                         v                         v                    v
+  [1. TRIBUTARIO]           [2. ADUANERO]             [3. CAMBIARIO]       [4. JUEGOS DE]
+  Impuestos internos        Comercio exterior,        Canalización de      [SUERTE/AZAR ]
+  del orden nacional        aranceles y lucha         divisas de comercio  Derechos de
+  (E.T. Decreto 624/89)     contra contrabando        exterior y efectivo  explotación nac.
+========================================================================================
 ```
 
-### 1.2 Objeto y Naturaleza Institucional de la UAE DIAN
-Conforme a su régimen fundacional (**Decreto 1071 de 1999**) y su estructura orgánica vigente (**Decreto 1742 de 2020**), la DIAN tiene por objeto coadyuvar a garantizar la seguridad fiscal del Estado y la protección del orden público económico nacional, mediante la administración y control al debido cumplimiento de las obligaciones tributarias, aduaneras y cambiarias, los derechos de explotación y gastos de administración sobre los juegos de suerte y azar explotados por entidades públicas del nivel nacional, y la facilitación de las operaciones de comercio exterior en condiciones de equidad, transparencia y legalidad.
+---
 
-Para materializar este objeto, la misionalidad de la entidad no opera como un fin punitivo en sí mismo, sino bajo una doble perspectiva estratégica:
-* **Facilitación del Cumplimiento Voluntario:** A través de servicios digitales simplificados, declaraciones sugeridas basadas en inteligencia de datos sobre DataR, facturación electrónica y canales virtuales de atención al ciudadano.
-* **Control y Lucha Decidida contra la Evasión y el Contrabando:** Mediante el ejercicio riguroso de las facultades de fiscalización, auditoría, determinación, cobro coactivo y persecución penal coordinada con la Fiscalía General de la Nación y la Policía Fiscal y Aduanera (POLFA).
+### 1.2. Los 5 Principios Constitucionales del Sistema Tributario (Artículos 338 y 363 de la Constitución Política)
+Para un **Inspector I**, comprender estos cinco principios constitucionales es indispensable porque cada uno tiene implicaciones directas en el procesamiento de datos en **DataR**:
 
-### 1.3 Los Tres Ejes Misionales de la DIAN: Matriz Comparativa Institucional
-La siguiente tabla analiza en detalle los tres pilares de competencia que integran el mandato de la entidad:
+1. **Principio de Legalidad y Reserva de Ley (Art. 338 C.P. — *"Nullum tributum sine lege"*):**
+   * En tiempo de paz, solamente el **Congreso de la República**, las asambleas departamentales y los concejos distritales y municipales pueden imponer contribuciones fiscales o parafiscales.
+   * La ley, las ordenanzas y los acuerdos deben fijar, **directamente**, los cinco elementos del tributo: **los sujetos activos y pasivos, los hechos y las bases gravables, y las tarifas de los impuestos**.
+   * *Implicación en la DIAN:* Ni el Director General de la DIAN por resolución ni la Subdirección de Procesamiento de Datos al programar un algoritmo en DataR pueden "crear" un impuesto nuevo ni inventar una tarifa o base gravable que no esté expresamente fijada en la Ley.
+2. **Principio de Equidad (Art. 95-9 y Art. 363 C.P.):**
+   * **Equidad Horizontal:** Dos contribuyentes que se encuentran en idéntica situación económica y capacidad contributiva deben recibir el mismo trato fiscal y pagar el mismo impuesto.
+   * **Equidad Vertical:** Dos contribuyentes con diferente capacidad económica deben ser tratados de manera diferenciada para que aporte más quien mayor riqueza posee.
+3. **Principio de Progresividad (Art. 363 C.P.):**
+   * Exige que la carga tributaria crezca más que proporcionalmente a medida que aumenta la capacidad económica del contribuyente.
+   * *Diferencia entre Impuesto Progresivo vs. Regresivo:* El **Impuesto sobre la Renta de Personas Naturales** es **progresivo** (tiene tarifas marginales por rangos en UVT: $0\%, 19\%, 28\%, 33\%, 35\%, 37\%$ y $39\%$). En cambio, los impuestos indirectos al consumo como el **IVA** tienden a ser **regresivos** si no se corrigen, porque cobrar el $19\%$ sobre un producto básico representa una tajada mucho mayor del salario de una familia vulnerable que del ingreso de un multimillonario (por eso existen bienes de la canasta familiar excluidos o exentos y mecanismos como la Devolución del IVA a hogares vulnerables).
+4. **Principio de Eficiencia (Art. 363 C.P.):**
+   * El tributo debe recaudarse con el **menor costo administrativo para el Estado** y con el **menor costo de cumplimiento (tiempo, trámites y fricción) para el ciudadano**.
+   * *Traducción tecnológica en tu cargo:* Toda la estrategia de **Transformación Digital de la DIAN** (Facturación Electrónica, Declaraciones Sugeridas prellenadas desde **DataR**, Devoluciones Automáticas y RUT Digital) es la materialización directa del principio constitucional de **Eficiencia**.
+5. **Principio de Irretroactividad de la Ley Tributaria (Art. 338 inciso 3 y Art. 363 inciso 2 C.P. — ¡Pregunta Fija de Examen!):**
+   * **Regla 1:** *"Las leyes tributarias no se aplicarán con retroactividad"*. Una ley aprobada hoy no puede gravar hechos económicos ya consumados en años anteriores.
+   * **Regla 2 (Impuestos de Período — Art. 338 inciso 3 C.P.):** *"Las leyes, ordenanzas o acuerdos que regulen contribuciones en las que la base sea el resultado de hechos ocurridos durante un período determinado, **no pueden aplicarse sino a partir del período que comience después de iniciar la vigencia de la respectiva ley**, ordenanza o acuerdo"*.
+   * *Ejemplo práctico para programar en DataR:* Si el Congreso aprueba una Reforma Tributaria el **15 de diciembre de 2026** cambiando la tarifa o las deducciones del Impuesto sobre la Renta (que es un impuesto de período anual del 1 de enero al 31 de diciembre), ese cambio **NO aplica para el año gravable 2026** (que se declara en 2027), sino que **solo empieza a regir a partir del 1 de enero del año gravable 2027** (que se declarará en 2028).
 
-| Criterio de Comparación | Eje 1: Misionalidad Tributaria | Eje 2: Misionalidad Aduanera | Eje 3: Misionalidad Cambiaria |
+---
+
+### 1.3. ¿Qué es la UVT (Unidad de Valor Tributario — Artículo 868 E.T.) y cómo se usa en Ingeniería de Datos?
+Antes de 2006, las leyes tributarias colombianas fijaban los topes y sanciones en pesos nominales (por ejemplo, *"están obligados a declarar quienes tengan ingresos superiores a $\$60.000.000$"*), lo que obligaba a expedir decretos interminables cada año por culpa de la inflación.
+
+La **Ley 1111 de 2006** modificó el **Artículo 868 del Estatuto Tributario** creando la **Unidad de Valor Tributario (UVT)**:
+* Es una unidad de medida de valor que representa los valores tributarios que se encontraban anteriormente expresados en pesos, con el fin de homogeneizarlos y actualizarlos automáticamente cada año según la variación del **Índice de Precios al Consumidor (IPC) para ingresos medios** certificada por el **DANE** (en el período comprendido entre el 1 de octubre del año anterior y el 1 de octubre del año en curso).
+* El **Director General de la DIAN** publica mediante **Resolución** antes del 1 de enero de cada año el valor oficial en pesos de una (1) UVT para esa anualidad.
+* **Buena Práctica de Ingeniería en DataR:** En los pipelines de la Subdirección de Procesamiento de Datos, **jamás se queman (*hardcodean*) topes en pesos fijos dentro del código SQL o PySpark** (ej. nunca escribir `WHERE ingresos > 65000000`). En su lugar, se cruza contra la tabla de referencia paramétrica `dim_valor_uvt_anual` usando la fórmula parametrizada: `WHERE ingresos_brutos >= (1400 * uvt.valor_uvt_cop)`.
+
+::: q
+El Congreso de la República promulga y publica en el Diario Oficial el 20 de noviembre de 2026 una nueva ley de reforma tributaria que incrementa del 35% al 38% la tarifa general del Impuesto sobre la Renta para las personas jurídicas y elimina una deducción especial. Un directivo solicita a la Subdirección de Procesamiento de Datos que reprograme de inmediato los algoritmos del liquidador del Formulario 110 y los cruces de auditoría en DataR del año gravable 2026 (cuyas declaraciones se presentan en abril de 2027) para cobrarles a todas las empresas la nueva tarifa del 38% sobre las utilidades que obtuvieron entre enero y diciembre de 2026. Conforme a los Artículos 338 y 363 de la Constitución Política, el Inspector I debe advertir que dicha parametrización para el año gravable 2026 es:
+- [x] Inconstitucional e improcedente por violación de los principios de Irretroactividad de la Ley Tributaria (Art. 363 C.P.) e Irretrospectividad en Impuestos de Período (Art. 338 inciso 3 C.P.), dado que al ser el Impuesto sobre la Renta un tributo de período anual, las modificaciones sustanciales aprobadas en noviembre de 2026 solo pueden aplicarse a partir del período gravable que comience después de entrar en vigencia la ley, esto es, a partir del 1 de enero del año gravable 2027.
+- [ ] Procedente y obligatoria para el año gravable 2026, porque las declaraciones del año 2026 se presentan en abril de 2027 y la ley ya estará vigente en esa fecha de presentación.
+- [ ] Aplicable incluso de forma retroactiva a los años gravables 2023, 2024 y 2025 para recaudar mayores recursos para el Presupuesto General de la Nación.
+---
+**Explicación Técnica y Normativa:**
+Esta es una de las reglas constitucionales más evaluadas en las pruebas de la DIAN: en los **impuestos de período** (como el Impuesto sobre la Renta, cuyo período va del 1 de enero al 31 de diciembre), el **Artículo 338 inciso 3 de la Constitución Política** prohíbe aplicar en el período en curso una ley promulgada antes de que termine el año. Aunque la declaración del año gravable 2026 se presente formalmente en abril de 2027, las reglas sustanciales (tarifa, base gravable, deducciones) que rigen el año gravable 2026 son las que estaban vigentes al iniciar dicho período. La reforma promulgada en noviembre de 2026 solo rige para los hechos económicos ocurridos a partir del **1 de enero de 2027 (Año Gravable 2027)**.
+:::
+
+---
+
+## Unidad 2: Teoría General del Tributo — Obligación Sustancial vs. Formal, los 5 Elementos del Tributo y el Mecanismo de Retención en la Fuente
+
+### 2.1. ¿Qué diferencia hay entre Impuestos, Tasas y Contribuciones Especiales?
+En la hacienda pública colombiana, el género se llama **Tributos**, y se divide en tres especies que debes distinguir claramente:
+
+| Especie de Tributo | ¿Exige una contraprestación directa e individualizada para quien lo paga? | ¿A dónde van los recursos? | Ejemplo en Colombia |
 | :--- | :--- | :--- | :--- |
-| **Objetivo Superior** | Garantizar el recaudo de los impuestos directos e indirectos del orden nacional para el PGN. | Facilitar el comercio exterior lícito y proteger la industria nacional contra el contrabando y el fraude aduanero. | Vigilar la debida canalización de divisas originadas en operaciones de importación y exportación de bienes y servicios. |
-| **Base Normativa Rectoral** | Estatuto Tributario Nacional (Decreto 624 de 1989 y leyes de reforma tributaria). | Estatuto Aduanero (Decreto 1165 de 2019, Decreto 920 de 2023 - Régimen Sancionatorio). | Régimen Cambiario (Ley 9 de 1991, Resoluciones Externas Junta Directiva Banco de la República, Decreto Ley 2245 de 2011). |
-| **Sujetos Obligados** | Personas naturales, personas jurídicas, sucesiones ilíquidas y agentes de retención. | Importadores, exportadores, declarantes, agencias de aduanas, usuarios de zonas francas y depósitos. | Personas naturales y jurídicas que realicen pagos o cobros de comercio exterior y profesionales de cambio de divisas. |
-| **Hecho Generador / Ámbito de Control** | Obtención de renta, realización de ventas de bienes y servicios, transacciones financieras, propiedad patrimonial. | Entrada o salida de mercancías del territorio aduanero nacional (TAN) y su desaduanamiento legal. | Operaciones canalizables obligatoriamente a través del mercado regulado (IMC y cuentas de compensación). |
-| **Sistemas de Información DIAN** | MUISCA, Factura Electrónica (UBL 2.1), Nómina Electrónica, Información Exógena, DataR. | SYGA (Importaciones/Exportaciones), Sistema de Carga, Escáneres de Inspección No Intrusiva, DataR. | Módulo Cambiario de Información (MUISCA Cambiario), Cruces con Balanza Cambiaria del Banco de la República. |
-| **Consecuencia del Incumplimiento** | Sanciones tributarias (extemporaneidad, inexactitud), intereses moratorios y determinación oficial de tributos. | Aprehensión, decomiso de mercancías, sanciones aduaneras a operadores y tipificación penal de contrabando. | Sanciones cambiarias pecuniarias sobre el valor no canalizado o canalizado indebidamente (Decreto Ley 2245 de 2011). |
-
-> [!EXAM]
-> **Alerta de Examen CNSC / Areandina:**  
-> En las pruebas de juicio situacional para empleos profesionales de la Subdirección de Procesamiento de Datos, las preguntas frecuentemente exploran la articulación de estos tres ejes misionales en el repositorio institucional **DataR**. La respuesta correcta siempre enfatiza que **el cruce integral de datos tributarios (factura electrónica), aduaneros (declaraciones de importación) y cambiarios (información de canalización de divisas)** es la estrategia técnica más potente para descubrir redes de lavado de activos, empresas de papel y sobrefacturación o subfacturación en frontera.
-
-> [!LAW]
-> **Fundamento Jurídico - Artículo 363 C.P. y Eficiencia Administrativa:**  
-> La Corte Constitucional ha reiterado de manera pacífica (Sentencias C-419 de 1995, C-776 de 2003 y C-1003 de 2004) que la eficiencia tributaria no es únicamente un principio técnico, sino un imperativo constitucional: el Estado tiene la obligación de modernizar sus tecnologías y repositorios informáticos para minimizar la evasión y evitar que la carga tributaria recaiga exclusivamente sobre los contribuyentes formales y cautivos.
+| **1. Impuestos** *(Eje central de la DIAN)* | **NO.** Es una prestación unilateral y obligatoria; el ciudadano lo paga por realizar el hecho generador, sin recibir a cambio un servicio individual medible a su favor. | Entran a la **caja única del Presupuesto General de la Nación** (principio de unidad de caja) para financiar gastos públicos generales (salud, defensa, educación, vías). | Impuesto sobre la Renta, IVA, Impuesto Nacional al Consumo, GMF, Impuesto al Patrimonio, Aranceles. |
+| **2. Tasas** | **SÍ.** Se cobra como recuperación de costos por la prestación efectiva o potencial de un servicio público individualizado al usuario que decide utilizarlo. | Se destinan exclusivamente a financiar y mantener el servicio público que dio origen al cobro. | Peajes viales, tasas aeroportuarias, tarifas de servicios registrales. |
+| **3. Contribuciones Especiales / Parafiscales** | **Beneficio grupal o sectorial:** Gravan a un sector económico específico o a los propietarios beneficiados por una obra pública. | Se destinan exclusivamente al beneficio de ese mismo sector económico o a financiar la obra respectiva. | Contribución de valorización por una obra vial; aportes parafiscales (SENA, ICBF, Cajas de Compensación). |
 
 ---
 
-## Unidad 2: Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados
+### 2.2. Obligación Tributaria Sustancial (Art. 1 E.T.) vs. Obligaciones Formales e Instrumentales
+En cada modelo de datos de **DataR** verás reflejada la dualidad fundamental del Derecho Tributario:
 
-### 2.1 Estructura Dogmática de la Obligación Tributaria
-En el derecho tributario colombiano, la obligación tributaria se bifurca en dos naturalezas jurídicas complementarias: la **Obligación Sustancial** y las **Obligaciones Formales**.
+#### A. La Obligación Tributaria Sustancial (Artículo 1 del Estatuto Tributario — *"Dar / Pagar dinero"*)
+> *"La obligación tributaria sustancial se origina al realizarse el presupuesto o los presupuestos previstos en la ley como generadores del impuesto y ella tiene por objeto el **pago del tributo**."*
 
-#### A. La Obligación Tributaria Sustancial (Artículo 1 del Estatuto Tributario)
-La obligación tributaria sustancial se origina al realizarse el presupuesto o los presupuestos previstos en la ley como generadores del tributo y tiene por objeto exclusivo el **pago efectivo del impuesto en dinero** a favor del fisco nacional. Para que una obligación tributaria sustancial exista válidamente, la ley debe definir de manera expresa e inequívoca sus **cinco elementos esenciales**:
+Para que nazca esta obligación de pagar dinero al Estado, deben concurrir los **5 Elementos Esenciales del Tributo**:
+1. **Sujeto Activo:** El acreedor que tiene la facultad legal de exigir el pago (en los impuestos nacionales es **La Nación — UAE DIAN**).
+2. **Sujeto Pasivo:** El deudor obligado frente al Estado. Aquí existe una distinción vital para los cruces de datos en el IVA e INC:
+   * **Contribuyente o Sujeto Pasivo Económico (*De Facto*):** La persona que saca el dinero de su bolsillo y soporta la carga económica real (ej. tú cuando compras un computador en un almacén y pagas el $19\%$ de IVA en la factura).
+   * **Responsable o Sujeto Pasivo Jurídico (*De Jure*):** La persona o empresa a quien la ley obliga a recaudar ese IVA en la factura, declararlo bimestralmente en el Formulario 300 y consignárselo a la DIAN (el almacén que te vendió el computador). **La DIAN fiscaliza y ejecuta cobro coactivo contra el Sujeto Pasivo Jurídico (Responsable)**.
+3. **Hecho Generador:** El evento económico o jurídico definido en la ley que, al ocurrir en la vida real, hace nacer el impuesto (ej. obtener ingresos susceptibles de incrementar el patrimonio en Renta; vender un bien corporal mueble gravado o importar mercancía en el IVA).
+4. **Base Gravable:** La cuantificación monetaria o física del hecho generador sobre la cual se aplica la tarifa (ej. la Renta Líquida Gravable en Renta; el valor total de la operación de venta en el IVA).
+5. **Tarifa:** El porcentaje o valor en UVT que, aplicado a la Base Gravable, arroja el **Impuesto a Cargo**:
+   $$\text{Impuesto Bruto a Cargo} = \text{Base Gravable} \times \text{Tarifa}$$
 
-1. **Sujeto Activo:** Es el acreedor de la obligación tributaria, en quien radica la potestad de recaudo y fiscalización. En los impuestos del orden nacional, el sujeto activo es la **Nación**, representada por la UAE DIAN.
-2. **Sujeto Pasivo:** Es la persona natural o jurídica, la sucesión ilíquida o la entidad sin personería jurídica obligada al cumplimiento de la prestación. Se clasifica en:
-   * *Sujeto pasivo económico:* Quien soporta patrimonialmente el impacto económico del tributo (ej. el consumidor final en el IVA).
-   * *Sujeto pasivo jurídico (responsable):* Quien tiene el deber legal de liquidar, recaudar y trasladar el tributo a la administración tributaria (ej. el comerciante o prestador del servicio en el IVA).
-3. **Hecho Generador:** Es la circunstancia fáctica, económica o jurídica contemplada abstractamente en la ley, cuya materialización en la realidad da nacimiento a la obligación tributaria (ej. la obtención de un ingreso susceptible de producir incremento neto del patrimonio en el Impuesto de Renta).
-4. **Base Gravable:** Es la magnitud dineraria o unidad de medida sobre la cual se aplica directamente la tarifa para determinar la cuantía líquida de la deuda tributaria (ej. la renta líquida gravable o el valor neto de la operación de venta de una mercancía).
-5. **Tarifa:** Es el porcentaje o alícuota fija o progresiva que se aplica a la base gravable para liquidar el impuesto (ej. la tarifa general del 35% para personas jurídicas en renta, o la tarifa general del 19% en el IVA).
+#### B. Las Obligaciones Tributarias Formales o Instrumentales (*"Hacer, No Hacer, Informar y Tolerar"*)
+Si solo existiera la obligación de pagar, el Estado nunca sabría quién vendió qué, cuánto ganó cada empresa ni si el valor pagado es real. Por eso la ley rodea a la obligación sustancial de un anillo de **Obligaciones Formales** (que son las fuentes primarias de datos que ingesta la **Subdirección de Procesamiento de Datos**):
 
-```blueprint
-ESTRUCTURA DOGMÁTICA DE LA OBLIGACIÓN TRIBUTARIA
+1. **Inscribirse y actualizar el RUT (Art. 555-2 E.T.)** y el **Registro Único de Beneficiarios Finales — RUB (Art. 631-5 E.T.)**.
+2. **Expedir Factura Electrónica de Venta con validación previa y Documentos Electrónicos (Art. 615 y 616-1 E.T.)** (y exigir factura al comprar).
+3. **Presentar las Declaraciones Tributarias** dentro de los plazos legales (Renta, IVA, Retención, Consumo, Activos en el Exterior, Precios de Transferencia).
+4. **Suministrar Información Exógena Tributaria y Cambiaria (Art. 631 E.T.):** Reportar todas las operaciones económicas realizadas con terceros.
+5. **Practicar Retenciones en la Fuente, expedir certificados y consignar lo retenido.**
+6. **Llevar contabilidad en debida forma, conservar los documentos soporte (Art. 632 E.T.) y atender los requerimientos e inspecciones de la DIAN.**
 
-                     +---------------------------------------+
-                     |        LEY DE LA REPÚBLICA            |
-                     |   (Principio de Legalidad Tributaria) |
-                     +---------------------------------------+
-                                         |
-                                         v
-                     +---------------------------------------+
-                     |           HECHO GENERADOR             |
-                     |   (Presupuesto fáctico/económico)     |
-                     +---------------------------------------+
-                                         |
-                         +---------------+---------------+
-                         |                               |
-                         v                               v
-         +-------------------------------+ +-------------------------------+
-         |    OBLIGACIÓN SUSTANCIAL      | |     OBLIGACIONES FORMALES     |
-         |  * Dar / Pagar suma de dinero | |  * Hacer / No Hacer / Informar|
-         |  * Extinción de la deuda      | |  * Facilitar la fiscalización |
-         +-------------------------------+ +-------------------------------+
-                         |                               |
-                         v                               v
-         +-------------------------------+ +-------------------------------+
-         |     ELEMENTOS ESENCIALES      | |     DEBERES PRINCIPALES       |
-         |  1. Sujeto Activo (Nación)    | |  1. Inscribirse en el RUT     |
-         |  2. Sujeto Pasivo (Contrib.)  | |  2. Presentar Declaraciones   |
-         |  3. Hecho Generador           | |  3. Expedir Factura Electrónica|
-         |  4. Base Gravable             | |  4. Suministrar Exógena       |
-         |  5. Tarifa                    | |  5. Conservar pruebas 5 años  |
-         +-------------------------------+ +-------------------------------+
-```
-
-#### B. Las Obligaciones Tributarias Formales (Deberes Instrumentales)
-Las obligaciones formales son mandatos de hacer, no hacer o tolerar establecidos por la ley y el reglamento, cuyo propósito exclusivo es **permitir, vigilar y asegurar el cumplimiento de la obligación sustancial**, facilitando las tareas de fiscalización y determinación de la DIAN.
-
-Entre las principales obligaciones formales administradas por la DIAN destacan:
-* **Inscripción y actualización del Registro Único Tributario (RUT - Art. 555-2 E.T.):** Identificación, ubicación y clasificación de todos los sujetos con responsabilidades fiscales.
-* **Presentación oportuna de declaraciones tributarias:** En los formularios oficiales prescritos por la DIAN (Formularios 110, 210, 300, 350, etc.), debidamente firmados y liquidados.
-* **Expedición de Factura Electrónica de Venta con Validación Previa (Art. 616-1 E.T.):** Transmisión en tiempo real en formato XML estándar UBL 2.1 con Código Único de Factura Electrónica (CUFE).
-* **Suministro de Información Exógena Tributaria (Medios Magnéticos - Arts. 631 y 631-3 E.T.):** Reporte periódico de operaciones económicas realizadas con terceros.
-* **Obligación de llevar contabilidad y conservar pruebas:** Obligación de conservar libros contables, soportes y declaraciones durante el término de firmeza o un mínimo de cinco (5) años (Art. 632 E.T.).
-
-### 2.2 Catálogo Integral de Impuestos del Orden Nacional Administrados por la DIAN
-La Subdirección de Procesamiento de Datos procesa en el lago institucional DataR las transacciones asociadas a la totalidad de los tributos del orden nacional:
-
-1. **Impuesto sobre la Renta y Complementarios:**
-   * Impuesto directo de periodo anual que grava los ingresos ordinarios y extraordinarios susceptibles de producir enriquecimiento.
-   * Administra el **Régimen Ordinario** (tarifas progresivas hasta el 39% para personas naturales, y tarifa corporativa general del 35% con sobretasas al sector financiero y extractivo) y el **Régimen Simple de Tributación (SIMPLE)**, modelo opcional simplificado que unifica el impuesto de renta, el impuesto al consumo e impuestos municipales (ICA).
-   * Impuesto complementario de Ganancias Ocasionales (herencias, legados, donaciones, loterías y venta de activos fijos poseídos por 2 o más años).
-2. **Impuesto sobre las Ventas (IVA):**
-   * Impuesto indirecto al consumo de causación instantánea y liquidación bimestral o cuatrimestral, que grava la venta e importación de bienes corporales muebles e inmuebles y la prestación de servicios en el territorio nacional.
-   * Clasifica los bienes y servicios en: **Gravados** (tarifa general del 19%, diferencial del 5%), **Exentos** (tarifa 0%, con derecho a devolución de IVA pagado en la cadena productiva) y **Excluidos** (no causan el impuesto y el IVA pagado constituye mayor valor del costo o gasto).
-3. **Impuesto Nacional al Consumo (INC):**
-   * Impuesto indirecto que grava el servicio de telefonía y datos móviles (4%), el expendio de comidas y bebidas en restaurantes y bares (8%), y la venta o importación de vehículos automotores, camperos y aeronaves privadas (8% o 16%). No genera impuestos descontables.
-4. **Impuesto al Patrimonio:**
-   * Impuesto directo y permanente que grava la riqueza líquida poseída al 1 de enero de cada año por personas naturales y sucesiones ilíquidas que superen los umbrales legales (a partir de 72.000 UVT).
-5. **Gravamen a los Movimientos Financieros (GMF - 4x1000):**
-   * Impuesto indirecto e instantáneo que grava la realización de transacciones financieras mediante las cuales se disponga de recursos depositados en cuentas corrientes, de ahorros o de depósito en el Banco de la República.
-6. **Impuestos Ambientales y a la Salud Pública:**
-   * *Impuesto Nacional al Carbono:* Grava el contenido de carbono equivalente de los combustibles fósiles.
-   * *Impuesto a los Plásticos de un Solo Uso:* Grava la venta, retiro e importación de productos plásticos utilizados para envasar o empacar bienes.
-   * *Impuestos Saludables:* Grava la producción e importación de **bebidas ultraprocesadas azucaradas** y **productos comestibles ultraprocesados** con alto contenido de azúcares añadidos, sodio o grasas saturadas.
-7. **Impuesto de Timbre Nacional:**
-   * Grava la elevación a escritura pública de la enajenación de bienes inmuebles que superen los topes legales de valor catastral o comercial.
-
-> [!LAW]
-> **Autonomía de las Obligaciones Formales frente a la Sustancial:**  
-> La jurisprudencia del Consejo de Estado y la doctrina de la DIAN han dejado establecido que **las obligaciones formales gozan de plena autonomía jurídica**. En consecuencia, un contribuyente puede no estar obligado al pago del impuesto sustancial (por haber arrojado pérdida líquida en el ejercicio o encontrarse exento), pero permanece legalmente obligado a presentar la declaración tributaria o suministrar información exógena. La omisión del deber formal acarrea sanciones autónomas (extemporaneidad, sanción por no declarar o sanción por no enviar información exógena - Art. 651 E.T.).
+> [!EXAM] Regla de Oro del Examen: La Autonomía de la Obligación Formal
+> Las obligaciones formales son **jurídicamente autónomas e independientes** de la obligación sustancial.
+> * **Ejemplo 1:** Una empresa tuvo pérdidas durante todo el año gravable y su **Impuesto de Renta a pagar es $\$0$** (no hay pago sustancial), pero superó los topes de patrimonio bruto o ingresos brutos. **¿Está obligada a presentar la declaración formal de Renta y a enviar Información Exógena?** **¡SÍ!** Y si no las presenta a tiempo, la DIAN le impone **Sanción por Extemporaneidad (Art. 641 E.T.)**, **Sanción por No Declarar (Art. 643 E.T.)** o **Sanción por No Enviar Información Exógena (Art. 651 E.T.)**, aunque el impuesto neto sea cero.
 
 ---
 
-## Unidad 3: Obligación Aduanera, Regímenes, Control y Lucha contra el Contrabando
+### 2.3. La Retención en la Fuente (Artículos 365 a 373 E.T.): ¡No es un Impuesto, es un Recaudo Anticipado!
+En muchos casos situacionales de la CNSC se incluye una opción trampa que dice: *"El impuesto de retención en la fuente..."*. **¡Cuidado!**
+* Conforme al **Artículo 367 del Estatuto Tributario**, la **Retención en la Fuente NO es un impuesto**, sino un **mecanismo de recaudo anticipado y gradual** de un impuesto (de Renta, de IVA, de Timbre, etc.), cuya finalidad es conseguir que el impuesto se recaude en lo posible dentro del mismo ejercicio gravable en que se cause.
+* **¿Cómo funciona en el flujo de datos de DataR?**
+  1. Cuando la Empresa `A` (**Agente de Retención**) le paga honorarios de $\$10.000.000$ al Consultor `B` (**Sujeto Pasivo retenido**), la Empresa `A` no le entrega los $\$10.000.000$ completos: le descuenta (retiene) el $10\%$ ($\$1.000.000$) y le gira a `B` $\$9.000.000$.
+  2. Al mes siguiente, la Empresa `A` declara y le paga ese $\$1.000.000$ a la DIAN en el **Formulario 350 (Declaración Mensual de Retenciones en la Fuente)** y al final del año lo reporta en el **Formato 1001 de Información Exógena**. *(Ojo: Si el Agente Retenedor no consigna a la DIAN las sumas retenidas dentro de los dos meses siguientes al vencimiento, incurre en el delito penal de **Omisión de Agente Retenedor o Recaudador — Art. 402 del Código Penal**, con pena de prisión de 48 a 108 meses).*
+  3. Al año siguiente, cuando el Consultor `B` presenta su Declaración de Renta, resta ese $\$1.000.000$ que ya le retuvieron del valor de su impuesto a cargo. **El cruce en DataR de la Subdirección de Procesamiento de Datos** consiste en verificar que las retenciones que `B` se descuenta en su declaración de Renta coincidan con lo que `A` declaró y reportó en Exógena.
 
-### 3.1 Naturaleza y Estructura de la Obligación Aduanera
-La **Obligación Aduanera** es el vínculo jurídico que nace entre el Estado (a través de la UAE DIAN) y las personas jurídicas o naturales que introducen o extraen mercancías del **Territorio Aduanero Nacional (TAN)**. Su cumplimiento comprende:
-* El pago de los derechos e impuestos a la importación (arancel, IVA y demás tributos aduaneros).
-* El cumplimiento riguroso de las formalidades, licencias, vistos buenos y requisitos no arancelarios exigidos por el régimen de aduanas.
-* El suministro veraz de la información en las declaraciones aduaneras y la conservación de los documentos soporte durante un término de cinco (5) años.
-
-```diagram
-FASES TEMPORALES DEL CONTROL ADUANERO EN LA DIAN
-
-  [Llegada de Mercancía / Zona Primaria]
-                 |
-                 v
-  +--------------------------------------------------------------+
-  |  CONTROL PREVIO (Antes del Desaduanamiento)                 |
-  |  * Manifiesto de Carga Anticipado                            |
-  |  * Perfilamiento de Riesgo por Modelos de Machine Learning   |
-  |  * Análisis de Listas Restrictivas y Reglas de Selectividad  |
-  +--------------------------------------------------------------+
-                 |
-                 v
-  +--------------------------------------------------------------+
-  |  CONTROL SIMULTÁNEO (Durante el Desaduanamiento)            |
-  |  * Selectividad: Levante Automático vs. Inspección           |
-  |  * Inspección Documental (Revisión de soportes y origen)     |
-  |  * Inspección Física e Inspección No Intrusiva (Escáneres)   |
-  +--------------------------------------------------------------+
-                 |
-                 v (Autorización de Levante)
-  +--------------------------------------------------------------+
-  |  CONTROL POSTERIOR (Fiscalización Aduanera Ex-Post)         |
-  |  * Auditorías tributario-aduaneras a depósitos y empresas    |
-  |  * Verificación de Precios de Transferencia y Valoración     |
-  |  * Término de caducidad de 3 a 5 años                        |
-  +--------------------------------------------------------------+
-```
-
-### 3.2 Clasificación de los Regímenes Aduaneros en Colombia
-El Estatuto Aduanero clasifica las operaciones de comercio exterior en tres grandes grupos de regímenes:
-
-#### A. Régimen de Importación
-Introducción de mercancías de procedencia extranjera al TAN o procedentes de zona franca con el fin de permanecer en él de manera indefinida o temporal:
-1. **Importación Ordinaria:** Desaduanamiento para consumo definitivo con pago total de aranceles e IVA.
-2. **Importación con Franquicia o Exención:** Mercancías amparadas por tratados o normas especiales con exención parcial o total de tributos aduaneros.
-3. **Importación Temporal para Reexportación en el Mismo Estado:** Bienes de capital o maquinaria que ingresan por un plazo determinado sin sufrir modificaciones para cumplir un contrato específico.
-4. **Importación Temporal para Perfeccionamiento Activo:** Materias primas o insumos que ingresan para ser transformados, elaborados o reparados y posteriormente exportados (mecanismo Plan Vallejo).
-
-#### B. Régimen de Exportación
-Salida de mercancías del TAN con destino a otro país o a una zona franca industrial de bienes y servicios:
-1. **Exportación Definitiva:** Salida de mercancías nacionales o nacionalizadas para su consumo o uso en el exterior.
-2. **Exportación Temporal para Perfeccionamiento Pasivo:** Salida de bienes para ser reparados o modificados en el extranjero y reimportados posteriormente.
-
-#### C. Régimen de Tránsito Aduanero y Operaciones Asociadas
-Transporte de mercancías bajo control aduanero desde una aduana de partida hasta una aduana de destino dentro del TAN:
-1. **Tránsito Aduanero Nacional:** Transporte terrestre o férreo bajo garantía.
-2. **Cabotaje:** Transporte por vía marítima o aérea entre dos puertos o aeropuertos nacionales bajo control aduanero.
-3. **Transbordo:** Traslado de mercancías de un medio de transporte a otro sin salir de la zona primaria aduanera.
-
-### 3.3 El Sistema de Gestión de Riesgo y las Fases del Control Aduanero
-La DIAN abandonó el modelo de inspección física aleatoria o total para adoptar un **Sistema de Administración del Riesgo Aduanero** altamente automatizado, alimentado por el procesamiento masivo de datos en DataR:
-* **Fase de Control Previo:** Evaluación algorítmica de los manifiestos de carga antes del atraque del buque o aterrizaje de la aeronave. Se identifican contenedores de alto riesgo según el país de procedencia, el historial tributario del importador y alertas de inteligencia internacional.
-* **Fase de Control Simultáneo:** Al radicar la declaración de importación, el motor de selectividad asigna uno de tres canales:
-  * *Levante Automático:* Autorización inmediata de retiro de la mercancía sin intervención de inspector.
-  * *Inspección Documental:* Verificación técnica y jurídica de los documentos soporte (factura comercial, certificado de origen, documento de transporte, vistos buenos).
-  * *Inspección Física / No Intrusiva:* Apertura del contenedor o paso por escáneres de alta resolución de rayos X o gamma para cotejar la carga real contra lo declarado.
-* **Fase de Control Posterior (Fiscalización):** Auditorías integrales posteriores al levante, orientadas a descubrir subfacturación, falsedad en certificados de origen o desvío de mercancías bajo regímenes suspensivos.
-
-### 3.4 Delitos Aduaneros y Coordinación con la POLFA
-El régimen legal distingue entre **infracciones administrativas aduaneras** (sancionadas con multas, aprehensión y decomiso según el Decreto 920 de 2023) y **delitos contra el orden económico y social** tipificados en el Código Penal:
-* **Contrabando (Artículo 319 del Código Penal):** Introducir o extraer mercancías del TAN por cuantía superior a cincuenta (50) salarios mínimos legales mensuales vigentes (SMLMV), omitiendo los controles de la DIAN o declarando un valor menor.
-* **Favorecimiento y Facilitación del Contrabando (Artículo 320 C.P.):** Transportar, almacenar, distribuir o comercializar mercancías que no cuenten con las declaraciones de importación o soportes legales.
-* **Fraude Aduanero (Artículo 321 C.P.):** Suministrar información falsa, adulterar documentos de transporte o manipular certificados de origen para eludir el pago de aranceles o el cumplimiento de restricciones sanitarias.
-
-La **Dirección de Policía Fiscal y Aduanera (POLFA)** es el cuerpo especializado de la Policía Nacional adscrito orgánicamente como Dirección de Gestión en la DIAN (Decreto 1742 de 2020), facultado para ejecutar operativos de interdicción en carretera, puertos, aeropuertos y pasos fronterizos en coordinación con los sistemas analíticos de la entidad.
-
-> [!LAW]
-> **Diferencia entre Aprehensión y Decomiso Aduanero:**  
-> La **Aprehensión** es una medida cautelar de carácter administrativo y temporal mediante la cual la autoridad aduanera retiene físicamente las mercancías al encontrar irregularidades en su importación. El **Decomiso** es el acto administrativo definitivo y en firme por el cual la DIAN declara que las mercancías pasan a ser de propiedad exclusiva de la Nación, al no haberse desvirtuado las causales de aprehensión dentro del proceso aduanero.
+::: q
+Una sociedad comercializadora de tecnología tuvo durante el año gravable ingresos brutos por $8.500 millones y un patrimonio bruto de $4.200 millones, pero debido a altos costos financieros y operativos cerró el ejercicio con una pérdida líquida contable y fiscal, por lo cual su Impuesto Neto de Renta es exactamente de $0. El contador de la empresa afirma que, al no existir obligación tributaria sustancial de pagar dinero al Estado, la empresa queda automáticamente eximida de presentar el Formulario 110 de Declaración de Renta y de transmitir los archivos XML de Información Exógena (Art. 631 E.T.). Frente a los algoritmos de detección de omisos de la Subdirección de Procesamiento de Datos en DataR, la afirmación del contador es:
+- [x] Incorrecta, por cuanto en el derecho tributario colombiano rige el principio de autonomía de las obligaciones formales frente a la obligación sustancial: al haber superado los topes legales de ingresos y patrimonio bruto en UVT, la sociedad está obligada a cumplir los deberes formales de declarar Renta y reportar Información Exógena, y su omisión activa las sanciones autónomas por no declarar (Art. 643 E.T.) y por no enviar información (Art. 651 E.T.), independientemente de que el impuesto a cargo sea cero.
+- [ ] Correcta, ya que el Artículo 1 del Estatuto Tributario prohíbe a la DIAN exigir formularios o reportes de datos a las empresas que arrojen pérdidas financieras en el año.
+- [ ] Parcialmente correcta, pues solo debe enviar una carta simple informando que tuvo pérdidas sin necesidad de diligenciar el Formulario 110 ni transmitir los formatos de Exógena.
+---
+**Explicación Técnica y Normativa:**
+Las **Obligaciones Formales** (declarar, facturar, reportar Información Exógena) son deberes instrumentales independientes del resultado líquido del impuesto sustancial. Los algoritmos de perfilamiento de **Omisos de Declaración** y **Omisos de Información Exógena** que ejecuta la Subdirección de Procesamiento de Datos en **DataR** evalúan los topes objetivos en UVT (patrimonio bruto, ingresos brutos, consignaciones bancarias, compras o calidad de persona jurídica contribuyente), sin que la pérdida del ejercicio exima del cumplimiento formal ni de las sanciones de los Artículos 641, 643 y 651 del Estatuto Tributario.
+:::
 
 ---
 
-## Unidad 4: Vigilancia y Control Cambiario de Competencia de la DIAN
+## Unidad 3: Catálogo de Impuestos Nacionales Administrados por la DIAN y su Lógica Matemática en DataR
 
-### 4.1 Delimitación de Competencias: La DIAN en el Sistema Cambiario Colombiano
-El régimen cambiario en Colombia se fundamenta en la **Ley 9 de 1991 (Ley Marco de Cambios Internacionales)** y en las resoluciones expedidas por la Junta Directiva del Banco de la República (principalmente la **Resolución Externa 1 de 2018** y sus modificaciones concordantes).
+### 3.1. Clasificación Técnica de los Impuestos Nacionales: Directos vs. Indirectos y de Período vs. Instantáneos
+Cuando diseñas o auditas una tabla analítica en la capa Gold de **DataR**, debes saber clasificar cada impuesto administrado por la DIAN según dos ejes:
 
-En el Estado colombiano, la vigilancia y control cambiario está distribuida entre tres entidades autónomas:
-1. **Superintendencia Financiera de Colombia:** Vigila las instituciones financieras y los intermediarios bancarios del mercado cambiario.
-2. **Superintendencia de Sociedades:** Vigila las operaciones cambiarias relacionadas con inversión extranjera en Colombia, inversión colombiana en el exterior y endeudamiento externo entre sociedades comerciales no financieras.
-3. **UAE DIAN (Subdirección de Fiscalización Cambiaria):** **Competencia Exclusiva y Especializada.** La DIAN tiene la potestad de vigilar y sancionar las operaciones de cambio vinculadas al **comercio exterior de bienes y servicios**, la financiación de importaciones y exportaciones, los servicios asociados a operaciones de comercio exterior (fletes, seguros y corretaje) y la actividad de los **profesionales de compra y venta de divisas y cheques de viajero en efectivo**.
+1. **Impuestos Directos vs. Indirectos:**
+   * **Impuestos Directos:** Gravan directamente la manifestación inmediata de riqueza, ingreso o patrimonio de una persona identificada, y no están diseñados para trasladarse en el precio a un tercero (ej. **Impuesto sobre la Renta y Complementarios**, **Impuesto al Patrimonio**).
+   * **Impuestos Indirectos:** Gravan el consumo, el gasto o la circulación de riqueza, donde el sujeto pasivo jurídico (vendedor) traslada la carga económica en el precio al consumidor final (ej. **IVA**, **Impuesto Nacional al Consumo - INC**, **GMF 4x1.000**, **Impuestos Saludables y Ambientales**).
+2. **Impuestos de Período vs. Instantáneos:**
+   * **De Período:** El hecho generador se va consolidando a lo largo de un lapso de tiempo definido por la ley (anual en Renta; bimestral o cuatrimestral en IVA).
+   * **Instantáneos:** El impuesto se causa en el instante mismo en que ocurre la operación (ej. cada retiro bancario gravado con el GMF 4x1.000 o la nacionalización de una mercancía en aduanas).
 
-```blueprint
-DELIMITACIÓN DE COMPETENCIAS DEL RÉGIMEN CAMBIARIO EN COLOMBIA
+---
 
-                [JUNTA DIRECTIVA DEL BANCO DE LA REPÚBLICA]
-                  Expide la Regulación (Res. Externa 1 de 2018)
-                                      |
-         +----------------------------+----------------------------+
-         |                            |                            |
-         v                            v                            v
-[SUPERINTENDENCIA FINANCIERA]   [SUPERINTENDENCIA SOCIEDADES]   [UAE DIAN]
-Vigila:                          Vigila:                        Vigila Competencia Exclusiva:
-* Bancos e Intermediarios        * Inversión Extranjera Directa * Pago y Cobro de Importaciones
-* Casas de Cambio vigiladas      * Inversión Colombiana Ext.    * Pago y Cobro de Exportaciones
-* Mercado de Derivados           * Endeudamiento externo soc.   * Servicios de Comercio Exterior
-                                                                * Profesionales de Compra/Venta
-                                                                  de Divisas en Efectivo
+### 3.2. El Impuesto sobre la Renta y Complementarios: Ecuación de Depuración para Cruces en DataR (Art. 26 E.T.)
+El **Artículo 26 del Estatuto Tributario** define la columna vertebral matemática con la que se calcula el Impuesto sobre la Renta en Colombia (y la forma exacta en que la Subdirección de Procesamiento de Datos estructura los cruces del **Formulario 110** de Personas Jurídicas y el **Formulario 210** de Personas Naturales):
+
+```
+========================================================================================
+       ECUACIÓN DE DEPURACIÓN DEL IMPUESTO SOBRE LA RENTA (Art. 26 E.T. en DataR)
+========================================================================================
+
+   (+) INGRESOS BRUTOS (Ordinarios y Extraordinarios realizados en el año)
+       [Se cruza en DataR contra: Factura Electrónica emitida + Formato 1007 Exógena]
+   (-) Devoluciones, Rebajas y Descuentos (Soportados en Notas Crédito Electrónicas)
+   (=) INGRESOS NETOS
+   (-) Ingresos No Constitutivos de Renta ni Ganancia Ocasional (INCRNGO)
+   (=) INGRESOS NETOS GRAVABLES
+   (-) COSTOS PROCEDENTES (Imputables a los ingresos)
+   (-) DEDUCCIONES PROCEDENTES (Gastos necesarios, proporcionales y con relación de causalidad)
+       [Costos y Deducciones se cruzan en DataR contra: Factura Electrónica recibida UBL 2.1
+        + Nómina Electrónica + Documento Soporte en adquisiciones a no obligados + Formato 1001]
+   (=) RENTA LÍQUIDA (Salvo que la Renta Presuntiva o Depuración Especial aplique)
+   (-) Rentas Exentas (Beneficios taxativos de ley sujetos a límites legales)
+   (+) Rentas Gravables Especiales (ej. por activos omitidos o pasivos inexistentes)
+   (=) RENTA LÍQUIDA GRAVABLE (★ BASE GRAVABLE DEL IMPUESTO ★)
+   (x) TARIFA LEGAL (ej. 35% general PJ / Tabla progresiva por UVT en PN Art. 241 E.T.)
+   (=) IMPUESTO BÁSICO DE RENTA
+   (-) Descuentos Tributarios (ej. impuestos pagados en el exterior Art. 254, IVA en activos
+       reales productivos Art. 258-1, inversiones en Ciencia, Tecnología e Innovación)
+   (=) IMPUESTO NETO DE RENTA
+   (+) Impuesto de Ganancias Ocasionales (Venta de activos fijos poseídos >= 2 años,
+       herencias, loterías y donaciones)
+   (=) TOTAL IMPUESTO A CARGO
+   (-) Anticipo del año anterior y Retenciones en la Fuente que le practicaron (Formato 1003)
+   (+) Anticipo de Renta para el año siguiente
+   (=) SALDO A PAGAR  ó  SALDO A FAVOR (Susceptible de Devolución/Compensación)
+========================================================================================
 ```
 
-### 4.2 Las Operaciones Obligatoriamente Canalizables
-El régimen cambiario establece que determinadas operaciones económicas deben canalizarse de forma obligatoria y exclusiva a través del **Mercado Cambiario Regulado**, utilizando dos únicos mecanismos autorizados:
-1. **Los Intermediarios del Mercado Cambiario (IMC):** Bancos comerciales, corporaciones financieras y compañías de financiamiento comercial.
-2. **Las Cuentas de Compensación:** Cuentas bancarias en el exterior abiertas por residentes colombianos, debidamente registradas ante el Banco de la República bajo la modalidad de compensación.
+> [!TIP] Diferencia Crítica en DataR: Deducción vs. Renta Exenta vs. Descuento Tributario
+> En las pruebas funcionales suelen preguntar cuál beneficio tiene mayor impacto matemático directo sobre el recaudo:
+> * Una **Deducción** o una **Renta Exenta** se restan **ANTES** de aplicar la tarifa (reducen la **Base Gravable**). Si la tarifa de una empresa es del $35\%$, una deducción de $\$100\text{ millones}$ le ahorra $\$35\text{ millones}$ de impuesto.
+> * Un **Descuento Tributario** se resta **DESPUÉS** de aplicar la tarifa, directamente contra el **Impuesto Básico de Renta** peso a peso ($1:1$). Un descuento tributario de $\$100\text{ millones}$ reduce el impuesto a pagar en los mismos $\$100\text{ millones}$ completos. Por eso los descuentos tributarios son los más vigilados en los algoritmos de fiscalización de **DataR**.
 
-Las operaciones de competencia de la DIAN sujetas a canalización obligatoria comprenden:
-* **Importaciones de Bienes:** Pago de las mercancías importadas al proveedor en el extranjero.
-* **Exportaciones de Bienes:** Reintegro al país de las divisas obtenidas por la venta de mercancías al exterior.
-* **Endeudamiento Externo asociado a Comercio Exterior:** Financiación directa otorgada por el proveedor extranjero o por entidades financieras para pagar la importación.
-* **Garantías y Avales en Moneda Extranjera:** Respaldos financieros de operaciones de comercio exterior.
+---
 
-Cada canalización exige la suscripción y presentación de la respectiva **Declaración de Cambio**, donde el residente declara el monto exacto, la moneda, el NIT del beneficiario, el número de la declaración aduanera de importación o exportación y el numeral cambiario correspondiente.
+### 3.3. El Impuesto sobre las Ventas (IVA — Formulario 300): La Distinción de Oro entre Gravados, Exentos y Excluidos
+El **IVA** es un impuesto indirecto de valor agregado donde el responsable le cobra IVA a sus clientes (**IVA Generado**) y le resta el IVA que él pagó al comprar insumos o servicios gravados (**IVA Descontable — Art. 488 E.T.**):
+$$\text{Saldo IVA del Período} = \text{IVA Generado en Ventas} - \text{IVA Descontable en Compras}$$
 
-### 4.3 Infracciones Cambiarias y Régimen Sancionatorio (Decreto Ley 2245 de 2011)
-El régimen sancionatorio cambiario administrado por la DIAN está regulado de forma integral y autónoma por el **Decreto Ley 2245 de 2011** (modificado por el Decreto Ley 927 de 2023 y normas de procedimiento administrativo). A diferencia del régimen penal, las infracciones cambiarias son de carácter eminentemente objetivo y conllevan sanciones pecuniarias liquidables en Unidades de Valor Tributario (UVT) o en porcentajes sobre el monto de la operación:
+En los exámenes de la CNSC, **siempre** aparece un caso sobre la diferencia entre **Bienes/Servicios Gravados, Exentos y Excluidos**, porque esta clasificación determina quién tiene derecho a pedir **Devolución de Saldos a Favor de IVA** en la DIAN:
 
-| Tipología de Infracción Cambiaria | Descripción Fáctica | Sanción Prevista (Decreto Ley 2245 de 2011) |
+| Categoría en el IVA | ¿Qué Tarifa de IVA cobra al vender? | ¿Puede restarse como "IVA Descontable" el IVA que pagó en sus compras/insumos? | ¿Genera Saldo a Favor con derecho a Devolución en efectivo/TIDIS en la DIAN? | Ejemplos Clásicos en el Estatuto Tributario |
+| :--- | :--- | :--- | :--- | :--- |
+| **1. Bienes y Servicios GRAVADOS** | Tarifa General del **$19\%$** o Tarifa Diferencial del **$5\%$** (Art. 468 E.T.). | **SÍ.** Descuenta el IVA pagado en costos y gastos (hasta la tarifa a la que vende). | Solo en casos especiales (ej. cuando le practicaron retención de IVA o vende al $5\%$ con insumos al $19\%$). | Electrodomésticos, ropa, vehículos, consultoría, software comercial (19%); café tostado, medicina prepagada (5%). |
+| **2. Bienes y Servicios EXENTOS** *(Arts. 477 y 481 E.T.)* | Están gravados a **Tarifa del $0\%$** (*Cero por ciento*). | **¡SÍ!** El productor o exportador de bienes exentos tiene pleno derecho a contabilizar como **IVA Descontable** el IVA que pagó en sus insumos. | **¡SÍ!** Como vende a tarifa $0\%$ ($\text{IVA Generado} = 0$) pero sí tiene $\text{IVA Descontable} > 0$, siempre le da **Saldo a Favor** y tiene derecho a **Devolución Bimestral**. | **1) Todas las Exportaciones de bienes y servicios (Art. 481 E.T.)**;<br>2) Carne, leche, huevos, queso fresco producidos en el país (Art. 477 E.T.). |
+| **3. Bienes y Servicios EXCLUIDOS** *(Arts. 424 y 476 E.T.)* | **No causan IVA** (Por disposición de la ley están fuera del hecho generador). | **¡NO!** Quien produce o vende bienes excluidos **NO puede descontar** el IVA que pagó en sus insumos; ese IVA se lleva como un **mayor valor del costo o gasto** en Renta. | **¡JAMÁS!** Un comercializador exclusivo de bienes excluidos nunca puede solicitar devolución de saldos a favor de IVA. | Servicios de educación, salud humana, transporte público terrestre de pasajeros, verduras y frutas sin procesar. |
+
+---
+
+### 3.4. Resumen de los Demás Impuestos Nacionales en el Ecosistema DataR
+1. **Impuesto Nacional al Consumo — INC (Arts. 512-1 y ss. E.T. — Formulario 310):** Impuesto indirecto **monofásico** (se causa una sola vez en la entrega al consumidor final y no admite impuestos descontables). Grava: (a) expendio de comidas y bebidas preparadas en restaurantes, cafeterías y bares ($8\%$); (b) servicios de telefonía móvil, datos e internet móvil ($4\%$); y (c) venta o importación de ciertos vehículos, globos y aerodinos ($8\%$ o $16\%$).
+2. **Gravamen a los Movimientos Financieros — GMF / 4x1.000 (Arts. 870 y ss. E.T.):** Impuesto instantáneo a cargo de los usuarios del sistema financiero y entidades que lo recaudan como agentes retenedores (tarifa del $4\text{ por mil}$ o $0.4\%$ sobre la disposición de recursos). El $50\%$ del GMF efectivamente pagado y certificado es deducible en el Impuesto sobre la Renta (Art. 115 E.T.).
+3. **Impuesto al Patrimonio (Ley 2277 de 2022 — Arts. 292-3 y ss. E.T.):** Impuesto directo de carácter permanente sobre la posesión de patrimonio líquido igual o superior a **72.000 UVT** al 1 de enero de cada año, con tarifas marginales progresivas ($0.5\%, 1.0\%$ y $1.5\%$).
+4. **Régimen Simple de Tributación — SIMPLE / RST (Arts. 903 y ss. E.T. — Formulario 260):** Modelo de tributación opcional de causación anual y anticipo bimestral (Formulario 2593) que sustituye el Impuesto sobre la Renta e integra la declaración y recaudo del INC (cuando aplique) y del **Impuesto de Industria y Comercio consolidado (ICA municipal)**, facilitando la formalización empresarial.
+5. **Impuestos Ambientales y Saludables:** Impuesto Nacional al Carbono, Impuesto Nacional sobre Productos Plásticos de un Solo Uso utilizados para envasar, embalar o empacar bienes, e Impuestos Saludables a las **Bebidas Ultraprocesadas Azucaradas (IBUA)** y a los **Productos Comestibles Ultraprocesados Industrialmente (ICUI)**.
+
+::: q
+En la Subdirección de Procesamiento de Datos se está programando una regla de perfilamiento de fraude en DataR para el proceso de Devoluciones de Saldos a Favor en el Impuesto sobre las Ventas (IVA). El algoritmo detecta dos empresas que acaban de radicar solicitudes de devolución bimestral de IVA por $800 millones cada una: la Empresa X es una comercializadora internacional que exporta el 100% de sus manufacturas al exterior (Art. 481 E.T.), mientras que la Empresa Y se dedica exclusivamente a prestar servicios médicos de salud humana y educación escolar en el país (Art. 476 E.T.). De acuerdo con el régimen sustancial del IVA en el Estatuto Tributario, la regla lógica del modelo en DataR debe dictaminar que:
+- [x] La solicitud de la Empresa X es jurídicamente procedente en principio porque las exportaciones son operaciones **Exentas** de IVA (gravadas a tarifa 0% con derecho a impuestos descontables y devolución bimestral de saldos a favor), mientras que la solicitud de la Empresa Y debe marcarse con alerta crítica de rechazo por improcedencia legal dado que los servicios de salud y educación son **Excluidos** de IVA, por lo cual no generan derecho a impuestos descontables ni a devolución de saldos a favor.
+- [ ] Ambas solicitudes deben aprobarse automáticamente porque en Colombia los bienes exentos y los bienes excluidos significan exactamente lo mismo y ambos tienen derecho a devolución en efectivo del IVA pagado.
+- [ ] La solicitud de la Empresa X debe rechazarse porque las exportaciones están gravadas al 19% de IVA, y la de la Empresa Y debe aprobarse porque los servicios excluidos tienen tarifa del 0% con derecho a devolución.
+---
+**Explicación Técnica y Normativa:**
+Esta es la distinción más importante del IVA en los exámenes de la DIAN:
+* **Operaciones Exentas (Arts. 477 y 481 E.T., como las exportaciones):** Están gravadas a tarifa del **$0\%$**, lo que significa que el exportador sí es responsable del régimen de IVA, cobra $0\%$ al vender al exterior y la ley le permite restar todo el **IVA Descontable** pagado en sus insumos nacionales, generándole un **Saldo a Favor con derecho a devolución bimestral**.
+* **Operaciones Excluidas (Arts. 424 y 476 E.T., como salud y educación):** No causan IVA; el IVA que paguen al comprar suministros constituye un mayor valor de su costo o gasto, pero **jamás puede tratarse como IVA descontable en el Formulario 300 ni solicitarse en devolución**.
+:::
+
+---
+
+## Unidad 4: El Ciclo de Procedimiento Tributario de Punta a Punta — Firmeza (Art. 714 E.T.), Fiscalización de Omisos vs. Inexactos, Liquidación Oficial, Discusión y Cobro Coactivo
+
+### 4.1. ¿Por qué un Inspector I de Datos debe dominar los Términos y Actos del Procedimiento Tributario?
+Todas las sábanas de cruces y modelos predictivos que construyes en **DataR** tienen una fecha de caducidad jurídica estricta: el **Término de Firmeza de las Declaraciones Tributarias (Artículo 714 del Estatuto Tributario)**.
+
+Si la Subdirección de Procesamiento de Datos entrega un cruce de evasión a la Dirección de Gestión de Fiscalización un día después de que la declaración privada del contribuyente quedó en firme, **el Estado pierde para siempre la facultad legal de modificar esa declaración y cobrar ese impuesto**.
+
+#### Reglas Exactas de Firmeza de una Declaración Tributaria (Art. 714 E.T.):
+1. **Regla General:** La declaración tributaria quedará en firme si, dentro de los **tres (3) años siguientes** a la fecha del **vencimiento del plazo para declarar**, no se ha notificado **Requerimiento Especial**.
+2. **Declaración Extemporánea:** Si la declaración se presentó de forma extemporánea (después del vencimiento), los **tres (3) años** se cuentan desde la **fecha de presentación de la declaración extemporánea**.
+3. **Declaración con Saldo a Favor:** Cuando la declaración presente un saldo a favor del contribuyente o responsable, los **tres (3) años** se cuentan desde la fecha de la **presentación de la solicitud de devolución o compensación** (siempre que dicha solicitud se radique antes de vencer los 3 años iniciales).
+4. **Reglas Especiales de Firmeza de Cinco (5) Años:** Para los contribuyentes sujetos al Régimen de **Precios de Transferencia** y para las declaraciones en las que se liquiden o compensen **pérdidas fiscales**, el término de firmeza es de **cinco (5) años**.
+
+---
+
+### 4.2. Las Dos Grandes Rutas de Determinación Oficial del Tributo: Ruta del Omiso vs. Ruta del Inexacto
+Cuando los cruces masivos de **DataR** (Exógena + Factura Electrónica vs. MUISCA) detectan un incumplimiento tributario, el procedimiento administrativo del **Libro V del Estatuto Tributario** se divide en dos rutas completamente distintas según si el contribuyente **NO presentó declaración (Omiso)** o **SÍ presentó declaración pero con datos falsos/incompletos (Inexacto)**:
+
+```
+========================================================================================
+       MAPA COMPLETO DEL PROCEDIMIENTO TRIBUTARIO COLOMBIANO (LIBRO V DEL E.T.)
+========================================================================================
+
+                [ CRUCE MASIVO DE DATOS EN DATAR (Subd. Procesamiento Datos) ]
+                                              |
+                 +----------------------------+----------------------------+
+                 |                                                         |
+                 v                                                         v
+   =============================================             =============================================
+   RUTA A: CONTRIBUYENTE OMISO (No declaró)                  RUTA B: CONTRIBUYENTE INEXACTO (Sí declaró,
+   (Arts. 643, 715, 716 y 717 E.T.)                          pero omitió ingresos o infló costos/IVA)
+   =============================================             =============================================
+                 |                                                         |
+   1. EMPLAZAMIENTO PARA DECLARAR (Art. 715)                 1. REQUERIMIENTO ESPECIAL (Art. 703 E.T.)
+      Acto previo que le otorga UN (1) MES                      Acto preparatorio obligatorio (antes de los
+      para presentar su declaración con                         3 años de firmeza) proponiendo la glosa.
+      sanción de extemporaneidad agravada.                      El contribuyente tiene TRES (3) MESES
+                 | (Si sigue sin declarar)                      para responderlo (Art. 707 E.T.).
+                 v                                                         | (Si no corrige o no desvirtúa)
+   2. RESOLUCIÓN SANCIÓN POR NO DECLARAR                                   v
+      (Art. 643 E.T.)                                        2. LIQUIDACIÓN OFICIAL DE REVISIÓN (Art. 710)
+                 |                                              Acto definitivo que modifica la declaración
+                 v                                              privada e impone Sanción por Inexactitud.
+   3. LIQUIDACIÓN OFICIAL DE AFORO (Art. 717)                   Se notifica dentro de los SEIS (6) MESES
+      La DIAN determina por primera vez el                      siguientes al vencimiento para responder el
+      impuesto (dentro de los 5 AÑOS siguientes                 Requerimiento Especial.
+      al vencimiento del plazo para declarar).                             |
+                 |                                                         |
+                 +----------------------------+----------------------------+
+                                              |
+                                              v
+   =============================================================================================
+   ETAPA DE DISCUSIÓN DEL IMPUESTO (VÍA ADMINISTRATIVA — Arts. 720, 732 y 734 E.T.)
+   - Contra las Liquidaciones Oficiales (Revisión, Aforo, Corrección Aritmética) y Resoluciones
+     Sanción procede el RECURSO DE RECONSIDERACIÓN.
+   - Plazo del contribuyente para interponerlo: DOS (2) MESES desde la notificación del acto.
+   - Plazo de la DIAN para resolverlo y notificar el fallo: UN (1) AÑO contado desde su
+     interposición en debida forma. (Si la DIAN no falla en 1 año -> SILENCIO ADMINISTRATIVO
+     POSITIVO a favor del contribuyente).
+   =============================================================================================
+                                              | (Acto Administrativo Ejecutoriado / En Firme)
+                                              v
+   =============================================================================================
+   ETAPA DE COBRO PERSUASIVO Y COACTIVO (Arts. 817, 823 y ss. E.T.)
+   - Término de Prescripción de la Acción de Cobro: CINCO (5) AÑOS desde la exigibilidad.
+   - Mandamiento de Pago -> Embargo y Secuestro de cuentas/bienes -> Avalúo y Remate.
+   =============================================================================================
+```
+
+---
+
+### 4.3. Tabla Resumen de Términos Legales del Procedimiento Tributario (¡Para Memorizar Antes del Examen!)
+
+| Actuación o Figura Procesal en la DIAN | Norma del Estatuto Tributario | Plazo / Término Legal Exacto | ¿Qué pasa si se vence el término? |
+| :--- | :--- | :--- | :--- |
+| **Firmeza General de la Declaración Privada** | Art. 714 E.T. | **3 años** desde el vencimiento del plazo para declarar (o presentación extemporánea). | La declaración queda inmodificable ni por la DIAN ni por el contribuyente. |
+| **Plazo para responder el Emplazamiento para Declarar (Omisos)** | Art. 715 E.T. | **1 mes** desde su notificación. | Habilita a la DIAN para imponer Sanción por No Declarar y Liquidación de Aforo. |
+| **Plazo máximo para practicar Liquidación Oficial de Aforo** | Art. 717 E.T. | **5 años** siguientes al vencimiento del plazo señalado para declarar. | Caduca la facultad de aforar el impuesto al contribuyente omiso. |
+| **Plazo del contribuyente para responder el Requerimiento Especial** | Art. 707 E.T. | **3 meses** desde la notificación del Requerimiento Especial. | Vence la oportunidad de defensa previa y corre el plazo para liquidar. |
+| **Plazo de la DIAN para notificar la Liquidación Oficial de Revisión** | Art. 710 E.T. | **6 meses** siguientes a la fecha de vencimiento del término para dar respuesta al Requerimiento Especial. | Nulidad de la liquidación por extemporaneidad / firmeza de la privada. |
+| **Plazo del contribuyente para interponer Recurso de Reconsideración** | Art. 720 E.T. | **2 meses** siguientes a la notificación del acto oficial. | El acto queda en firme y pasa a cobro coactivo; se agota la discusión si no acudió *per saltum*. |
+| **Plazo de la DIAN para fallar el Recurso de Reconsideración** | Arts. 732 y 734 E.T. | **1 año** contado a partir de su interposición en debida forma. | Se configura el **Silencio Administrativo Positivo** (se entiende fallado a favor del contribuyente). |
+| **Prescripción de la Acción de Cobro Coactivo** | Art. 817 E.T. | **5 años** contados desde la fecha de exigibilidad del título ejecutivo (se interrumpe con la notificación del Mandamiento de Pago). | Se extingue el derecho de cobro coactivo de la deuda tributaria. |
+
+::: q
+A partir de un cruce masivo ejecutado por la Subdirección de Procesamiento de Datos en DataR entre el Formato 1007 de Información Exógena y los registros de Facturación Electrónica, se detecta que un comerciante presentó oportunamente su Declaración de Renta del año gravable anterior, pero omitió incluir ingresos por ventas de $1.200 millones e incluyó costos inexistentes por $500 millones. Al remitir este hallazgo a la División de Fiscalización y Liquidación competente, ¿cuál es la secuencia de actos administrativos que establece el Estatuto Tributario para modificar válidamente esa declaración privada?
+- [x] Por tratarse de un contribuyente declarante **Inexacto**, la administración debe proferir y notificar primero un **Requerimiento Especial (Art. 703 E.T.)** antes de que venza el término general de firmeza de tres (3) años (Art. 714 E.T.), otorgándole tres (3) meses para responder (Art. 707 E.T.), y posteriormente proferir la **Liquidación Oficial de Revisión (Art. 710 E.T.)** dentro de los seis (6) meses siguientes al vencimiento del término de respuesta, acto contra el cual procede el Recurso de Reconsideración (Art. 720 E.T.).
+- [ ] Notificar un Emplazamiento para Declarar y luego una Liquidación Oficial de Aforo, ya que el aforo se aplica a todos los contribuyentes que sí presentaron su declaración oportunamente.
+- [ ] Expedir directamente un Mandamiento de Pago y embargar las cuentas bancarias del comerciante sin notificarle antes Requerimiento Especial ni Liquidación Oficial de Revisión.
+---
+**Explicación Técnica y Normativa:**
+Es indispensable no confundir nunca la ruta del **Omiso** con la del **Inexacto**:
+* Si el contribuyente **NO presentó declaración**, la ruta es: *Emplazamiento para Declarar (1 mes) $\rightarrow$ Sanción por No Declarar $\rightarrow$ Liquidación Oficial de Aforo (hasta 5 años)*.
+* Si el contribuyente **SÍ presentó su declaración privada**, pero los cruces de **DataR** demuestran que declaró cifras inexactas (omitió ingresos o incluyó costos inexistentes), la ruta obligatoria es: **Requerimiento Especial (Art. 703 E.T.)** dentro de los **3 años de firmeza** $\rightarrow$ **3 meses** para responder $\rightarrow$ **Liquidación Oficial de Revisión (Art. 710 E.T.)** dentro de los **6 meses** siguientes $\rightarrow$ **Recurso de Reconsideración (Art. 720 E.T.)** dentro de los **2 meses** siguientes. Tampoco se puede iniciar cobro coactivo sin que exista primero un título ejecutivo en firme (Art. 828 E.T.).
+:::
+
+
+---
+
+## Unidad 5: Misionalidad Aduanera Parte I — Territorio Aduanero, Zonas Primaria/Secundaria/Franca, Regímenes Aduaneros y Liquidación Matemática de Tributos Aduaneros (Decreto 1165 de 2019)
+
+### 5.1. Conceptos Geográficos y Jurídicos del Comercio Exterior Explicados desde Cero (Decreto 1165 de 2019)
+Cuando la Subdirección de Procesamiento de Datos procesa en **DataR** las tablas provenientes del sistema aduanero **SYGA** y del sistema de carga, aparecen términos que todo **Inspector I** debe dominar sin vacilación:
+
+1. **Territorio Aduanero Nacional (TAN):** Es la demarcación geográfica dentro de la cual se aplica la legislación aduanera colombiana; abarca todo el territorio nacional (continental, insular, mar territorial y espacio aéreo), **con una excepción ficticia de ley para efectos tributarios-aduaneros: las Zonas Francas**.
+2. **Zona Primaria Aduanera:** Es aquel lugar del Territorio Aduanero Nacional habilitado por la DIAN para la realización de las operaciones materiales de **recepción, almacenamiento, inspección y movilización de mercancías que entran o salen del país**, donde la autoridad aduanera ejerce sin restricciones su potestad de control inmediato:
+   * *¿Cuáles son las Zonas Primarias?* Los **muelles y puertos marítimos y fluviales**, los **aeropuertos internacionales**, los **pasos de frontera terrestres habilitados** y los **depósitos públicos o privados habilitados por la DIAN**.
+3. **Zona Secundaria Aduanera:** Es la parte restante del Territorio Aduanero Nacional que **NO constituye Zona Primaria** (es decir, todas las carreteras nacionales, calles, bodegas comerciales comunes y locales comerciales del interior del país). Allí actúa el control posterior y los retenes de la **Policía Fiscal y Aduanera (POLFA)**.
+4. **Zona Franca (Ley 1004 de 2005 y Decreto 1165 de 2019):** Es un área geográfica delimitada dentro del territorio nacional en donde se desarrollan actividades industriales de bienes y de servicios o actividades comerciales bajo una normatividad especial.
+   * **¡Regla de Oro de Examen sobre Zonas Francas (Ficción de Extraterritorialidad)!** Las mercancías extranjeras que ingresan del resto del mundo a una Zona Franca **se consideran fuera del Territorio Aduanero Nacional (TAN) única y exclusivamente para efectos de los tributos aduaneros (no pagan Arancel ni IVA de importación mientras permanezcan en la Zona Franca)**. Pero en el momento en que esa mercancía sale de la Zona Franca hacia el resto de Colombia (al TAN), esa operación constituye una **Importación** y debe presentar Declaración de Importación y pagar los tributos aduaneros correspondientes.
+
+---
+
+### 5.2. La Obligación Aduanera, el Desaduanamiento y el "Levante"
+* **¿Qué es la Obligación Aduanera (Arts. 4 a 8 Decreto 1165 de 2019)?** Es el vínculo jurídico entre la DIAN y cualquier persona que intervenga en una operación de llegada, depósito, importación, exportación o tránsito de mercancías. Comprende tres deberes: (1) presentar las declaraciones aduaneras (de importación, exportación o tránsito), (2) pagar los **Tributos Aduaneros** (derechos de aduana/arancel, IVA de importación y derechos *antidumping* o compensatorios si aplican) y las sanciones a que haya lugar, y (3) conservar y presentar los **documentos soporte** (factura comercial, documento de transporte BL/Guía Aérea, certificado de origen, vistos buenos sanitarios ICA/INVIMA, lista de empaque y mandato aduanero) por un término de **cinco (5) años**.
+* **¿Qué es el Desaduanamiento y qué es el Levante?**
+  * El **Desaduanamiento** es el conjunto completo de formalidades aduaneras necesarias para que una mercancía pueda ser importada para el consumo, exportada o sometida a otro régimen.
+  * El **Levante** es el acto puntual por el cual la autoridad aduanera (o el sistema informático aduanero de la DIAN de forma automática) **permite a los interesados la libre disposición de la mercancía** para retirarla de la Zona Primaria tras verificar el cumplimiento de los requisitos legales y el pago de los tributos. *(Ojo: Otorgar el levante en el puerto NO significa que la declaración quede en firme; la DIAN conserva la facultad de Control Posterior durante **3 años** para auditar el valor, origen o clasificación y formular Liquidación Oficial Aduanera).*
+
+---
+
+### 5.3. Los 3 Grandes Regímenes Aduaneros en Colombia (Decreto 1165 de 2019)
+
+| Régimen Aduanero | Definición y Modalidades Principales | ¿Causa pago de Tributos Aduaneros (Arancel + IVA)? |
 | :--- | :--- | :--- |
-| **No Canalización de Divisas** | Pagar una importación o recibir el pago de una exportación mediante mecanismos no autorizados (ej. efectivo en frontera, compensación de saldos sin cuenta registrada o criptoactivos). | Multa del **100% del valor de la operación** no canalizada a través del mercado regulado. |
-| **Canalización Extemporánea** | Canalizar las divisas por fuera de los plazos perentorios establecidos por el Banco de la República sin causal de justificación válida. | Multa gradual tasada en UVT proporcional al tiempo de retardo en la canalización. |
-| **Falsedad o Inexactitud en la Declaración de Cambio** | Declarar datos falsos respecto al monto real de la importación, el nombre del proveedor o el numeral cambiario para encubrir la operación. | Multa del **100% de la diferencia** entre el valor real y el valor falsamente declarado. |
-| **Incumplimiento de Profesionales de Cambio** | Comprar o vender divisas en efectivo sin estar formalmente inscrito en el registro de profesionales de la DIAN o sin emitir factura electrónica. | Multa de hasta **1.000 UVT** y cancelación definitiva de la autorización para operar. |
-
-> [!EXAM]
-> **Pregunta Clásica en Concursos DIAN:**  
-> La DIAN **NO TIENE COMPETENCIA** para investigar o sancionar irregularidades cambiarias relacionadas con préstamos en dólares otorgados entre dos empresas colombianas o la compra de acciones en la bolsa de Nueva York por una persona natural. Esa competencia corresponde a la Superintendencia de Sociedades. La competencia de la DIAN está indisolublemente atada a las operaciones de **importación, exportación, servicios de comercio exterior y profesionales de cambio en efectivo**.
+| **1. Régimen de IMPORTACIÓN** *(Ingreso de mercancía extranjera o desde Zona Franca al TAN)* | - **Importación Ordinaria (Para el consumo):** La mercancía entra para quedarse definitivamente en Colombia.<br>- **Importación con Franquicia:** Goza de exención total o parcial de tributos por tratado o ley (restringida en su libre disposición hasta que se modifique la modalidad).<br>- **Importación Temporal para Reexportación en el mismo estado:** Maquinaria o equipo que entra por un plazo fijo sin transformarse y luego sale del país.<br>- **Importación Temporal para Perfeccionamiento Activo (Plan Vallejo):** Materias primas extranjeras que entran con suspensión de tributos para fabricar un producto que será **exportado**.<br>- **Reimportación por Perfeccionamiento Pasivo / en el mismo estado, Cumplimiento de Garantía, Tráfico Postal y Envíos Urgentes (*Courier*).** | - **Ordinaria:** Paga el $100\%$ de Arancel e IVA al contado.<br>- **Temporal Corto Plazo:** Suspensión de tributos (con garantía).<br>- **Temporal Largo Plazo (Bienes de capital):** Paga los tributos diferidos en cuotas semestrales.<br>- **Plan Vallejo:** Suspensión total si cumple el compromiso de exportación. |
+| **2. Régimen de EXPORTACIÓN** *(Salida de mercancías del TAN hacia el resto del mundo o hacia una Zona Franca)* | - **Exportación Definitiva** (embarque único o fraccionado).<br>- **Exportación Temporal para Perfeccionamiento Pasivo** (sale a repararse o transformarse afuera y regresa pagando tributos solo sobre el valor agregado en el exterior).<br>- **Exportación Temporal para Reimportación en el mismo estado, Reexportación, Menajes y Muestras sin valor comercial.** | **NO causa Arancel ni IVA** (las exportaciones son **Exentas de IVA a tarifa 0%** bajo el principio internacional de tributación en el país de destino). |
+| **3. Régimen de TRÁNSITO ADUANERO, CABOTAJE Y TRANSBORDO** | Permite el transporte de mercancías nacionales o extranjeras **bajo control aduanero** de una aduana de partida a otra aduana de destino dentro del país con suspensión temporal de tributos:<br>- **Tránsito Aduanero:** Por vía terrestre o férrea (ej. del Puerto de Buenaventura a una Zona Franca o depósito en Bogotá).<br>- **Cabotaje:** Por vía marítima o aérea entre dos puertos o aeropuertos habilitados de Colombia.<br>- **Transbordo:** Traslado directo de una nave/aeronave a otra dentro de la misma aduana. | Opera con **suspensión de tributos** amparado por una póliza/garantía y precintos electrónicos de seguridad hasta que llegue a la aduana de destino. |
 
 ---
 
-## Unidad 5: Planeación Estratégica, MIPG y Transformación Digital
+### 5.4. Fórmula Matemática Exacta de Liquidación de Tributos Aduaneros en DataR (¡Pregunta Clásica de Examen!)
+Cuando un Inspector I programa en **DataR** el validador matemático de las Declaraciones de Importación (**Formulario 500**), debe aplicar una regla fundamental consagrada en el **Decreto 1165 de 2019** y el **Artículo 459 del Estatuto Tributario**: **la Base Gravable del Arancel NO es igual a la Base Gravable del IVA de Importación**.
 
-### 5.1 El Modelo Integrado de Planeación y Gestión (MIPG) en la DIAN
-El **Modelo Integrado de Planeación y Gestión (MIPG)**, adoptado a nivel nacional mediante el **Decreto 1499 de 2017**, es el marco de referencia que articula la formulación de políticas, la gestión del talento humano, la gestión del conocimiento, la transparencia y el control interno en todas las entidades del Estado colombiano.
+Veámoslo paso a paso con un ejemplo numérico claro:
+Supongamos que un importador trae mercancías desde China con:
+* Valor de la mercancía en puerto de origen (**Valor FOB** — *Free On Board*): $\text{USD } 10.000$
+* Costo del transporte marítimo internacional (**Flete**): $\text{USD } 1.500$
+* Costo de la póliza de **Seguro** internacional: $\text{USD } 500$
+* Tasa Representativa del Mercado (**TRM**) vigente del último día hábil de la semana anterior: $\$4.000\text{ COP/USD}$
+* Tarifa de **Arancel** de la subpartida arancelaria: $10\%$
+* Tarifa general de **IVA**: $19\%$
 
-En la DIAN, el MIPG se implementa a través de sus **Siete (7) Dimensiones Operativas**, alineadas directamente con el cumplimiento de sus metas misionales:
+#### Paso 1: Calcular el Valor en Aduanas en Dólares (Valor CIF) y convertirlo a Pesos (Base Gravable del Arancel)
+$$\text{Valor en Aduanas (CIF USD)} = \text{FOB} + \text{Flete} + \text{Seguro} = 10.000 + 1.500 + 500 = \mathbf{\text{USD } 12.000}$$
+$$\text{Base Gravable del Arancel (COP)} = \text{USD } 12.000 \times \$4.000 = \mathbf{\$48.000.000\text{ COP}}$$
 
-```diagram
-LAS 7 DIMENSIONES DEL MIPG APLICADAS A LA MISIONALIDAD DE LA DIAN
+#### Paso 2: Liquidar el Arancel
+$$\text{Arancel} = \$48.000.000 \times 10\% = \mathbf{\$4.800.000\text{ COP}}$$
 
-+---------------------------------------------------------------------------------+
-| 1. TALENTO HUMANO: El corazón del modelo. Sistema Específico de Carrera        |
-|    (Dec. Ley 927 de 2023), mérito, ética y evaluación del desempeño.           |
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 2. DIRECCIONAMIENTO ESTRATÉGICO: Plan Estratégico Institucional, metas de       |
-|    recaudo fijadas en el Marco Fiscal de Mediano Plazo y lucha contra la evasión|
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 3. GESTIÓN CON VALORES PARA RESULTADOS: Facilitación al ciudadano, gestión      |
-|    por procesos, trámites 100% virtuales y fiscalización analítica.             |
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 4. EVALUACIÓN DE RESULTADOS: Monitoreo continuo de indicadores (KPIs), recaudo  |
-|    bruto diario, tiempos de desaduanamiento y resoluciones sancionatorias.       |
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 5. INFORMACIÓN Y COMUNICACIÓN: Transparencia pasiva/activa (Ley 1712 de 2014)   |
-|    y gobierno de los servicios de datos sobre el Repositorio Único DataR.       |
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 6. GESTIÓN DEL CONOCIMIENTO: Innovación en analítica avanzada, modelos de IA    |
-|    y transferencia metodológica en la Subdirección de Procesamiento de Datos.   |
-+---------------------------------------------------------------------------------+
-                                        |
-+---------------------------------------------------------------------------------+
-| 7. CONTROL INTERNO: Modelo Estándar de Control Interno (MECI) basado en         |
-|    tres líneas de defensa: operativa, gestión del riesgo y auditoría interna.   |
-+---------------------------------------------------------------------------------+
+#### Paso 3: Calcular la Base Gravable del IVA de Importación (Artículo 459 E.T. — ¡Aquí está la clave!)
+El **Artículo 459 del Estatuto Tributario** ordena que la base gravable sobre la cual se liquida el IVA en el caso de las mercancías importadas será la misma que se tiene en cuenta para liquidar los derechos de aduana (**Valor CIF en COP**), **ADICIONADA con el valor de este gravamen (el Arancel)**:
+$$\text{Base Gravable del IVA de Importación} = \text{Valor CIF (COP)} + \text{Arancel Liquidado}$$
+$$\text{Base Gravable del IVA} = \$48.000.000 + \$4.800.000 = \mathbf{\$52.800.000\text{ COP}}$$
+
+#### Paso 4: Liquidar el IVA de Importación y el Total de Tributos Aduaneros
+$$\text{IVA de Importación} = \$52.800.000 \times 19\% = \mathbf{\$10.032.000\text{ COP}}$$
+$$\text{Total Tributos Aduaneros a Pagar} = \text{Arancel } (\$4.800.000) + \text{IVA } (\$10.032.000) = \mathbf{\$14.832.000\text{ COP}}$$
+
+::: q
+En la Subdirección de Procesamiento de Datos se está auditando en DataR el algoritmo que recalcula los tributos aduaneros de las Declaraciones de Importación Ordinaria (Formulario 500). Para una importación cuyo Valor en Aduanas (CIF convertido a pesos colombianos con la TRM oficial) es de $100.000.000, sujeta a una tarifa arancelaria del 10% y a una tarifa general de IVA del 19%, ¿cuál es el cálculo legalmente exacto del Arancel, la Base Gravable del IVA y el IVA de importación conforme al Decreto 1165 de 2019 y al Artículo 459 del Estatuto Tributario?
+- [x] El Arancel es de $10.000.000 (10% sobre $100.000.000); la Base Gravable del IVA de importación es de $110.000.000 (compuesta por el Valor en Aduanas CIF de $100.000.000 adicionado con los $10.000.000 del Arancel liquidado conforme al Art. 459 E.T.); y el IVA de importación es de $20.900.000 (19% sobre $110.000.000), para un total de tributos aduaneros de $30.900.000.
+- [ ] Tanto el Arancel (10%) como el IVA (19%) se calculan sobre la misma base de $100.000.000 sin sumar el arancel a la base del IVA, arrojando un IVA de $19.000.000.
+- [ ] Las importaciones ordinarias al Territorio Aduanero Nacional solo pagan Arancel pero están excluidas del pago de IVA por tratarse de mercancías extranjeras.
+---
+**Explicación Técnica y Normativa:**
+Conforme al **Artículo 459 del Estatuto Tributario**, en las importaciones la base gravable del IVA nunca es el Valor CIF aislado, sino el **Valor en Aduanas (CIF en pesos) MÁS los derechos de aduana (Arancel)**. Por tanto:
+1. $\text{Arancel} = \$100.000.000 \times 10\% = \$10.000.000$.
+2. $\text{Base Gravable IVA} = \$100.000.000 + \$10.000.000 = \$110.000.000$.
+3. $\text{IVA Importación} = \$110.000.000 \times 19\% = \$20.900.000$.
+Un error común de programación en pipelines aduaneros es omitir la suma del arancel en la base del IVA, lo cual subestima el recaudo en un $19\%$ del arancel.
+:::
+
+---
+
+## Unidad 6: Misionalidad Aduanera Parte II — Las 3 Fases del Control Aduanero, Régimen de Aprehensión y Decomiso (Decreto Ley 920 de 2023) y Delitos de Contrabando
+
+### 6.1. Las 3 Fases del Control Aduanero y su Alimentación desde DataR
+La gestión del control aduanero en Colombia se divide cronológicamente en **tres (3) fases** donde los modelos de riesgo y cruces de la Subdirección de Procesamiento de Datos juegan un papel determinante:
+
+1. **Control Previo o Anterior:**
+   * **¿Cuándo ocurre?** Desde antes de que el buque o avión toque suelo colombiano (con la transmisión electrónica anticipada del **Manifiesto de Carga** y los Documentos de Transporte) y hasta antes de que se presente la Declaración de Importación.
+   * **¿Qué hace DataR aquí?** Cruza en tiempo real el manifiesto de carga contra listas de embarcadores de riesgo, rutas atípicas, pesos declarados incoherentes e importadores fachada para perfilar contenedores sospechosos antes de su descargue.
+2. **Control Simultáneo:**
+   * **¿Cuándo ocurre?** Desde el momento en que el declarante presenta la Declaración Aduanera y hasta que se autoriza el **Levante** o el retiro de la mercancía de la Zona Primaria.
+   * **¿Cómo opera el Motor de Selectividad?** El sistema evalúa el perfil de riesgo y asigna uno de los canales de control:
+     * **Levante Automático:** Sin inspección previa (para Operadores Económicos Autorizados — OEA y usuarios de bajo riesgo).
+     * **Inspección Documental:** El inspector aduanero verifica en pantalla la consistencia entre la declaración y los documentos soporte digitalizados.
+     * **Inspección Física o Inspección No Intrusiva (INI):** Revisión material del contenedor en bodega o paso por escáneres de Rayos X de alta energía.
+3. **Control Posterior o de Fiscalización:**
+   * **¿Cuándo ocurre?** **Después de otorgado el levante** (cuando la mercancía ya circula por las carreteras de Colombia —Zona Secundaria— o ya fue vendida por el importador).
+   * **¿Qué se audita en el Control Posterior?** La Subdirección de Procesamiento de Datos cruza en **DataR** las declaraciones de importación de los últimos **tres (3) años** contra la Facturación Electrónica de venta nacional, la contabilidad y los giros cambiarios para detectar **subfacturación**, **clasificación arancelaria fraudulenta** (declarar un producto con arancel del $0\%$ cuando físicamente era uno del $15\%$) o **certificados de origen falsos**, dando lugar a **Liquidaciones Oficiales de Corrección o de Revisión de Valor**.
+
+---
+
+### 6.2. El Régimen Sancionatorio y de Decomiso de Mercancías en Aduanas (Decreto Ley 920 de 2023 — ¡Actualización Normativa Obligatoria!)
+> [!LAW] ¿Por qué existe el Decreto Ley 920 del 6 de junio de 2023?
+> La Corte Constitucional declaró que el régimen sancionatorio y de decomiso aduanero no podía regularse por un simple decreto administrativo (como el Decreto 1165 de 2019), sino que exigía una norma con **fuerza material de Ley**. Por eso se expidió el **Decreto Ley 920 de 2023**, que hoy es el **Estatuto Sancionatorio y de Decomiso de Mercancías vigente de la DIAN**.
+
+En el examen de la CNSC debes distinguir con absoluta claridad cuatro figuras del **Decreto Ley 920 de 2023**:
+
+```
+========================================================================================
+    DIFERENCIA ENTRE APREHENSIÓN, DECOMISO, LEGALIZACIÓN (RESCATE) Y ABANDONO ADUANERO
+                    (Decreto 1165 de 2019 y Decreto Ley 920 de 2023)
+========================================================================================
+
+  1. APREHENSIÓN (Medida Cautelar Preventiva - Art. 3 y Arts. 69 y ss. Dec. Ley 920/2023)
+     - Es el acto de trámite mediante el cual la DIAN (o con apoyo de la POLFA) RETIENE
+       FÍSICAMENTE una mercancía extranjera al encontrar una causal de ingreso o
+       permanencia ilegal (ej. mercancía no presentada, sin declaración de importación,
+       por lugar no habilitado o con doble facturación).
+     - NO transfiere todavía la propiedad a la Nación; inicia el proceso de decomiso.
+  --------------------------------------------------------------------------------------
+  2. DECOMISO (Acto Administrativo Definitivo de Pérdida de Propiedad a favor de la Nación)
+     - Es el acto en virtud del cual pasa a poder de la Nación la mercancía respecto de
+       la cual no se acreditó su legal introducción y permanencia en el país:
+       A) DECOMISO ORDINARIO (Arts. 83 y ss. Dec. Ley 920): Tras el Acta de Aprehensión,
+          se otorgan 15 días hábiles para presentar Documento de Objeción y pruebas, y
+          luego la DIAN decide de fondo si ordena el decomiso o devuelve la mercancía.
+       B) DECOMISO DIRECTO (Art. 89 Dec. Ley 920): En el mismo acto se aprehende y se
+          decomisa de inmediato (aplica para hidrocarburos, mercancías de prohibida
+          importación, bienes que atenten contra la salud/moral o perecederos).
+  --------------------------------------------------------------------------------------
+  3. LEGALIZACIÓN Y PAGO DE RESCATE (Mecanismo de Subsanación - Art. 290 Dec. 1165/2019)
+     - Permite al interesado declarar mercancías extranjeras que fueron aprehendidas o
+       presentadas con errores formales/extemporáneos, pagando los tributos aduaneros
+       MÁS una suma adicional por concepto de "RESCATE" (15%, 20%, 50% o 75% del valor
+       en aduanas según la etapa en que se acoja), recuperando así la mercancía, salvo
+       que se trate de bienes sobre los cuales esté prohibido legalizar.
+  --------------------------------------------------------------------------------------
+  4. ABANDONO LEGAL vs. ABANDONO VOLUNTARIO
+     - ABANDONO LEGAL: Ocurre cuando la mercancía permanece en el depósito temporal en
+       Zona Primaria por más de UN (1) MES (prorrogable por 1 mes más) sin haber sido
+       nacionalizada (puede rescatarse dentro del mes siguiente pagando rescate).
+     - ABANDONO VOLUNTARIO: Cuando el dueño renuncia expresamente a la mercancía a favor
+       de la Nación antes del levante (sin costo de rescate ni sanción si se acepta).
+========================================================================================
 ```
 
-### 5.2 El Plan Estratégico Institucional de la DIAN
-El Plan Estratégico de la DIAN define cuatro pilares fundamentales para el periodo cuatrienal:
-1. **Cercanía al Ciudadano y Legitimidad Institucional:** Facilitar el cumplimiento espontáneo mediante declaraciones de renta sugeridas, devolución automática de saldos a favor en menos de 15 días para contribuyentes de bajo riesgo y simplificación del RUT.
-2. **Lucha Frontal contra las Estructuras de Evasión y Contrabando:** Identificar tipologías de fraude complejo mediante analítica de grafos y redes neuronales sobre DataR, desmantelando proveedores ficticios de facturas y operaciones de lavado de activos.
-3. **Talento Humano Calificado y Sistema Específico de Carrera:** Fortalecer la meritocracia, el sentido de pertenencia y la estabilidad laboral a través de los concursos de méritos administrados con la CNSC bajo el Decreto Ley 927 de 2023.
-4. **Transformación Digital y Soberanía Tecnológica:** Reemplazo definitivo de las arquitecturas monolíticas legadas por un ecosistema modular de microservicios, APIs gobernadas y lagos de datos modernos.
-
-### 5.3 Los Cuatro Motores de la Transformación Digital en la DIAN
-La Subdirección de Procesamiento de Datos es el motor operativo de la modernización tecnológica de la entidad:
-* **El Ecosistema de Facturación Electrónica como Sensor de la Economía:** Dejó de ser un simple comprobante fiscal para convertirse en un sensor en tiempo real del ciclo económico. Incorpora la Factura Electrónica de Venta (UBL 2.1), la **Nómina Electrónica**, el **Documento Soporte con no obligados a facturar**, el documento equivalente electrónico y el **RADIAN** (plataforma institucional donde se registran las facturas electrónicas como títulos valores para operaciones de *factoring*).
-* **El Repositorio Único Institucional DataR:** Lago de datos unificado que consolida en formatos abiertos (Apache Iceberg / Parquet) la totalidad de los eventos tributarios, aduaneros y cambiarios del país, eliminando los silos históricos de MUISCA y SYGA.
-* **Declaraciones Sugeridas Basadas en Analítica:** Mecanismo que utiliza la información exógena y la facturación electrónica para entregar al ciudadano una propuesta prellenada de su declaración de renta, reduciendo a cero los costos de intermediación y los errores involuntarios de liquidación.
-* **Modernización del Sistema Aduanero y Logístico:** Integración de sistemas de paso no intrusivo en puertos (escáneres automáticos con visión por computador) con los manifiestos electrónicos de carga en tiempo real.
-
-### 5.4 Indicadores Misionales Clave de Rendimiento (KPIs)
-El Inspector I debe comprender y monitorear los indicadores misionales que miden el impacto del procesamiento de datos en la gestión pública:
-1. **Tasa de Evasión Tributaria:** Medición macroeconómica de la brecha entre el recaudo teórico potencial y el recaudo efectivamente recibido en el IVA y en el Impuesto sobre la Renta.
-2. **Cumplimiento de la Meta de Recaudo Bruto:** Proporción entre el recaudo ejecutado por la DIAN y la meta fijada por el Ministerio de Hacienda en la Ley del Presupuesto General de la Nación.
-3. **Tiempo Medio de Desaduanamiento (TAD):** Promedio de horas transcurridas desde la llegada de la mercancía a puerto hasta la obtención de la autorización de levante aduanero.
-4. **Eficacia de la Fiscalización Analítica:** Porcentaje de auditorías tributarias y aduaneras iniciadas a partir de alertas automáticas de DataR que culminan con liquidación oficial de revisión o sanción efectiva confirmada.
+#### Innovaciones Garantistas del Decreto Ley 920 de 2023:
+1. **Comité de Revisión de Aprehensiones (Art. 72 Decreto Ley 920 de 2023):** Instancia técnica colegiada que puede convocarse para revisar la legalidad y procedencia de una aprehensión compleja antes de definir el decomiso.
+2. **Amonestación y Gradualidad para Infracciones Leves:** Introduce mecanismos preventivos y criterios de proporcionalidad y favorabilidad para no castigar simples errores formales de digitación sin daño fiscal como si fueran contrabando.
 
 ---
 
-## Flashcards Mnemotécnicas (20 Conceptos Clave)
+### 6.3. Límite entre la Infracción Administrativa Aduanera (DIAN) y el Delito Penal de Contrabando (Fiscalía / Jueces Penales)
+¿Cuándo un caso de mercancía sin declaración de importación deja de ser solo un decomiso administrativo de la DIAN y se convierte además en un **delito penal de Contrabando** con cárcel?
+* Conforme al **Artículo 319 del Código Penal Colombiano (Ley 599 de 2000, modificado por la Ley 1762 de 2015 — Ley Anticontrabando)**:
+  * Si la cuantía aduanera de las mercancías introducidas o extraídas ilegalmente del país es **superior a cincuenta (50) Salarios Mínimos Legales Mensuales Vigentes ($> 50\text{ SMLMV}$)**, la conducta configura el **Delito de Contrabando** (pena de prisión de 4 a 8 años, o de 9 a 12 años si supera los $200\text{ SMLMV}$), además de constituir delito subyacente de **Lavado de Activos (Art. 323 C.P.)**.
+  * En el caso de **Contrabando de Hidrocarburos y sus derivados (Art. 319-1 C.P.)**, el umbral penal se activa a partir de **veinte (20) galones**.
 
-- **Seguridad Fiscal del Estado ::** Bien jurídico superior protegido por la DIAN que asegura la oportuna y justa recaudación tributaria para financiar el gasto público y sostener el Estado Social de Derecho.
-- **Artículo 95 Numeral 9 C.P. ::** Mandato constitucional que establece el deber fundamental de toda persona de contribuir al financiamiento de los gastos e inversiones del Estado con justicia y equidad.
-- **Principios del Sistema Tributario (Art. 363 C.P.) ::** Equidad (trato igual e igualitario), Eficiencia (mínimo costo administrativo y sin trabas) y Progresividad (mayor aporte a mayor capacidad económica), bajo el principio de Irretroactividad.
-- **Sujeto Activo de la Obligación Tributaria ::** El acreedor jurídico de la prestación impositiva (en tributos nacionales es la Nación, representada por la UAE DIAN).
-- **Sujeto Pasivo Económico frente a Jurídico ::** El económico soporta el pago patrimonial final del impuesto (el consumidor en el IVA); el jurídico tiene la obligación legal de cobrarlo, declararlo y consignarlo a la DIAN.
-- **Hecho Generador ::** Presupuesto fáctico o económico consagrado en la ley cuya materialización en la realidad hace nacer la obligación tributaria sustancial.
-- **Obligación Sustancial frente a Formal ::** La sustancial consiste en pagar la suma líquida del tributo; la formal comprende los deberes instrumentales de hacer, no hacer e informar (RUT, declarar, facturar).
-- **Autonomía de las Obligaciones Formales ::** Principio por el cual un contribuyente debe cumplir sus deberes formales (declarar o reportar exógena) incluso si no arrojó impuesto a pagar en el ejercicio.
-- **Régimen Simple de Tributación (SIMPLE) ::** Modelo opcional de recaudo unificado que integra el impuesto sobre la renta, el impuesto nacional al consumo y el ICA municipal para fomentar la formalización.
-- **Bienes Exentos frente a Bienes Excluidos en IVA ::** Los exentos tienen tarifa del 0% y otorgan derecho a devolución de IVA descontable; los excluidos no causan IVA y el impuesto pagado forma parte del costo.
-- **Obligación Aduanera ::** Vínculo jurídico entre el Estado y los usuarios de comercio exterior para el pago de tributos aduaneros, el cumplimiento de formalidades y la conservación de documentos soporte.
-- **Levante Aduanero ::** Acto administrativo por el cual la autoridad aduanera autoriza a los interesados a disponer libremente de las mercancías importadas una vez cumplidos los requisitos legales.
-- **Fases del Control Aduanero ::** Control Previo (antes de la llegada o desaduanamiento), Control Simultáneo (durante la inspección documental/física) y Control Posterior (auditoría ex-post hasta por 5 años).
-- **Aprehensión frente a Decomiso ::** La aprehensión es la retención física cautelar y preventiva de la mercancía; el decomiso es la declaración formal y definitiva de pérdida de dominio a favor de la Nación.
-- **Competencia Cambiaria Exclusiva de la DIAN ::** Vigilancia y control de divisas asociadas a importaciones, exportaciones, servicios de comercio exterior y profesionales de compra/venta de divisas en efectivo.
-- **Mercado Cambiario Regulado ::** Circuito obligatorio conformado por los Intermediarios del Mercado Cambiario (IMC) y las Cuentas de Compensación registradas ante el Banco de la República.
-- **Infracción Cambiaria de No Canalización ::** Pagar o cobrar operaciones de comercio exterior mediante mecanismos no autorizados (efectivo o compensación no registrada), castigado con multa del 100% de la operación.
-- **Dimensiones del MIPG en la DIAN ::** Las siete dimensiones operativas del Decreto 1499 de 2017 que estructuran la planeación, talento humano, conocimiento, gobierno de datos y control interno institucional.
-- **Ecosistema de Factura Electrónica ::** Conjunto integrado por Factura Electrónica UBL 2.1, Nómina Electrónica, Documento Soporte con no obligados y el RADIAN para registro de facturas como título valor.
-- **RADIAN ::** Plataforma tecnológica administrada por la DIAN donde se registran las facturas electrónicas de venta como títulos valores que circulan en el territorio nacional mediante operaciones de factoring.
+::: q
+En un operativo conjunto de control posterior realizado en una bodega comercial de Bogotá (Zona Secundaria Aduanera) a partir de una alerta de analítica de inventarios generada en DataR, los funcionarios de Fiscalización Aduanera y la POLFA encuentran un lote de teléfonos celulares de alta gama de procedencia extranjera valorado en 300 SMLMV, respecto del cual el comerciante no posee Declaración de Importación ni Factura Electrónica nacional que acredite su legal introducción y permanencia en el Territorio Aduanero Nacional. Conforme al Decreto Ley 920 de 2023 y al Código Penal (Ley 1762 de 2015), las actuaciones administrativas y penales procedentes son:
+- [x] En el ámbito administrativo aduanero, expedir el Acta de **Aprehensión** (medida cautelar física) para iniciar el proceso administrativo tendiente a declarar el **Decomiso** de la mercancía a favor de la Nación; y simultáneamente, en el ámbito penal, formular denuncia y poner el caso a disposición de la Fiscalía General de la Nación por configurarse el delito de **Contrabando / Favorecimiento de Contrabando (Arts. 319 y 320 C.P.)** al superar la cuantía el umbral legal de cincuenta (50) SMLMV.
+- [ ]Otorgar inmediatamente el Levante Automático de los celulares en la bodega porque en la Zona Secundaria Aduanera la DIAN no tiene facultades de fiscalización ni de aprehensión.
+- [ ] Cobrar únicamente el Impuesto Predial del local comercial y devolverle los celulares de contrabando al comerciante sin exigir declaración de importación.
+---
+**Explicación Técnica y Normativa:**
+En la **Zona Secundaria Aduanera**, la DIAN (con el apoyo operativo de la POLFA) ejerce plenamente el **Control Posterior**. Al no acreditarse la legal introducción de mercancía extranjera al TAN, procede la medida cautelar de **Aprehensión** seguida del proceso de **Decomiso** regulado en el **Decreto Ley 920 de 2023**. Adicionalmente, dado que el valor en aduanas ($300\text{ SMLMV}$) supera el tope objetivo de **$50\text{ SMLMV}$** previsto en los **Artículos 319 y 320 del Código Penal**, concurre la conducta punible penal, cuya acción penal se coordina con la Fiscalía General de la Nación a través de la Subdirección de Apoyo en la Lucha contra el Delito Fiscal y Aduanero y la Subdirección de Asuntos Penales.
+:::
+
+---
+
+## Unidad 7: Misionalidad Cambiaria de Competencia de la DIAN — Mercado Regulado, Cuentas de Compensación, Exógena Cambiaria y Régimen Sancionatorio (Decreto Ley 2245 de 2011)
+
+### 7.1. ¿Qué es el Régimen Cambiario y cómo se divide el Mercado de Divisas en Colombia? (Explicación desde Cero)
+Cuando una persona o empresa en Colombia realiza operaciones en moneda extranjera (dólares, euros, etc.) con el exterior, el **Banco de la República** (como autoridad cambiaria constitucional según la **Ley 9 de 1991** y la **Resolución Externa No. 1 de 2018**) divide todas las transacciones en **dos mercados**:
+
+1. **El Mercado Cambiario Regulado (Operaciones Obligatoriamente Canalizables):**
+   * Son aquellas operaciones estratégicas para la balanza de pagos del país cuyas divisas **ESTÁN OBLIGADAS POR LEY a canalizarse (transferirse o negociarse)** única y exclusivamente a través de dos conductos autorizados:
+     * **Conducto A — Los Intermediarios del Mercado Cambiario (IMC):** Bancos comerciales, corporaciones financieras, compañías de financiamiento, cooperativas financieras y sociedades especializadas autorizadas.
+     * **Conducto B — Las Cuentas de Compensación:** Cuentas bancarias abiertas por un residente colombiano en un banco del exterior (ej. en Miami o Panamá), pero **registradas formalmente ante el Banco de la República (Formulario No. 10)** para pagar y recibir operaciones obligatoriamente canalizables, reportando mensualmente todos sus movimientos al Banco de la República y trimestralmente en **Información Exógena Cambiaria a la DIAN**.
+   * *¿Cuáles son las Operaciones Obligatoriamente Canalizables?*
+     1. **Importación y exportación de bienes** *(Vigiladas por la DIAN)*.
+     2. **Operaciones de endeudamiento externo** e intereses asociados *(Vigiladas por la DIAN cuando derivan de financiación de comercio exterior, o por Supersociedades cuando es endeudamiento financiero puro)*.
+     3. **Inversiones de capital del exterior en Colombia** e **Inversiones colombianas en el exterior** *(Vigiladas por la Superintendencia de Sociedades)*.
+     4. **Operaciones de derivados financieros y avales/garantías en moneda extranjera.**
+2. **El Mercado Libre (No Obligatoriamente Canalizable):**
+   * Son las demás operaciones en divisas (por ejemplo, el pago de servicios de consultoría, turismo, donaciones o fletes no obligatorios) que pueden pagarse con cuentas del mercado libre, aunque si el residente **decide voluntariamente** canalizarlas por un IMC o por una Cuenta de Compensación, debe suministrar la información veraz de los datos mínimos de la operación de cambio (**Declaración de Cambio**).
+
+---
+
+### 7.2. El Mapa de Competencias de Vigilancia Cambiaria: Superfinanciera vs. Supersociedades vs. DIAN
+En la prueba escrita de la CNSC, **siempre** evalúan si sabes distinguir qué entidad del Estado investiga cada infracción cambiaria (**Decreto 2116 de 1992**, **Decreto 1742 de 2020** y **Decreto Ley 2245 de 2011**):
+
+```
+========================================================================================
+       FRONTERA LEGAL DE VIGILANCIA Y CONTROL CAMBIARIO EN EL ESTADO COLOMBIANO
+========================================================================================
+
+          [ REGULADOR CAMBIARIO: JUNTA DIRECTIVA DEL BANCO DE LA REPÚBLICA ]
+                     (Ley 9 de 1991 y Resolución Externa 1 de 2018)
+                                           |
+        +----------------------------------+----------------------------------+
+        |                                  |                                  |
+        v                                  v                                  v
++-------------------------------+  +-------------------------------+  +-------------------------------+
+| 1. SUPERINTENDENCIA           |  | 2. SUPERINTENDENCIA DE        |  | 3. UAE DIAN ★                 |
+|    FINANCIERA DE COLOMBIA     |  |    SOCIEDADES                 |  |    (Decreto Ley 2245 de 2011) |
+|-------------------------------|  |-------------------------------|  |-------------------------------|
+| Vigila la conducta de los     |  | Vigila a personas naturales y |  | Vigila de forma exclusiva:    |
+| INTERMEDIARIOS DEL MERCADO    |  | jurídicas en operaciones de:  |  | 1) IMPORTACIONES Y            |
+| CAMBIARIO (IMC):              |  | 1) INVERSIÓN EXTRANJERA       |  |    EXPORTACIONES DE BIENES.   |
+| - Bancos comerciales          |  |    DIRECTA o de portafolio en |  | 2) ENDEUDAMIENTO EXTERNO      |
+| - Corporaciones financieras   |  |    Colombia.                  |  |    derivado de comercio ext.  |
+| - Sociedades de intermediación|  | 2) INVERSIÓN COLOMBIANA en el |  | 3) SERVICIOS y operaciones    |
+|   cambiaria y servicios       |  |    exterior (compra de        |  |    del mercado libre / Cuentas|
+|   financieros especiales      |  |    acciones/empresas afuera). |  |    de Compensación en su      |
+|   (SICSFE).                   |  | 3) ENDEUDAMIENTO EXTERNO no   |  |    ámbito de competencia.     |
+|                               |  |    asociado a comercio ext.   |  | 4) PROFESIONALES DE COMPRA Y  |
+|                               |  |                               |  |    VENTA DE DIVISAS Y CHEQUES |
+|                               |  |                               |  |    DE VIAJERO EN EFECTIVO.    |
++-------------------------------+  +-------------------------------+  +-------------------------------+
+========================================================================================
+```
+
+---
+
+### 7.3. Reglas de Oro del Control Cambiario de la DIAN y del Procedimiento Sancionatorio (Decreto Ley 2245 de 2011)
+Cuando la **Subdirección de Procesamiento de Datos** cruza en **DataR** las Declaraciones de Importación/Exportación (**SYGA**) contra la **Información Exógena Cambiaria** (Formatos 1059, 1060, 1061, 1062, 1063, 1064, 1066 y 1067), busca detectar las infracciones tipificadas en el **Artículo 3 del Decreto Ley 2245 de 2011**:
+
+1. **Principio de Coincidencia y Prohibición de Efectivo en Comercio Exterior:**
+   * Quien importa una mercancía está obligado a pagarle al proveedor del exterior canalizando las divisas a través de un **IMC** o de su propia **Cuenta de Compensación** registrada.
+   * **¿Qué pasa si el importador colombiano lleva dólares en efectivo en un maletín para pagar un contenedor de mercancía, o si un tercero no autorizado paga por él desde una cuenta no registrada?** Comete la infracción cambiaria más grave: **No canalización a través del mercado cambiario u operación realizada por conducto no autorizado (Numeral 1, Art. 3 Decreto Ley 2245 de 2011)**, cuya multa es del **cien por ciento ($100\%$) del monto dejado de canalizar**.
+2. **Etapas y Términos del Procedimiento Administrativo Cambiario (Decreto Ley 2245 de 2011):**
+   * **Naturaleza de la Responsabilidad Cambiaria:** Es de carácter **objetivo** (basta verificar el incumplimiento formal o sustancial de la norma cambiaria, salvo fuerza mayor o caso fortuito probados).
+   * **Caducidad de la Acción Sancionatoria Cambiaria (Art. 5 Dec. Ley 2245/2011):** La DIAN tiene **cinco (5) años** contados desde la ocurrencia del hecho constitutivo de infracción para notificar el **Acto de Formulación de Cargos**.
+   * **Término de Traslado para Descargos (Art. 21 Dec. Ley 2245/2011):** Notificado el Acto de Formulación de Cargos, el investigado tiene **dos (2) meses** para presentar descargos, pedir pruebas o acogerse al **pago con sanción reducida**.
+   * **Término para expedir la Resolución Sanción (Art. 25 Dec. Ley 2245/2011):** **Seis (6) meses** siguientes al vencimiento del término de traslado o del período probatorio, y contra la Resolución Sanción procede el **Recurso de Reconsideración** dentro de los **dos (2) meses** siguientes.
+
+::: q
+Durante un cruce de datos en DataR entre las bases del Banco de la República, la Información Exógena Cambiaria y las declaraciones aduaneras de SYGA, un Inspector I de la Subdirección de Procesamiento de Datos identifica dos hallazgos: (Hallazgo 1) Una empresa textil importó telas por USD 500.000 amparadas en Declaraciones de Importación, pero pagó la deuda al proveedor extranjero entregándole dólares en efectivo y criptoactivos sin utilizar un Intermediario del Mercado Cambiario (IMC) ni una Cuenta de Compensación registrada; y (Hallazgo 2) Un ciudadano colombiano compró el 40% de las acciones de una sociedad inmobiliaria en España como inversión colombiana de capital en el exterior y omitió registrar dicha inversión ante el Banco de la República. De acuerdo con la distribución legal de competencias cambiarias en Colombia (Decreto Ley 2245 de 2011 y Decreto 1742 de 2020), el enrutamiento correcto de estos dos hallazgos es:
+- [x] El Hallazgo 1 (pago de importación de bienes por fuera del mercado cambiario regulado) es de competencia exclusiva de la **UAE DIAN** (Subdirección de Fiscalización Cambiaria y Direcciones Seccionales bajo el Decreto Ley 2245 de 2011), mientras que el Hallazgo 2 (inversión colombiana de capital en el exterior no asociada a comercio exterior de bienes) debe trasladarse por competencia a la **Superintendencia de Sociedades**.
+- [ ] Ambos hallazgos son competencia exclusiva de la Superintendencia Financiera de Colombia, porque la DIAN no tiene facultades de control cambiario.
+- [ ] El Hallazgo 1 corresponde a la Superintendencia de Sociedades y el Hallazgo 2 corresponde a la Dirección de Gestión de Aduanas de la DIAN.
+---
+**Explicación Técnica y Normativa:**
+Esta pregunta evalúa con precisión la frontera de vigilancia cambiaria en Colombia:
+1. La **DIAN** tiene competencia privativa sobre el control cambiario de las **importaciones y exportaciones de bienes**, el endeudamiento externo derivado de ellas y los profesionales de compra y venta de divisas en efectivo (rigiéndose por el **Decreto Ley 2245 de 2011**, que sanciona la no canalización de una importación por conducto de IMC o Cuenta de Compensación con multa del $100\%$ del monto).
+2. La **Superintendencia de Sociedades** tiene la competencia exclusiva para vigilar e investigar las infracciones al régimen de **Inversión Extranjera en Colombia** e **Inversión Colombiana en el Exterior** (compra de acciones o empresas en el extranjero).
+:::
+
+---
+
+## Unidad 8: Convergencia Misional en la Subdirección de Procesamiento de Datos — Las 5 Grandes Mallas de Triangulación Analítica 360° sobre DataR
+
+### 8.1. Por qué la Subdirección de Procesamiento de Datos es el Eje Integrador de la Misionalidad DIAN
+La mayor ventaja competitiva de la DIAN frente a otras administraciones fiscales del mundo es que en Colombia **una sola entidad (la UAE DIAN) concentra la administración de los Impuestos Internos, las Aduanas y el Control Cambiario de Comercio Exterior**.
+
+Sin embargo, en el pasado esos tres mundos vivían desconectados en bases de datos separadas. Hoy, gracias al **Artículo 56 del Decreto 1742 de 2020**, la **Subdirección de Procesamiento de Datos** une los tres universos dentro del Lakehouse **DataR**, permitiendo que el **Inspector I (OPEC 236670)** construya la **Vista 360° del Contribuyente y Usuario Aduanero/Cambiario**.
+
+```
+========================================================================================
+     ARQUITECTURA DE TRIANGULACIÓN ANALÍTICA 360° EN DATAR (SUBD. PROCESAMIENTO DATOS)
+========================================================================================
+
+     +-------------------------------------------------------------------------+
+     |             REPOSITORIO ÚNICO INSTITUCIONAL DATAR (CAPA GOLD)           |
+     |            Llave Maestra de Integración: NIT Normalizado + RUB          |
+     +------------------------------------+------------------------------------+
+                                          |
+          +-------------------------------+-------------------------------+
+          |                               |                               |
+          v                               v                               v
+ +---------------------------------+ +---------------------------------+ +---------------------------------+
+ | VÉRTICE 1: MUNDO TRIBUTARIO     | | VÉRTICE 2: MUNDO ADUANERO       | | VÉRTICE 3: MUNDO CAMBIARIO E    |
+ | - Declaraciones Renta (110/210) | | - Declaraciones Importación     | |   INTERNACIONAL                 |
+ | - Declaraciones IVA (300) /     | |   (Form. 500) y Exportación     | | - Exógena Cambiaria (Formatos   |
+ |   Retención (350) / RST (260)   | |   (Form. 600) en SYGA           | |   1059 a 1067)                  |
+ | - Factura Electrónica UBL 2.1   | | - Manifiestos de Carga y BL     | | - Cuentas de Compensación (F10) |
+ | - Nómina Electrónica / RADIAN   | | - Valor en Aduanas (CIF), Peso  | | - Reportes OCDE CRS / FATCA     |
+ | - Información Exógena (1001...) | |   Neto y Subpartida Arancelaria | | - Precios Transferencia / CbCR  |
+ +---------------------------------+ +---------------------------------+ +---------------------------------+
+          \                               |                               /
+           \                              |                              /
+            +-----------------------------+-----------------------------+
+                                          |
+                                          v
+     +-------------------------------------------------------------------------+
+     |   DETECCIÓN AUTOMÁTICA DE INCONSISTENCIAS CRUZADAS (CROSS-DOMAIN ML):   |
+     |   1. ¿Lo que importó en Aduanas coincide con lo que giró en Cambios?    |
+     |   2. ¿Las unidades importadas + compradas coinciden con las vendidas en |
+     |      Facturación Electrónica?                                           |
+     |   3. ¿Los activos reportados por la OCDE (CRS) están en el Form. 160?   |
+     +-------------------------------------------------------------------------+
+========================================================================================
+```
+
+---
+
+### 8.2. Catálogo de las 5 Grandes Mallas de Cruces Misionales que ejecuta el Inspector I en DataR
+Estudia detenidamente esta matriz porque resume cómo se traduce toda la misionalidad de la DIAN en reglas algorítmicas concretas dentro de la **Subdirección de Procesamiento de Datos**:
+
+| Malla de Cruce en DataR | Fuentes de Datos que se Cruzan (`JOIN` en DataR) | Ecuación / Regla de Consistencia Esperada | ¿Qué Fraude o Inconsistencia Misional Detecta cuando la Ecuación no cuadra? |
+| :--- | :--- | :--- | :--- |
+| **1. Malla Tributaria de Ingresos y Facturación** | `Factura Electrónica Emitida (UBL 2.1)` + `Formato 1007 Exógena` + `Formato 1003 (Retenciones que le practicaron)` **VS.** `Declaración de Renta (110/210) e IVA (300)`. | $$\text{Ingresos Declarados} \ge \max\left(\sum \text{FE Emitida}, \sum \text{Compras reportadas por terceros}\right)$$ | **Omisión de Ingresos y Evasión de IVA:** El contribuyente facturó electrónicamente o sus clientes reportaron haberle comprado más de lo que él declaró en Renta o en sus 6 bimestres de IVA. |
+| **2. Malla Tributaria de Costos, Deducciones y Nómina** | `Costos y Gastos declarados en Renta (110/210)` **VS.** `Factura Electrónica Recibida con Acuse` + `Nómina Electrónica` + `Documento Soporte a No Obligados` + `PILA (UGPP)`. | $$\text{Costos y Deducciones Declarados} \le \sum (\text{FE Recibida} + \text{Nómina Elec.} + \text{Doc. Soporte})$$ | **Costos Ficticios y Compra de Facturas (Art. 671 E.T.):** El contribuyente infló costos sin soporte electrónico válido o incluyó facturas de **Proveedores Ficticios**. |
+| **3. Malla Aduanero-Tributaria de Inventarios (*Kardex* Nacional)** | `Unidades y Subpartidas Importadas en SYGA (Form. 500)` + `Compras Nacionales en FE` **VS.** `Unidades Vendidas en Facturación Electrónica Nacional`. | $$\text{Unidades Vendidas de Subpartida } X \le \text{Inventario Inicial} + \text{Importaciones } X + \text{Compras Nal. } X$$ | **Contrabando Abierto o Técnico:** Si una empresa vende con Factura Electrónica en Colombia $100.000$ televisores pero solo importó legalmente $10.000$ y no compró en el país, los otros $90.000$ entraron de contrabando. |
+| **4. Malla Aduanero-Cambiaria (*Trade-Based Money Laundering - TBML*)** | `Valor FOB en Declaraciones de Importación/Exportación (SYGA)` **VS.** `Giros y Reintegros en Exógena Cambiaria (Formatos 1059/1060) y Cuentas de Compensación`. | $$\sum \text{Valor FOB Importado (SYGA)} \approx \sum \text{Divisas Canalizadas por Importación} + \Delta \text{Cuentas por Pagar Ext.}$$ | **Subfacturación Aduanera, Lavado de Activos o No Canalización Cambiaria (Dec. Ley 2245/2011):** Declaró en la aduana que la mercancía valía $\text{USD } 100.000$ para pagar menos arancel, pero por el banco giró al exterior $\text{USD } 900.000$. |
+| **5. Malla de Transparencia Societaria y Fiscalidad Internacional** | `Registro Único de Beneficiarios Finales (RUB - Art. 631-5 E.T.)` + `Reportes CRS (OCDE) / FATCA` **VS.** `Declaración de Activos en el Exterior (Form. 160)` + `Precios de Transferencia (Form. 120)`. | Toda persona natural con $\ge 5\%$ de propiedad/control real en el **RUB** y toda cuenta reportada en **CRS/FATCA** debe reflejarse en su patrimonio fiscal y régimen de vinculados. | **Ocultamiento de Patrimonio en Paraísos Fiscales (Art. 434A C.P.) y Fraccionamiento Societario:** Uso de entramados de sociedades pantalla controladas por el mismo beneficiario final real. |
+
+::: q
+Un Inspector I de la Subdirección de Procesamiento de Datos ejecuta en DataR un cruce trimestral de triangulación entre tres repositorios: (1) Declaraciones de Importación del sistema SYGA, (2) Información Exógena Cambiaria (Formato 1059 de pagos de importaciones a través de IMC y Cuentas de Compensación), y (3) Facturación Electrónica de Venta Nacional UBL 2.1. El cruce revela que una sociedad comercializadora declaró en las aduanas de Buenaventura importaciones de calzado por un valor FOB total de USD 200.000 en el año, pero durante el mismo período canalizó giros hacia su proveedor en Panamá por USD 2.500.000 bajo el numeral cambiario de pago de importaciones de bienes, y vendió dicho calzado en Colombia mediante Facturación Electrónica por el equivalente a USD 3.800.000. Al analizar integralmente este hallazgo bajo la misionalidad tridimensional de la DIAN, la conclusión técnica que debe documentar el Inspector I en el insumo para las áreas de Fiscalización es que la discrepancia evidencia:
+- [x] Un patrón simultáneo de riesgo en los tres ejes misionales: (1) **Aduanero**, por presunta subfacturación del valor en aduanas en las declaraciones de importación para evadir Arancel e IVA de importación; (2) **Cambiario**, por presunta canalización de divisas por montos superiores a los documentos aduaneros reales o pago de mercancía ingresada por contrabando (infracción al Decreto Ley 2245 de 2011 y alerta de Lavado de Activos Basado en el Comercio - TBML); y (3) **Tributario**, por inconsistencia en el costo fiscal de ventas declarado en el Impuesto sobre la Renta.
+- [ ] Una operación completamente normal que no amerita alerta alguna, dado que el valor declarado en las aduanas nunca guarda relación con los dólares girados por los bancos ni con las ventas nacionales.
+- [ ] Un asunto exclusivo de la Superintendencia de Servicios Públicos Domiciliarios, por cuanto la DIAN solo puede revisar un eje misional a la vez y tiene prohibido cruzar datos aduaneros con datos cambiarios en DataR.
+---
+**Explicación Técnica y Normativa:**
+Este caso sintetiza el poder del procesamiento de datos en **DataR** al integrar los tres ejes misionales de la DIAN (**Tributario, Aduanero y Cambiario**):
+* Cuando el giro cambiario ($\text{USD } 2.5\text{M}$) y las ventas internas en Factura Electrónica ($\text{USD } 3.8\text{M}$) superan en más de diez veces el valor declarado en Aduanas ($\text{USD } 200\text{k}$), la triangulación descubre que el importador o bien **subfacturó groseramente el precio en la Declaración de Importación** (defraudando aranceles e IVA aduanero), o bien introdujo el $90\%$ de la mercancía por **contrabando abierto** y utilizó declaraciones aduaneras pequeñas para intentar justificar giros de divisas al exterior (**infracción cambiaria del Decreto Ley 2245 de 2011 y tipología GAFI de Lavado de Activos Basado en el Comercio Exterior — TBML**).
+:::
+
+---
+
+## Flashcards de Repaso Mnemotécnico (22 Conceptos Clave de Alto Rendimiento)
+
+- **Objeto Misional de la UAE DIAN (Art. 3 Decreto 1742 de 2020)** :: Coadyuvar a garantizar la **Seguridad Fiscal del Estado** y la protección del **Orden Público Económico Nacional**, mediante la administración y control de las obligaciones tributarias, aduaneras, cambiarias y los derechos de explotación de juegos de suerte y azar nacionales.
+- **Los 5 Principios Constitucionales del Sistema Tributario (Arts. 338 y 363 C.P.)** :: 1) Legalidad y Reserva de Ley; 2) Equidad (horizontal y vertical); 3) Eficiencia; 4) Progresividad; y 5) Irretroactividad de la ley tributaria.
+- **Regla Constitucional en Impuestos de Período (Art. 338 inciso 3 C.P.)** :: Las leyes que modifiquen elementos sustanciales de impuestos de período (como Renta) **solo pueden aplicarse a partir del período gravable que comience después de iniciar la vigencia de la respectiva ley** (principio de irretrospectividad).
+- **Unidad de Valor Tributario - UVT (Art. 868 E.T.)** :: Unidad de medida que homogeneiza los valores tributarios en Colombia, reajustada anualmente por Resolución del Director General de la DIAN según la variación del IPC de ingresos medios certificada por el DANE.
+- **Obligación Tributaria Sustancial vs. Formal (Art. 1 E.T.)** :: La **Sustancial** consiste en el pago efectivo del tributo al realizarse el hecho generador; la **Formal** comprende los deberes instrumentales (inscribirse en el RUT, declarar, facturar electrónicamente, reportar Exógena) y es autónoma frente a la sustancial.
+- **Los 5 Elementos Esenciales de la Obligación Sustancial (Art. 338 C.P.)** :: 1) Sujeto Activo (Nación - DIAN); 2) Sujeto Pasivo (Contribuyente económico y Responsable jurídico); 3) Hecho Generador; 4) Base Gravable; y 5) Tarifa.
+- **Naturaleza Jurídica de la Retención en la Fuente (Art. 367 E.T.)** :: **NO es un impuesto**, sino un mecanismo de recaudo anticipado e instantáneo del impuesto para recaudarlo dentro del mismo ejercicio gravable en que se cause.
+- **Diferencia entre Deducción/Renta Exenta vs. Descuento Tributario** :: Las **Deducciones y Rentas Exentas** se restan *antes* de aplicar la tarifa (disminuyen la Base Gravable); el **Descuento Tributario** se resta *después* de aplicar la tarifa, directamente peso a peso ($1:1$) contra el Impuesto Básico de Renta.
+- **Diferencia entre Bienes Gravados, Exentos y Excluidos en el IVA** :: **Gravados:** tarifa $19\%$ o $5\%$; **Exentos (Arts. 477/481 E.T., ej. exportaciones):** gravados a **tarifa $0\%$ CON derecho a descontar el IVA de insumos y pedir devolución de saldo a favor**; **Excluidos (Arts. 424/476 E.T.):** no causan IVA y **NO dan derecho a IVA descontable ni a devolución**.
+- **Término General de Firmeza de las Declaraciones Tributarias (Art. 714 E.T.)** :: **Tres (3) años** siguientes al vencimiento del plazo para declarar (o desde la presentación si fue extemporánea, o desde la solicitud de devolución/compensación). Es de **5 años** en Precios de Transferencia o pérdidas fiscales.
+- **Ruta Procesal del Contribuyente Omiso vs. Inexacto (Libro V E.T.)** :: **Omiso (No declaró):** Emplazamiento para Declarar ($1\text{ mes}$) $\rightarrow$ Sanción por No Declarar $\rightarrow$ **Liquidación Oficial de Aforo** (hasta $5\text{ años}$). **Inexacto (Sí declaró con errores):** **Requerimiento Especial** ($3\text{ meses}$ para responder) $\rightarrow$ **Liquidación Oficial de Revisión** (dentro de los $6\text{ meses}$ siguientes).
+- **Recurso de Reconsideración y Silencio Administrativo Positivo (Arts. 720, 732 y 734 E.T.)** :: Se interpone dentro de los **dos (2) meses** siguientes a la notificación de la Liquidación Oficial o Resolución Sanción; la DIAN tiene **un (1) año** para resolverlo y notificarlo, so pena de configurarse el **Silencio Administrativo Positivo** a favor del contribuyente.
+- **Prescripción de la Acción de Cobro Coactivo (Art. 817 E.T.)** :: La acción de cobro de las obligaciones fiscales prescribe en el término de **cinco (5) años** contados desde la exigibilidad, interrumpiéndose con la notificación del Mandamiento de Pago.
+- **Zona Primaria vs. Zona Secundaria vs. Zona Franca (Decreto 1165 de 2019)** :: **Zona Primaria:** puertos, aeropuertos, pasos fronterizos y depósitos habilitados; **Zona Secundaria:** el resto del TAN (carreteras, comercio interno); **Zona Franca:** área con ficción de extraterritorialidad exclusiva para derechos e impuestos a la importación.
+- **Fórmula de la Base Gravable del IVA en Importaciones (Art. 459 E.T.)** :: $\text{Base Gravable IVA Importación} = \text{Valor en Aduanas (CIF en COP)} + \text{Arancel Liquidado}$. *(El IVA se liquida sobre la suma del CIF más el Arancel).*
+- **Las 3 Fases del Control Aduanero** :: 1) **Control Previo** (antes de presentar declaración, sobre manifiestos de carga); 2) **Control Simultáneo** (durante la nacionalización hasta el Levante); y 3) **Control Posterior** (fiscalización post-levante en carreteras, bodegas y contabilidad).
+- **Aprehensión vs. Decomiso vs. Rescate (Decreto Ley 920 de 2023)** :: **Aprehensión:** medida cautelar física de retención de mercancía; **Decomiso:** acto definitivo por el que la mercancía pasa a propiedad de la Nación; **Rescate:** suma adicional pagada en una Declaración de Legalización para recuperar mercancía subsanable.
+- **Umbral del Delito Penal de Contrabando (Art. 319 Código Penal - Ley 1762/2015)** :: Se configura delito penal de Contrabando cuando la cuantía aduanera de las mercancías supera los **cincuenta (50) SMLMV** (o **20 galones** en contrabando de hidrocarburos, Art. 319-1 C.P.).
+- **Conductos del Mercado Cambiario Regulado en Colombia** :: Las operaciones obligatoriamente canalizables solo pueden canalizarse a través de: 1) **Intermediarios del Mercado Cambiario (IMC)** o 2) **Cuentas de Compensación** registradas ante el Banco de la República (Formulario No. 10).
+- **Frontera de Vigilancia Cambiaria (Superfinanciera vs. Supersociedades vs. DIAN)** :: **Superfinanciera** vigila a los IMC; **Supersociedades** vigila inversión extranjera, inversión colombiana en el exterior y endeudamiento no comercial; la **DIAN** vigila **importaciones/exportaciones de bienes, endeudamiento de comercio exterior y profesionales de compra/venta de divisas en efectivo**.
+- **Régimen Sancionatorio Cambiario de la DIAN (Decreto Ley 2245 de 2011)** :: Responsabilidad objetiva, término de caducidad de **cinco (5) años** para notificar el Acto de Formulación de Cargos, **dos (2) meses** para descargos y multa del **$100\%$** por no canalizar operaciones obligatorias a través del mercado cambiario.
+- **Registro Único de Beneficiarios Finales - RUB (Art. 631-5 E.T.)** :: Registro administrado por la DIAN donde las personas jurídicas y estructuras sin personería jurídica reportan las personas naturales que finalmente las poseen o controlan ($\ge 5\%$), clave para grafos antifraude en DataR.
 
 ---
 
 ## Simulador Oficial de Examen: 10 Preguntas de Juicio Situacional (PJS)
+*Formato Oficial Areandina / CNSC (Numeral 4.4 de la GOA): Casos situacionales extensos del rol de Inspector I (OPEC 236670) con exactamente 3 opciones de respuesta (`A`, `B` y `C`) y justificación técnica y jurídica triple.*
 
-### Pregunta PJS 1: Autonomía de las Obligaciones Formales y Aplicación de Sanciones
-**Eje Temático:** Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados  
+---
+
+### Pregunta PJS 1: Objeto Misional de la DIAN (Art. 3 Decreto 1742 de 2020) y Alcance de los Tributos Administrados
+**Eje Temático:** Unidad 1 — Seguridad Fiscal del Estado y Ámbito Competencial de la DIAN  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Una sociedad comercial del sector tecnológico radicada en Bogotá sufrió severas pérdidas operacionales durante el año gravable 2024 debido a la cancelación de varios contratos internacionales, arrojando una renta líquida gravable igual a cero ($0) y un saldo a favor en retenciones en la fuente. Convencido de que la obligación de declarar solo nace cuando existe un monto positivo de impuesto a pagar, el representante legal decide no presentar la Declaración del Impuesto sobre la Renta ni reportar la Información Exógena anual. Al ser requerido por la División de Fiscalización, la empresa alega que, al no existir obligación sustancial exigible, no se le pueden imputar deberes formales ni imponer sanciones. Como Inspector I comisionado para proyectar el pliego de cargos, usted debe calificar jurídicamente la situación.
+En una mesa interinstitucional de diseño de bodegas de datos, un consultor externo propone que la Subdirección de Procesamiento de Datos de la DIAN configure un módulo en **DataR** para liquidar, recaudar directamente y ejercer jurisdicción coactiva nacional sobre el Impuesto Predial Unificado de todos los municipios del país, el Impuesto sobre Vehículos Automotores de las Gobernaciones Departamentales y las multas de tránsito locales, argumentando que el objeto misional de la DIAN abarca la totalidad de los tributos nacionales, departamentales y municipales de Colombia.
 
 **Enunciado:**  
-De acuerdo con la dogmática del derecho tributario colombiano y el Estatuto Tributario Nacional, ¿cuál es el concepto técnico-jurídico aplicable?
+A la luz del Artículo 3 del Decreto 1742 de 2020 y la estructura fiscal de la Constitución Política, al Inspector I le corresponde precisar que la afirmación del consultor es
 
 **Opciones de respuesta:**  
-- **A.** Determinar que las obligaciones formales gozan de plena autonomía frente a la sustancial, por lo que la ausencia de impuesto a pagar no exime a la sociedad del deber formal de declarar y reportar exógena, siendo procedente la liquidación de las sanciones por no declarar y por no suministrar información.
-- **B.** Aceptar los descargos de la empresa y archivar el expediente administrativo, dado que el Artículo 1 del Estatuto Tributario subordina las formalidades procesales a la existencia real de una deuda en dinero a favor del fisco.
-- **C.** Exonerar a la sociedad de la presentación de la declaración de renta, pero obligarla a pagar una donación forzosa a la DIAN equivalente al 5% de sus activos brutos como compensación fiscal.
+- **A.** incorrecta, por cuanto el objeto misional de la DIAN se circunscribe a coadyuvar a garantizar la seguridad fiscal del Estado y el orden público económico mediante la administración y control de las obligaciones **tributarias del orden nacional** (junto con las aduaneras, cambiarias de su competencia y los derechos de explotación de juegos de suerte y azar nacionales), careciendo de competencia para liquidar o ejecutar el cobro coactivo de tributos de propiedad exclusiva de las entidades territoriales como el Impuesto Predial o el de Vehículos (con la única excepción de la recaudación integrada del ICA municipal dentro del Régimen Simple de Tributación que se transfiere a los municipios).
+- **B.** correcta, dado que el Decreto 1742 de 2020 eliminó las Secretarías de Hacienda Municipales y Departamentales y centralizó el cobro del Impuesto Predial en la Subdirección de Procesamiento de Datos.
+- **C.** parcialmente correcta, pues la DIAN no administra impuestos nacionales como la Renta o el IVA, sino únicamente multas de tránsito y peajes departamentales.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La jurisprudencia del Consejo de Estado y la doctrina reiterada de la DIAN fundamentan el principio de **Autonomía de las Obligaciones Formales**. El hecho de que una sociedad no liquide impuesto a cargo no la dispensa de sus deberes instrumentales de presentar la declaración y suministrar la información exógena (Arts. 591 y 631 del E.T.). Dichos deberes permiten a la DIAN cruzar transacciones con terceros clientes y proveedores. Su incumplimiento acarrea las sanciones legalmente tasadas en los Artículos 643 y 651 del E.T.
-* **Justificación B (Incorrecta):** Es incorrecta. Desconoce la naturaleza de los deberes formales consagrados en el Artículo 95, Numeral 9 de la Constitución Política y despoja a la administración de su capacidad de fiscalización de terceros.
-* **Justificación C (Incorrecta):** Es incorrecta. Vulnera de forma flagrante el Principio de Legalidad Tributaria (Art. 338 C.P.); no existen donaciones forzosas en el régimen tributario y toda sanción debe estar expresamente tipificada en la ley.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Conforme al **Artículo 3 del Decreto 1742 de 2020** y la autonomía fiscal de las entidades territoriales (**Artículos 287 y 362 de la Constitución Política**), la competencia tributaria de la UAE DIAN recae sobre los **impuestos internos del orden nacional** (Renta y Complementarios, IVA, INC, GMF, Patrimonio, Timbre, Carbono, Ultraprocesados, etc.), además de los tributos aduaneros, las obligaciones cambiarias de comercio exterior y los derechos de explotación de juegos de suerte y azar del nivel nacional. Los impuestos departamentales (vehículos, registro, licores) y municipales (Predial, delineación urbana, ICA ordinario) son administrados por cada departamento o municipio, salvo el mecanismo especial de recaudo integrado del **ICA Consolidado dentro del Régimen Simple de Tributación (Arts. 903 y ss. E.T.)**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque vulnera la autonomía constitucional de las entidades territoriales consagrada en el Artículo 287 de la Carta Política.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque invierte por completo la competencia real de la DIAN.
 
 ---
 
-### Pregunta PJS 2: Delimitación de Competencias del Control Cambiario
-**Eje Temático:** Vigilancia y Control Cambiario de competencia de la DIAN  
+### Pregunta PJS 2: Parametrización de Descuentos Tributarios vs. Deducciones y Retenciones en DataR (Estatuto Tributario)
+**Eje Temático:** Unidades 2 y 3 — Depuración del Impuesto sobre la Renta y Mecanismo de Retención  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Durante una auditoría interinstitucional adelantada a un grupo empresarial colombiano, los inspectores descubren dos operaciones en moneda extranjera: (1) La cancelación de un crédito en dólares por valor de USD $500.000 suscrito entre la matriz y una filial extranjera para adquirir maquinaria industrial nacionalizada en Barranquilla mediante declaración de importación; y (2) La compra de acciones en la Bolsa de Valores de Tokio por valor de USD $200.000 efectuada por el presidente de la junta directiva a título personal con dineros propios depositados en una cuenta corriente no declarada. Un auditor novato propone que la Subdirección de Fiscalización Cambiaria de la DIAN asuma la investigación y formule pliego de cargos por ambas transacciones.
+Durante la validación de las reglas de negocio del motor de cruces del **Formulario 110 (Declaración de Renta de Personas Jurídicas)** en **DataR**, se analiza el caso de una sociedad industrial sujeta a la tarifa general de Renta del $35\%$, cuya Renta Líquida Gravable antes de beneficios adicionales es de $\$1.000\text{ millones}$ (lo que arroja un Impuesto Básico de Renta de $\$350\text{ millones}$). La empresa tiene derecho legal a un **Descuento Tributario** por IVA pagado en la importación de activos reales productivos (Art. 258-1 E.T.) por valor de $\$100\text{ millones}$, y además sus clientes le practicaron durante el año **Retenciones en la Fuente** a título de Renta por $\$50\text{ millones}$ (reportadas en el Formato 1003 de Exógena). Un programador junior codifica el validador restando los $\$100\text{ millones}$ del Descuento Tributario de la Base Gravable (como si fuera una deducción) y tratando los $\$50\text{ millones}$ de Retención en la Fuente como un impuesto adicional que se suma al saldo a pagar.
 
 **Enunciado:**  
-Como Inspector I de la DIAN experto en misionalidad y régimen cambiario, ¿cómo debe instruir la delimitación funcional de las competencias investigativas?
+Al auditar la lógica matemática y tributaria del script frente al Estatuto Tributario, el Inspector I debe corregir la fórmula indicando que
 
 **Opciones de respuesta:**  
-- **A.** Asumir la competencia investigativa exclusivamente sobre la operación de pago de endeudamiento externo vinculado a la importación de maquinaria por ser conexa al comercio exterior, y dar traslado formal por competencia a la Superintendencia de Sociedades y a la Superintendencia Financiera respecto a la inversión financiera en acciones en el exterior.
-- **B.** Asumir la competencia integral sobre ambas operaciones basándose en que cualquier movimiento de dólares efectuado por un ciudadano colombiano o empresa nacional cae bajo la órbita de fiscalización ilimitada de la DIAN.
-- **C.** Rechazar de plano ambas investigaciones y remitir todo el expediente al Banco de la República manifestando que la DIAN solo vigila impuestos internos en pesos colombianos.
+- **A.** el **Descuento Tributario** de $\$100\text{ millones}$ debe restarse directamente del **Impuesto Básico de Renta** de $\$350\text{ millones}$ (reduciendo el Impuesto Neto de Renta a $\$250\text{ millones}$ en proporción $1:1$, a diferencia de las deducciones que disminuyen la base gravable), y los $\$50\text{ millones}$ de **Retención en la Fuente** constituyen un pago anticipado del impuesto (Art. 367 E.T.) que debe restarse del Impuesto Neto de Renta, arrojando un saldo final a pagar de $\$200\text{ millones}$.
+- **B.** el cálculo del programador junior es correcto, porque en Colombia los descuentos tributarios son sinónimo exacto de costos y la retención en la fuente es una sanción que aumenta el impuesto a pagar.
+- **C.** tanto el descuento tributario como las retenciones en la fuente deben ignorarse en DataR porque las personas jurídicas solo tributan sobre sus ingresos brutos sin depuración alguna.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La competencia cambiaria de la DIAN está legalmente delimitada a las operaciones cambiarias vinculadas a la **importación y exportación de bienes y servicios**, la financiación de comercio exterior y la actividad de profesionales de compra/venta de divisas en efectivo (Decreto Ley 2245 de 2011 y Decreto 1742 de 2020). La primera operación encaja dentro de su órbita al estar atada a una importación de maquinaria. La segunda operación (inversión financiera en acciones extranjeras) escapa a la competencia de la DIAN y corresponde al ámbito de supervisión de la Superintendencia de Sociedades o Financiera.
-* **Justificación B (Incorrecta):** Es incorrecta. Viola el principio de legalidad y la competencia administrativa consagrada en la Ley 9 de 1991, invadiendo funciones asignadas por ley a otras superintendencias.
-* **Justificación C (Incorrecta):** Es incorrecta. El Banco de la República es una autoridad de regulación macroeconómica y banca central, no un órgano sancionatorio ni de policía administrativa de campo; la DIAN no puede abdicar de su competencia legalmente asignada sobre comercio exterior.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Evalúa con rigor matemático la depuración del **Artículo 26 del Estatuto Tributario**:
+  1. $\text{Renta Líquida Gravable (Base Gravable)} = \$1.000.000.000$.
+  2. $\text{Impuesto Básico de Renta} = \$1.000.000.000 \times 35\% = \$350.000.000$.
+  3. **Descuento Tributario:** Se resta directamente del Impuesto Básico de Renta: $\$350.000.000 - \$100.000.000 = \$250.000.000$ de **Impuesto Neto de Renta** (si el programador lo hubiera restado de la base gravable como una deducción, el ahorro habría sido solo de $\$35\text{ millones}$ en vez de $\$100\text{ millones}$).
+  4. **Retención en la Fuente (Art. 367 E.T.):** Como es un recaudo anticipado que ya le descontaron al contribuyente durante el año, se resta del impuesto a cargo: $\$250.000.000 - \$50.000.000 = \mathbf{\$200.000.000\text{ de Saldo a Pagar}}$.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque confunde deducción con descuento tributario e invierte el signo de la retención en la fuente.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque desconoce la estructura legal del Impuesto sobre la Renta en el Régimen Ordinario.
 
 ---
 
-### Pregunta PJS 3: Aplicación del Sistema de Gestión de Riesgo en Control Aduanero
-**Eje Temático:** Obligación Aduanera, Regímenes y Control Aduanero  
+### Pregunta PJS 3: Tratamiento del IVA en Operaciones Gravadas, Exentas y Excluidas (Prorrateo del Art. 490 E.T. en DataR)
+**Eje Temático:** Unidad 3 — Lógica del Impuesto sobre las Ventas (IVA) y Saldos a Favor  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-En el puerto marítimo de Buenaventura arriba un buque portacontenedores con un cargamento de 50 toneladas de calzado y textiles procedentes de Asia, declarado formalmente bajo el régimen de importación ordinaria. El importador es una empresa constituida hace un mes con un capital suscrito de apenas $2.000.000 de pesos, cuyo representante legal registra antecedentes de incumplimiento en el RUT. No obstante, al momento de radicar la declaración aduanera y solicitar el desaduanamiento, el apoderado exige que se le otorgue de forma inmediata el levante automático, argumentando que sus tributos aduaneros fueron liquidados y pagados en el banco y que cualquier demora en el puerto viola el principio de facilitación del comercio internacional.
+La Subdirección de Procesamiento de Datos ejecuta un modelo de auditoría electrónica sobre las declaraciones bimestrales de IVA (**Formulario 300**) en **DataR**. El algoritmo analiza una empresa agroindustrial que durante el bimestre realizó dos líneas de ventas: el $60\%$ de sus ingresos provino de la exportación de productos al exterior (**operaciones exentas** a tarifa $0\%$, Art. 481 E.T.) y el $40\%$ restante provino de la venta nacional de bienes agrícolas sin procesar expresamente catalogados por el Artículo 424 del Estatuto Tributario como **bienes excluidos**. Durante ese mismo bimestre, la empresa pagó $\$100\text{ millones}$ de IVA en facturas electrónicas de gastos comunes de administración y servicios generales utilizados indistintamente en ambas líneas de negocio, y en su declaración de IVA se descontó la totalidad de los $\$100\text{ millones}$ como IVA descontable para pedirlos en devolución.
 
 **Enunciado:**  
-En el marco de las fases de control aduanero y la gestión de riesgo de la DIAN, ¿cuál es la actuación que legal y técnicamente corresponde aplicar?
+De acuerdo con los Artículos 481, 488, 489 y 490 del Estatuto Tributario, la alerta de inexactitud que debe generar el algoritmo de DataR consiste en señalar que
 
 **Opciones de respuesta:**  
-- **A.** Someter la operación a los filtros del Sistema de Administración del Riesgo de DataR y ordenar la inspección física e inspección no intrusiva con escáneres de alta resolución en la fase de control simultáneo, verificando precios reales de mercado, etiquetado y origen antes de autorizar el levante.
-- **B.** Conceder inmediatamente el levante automático de las mercancías, fundamentándose en que el pago oportuno de los tributos en la entidad bancaria extingue automáticamente toda potestad de inspección aduanera.
-- **C.** Ordenar de manera inmediata la destrucción física y quema de todo el cargamento en el muelle sin adelantar inspección ni permitir el ejercicio del derecho de defensa al importador.
+- **A.** cuando un responsable realiza simultáneamente operaciones gravadas/exentas y operaciones **excluidas**, el IVA pagado en costos y gastos comunes debe someterse a **prorrateo proporcional (Art. 490 E.T.)**; por consiguiente, la empresa solo tenía derecho a llevar como IVA descontable el $60\%$ ($\$60\text{ millones}$) imputable a sus exportaciones exentas, mientras que el $40\%$ restante ($\$40\text{ millones}$) asociado a los bienes excluidos no es descontable en IVA sino que constituye un mayor valor del costo o gasto en Renta.
+- **B.** la empresa no tenía derecho a descontar ni un solo peso de los $\$100\text{ millones}$, porque las exportaciones son operaciones excluidas que prohíben cualquier devolución de IVA en Colombia.
+- **C.** la actuación de la empresa fue correcta, dado que la ley permite pedir en devolución de IVA el $100\%$ del impuesto pagado en bienes excluidos sin aplicar prorrateo alguno.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El desaduanamiento de mercancías no es un trámite ciego al riesgo. Conforme al Estatuto Aduanero (Decreto 1165 de 2019) y las directrices de la OMA, la DIAN ejerce el **Control Simultáneo** a través de su Sistema de Administración del Riesgo. Mercancías sensibles como calzado y textiles importadas por operadores de reciente creación con bajo capital configuran perfiles de alto riesgo de subfacturación y contrabando técnico, lo que justifica plenamente la inspección física y documental con apoyo de escáneres no intrusivos antes de otorgar el levante.
-* **Justificación B (Incorrecta):** Es incorrecta. El pago bancario satisface la autoliquidación formal pero no convalida la legalidad de la mercancía ni restringe las facultades de inspección aduanera del Estado.
-* **Justificación C (Incorrecta):** Es incorrecta. Configura una vía de hecho violatoria del debido proceso constitucional (Art. 29 C.P.) y genera responsabilidad patrimonial y disciplinaria gravísima contra los funcionarios.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Evalúa una regla avanzada y muy frecuente en la fiscalización electrónica de IVA en la DIAN (**Artículo 490 del Estatuto Tributario — Proporcionalidad o Prorrateo de Impuestos Descontables**):
+  * Las **exportaciones (Exentas - Art. 481 E.T.)** sí otorgan derecho a impuestos descontables y a devolución de saldo a favor.
+  * Las **ventas de bienes excluidos (Art. 424 E.T.)** NO otorgan derecho a impuestos descontables.
+  * Cuando un gasto o insumo es común a ambas actividades y no puede identificarse de forma exclusiva con una sola de ellas, el **Artículo 490 E.T.** ordena aplicar la proporción de los ingresos: como las operaciones exentas representan el $60\%$ de los ingresos totales, solo es descontable el $60\%$ ($\$60\text{ millones}$), y el $40\%$ restante ($\$40\text{ millones}$) debe rechazarse como IVA descontable (llevándose como gasto deducible en Renta).
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque las exportaciones son bienes/servicios **exentos** (tarifa $0\%$ con derecho a descuento y devolución), no excluidos.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque desconoce la prohibición de descontar el IVA asociado a operaciones excluidas y el mandato de proporcionalidad del Artículo 490 del Estatuto Tributario.
 
 ---
 
-### Pregunta PJS 4: Operaciones Cambiarias no Canalizadas y Régimen Sancionatorio
-**Eje Temático:** Régimen Sancionatorio Cambiario (Decreto Ley 2245 de 2011)  
+### Pregunta PJS 4: Cálculo de Términos de Firmeza (Art. 714 E.T.) y Priorización de Insumos en DataR
+**Eje Temático:** Unidad 4 — Procedimiento Tributario y Término de Firmeza de las Declaraciones  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Una empresa importadora de repuestos industriales domiciliada en Cúcuta acordó con su proveedor extranjero en el exterior que, para ahorrarse las comisiones bancarias y las retenciones financieras de los bancos comerciales, pagaría un embarque de autopartes por valor de USD $80.000 entregando dinero en efectivo en pesos colombianos y dólares a un transportador particular no autorizado en la frontera, quien a su vez transfirió fondos mediante billeteras virtuales no reguladas en el extranjero. La operación no fue registrada mediante Declaración de Cambio ante ningún Intermediario del Mercado Cambiario (IMC) ni a través de una Cuenta de Compensación registrada.
+En la Subdirección de Procesamiento de Datos se está ejecutando una malla de priorización temporal de expedientes en **DataR** para alertar a la Dirección de Gestión de Fiscalización sobre las declaraciones tributarias próximas a vencer en su **término de firmeza (Art. 714 del Estatuto Tributario)**, antes de que precluya la facultad de notificar el Requerimiento Especial. El sistema evalúa tres declaraciones del mismo año gravable cuyo plazo legal de vencimiento ordinario fue el **15 de abril de 2024**:
+* **Contribuyente 1:** Sociedad nacional ordinaria que presentó su declaración oportunamente el **15 de abril de 2024** con saldo a pagar y sin pérdidas fiscales ni precios de transferencia.
+* **Contribuyente 2:** Sociedad nacional ordinaria que no declaró a tiempo, sino que presentó su declaración de forma **extemporánea el 20 de octubre de 2024** con saldo a pagar.
+* **Contribuyente 3:** Multinacional obligada al régimen de **Precios de Transferencia** que además liquidó **pérdida fiscal** en su declaración presentada el 15 de abril de 2024.
 
 **Enunciado:**  
-Al detectar este hecho mediante el cruce de datos aduaneros en DataR, ¿qué sanción debe proyectar el Inspector I conforme al Decreto Ley 2245 de 2011?
+Conforme al Artículo 714 del Estatuto Tributario, las fechas exactas en que quedarán en firme estas tres declaraciones si no se les notifica antes Requerimiento Especial son, respectivamente:
 
 **Opciones de respuesta:**  
-- **A.** Proyectar pliego de cargos por la infracción cambiaria de **No Canalización de Divisas**, proponiendo la imposición de una sanción equivalente al **100% del valor de la operación no canalizada** a través del mercado regulado.
-- **B.** Aplicar una amonestación escrita conminando a la empresa a no repetir la conducta y otorgándole un plazo de dos años para legalizar los recibos de caja en la seccional de aduanas.
-- **C.** Liquidar una sanción de extemporaneidad del 0.5% mensual sobre el impuesto de timbre, cerrando el expediente cambiario al no haber intervención de bancos comerciales.
+- **A.** Contribuyente 1: **15 de abril de 2027** ($3\text{ años}$ desde el vencimiento del plazo para declarar); Contribuyente 2: **20 de octubre de 2027** ($3\text{ años}$ contados desde la fecha de presentación de la declaración extemporánea); y Contribuyente 3: **15 de abril de 2029** ($5\text{ años}$ aplicables a declaraciones con pérdida fiscal o sujetas al régimen de Precios de Transferencia).
+- **B.** Las tres declaraciones quedan en firme exactamente el mismo día (15 de abril de 2025), porque el término único de firmeza en Colombia es de un (1) año sin excepciones.
+- **C.** Las declaraciones tributarias en Colombia nunca quedan en firme y pueden ser modificadas por Requerimiento Especial cincuenta años después de su presentación.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El régimen cambiario de comercio exterior (Resolución Externa 1 de 2018 del Banco de la República) obliga a que el pago de importaciones de bienes se canalice exclusivamente a través de los IMC o cuentas de compensación debidamente registradas. El **Decreto Ley 2245 de 2011** tipifica de manera expresa que la no canalización de divisas acarrea una sanción pecuniaria correspondiente al **100% del valor de la operación** objeto de infracción, calculada a la tasa representativa del mercado (TRM) de la fecha de ocurrencia del hecho.
-* **Justificación B (Incorrecta):** Es incorrecta. El régimen sancionatorio cambiario es reglado y objetivo; los funcionarios de la DIAN carecen de discrecionalidad para sustituir multas legalmente tasadas por amonestaciones pedagógicas.
-* **Justificación C (Incorrecta):** Es incorrecta. Confunde el régimen tributario interno de timbre con el régimen administrativo sancionatorio cambiario, dejando impune una violación directa al control de divisas del país.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Aplica con precisión matemática las tres reglas del **Artículo 714 del Estatuto Tributario** que todo modelo de alerta de caducidad/firmeza en **DataR** debe tener codificadas:
+  1. **Declaración Oportuna Ordinaria (Contribuyente 1):** Tres (3) años desde el vencimiento del plazo legal para declarar (`2024-04-15` + 3 años = **`2027-04-15`**).
+  2. **Declaración Extemporánea (Contribuyente 2):** Tres (3) años desde la fecha real de presentación extemporánea (`2024-10-20` + 3 años = **`2027-10-20`**), impidiendo que quien declara tarde reduzca el tiempo de auditoría de la DIAN.
+  3. **Precios de Transferencia / Pérdidas Fiscales (Contribuyente 3):** Cinco (5) años (`2024-04-15` + 5 años = **`2029-04-15`**).
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque el término general de firmeza del Artículo 714 E.T. es de 3 años (y 5 años en casos especiales), no de 1 año.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque la seguridad jurídica constitucional impide que las declaraciones permanezcan abiertas indefinidamente.
 
 ---
 
-### Pregunta PJS 5: Principios Constitucionales Tributarios y Prohibición de Irretroactividad
-**Eje Temático:** Principios del Sistema Tributario (Artículo 363 C.P.)  
+### Pregunta PJS 5: Término para Resolver el Recurso de Reconsideración y Silencio Administrativo Positivo (Arts. 732 y 734 E.T.)
+**Eje Temático:** Unidad 4 — Etapa de Discusión del Impuesto y Alertas de Vencimiento en Sistemas DIAN  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-El Congreso de la República aprueba una Ley de Reforma Tributaria que es promulgada en el Diario Oficial el día 20 de diciembre de 2024. Dicha ley crea una sobretasa especial del 5% sobre el Impuesto sobre la Renta para empresas del sector servicios. En febrero de 2025, un Director Seccional de Impuestos emite una instrucción interna ordenando a los inspectores tributarios exigir la sobretasa del 5% sobre las rentas líquidas obtenidas por las empresas durante la totalidad del año gravable 2024, aduciendo que la declaración correspondiente a ese año vence en abril de 2025 y por tanto la ley ya se encuentra vigente al momento de presentar el formulario.
+A partir de un cruce de datos de **DataR**, una Dirección Seccional profirió y notificó una Liquidación Oficial de Revisión determinando un mayor impuesto de Renta de $\$2.000\text{ millones}$ contra una empresa. Dentro de los dos (2) meses siguientes, el contribuyente interpuso en debida forma el **Recurso de Reconsideración (Art. 720 E.T.)** el día **10 de marzo de 2025**. En el tablero de seguimiento de términos procesales alimentado por la Subdirección de Procesamiento de Datos, se genera una alerta roja advirtiendo a la Subdirección de Gestión de Recursos Jurídicos que si la resolución que resuelve dicho recurso no se profiere y notifica a más tardar el **10 de marzo de 2026**, operará una consecuencia jurídica fatal para el recaudo del Estado.
 
 **Enunciado:**  
-Al analizar la legalidad de la instrucción a la luz del Artículo 363 de la Constitución Política y el Artículo 338 constitucional, el Inspector I debe concluir que:
+De acuerdo con los Artículos 732 y 734 del Estatuto Tributario, la consecuencia jurídica que advierte el sistema si transcurre un (1) año desde la interposición en debida forma del Recurso de Reconsideración sin que se haya notificado la decisión es que
 
 **Opciones de respuesta:**  
-- **A.** La instrucción es inconstitucional y violatoria del **Principio de Irretroactividad Tributaria**, dado que las leyes que regulan tributos cuya base sea el resultado de hechos ocurridos durante un periodo determinado solo pueden aplicarse a partir del periodo que comience después de iniciar la vigencia de la ley (es decir, a partir del año gravable 2025).
-- **B.** La instrucción es plenamente legal y vinculante, puesto que las leyes tributarias siempre operan de forma retroactiva cuando benefician las metas de recaudo del Estado.
-- **C.** La sobretasa debe cobrarse sobre el año gravable 2024, pero únicamente a las empresas que reporten utilidades superiores a 1.000 salarios mínimos.
+- **A.** se configura el **Silencio Administrativo Positivo**, en virtud del cual el recurso se entenderá fallado a favor del recurrente (contribuyente), quedando sin efecto la Liquidación Oficial de Revisión de $\$2.000\text{ millones}$ y debiendo la Administración declararlo así de oficio o a petición de parte.
+- **B.** se configura el Silencio Administrativo Negativo, por lo que el contribuyente pierde automáticamente el caso y debe pagar el doble de la sanción.
+- **C.** el plazo se prorroga automáticamente por diez (10) años adicionales sin consecuencia alguna para la DIAN.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El inciso 3 del **Artículo 338** y el inciso 2 del **Artículo 363 de la Constitución Política** consagran de manera categórica que las leyes tributarias no pueden aplicarse con retroactividad. En los impuestos de periodo (como el Impuesto sobre la Renta, que abarca del 1 de enero al 31 de diciembre), las modificaciones que introduzcan tributos o sobretasas no pueden afectar el periodo en curso ni periodos anteriores; su aplicación rige exclusivamente a partir del periodo fiscal siguiente (año gravable 2025, a declararse en 2026).
-* **Justificación B (Incorrecta):** Es incorrecta. Desconoce una de las garantías fundamentales del Estado de Derecho; la irretroactividad protege la seguridad jurídica y la confianza legítima de los contribuyentes.
-* **Justificación C (Incorrecta):** Es incorrecta. Introduce una distinción arbitraria no contemplada en la norma constitucional y convalida la vulneración del principio de irretroactividad.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Aunque en el derecho administrativo general colombiano la regla suele ser el silencio negativo, en el procedimiento tributario especial los **Artículos 732 y 734 del Estatuto Tributario** consagran una excepción perentoria de **Silencio Administrativo Positivo**: la Administración tiene el término improrrogable de **un (1) año**, contado a partir de la interposición en debida forma del Recurso de Reconsideración, para resolverlo y notificar el fallo. Si vence ese año sin notificación válida, *"se entenderá fallado a favor del recurrente"*, perdiéndose el mayor impuesto liquidado y generando responsabilidad disciplinaria y fiscal para el funcionario moroso.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque en el Recurso de Reconsideración tributario el silencio de la DIAN al cabo de un año es **positivo** (a favor del ciudadano), no negativo.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque el término de un año del Artículo 732 del E.T. es preclusivo y no admite prórrogas de diez años.
 
 ---
 
-### Pregunta PJS 6: Transformación Digital y Ecosistema de Facturación Electrónica (RADIAN)
-**Eje Temático:** Planeación Estratégica, MIPG y Transformación Digital  
+### Pregunta PJS 6: Regímenes Aduaneros y Ficción de Extraterritorialidad en Zonas Francas (Decreto 1165 de 2019)
+**Eje Temático:** Unidad 5 — Territorio Aduanero Nacional (TAN), Zonas Francas y Modalidades Aduaneras  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-Una pequeña y mediana empresa (MiPyME) proveedora de insumos médicos emite una factura electrónica de venta a crédito a una clínica privada con un plazo de pago de 90 días. Con el propósito de obtener liquidez inmediata para pagar su nómina, la empresa decide ceder y descontar dicha factura ante una entidad de financiamiento (*Factoring*). Sin embargo, el pagador (la clínica) se niega a registrar electrónicamente el Acuse de Recibo de la factura y el Recibo de las Mercancías en los servicios web de la DIAN, bloqueando la posibilidad de que la factura se convierta formalmente en Título Valor.
+Al modelar en **DataR** el flujo de comercio exterior de las **Zonas Francas**, el Inspector I debe distinguir dos eventos registrados en los sistemas informáticos aduaneros:
+* **Evento 1:** Un Usuario Industrial de Bienes ubicado dentro de la Zona Franca Permanente de Bogotá introduce desde Alemania maquinaria y materias primas extranjeras directamente a sus instalaciones en la Zona Franca para ensamblar equipos médicos.
+* **Evento 2:** Dos meses después, ese mismo Usuario Industrial vende una parte de los equipos médicos ensamblados a una clínica privada ubicada en la ciudad de Medellín (dentro del Territorio Aduanero Nacional — TAN), despachando la mercancía desde la Zona Franca hacia Medellín.
 
 **Enunciado:**  
-¿Cuál es la función tecnológica y legal que cumple la plataforma institucional **RADIAN** administrada por la DIAN en este escenario económico?
+Conforme a la Ley 1004 de 2005 y al Decreto 1165 de 2019, el tratamiento jurídico-aduanero y tributario que debe reflejar el modelo de datos de DataR para el Evento 1 y el Evento 2 es:
 
 **Opciones de respuesta:**  
-- **A.** Actuar como el registro oficial único administrado por la DIAN donde se inscriben los eventos electrónicos (acuse de recibo, recepción de bienes, aceptación expresa o tácita y endosos) necesarios para dotar a la factura electrónica de la calidad de **Título Valor negociable en el territorio nacional**.
-- **B.** Reemplazar a los jueces de la república para cobrar por la fuerza pública el dinero adeudado por la clínica sin necesidad de adelantar un proceso ejecutivo.
-- **C.** Asumir la deuda como deudor solidario y girar los recursos directamente desde el presupuesto de la DIAN a la MiPyME proveedora.
+- **A.** en el Evento 1, por la ficción legal de extraterritorialidad aduanera de las Zonas Francas, los bienes procedentes del exterior que ingresan a la Zona Franca se consideran fuera del Territorio Aduanero Nacional (TAN) para efectos de los tributos aduaneros (no causan Arancel ni IVA en ese momento); en cambio, en el Evento 2, la salida de bienes desde la Zona Franca hacia el resto del TAN (Medellín) constituye una operación de **Importación**, exigiendo presentar Declaración de Importación y liquidar y pagar los tributos aduaneros correspondientes antes de su salida.
+- **B.** en el Evento 1 la empresa debe pagar el doble de Arancel al entrar a la Zona Franca, mientras que en el Evento 2 la venta hacia Medellín se considera un tránsito libre sin declaración ni impuestos.
+- **C.** las Zonas Francas están exentas de reportar información a los sistemas de la DIAN y cualquier mercancía que pase por ellas queda libre de IVA y de Impuesto de Renta para todos los compradores del país.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El **RADIAN** (Resolución DIAN 000085 de 2022 y concordantes, amparada en el Art. 616-1 del E.T.) es la plataforma oficial de la DIAN donde se administran y registran los eventos de la Factura Electrónica como Título Valor (acuse, aceptación expresa o tácita, avales, mandatos y endosos en factoring). Este ecosistema tecnológico otorga certeza jurídica, trazabilidad y unicidad, garantizando que una misma factura no sea cedida múltiples veces a distintos prestamistas y facilitando la liquidez del sector productivo.
-* **Justificación B (Incorrecta):** Es incorrecta. El RADIAN es una plataforma de registro y consulta de eventos mercantiles de datos, no un tribunal jurisdiccional de cobro coactivo privado.
-* **Justificación C (Incorrecta):** Es incorrecta. La DIAN administra el sistema de información pública; en ningún caso asume obligaciones crediticias privadas entre particulares ni compromete recursos del erario.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Conforme al **Artículo 1 de la Ley 1004 de 2005** y el **Título 8 del Decreto 1165 de 2019**, la Zona Franca goza de una ficción de extraterritorialidad **exclusivamente para efectos de los impuestos a la importación y a la exportación**: mientras la mercancía extranjera ingresa del exterior y permanece en la Zona Franca (Evento 1), se entiende fuera del TAN para efectos de Arancel e IVA. Pero cuando la mercancía se introduce desde la Zona Franca hacia el resto del Territorio Aduanero Nacional para el consumo interno en Colombia (Evento 2), se configura una **Importación** sujeta a declaración y pago de tributos aduaneros.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque invierte por completo el régimen de Zona Franca.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque todas las operaciones de Zona Franca están sometidas al control aduanero de la DIAN y la nacionalización hacia el TAN sí causa los tributos de ley.
 
 ---
 
-### Pregunta PJS 7: Clasificación Jurídica en el Impuesto sobre las Ventas (IVA)
-**Eje Temático:** Obligación Tributaria Sustancial vs. Formal e Impuestos Administrados  
+### Pregunta PJS 7: Procedimiento de Decomiso Ordinario vs. Decomiso Directo y Rescate (Decreto Ley 920 de 2023)
+**Eje Temático:** Unidad 6 — Nuevo Régimen Sancionatorio y de Decomiso Aduanero  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-En una mesa de trabajo en la Subdirección de Procesamiento de Datos, se diseñan los algoritmos de validación previa de facturación electrónica y devolución automática de saldos a favor. Un programador pregunta la diferencia dogmática y contable entre los bienes clasificados como **Exentos** y los bienes clasificados como **Excluidos** en el Impuesto sobre las Ventas (IVA), para programar correctamente las reglas de cálculo en el motor de reglas de DataR.
+En el tablero de seguimiento de procesos aduaneros de **DataR** se registran dos actuaciones operativas del día:
+* **Caso 1:** En un control aduanero se detecta el ingreso ilegal al país de un cargamento de **gasolina y ACPM (hidrocarburos)** de contrabando y un lote de juguetes tóxicos de **prohibida importación** que atentan contra la salud infantil.
+* **Caso 2:** Un importador formal presentó oportunamente en puerto un lote de repuestos industriales de libre importación, pero durante la inspección documental se advierte una inexactitud subsanable en la descripción mínima que daba lugar a aprehensión, ante lo cual el importador solicita acogerse a la figura de **Legalización con pago de Rescate** para recuperar su mercancía.
 
 **Enunciado:**  
-¿Cuál es la definición exacta que el Inspector I debe proporcionar para parametrizar el algoritmo de validación fiscal?
+De acuerdo con el Decreto Ley 920 de 2023 y el Decreto 1165 de 2019, las figuras jurídicas aplicables al Caso 1 y al Caso 2 son, respectivamente:
 
 **Opciones de respuesta:**  
-- **A.** Los bienes **Exentos** están gravados a una tarifa del 0% y otorgan a su productor el derecho a solicitar la devolución o compensación de los saldos a favor por el IVA pagado en sus costos e insumos; mientras que los bienes **Excluidos** no causan el impuesto y el IVA pagado en su adquisición constituye un mayor valor del costo o gasto no descontable.
-- **B.** Ambos conceptos son sinónimos técnicos que implican que ningún ciudadano ni productor paga jamás un solo peso de impuesto en ninguna etapa de la cadena de producción.
-- **C.** Los bienes **Excluidos** otorgan derecho a devolución en efectivo cada mes, mientras que los bienes **Exentos** exigen el pago de una tarifa punitiva del 35% en la aduana.
+- **A.** en el Caso 1 procede la figura del **Decomiso Directo (Art. 89 Decreto Ley 920 de 2023)** —en el cual en una misma actuación se aprehende y se decide de plano la pérdida de propiedad a favor de la Nación por tratarse de hidrocarburos y bienes de prohibida importación, sobre los cuales jamás procede legalización ni rescate—; mientras que en el Caso 2 sí es jurídicamente procedente presentar **Declaración de Legalización pagando los tributos aduaneros más el porcentaje de Rescate** correspondiente para levantar la medida cautelar sobre los repuestos de libre importación.
+- **B.** en el Caso 1 el importador puede legalizar la gasolina de contrabando y los juguetes tóxicos de prohibida importación pagando un rescate del 5%, mientras que en el Caso 2 los repuestos deben destruirse inmediatamente sin derecho a defensa.
+- **C.** el Decreto Ley 920 de 2023 eliminó tanto la aprehensión como el decomiso de mercancías en Colombia.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. Conforme al Estatuto Tributario Nacional (Arts. 424, 477 y concordantes), los **bienes exentos** forman parte del hecho generador del IVA pero su tarifa legal es del 0%, lo que permite a los productores recuperar el IVA pagado en la cadena de insumos (IVA descontable) mediante solicitud de devolución de saldos a favor. Por el contrario, los **bienes excluidos** no forman parte del ámbito del hecho generador del IVA; no generan cobro alguno y el IVA pagado en su cadena de compras no puede descontarse ni devolverse, incorporándose como mayor valor del costo o gasto.
-* **Justificación B (Incorrecta):** Es incorrecta. Confunde dos categorías tributarias diametralmente opuestas en materia de derecho a impuestos descontables y devoluciones.
-* **Justificación C (Incorrecta):** Es incorrecta. Invierte y deforma completamente la doctrina tributaria, inventando una tarifa aduanera punitiva inexistente.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. El **Artículo 89 del Decreto Ley 920 de 2023** regula taxativamente el **Decomiso Directo**, aplicable a mercancías como hidrocarburos y sus derivados, bienes de prohibida importación, mercancías que atenten contra la moral o la salud pública, animales vivos o bienes perecederos. Sobre estas mercancías de prohibida importación o delito especial **está prohibido presentar Declaración de Legalización o pagar rescate**. En cambio, respecto de mercancías ordinarias de lícito comercio con errores o causales subsanables (Caso 2), el **Decreto 1165 de 2019 (Art. 290)** y el **Decreto Ley 920 de 2023** permiten subsanar la situación mediante **Declaración de Legalización y pago de Rescate**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque la ley prohíbe expresamente legalizar mercancías de prohibida importación o hidrocarburos objeto de decomiso directo.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque el Decreto Ley 920 de 2023 precisamente regula y fortalece el procedimiento de aprehensión y decomiso con fuerza de ley.
 
 ---
 
-### Pregunta PJS 8: Medidas Cautelares Aduaneras: Aprehensión vs. Decomiso
-**Eje Temático:** Obligación Aduanera, Regímenes y Lucha contra el Contrabando  
+### Pregunta PJS 8: Control Cambiario de Cuentas de Compensación y Caducidad (Decreto Ley 2245 de 2011)
+**Eje Temático:** Unidad 7 — Misionalidad Cambiaria y Cuentas de Compensación  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-En un operativo de control aduanero posterior en una bodega comercial de Bogotá, inspectores de fiscalización aduanera y agentes de la POLFA descubren un inventario de 500 computadores portátiles importados. El tenedor presenta una fotocopia ilegible de una declaración de importación en la que no coinciden los números de serie de los equipos ni se identifica el manifiesto de carga. La comisión redacta el acta de aprehensión de la mercancía. El comerciante acude al día siguiente a la Dirección Seccional exigiendo que se le indemnice por haberle "expropiado definitivamente sus bienes sin un juicio previo".
+Una sociedad exportadora de flores domiciliada en Bogotá posee una cuenta bancaria en dólares en un banco de Nueva York registrada ante el Banco de la República bajo el mecanismo de **Cuenta de Compensación (Formulario No. 10)**, a través de la cual recibe el reintegro de las divisas de todas sus exportaciones de bienes y paga sus importaciones de insumos agrícolas. Durante el año 2025, la empresa omitió transmitir a la DIAN dentro de los plazos trimestrales legales los archivos XML de **Información Exógena Cambiaria** correspondientes a los movimientos de comercio exterior de dicha Cuenta de Compensación y además pagó tres importaciones utilizando efectivo no canalizado. El abogado de la empresa alega que: (1) la DIAN no puede auditar Cuentas de Compensación porque el banco está en Nueva York, y (2) la facultad sancionatoria cambiaria de la DIAN caduca a los seis (6) meses de ocurrido el hecho.
 
 **Enunciado:**  
-Al responder jurídicamente la reclamación ciudadana, el Inspector I debe explicar la naturaleza de la medida cautelar señalando que:
+Al contrastar ambos argumentos con el régimen cambiario colombiano y el Decreto Ley 2245 de 2011, el Inspector I debe establecer que
 
 **Opciones de respuesta:**  
-- **A.** La **Aprehensión** es una medida cautelar de carácter preventivo y transitorio que busca asegurar la mercancía mientras se surte el proceso administrativo aduanero, garantizando al usuario la oportunidad legal de aportar las pruebas que acrediten su legal introducción antes de que se profiera la resolución definitiva de **Decomiso**.
-- **B.** La aprehensión extingue automáticamente e irrevocablemente el derecho de dominio en el mismo instante en que el inspector firma el acta, perdiendo el comerciante todo derecho a interponer recursos o aportar pruebas.
-- **C.** Los computadores pasan a ser propiedad privada inmediata del funcionario que realizó el operativo para su uso personal sin necesidad de acto administrativo.
+- **A.** ambos argumentos son falsos: (1) la DIAN ejerce control y vigilancia cambiaria sobre las operaciones de importación y exportación de bienes canalizadas a través de **Cuentas de Compensación** de residentes colombianos, así como sobre la obligación formal de reportar a la DIAN la **Información Exógena Cambiaria**; y (2) el término de caducidad de la acción sancionatoria cambiaria de la DIAN es de **cinco (5) años** contados desde la ocurrencia del hecho constitutivo de infracción para notificar el Acto de Formulación de Cargos (Art. 5 Decreto Ley 2245 de 2011).
+- **B.** ambos argumentos del abogado son ciertos, dado que la DIAN solo vigila cuentas de ahorro en pesos colombianos y la acción cambiaria caduca a los seis meses.
+- **C.** las Cuentas de Compensación están prohibidas en Colombia y ningún exportador puede recibir pagos en bancos del exterior aunque los registre ante el Banco de la República.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. El régimen aduanero (Decreto 1165 de 2019 y Decreto 920 de 2023) estructura el proceso de control aduanero en etapas regladas. La **Aprehensión** es una medida cautelar y preventiva que suspende temporalmente la disposición de las mercancías por no acreditarse su legal ingreso. No equivale a una expropiación. El interesado goza de un término legal para presentar el documento de objeción a la aprehensión y aportar las pruebas correspondientes. Solo si las inconsistencias no se desvirtúan, la DIAN expide el acto administrativo de **Decomiso**, mediante el cual la propiedad se transfiere definitivamente a la Nación.
-* **Justificación B (Incorrecta):** Es incorrecta. Vulnera el debido proceso consagrado en el Artículo 29 de la Constitución Política y confunde la medida cautelar con la sanción definitiva de fondo.
-* **Justificación C (Incorrecta):** Es incorrecta. Configura el delito de peculado por apropiación y una falta disciplinaria gravísima sancionada con destitución inmediata.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta.
+  1. Las **Cuentas de Compensación** son uno de los dos conductos legales del mercado cambiario regulado (junto con los IMC). Cuando un residente colombiano utiliza una Cuenta de Compensación para operaciones de competencia de la DIAN (importaciones, exportaciones, endeudamiento externo comercial y servicios), está obligado a reportar la **Información Exógena Cambiaria** a la DIAN y queda sujeto a las sanciones del **Artículo 3 del Decreto Ley 2245 de 2011**.
+  2. Conforme al **Artículo 5 del Decreto Ley 2245 de 2011**, la acción sancionatoria cambiaria tiene un término de caducidad de **cinco (5) años** contados a partir de la fecha de ocurrencia del hecho (o del vencimiento del plazo en infracciones continuadas) para expedir y notificar el **Acto de Formulación de Cargos**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque desconoce la competencia de la DIAN sobre cuentas de compensación y el término legal de 5 años del Decreto Ley 2245 de 2011.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque las Cuentas de Compensación son un mecanismo plenamente legal y autorizado por la Resolución Externa 1 de 2018 del Banco de la República.
 
 ---
 
-### Pregunta PJS 9: Implementación de la Dimensión de Información y Datos en el MIPG
-**Eje Temático:** Planeación Estratégica, MIPG y Transformación Digital  
+### Pregunta PJS 9: Explotación Analítica del Registro Único de Beneficiarios Finales — RUB (Art. 631-5 E.T.) en DataR
+**Eje Temático:** Unidad 8 — Transparencia Fiscal, RUB y Detección de Abuso Tributario  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-En el marco de la auditoría de gestión institucional realizada bajo el Modelo Integrado de Planeación y Gestión (MIPG), la Oficina de Control Interno de la DIAN emite un hallazgo señalando que varias divisiones operativas continúan gestionando expedientes en carpetas locales de computadores personales, generando riesgos de pérdida de información, desactualización de cifras en los tableros de control directivo y potenciales fugas de datos amparados por reserva tributaria (Art. 583 E.T.). Como Inspector I en la Subdirección de Procesamiento de Datos, se le encomienda proponer la solución técnica integral alineada con las directrices del MIPG.
+La Subdirección de Procesamiento de Datos construye un grafo de conocimiento (*Knowledge Graph*) en **DataR** integrando la base del **Registro Único de Beneficiarios Finales (RUB — Artículos 631-5 y 631-6 del Estatuto Tributario)** con la Facturación Electrónica y las declaraciones del Régimen Simple de Tributación (RST) y del Régimen Ordinario de Renta. El algoritmo de detección de comunidades (*Louvain / Connected Components*) descubre que una misma persona natural (`Cédula X`) figura en el **RUB** como beneficiario final real del $100\%$ de doce (12) sociedades SAS distintas creadas el mismo día, las cuales se facturan servicios de consultoría entre sí al final del año para erosionar la base gravable del grupo y fraccionar artificialmente los ingresos para no superar los topes en UVT.
 
 **Enunciado:**  
-¿Cuál es la estrategia institucional que solventa el hallazgo de auditoría fortaleciendo la dimensión de Información y Comunicación del MIPG?
+Desde la perspectiva de la misionalidad tributaria y el uso estratégico de los datos en la DIAN, la integración del **RUB** en este cruce de **DataR** cumple el propósito legal de
 
 **Opciones de respuesta:**  
-- **A.** Centralizar la gestión documental y analítica sobre el ecosistema gobernado de **DataR** y los sistemas oficiales de gestión documental, asegurando la interoperabilidad mediante servicios de datos protegidos por control de acceso basado en atributos (ABAC) y auditoría forense inmutable.
-- **B.** Adquirir discos duros externos USB para cada funcionario con el fin de que respalden manualmente sus archivos cada viernes al finalizar la jornada.
-- **C.** Eliminar todos los registros históricos de auditorías para evitar que los organismos de control interno encuentren futuras discrepancias operativas.
+- **A.** develar el velo corporativo para identificar a las personas naturales que finalmente poseen, controlan o se benefician de las personas jurídicas o estructuras sin personería jurídica ($\ge 5\%$), permitiendo a la DIAN combatir la evasión fiscal, el abuso en materia tributaria (Art. 869 E.T.), las operaciones simuladas entre vinculados económicos y el lavado de activos, bajo estricto amparo de la Reserva Tributaria.
+- **B.** publicar en redes sociales el nombre y patrimonio de todos los accionistas de las empresas colombianas para que cualquier ciudadano los consulte libremente.
+- **C.** reemplazar el Registro Único Tributario (RUT) y eliminar la obligación de las personas jurídicas de presentar declaración de Renta en Colombia.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La dimensión de Información y Comunicación del **MIPG (Decreto 1499 de 2017)** en entidades que gestionan activos estratégicos como la DIAN exige garantizar la integridad, disponibilidad, confidencialidad y autenticidad del dato. Centralizar la información en DataR erradica los silos locales, estandariza las fuentes de verdad y blinda la custodia legal de los datos protegidos por reserva mediante controles de acceso robustos y auditoría forense inmutable.
-* **Justificación B (Incorrecta):** Es incorrecta. Multiplica exponencialmente los riesgos de pérdida, robo o sustracción de dispositivos portátiles sin cifrar, vulnerando el principio de seguridad de la información.
-* **Justificación C (Incorrecta):** Es incorrecta. El ocultamiento o destrucción de registros públicos constituye delito penal y falta disciplinaria de la mayor gravedad en la función pública.
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Conforme a los **Artículos 631-5 y 631-6 del Estatuto Tributario** (modificados por la Ley 2155 de 2021 y reglamentados por la Resolución DIAN 000164 de 2021), el **Registro Único de Beneficiarios Finales (RUB)** hace parte integral del RUT y tiene como finalidad misional permitir la identificación de las personas naturales que poseen o ejercen el control efectivo final sobre una sociedad o estructura sin personería jurídica (poseyendo directa o indirectamente el $5\%$ o más del capital o derechos de voto, o beneficiándose en el $5\%$ o más de los activos/rendimientos). Su integración en **DataR** es la herramienta reina para detectar vinculación económica oculta, fraccionamiento artificial de empresas y **abuso en materia tributaria (Art. 869 E.T.)**, estando su acceso restringido por estricta reserva legal.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque la información del RUB tiene carácter reservado y solo puede ser accedida por las autoridades expresamente facultadas por la ley.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque el RUB no elimina el RUT ni sustituye la obligación de declarar Renta.
 
 ---
 
-### Pregunta PJS 10: La Misión Institucional frente a la Evasión Fiscal Compleja
-**Eje Temático:** Objeto Misional y Seguridad Fiscal del Estado Colombiano  
+### Pregunta PJS 10: Caso Integrador de Misionalidad y Procesamiento de Datos — El Ciclo Completo de Lucha contra Facturación Ficticia (Art. 671 E.T.)
+**Eje Temático:** Integración de las Unidades 1 a 8 — Del Sensor de Factura Electrónica a la Determinación y Denuncia Penal  
 **Nivel:** Profesional (Inspector I - OPEC 236670)
 
 **Caso:**  
-El equipo de analistas de la Subdirección de Procesamiento de Datos identifica en DataR una red criminal compuesta por 45 empresas de papel (*Sociedades Fantasma o Proveedores Ficticios*) que han emitido más de $500.000 millones de pesos en facturas electrónicas falsas por supuestos servicios de consultoría y publicidad a grandes contribuyentes del país, quienes utilizaron dichas facturas para inflar artificialmente sus costos y deducciones en el impuesto de renta y disminuir indebidamente el IVA a pagar. Al consultar la actuación misional procedente, se discute si la DIAN debe limitarse a cobrar los intereses a las empresas fantasmas o coordinar una acción de mayor impacto estatal.
+El motor de reglas y grafos ejecutado sobre **DataR** por la Subdirección de Procesamiento de Datos detecta una anomalía crítica: una sociedad recién inscrita en el RUT hace cuatro meses con un capital de $\$2.000.000$ ha emitido **Facturas Electrónicas de Venta UBL 2.1** por valor de $\$65.000\text{ millones}$ en supuestos servicios de "asesoría empresarial" a favor de 80 grandes empresas del país; sin embargo, al cruzar a dicha sociedad emisora en **DataR** contra las demás fuentes institucionales, se comprueba que: (1) tiene **cero ($0$) empleados** reportados en **Nómina Electrónica**, (2) tiene **cero ($0$) compras de insumos o arrendamientos** en Factura Electrónica recibida, (3) no registra importaciones en **SYGA**, y (4) sus retiros bancarios reportados en Exógena se hacen el mismo día en efectivo.
 
 **Enunciado:**  
-En cumplimiento del objeto superior de la DIAN y la protección de la Seguridad Fiscal del Estado, ¿cuál es el curso de acción institucional integral que debe ejecutarse?
+Al estructurar el reporte técnico de este hallazgo desde la Subdirección de Procesamiento de Datos hacia la Dirección de Gestión de Fiscalización, ¿cuál es la calificación misional de la conducta detectada y qué consecuencias jurídicas habilita este cruce en el Estatuto Tributario y en el Código Penal?
 
 **Opciones de respuesta:**  
-- **A.** Desconocer los costos y deducciones ficticias a los contribuyentes que compraron las facturas, determinar oficialmente los tributos e imponer las sanciones por inexactitud del 100% (Art. 648 E.T.), declarar formalmente a los emisores como **Proveedores Ficticios** (Art. 671 E.T.) y trasladar el expediente con evidencia digital pericial a la **Fiscalía General de la Nación** por delitos de defraudación tributaria y falsedad.
-- **B.** Limitarse a enviar un correo informativo genérico a las empresas de papel solicitándoles que actualicen su dirección de domicilio en el RUT antes del próximo año.
-- **C.** Legalizar las facturas ficticias autorizando un descuento tributario extraordinario del 50% para incentivar la inversión privada en consultoría.
+- **A.** El patrón corresponde a una **Empresa de Papel o Proveedor Ficticio de Facturas (Operaciones Simuladas o Inexistentes)**: el insumo de DataR habilita a Fiscalización para (1) iniciar el procedimiento administrativo de declaratoria de **Proveedor Ficticio (Art. 671 E.T.)**, cuya publicación oficial conlleva que a partir de ese momento no sean deducibles en Renta ni descontables en IVA las compras realizadas a dicho sujeto; (2) desconocer mediante **Requerimiento Especial y Liquidación Oficial de Revisión** los costos e impuestos descontables simulados en las 80 empresas compradoras aplicando sanción por inexactitud agravada; y (3) trasladar evidencia para la acción penal por **Defraudación o Evasión Tributaria (Art. 434B C.P.)** e **Inclusión de Pasivos Inexistentes / Omisión de Activos (Art. 434A C.P.)**.
+- **B.** Dado que las facturas fueron transmitidas en formato XML UBL 2.1 y obtuvieron el código CUFE de validación previa técnica, la DIAN pierde toda facultad de fiscalización posterior y está obligada a aceptar como reales los $\$65.000\text{ millones}$ de costos aunque la operación sea simulada.
+- **C.** El hallazgo solo constituye una infracción aduanera de tránsito de cabotaje y debe archivarse porque los servicios de asesoría empresarial no generan obligaciones tributarias en Colombia.
 
 **Clave Oficial:** **A**
 
 **Justificación Técnica y Normativa:**
-* **Justificación A (Respuesta Correcta):** Es correcta. La misionalidad de la DIAN en defensa de la Seguridad Fiscal exige una respuesta contundente y articulada frente a la evasión organizada. El Estatuto Tributario contempla herramientas específicas: la **declaratoria de Proveedor Ficticio** (Art. 671 E.T., que anula la validez de las facturas emitidas por la empresa de papel), la **reliquidación oficial de los impuestos** con sanción por inexactitud del 100% sobre los compradores del servicio simulado (Art. 648 E.T.) y la denuncia penal inmediata ante la Fiscalía por el delito de **Defraudación o Evasión Tributaria** (Art. 434B del Código Penal) y concierto para delinquir.
-* **Justificación B (Incorrecta):** Es incorrecta. Configura una omisión gravísima del deber funcional de fiscalización e investigación tributaria, facilitando la prescripción de los tributos y la impunidad penal.
-* **Justificación C (Incorrecta):** Es incorrecta. La DIAN carece de facultades para perdonar tributos o convalidar operaciones fraudulentas al margen de la ley del Congreso.
-
----
-
-## Checklist de Autoevaluación Final del Módulo
-
-Antes de presentar la prueba escrita del Concurso DIAN 2676, verifica que dominas cada una de las siguientes competencias del eje de Misionalidad de la DIAN:
-
-- [ ] Comprendo la **Seguridad Fiscal del Estado** como el bien jurídico tutelado fundamental que orienta toda la actuación de la DIAN.
-- [ ] Domino los principios constitucionales del sistema tributario (**Art. 363 C.P.**): Equidad, Eficiencia, Progresividad e Irretroactividad.
-- [ ] Diferencio con claridad jurídica la **Obligación Sustancial** (dar/pagar) de las **Obligaciones Formales** (hacer/informar/declarar/facturar).
-- [ ] Conozco el principio de **Autonomía de las Obligaciones Formales** frente a la existencia de saldo a pagar en el ejercicio gravable.
-- [ ] Identifico los cinco elementos esenciales del tributo: Sujeto Activo, Sujeto Pasivo, Hecho Generador, Base Gravable y Tarifa.
-- [ ] Clasifico la totalidad de los impuestos nacionales administrados por la DIAN: Renta, SIMPLE, IVA, Consumo, Patrimonio, GMF, Ambientales y Saludables.
-- [ ] Domino las diferencias tributarias y contables entre bienes **Gravados**, **Exentos** (tarifa 0% con devolución) y **Excluidos** (sin derecho a devolución).
-- [ ] Describo las fases del control aduanero: **Control Previo**, **Control Simultáneo** (selectividad e inspección física/documental) y **Control Posterior** (fiscalización ex-post).
-- [ ] Diferencio con rigor la medida cautelar de **Aprehensión** del acto administrativo definitivo de **Decomiso Aduanero**.
-- [ ] Delimito con exactitud la **Competencia Cambiaria de la DIAN** (comercio exterior de bienes/servicios y profesionales de cambio en efectivo) frente a la Superfinanciera y Supersociedades.
-- [ ] Conozco las infracciones cambiarias del **Decreto Ley 2245 de 2011**, en especial la sanción del **100% por no canalización de divisas**.
-- [ ] Identifico las 7 dimensiones operativas del **MIPG** (Decreto 1499 de 2017) y su integración con los repositorios de datos institucionales.
-- [ ] Describo los componentes del **Ecosistema de Facturación Electrónica** (Factura UBL 2.1, Nómina Electrónica, Documento Soporte y plataforma **RADIAN**).
+* **Justificación de la Opción A (Respuesta Correcta):** Es correcta. Es un caso arquetípico del examen de la DIAN que une la ingeniería de datos con la misionalidad fiscal:
+  1. **La validación previa técnica de la Factura Electrónica UBL 2.1 verifica la estructura informática y firma digital del XML, pero JAMÁS convalida la realidad económica de una operación simulada o inexistente.**
+  2. El cruce multipropósito en **DataR** (Facturas Emitidas vs. Nómina Electrónica + Facturas Recibidas + Capacidad Operativa) demuestra la falta de sustancia económica de la sociedad emisora, configurando el supuesto del **Artículo 671 del Estatuto Tributario (Proveedores Ficticios o Insolventes)**.
+  3. A su vez, respecto de las 80 empresas que compraron esas facturas falsas para inflar costos en Renta e IVA descontable, procede el **Requerimiento Especial y Liquidación Oficial de Revisión** con sanción por inexactitud agravada (Art. 647 y 648 E.T.) y la compulsa penal por los delitos fiscales de los **Artículos 434A y 434B del Código Penal**.
+* **Justificación de la Opción B (Incorrecta):** Es incorrecta porque el Artículo 616-1 del Estatuto Tributario establece expresamente que la validación previa de la factura electrónica no limita ni excluye las amplias facultades de fiscalización posterior de la DIAN (Art. 684 E.T.) para verificar la realidad material de las transacciones.
+* **Justificación de la Opción C (Incorrecta):** Es incorrecta porque se trata de un fraude tributario interno de Renta e IVA sin relación con cabotaje aduanero.
 
 ---
 
 ## Lecturas Complementarias y Bibliografía Oficial Comentada
 
-### Lecturas Complementarias Recomendadas para Profundización
-1. **Insignares Gómez, R., & Piza Rodríguez, J. R. (2021).** *Curso de Derecho Tributario, Aduanero y de la Comercio Exterior*. Universidad Externado de Colombia.
-   * **Por qué leerlo para el examen:** Es la obra doctrinal contemporánea más autorizada en Colombia para comprender la integración sistemática de los tres ejes misionales de la DIAN y la dogmática de las obligaciones formales y sustanciales.
-2. **Plazas Vega, M. A. (2020).** *Derecho de la Hacienda Pública y Derecho Tributario (Tomo II - Derecho Tributario)*. Editorial Temis.
-   * **Por qué leerlo para el examen:** Desarrolla con profundidad insuperable los principios constitucionales de justicia, equidad, progresividad, eficiencia e irretroactividad del Artículo 363 C.P.
-3. **DIAN (2023).** *Doctrina General sobre el Ecosistema de Factura Electrónica y el RADIAN: Concepto Unificado No. 106 de 2022 y adiciones*. Dirección de Gestión Jurídica, UAE DIAN.
-   * **Por qué leerlo para el examen:** Explica detalladamente el funcionamiento de los eventos electrónicos, la validación previa y la circulación de facturas como títulos valores.
-
-### Bibliografía Técnica, Normativa y Reglamentaria Oficial (Corte: 19 de junio de 2026)
-
-#### A. Marco Constitucional y Legal Tributario
-* **Constitución Política de Colombia de 1991.** Artículo 95 Numeral 9 (Deber de contribuir), Artículo 189 Numeral 20 (Facultades del Presidente en recaudación), Artículo 334 (Sostenibilidad fiscal), Artículo 338 (Principio de legalidad) y Artículo 363 (Principios del sistema tributario).
-* **Estatuto Tributario Nacional (Decreto 624 de 1989 y reformas vigentes al 19 de junio de 2026).** Artículos 1 (Obligación sustancial), 424 y 477 (Bienes excluidos y exentos de IVA), 555-2 (RUT), 616-1 (Facturación electrónica), 631 (Información exógena), 643 y 651 (Régimen sancionatorio formal) y 684 (Facultades de fiscalización e investigación).
-* **Ley 2277 de 2022 (Reforma Tributaria para la Igualdad y la Justicia Social).** Impuestos saludables, impuesto al carbono, impuesto a los plásticos de un solo uso e impuesto permanente al patrimonio.
-
-#### B. Marco Orgánico, Aduanero, Cambiario y de Gestión Pública
-* **Decreto 1071 de 1999.** Organización y objeto fundacional de la Unidad Administrativa Especial Dirección de Impuestos y Aduanas Nacionales (UAE DIAN).
-* **Decreto 1742 de 2020.** Estructura orgánica y funciones de las dependencias del Nivel Central y Desconcentrado de la UAE DIAN.
-* **Decreto 1165 de 2019.** Disposiciones relativas al régimen de aduanas en Colombia (procedimientos, regímenes y control aduanero).
-* **Decreto 920 de 2023.** Nuevo régimen sancionatorio y de decomiso de mercancías en materia aduanera.
-* **Ley 9 de 1991.** Ley Marco de Cambios Internacionales de Colombia.
-* **Decreto Ley 2245 de 2011 (modificado por el Decreto Ley 927 de 2023).** Régimen sancionatorio de las infracciones cambiarias de competencia de la DIAN.
-* **Resolución Externa 1 de 2018 (Junta Directiva del Banco de la República).** Compendio de regulaciones cambiarias obligatorias para comercio exterior.
-* **Decreto 1499 de 2017.** Adopción del Modelo Integrado de Planeación y Gestión (MIPG) para el sector público colombiano.
-* **Código Penal Colombiano (Ley 599 de 2000).** Artículos 319 (Contrabando), 320 (Favorecimiento al contrabando), 321 (Fraude aduanero) y 434B (Defraudación o evasión tributaria).
+1. **Constitución Política de Colombia (1991):** Artículo 95 numeral 9 (Deber ciudadano de contribuir con justicia y equidad), Artículo 150 numeral 12, Artículo 334 (Sostenibilidad fiscal), Artículo 338 (Principio de legalidad tributaria e irretrospectividad en impuestos de período) y Artículo 363 (Principios de equidad, eficiencia, progresividad e irretroactividad).
+2. **Decreto 1742 de 2020 (Artículos 1 a 4) y Decreto 1071 de 1999:** Definición oficial del **Objeto Misional de la UAE DIAN**, Seguridad Fiscal del Estado, Orden Público Económico Nacional y competencias sobre tributos nacionales, aduanas, cambios y derechos de explotación de juegos de suerte y azar nacionales.
+3. **Estatuto Tributario Nacional (Decreto 624 de 1989, actualizado con la Ley 2277 de 2022):**
+   * *Parte Sustancial:* Artículos 1 a 5 (Obligación sustancial), Art. 26 (Depuración de la Renta), Arts. 365 a 373 (Retención en la fuente), Arts. 420 a 490 (IVA, bienes gravados, exentos, excluidos, base gravable en importaciones Art. 459 y prorrateo Art. 490), Art. 868 (UVT) y Arts. 903 y ss. (Régimen Simple de Tributación - SIMPLE).
+   * *Parte Procedimental (Libro V):* Art. 555-2 (RUT), Art. 616-1 (Facturación Electrónica), Art. 631 (Información Exógena), Art. 631-5 (RUB), Art. 671 (Proveedores Ficticios), Arts. 703 a 714 (Requerimiento Especial, Liquidación de Revisión y Firmeza de 3 años), Arts. 715 a 717 (Emplazamiento y Liquidación de Aforo), Arts. 720, 732 y 734 (Recurso de Reconsideración y Silencio Administrativo Positivo) y Art. 817 (Prescripción de cobro coactivo en 5 años).
+4. **Decreto 1165 de 2019 (Régimen de Aduanas) y Decreto Ley 920 del 6 de junio de 2023 (Nuevo Régimen Sancionatorio y de Decomiso de Mercancías en Materia Aduanera):** Conceptos de TAN, Zona Primaria, Zona Secundaria, Zonas Francas, Regímenes de Importación/Exportación/Tránsito, Fases del Control Aduanero (Previo, Simultáneo y Posterior), Aprehensión, Decomiso Ordinario, Decomiso Directo y Rescate.
+5. **Ley 9 de 1991, Resolución Externa No. 1 de 2018 de la Junta Directiva del Banco de la República y Decreto Ley 2245 de 2011:** Marco del Mercado Cambiario Regulado (IMC y Cuentas de Compensación), operaciones obligatoriamente canalizables de competencia de la DIAN, Información Exógena Cambiaria y procedimiento administrativo cambiario (caducidad de 5 años).
+6. **Código Penal Colombiano (Ley 599 de 2000, reformado por Ley 1762 de 2015 y Ley 2277 de 2022):** Artículos 319 a 321 (Contrabando $> 50\text{ SMLMV}$, Contrabando de Hidrocarburos $> 20\text{ galones}$, Favorecimiento y Fraude Aduanero), Artículo 402 (Omisión de Agente Retenedor o Recaudador) y Artículos 434A y 434B (Omisión de activos / pasivos inexistentes y Defraudación o evasión tributaria).
